@@ -27,6 +27,10 @@ function M.path(str)
   return M.fqn(vim.fn.fnamemodify(f, ":h:h:h") .. "/" .. (str or ""))
 end
 
+function M.index()
+  return M.json_decode(M.read_file(M.schema("index")))
+end
+
 function M.schema(name)
   return M.path("schemas/" .. name .. ".json")
 end

@@ -33,15 +33,10 @@ function M.update_index()
   local url = "https://gist.githubusercontent.com/williamboman/a01c3ce1884d4b57cc93422e7eae7702/raw/lsp-packages.json"
   local index = util.fetch(url)
   util.write_file("schemas/index.json", index)
-  util.write_file("lua/lsp-settings/schemas.lua", "return " .. vim.inspect(util.json_decode(index)))
-end
-
-function M.index()
-  return util.json_decode(util.read_file("schemas/index.json"))
 end
 
 function M.update_schemas()
-  for name, url in pairs(M.index()) do
+  for name, url in pairs(util.index()) do
     print(("Generating schema for %s"):format(name))
     local schema_file = ("schemas/%s.json"):format(name)
 

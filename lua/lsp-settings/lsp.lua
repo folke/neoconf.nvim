@@ -94,7 +94,7 @@ function M.setup_jsonls(config)
   local options = require("lsp-settings.config").options
   local schemas = config.settings.json and config.settings.json.schemas or {}
 
-  for name, _ in pairs(require("lsp-settings.schemas")) do
+  for name, _ in pairs(Util.index()) do
     if options.jsonls.configured_servers_only == false or require("lspconfig.configs")[name] then
       table.insert(schemas, {
         name = name,
