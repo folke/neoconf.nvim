@@ -1,5 +1,6 @@
 {
   "Lua.workspace.library": [
-    "nvim:plenary.nvim"
+    "nvim:plenary.nvim",
+    "nvim:nvim-lspconfig"
   ]
 }
