@@ -1,0 +1,5 @@
+{
+  "Lua.workspace.library": [
+    "nvim:plenary.nvim"
+  ]
+}
