@@ -124,6 +124,10 @@ end
 
 M._cache = {}
 
+function M.clear(fname)
+  M._cache[fname] = nil
+end
+
 function M.get(fname, opts)
   opts = opts or {}
   fname = util.fqn(fname)
@@ -131,16 +135,6 @@ function M.get(fname, opts)
     M._cache[fname] = M.new():load(fname)
   end
   return M._cache[fname]
-end
-
-M.global = M.new()
-
-function M.load_global()
-  M.global:clear()
-  util.for_each_global(function(_, key, fname)
-    M.global:merge(M.get(fname), key)
-  end)
-  return M.global
 end
 
 return M
