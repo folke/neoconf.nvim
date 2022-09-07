@@ -17,17 +17,25 @@ function M.setup()
       return settings_root(...) or root_dir(...)
     end
   end)
+
+  M.create_auto_commands()
 end
 
 function M.on_new_config(config, root_dir)
-  M.setup_server_config(config, root_dir)
+  M.merge_config(config, root_dir)
   if config.name == "jsonls" then
     M.setup_jsonls(config)
   end
 end
 
-function M.setup_server_config(config, root_dir)
+function M.merge_config(config, root_dir)
   local settings = Settings.new()
+
+  if config._lsp_settings then
+    config.settings = vim.deepcopy(config._lsp_settings)
+  else
+    config._lsp_settings = vim.deepcopy(config.settings)
+  end
 
   settings:merge(config.settings)
 
@@ -40,6 +48,46 @@ function M.setup_server_config(config, root_dir)
   end, root_dir)
 
   config.settings = settings:get()
+end
+
+function M.reload_settings(fname)
+  fname = Util.fqn(fname)
+
+  -- clear cached settings for this file
+  Settings.clear(fname)
+
+  local root_dir = Util.fqn(vim.fn.fnamemodify(fname, ":h"))
+
+  local is_global = false
+
+  Util.for_each_global(function(_, file)
+    if file == fname then
+      is_global = true
+    end
+  end)
+
+  local clients = vim.lsp.get_active_clients()
+
+  for _, client in ipairs(clients) do
+    -- reload this client if the global file changed, or its root dir equals the local one
+    if is_global or client.config.root_dir == root_dir then
+      -- re-apply config from any other plugins that were overriding on_new_config
+      if client.config.on_new_config then
+        pcall(client.config.on_new_config, client.config, client.config.root_dir)
+      end
+
+      -- notify the lsp server of thr new config
+      local ok = pcall(client.notify, "workspace/didChangeConfiguration", {
+        settings = client.config.settings,
+      })
+
+      if ok then
+        Util.info("Reloaded settings for " .. client.name)
+      else
+        Util.error("Reloading settings failed for " .. client.name)
+      end
+    end
+  end
 end
 
 function M.setup_jsonls(config)
@@ -64,6 +112,18 @@ function M.setup_jsonls(config)
         enable = true,
       },
     },
+  })
+end
+
+function M.create_auto_commands()
+  local group = vim.api.nvim_create_augroup("LspSettings", { clear = true })
+
+  vim.api.nvim_create_autocmd("BufWritePost", {
+    pattern = Util.merge({}, Config.options.global_settings, Config.options.local_settings),
+    group = group,
+    callback = function(event)
+      M.reload_settings(event.match)
+    end,
   })
 end
 
