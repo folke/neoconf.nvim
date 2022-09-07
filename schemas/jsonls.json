@@ -1,0 +1,90 @@
+{
+  "properties": {
+    "json.format.enable": {
+      "description": "%json.format.enable.desc%",
+      "scope": "window",
+      "type": "boolean",
+      "default": true
+    },
+    "json.format.keepLines": {
+      "description": "%json.format.keepLines.desc%",
+      "scope": "window",
+      "type": "boolean",
+      "default": false
+    },
+    "json.maxItemsComputed": {
+      "description": "%json.maxItemsComputed.desc%",
+      "type": "number",
+      "default": 5000
+    },
+    "json.trace.server": {
+      "description": "%json.tracing.desc%",
+      "enum": [
+        "off",
+        "messages",
+        "verbose"
+      ],
+      "scope": "window",
+      "type": "string",
+      "default": "off"
+    },
+    "json.schemaDownload.enable": {
+      "tags": [
+        "usesOnlineServices"
+      ],
+      "description": "%json.enableSchemaDownload.desc%",
+      "type": "boolean",
+      "default": true
+    },
+    "json.validate.enable": {
+      "description": "%json.validate.enable.desc%",
+      "scope": "window",
+      "type": "boolean",
+      "default": true
+    },
+    "json.schemas": {
+      "description": "%json.schemas.desc%",
+      "scope": "resource",
+      "type": "array",
+      "items": {
+        "properties": {
+          "url": {
+            "description": "%json.schemas.url.desc%",
+            "type": "string",
+            "default": "/user.schema.json"
+          },
+          "fileMatch": {
+            "description": "%json.schemas.fileMatch.desc%",
+            "items": {
+              "description": "%json.schemas.fileMatch.item.desc%",
+              "type": "string",
+              "default": "MyFile.json"
+            },
+            "type": "array",
+            "minItems": 1
+          },
+          "schema": {
+            "description": "%json.schemas.schema.desc%",
+            "$ref": "http://json-schema.org/draft-07/schema#"
+          }
+        },
+        "type": "object",
+        "default": {
+          "url": "schemaURL",
+          "fileMatch": [
+            "/myfile"
+          ]
+        }
+      }
+    },
+    "json.colorDecorators.enable": {
+      "deprecationMessage": "%json.colorDecorators.enable.deprecationMessage%",
+      "description": "%json.colorDecorators.enable.desc%",
+      "scope": "window",
+      "type": "boolean",
+      "default": true
+    }
+  },
+  "description": "%description%",
+  "$schema": "http://json-schema.org/draft-07/schema#"
+}

@@ -1,0 +1,1 @@
+{"properties": {"awk-ide-vscode.trace.server": {"description": "Traces the communication between VS Code and the language server.", "enum": ["off", "messages", "verbose"], "scope": "window", "type": "string", "default": "off"}}, "description": "VSCode client for AWK Language Server", "$schema": "http://json-schema.org/draft-07/schema#"}
