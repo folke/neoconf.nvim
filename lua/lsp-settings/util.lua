@@ -105,20 +105,28 @@ function M.exists(fname)
   return (stat and stat.type) or false
 end
 
-function M.log(msg, hl)
-  vim.notify(msg, vim.log.levels.INFO, { title = "Lsp Settings" })
+function M.notify(msg, level)
+  vim.notify(msg, level, {
+    title = "Lsp Settings",
+    on_open = function(win)
+      vim.api.nvim_win_set_option(win, "conceallevel", 3)
+      local buf = vim.api.nvim_win_get_buf(win)
+      vim.api.nvim_buf_set_option(buf, "filetype", "markdown")
+      vim.api.nvim_win_set_option(win, "spell", false)
+    end,
+  })
 end
 
 function M.warn(msg)
-  vim.notify(msg, vim.log.levels.WARN, { title = "Lsp Settings" })
+  M.notify(msg, vim.log.levels.WARN)
 end
 
 function M.error(msg)
-  vim.notify(msg, vim.log.levels.ERROR, { title = "Lsp Settings" })
+  M.notify(msg, vim.log.levels.ERROR)
 end
 
 function M.info(msg)
-  vim.notify(msg, vim.log.levels.INFO, { title = "Lsp Settings" })
+  M.notify(msg, vim.log.levels.INFO)
 end
 
 return M
