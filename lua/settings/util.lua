@@ -1,4 +1,4 @@
-local Config = require("lsp-settings.config")
+local Config = require("settings.config")
 
 local M = {}
 
@@ -68,7 +68,7 @@ function M.json_decode(json)
     json = "{}"
   end
   ---@diagnostic disable-next-line: missing-parameter
-  json = require("lsp-settings.json").json_strip_comments(json)
+  json = require("settings.json").json_strip_comments(json)
   return vim.fn.json_decode(json)
 end
 

@@ -1,13 +1,13 @@
-local Util = require("lsp-settings.util")
-local Config = require("lsp-settings.config")
-local Settings = require("lsp-settings.settings")
+local Util = require("settings.util")
+local Config = require("settings.config")
+local Settings = require("settings.settings")
 
 local M = {}
 
 function M.setup()
   vim.api.nvim_create_user_command("Settings", function(args)
     if args.args == "show" then
-      require("lsp-settings.view").show_settings()
+      require("settings.view").show_settings()
     else
       M.edit()
     end
@@ -21,7 +21,7 @@ function M.setup()
       local fname = Util.fqn(event.match)
       -- clear cached settings for this file
       Settings.clear(fname)
-      require("lsp-settings.plugins").fire("on_update", event.match)
+      require("settings.plugins").fire("on_update", event.match)
     end,
   })
 end

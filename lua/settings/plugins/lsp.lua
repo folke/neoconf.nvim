@@ -1,6 +1,6 @@
-local Util = require("lsp-settings.util")
-local Config = require("lsp-settings.config")
-local Settings = require("lsp-settings.settings")
+local Util = require("settings.util")
+local Config = require("settings.config")
+local Settings = require("settings.settings")
 
 local M = {}
 

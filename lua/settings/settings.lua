@@ -1,4 +1,4 @@
-local util = require("lsp-settings.util")
+local util = require("settings.util")
 
 local M = {}
 

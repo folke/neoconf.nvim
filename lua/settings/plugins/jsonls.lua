@@ -1,5 +1,5 @@
-local Util = require("lsp-settings.util")
-local Config = require("lsp-settings.config")
+local Util = require("settings.util")
+local Config = require("settings.config")
 
 local M = {}
 
@@ -14,7 +14,7 @@ end
 
 function M.on_new_config(config, root_dir)
   if config.name == "jsonls" then
-    local options = require("lsp-settings.config").options
+    local options = require("settings.config").options
     local schemas = config.settings.json and config.settings.json.schemas or {}
 
     local properties = {}
@@ -42,7 +42,7 @@ function M.on_new_config(config, root_dir)
       fileMatch = { table.unpack(Config.options.global_settings), table.unpack(Config.options.local_settings) },
     }
 
-    for _, plugin in ipairs(require("lsp-settings.plugins").plugins) do
+    for _, plugin in ipairs(require("settings.plugins").plugins) do
       if type(plugin.get_schema) == "function" then
         local s = plugin.get_schema()
         if s then

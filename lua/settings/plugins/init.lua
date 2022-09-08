@@ -22,8 +22,8 @@ function M.register(plugin)
 end
 
 function M.setup()
-  M.register(require("lsp-settings.plugins.lsp"))
-  M.register(require("lsp-settings.plugins.jsonls"))
+  M.register(require("settings.plugins.lsp"))
+  M.register(require("settings.plugins.jsonls"))
 end
 
 return M
