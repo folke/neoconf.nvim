@@ -26,7 +26,7 @@ function M.on_new_config(config, root_dir)
       end
     end
 
-    table.insert(schemas, {
+    local schema = {
       name = "nvim settings",
       description = "Settings for Neovim",
       schema = {
@@ -39,8 +39,19 @@ function M.on_new_config(config, root_dir)
         },
         type = "object",
       },
-      fileMatch = { Config.options.global_settings, table.unpack(Config.options.local_settings) },
-    })
+      fileMatch = { table.unpack(Config.options.global_settings), table.unpack(Config.options.local_settings) },
+    }
+
+    for _, plugin in ipairs(require("lsp-settings.plugins").plugins) do
+      if type(plugin.get_schema) == "function" then
+        local s = plugin.get_schema()
+        if s then
+          schema.schema.properties = Util.merge({}, schema.schema.properties, s.properties)
+        end
+      end
+    end
+
+    table.insert(schemas, schema)
 
     config.settings = Util.merge({}, config.settings, {
       json = {
