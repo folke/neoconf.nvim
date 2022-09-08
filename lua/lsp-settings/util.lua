@@ -32,8 +32,8 @@ function M.index()
 end
 
 function M.get_root(fname)
-  fname = M.fqn(fname)
   local util = require("lspconfig.util")
+  fname = M.fqn(fname)
   return util.root_pattern(unpack(vim.tbl_values(Config.options.local_settings)))(fname)
     or util.find_git_ancestor(fname)
     or vim.fn.getcwd()
