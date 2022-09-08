@@ -1,5 +1,6 @@
 local Util = require("lsp-settings.util")
 local Config = require("lsp-settings.config")
+local Settings = require("lsp-settings.settings")
 
 local M = {}
 
@@ -17,6 +18,9 @@ function M.setup()
     pattern = Util.merge({}, Config.options.global_settings, vim.tbl_values(Config.options.local_settings)),
     group = group,
     callback = function(event)
+      local fname = Util.fqn(event.match)
+      -- clear cached settings for this file
+      Settings.clear(fname)
       require("lsp-settings.plugins").fire("on_update", event.match)
     end,
   })
