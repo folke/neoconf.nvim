@@ -110,6 +110,7 @@ function Settings:load(file)
 end
 
 ---@param settings Settings
+---@return Settings
 function Settings:merge(settings, key)
   if settings.__index ~= Settings then
     settings = M.new(settings)
@@ -120,6 +121,7 @@ function Settings:merge(settings, key)
   else
     self._settings = util.merge(self._settings, settings._settings)
   end
+  return self
 end
 
 M._cache = {}
@@ -135,6 +137,30 @@ function M.get(fname, opts)
     M._cache[fname] = M.new():load(fname)
   end
   return M._cache[fname]
+end
+
+function M.get_merged(root_dir)
+  return M.new():merge(M.get_global()):merge(M.get_local(root_dir))
+end
+
+function M.get_local(root_dir)
+  local settings = M.new()
+
+  util.for_each_local(function(file, key)
+    settings:merge(M.get(file), key)
+  end, root_dir)
+
+  return settings
+end
+
+function M.get_global()
+  local settings = M.new()
+
+  util.for_each_global(function(file)
+    settings:merge(M.get(file))
+  end)
+
+  return settings
 end
 
 return M

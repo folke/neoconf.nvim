@@ -1,6 +1,10 @@
 {
-  "Lua.workspace.library": [
-    "nvim:plenary.nvim",
-    "nvim:nvim-lspconfig"
-  ]
+  "lspconfig": {
+    "sumneko_lua": {
+      "Lua.workspace.library": [
+        "nvim:plenary.nvim",
+        "nvim:nvim-lspconfig"
+      ]
+    }
+  }
 }

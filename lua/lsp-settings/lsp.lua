@@ -29,25 +29,20 @@ function M.on_new_config(config, root_dir)
 end
 
 function M.merge_config(config, root_dir)
-  local settings = Settings.new()
-
   if config._lsp_settings then
     config.settings = vim.deepcopy(config._lsp_settings)
   else
     config._lsp_settings = vim.deepcopy(config.settings)
   end
 
-  settings:merge(config.settings)
-
-  Util.for_each_global(function(file)
-    settings:merge(Settings.get(file))
-  end)
-
-  Util.for_each_local(function(file, key)
-    settings:merge(Settings.get(file), key)
-  end, root_dir)
-
-  config.settings = settings:get()
+  local settings = Settings.get_merged(root_dir)
+  config.settings = Util.merge(
+    config.settings,
+    -- -- merge in vscode settings if they exist
+    settings:get("vscode"),
+    -- -- merge in workspace config
+    settings:get("lspconfig." .. config.name) or {}
+  )
 end
 
 function M.reload_settings(fname)
@@ -88,16 +83,33 @@ function M.setup_jsonls(config)
   local options = require("lsp-settings.config").options
   local schemas = config.settings.json and config.settings.json.schemas or {}
 
+  local properties = {}
   for name, _ in pairs(Util.index()) do
     if options.jsonls.configured_servers_only == false or require("lspconfig.configs")[name] then
-      table.insert(schemas, {
-        name = name,
-        description = "Schema for " .. name,
-        fileMatch = { ".lsp-settings.json" },
-        url = Util.schema(name),
-      })
+      properties[name] = {
+        ["$ref"] = "file://" .. Util.schema(name),
+      }
     end
   end
+
+  local schema = {
+    name = "nvim settings",
+    description = "Settings for Neovim",
+    schema = {
+      properties = {
+        lspconfig = {
+          type = "object",
+          properties = properties,
+        },
+      },
+      type = "object",
+    },
+    fileMatch = { Config.options.global_settings, table.unpack(Config.options.local_settings) },
+  }
+
+  table.insert(schemas, schema)
+
+  dump(schema)
 
   config.settings = Util.merge({}, config.settings, {
     json = {
