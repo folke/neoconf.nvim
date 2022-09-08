@@ -38,6 +38,7 @@ function M.get_root(fname)
     or util.find_git_ancestor(fname)
     or vim.fn.getcwd()
 end
+
 function M.schema(name)
   return M.path("schemas/" .. name .. ".json")
 end
@@ -92,8 +93,8 @@ function M.for_each_local(fn, root_dir)
   M.for_each(Config.options.local_settings, fn, root_dir)
 end
 
-function M.for_each_global(fn)
-  M.for_each(Config.options.global_settings, fn, vim.fn.stdpath("config"))
+function M.global_settings_file()
+  return M.fqn(vim.fn.stdpath("config") .. "/" .. Config.options.global_settings)
 end
 
 function M.fetch(url)

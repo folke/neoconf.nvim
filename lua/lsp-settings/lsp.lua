@@ -39,9 +39,7 @@ function M.merge_config(config, root_dir)
 
   settings:merge(config.settings)
 
-  Util.for_each_global(function(_, file)
-    settings:merge(Settings.get(file))
-  end)
+  settings:merge(Settings.get(Util.global_settings_file()))
 
   Util.for_each_local(function(_, file)
     settings:merge(Settings.get(file))
@@ -58,13 +56,7 @@ function M.reload_settings(fname)
 
   local root_dir = Util.fqn(vim.fn.fnamemodify(fname, ":h"))
 
-  local is_global = false
-
-  Util.for_each_global(function(_, file)
-    if file == fname then
-      is_global = true
-    end
-  end)
+  local is_global = fname == Util.global_settings_file()
 
   local clients = vim.lsp.get_active_clients()
 
