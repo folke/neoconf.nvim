@@ -31,6 +31,13 @@ function M.index()
   return M.json_decode(M.read_file(M.schema("index")))
 end
 
+function M.get_root(fname)
+  fname = M.fqn(fname)
+  local util = require("lspconfig.util")
+  return util.root_pattern(unpack(vim.tbl_values(Config.options.local_settings)))(fname)
+    or util.find_git_ancestor(fname)
+    or vim.fn.getcwd()
+end
 function M.schema(name)
   return M.path("schemas/" .. name .. ".json")
 end
