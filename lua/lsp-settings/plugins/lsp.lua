@@ -17,35 +17,29 @@ function M.setup()
       return settings_root(...) or root_dir(...)
     end
   end)
-
-  M.create_auto_commands()
 end
 
-function M.on_new_config(config, root_dir)
-  M.merge_config(config, root_dir)
-  if config.name == "jsonls" then
-    M.setup_jsonls(config)
-  end
-end
-
-function M.merge_config(config, root_dir)
+local function merge_config(config, root_dir)
   if config._lsp_settings then
     config.settings = vim.deepcopy(config._lsp_settings)
   else
     config._lsp_settings = vim.deepcopy(config.settings)
   end
 
-  local settings = Settings.get_merged(root_dir)
   config.settings = Util.merge(
     config.settings,
-    -- -- merge in vscode settings if they exist
-    settings:get("vscode"),
-    -- -- merge in workspace config
-    settings:get("lspconfig." .. config.name) or {}
+    Settings.get_global():get("lspconfig." .. config.name, { expand = true }) or {},
+    Settings.get_local(root_dir):get("vscode", { expand = true }),
+    Settings.get_local(root_dir):get("lspconfig." .. config.name, { expand = true }) or {}
   )
 end
 
-function M.reload_settings(fname)
+function M.on_new_config(config, root_dir)
+  merge_config(config, root_dir)
+end
+
+-- TODO: add check if config changed
+function M.on_update(fname)
   fname = Util.fqn(fname)
 
   -- clear cached settings for this file
@@ -77,60 +71,6 @@ function M.reload_settings(fname)
       end
     end
   end
-end
-
-function M.setup_jsonls(config)
-  local options = require("lsp-settings.config").options
-  local schemas = config.settings.json and config.settings.json.schemas or {}
-
-  local properties = {}
-  for name, _ in pairs(Util.index()) do
-    if options.jsonls.configured_servers_only == false or require("lspconfig.configs")[name] then
-      properties[name] = {
-        ["$ref"] = "file://" .. Util.schema(name),
-      }
-    end
-  end
-
-  local schema = {
-    name = "nvim settings",
-    description = "Settings for Neovim",
-    schema = {
-      properties = {
-        lspconfig = {
-          type = "object",
-          properties = properties,
-        },
-      },
-      type = "object",
-    },
-    fileMatch = { Config.options.global_settings, table.unpack(Config.options.local_settings) },
-  }
-
-  table.insert(schemas, schema)
-
-  dump(schema)
-
-  config.settings = Util.merge({}, config.settings, {
-    json = {
-      schemas = schemas,
-      validate = {
-        enable = true,
-      },
-    },
-  })
-end
-
-function M.create_auto_commands()
-  local group = vim.api.nvim_create_augroup("LspSettings", { clear = true })
-
-  vim.api.nvim_create_autocmd("BufWritePost", {
-    pattern = Util.merge({}, Config.options.global_settings, vim.tbl_values(Config.options.local_settings)),
-    group = group,
-    callback = function(event)
-      M.reload_settings(event.match)
-    end,
-  })
 end
 
 return M
