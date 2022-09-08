@@ -77,15 +77,15 @@ function M.fqn(fname)
   return vim.loop.fs_realpath(fname) or fname
 end
 
----@param patterns table|string
----@param fn fun(pattern: string, file: string|nil)
+---@param patterns table
+---@param fn fun(file: string|nil, key:string|nil, pattern:string)
 function M.for_each(patterns, fn, root_dir)
-  if type(patterns) == "string" then
-    patterns = { patterns }
-  end
-
-  for _, pattern in ipairs(patterns) do
-    fn(pattern, root_dir and root_dir .. "/" .. pattern)
+  for key, pattern in pairs(patterns) do
+    if type(key) == "number" then
+      key = nil
+    end
+    local file = root_dir and root_dir .. "/" .. pattern
+    fn(file, key, pattern)
   end
 end
 
@@ -93,8 +93,18 @@ function M.for_each_local(fn, root_dir)
   M.for_each(Config.options.local_settings, fn, root_dir)
 end
 
-function M.global_settings_file()
-  return M.fqn(vim.fn.stdpath("config") .. "/" .. Config.options.global_settings)
+function M.for_each_global(fn)
+  M.for_each(Config.options.global_settings, fn, vim.fn.stdpath("config"))
+end
+
+function M.is_global(file)
+  local ret = false
+  M.for_each_global(function(f)
+    if file == f then
+      ret = true
+    end
+  end)
+  return ret
 end
 
 function M.fetch(url)

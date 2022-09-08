@@ -39,10 +39,12 @@ function M.merge_config(config, root_dir)
 
   settings:merge(config.settings)
 
-  settings:merge(Settings.get(Util.global_settings_file()))
-
-  Util.for_each_local(function(_, file)
+  Util.for_each_global(function(file)
     settings:merge(Settings.get(file))
+  end)
+
+  Util.for_each_local(function(file, key)
+    settings:merge(Settings.get(file), key)
   end, root_dir)
 
   config.settings = settings:get()
@@ -56,7 +58,7 @@ function M.reload_settings(fname)
 
   local root_dir = Util.fqn(vim.fn.fnamemodify(fname, ":h"))
 
-  local is_global = fname == Util.global_settings_file()
+  local is_global = Util.is_global(fname)
 
   local clients = vim.lsp.get_active_clients()
 
@@ -111,7 +113,7 @@ function M.create_auto_commands()
   local group = vim.api.nvim_create_augroup("LspSettings", { clear = true })
 
   vim.api.nvim_create_autocmd("BufWritePost", {
-    pattern = Util.merge({}, Config.options.global_settings, Config.options.local_settings),
+    pattern = Util.merge({}, Config.options.global_settings, vim.tbl_values(Config.options.local_settings)),
     group = group,
     callback = function(event)
       M.reload_settings(event.match)

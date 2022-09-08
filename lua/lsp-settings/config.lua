@@ -2,8 +2,8 @@ local M = {}
 
 --- @class Config
 M.defaults = {
-  local_settings = { ".lsp-settings.json", ".vscode/settings.json" },
-  global_settings = "lsp-settings.json",
+  local_settings = { ".lsp-settings.json", vscode = ".vscode/settings.json" },
+  global_settings = { "lsp-settings.json" },
   jsonls = {
     configured_servers_only = true, -- only show completion in json settings for configured lsp servers
   },
