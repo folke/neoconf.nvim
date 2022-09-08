@@ -1,3 +1,5 @@
+local Util = require("settings.util")
+
 local M = {}
 
 ---@param str string
@@ -20,7 +22,7 @@ function M.show(str)
     row = vpad,
     col = hpad,
     style = "minimal",
-    border = "single",
+    border = "solid",
   })
 
   vim.api.nvim_buf_set_option(buf, "filetype", "markdown")
@@ -50,13 +52,31 @@ function M.show(str)
   })
 end
 
-function M.show_settings()
+function M.show_lsp_settings()
   local content = {
     "# Lsp Settings\n",
   }
   local clients = vim.lsp.get_active_clients({ bufnr = vim.api.nvim_get_current_buf() })
   for _, client in ipairs(clients) do
     table.insert(content, "## " .. client.name .. "\n```lua\n" .. vim.inspect(client.config.settings) .. "\n```\n")
+  end
+  M.show(table.concat(content, "\n"))
+end
+
+function M.show_settings()
+  local content = {
+    "# Settings\n",
+  }
+
+  for _, item in ipairs(require("settings.commands").get_files()) do
+    if Util.exists(item.file) then
+      local line = "## " .. vim.fn.fnamemodify(item.file, ":~")
+      if item.is_global then
+        line = line .. "  "
+      end
+      table.insert(content, line)
+      table.insert(content, "```lua\n" .. vim.inspect(require("settings.settings").get(item.file):get()) .. "\n```\n")
+    end
   end
   M.show(table.concat(content, "\n"))
 end

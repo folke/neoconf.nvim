@@ -5,13 +5,35 @@ local Settings = require("settings.settings")
 local M = {}
 
 function M.setup()
+  local commands = {
+    lsp = function()
+      require("settings.view").show_lsp_settings()
+    end,
+    ["local"] = function()
+      M.edit({ ["local"] = true })
+    end,
+    global = function()
+      M.edit({ global = true })
+    end,
+  }
+
   vim.api.nvim_create_user_command("Settings", function(args)
-    if args.args == "show" then
-      require("settings.view").show_settings()
+    local cmd = vim.trim(args.args or "")
+    if commands[cmd] then
+      commands[cmd]()
     else
       M.edit()
     end
-  end, { nargs = "?", desc = "Show the settings of the attached lsp servers" })
+  end, {
+    nargs = "?",
+    desc = "Neovim Settings",
+    complete = function(_, line)
+      if line:match("^Settings %w+ ") then
+        return {}
+      end
+      return vim.tbl_keys(commands)
+    end,
+  })
 
   local group = vim.api.nvim_create_augroup("Settings", { clear = true })
   vim.api.nvim_create_autocmd("BufWritePost", {
@@ -26,24 +48,59 @@ function M.setup()
   })
 end
 
-function M.edit()
+function M.get_files(opts)
+  opts = opts or {}
   local buf = vim.api.nvim_get_current_buf()
 
   local items = {}
 
-  Util.for_each_global(function(file)
-    table.insert(items, { file = file, is_global = true })
-  end)
-
-  for _, client in ipairs(vim.lsp.get_active_clients({ bufnr = buf })) do
-    Util.for_each_local(function(f)
-      items[f] = { file = f }
-    end, client.config.root_dir)
+  if not opts["local"] then
+    Util.for_each_global(function(file)
+      table.insert(items, { file = file, is_global = true })
+    end)
   end
 
-  items = vim.tbl_values(items)
+  if not opts.global then
+    for _, client in ipairs(vim.lsp.get_active_clients({ bufnr = buf })) do
+      Util.for_each_local(function(f)
+        items[f] = { file = f }
+      end, client.config.root_dir)
+    end
+  end
 
-  vim.ui.select(items, {
+  return vim.tbl_values(items)
+end
+
+function M.edit(opts)
+  opts = opts or {}
+
+  local files = M.get_files(opts)
+
+  for _, item in ipairs(files) do
+    if opts["local"] and not item.is_global and Util.exists(item.file) then
+      vim.cmd("edit " .. item.file)
+      return
+    end
+    if opts["global"] and item.is_global and Util.exists(item.file) then
+      vim.cmd("edit " .. item.file)
+      return
+    end
+  end
+
+  table.sort(files, function(a, b)
+    local aa = Util.exists(a.file) and 100 or 0
+    local bb = Util.exists(b.file) and 100 or 0
+
+    if not a.is_global then
+      aa = aa + 10
+    end
+    if not b.is_global then
+      bb = bb + 10
+    end
+    return aa > bb
+  end)
+
+  vim.ui.select(files, {
     prompt = "Select settings file to create/edit",
     format_item = function(item)
       local line = Util.exists(item.file) and "  edit " or "  create "
