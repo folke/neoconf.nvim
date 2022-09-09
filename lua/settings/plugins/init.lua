@@ -24,6 +24,7 @@ end
 function M.setup()
   M.register(require("settings.plugins.lsp"))
   M.register(require("settings.plugins.jsonls"))
+  M.register(require("settings.plugins.sumneko"))
 end
 
 return M
