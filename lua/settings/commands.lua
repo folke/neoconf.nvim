@@ -50,8 +50,6 @@ end
 
 function M.get_files(opts)
   opts = opts or {}
-  local buf = vim.api.nvim_get_current_buf()
-
   local items = {}
 
   if not opts["local"] then
@@ -61,11 +59,10 @@ function M.get_files(opts)
   end
 
   if not opts.global then
-    for _, client in ipairs(vim.lsp.get_active_clients({ bufnr = buf })) do
-      Util.for_each_local(function(f)
-        items[f] = { file = f }
-      end, client.config.root_dir)
-    end
+    local root_dir = require("settings.workspace").find_root({ lsp = true })
+    Util.for_each_local(function(f)
+      items[f] = { file = f }
+    end, root_dir)
   end
 
   return vim.tbl_values(items)

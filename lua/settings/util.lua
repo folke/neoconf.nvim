@@ -27,14 +27,6 @@ function M.path(str)
   return M.fqn(vim.fn.fnamemodify(f, ":h:h:h") .. "/" .. (str or ""))
 end
 
-function M.get_root(fname)
-  local util = require("lspconfig.util")
-  fname = M.fqn(fname)
-  return util.root_pattern(unpack(vim.tbl_values(Config.options.local_settings)))(fname)
-    or util.find_git_ancestor(fname)
-    or vim.fn.getcwd()
-end
-
 function M.read_file(file)
   local fd = io.open(file)
   if not fd then

@@ -26,6 +26,8 @@ function M.on_new_config(config, root_dir)
     config._lsp_settings = vim.deepcopy(config.settings)
   end
 
+  root_dir = require("settings.workspace").find_root({ file = root_dir })
+
   config.settings = Util.merge(
     config.settings,
     Settings.get_global():get("lspconfig." .. config.name, { expand = true }) or {},

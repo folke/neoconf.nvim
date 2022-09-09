@@ -139,10 +139,6 @@ function M.get(fname, opts)
   return M._cache[fname]
 end
 
-function M.get_merged(root_dir)
-  return M.new():merge(M.get_global()):merge(M.get_local(root_dir))
-end
-
 function M.get_local(root_dir)
   local settings = M.new()
 
@@ -161,34 +157,6 @@ function M.get_global()
   end)
 
   return settings
-end
-
----@param opts GetSettingsOptions
-function M.get_settings(opts)
-  ---@class GetSettingsOptions
-  ---@field local boolean
-  ---@field global boolean
-  ---@field key string|nil
-  ---@field root_dir string|nil
-  ---@field file string|nil
-  local defaults = {
-    ["local"] = true,
-    global = true,
-    root_dir = util.get_root(),
-  }
-  opts = util.merge(defaults, opts or {})
-
-  local root_dir = opts.root_dir or (opts.file and util.get_root(opts.file)) or util.get_root(".")
-
-  local ret = M.new()
-  if opts.global then
-    ret:merge(M.get_global())
-  end
-  if root_dir and opts["local"] then
-    ret:merge(M.get_local(root_dir))
-  end
-
-  return ret:get(opts.key)
 end
 
 return M
