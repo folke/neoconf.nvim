@@ -38,7 +38,7 @@ M.overrides = {
 function M.get_lsp_schemas()
   ---@type table<string, LspSchema>
   local ret = {}
-  for server, package_json in pairs(require("settings.schema.lsp")) do
+  for server, package_json in pairs(require("settings.build.lsp")) do
     ret[server] = { package_url = package_json }
   end
   ret = vim.tbl_deep_extend("force", ret, M.overrides)

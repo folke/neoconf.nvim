@@ -40,7 +40,7 @@ function M.update_index()
   local url = "https://gist.githubusercontent.com/williamboman/a01c3ce1884d4b57cc93422e7eae7702/raw/lsp-packages.json"
   local index = util.fetch(url)
   util.write_file(
-    "lua/settings/schema/lsp.lua",
+    "lua/settings/build/lsp.lua",
     "--- auto generated from " .. url .. "\nreturn " .. vim.inspect(util.json_decode(index))
   )
 end
@@ -57,9 +57,13 @@ function M.update_schemas()
 end
 
 function M.build()
+  -- vim.fn.mkdir("build", "p")
   -- M.clean()
-  M.update_index()
-  M.update_schemas()
+  -- M.update_index()
+  -- M.update_schemas()
+  M.build_types({ sumneko_lua = "" })
+
+  -- M.build_types()
 end
 
 M.build()
