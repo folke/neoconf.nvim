@@ -1,12 +1,17 @@
 {
-  "lua-dev": {
+  "lua-dev.nvim": {
     "library": {
       "enabled": true,
       "plugins": [
-        "plenary.nvim",
-        "nvim-lspconfig",
-        "lsp-settings.nvim"
+        "nvim-lspconfig"
       ]
+    }
+  },
+  "settings.nvim": {
+    "plugins": {
+      "sumneko_lua": {
+        "enabled": true
+      }
     }
   },
   "lspconfig": {
