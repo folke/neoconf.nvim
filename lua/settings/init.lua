@@ -6,13 +6,13 @@ function M.setup(opts)
   require("settings.plugins").setup()
 end
 
----@class SettingsOptions: WorkspaceOptions
----@field key string|nil
-
----@param opts SettingsOptions
----@return table
-function M.get_settings(opts)
-  return require("settings.workspace").get(opts).settings:get(opts.key)
+---@generic T : table
+---@param key string|nil
+---@param defaults T|nil
+---@param opts WorkspaceOptions|nil
+---@return T
+function M.get(key, defaults, opts)
+  return require("settings.workspace").get(opts).settings:get(key, { defaults = defaults })
 end
 
 return M

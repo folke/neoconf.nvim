@@ -36,7 +36,7 @@ end
 ---@field local boolean
 ---@field global boolean
 
----@param opts WorkspaceOptions
+---@param opts WorkspaceOptions|nil
 ---@return { root_dir: string, settings: Settings }
 function M.get(opts)
   opts = Util.merge({

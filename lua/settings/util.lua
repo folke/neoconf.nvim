@@ -61,6 +61,14 @@ function M.fqn(fname)
   return vim.loop.fs_realpath(fname) or fname
 end
 
+---@param root_dir string
+---@param file string
+function M.has_file(root_dir, file)
+  root_dir = M.fqn(root_dir)
+  file = M.fqn(file)
+  return M.exists(file) and file:find(root_dir, 1, true) == 1
+end
+
 function M.protect(fn, msg)
   return function(...)
     local ret = table.pack(pcall(fn, ...))
@@ -70,6 +78,15 @@ function M.protect(fn, msg)
     return table.unpack(ret)
   end
 end
+
+function M.config_path()
+  return vim.loop.fs_realpath(vim.fn.stdpath("config"))
+end
+
+function M.is_nvim_config(path)
+  return M.has_file(M.fqn(path), M.config_path())
+end
+
 ---@param patterns table
 ---@param fn fun(file: string|nil, key:string|nil, pattern:string)
 function M.for_each(patterns, fn, root_dir)
