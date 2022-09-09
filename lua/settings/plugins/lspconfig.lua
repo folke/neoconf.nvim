@@ -11,7 +11,7 @@ function M.setup()
   local settings_root = lsputil.root_pattern(unpack(vim.tbl_values(Config.options.local_settings)))
 
   lsputil.on_setup = hook(lsputil.on_setup, function(config)
-    config.on_new_config = hook(config.on_new_config, M.on_new_config)
+    config.on_new_config = hook(config.on_new_config, Util.protect(M.on_new_config, "Failed to setup lspconfig"))
     local root_dir = config.root_dir
     config.root_dir = function(...)
       return settings_root(...) or root_dir(...)
@@ -20,6 +20,11 @@ function M.setup()
 end
 
 function M.on_new_config(config, root_dir)
+  local options = Config.get({ file = root_dir })
+  if not options.plugins.lspconfig.enabled then
+    return
+  end
+
   if config._lsp_settings then
     config.settings = vim.deepcopy(config._lsp_settings)
   else
