@@ -1,5 +1,6 @@
 local Util = require("settings.util")
 local Config = require("settings.config")
+local Schema = require("settings.schema")
 
 local M = {}
 
@@ -12,16 +13,16 @@ function M.setup()
   end)
 end
 
-function M.on_new_config(config, root_dir)
+function M.on_new_config(config)
   if config.name == "jsonls" then
     local options = require("settings.config").options
     local schemas = config.settings.json and config.settings.json.schemas or {}
 
     local properties = {}
-    for name, _ in pairs(Util.index()) do
+    for name, schema in pairs(Schema.get_lsp_schemas()) do
       if options.jsonls.configured_servers_only == false or require("lspconfig.configs")[name] then
         properties[name] = {
-          ["$ref"] = "file://" .. Util.schema(name),
+          ["$ref"] = "file://" .. schema.settings_file,
         }
       end
     end

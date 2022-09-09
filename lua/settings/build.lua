@@ -1,9 +1,11 @@
 local util = require("settings.util")
+local Schema = require("settings.schema")
 
 local M = {}
 
-function M.get_schema(package_json)
-  local json = util.json_decode(util.fetch(package_json)) or {}
+---@param schema LspSchema
+function M.get_schema(schema)
+  local json = util.json_decode(util.fetch(schema.settings_url or schema.package_url)) or {}
   local config = json.contributes and json.contributes.configuration or json.properties and json
 
   local properties = {}
@@ -15,6 +17,26 @@ function M.get_schema(package_json)
   elseif config.properties then
     properties = config.properties
   end
+
+  if schema.settings_prefix then
+    local props = {}
+    for key, value in pairs(properties) do
+      props[schema.settings_prefix .. key] = value
+    end
+    local function fixref(node)
+      if type(node) == "table" then
+        for k, v in pairs(node) do
+          if k == "$ref" then
+            node[k] = v:gsub("#/properties/", "#/properties/" .. schema.settings_prefix)
+          end
+          fixref(v)
+        end
+      end
+      return node
+    end
+    properties = fixref(props)
+  end
+
   return {
     ["$schema"] = "http://json-schema.org/draft-07/schema#",
     description = json.description,
@@ -32,17 +54,19 @@ end
 function M.update_index()
   local url = "https://gist.githubusercontent.com/williamboman/a01c3ce1884d4b57cc93422e7eae7702/raw/lsp-packages.json"
   local index = util.fetch(url)
-  util.write_file("schemas/index.json", index)
+  util.write_file(
+    "lua/settings/schema/lsp.lua",
+    "--- auto generated from " .. url .. "\nreturn " .. vim.inspect(util.json_decode(index))
+  )
 end
 
 function M.update_schemas()
-  for name, url in pairs(util.index()) do
+  for name, s in pairs(Schema.get_lsp_schemas()) do
     print(("Generating schema for %s"):format(name))
-    local schema_file = ("schemas/%s.json"):format(name)
 
-    if not (util.exists(schema_file) and os.time() - util.mtime(schema_file) < 3600) then
-      local schema = M.get_schema(url)
-      util.write_file(schema_file, vim.fn.json_encode(schema))
+    if not (util.exists(s.settings_file) and os.time() - util.mtime(s.settings_file) < 3600) then
+      local schema = M.get_schema(s)
+      util.write_file(s.settings_file, vim.fn.json_encode(schema))
     end
   end
 end

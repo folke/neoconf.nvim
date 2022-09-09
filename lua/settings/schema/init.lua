@@ -1,4 +1,30 @@
+local Util = require("settings.util")
+
 local M = {}
+
+--- @type table<string, LspSchema>
+M.overrides = {
+  sumneko_lua = {
+    settings_url = "https://raw.githubusercontent.com/sumneko/vscode-lua/master/setting/schema.json",
+    settings_prefix = "Lua.",
+  },
+}
+
+---@return table<string, LspSchema>
+function M.get_lsp_schemas()
+  ---@type table<string, LspSchema>
+  local ret = {}
+  for server, package_json in pairs(require("settings.schema.lsp")) do
+    ret[server] = { package_url = package_json }
+  end
+  ret = vim.tbl_deep_extend("force", ret, M.overrides)
+
+  for name, schema in pairs(ret) do
+    schema.settings_file = Util.path("schemas/" .. name .. ".json")
+  end
+
+  return ret
+end
 
 -- try to create a simple schema from a given value
 function M.to_schema(value)
