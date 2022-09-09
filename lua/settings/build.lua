@@ -5,7 +5,7 @@ local M = {}
 
 ---@param schema LspSchema
 function M.get_schema(schema)
-  local json = util.json_decode(util.fetch(schema.settings_url or schema.package_url)) or {}
+  local json = util.json_decode(util.fetch(schema.package_url)) or {}
   local config = json.contributes and json.contributes.configuration or json.properties and json
 
   local properties = {}
@@ -18,23 +18,8 @@ function M.get_schema(schema)
     properties = config.properties
   end
 
-  if schema.settings_prefix then
-    local props = {}
-    for key, value in pairs(properties) do
-      props[schema.settings_prefix .. key] = value
-    end
-    local function fixref(node)
-      if type(node) == "table" then
-        for k, v in pairs(node) do
-          if k == "$ref" then
-            node[k] = v:gsub("#/properties/", "#/properties/" .. schema.settings_prefix)
-          end
-          fixref(v)
-        end
-      end
-      return node
-    end
-    properties = fixref(props)
+  if schema.build then
+    schema.build(properties)
   end
 
   return {

@@ -9,6 +9,5 @@
 
 ---@class LspSchema
 ---@field package_url string url of the package.json of the LSP server
----@field settings_url string url of the settings json schema of the LSP server
 ---@field settings_file string file of the settings json schema of the LSP server
----@field settings_prefix string|nil
+---@field build fun(props: table)

@@ -5,8 +5,32 @@ local M = {}
 --- @type table<string, LspSchema>
 M.overrides = {
   sumneko_lua = {
-    settings_url = "https://raw.githubusercontent.com/sumneko/vscode-lua/master/setting/schema.json",
-    settings_prefix = "Lua.",
+    build = function(props)
+      local lns = Util.json_decode(
+        Util.fetch("https://raw.githubusercontent.com/sumneko/vscode-lua/master/package.nls.json")
+      ) or {}
+
+      local function translate(desc)
+        return lns[desc:gsub("%%", "")] or desc
+      end
+
+      local function fixdoc(node)
+        if type(node) == "table" then
+          for k, v in pairs(node) do
+            if k == "description" or k == "markdownDescription" then
+              node[k] = translate(v)
+            end
+            if k == "markdownEnumDescriptions" then
+              for i, d in ipairs(v) do
+                v[i] = translate(d)
+              end
+            end
+            fixdoc(v)
+          end
+        end
+      end
+      fixdoc(props)
+    end,
   },
 }
 
