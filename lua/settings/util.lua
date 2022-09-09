@@ -61,6 +61,15 @@ function M.fqn(fname)
   return vim.loop.fs_realpath(fname) or fname
 end
 
+function M.protect(fn, msg)
+  return function(...)
+    local ret = table.pack(pcall(fn, ...))
+    if not ret[1] then
+      M.error((msg and msg .. "\n" or "") .. ret[2])
+    end
+    return table.unpack(ret)
+  end
+end
 ---@param patterns table
 ---@param fn fun(file: string|nil, key:string|nil, pattern:string)
 function M.for_each(patterns, fn, root_dir)
