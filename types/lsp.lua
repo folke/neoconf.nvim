@@ -1,0 +1,12399 @@
+---@meta
+
+
+---@class Settings.elmls.ElmTestRunner
+-- Show output of elm-test as terminal task
+---@field showElmTestOutput boolean
+
+---@class Settings.elmls.Trace
+-- Traces the communication between VS Code and the language server.
+-- 
+-- ```lua
+-- default = "off"
+-- ```
+---@field server "off" | "messages" | "verbose"
+
+---@class Settings.elmls.ElmLS
+-- Skips confirmation for the Install Package code action.
+---@field skipInstallPackageConfirmation boolean
+---@field elmTestRunner Settings.elmls.ElmTestRunner
+---@field trace Settings.elmls.Trace
+-- The path to your elm-review executable. Should be empty by default, in that case it will assume the name and try to first get it from a local npm installation or a global one. If you set it manually it will not try to load from the npm folder.
+-- 
+-- ```lua
+-- default = ""
+-- ```
+---@field elmReviewPath string
+-- The path to your elm-test executable. Should be empty by default, in that case it will assume the name and try to first get it from a local npm installation or a global one. If you set it manually it will not try to load from the npm folder.
+-- 
+-- ```lua
+-- default = ""
+-- ```
+---@field elmTestPath string
+-- Set severity or disable linting diagnostics for elm-review.
+-- 
+-- ```lua
+-- default = "off"
+-- ```
+---@field elmReviewDiagnostics "off" | "warning" | "error"
+-- Disable linting diagnostics from the language server.
+---@field disableElmLSDiagnostics boolean
+-- Only update compiler diagnostics on save, not on document change.
+---@field onlyUpdateDiagnosticsOnSave boolean
+-- The path to your elm-format executable. Should be empty by default, in that case it will assume the name and try to first get it from a local npm installation or a global one. If you set it manually it will not try to load from the npm folder.
+-- 
+-- ```lua
+-- default = ""
+-- ```
+---@field elmFormatPath string
+-- The path to your elm executable. Should be empty by default, in that case it will assume the name and try to first get it from a local npm installation or a global one. If you set it manually it will not try to load from the npm folder.
+-- 
+-- ```lua
+-- default = ""
+-- ```
+---@field elmPath string
+
+---@class Settings.elmls
+---@field elmLS Settings.elmls.ElmLS
+
+-- Modify the diagnostic severity in a group.
+-- `Fallback` means that diagnostics in this group are controlled by `diagnostics.severity` separately.
+-- Other settings will override individual settings without end of `!`.
+-- 
+---@class Settings.sumneko_lua.GroupSeverity
+-- * missing-parameter
+-- * missing-return
+-- * missing-return-value
+-- * redundant-parameter
+-- * redundant-return-value
+-- * redundant-value
+-- * unbalanced-assignments
+-- 
+-- ```lua
+-- default = "Fallback"
+-- ```
+---@field unbalanced "Error" | "Warning" | "Information" | "Hint" | "Fallback"
+-- * code-after-break
+-- * empty-block
+-- * redundant-return
+-- * trailing-space
+-- * unreachable-code
+-- * unused-function
+-- * unused-label
+-- * unused-local
+-- * unused-vararg
+-- 
+-- ```lua
+-- default = "Fallback"
+-- ```
+---@field unused "Error" | "Warning" | "Information" | "Hint" | "Fallback"
+-- * await-in-sync
+-- * not-yieldable
+-- 
+-- ```lua
+-- default = "Fallback"
+-- ```
+---@field await "Error" | "Warning" | "Information" | "Hint" | "Fallback"
+-- * assign-type-mismatch
+-- * cast-local-type
+-- * cast-type-mismatch
+-- * need-check-nil
+-- * param-type-mismatch
+-- * return-type-mismatch
+-- * undefined-field
+-- 
+-- ```lua
+-- default = "Fallback"
+-- ```
+---@field type-check "Error" | "Warning" | "Information" | "Hint" | "Fallback"
+-- * no-unknown
+-- 
+-- ```lua
+-- default = "Fallback"
+-- ```
+---@field strong "Error" | "Warning" | "Information" | "Hint" | "Fallback"
+-- * ambiguity-1
+-- * count-down-loop
+-- * different-requires
+-- * newfield-call
+-- * newline-call
+-- 
+-- ```lua
+-- default = "Fallback"
+-- ```
+---@field ambiguity "Error" | "Warning" | "Information" | "Hint" | "Fallback"
+-- * global-in-nil-env
+-- * lowercase-global
+-- * undefined-env-child
+-- * undefined-global
+-- 
+-- ```lua
+-- default = "Fallback"
+-- ```
+---@field global "Error" | "Warning" | "Information" | "Hint" | "Fallback"
+-- * codestyle-check
+-- * spell-check
+-- 
+-- ```lua
+-- default = "Fallback"
+-- ```
+---@field codestyle "Error" | "Warning" | "Information" | "Hint" | "Fallback"
+-- * duplicate-index
+-- * duplicate-set-field
+-- 
+-- ```lua
+-- default = "Fallback"
+-- ```
+---@field duplicate "Error" | "Warning" | "Information" | "Hint" | "Fallback"
+-- * redefined-local
+-- 
+-- ```lua
+-- default = "Fallback"
+-- ```
+---@field redefined "Error" | "Warning" | "Information" | "Hint" | "Fallback"
+-- * close-non-object
+-- * deprecated
+-- * discard-returns
+-- 
+-- ```lua
+-- default = "Fallback"
+-- ```
+---@field strict "Error" | "Warning" | "Information" | "Hint" | "Fallback"
+-- * circle-doc-class
+-- * doc-field-no-class
+-- * duplicate-doc-alias
+-- * duplicate-doc-field
+-- * duplicate-doc-param
+-- * undefined-doc-class
+-- * undefined-doc-name
+-- * undefined-doc-param
+-- * unknown-cast-variable
+-- * unknown-diag-code
+-- * unknown-operator
+-- 
+-- ```lua
+-- default = "Fallback"
+-- ```
+---@field luadoc "Error" | "Warning" | "Information" | "Hint" | "Fallback"
+
+-- Modify the diagnostic severity.
+-- 
+-- End with `!` means override the group setting `diagnostics.groupSeverity`.
+-- 
+---@class Settings.sumneko_lua.Severity
+-- Enable diagnostics for `for` loops which will never reach their max/limit because the loop is incrementing instead of decrementing.
+-- 
+-- ```lua
+-- default = "Warning"
+-- ```
+---@field count-down-loop "Error" | "Warning" | "Information" | "Hint" | "Error!" | "Warning!" | "Information!" | "Hint!"
+-- Enable diagnostics for files which are required by two different paths.
+-- 
+-- ```lua
+-- default = "Warning"
+-- ```
+---@field different-requires "Error" | "Warning" | "Information" | "Hint" | "Error!" | "Warning!" | "Information!" | "Hint!"
+-- Enable undefined global variable diagnostics.
+-- 
+-- ```lua
+-- default = "Warning"
+-- ```
+---@field undefined-global "Error" | "Warning" | "Information" | "Hint" | "Error!" | "Warning!" | "Information!" | "Hint!"
+-- Enable diagnostics to highlight a field annotation without a defining class annotation.
+-- 
+-- ```lua
+-- default = "Warning"
+-- ```
+---@field doc-field-no-class "Error" | "Warning" | "Information" | "Hint" | "Error!" | "Warning!" | "Information!" | "Hint!"
+-- Enable diagnostics for a duplicated alias annotation name.
+-- 
+-- ```lua
+-- default = "Warning"
+-- ```
+---@field duplicate-doc-alias "Error" | "Warning" | "Information" | "Hint" | "Error!" | "Warning!" | "Information!" | "Hint!"
+-- Enable lowercase global variable definition diagnostics.
+-- 
+-- ```lua
+-- default = "Information"
+-- ```
+---@field lowercase-global "Error" | "Warning" | "Information" | "Hint" | "Error!" | "Warning!" | "Information!" | "Hint!"
+-- Enable diagnostics for a duplicated param annotation name.
+-- 
+-- ```lua
+-- default = "Warning"
+-- ```
+---@field duplicate-doc-param "Error" | "Warning" | "Information" | "Hint" | "Error!" | "Warning!" | "Information!" | "Hint!"
+-- Enable duplicate table index diagnostics.
+-- 
+-- ```lua
+-- default = "Warning"
+-- ```
+---@field duplicate-index "Error" | "Warning" | "Information" | "Hint" | "Error!" | "Warning!" | "Information!" | "Hint!"
+-- Enable diagnostics for casts of undefined variables.
+-- 
+-- ```lua
+-- default = "Warning"
+-- ```
+---@field unknown-cast-variable "Error" | "Warning" | "Information" | "Hint" | "Error!" | "Warning!" | "Information!" | "Hint!"
+-- Enable diagnostics in cases in which an unknown diagnostics code is entered.
+-- 
+-- ```lua
+-- default = "Warning"
+-- ```
+---@field unknown-diag-code "Error" | "Warning" | "Information" | "Hint" | "Error!" | "Warning!" | "Information!" | "Hint!"
+-- Enable diagnostics for unknown operators.
+-- 
+-- ```lua
+-- default = "Warning"
+-- ```
+---@field unknown-operator "Error" | "Warning" | "Information" | "Hint" | "Error!" | "Warning!" | "Information!" | "Hint!"
+-- Enable diagnostics for unreachable code.
+-- 
+-- ```lua
+-- default = "Hint"
+-- ```
+---@field unreachable-code "Error" | "Warning" | "Information" | "Hint" | "Error!" | "Warning!" | "Information!" | "Hint!"
+-- Enable unused function diagnostics.
+-- 
+-- ```lua
+-- default = "Hint"
+-- ```
+---@field unused-function "Error" | "Warning" | "Information" | "Hint" | "Error!" | "Warning!" | "Information!" | "Hint!"
+-- Enable unused label diagnostics.
+-- 
+-- ```lua
+-- default = "Hint"
+-- ```
+---@field unused-label "Error" | "Warning" | "Information" | "Hint" | "Error!" | "Warning!" | "Information!" | "Hint!"
+-- Enable unused vararg diagnostics.
+-- 
+-- ```lua
+-- default = "Hint"
+-- ```
+---@field unused-vararg "Error" | "Warning" | "Information" | "Hint" | "Error!" | "Warning!" | "Information!" | "Hint!"
+-- Enable trailing space diagnostics.
+-- 
+-- ```lua
+-- default = "Hint"
+-- ```
+---@field trailing-space "Error" | "Warning" | "Information" | "Hint" | "Error!" | "Warning!" | "Information!" | "Hint!"
+-- Enable undefined environment variable diagnostics. It's raised when `_ENV` table is set to a new literal table, but the used global variable is no longer present in the global environment.
+-- 
+-- ```lua
+-- default = "Information"
+-- ```
+---@field undefined-env-child "Error" | "Warning" | "Information" | "Hint" | "Error!" | "Warning!" | "Information!" | "Hint!"
+-- Enable diagnostics for class annotations in which an undefined class is referenced.
+-- 
+-- ```lua
+-- default = "Warning"
+-- ```
+---@field undefined-doc-class "Error" | "Warning" | "Information" | "Hint" | "Error!" | "Warning!" | "Information!" | "Hint!"
+-- Enable diagnostics for setting the same field in a class more than once.
+-- 
+-- ```lua
+-- default = "Warning"
+-- ```
+---@field duplicate-set-field "Error" | "Warning" | "Information" | "Hint" | "Error!" | "Warning!" | "Information!" | "Hint!"
+-- Enable diagnostics for a duplicated field annotation name.
+-- 
+-- ```lua
+-- default = "Warning"
+-- ```
+---@field duplicate-doc-field "Error" | "Warning" | "Information" | "Hint" | "Error!" | "Warning!" | "Information!" | "Hint!"
+-- Enable diagnostics for calls of asynchronous functions within a synchronous function.
+-- 
+-- ```lua
+-- default = "Warning"
+-- ```
+---@field await-in-sync "Error" | "Warning" | "Information" | "Hint" | "Error!" | "Warning!" | "Information!" | "Hint!"
+-- Enable cannot use global variables （ `_ENV` is set to `nil`） diagnostics.
+-- 
+-- ```lua
+-- default = "Warning"
+-- ```
+---@field global-in-nil-env "Error" | "Warning" | "Information" | "Hint" | "Error!" | "Warning!" | "Information!" | "Hint!"
+-- Enable unused local variable diagnostics.
+-- 
+-- ```lua
+-- default = "Hint"
+-- ```
+---@field unused-local "Error" | "Warning" | "Information" | "Hint" | "Error!" | "Warning!" | "Information!" | "Hint!"
+-- Enable diagnostics for casts where the target type does not match the initial type.
+-- 
+-- ```lua
+-- default = "Warning"
+-- ```
+---@field cast-type-mismatch "Error" | "Warning" | "Information" | "Hint" | "Error!" | "Warning!" | "Information!" | "Hint!"
+-- Enable diagnostics for incorrectly styled lines.
+-- 
+-- ```lua
+-- default = "Warning"
+-- ```
+---@field codestyle-check "Error" | "Warning" | "Information" | "Hint" | "Error!" | "Warning!" | "Information!" | "Hint!"
+-- Enable diagnostics to highlight deprecated API.
+-- 
+-- ```lua
+-- default = "Warning"
+-- ```
+---@field deprecated "Error" | "Warning" | "Information" | "Hint" | "Error!" | "Warning!" | "Information!" | "Hint!"
+-- Enable diagnostics for cases in which an undefined field of a variable is read.
+-- 
+-- ```lua
+-- default = "Warning"
+-- ```
+---@field undefined-field "Error" | "Warning" | "Information" | "Hint" | "Error!" | "Warning!" | "Information!" | "Hint!"
+-- Enable diagnostics on multiple assignments if not all variables obtain a value (e.g., `local x,y = 1`).
+-- 
+-- ```lua
+-- default = "Warning"
+-- ```
+---@field unbalanced-assignments "Error" | "Warning" | "Information" | "Hint" | "Error!" | "Warning!" | "Information!" | "Hint!"
+-- Enable empty code block diagnostics.
+-- 
+-- ```lua
+-- default = "Hint"
+-- ```
+---@field empty-block "Error" | "Warning" | "Information" | "Hint" | "Error!" | "Warning!" | "Information!" | "Hint!"
+-- Enable diagnostics for calls of functions annotated with `---@nodiscard` where the return values are ignored.
+-- 
+-- ```lua
+-- default = "Warning"
+-- ```
+---@field discard-returns "Error" | "Warning" | "Information" | "Hint" | "Error!" | "Warning!" | "Information!" | "Hint!"
+-- Enable diagnostics for function calls where the number of arguments is less than the number of annotated function parameters.
+-- 
+-- ```lua
+-- default = "Warning"
+-- ```
+---@field missing-parameter "Error" | "Warning" | "Information" | "Hint" | "Error!" | "Warning!" | "Information!" | "Hint!"
+-- Enable diagnostics for functions with return annotations which have no return statement.
+-- 
+-- ```lua
+-- default = "Warning"
+-- ```
+---@field missing-return "Error" | "Warning" | "Information" | "Hint" | "Error!" | "Warning!" | "Information!" | "Hint!"
+-- Enable diagnostics for return statements without values although the containing function declares returns.
+-- 
+-- ```lua
+-- default = "Warning"
+-- ```
+---@field missing-return-value "Error" | "Warning" | "Information" | "Hint" | "Error!" | "Warning!" | "Information!" | "Hint!"
+-- Enable diagnostics for variable usages if `nil` or an optional (potentially `nil`) value was assigned to the variable before.
+-- 
+-- ```lua
+-- default = "Warning"
+-- ```
+---@field need-check-nil "Error" | "Warning" | "Information" | "Hint" | "Error!" | "Warning!" | "Information!" | "Hint!"
+-- Enable ambiguous operator precedence diagnostics. For example, the `num or 0 + 1` expression will be suggested `(num or 0) + 1` instead.
+-- 
+-- ```lua
+-- default = "Warning"
+-- ```
+---@field ambiguity-1 "Error" | "Warning" | "Information" | "Hint" | "Error!" | "Warning!" | "Information!" | "Hint!"
+-- Enable newfield call diagnostics. It is raised when the parenthesis of a function call appear on the following line when defining a field in a table.
+-- 
+-- ```lua
+-- default = "Warning"
+-- ```
+---@field newfield-call "Error" | "Warning" | "Information" | "Hint" | "Error!" | "Warning!" | "Information!" | "Hint!"
+-- Enable newline call diagnostics. Is's raised when a line starting with `(` is encountered, which is syntactically parsed as a function call on the previous line.
+-- 
+-- ```lua
+-- default = "Warning"
+-- ```
+---@field newline-call "Error" | "Warning" | "Information" | "Hint" | "Error!" | "Warning!" | "Information!" | "Hint!"
+-- Enable diagnostics for cases in which the type cannot be inferred.
+-- 
+-- ```lua
+-- default = "Warning"
+-- ```
+---@field no-unknown "Error" | "Warning" | "Information" | "Hint" | "Error!" | "Warning!" | "Information!" | "Hint!"
+-- Enable diagnostics for return statements which are not needed because the function would exit on its own.
+-- 
+-- ```lua
+-- default = "Hint"
+-- ```
+---@field redundant-return "Error" | "Warning" | "Information" | "Hint" | "Error!" | "Warning!" | "Information!" | "Hint!"
+-- Enable diagnostics for calls to `coroutine.yield()` when it is not permitted.
+-- 
+-- ```lua
+-- default = "Warning"
+-- ```
+---@field not-yieldable "Error" | "Warning" | "Information" | "Hint" | "Error!" | "Warning!" | "Information!" | "Hint!"
+-- Enable diagnostics for function calls where the type of a provided parameter does not match the type of the annotated function definition.
+-- 
+-- ```lua
+-- default = "Warning"
+-- ```
+---@field param-type-mismatch "Error" | "Warning" | "Information" | "Hint" | "Error!" | "Warning!" | "Information!" | "Hint!"
+-- Enable diagnostics for type annotations referencing an undefined type or alias.
+-- 
+-- ```lua
+-- default = "Warning"
+-- ```
+---@field undefined-doc-name "Error" | "Warning" | "Information" | "Hint" | "Error!" | "Warning!" | "Information!" | "Hint!"
+-- Enable redefined local variable diagnostics.
+-- 
+-- ```lua
+-- default = "Hint"
+-- ```
+---@field redefined-local "Error" | "Warning" | "Information" | "Hint" | "Error!" | "Warning!" | "Information!" | "Hint!"
+-- Enable redundant function parameter diagnostics.
+-- 
+-- ```lua
+-- default = "Warning"
+-- ```
+---@field redundant-parameter "Error" | "Warning" | "Information" | "Hint" | "Error!" | "Warning!" | "Information!" | "Hint!"
+-- Enable diagnostics for assignments in which the value's type does not match the type of the assigned variable.
+-- 
+-- ```lua
+-- default = "Warning"
+-- ```
+---@field assign-type-mismatch "Error" | "Warning" | "Information" | "Hint" | "Error!" | "Warning!" | "Information!" | "Hint!"
+-- Enable diagnostics for return statements which return an extra value which is not specified by a return annotation.
+-- 
+-- ```lua
+-- default = "Warning"
+-- ```
+---@field redundant-return-value "Error" | "Warning" | "Information" | "Hint" | "Error!" | "Warning!" | "Information!" | "Hint!"
+-- Enable the redundant values assigned diagnostics. It's raised during assignment operation, when the number of values is higher than the number of objects being assigned.
+-- 
+-- ```lua
+-- default = "Warning"
+-- ```
+---@field redundant-value "Error" | "Warning" | "Information" | "Hint" | "Error!" | "Warning!" | "Information!" | "Hint!"
+-- Enable diagnostics for return values whose type does not match the type declared in the corresponding return annotation.
+-- 
+-- ```lua
+-- default = "Warning"
+-- ```
+---@field return-type-mismatch "Error" | "Warning" | "Information" | "Hint" | "Error!" | "Warning!" | "Information!" | "Hint!"
+-- Enable diagnostics for casts of local variables where the target type does not match the defined type.
+-- 
+-- ```lua
+-- default = "Warning"
+-- ```
+---@field cast-local-type "Error" | "Warning" | "Information" | "Hint" | "Error!" | "Warning!" | "Information!" | "Hint!"
+-- Enable diagnostics for typos in strings.
+-- 
+-- ```lua
+-- default = "Information"
+-- ```
+---@field spell-check "Error" | "Warning" | "Information" | "Hint" | "Error!" | "Warning!" | "Information!" | "Hint!"
+-- %config.diagnostics.circle-doc-class%
+-- 
+-- ```lua
+-- default = "Warning"
+-- ```
+---@field circle-doc-class "Error" | "Warning" | "Information" | "Hint" | "Error!" | "Warning!" | "Information!" | "Hint!"
+-- Enable diagnostics for attempts to close a variable with a non-object.
+-- 
+-- ```lua
+-- default = "Warning"
+-- ```
+---@field close-non-object "Error" | "Warning" | "Information" | "Hint" | "Error!" | "Warning!" | "Information!" | "Hint!"
+-- Enable diagnostics for code placed after a break statement in a loop.
+-- 
+-- ```lua
+-- default = "Hint"
+-- ```
+---@field code-after-break "Error" | "Warning" | "Information" | "Hint" | "Error!" | "Warning!" | "Information!" | "Hint!"
+-- Enable diagnostics for cases in which a parameter annotation is given without declaring the parameter in the function definition.
+-- 
+-- ```lua
+-- default = "Warning"
+-- ```
+---@field undefined-doc-param "Error" | "Warning" | "Information" | "Hint" | "Error!" | "Warning!" | "Information!" | "Hint!"
+
+-- Modify the diagnostic needed file status in a group.
+-- 
+-- * Opened:  only diagnose opened files
+-- * Any:     diagnose all files
+-- * None:    disable this diagnostic
+-- 
+-- `Fallback` means that diagnostics in this group are controlled by `diagnostics.neededFileStatus` separately.
+-- Other settings will override individual settings without end of `!`.
+-- 
+---@class Settings.sumneko_lua.GroupFileStatus
+-- * missing-parameter
+-- * missing-return
+-- * missing-return-value
+-- * redundant-parameter
+-- * redundant-return-value
+-- * redundant-value
+-- * unbalanced-assignments
+-- 
+-- ```lua
+-- default = "Fallback"
+-- ```
+---@field unbalanced "Any" | "Opened" | "None" | "Fallback"
+-- * code-after-break
+-- * empty-block
+-- * redundant-return
+-- * trailing-space
+-- * unreachable-code
+-- * unused-function
+-- * unused-label
+-- * unused-local
+-- * unused-vararg
+-- 
+-- ```lua
+-- default = "Fallback"
+-- ```
+---@field unused "Any" | "Opened" | "None" | "Fallback"
+-- * await-in-sync
+-- * not-yieldable
+-- 
+-- ```lua
+-- default = "Fallback"
+-- ```
+---@field await "Any" | "Opened" | "None" | "Fallback"
+-- * assign-type-mismatch
+-- * cast-local-type
+-- * cast-type-mismatch
+-- * need-check-nil
+-- * param-type-mismatch
+-- * return-type-mismatch
+-- * undefined-field
+-- 
+-- ```lua
+-- default = "Fallback"
+-- ```
+---@field type-check "Any" | "Opened" | "None" | "Fallback"
+-- * no-unknown
+-- 
+-- ```lua
+-- default = "Fallback"
+-- ```
+---@field strong "Any" | "Opened" | "None" | "Fallback"
+-- * ambiguity-1
+-- * count-down-loop
+-- * different-requires
+-- * newfield-call
+-- * newline-call
+-- 
+-- ```lua
+-- default = "Fallback"
+-- ```
+---@field ambiguity "Any" | "Opened" | "None" | "Fallback"
+-- * global-in-nil-env
+-- * lowercase-global
+-- * undefined-env-child
+-- * undefined-global
+-- 
+-- ```lua
+-- default = "Fallback"
+-- ```
+---@field global "Any" | "Opened" | "None" | "Fallback"
+-- * codestyle-check
+-- * spell-check
+-- 
+-- ```lua
+-- default = "Fallback"
+-- ```
+---@field codestyle "Any" | "Opened" | "None" | "Fallback"
+-- * duplicate-index
+-- * duplicate-set-field
+-- 
+-- ```lua
+-- default = "Fallback"
+-- ```
+---@field duplicate "Any" | "Opened" | "None" | "Fallback"
+-- * redefined-local
+-- 
+-- ```lua
+-- default = "Fallback"
+-- ```
+---@field redefined "Any" | "Opened" | "None" | "Fallback"
+-- * close-non-object
+-- * deprecated
+-- * discard-returns
+-- 
+-- ```lua
+-- default = "Fallback"
+-- ```
+---@field strict "Any" | "Opened" | "None" | "Fallback"
+-- * circle-doc-class
+-- * doc-field-no-class
+-- * duplicate-doc-alias
+-- * duplicate-doc-field
+-- * duplicate-doc-param
+-- * undefined-doc-class
+-- * undefined-doc-name
+-- * undefined-doc-param
+-- * unknown-cast-variable
+-- * unknown-diag-code
+-- * unknown-operator
+-- 
+-- ```lua
+-- default = "Fallback"
+-- ```
+---@field luadoc "Any" | "Opened" | "None" | "Fallback"
+
+-- * Opened:  only diagnose opened files
+-- * Any:     diagnose all files
+-- * None:    disable this diagnostic
+-- 
+-- End with `!` means override the group setting `diagnostics.groupFileStatus`.
+-- 
+---@class Settings.sumneko_lua.NeededFileStatus
+-- Enable diagnostics for `for` loops which will never reach their max/limit because the loop is incrementing instead of decrementing.
+-- 
+-- ```lua
+-- default = "Any"
+-- ```
+---@field count-down-loop "Any" | "Opened" | "None" | "Any!" | "Opened!" | "None!"
+-- Enable diagnostics for files which are required by two different paths.
+-- 
+-- ```lua
+-- default = "Any"
+-- ```
+---@field different-requires "Any" | "Opened" | "None" | "Any!" | "Opened!" | "None!"
+-- Enable undefined global variable diagnostics.
+-- 
+-- ```lua
+-- default = "Any"
+-- ```
+---@field undefined-global "Any" | "Opened" | "None" | "Any!" | "Opened!" | "None!"
+-- Enable diagnostics to highlight a field annotation without a defining class annotation.
+-- 
+-- ```lua
+-- default = "Any"
+-- ```
+---@field doc-field-no-class "Any" | "Opened" | "None" | "Any!" | "Opened!" | "None!"
+-- Enable diagnostics for a duplicated alias annotation name.
+-- 
+-- ```lua
+-- default = "Any"
+-- ```
+---@field duplicate-doc-alias "Any" | "Opened" | "None" | "Any!" | "Opened!" | "None!"
+-- Enable lowercase global variable definition diagnostics.
+-- 
+-- ```lua
+-- default = "Any"
+-- ```
+---@field lowercase-global "Any" | "Opened" | "None" | "Any!" | "Opened!" | "None!"
+-- Enable diagnostics for a duplicated param annotation name.
+-- 
+-- ```lua
+-- default = "Any"
+-- ```
+---@field duplicate-doc-param "Any" | "Opened" | "None" | "Any!" | "Opened!" | "None!"
+-- Enable duplicate table index diagnostics.
+-- 
+-- ```lua
+-- default = "Any"
+-- ```
+---@field duplicate-index "Any" | "Opened" | "None" | "Any!" | "Opened!" | "None!"
+-- Enable diagnostics for casts of undefined variables.
+-- 
+-- ```lua
+-- default = "Any"
+-- ```
+---@field unknown-cast-variable "Any" | "Opened" | "None" | "Any!" | "Opened!" | "None!"
+-- Enable diagnostics in cases in which an unknown diagnostics code is entered.
+-- 
+-- ```lua
+-- default = "Any"
+-- ```
+---@field unknown-diag-code "Any" | "Opened" | "None" | "Any!" | "Opened!" | "None!"
+-- Enable diagnostics for unknown operators.
+-- 
+-- ```lua
+-- default = "Any"
+-- ```
+---@field unknown-operator "Any" | "Opened" | "None" | "Any!" | "Opened!" | "None!"
+-- Enable diagnostics for unreachable code.
+-- 
+-- ```lua
+-- default = "Opened"
+-- ```
+---@field unreachable-code "Any" | "Opened" | "None" | "Any!" | "Opened!" | "None!"
+-- Enable unused function diagnostics.
+-- 
+-- ```lua
+-- default = "Opened"
+-- ```
+---@field unused-function "Any" | "Opened" | "None" | "Any!" | "Opened!" | "None!"
+-- Enable unused label diagnostics.
+-- 
+-- ```lua
+-- default = "Opened"
+-- ```
+---@field unused-label "Any" | "Opened" | "None" | "Any!" | "Opened!" | "None!"
+-- Enable unused vararg diagnostics.
+-- 
+-- ```lua
+-- default = "Opened"
+-- ```
+---@field unused-vararg "Any" | "Opened" | "None" | "Any!" | "Opened!" | "None!"
+-- Enable trailing space diagnostics.
+-- 
+-- ```lua
+-- default = "Opened"
+-- ```
+---@field trailing-space "Any" | "Opened" | "None" | "Any!" | "Opened!" | "None!"
+-- Enable undefined environment variable diagnostics. It's raised when `_ENV` table is set to a new literal table, but the used global variable is no longer present in the global environment.
+-- 
+-- ```lua
+-- default = "Any"
+-- ```
+---@field undefined-env-child "Any" | "Opened" | "None" | "Any!" | "Opened!" | "None!"
+-- Enable diagnostics for class annotations in which an undefined class is referenced.
+-- 
+-- ```lua
+-- default = "Any"
+-- ```
+---@field undefined-doc-class "Any" | "Opened" | "None" | "Any!" | "Opened!" | "None!"
+-- Enable diagnostics for setting the same field in a class more than once.
+-- 
+-- ```lua
+-- default = "Any"
+-- ```
+---@field duplicate-set-field "Any" | "Opened" | "None" | "Any!" | "Opened!" | "None!"
+-- Enable diagnostics for a duplicated field annotation name.
+-- 
+-- ```lua
+-- default = "Any"
+-- ```
+---@field duplicate-doc-field "Any" | "Opened" | "None" | "Any!" | "Opened!" | "None!"
+-- Enable diagnostics for calls of asynchronous functions within a synchronous function.
+-- 
+-- ```lua
+-- default = "None"
+-- ```
+---@field await-in-sync "Any" | "Opened" | "None" | "Any!" | "Opened!" | "None!"
+-- Enable cannot use global variables （ `_ENV` is set to `nil`） diagnostics.
+-- 
+-- ```lua
+-- default = "Any"
+-- ```
+---@field global-in-nil-env "Any" | "Opened" | "None" | "Any!" | "Opened!" | "None!"
+-- Enable unused local variable diagnostics.
+-- 
+-- ```lua
+-- default = "Opened"
+-- ```
+---@field unused-local "Any" | "Opened" | "None" | "Any!" | "Opened!" | "None!"
+-- Enable diagnostics for casts where the target type does not match the initial type.
+-- 
+-- ```lua
+-- default = "Opened"
+-- ```
+---@field cast-type-mismatch "Any" | "Opened" | "None" | "Any!" | "Opened!" | "None!"
+-- Enable diagnostics for incorrectly styled lines.
+-- 
+-- ```lua
+-- default = "None"
+-- ```
+---@field codestyle-check "Any" | "Opened" | "None" | "Any!" | "Opened!" | "None!"
+-- Enable diagnostics to highlight deprecated API.
+-- 
+-- ```lua
+-- default = "Any"
+-- ```
+---@field deprecated "Any" | "Opened" | "None" | "Any!" | "Opened!" | "None!"
+-- Enable diagnostics for cases in which an undefined field of a variable is read.
+-- 
+-- ```lua
+-- default = "Opened"
+-- ```
+---@field undefined-field "Any" | "Opened" | "None" | "Any!" | "Opened!" | "None!"
+-- Enable diagnostics on multiple assignments if not all variables obtain a value (e.g., `local x,y = 1`).
+-- 
+-- ```lua
+-- default = "Any"
+-- ```
+---@field unbalanced-assignments "Any" | "Opened" | "None" | "Any!" | "Opened!" | "None!"
+-- Enable empty code block diagnostics.
+-- 
+-- ```lua
+-- default = "Opened"
+-- ```
+---@field empty-block "Any" | "Opened" | "None" | "Any!" | "Opened!" | "None!"
+-- Enable diagnostics for calls of functions annotated with `---@nodiscard` where the return values are ignored.
+-- 
+-- ```lua
+-- default = "Any"
+-- ```
+---@field discard-returns "Any" | "Opened" | "None" | "Any!" | "Opened!" | "None!"
+-- Enable diagnostics for function calls where the number of arguments is less than the number of annotated function parameters.
+-- 
+-- ```lua
+-- default = "Any"
+-- ```
+---@field missing-parameter "Any" | "Opened" | "None" | "Any!" | "Opened!" | "None!"
+-- Enable diagnostics for functions with return annotations which have no return statement.
+-- 
+-- ```lua
+-- default = "Any"
+-- ```
+---@field missing-return "Any" | "Opened" | "None" | "Any!" | "Opened!" | "None!"
+-- Enable diagnostics for return statements without values although the containing function declares returns.
+-- 
+-- ```lua
+-- default = "Any"
+-- ```
+---@field missing-return-value "Any" | "Opened" | "None" | "Any!" | "Opened!" | "None!"
+-- Enable diagnostics for variable usages if `nil` or an optional (potentially `nil`) value was assigned to the variable before.
+-- 
+-- ```lua
+-- default = "Opened"
+-- ```
+---@field need-check-nil "Any" | "Opened" | "None" | "Any!" | "Opened!" | "None!"
+-- Enable ambiguous operator precedence diagnostics. For example, the `num or 0 + 1` expression will be suggested `(num or 0) + 1` instead.
+-- 
+-- ```lua
+-- default = "Any"
+-- ```
+---@field ambiguity-1 "Any" | "Opened" | "None" | "Any!" | "Opened!" | "None!"
+-- Enable newfield call diagnostics. It is raised when the parenthesis of a function call appear on the following line when defining a field in a table.
+-- 
+-- ```lua
+-- default = "Any"
+-- ```
+---@field newfield-call "Any" | "Opened" | "None" | "Any!" | "Opened!" | "None!"
+-- Enable newline call diagnostics. Is's raised when a line starting with `(` is encountered, which is syntactically parsed as a function call on the previous line.
+-- 
+-- ```lua
+-- default = "Any"
+-- ```
+---@field newline-call "Any" | "Opened" | "None" | "Any!" | "Opened!" | "None!"
+-- Enable diagnostics for cases in which the type cannot be inferred.
+-- 
+-- ```lua
+-- default = "None"
+-- ```
+---@field no-unknown "Any" | "Opened" | "None" | "Any!" | "Opened!" | "None!"
+-- Enable diagnostics for return statements which are not needed because the function would exit on its own.
+-- 
+-- ```lua
+-- default = "Opened"
+-- ```
+---@field redundant-return "Any" | "Opened" | "None" | "Any!" | "Opened!" | "None!"
+-- Enable diagnostics for calls to `coroutine.yield()` when it is not permitted.
+-- 
+-- ```lua
+-- default = "None"
+-- ```
+---@field not-yieldable "Any" | "Opened" | "None" | "Any!" | "Opened!" | "None!"
+-- Enable diagnostics for function calls where the type of a provided parameter does not match the type of the annotated function definition.
+-- 
+-- ```lua
+-- default = "Opened"
+-- ```
+---@field param-type-mismatch "Any" | "Opened" | "None" | "Any!" | "Opened!" | "None!"
+-- Enable diagnostics for type annotations referencing an undefined type or alias.
+-- 
+-- ```lua
+-- default = "Any"
+-- ```
+---@field undefined-doc-name "Any" | "Opened" | "None" | "Any!" | "Opened!" | "None!"
+-- Enable redefined local variable diagnostics.
+-- 
+-- ```lua
+-- default = "Opened"
+-- ```
+---@field redefined-local "Any" | "Opened" | "None" | "Any!" | "Opened!" | "None!"
+-- Enable redundant function parameter diagnostics.
+-- 
+-- ```lua
+-- default = "Any"
+-- ```
+---@field redundant-parameter "Any" | "Opened" | "None" | "Any!" | "Opened!" | "None!"
+-- Enable diagnostics for assignments in which the value's type does not match the type of the assigned variable.
+-- 
+-- ```lua
+-- default = "Opened"
+-- ```
+---@field assign-type-mismatch "Any" | "Opened" | "None" | "Any!" | "Opened!" | "None!"
+-- Enable diagnostics for return statements which return an extra value which is not specified by a return annotation.
+-- 
+-- ```lua
+-- default = "Any"
+-- ```
+---@field redundant-return-value "Any" | "Opened" | "None" | "Any!" | "Opened!" | "None!"
+-- Enable the redundant values assigned diagnostics. It's raised during assignment operation, when the number of values is higher than the number of objects being assigned.
+-- 
+-- ```lua
+-- default = "Any"
+-- ```
+---@field redundant-value "Any" | "Opened" | "None" | "Any!" | "Opened!" | "None!"
+-- Enable diagnostics for return values whose type does not match the type declared in the corresponding return annotation.
+-- 
+-- ```lua
+-- default = "Opened"
+-- ```
+---@field return-type-mismatch "Any" | "Opened" | "None" | "Any!" | "Opened!" | "None!"
+-- Enable diagnostics for casts of local variables where the target type does not match the defined type.
+-- 
+-- ```lua
+-- default = "Opened"
+-- ```
+---@field cast-local-type "Any" | "Opened" | "None" | "Any!" | "Opened!" | "None!"
+-- Enable diagnostics for typos in strings.
+-- 
+-- ```lua
+-- default = "None"
+-- ```
+---@field spell-check "Any" | "Opened" | "None" | "Any!" | "Opened!" | "None!"
+-- %config.diagnostics.circle-doc-class%
+-- 
+-- ```lua
+-- default = "Any"
+-- ```
+---@field circle-doc-class "Any" | "Opened" | "None" | "Any!" | "Opened!" | "None!"
+-- Enable diagnostics for attempts to close a variable with a non-object.
+-- 
+-- ```lua
+-- default = "Any"
+-- ```
+---@field close-non-object "Any" | "Opened" | "None" | "Any!" | "Opened!" | "None!"
+-- Enable diagnostics for code placed after a break statement in a loop.
+-- 
+-- ```lua
+-- default = "Opened"
+-- ```
+---@field code-after-break "Any" | "Opened" | "None" | "Any!" | "Opened!" | "None!"
+-- Enable diagnostics for cases in which a parameter annotation is given without declaring the parameter in the function definition.
+-- 
+-- ```lua
+-- default = "Any"
+-- ```
+---@field undefined-doc-param "Any" | "Opened" | "None" | "Any!" | "Opened!" | "None!"
+
+---@class Settings.sumneko_lua.Diagnostics
+-- Modify the diagnostic severity in a group.
+-- `Fallback` means that diagnostics in this group are controlled by `diagnostics.severity` separately.
+-- Other settings will override individual settings without end of `!`.
+-- 
+---@field groupSeverity Settings.sumneko_lua.GroupSeverity
+-- How to diagnose files loaded via `Lua.workspace.library`.
+-- 
+-- ```lua
+-- default = "Opened"
+-- ```
+---@field libraryFiles "Enable" | "Opened" | "Disable"
+-- Modify the diagnostic severity.
+-- 
+-- End with `!` means override the group setting `diagnostics.groupSeverity`.
+-- 
+---@field severity Settings.sumneko_lua.Severity
+-- Enable diagnostics.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enable boolean
+-- How to diagnose ignored files.
+-- 
+-- ```lua
+-- default = "Opened"
+-- ```
+---@field ignoredFiles "Enable" | "Opened" | "Disable"
+-- Latency (milliseconds) for workspace diagnostics. When you start the workspace, or edit any file, the entire workspace will be re-diagnosed in the background. Set to negative to disable workspace diagnostics.
+-- 
+-- ```lua
+-- default = 3000
+-- ```
+---@field workspaceDelay integer
+-- Do not diagnose Lua files that use the following scheme.
+-- 
+-- ```lua
+-- default = { "git" }
+-- ```
+---@field disableScheme string[]
+-- Modify the diagnostic needed file status in a group.
+-- 
+-- * Opened:  only diagnose opened files
+-- * Any:     diagnose all files
+-- * None:    disable this diagnostic
+-- 
+-- `Fallback` means that diagnostics in this group are controlled by `diagnostics.neededFileStatus` separately.
+-- Other settings will override individual settings without end of `!`.
+-- 
+---@field groupFileStatus Settings.sumneko_lua.GroupFileStatus
+-- Defined global variables.
+-- 
+-- ```lua
+-- default = {}
+-- ```
+---@field globals string[]
+-- Do not diagnose `unused-local` when the variable name matches the following pattern.
+-- 
+-- ```lua
+-- default = {}
+-- ```
+---@field unusedLocalExclude string[]
+-- * Opened:  only diagnose opened files
+-- * Any:     diagnose all files
+-- * None:    disable this diagnostic
+-- 
+-- End with `!` means override the group setting `diagnostics.groupFileStatus`.
+-- 
+---@field neededFileStatus Settings.sumneko_lua.NeededFileStatus
+-- Workspace diagnostics run rate (%). Decreasing this value reduces CPU usage, but also reduces the speed of workspace diagnostics. The diagnosis of the file you are currently editing is always done at full speed and is not affected by this setting.
+-- 
+-- ```lua
+-- default = 100
+-- ```
+---@field workspaceRate integer
+-- Disabled diagnostic (Use code in hover brackets).
+-- 
+-- ```lua
+-- default = {}
+-- ```
+---@field disable string[]
+
+---@class Settings.sumneko_lua.Spell
+-- Custom words for spell checking.
+-- 
+-- ```lua
+-- default = {}
+-- ```
+---@field dict string[]
+
+---@class Settings.sumneko_lua.Format
+-- The default format configuration. Has a lower priority than `.editorconfig` file in the workspace.
+-- Read [formatter docs](https://github.com/CppCXY/EmmyLuaCodeStyle/tree/master/docs) to learn usage.
+-- 
+-- 
+-- ```lua
+-- default = {}
+-- ```
+---@field defaultConfig table
+-- Enable code formatter.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enable boolean
+
+---@class Settings.sumneko_lua.Workspace
+-- Max preloaded files.
+-- 
+-- ```lua
+-- default = 5000
+-- ```
+---@field maxPreload integer
+-- Automatic detection and adaptation of third-party libraries, currently supported libraries are:
+-- 
+-- * OpenResty
+-- * Cocos4.0
+-- * LÖVE
+-- * LÖVR
+-- * skynet
+-- * Jass
+-- 
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field checkThirdParty boolean
+-- Skip files larger than this value (KB) when preloading.
+-- 
+-- ```lua
+-- default = 500
+-- ```
+---@field preloadFileSize integer
+-- Ignore files list in `.gitignore` .
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field useGitIgnore boolean
+-- In addition to the current workspace, which directories will load files from. The files in these directories will be treated as externally provided code libraries, and some features (such as renaming fields) will not modify these files.
+-- 
+-- ```lua
+-- default = {}
+-- ```
+---@field library string[]
+-- Ignored files and directories (Use `.gitignore` grammar).
+-- 
+-- ```lua
+-- default = { ".vscode" }
+-- ```
+---@field ignoreDir string[]
+-- Provide language server for the Lua files of the following scheme.
+-- 
+-- ```lua
+-- default = { "file", "untitled", "git" }
+-- ```
+---@field supportScheme string[]
+-- Add private third-party library configuration file paths here, please refer to the built-in [configuration file path](https://github.com/sumneko/lua-language-server/tree/master/meta/3rd)
+-- 
+-- ```lua
+-- default = {}
+-- ```
+---@field userThirdParty string[]
+-- Ignore submodules.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field ignoreSubmodules boolean
+
+-- Adjust the enabled state of the built-in library. You can disable (or redefine) the non-existent library according to the actual runtime environment.
+-- 
+-- * `default`: Indicates that the library will be enabled or disabled according to the runtime version
+-- * `enable`: always enable
+-- * `disable`: always disable
+-- 
+---@class Settings.sumneko_lua.Builtin
+-- %config.runtime.builtin.debug%
+-- 
+-- ```lua
+-- default = "default"
+-- ```
+---@field debug "default" | "enable" | "disable"
+-- %config.runtime.builtin.string.buffer%
+-- 
+-- ```lua
+-- default = "default"
+-- ```
+---@field string.buffer "default" | "enable" | "disable"
+-- %config.runtime.builtin.math%
+-- 
+-- ```lua
+-- default = "default"
+-- ```
+---@field math "default" | "enable" | "disable"
+-- %config.runtime.builtin.os%
+-- 
+-- ```lua
+-- default = "default"
+-- ```
+---@field os "default" | "enable" | "disable"
+-- %config.runtime.builtin.ffi%
+-- 
+-- ```lua
+-- default = "default"
+-- ```
+---@field ffi "default" | "enable" | "disable"
+-- %config.runtime.builtin.basic%
+-- 
+-- ```lua
+-- default = "default"
+-- ```
+---@field basic "default" | "enable" | "disable"
+-- %config.runtime.builtin.string%
+-- 
+-- ```lua
+-- default = "default"
+-- ```
+---@field string "default" | "enable" | "disable"
+-- %config.runtime.builtin.bit%
+-- 
+-- ```lua
+-- default = "default"
+-- ```
+---@field bit "default" | "enable" | "disable"
+-- %config.runtime.builtin.coroutine%
+-- 
+-- ```lua
+-- default = "default"
+-- ```
+---@field coroutine "default" | "enable" | "disable"
+-- %config.runtime.builtin.bit32%
+-- 
+-- ```lua
+-- default = "default"
+-- ```
+---@field bit32 "default" | "enable" | "disable"
+-- %config.runtime.builtin.table%
+-- 
+-- ```lua
+-- default = "default"
+-- ```
+---@field table "default" | "enable" | "disable"
+-- %config.runtime.builtin.table.new%
+-- 
+-- ```lua
+-- default = "default"
+-- ```
+---@field table.new "default" | "enable" | "disable"
+-- %config.runtime.builtin.table.clear%
+-- 
+-- ```lua
+-- default = "default"
+-- ```
+---@field table.clear "default" | "enable" | "disable"
+-- %config.runtime.builtin.utf8%
+-- 
+-- ```lua
+-- default = "default"
+-- ```
+---@field utf8 "default" | "enable" | "disable"
+-- %config.runtime.builtin.jit%
+-- 
+-- ```lua
+-- default = "default"
+-- ```
+---@field jit "default" | "enable" | "disable"
+-- %config.runtime.builtin.package%
+-- 
+-- ```lua
+-- default = "default"
+-- ```
+---@field package "default" | "enable" | "disable"
+-- %config.runtime.builtin.io%
+-- 
+-- ```lua
+-- default = "default"
+-- ```
+---@field io "default" | "enable" | "disable"
+-- %config.runtime.builtin.builtin%
+-- 
+-- ```lua
+-- default = "default"
+-- ```
+---@field builtin "default" | "enable" | "disable"
+
+---@class Settings.sumneko_lua.Runtime
+-- Allows Unicode characters in name.
+---@field unicodeName boolean
+-- Supports non-standard symbols. Make sure that your runtime environment supports these symbols.
+-- 
+-- ```lua
+-- default = {}
+-- ```
+---@field nonstandardSymbol string[]
+-- Adjust the enabled state of the built-in library. You can disable (or redefine) the non-existent library according to the actual runtime environment.
+-- 
+-- * `default`: Indicates that the library will be enabled or disabled according to the runtime version
+-- * `enable`: always enable
+-- * `disable`: always disable
+-- 
+---@field builtin Settings.sumneko_lua.Builtin
+-- Format of the directory name of the meta files.
+-- 
+-- ```lua
+-- default = "${version} ${language} ${encoding}"
+-- ```
+---@field meta string
+-- Lua runtime version.
+-- 
+-- ```lua
+-- default = "Lua 5.4"
+-- ```
+---@field version "Lua 5.1" | "Lua 5.2" | "Lua 5.3" | "Lua 5.4" | "LuaJIT"
+-- The custom global variables are regarded as some special built-in variables, and the language server will provide special support
+-- The following example shows that 'include' is treated as' require '.
+-- ```json
+-- "Lua.runtime.special" : {
+--     "include" : "require"
+-- }
+-- ```
+-- 
+-- 
+-- ```lua
+-- default = {}
+-- ```
+---@field special table
+-- When enabled, `runtime.path` will only search the first level of directories, see the description of `runtime.path`.
+---@field pathStrict boolean
+-- When using `require`, how to find the file based on the input name.
+-- Setting this config to `?/init.lua` means that when you enter `require 'myfile'`, `${workspace}/myfile/init.lua` will be searched from the loaded files.
+-- if `runtime.pathStrict` is `false`, `${workspace}/**/myfile/init.lua` will also be searched.
+-- If you want to load files outside the workspace, you need to set `Lua.workspace.library` first.
+-- 
+-- 
+-- ```lua
+-- default = { "?.lua", "?/init.lua" }
+-- ```
+---@field path string[]
+-- File encoding. The `ansi` option is only available under the `Windows` platform.
+-- 
+-- ```lua
+-- default = "utf8"
+-- ```
+---@field fileEncoding "utf8" | "ansi" | "utf16le" | "utf16be"
+-- Plugin path. Please read [wiki](https://github.com/sumneko/lua-language-server/wiki/Plugins) to learn more.
+-- 
+-- ```lua
+-- default = ""
+-- ```
+---@field plugin string
+-- Additional arguments for the plugin.
+-- 
+-- ```lua
+-- default = {}
+-- ```
+---@field pluginArgs string[]
+
+---@class Settings.sumneko_lua.SignatureHelp
+-- Enable signature help.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enable boolean
+
+---@class Settings.sumneko_lua.Misc
+-- [Command line parameters](https://github.com/sumneko/lua-telemetry-server/tree/master/method) when starting the language service in VSCode.
+-- 
+-- ```lua
+-- default = {}
+-- ```
+---@field parameters string[]
+
+---@class Settings.sumneko_lua.Hint
+-- Show hints of parameter name at the function call.
+-- 
+-- ```lua
+-- default = "All"
+-- ```
+---@field paramName "All" | "Literal" | "Disable"
+-- Show hints of type at assignment operation.
+---@field setType boolean
+-- If there is no semicolon at the end of the statement, display a virtual semicolon.
+-- 
+-- ```lua
+-- default = "SameLine"
+-- ```
+---@field semicolon "All" | "SameLine" | "Disable"
+-- If the called function is marked `---@async`, prompt `await` at the call.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field await boolean
+-- Enable inlay hint.
+---@field enable boolean
+-- Show hints of array index when constructing a table.
+-- 
+-- ```lua
+-- default = "Auto"
+-- ```
+---@field arrayIndex "Enable" | "Auto" | "Disable"
+-- Show type hints at the parameter of the function.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field paramType boolean
+
+---@class Settings.sumneko_lua.Telemetry
+-- Enable telemetry to send your editor information and error logs over the network. Read our privacy policy [here](https://github.com/sumneko/lua-language-server/wiki/Home#privacy).
+-- 
+-- 
+-- ```lua
+-- default = nil
+-- ```
+---@field enable boolean
+
+---@class Settings.sumneko_lua.Hover
+-- Hover to view numeric content (only if literal is not decimal).
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field viewNumber boolean
+-- Hover to view the contents of a string (only if the literal contains an escape character).
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field viewString boolean
+-- The maximum length of a hover to view the contents of a string.
+-- 
+-- ```lua
+-- default = 1000
+-- ```
+---@field viewStringMax integer
+-- When hovering to view a table, limits the maximum number of previews for fields.
+-- 
+-- ```lua
+-- default = 50
+-- ```
+---@field previewFields integer
+-- When the value corresponds to multiple types, limit the number of types displaying.
+-- 
+-- ```lua
+-- default = 5
+-- ```
+---@field enumsLimit integer
+-- Enable hover.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enable boolean
+-- Whether to expand the alias. For example, expands `---@alias myType boolean|number` appears as `boolean|number`, otherwise it appears as `myType'.
+-- 
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field expandAlias boolean
+
+---@class Settings.sumneko_lua.Semantic
+-- Semantic coloring of type annotations.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field annotation boolean
+-- Semantic coloring of variables/fields/parameters.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field variable boolean
+-- Semantic coloring of keywords/literals/operators. You only need to enable this feature if your editor cannot do syntax coloring.
+---@field keyword boolean
+-- Enable semantic color. You may need to set `editor.semanticHighlighting.enabled` to `true` to take effect.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enable boolean
+
+---@class Settings.sumneko_lua.Completion
+-- Previewing the relevant code snippet of the suggestion may help you understand the usage of the suggestion. The number set indicates the number of intercepted lines in the code fragment. If it is set to `0`, this feature can be disabled.
+-- 
+-- ```lua
+-- default = 0
+-- ```
+---@field displayContext integer
+-- Enable completion.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enable boolean
+-- The symbol used to trigger the postfix suggestion.
+-- 
+-- ```lua
+-- default = "@"
+-- ```
+---@field postfix string
+-- When the input looks like a file name, automatically `require` this file.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field autoRequire boolean
+-- Whether the displayed context word contains the content of other files in the workspace.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field workspaceWord boolean
+-- Shows keyword syntax snippets.
+-- 
+-- ```lua
+-- default = "Replace"
+-- ```
+---@field keywordSnippet "Disable" | "Both" | "Replace"
+-- The separator used when `require`.
+-- 
+-- ```lua
+-- default = "."
+-- ```
+---@field requireSeparator string
+-- Shows function call snippets.
+-- 
+-- ```lua
+-- default = "Disable"
+-- ```
+---@field callSnippet "Disable" | "Both" | "Replace"
+-- Show contextual words in suggestions.
+-- 
+-- ```lua
+-- default = "Fallback"
+-- ```
+---@field showWord "Enable" | "Fallback" | "Disable"
+-- Display parameters in completion list. When the function has multiple definitions, they will be displayed separately.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field showParams boolean
+
+---@class Settings.sumneko_lua.Type
+-- Allowed to assign the `number` type to the `integer` type.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field castNumberToInteger boolean
+-- When checking the type of union type, ignore the `nil` in it.
+-- 
+-- When this setting is `false`, the `number|nil` type cannot be assigned to the `number` type. It can be with `true`.
+-- 
+---@field weakNilCheck boolean
+-- Once one subtype of a union type meets the condition, the union type also meets the condition.
+-- 
+-- When this setting is `false`, the `number|boolean` type cannot be assigned to the `number` type. It can be with `true`.
+-- 
+---@field weakUnionCheck boolean
+
+-- %config.typeFormat.config%
+---@class Settings.sumneko_lua.Config
+-- %config.typeFormat.config.auto_complete_end%
+-- 
+-- ```lua
+-- default = "true"
+-- ```
+---@field auto_complete_end string
+-- %config.typeFormat.config.format_line%
+-- 
+-- ```lua
+-- default = "true"
+-- ```
+---@field format_line string
+-- %config.typeFormat.config.auto_complete_table_sep%
+-- 
+-- ```lua
+-- default = "true"
+-- ```
+---@field auto_complete_table_sep string
+
+---@class Settings.sumneko_lua.TypeFormat
+-- %config.typeFormat.config%
+---@field config Settings.sumneko_lua.Config
+
+---@class Settings.sumneko_lua.Window
+-- Show progress bar in status bar.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field progressBar boolean
+-- Show extension status in status bar.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field statusBar boolean
+
+---@class Settings.sumneko_lua.Lua
+---@field diagnostics Settings.sumneko_lua.Diagnostics
+---@field spell Settings.sumneko_lua.Spell
+---@field format Settings.sumneko_lua.Format
+---@field workspace Settings.sumneko_lua.Workspace
+---@field runtime Settings.sumneko_lua.Runtime
+---@field signatureHelp Settings.sumneko_lua.SignatureHelp
+---@field misc Settings.sumneko_lua.Misc
+---@field hint Settings.sumneko_lua.Hint
+---@field telemetry Settings.sumneko_lua.Telemetry
+---@field hover Settings.sumneko_lua.Hover
+---@field semantic Settings.sumneko_lua.Semantic
+---@field completion Settings.sumneko_lua.Completion
+---@field type Settings.sumneko_lua.Type
+---@field typeFormat Settings.sumneko_lua.TypeFormat
+---@field window Settings.sumneko_lua.Window
+
+---@class Settings.sumneko_lua
+---@field Lua Settings.sumneko_lua.Lua
+
+---@class Settings.fsautocomplete.References
+-- If enabled, code lenses for reference counts for methods and functions will be shown.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enabled boolean
+
+---@class Settings.fsautocomplete.Signature
+-- If enabled, code lenses for type signatures on methods and functions will be shown.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enabled boolean
+
+---@class Settings.fsautocomplete.CodeLenses
+---@field references Settings.fsautocomplete.References
+---@field signature Settings.fsautocomplete.Signature
+
+---@class Settings.fsautocomplete.PipelineHints
+-- The prefix displayed before the signature
+-- 
+-- ```lua
+-- default = "  // "
+-- ```
+---@field prefix string
+-- Enables PipeLine hints, which are like LineLenses that appear along each step of a chain of piped expressions
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enabled boolean
+
+---@class Settings.fsautocomplete.LineLens
+-- Usage mode for LineLens. If `never`, LineLens will never be shown.  If `replaceCodeLens`, LineLens will be placed in a decoration on top of the current line.
+-- 
+-- ```lua
+-- default = "replaceCodeLens"
+-- ```
+---@field enabled "never" | "replaceCodeLens" | "always"
+-- The prefix displayed before the signature in a LineLens
+-- 
+-- ```lua
+-- default = "  // "
+-- ```
+---@field prefix string
+
+---@class Settings.fsautocomplete.Fsac
+-- The path to the 'fsautocomplete.dll', useful for debugging a self-built fsac.
+-- 
+-- ```lua
+-- default = ""
+-- ```
+---@field netCoreDllPath string
+-- Appends the '--attachdebugger' argument to fsac, this will allow you to attach a debugger.
+---@field attachDebugger boolean
+-- additional CLI arguments to be provided to the dotnet runner for FSAC
+-- 
+-- ```lua
+-- default = {}
+-- ```
+---@field dotnetArgs string[]
+-- An array of log categories for FSAC to filter out. These can be found by viewing your log output and noting the text in between the brackets in the log line. For example, in the log line `[16:07:14.626 INF] [Compiler] done compiling foo.fsx`, the category is 'Compiler'. 
+-- 
+-- ```lua
+-- default = {}
+-- ```
+---@field silencedLogs string[]
+
+---@class Settings.fsautocomplete.InlayHints
+-- Controls if the inlay hints feature is enabled
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enabled boolean
+-- Hides the explanatory tooltip that appears on InlayHints to describe the different configuration toggles.
+---@field disableLongTooltip boolean
+-- Controls if type-annotation inlay hints will be displayed for bindings.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field typeAnnotations boolean
+-- Controls if parameter-name inlay hints will be displayed for functions and methods
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field parameterNames boolean
+
+---@class Settings.fsautocomplete.Trace
+-- Trace server messages at the LSP protocol level for diagnostics.
+-- 
+-- ```lua
+-- default = "off"
+-- ```
+---@field server "off" | "messages" | "verbose"
+
+---@class Settings.fsautocomplete.FSharp
+---@field codeLenses Settings.fsautocomplete.CodeLenses
+-- The path to the F# Interactive tool used by Ionide-FSharp (.NET Framework only, on .NET Core `FSharp.fsiSdkFilePath` is used)
+-- 
+-- ```lua
+-- default = ""
+-- ```
+---@field fsiFilePath string
+-- Allow Ionide to prompt whenever internal data files aren't included in your project's .gitignore
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field suggestGitignore boolean
+-- Controls whether the info panel should be displayed at startup
+---@field infoPanelShowOnStartup boolean
+-- Enables TouchBar integration of build/run/debug buttons
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enableTouchBar boolean
+-- Automatically shows solution explorer on plugin startup
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field showExplorerOnStartup boolean
+-- Enables background services responsible for creating symbol cache and typechecking files in the background. Requires restart.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enableBackgroundServices boolean
+-- Enables a codefix that generates missing union cases when in a match expression
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field unionCaseStubGeneration boolean
+-- Enables a codefix that generates missing interface members when inside of an interface implementation expression
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field interfaceStubGeneration boolean
+-- Enables additional code lenses showing number of references of a function or value. Requires background services to be enabled.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enableReferenceCodeLens boolean
+-- Includes external (from unopened modules and namespaces) symbols in autocomplete
+---@field externalAutocomplete boolean
+-- Enables smart indent feature
+---@field smartIndent boolean
+-- Enables the solution explorer view of the current workspace, which shows the workspace as MSBuild sees it
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enableTreeView boolean
+-- Enables generation of `msbuild.binlog` files for project loading. It works only for fresh, non-cached project loading. Run `F#: Clear Project Cache` and reload window to force fresh loading of all projects. These files can be loaded and inspected using the [MSBuild Structured Logger](https://github.com/KirillOsenkov/MSBuildStructuredLog)
+---@field generateBinlog boolean
+-- Enables detection of cases when names of functions and values can be simplified
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field simplifyNameAnalyzer boolean
+-- Enables a codefix that generates missing members for an abstract class when in an type inheriting from that abstract class.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field abstractClassStubGeneration boolean
+-- Enables integration with [FSharpLint](https://fsprojects.github.io/FSharpLint/) for additional (user-defined) warnings
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field linter boolean
+-- EXPERIMENTAL. Enables F# analyzers for custom code diagnostics. Requires restart.
+---@field enableAnalyzers boolean
+-- Enables detection of unused declarations
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field unusedDeclarationsAnalyzer boolean
+---@field pipelineHints Settings.fsautocomplete.PipelineHints
+-- The name of the 'self' identifier in an inherited member. For example, `this` in the expression `this.Member(x: int) = ()`
+-- 
+-- ```lua
+-- default = "this"
+-- ```
+---@field abstractClassStubGenerationObjectIdentifier string
+---@field lineLens Settings.fsautocomplete.LineLens
+-- The number of spaces used for indentation when generating code, e.g. for interface stubs
+-- 
+-- ```lua
+-- default = 4
+-- ```
+---@field indentationSize number
+---@field fsac Settings.fsautocomplete.Fsac
+-- Enables detection of unused opens
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field unusedOpensAnalyzer boolean
+---@field inlayHints Settings.fsautocomplete.InlayHints
+-- Disables popup notifications for failed project loading
+---@field disableFailedProjectNotifications boolean
+-- Controls whether the info panel should be locked at startup
+---@field infoPanelStartLocked boolean
+-- Controls whether the info panel replaces tooltips
+---@field infoPanelReplaceHover boolean
+-- Allow Ionide to prompt to use SdkScripts
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field suggestSdkScripts boolean
+-- An array of additional command line parameters to pass to FSI when it is started. See [the Microsoft documentation](https://docs.microsoft.com/en-us/dotnet/fsharp/language-reference/fsharp-interactive-options) for an exhaustive list.
+-- 
+-- ```lua
+-- default = {}
+-- ```
+---@field fsiExtraParameters array
+-- The expression to fill in the right-hand side of record fields when generating missing fields for a record construction expression
+-- 
+-- ```lua
+-- default = 'failwith "Not Implemented"'
+-- ```
+---@field recordStubGenerationBody string
+-- The expression to fill in the right-hand side of inherited members when generating missing members for an abstract base class
+-- 
+-- ```lua
+-- default = 'failwith "Not Implemented"'
+-- ```
+---@field abstractClassStubGenerationMethodBody string
+-- Path to the directory or solution file that should be loaded as a workspace. If set, no workspace probing or discovery is done by Ionide at all.
+---@field workspacePath string
+-- The deep level of directory hierarchy when searching for sln/projects
+-- 
+-- ```lua
+-- default = 4
+-- ```
+---@field workspaceModePeekDeepLevel integer
+-- The path to the F# Interactive tool used by Ionide-FSharp (When using .NET SDK scripts)
+-- 
+-- ```lua
+-- default = ""
+-- ```
+---@field fsiSdkFilePath string
+-- Includes keywords in autocomplete
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field keywordsAutocomplete boolean
+-- Controls when the info panel is updated
+-- 
+-- ```lua
+-- default = "onCursorMove"
+-- ```
+---@field infoPanelUpdate "onCursorMove" | "onHover" | "both" | "none"
+-- Set the activity (left bar) where the project explorer view will be displayed. If `explorer`, then the project explorer will be a collapsible tab in the main explorer view, a sibling to the file system explorer. If `fsharp`, a new activity with the F# logo will be added and the project explorer will be rendered in this activity.Requires restart.
+-- 
+-- ```lua
+-- default = "fsharp"
+-- ```
+---@field showProjectExplorerIn "explorer" | "fsharp"
+-- Use 'dotnet fsi' instead of 'fsi.exe'/'fsharpi' to start an FSI session
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field useSdkScripts boolean
+-- Controls whether the solution explorer should automatically reveal and select files when opening them. If `sameAsFileExplorer` is set, then the value of the `explorer.autoReveal` setting will be used instead.
+-- 
+-- ```lua
+-- default = "sameAsFileExplorer"
+-- ```
+---@field autoRevealInExplorer "sameAsFileExplorer" | "enabled" | "disabled"
+-- The expression to fill in the right-hand side of interface members when generating missing members for an interface implementation expression
+-- 
+-- ```lua
+-- default = 'failwith "Not Implemented"'
+-- ```
+---@field interfaceStubGenerationMethodBody string
+---@field trace Settings.fsautocomplete.Trace
+-- EXPERIMENTAL. Enables support for loading workspaces with MsBuild's ProjectGraph. This can improve load times. Requires restart.
+---@field enableMSBuildProjectGraph boolean
+-- Directories in the array are used as a source of custom analyzers. Requires restart.
+-- 
+-- ```lua
+-- default = { "packages/Analyzers", "analyzers" }
+-- ```
+---@field analyzersPath array
+-- The expression to fill in the right-hand side of match cases when generating missing cases for a match on a discriminated union
+-- 
+-- ```lua
+-- default = 'failwith "Not Implemented"'
+-- ```
+---@field unionCaseStubGenerationBody string
+-- Directories in the array are excluded from project file search. Requires restart.
+-- 
+-- ```lua
+-- default = { ".git", "paket-files", ".fable", "packages", "node_modules" }
+-- ```
+---@field excludeProjectDirectories array
+-- Sets the root path for finding locating the dotnet CLI binary. Defaults to the `dotnet` binary found on your system PATH.
+---@field dotnetRoot string
+-- Logs additional information to F# output channel. This is equivalent to passing the `--verbose` flag to FSAC. Requires restart.
+---@field verboseLogging boolean
+-- If enabled, the current file will be saved before sending the last selection to FSI for evaluation
+---@field saveOnSendLastSelection boolean
+-- The name of the 'self' identifier in an interface member. For example, `this` in the expression `this.Member(x: int) = ()`
+-- 
+-- ```lua
+-- default = "this"
+-- ```
+---@field interfaceStubGenerationObjectIdentifier string
+-- Enables a codefix that will generate missing record fields when inside a record construction expression
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field recordStubGeneration boolean
+-- Enables a panel for FSI that shows the value of all existing bindings in the FSI session
+---@field addFsiWatcher boolean
+-- Automatically shows the MSBuild output panel when MSBuild functionality is invoked
+---@field msbuildAutoshow boolean
+-- Enables a codefix that will suggest namespaces or module to open when a name is not recognized
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field resolveNamespaces boolean
+
+---@class Settings.fsautocomplete
+---@field FSharp Settings.fsautocomplete.FSharp
+
+---@class Settings.grammarly.Files
+-- Configure [glob patterns](https://code.visualstudio.com/docs/editor/codebasics#_advanced-search-options) for excluding files and folders.
+-- 
+-- ```lua
+-- default = {}
+-- ```
+---@field exclude string[]
+-- Configure [glob patterns](https://code.visualstudio.com/docs/editor/codebasics#_advanced-search-options) for including files and folders.
+-- 
+-- ```lua
+-- default = { "**/readme.md", "**/README.md", "**/*.txt" }
+-- ```
+---@field include string[]
+
+---@class Settings.grammarly.Suggestions
+-- Suggests alternatives to language related to human slavery.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field PossiblyBiasedLanguageHumanRights boolean
+-- Suggests ways to sound more natural and fluent.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field Fluency boolean
+-- Suggests placing punctuation before closing quotation marks.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field PunctuationWithQuotation boolean
+-- Flags use of prepositions such as 'with' and 'in' at the end of sentences.
+---@field PrepositionAtTheEndOfSentence boolean
+-- Suggests alternatives to language that may be considered politically incorrect.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field PossiblyPoliticallyIncorrectLanguage boolean
+-- Suggests alternatives to potentially gender-biased and non-inclusive phrasing.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field PossiblyBiasedLanguageGenderRelated boolean
+-- Suggests splitting long, complicated sentences that could potentially confuse your reader.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field ReadabilityTransforms boolean
+-- Suggests using person-first language to refer respectfully to an individual with a disability.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field PersonFirstLanguage boolean
+-- Flags a series of nouns that modify a final noun.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field NounStrings boolean
+-- Suggests rewriting split infinitives so that an adverb doesn't come between 'to' and the verb.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field SplitInfinitive boolean
+-- Suggests alternatives to potentially biased language related to older adults.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field PossiblyBiasedLanguageAgeRelated boolean
+-- Flags LGBTQIA+-related terms that may be seen as biased, outdated, or disrespectful in some contexts.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field PossiblyBiasedLanguageLgbtqiaRelated boolean
+-- Flags unnecessary use of ellipses (...).
+---@field UnnecessaryEllipses boolean
+-- Suggests alternatives to potentially biased language related to race and ethnicity.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field PossiblyBiasedLanguageRaceEthnicityRelated boolean
+-- Suggests removing extra spaces surrounding a slash.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field SpacesSurroundingSlash boolean
+-- Suggests alternatives to potentially ableist language.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field PossiblyBiasedLanguageDisabilityRelated boolean
+-- Flags use of personal pronouns such as 'I' and 'you' in academic writing.
+---@field InformalPronounsAcademic boolean
+-- Suggests alternatives to terms with origins in the institution of slavery.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field PossiblyBiasedLanguageHumanRightsRelated boolean
+-- Suggests alternatives to potentially biased language related to parenting and family systems.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field PossiblyBiasedLanguageFamilyRelated boolean
+-- Suggests completing all incomplete sentences, including stylistic sentence fragments that may be intentional.
+---@field StylisticFragments boolean
+-- Suggests alternatives to words that occur frequently in the same paragraph.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field Variety boolean
+-- Flags use of conjunctions such as 'but' and 'and' at the beginning of sentences.
+---@field ConjunctionAtStartOfSentence boolean
+-- Suggests adding missing spacing after a numeral when writing times.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field MissingSpaces boolean
+-- Flags long, complicated sentences that could potentially confuse your reader.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field ReadabilityFillerwords boolean
+-- Suggests alternatives to bland and overused words such as 'good' and 'nice'.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field Vocabulary boolean
+-- Flags use of passive voice.
+---@field PassiveVoice boolean
+-- Flags series of sentences that follow the same pattern.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field SentenceVariety boolean
+-- Suggests adding the Oxford comma after the second-to-last item in a list of things.
+---@field OxfordComma boolean
+-- Suggests spelling out numbers zero through ten.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field NumbersZeroThroughTen boolean
+-- Suggests spelling out numbers at the beginning of sentences.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field NumbersBeginningSentences boolean
+
+---@class Settings.grammarly.Config
+-- The style or type of writing to be checked. See [What is domain/document type](https://support.grammarly.com/hc/en-us/articles/115000091472-What-is-domain-document-type-)?
+-- 
+-- ```lua
+-- default = "general"
+-- ```
+---@field documentDomain "academic" | "business" | "general" | "mail" | "casual" | "creative"
+---@field suggestions Settings.grammarly.Suggestions
+-- Specific variety of English being written. See [this article](https://support.grammarly.com/hc/en-us/articles/115000089992-Select-between-British-English-American-English-Canadian-English-and-Australian-English) for differences.
+-- 
+-- ```lua
+-- default = "auto-text"
+-- ```
+---@field documentDialect "american" | "australian" | "british" | "canadian" | "auto-text"
+
+---@class Settings.grammarly.Grammarly
+---@field files Settings.grammarly.Files
+-- A glob pattern, like `*.{md,txt}` for file scheme.
+-- 
+-- ```lua
+-- default = { "**/readme.md", "**/README.md", "**/*.txt" }
+-- ```
+---@field patterns string[]
+-- Filter documents to be checked with Grammarly.
+-- 
+-- ```lua
+-- default = {}
+-- ```
+---@field selectors object[]
+-- Start text checking session in paused state
+---@field startTextCheckInPausedState boolean
+---@field config Settings.grammarly.Config
+
+---@class Settings.grammarly
+---@field grammarly Settings.grammarly.Grammarly
+
+-- Options for generating anonymous functions
+-- 
+-- ```lua
+-- default = {}
+-- ```
+---@class Settings.haxe_language_server.Anonymous
+-- In which case to include return type hints
+-- 
+-- ```lua
+-- default = "never"
+-- ```
+---@field returnTypeHint "always" | "never" | "non-void"
+-- Whether to include type hints for arguments
+---@field argumentTypeHints boolean
+-- Whether to use arrow function syntax (Haxe 4+)
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field useArrowSyntax boolean
+-- Whether to wrap types in `Null<T>` even if it can be omitted (for optional arguments with `?`)
+---@field explicitNull boolean
+
+-- Options for generating field-level functions
+-- 
+-- ```lua
+-- default = {}
+-- ```
+---@class Settings.haxe_language_server.Field
+-- Whether to include the private visibility modifier even if it can be omitted
+---@field explicitPrivate boolean
+-- Whether to include type hints for arguments
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field argumentTypeHints boolean
+-- Whether to place `{` in a new line
+---@field placeOpenBraceOnNewLine boolean
+-- Whether to include the public visibility modifier even if it can be omitted
+---@field explicitPublic boolean
+-- In which case to include return type hints
+-- 
+-- ```lua
+-- default = "non-void"
+-- ```
+---@field returnTypeHint "always" | "never" | "non-void"
+-- Whether to wrap types in `Null<T>` even if it can be omitted (for optional arguments with `?`)
+---@field explicitNull boolean
+
+-- Options for generating functions
+-- 
+-- ```lua
+-- default = {}
+-- ```
+---@class Settings.haxe_language_server.Functions
+-- Options for generating anonymous functions
+-- 
+-- ```lua
+-- default = {}
+-- ```
+---@field anonymous Settings.haxe_language_server.Anonymous
+-- Options for generating field-level functions
+-- 
+-- ```lua
+-- default = {}
+-- ```
+---@field field Settings.haxe_language_server.Field
+
+-- Options for generating imports
+-- 
+-- ```lua
+-- default = {}
+-- ```
+---@class Settings.haxe_language_server.Imports
+-- Whether to insert an import automatically when selecting a not-yet-imported type from completion. If `false`, the fully qualified name is inserted instead.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enableAutoImports boolean
+-- How to deal with module subtypes when generating imports.
+-- 
+-- ```lua
+-- default = "type"
+-- ```
+---@field style "type" | "module"
+
+-- Options for generating switch expressions
+-- 
+-- ```lua
+-- default = {}
+-- ```
+---@class Settings.haxe_language_server.Switch
+-- Whether to wrap the switch subject in parentheses
+---@field parentheses boolean
+
+-- Options for code generation
+-- 
+-- ```lua
+-- default = {}
+-- ```
+---@class Settings.haxe_language_server.CodeGeneration
+-- Options for generating functions
+-- 
+-- ```lua
+-- default = {}
+-- ```
+---@field functions Settings.haxe_language_server.Functions
+-- Options for generating imports
+-- 
+-- ```lua
+-- default = {}
+-- ```
+---@field imports Settings.haxe_language_server.Imports
+-- Options for generating switch expressions
+-- 
+-- ```lua
+-- default = {}
+-- ```
+---@field switch Settings.haxe_language_server.Switch
+
+-- Which debug output to print to the Haxe output channel. With `-v`, all flags default to `true`, and without it to `false`. Setting a flag here overrides the default. Only works with Haxe 4.0.0-preview.4 or newer.
+-- 
+-- ```lua
+-- default = {
+--   completion = false,
+--   reusing = false
+-- }
+-- ```
+---@class Settings.haxe_language_server.Print
+---@field changedDirectories boolean
+---@field signature boolean
+---@field parsed boolean
+---@field arguments boolean
+---@field message boolean
+---@field completion boolean
+---@field stats boolean
+---@field displayPosition boolean
+---@field uncaughtError boolean
+---@field modulePathChanged boolean
+---@field defines boolean
+---@field addedDirectory boolean
+---@field reusing boolean
+---@field newContext boolean
+---@field foundDirectories boolean
+---@field notCached boolean
+---@field skippingDep boolean
+---@field cachedModules boolean
+---@field socketMessage boolean
+---@field unchangedContent boolean
+---@field removedDirectory boolean
+
+-- Haxe completion server configuration
+-- 
+-- ```lua
+-- default = {}
+-- ```
+---@class Settings.haxe_language_server.DisplayServer
+-- Which debug output to print to the Haxe output channel. With `-v`, all flags default to `true`, and without it to `false`. Setting a flag here overrides the default. Only works with Haxe 4.0.0-preview.4 or newer.
+-- 
+-- ```lua
+-- default = {
+--   completion = false,
+--   reusing = false
+-- }
+-- ```
+---@field print Settings.haxe_language_server.Print
+-- If possible, use a socket for communication with Haxe rather than stdio.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field useSocket boolean
+-- Array of arguments passed to the Haxe completion server at start. Can be used for debugging completion server issues, for example by adding the `"-v"` argument.
+-- 
+-- ```lua
+-- default = {}
+-- ```
+---@field arguments string[]
+
+-- Options for postfix completion
+-- 
+-- ```lua
+-- default = {}
+-- ```
+---@class Settings.haxe_language_server.PostfixCompletion
+-- Which kinds of postfix completions to include
+-- 
+-- ```lua
+-- default = "full"
+-- ```
+---@field level "full" | "filtered" | "off"
+
+-- Configures which presentation options to use for generated tasks by default (see `presentation` in `tasks.json`).
+-- 
+-- ```lua
+-- default = {
+--   clear = false,
+--   echo = true,
+--   focus = false,
+--   panel = "shared",
+--   reveal = "always",
+--   showReuseMessage = true
+-- }
+-- ```
+---@class Settings.haxe_language_server.TaskPresentation
+-- Controls if the panel is shared between tasks, dedicated to this task or a new one is created on every run.
+-- 
+-- ```lua
+-- default = "shared"
+-- ```
+---@field panel "shared" | "dedicated" | "new"
+-- Controls whether the panel running the task is revealed or not. Default is `"always"`.
+-- 
+-- ```lua
+-- default = "always"
+-- ```
+---@field reveal "always" | "silent" | "never"
+-- Controls whether the executed command is echoed to the panel. Default is `true`.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field echo boolean
+-- Controls whether the panel takes focus. Default is `false`. If set to `true` the panel is revealed as well.
+---@field focus boolean
+-- Controls whether the terminal is cleared before executing the task.
+---@field clear boolean
+-- Controls whether to show the `Terminal will be reused by tasks, press any key to close it` message.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field showReuseMessage boolean
+
+---@class Settings.haxe_language_server.Haxe
+-- Whether a warning popup should be shown if the completion cache build has failed.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enableCompletionCacheWarning boolean
+-- Path to the Haxe executable or an object containing a Haxe executable configuration
+-- 
+-- ```lua
+-- default = "auto"
+-- ```
+---@field executable 
+-- Use the extension's Haxe server to compile auto-generated tasks. Requires `"haxe.displayPort"` to be set.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enableCompilationServer boolean
+-- Enable code lens to show some statistics
+---@field enableCodeLens boolean
+---@field enableMethodsView boolean
+-- Whether signature help should include documentation or not.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enableSignatureHelpDocumentation boolean
+-- Options for code generation
+-- 
+-- ```lua
+-- default = {}
+-- ```
+---@field codeGeneration Settings.haxe_language_server.CodeGeneration
+-- Upper limit for the number of completion items that can be shown at once.
+-- 
+-- ```lua
+-- default = 1000
+-- ```
+---@field maxCompletionItems integer
+-- A regex that paths of source files have to match to be included in diagnostics. Defaults to `"${workspaceRoot}"` so only files within your workspace are included. You can use `"${haxelibPath}/<library-name>"` to only show results for a specific haxelib. Use `".*?"` to see all results, including haxelibs.
+-- 
+-- ```lua
+-- default = "${workspaceRoot}"
+-- ```
+---@field diagnosticsPathFilter string
+-- Add closing brace at the end of one-line `if/for/while` body expressions
+---@field enableBraceBodyWrapping boolean
+-- ```lua
+-- default = {}
+-- ```
+---@field displayConfigurations array
+-- Enable automatic diagnostics of Haxe files, run automatically on open and save.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enableDiagnostics boolean
+-- Haxe completion server configuration
+-- 
+-- ```lua
+-- default = {}
+-- ```
+---@field displayServer Settings.haxe_language_server.DisplayServer
+-- Enable the "Haxe Server" view container for performance and cache debugging.
+---@field enableServerView boolean
+-- Whether to revert to a Haxe 3 style completion where only toplevel packages and imported types are shown (effectively making it incompatible with auto-imports). *Note:* this setting has no effect with Haxe versions earlier than 4.0.0-rc.4.
+---@field useLegacyCompletion boolean
+-- Array of switchable configurations for the Haxe completion server. Each configuration is an array of command-line arguments, see item documentation for more details.
+-- 
+-- ```lua
+-- default = {}
+-- ```
+---@field configurations array
+-- Align new line brackets with Allman style. Can have typing overhead and is incompatible with the Vim extension.
+---@field enableExtendedIndentation boolean
+-- Speed up completion by building the project once on startup to initialize the cache.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field buildCompletionCache boolean
+-- A list of dot paths (packages, modules, types) to exclude from classpath parsing, completion and workspace symbols. Can be useful to improve performance.
+-- 
+-- ```lua
+-- default = { "zpp_nape" }
+-- ```
+---@field exclude array
+-- Options for postfix completion
+-- 
+-- ```lua
+-- default = {}
+-- ```
+---@field postfixCompletion Settings.haxe_language_server.PostfixCompletion
+-- Configures which presentation options to use for generated tasks by default (see `presentation` in `tasks.json`).
+-- 
+-- ```lua
+-- default = {
+--   clear = false,
+--   echo = true,
+--   focus = false,
+--   panel = "shared",
+--   reveal = "always",
+--   showReuseMessage = true
+-- }
+-- ```
+---@field taskPresentation Settings.haxe_language_server.TaskPresentation
+-- ```lua
+-- default = { "src", "source", "Source", "test", "tests" }
+-- ```
+---@field renameSourceFolders array
+-- Integer value for the port to open on the display server, or `"auto"`. Can be used to `--connect` Haxe build commands.
+-- 
+-- ```lua
+-- default = "auto"
+-- ```
+---@field displayPort 
+
+---@class Settings.haxe_language_server.Haxelib
+-- Path to the Haxelib executable
+-- 
+-- ```lua
+-- default = "auto"
+-- ```
+---@field executable string
+
+---@class Settings.haxe_language_server
+---@field haxe Settings.haxe_language_server.Haxe
+---@field haxelib Settings.haxe_language_server.Haxelib
+
+---@class Settings.wgls_analyzer.Diagnostics
+-- Controls whether to show naga's parsing errors.
+---@field nagaParsingErrors boolean
+-- Controls whether to show naga's validation errors.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field nagaValidationErrors boolean
+-- Controls whether to show type errors.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field typeErrors boolean
+-- Which version of naga to use for its diagnostics
+-- 
+-- ```lua
+-- default = "0.9"
+-- ```
+---@field nagaVersion "0.8" | "0.9" | "main"
+
+---@class Settings.wgls_analyzer.Trace
+-- Log messages between client and server in the WGSL Analyzer output pane.
+---@field server boolean
+-- Log debug info in the WGSL Analyzer output pane.
+---@field extension boolean
+
+---@class Settings.wgls_analyzer.Preprocessor
+-- Shader defines used in `#ifdef` directives in the flavour of [Bevy Engine](https://bevyengine.org)'s [shader preprocessor](https://bevyengine.org/news/bevy-0-6/#shader-imports).
+-- 
+-- ```lua
+-- default = {}
+-- ```
+---@field shaderDefs string[]
+
+---@class Settings.wgls_analyzer.InlayHints
+-- ```lua
+-- default = "compact"
+-- ```
+---@field typeVerbosity "full" | "compact" | "inner"
+-- Whether to show inlay hints for the layout of struct fields
+---@field structLayoutHints boolean
+-- Whether to show inlay hints for the names of function parameters
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field parameterHints boolean
+-- Whether to show inlay hints for types of variable declarations
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field typeHints boolean
+-- Whether to show inlay hints
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enabled boolean
+
+---@class Settings.wgls_analyzer.Server
+-- Path to the wgsl-analyzer executable.
+---@field path string
+
+---@class Settings.wgls_analyzer.Wgsl-analyzer
+---@field diagnostics Settings.wgls_analyzer.Diagnostics
+---@field trace Settings.wgls_analyzer.Trace
+---@field preprocessor Settings.wgls_analyzer.Preprocessor
+---@field inlayHints Settings.wgls_analyzer.InlayHints
+---@field server Settings.wgls_analyzer.Server
+-- `#import` directives in the flavour of [Bevy Engine](https://bevyengine.org)'s [shader preprocessor](https://bevyengine.org/news/bevy-0-6/#shader-imports). To use objects from an import, add `#import <name>` to your WGSL.
+-- 
+-- ```lua
+-- default = {}
+-- ```
+---@field customImports table
+
+---@class Settings.wgls_analyzer
+---@field wgsl-analyzer Settings.wgls_analyzer.Wgsl-analyzer
+
+---@class Settings.astro.Trace
+-- Traces the communication between VS Code and the language server.
+-- 
+-- ```lua
+-- default = "off"
+-- ```
+---@field server "off" | "messages" | "verbose"
+
+---@class Settings.astro.Format
+-- Indent the formatter by one level of indentation
+---@field indentFrontmatter boolean
+-- Add a line return between the frontmatter and the template
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field newLineAfterFrontmatter boolean
+
+---@class Settings.astro.DocumentSymbols
+-- Enable document symbols for CSS
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enabled boolean
+
+---@class Settings.astro.Hover
+-- Enable hover info for HTML
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enabled boolean
+
+---@class Settings.astro.Completions
+-- Enable completions for HTML
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enabled boolean
+-- Enable Emmet completions for HTML
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field emmet boolean
+
+---@class Settings.astro.TagComplete
+-- Enable tag completion for HTML
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enabled boolean
+
+---@class Settings.astro.Html
+-- Enable HTML features
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enabled boolean
+---@field documentSymbols Settings.astro.DocumentSymbols
+---@field hover Settings.astro.Hover
+---@field completions Settings.astro.Completions
+---@field tagComplete Settings.astro.TagComplete
+
+---@class Settings.astro.Language-server
+-- Path to the node executable used to execute the language server. You won't need this in most cases
+---@field runtime string
+-- Path to the language server executable. You won't need this in most cases, set this only when needing a specific version of the language server
+---@field ls-path string
+
+---@class Settings.astro.Diagnostics
+-- Enable diagnostic messages for TypeScript
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enabled boolean
+
+---@class Settings.astro.DocumentSymbols
+-- Enable document symbols for TypeScript
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enabled boolean
+
+---@class Settings.astro.CodeActions
+-- Enable code actions for TypeScript
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enabled boolean
+
+---@class Settings.astro.Completions
+-- Enable completions for TypeScript
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enabled boolean
+
+---@class Settings.astro.Definitions
+-- Enable go to definition for TypeScript
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enabled boolean
+
+---@class Settings.astro.SemanticTokens
+-- Enable semantic tokens (used for semantic highlighting) for TypeScript.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enabled boolean
+
+---@class Settings.astro.Rename
+-- Enable rename functionality for JS/TS variables inside Astro files
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enabled boolean
+
+---@class Settings.astro.SignatureHelp
+-- Enable signature help (parameter hints) for TypeScript
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enabled boolean
+
+---@class Settings.astro.Hover
+-- Enable hover info for TypeScript
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enabled boolean
+
+---@class Settings.astro.Typescript
+---@field diagnostics Settings.astro.Diagnostics
+---@field documentSymbols Settings.astro.DocumentSymbols
+---@field codeActions Settings.astro.CodeActions
+---@field completions Settings.astro.Completions
+-- Enable the usage of non-standard HTML attributes, such as the ones added by AlpineJS or petite-vue
+---@field allowArbitraryAttributes boolean
+-- Enable TypeScript features
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enabled boolean
+---@field definitions Settings.astro.Definitions
+---@field semanticTokens Settings.astro.SemanticTokens
+---@field rename Settings.astro.Rename
+---@field signatureHelp Settings.astro.SignatureHelp
+---@field hover Settings.astro.Hover
+
+---@class Settings.astro.DocumentSymbols
+-- Enable document symbols for CSS
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enabled boolean
+
+---@class Settings.astro.Hover
+-- Enable hover info for CSS
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enabled boolean
+
+---@class Settings.astro.DocumentColors
+-- Enable color picker for CSS
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enabled boolean
+
+---@class Settings.astro.Completions
+-- Enable completions for CSS
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enabled boolean
+-- Enable Emmet completions for CSS
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field emmet boolean
+
+---@class Settings.astro.Css
+-- Enable CSS features
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enabled boolean
+---@field documentSymbols Settings.astro.DocumentSymbols
+---@field hover Settings.astro.Hover
+---@field documentColors Settings.astro.DocumentColors
+---@field completions Settings.astro.Completions
+
+---@class Settings.astro.Astro
+---@field trace Settings.astro.Trace
+---@field format Settings.astro.Format
+---@field html Settings.astro.Html
+---@field language-server Settings.astro.Language-server
+---@field typescript Settings.astro.Typescript
+---@field css Settings.astro.Css
+
+---@class Settings.astro
+---@field astro Settings.astro.Astro
+
+---@class Settings.spectral.Trace
+-- Traces the communication between VS Code and the language server.
+-- 
+-- ```lua
+-- default = "off"
+-- ```
+---@field server "off" | "messages" | "verbose"
+
+---@class Settings.spectral.Spectral
+---@field trace Settings.spectral.Trace
+-- An array of language IDs which should be validated by Spectral. If file globs are also specified, the file must match both in order to be validated.
+-- 
+-- ```lua
+-- default = { "json", "yaml" }
+-- ```
+---@field validateLanguages string[]
+-- Controls whether or not Spectral is enabled.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enable boolean
+-- Run the linter on save (onSave) or as you type (onType).
+-- 
+-- ```lua
+-- default = "onType"
+-- ```
+---@field run "onSave" | "onType"
+-- An array of file globs (e.g., `**/*.yaml`) in minimatch glob format which should be validated by Spectral. If language identifiers are also specified, the file must match both in order to be validated.
+---@field validateFiles string[]
+-- Location of the ruleset file to use when validating. If omitted, the default is a .spectral.yml/.spectral.json in the same folder as the document being validated. Paths are relative to the workspace.
+---@field rulesetFile string
+
+---@class Settings.spectral
+---@field spectral Settings.spectral.Spectral
+
+---@class Settings.julials.Plots
+-- The output directory to save plots to
+---@field path string
+
+---@class Settings.julials.Lint
+-- Check for deterministic lazy boolean operators.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field lazy boolean
+-- Check submodule names do not shadow their parent's name.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field modname boolean
+-- Specifies sub-directories in [a package directory](https://docs.julialang.org/en/v1/manual/code-loading/#Package-directories-1) where only basic linting is. This drastically lowers the chance for false positives.
+-- 
+-- ```lua
+-- default = { "docs", "test" }
+-- ```
+---@field disabledDirs array
+-- Check for type piracy - the overloading of external functions with methods specified for external datatypes. 'External' here refers to imported code.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field pirates boolean
+-- Check variables used in type declarations are datatypes.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field datadecl boolean
+-- Check for constant conditionals in if statements that result in branches never being reached..
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field constif boolean
+-- Check parameters declared in `where` statements or datatype declarations are used.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field typeparam boolean
+-- Highlight unknown symbols. The `symbols` option will not mark unknown fields.
+-- 
+-- ```lua
+-- default = "none"
+-- ```
+---@field missingrefs "none" | "symbols" | "all"
+-- Check for use of `==` rather than `===` when comparing against `nothing`. 
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field nothingcomp boolean
+-- Run the linter on active files.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field run boolean
+-- Check that all declared arguments are used within the function body.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field useoffuncargs boolean
+-- Check iterator syntax of loops. Will identify, for example, attempts to iterate over single values.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field iter boolean
+-- This compares  call signatures against all known methods for the called function. Calls with too many or too few arguments, or unknown keyword parameters are highlighted.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field call boolean
+
+---@class Settings.julials.Workspace
+-- Show top-level modules in the workspace.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field showModules boolean
+
+---@class Settings.julials.PersistentSession
+-- Experimental: Starts the interactive Julia session in a persistent `tmux` session. Note that `tmux` must be available in the shell defined below. If present the string `$[workspace]` will be replaced with the current file's workspace when the REPL is first opened.
+---@field enabled boolean
+-- Name of the `tmux` session.
+-- 
+-- ```lua
+-- default = "julia_vscode"
+-- ```
+---@field tmuxSessionName string
+-- Shell used to start the persistent session.
+-- 
+-- ```lua
+-- default = "/bin/sh"
+-- ```
+---@field shell string
+-- Argument to execute code in the configured shell, e.g. `-c` for sh-likes or `/c` for `cmd`.
+-- 
+-- ```lua
+-- default = "-c"
+-- ```
+---@field shellExecutionArgument string
+-- Warn when stopping a persistent session.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field warnOnKill boolean
+-- Always copy the command for connecting to an external REPL to the clipboard.
+---@field alwaysCopy boolean
+
+---@class Settings.julials.Execution
+-- Show separate inline results for all code blocks in a cell
+---@field inlineResultsForCellEvaluation boolean
+-- Save file before execution
+---@field saveOnEval boolean
+-- Specifies how to show inline execution results
+-- 
+-- ```lua
+-- default = "both"
+-- ```
+---@field resultType "REPL" | "inline" | "inline, errors in REPL" | "both"
+-- Print executed code in REPL and append it to the REPL history.
+---@field codeInREPL boolean
+
+---@class Settings.julials.Trace
+-- Traces the communication between VS Code and the language server.
+-- 
+-- ```lua
+-- default = "off"
+-- ```
+---@field server "off" | "messages" | "verbose"
+
+---@class Settings.julials.Julia
+---@field plots Settings.julials.Plots
+-- Functions or modules that are set to compiled mode when setting the defaults.
+-- 
+-- ```lua
+-- default = { "Base.", "-Base.!", "-Base.all", "-Base.all!", "-Base.any", "-Base.any!", "-Base.cd", "-Base.iterate", "-Base.collect", "-Base.collect_similar", "-Base._collect", "-Base.collect_to!", "-Base.collect_to_with_first!", "-Base.filter", "-Base.filter!", "-Base.foreach", "-Base.findall", "-Base.findfirst", "-Base.findlast", "-Base.findnext", "-Base.findprev", "-Base.Generator", "-Base.map", "-Base.map!", "-Base.maximum!", "-Base.minimum!", "-Base.mktemp", "-Base.mktempdir", "-Base.open", "-Base.prod!", "-Base.redirect_stderr", "-Base.redirect_stdin", "-Base.redirect_stdout", "-Base.reenable_sigint", "-Base.setindex!", "-Base.setprecision", "-Base.setrounding", "-Base.show", "-Base.sprint", "-Base.sum", "-Base.sum!", "-Base.task_local_storage", "-Base.timedwait", "-Base.withenv", "-Base.Broadcast", "Core", "Core.Compiler.", "Core.IR", "Core.Intrinsics", "DelimitedFiles", "Distributed", "LinearAlgebra.", "Serialization", "Statistics", "-Statistics.mean", "SparseArrays", "Mmap" }
+-- ```
+---@field debuggerDefaultCompiled array
+-- Path to a julia environment. VS Code needs to be reloaded for changes to take effect.
+-- 
+-- ```lua
+-- default = nil
+-- ```
+---@field environmentPath string
+-- Command to open files from the REPL (via setting the `JULIA_EDITOR` environment variable).
+-- 
+-- ```lua
+-- default = "code"
+-- ```
+---@field editor string
+-- Load Revise.jl on startup of the REPL.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field useRevise boolean
+-- Number of threads to use for Julia processes. A value of `auto` works on Julia versions that allow for `--threads=auto`.
+-- 
+-- ```lua
+-- default = nil
+-- ```
+---@field NumThreads integer|string
+-- Delete Julia .cov files when running tests with coverage, leaving only a .lcov file behind.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field deleteJuliaCovFiles boolean
+-- Cell delimiter regular expressions for Julia files.
+-- 
+-- ```lua
+-- default = { "^##(?!#)", "^#(\\s?)%%", "^#-" }
+-- ```
+---@field cellDelimiters array
+-- Enable display of runtime diagnostics. These diagnostics are provided by packages that overload a `show` method for the `application/vnd.julia-vscode.diagnostics` MIME type.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field showRuntimeDiagnostics boolean
+-- Whether to automatically show the plot navigator when plotting.
+---@field focusPlotNavigator boolean
+-- Symbol server cache download URL.
+-- 
+-- ```lua
+-- default = "https://www.julia-vscode.org/symbolcache"
+-- ```
+---@field symbolserverUpstream string
+-- Request runtime completions from the integrated REPL.
+---@field runtimeCompletions boolean
+-- Julia package server. Sets the `JULIA_PKG_SERVER` environment variable *before* starting a Julia process. Leave this empty to use the systemwide default. Requires a restart of the Julia process.
+-- 
+-- ```lua
+-- default = ""
+-- ```
+---@field packageServer string
+---@field lint Settings.julials.Lint
+-- Display [progress bars](https://github.com/JunoLab/ProgressLogging.jl) within VS Code.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field useProgressFrontend boolean
+-- Enable crash reports to be sent to the julia VS Code extension developers.
+-- 
+-- ```lua
+-- default = nil
+-- ```
+---@field enableCrashReporter boolean
+---@field workspace Settings.julials.Workspace
+---@field persistentSession Settings.julials.PersistentSession
+-- Additional Julia arguments.
+-- 
+-- ```lua
+-- default = {}
+-- ```
+---@field additionalArgs array
+---@field execution Settings.julials.Execution
+-- Enable usage data and errors to be sent to the julia VS Code extension developers.
+-- 
+-- ```lua
+-- default = nil
+-- ```
+---@field enableTelemetry boolean
+-- Use an existing custom sysimage when starting the REPL
+---@field useCustomSysimage boolean
+-- Points to the julia executable.
+-- 
+-- ```lua
+-- default = ""
+-- ```
+---@field executablePath string
+-- Sets the mode for completions.
+-- 
+-- ```lua
+-- default = "qualify"
+-- ```
+---@field completionmode "exportedonly" | "import" | "qualify"
+---@field trace Settings.julials.Trace
+-- Display plots within VS Code. Might require a restart of the Julia process.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field usePlotPane boolean
+-- Download symbol server cache files from GitHub.
+-- 
+-- ```lua
+-- default = nil
+-- ```
+---@field symbolCacheDownload boolean
+-- A workspace relative path to a Julia file that contains the tests that should be run for live testing.
+-- 
+-- ```lua
+-- default = "test/runtests.jl"
+-- ```
+---@field liveTestFile string
+
+---@class Settings.julials
+---@field julia Settings.julials.Julia
+
+---@class Settings.kotlin_language_server.ExternalSources
+-- Specifies whether decompiled/external classes should be auto-converted to Kotlin.
+---@field autoConvertToKotlin boolean
+-- [Recommended] Specifies whether URIs inside JARs should be represented using the 'kls'-scheme.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field useKlsScheme boolean
+
+---@class Settings.kotlin_language_server.Trace
+-- Traces the communication between VSCode and the Kotlin language server.
+-- 
+-- ```lua
+-- default = "off"
+-- ```
+---@field server "off" | "messages" | "verbose"
+
+---@class Settings.kotlin_language_server.Linting
+-- [DEBUG] Specifies the debounce time limit. Lower to increase responsiveness at the cost of possible stability issues.
+-- 
+-- ```lua
+-- default = 250
+-- ```
+---@field debounceTime integer
+
+---@class Settings.kotlin_language_server.DebugAdapter
+-- [Recommended] Specifies whether the debug adapter should be used. When enabled a debugger for Kotlin will be available.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enabled boolean
+-- Optionally a custom path to the debug adapter executable.
+-- 
+-- ```lua
+-- default = ""
+-- ```
+---@field path string
+
+---@class Settings.kotlin_language_server.Jvm
+-- Specifies the JVM target, e.g. "1.6" or "1.8"
+-- 
+-- ```lua
+-- default = "default"
+-- ```
+---@field target string
+
+---@class Settings.kotlin_language_server.Compiler
+---@field jvm Settings.kotlin_language_server.Jvm
+
+---@class Settings.kotlin_language_server.Snippets
+-- Specifies whether code completion should provide snippets (true) or plain-text items (false).
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enabled boolean
+
+---@class Settings.kotlin_language_server.Completion
+---@field snippets Settings.kotlin_language_server.Snippets
+
+---@class Settings.kotlin_language_server.DebugAttach
+-- [DEBUG] Whether the language server should listen for debuggers, i.e. be debuggable while running in VSCode. This is ONLY useful if you need to debug the language server ITSELF.
+---@field enabled boolean
+-- [DEBUG] If enabled (together with debugAttach.enabled), the language server will not immediately launch but instead listen on the specified attach port and wait for a debugger. This is ONLY useful if you need to debug the language server ITSELF.
+---@field autoSuspend boolean
+-- [DEBUG] If transport is stdio this enables you to attach to the running language server with a debugger. This is ONLY useful if you need to debug the language server ITSELF.
+-- 
+-- ```lua
+-- default = 5005
+-- ```
+---@field port integer
+
+---@class Settings.kotlin_language_server.LanguageServer
+-- [Recommended] Specifies whether the language server should be used. When enabled the extension will provide code completions and linting, otherwise just syntax highlighting. Might require a reload to apply.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enabled boolean
+-- Optionally a custom path to the language server executable.
+-- 
+-- ```lua
+-- default = ""
+-- ```
+---@field path string
+-- The transport layer beneath the language server protocol. Note that the extension will launch the server even if a TCP socket is used.
+-- 
+-- ```lua
+-- default = "stdio"
+-- ```
+---@field transport "stdio" | "tcp"
+---@field debugAttach Settings.kotlin_language_server.DebugAttach
+-- The port to which the client will attempt to connect to. A random port is used if zero. Only used if the transport layer is TCP.
+-- 
+-- ```lua
+-- default = 0
+-- ```
+---@field port integer
+
+---@class Settings.kotlin_language_server.Indexing
+-- Whether global symbols in the project should be indexed automatically in the background. This enables e.g. code completion for unimported classes and functions.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enabled boolean
+
+---@class Settings.kotlin_language_server.Java
+-- A custom JAVA_HOME for the language server and debug adapter to use.
+-- 
+-- ```lua
+-- default = ""
+-- ```
+---@field home string
+
+---@class Settings.kotlin_language_server.Kotlin
+---@field externalSources Settings.kotlin_language_server.ExternalSources
+---@field trace Settings.kotlin_language_server.Trace
+---@field linting Settings.kotlin_language_server.Linting
+-- [DEPRECATED] Specifies the debounce time limit. Lower to increase responsiveness at the cost of possible stability issues.
+-- 
+-- ```lua
+-- default = 250
+-- ```
+---@field debounceTime integer
+---@field debugAdapter Settings.kotlin_language_server.DebugAdapter
+-- [DEPRECATED] Specifies whether code completion should provide snippets (true) or plain-text items (false).
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field snippetsEnabled boolean
+---@field compiler Settings.kotlin_language_server.Compiler
+---@field completion Settings.kotlin_language_server.Completion
+---@field languageServer Settings.kotlin_language_server.LanguageServer
+---@field indexing Settings.kotlin_language_server.Indexing
+---@field java Settings.kotlin_language_server.Java
+
+---@class Settings.kotlin_language_server
+---@field kotlin Settings.kotlin_language_server.Kotlin
+
+---@class Settings.zls.Trace
+-- Traces the communication between VS Code and the language server.
+-- 
+-- ```lua
+-- default = "off"
+-- ```
+---@field server "off" | "messages" | "verbose"
+
+---@class Settings.zls.Zls
+-- Semantic token support
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enable_semantic_tokens boolean
+-- enable inlay hints for builtin functions
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field inlay_hints_show_builtin boolean
+-- Whether to enable snippet completions
+---@field enable_snippets boolean
+-- Path to `zls` executable. Example: `C:/zls/zig-cache/bin/zls.exe`.
+---@field path string
+-- Inlay hint support
+---@field enable_inlay_hints boolean
+-- Whether to enable import/embedFile argument completions (NOTE: these are triggered manually as updating the autotrigger characters may cause issues)
+---@field enable_import_embedfile_argument_completions boolean
+-- Path to the global cache directory
+-- 
+-- ```lua
+-- default = nil
+-- ```
+---@field global_cache_path string
+-- Whether to enable ast-check diagnostics
+---@field enable_ast_check_diagnostics boolean
+-- Whether to pay attention to style issues. This is opt-in since the style guide explicitly states that the style info provided is a guideline only.
+---@field warn_style boolean
+-- The detail field of completions is truncated to be no longer than this (in bytes).
+-- 
+-- ```lua
+-- default = 1048576
+-- ```
+---@field max_detail_length integer
+-- Skips references to std. This will improve lookup speeds. Going to definition however will continue to work
+---@field skip_std_references boolean
+-- Whether to enable `*` and `?` operators in completion lists
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field operator_completions boolean
+-- Zig executable path used to run the custom build runner. May be used to find a lib path if none is provided.
+-- 
+-- ```lua
+-- default = nil
+-- ```
+---@field zig_exe_path string
+-- Whether the @ sign should be part of the completion of builtins
+---@field include_at_in_builtins boolean
+-- Whether to automatically check for new updates
+-- 
+-- ```lua
+-- default = "true"
+-- ```
+---@field check_for_update boolean
+-- don't show inlay hints for single argument calls
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field inlay_hints_exclude_single_argument boolean
+-- Zig library path
+-- 
+-- ```lua
+-- default = nil
+-- ```
+---@field zig_lib_path string
+-- Path to the build_runner.zig file.
+-- 
+-- ```lua
+-- default = nil
+-- ```
+---@field build_runner_path string
+---@field trace Settings.zls.Trace
+-- Path to "builtin;" useful for debugging, automatically set if let null
+-- 
+-- ```lua
+-- default = nil
+-- ```
+---@field builtin_path string
+-- Enable debug logging in release builds of zls.
+---@field debugLog boolean
+
+---@class Settings.zls
+---@field zls Settings.zls.Zls
+
+-- %ltex.i18n.configuration.ltex.enabledRules.markdownDescription%
+-- 
+-- ```lua
+-- default = {}
+-- ```
+---@class Settings.ltex.EnabledRules
+-- %ltex.i18n.configuration.ltex.enabledRules.ca-ES.markdownDescription%
+---@field ca-ES string[]
+-- %ltex.i18n.configuration.ltex.enabledRules.tl-PH.markdownDescription%
+---@field tl-PH string[]
+-- %ltex.i18n.configuration.ltex.enabledRules.en.markdownDescription%
+---@field en string[]
+-- %ltex.i18n.configuration.ltex.enabledRules.en-ZA.markdownDescription%
+---@field en-ZA string[]
+-- %ltex.i18n.configuration.ltex.enabledRules.pt-MZ.markdownDescription%
+---@field pt-MZ string[]
+-- %ltex.i18n.configuration.ltex.enabledRules.it.markdownDescription%
+---@field it string[]
+-- %ltex.i18n.configuration.ltex.enabledRules.ca-ES-valencia.markdownDescription%
+---@field ca-ES-valencia string[]
+-- %ltex.i18n.configuration.ltex.enabledRules.zh-CN.markdownDescription%
+---@field zh-CN string[]
+-- %ltex.i18n.configuration.ltex.enabledRules.en-US.markdownDescription%
+---@field en-US string[]
+-- %ltex.i18n.configuration.ltex.enabledRules.km-KH.markdownDescription%
+---@field km-KH string[]
+-- %ltex.i18n.configuration.ltex.enabledRules.ro-RO.markdownDescription%
+---@field ro-RO string[]
+-- %ltex.i18n.configuration.ltex.enabledRules.pt-PT.markdownDescription%
+---@field pt-PT string[]
+-- %ltex.i18n.configuration.ltex.enabledRules.ta-IN.markdownDescription%
+---@field ta-IN string[]
+-- %ltex.i18n.configuration.ltex.enabledRules.en-AU.markdownDescription%
+---@field en-AU string[]
+-- %ltex.i18n.configuration.ltex.enabledRules.fa.markdownDescription%
+---@field fa string[]
+-- %ltex.i18n.configuration.ltex.enabledRules.ga-IE.markdownDescription%
+---@field ga-IE string[]
+-- %ltex.i18n.configuration.ltex.enabledRules.sl-SI.markdownDescription%
+---@field sl-SI string[]
+-- %ltex.i18n.configuration.ltex.enabledRules.de.markdownDescription%
+---@field de string[]
+-- %ltex.i18n.configuration.ltex.enabledRules.pt-AO.markdownDescription%
+---@field pt-AO string[]
+-- %ltex.i18n.configuration.ltex.enabledRules.uk-UA.markdownDescription%
+---@field uk-UA string[]
+-- %ltex.i18n.configuration.ltex.enabledRules.es-AR.markdownDescription%
+---@field es-AR string[]
+-- %ltex.i18n.configuration.ltex.enabledRules.be-BY.markdownDescription%
+---@field be-BY string[]
+-- %ltex.i18n.configuration.ltex.enabledRules.de-CH.markdownDescription%
+---@field de-CH string[]
+-- %ltex.i18n.configuration.ltex.enabledRules.de-DE-x-simple-language.markdownDescription%
+---@field de-DE-x-simple-language string[]
+-- %ltex.i18n.configuration.ltex.enabledRules.pt.markdownDescription%
+---@field pt string[]
+-- %ltex.i18n.configuration.ltex.enabledRules.ast-ES.markdownDescription%
+---@field ast-ES string[]
+-- %ltex.i18n.configuration.ltex.enabledRules.en-GB.markdownDescription%
+---@field en-GB string[]
+-- %ltex.i18n.configuration.ltex.enabledRules.pl-PL.markdownDescription%
+---@field pl-PL string[]
+-- %ltex.i18n.configuration.ltex.enabledRules.ja-JP.markdownDescription%
+---@field ja-JP string[]
+-- %ltex.i18n.configuration.ltex.enabledRules.sk-SK.markdownDescription%
+---@field sk-SK string[]
+-- %ltex.i18n.configuration.ltex.enabledRules.ru-RU.markdownDescription%
+---@field ru-RU string[]
+-- %ltex.i18n.configuration.ltex.enabledRules.pt-BR.markdownDescription%
+---@field pt-BR string[]
+-- %ltex.i18n.configuration.ltex.enabledRules.sv.markdownDescription%
+---@field sv string[]
+-- %ltex.i18n.configuration.ltex.enabledRules.de-AT.markdownDescription%
+---@field de-AT string[]
+-- %ltex.i18n.configuration.ltex.enabledRules.da-DK.markdownDescription%
+---@field da-DK string[]
+-- %ltex.i18n.configuration.ltex.enabledRules.nl-BE.markdownDescription%
+---@field nl-BE string[]
+-- %ltex.i18n.configuration.ltex.enabledRules.gl-ES.markdownDescription%
+---@field gl-ES string[]
+-- %ltex.i18n.configuration.ltex.enabledRules.br-FR.markdownDescription%
+---@field br-FR string[]
+-- %ltex.i18n.configuration.ltex.enabledRules.nl.markdownDescription%
+---@field nl string[]
+-- %ltex.i18n.configuration.ltex.enabledRules.en-NZ.markdownDescription%
+---@field en-NZ string[]
+-- %ltex.i18n.configuration.ltex.enabledRules.eo.markdownDescription%
+---@field eo string[]
+-- %ltex.i18n.configuration.ltex.enabledRules.el-GR.markdownDescription%
+---@field el-GR string[]
+-- %ltex.i18n.configuration.ltex.enabledRules.ar.markdownDescription%
+---@field ar string[]
+-- %ltex.i18n.configuration.ltex.enabledRules.es.markdownDescription%
+---@field es string[]
+-- %ltex.i18n.configuration.ltex.enabledRules.fr.markdownDescription%
+---@field fr string[]
+-- %ltex.i18n.configuration.ltex.enabledRules.en-CA.markdownDescription%
+---@field en-CA string[]
+-- %ltex.i18n.configuration.ltex.enabledRules.de-DE.markdownDescription%
+---@field de-DE string[]
+
+---@class Settings.ltex.Bibtex
+-- %ltex.i18n.configuration.ltex.bibtex.fields.markdownDescription%
+-- 
+-- ```lua
+-- default = {}
+-- ```
+---@field fields table
+
+---@class Settings.ltex.Ltex-ls
+-- ```lua
+-- default = ""
+-- ```
+---@field languageToolOrgApiKey string
+-- %ltex.i18n.configuration.ltex.ltex-ls.logLevel.markdownDescription%
+-- 
+-- ```lua
+-- default = "fine"
+-- ```
+---@field logLevel "severe" | "warning" | "info" | "config" | "fine" | "finer" | "finest"
+-- %ltex.i18n.configuration.ltex.ltex-ls.path.markdownDescription%
+-- 
+-- ```lua
+-- default = ""
+-- ```
+---@field path string
+-- ```lua
+-- default = ""
+-- ```
+---@field languageToolOrgUsername string
+-- ```lua
+-- default = ""
+-- ```
+---@field languageToolHttpServerUri string
+
+-- %ltex.i18n.configuration.ltex.configurationTarget.markdownDescription%
+-- 
+-- ```lua
+-- default = {
+--   dictionary = "workspaceFolderExternalFile",
+--   disabledRules = "workspaceFolderExternalFile",
+--   hiddenFalsePositives = "workspaceFolderExternalFile"
+-- }
+-- ```
+---@class Settings.ltex.ConfigurationTarget
+---@field dictionary "user" | "workspace" | "workspaceFolder" | "userExternalFile" | "workspaceExternalFile" | "workspaceFolderExternalFile"
+---@field hiddenFalsePositives "user" | "workspace" | "workspaceFolder" | "userExternalFile" | "workspaceExternalFile" | "workspaceFolderExternalFile"
+---@field disabledRules "user" | "workspace" | "workspaceFolder" | "userExternalFile" | "workspaceExternalFile" | "workspaceFolderExternalFile"
+
+-- %ltex.i18n.configuration.ltex.hiddenFalsePositives.markdownDescription%
+-- 
+-- ```lua
+-- default = {}
+-- ```
+---@class Settings.ltex.HiddenFalsePositives
+-- %ltex.i18n.configuration.ltex.hiddenFalsePositives.ca-ES.markdownDescription%
+---@field ca-ES string[]
+-- %ltex.i18n.configuration.ltex.hiddenFalsePositives.tl-PH.markdownDescription%
+---@field tl-PH string[]
+-- %ltex.i18n.configuration.ltex.hiddenFalsePositives.en.markdownDescription%
+---@field en string[]
+-- %ltex.i18n.configuration.ltex.hiddenFalsePositives.en-ZA.markdownDescription%
+---@field en-ZA string[]
+-- %ltex.i18n.configuration.ltex.hiddenFalsePositives.pt-MZ.markdownDescription%
+---@field pt-MZ string[]
+-- %ltex.i18n.configuration.ltex.hiddenFalsePositives.it.markdownDescription%
+---@field it string[]
+-- %ltex.i18n.configuration.ltex.hiddenFalsePositives.ca-ES-valencia.markdownDescription%
+---@field ca-ES-valencia string[]
+-- %ltex.i18n.configuration.ltex.hiddenFalsePositives.zh-CN.markdownDescription%
+---@field zh-CN string[]
+-- %ltex.i18n.configuration.ltex.hiddenFalsePositives.en-US.markdownDescription%
+---@field en-US string[]
+-- %ltex.i18n.configuration.ltex.hiddenFalsePositives.km-KH.markdownDescription%
+---@field km-KH string[]
+-- %ltex.i18n.configuration.ltex.hiddenFalsePositives.ro-RO.markdownDescription%
+---@field ro-RO string[]
+-- %ltex.i18n.configuration.ltex.hiddenFalsePositives.pt-PT.markdownDescription%
+---@field pt-PT string[]
+-- %ltex.i18n.configuration.ltex.hiddenFalsePositives.ta-IN.markdownDescription%
+---@field ta-IN string[]
+-- %ltex.i18n.configuration.ltex.hiddenFalsePositives.en-AU.markdownDescription%
+---@field en-AU string[]
+-- %ltex.i18n.configuration.ltex.hiddenFalsePositives.fa.markdownDescription%
+---@field fa string[]
+-- %ltex.i18n.configuration.ltex.hiddenFalsePositives.ga-IE.markdownDescription%
+---@field ga-IE string[]
+-- %ltex.i18n.configuration.ltex.hiddenFalsePositives.sl-SI.markdownDescription%
+---@field sl-SI string[]
+-- %ltex.i18n.configuration.ltex.hiddenFalsePositives.de.markdownDescription%
+---@field de string[]
+-- %ltex.i18n.configuration.ltex.hiddenFalsePositives.pt-AO.markdownDescription%
+---@field pt-AO string[]
+-- %ltex.i18n.configuration.ltex.hiddenFalsePositives.uk-UA.markdownDescription%
+---@field uk-UA string[]
+-- %ltex.i18n.configuration.ltex.hiddenFalsePositives.es-AR.markdownDescription%
+---@field es-AR string[]
+-- %ltex.i18n.configuration.ltex.hiddenFalsePositives.be-BY.markdownDescription%
+---@field be-BY string[]
+-- %ltex.i18n.configuration.ltex.hiddenFalsePositives.de-CH.markdownDescription%
+---@field de-CH string[]
+-- %ltex.i18n.configuration.ltex.hiddenFalsePositives.de-DE-x-simple-language.markdownDescription%
+---@field de-DE-x-simple-language string[]
+-- %ltex.i18n.configuration.ltex.hiddenFalsePositives.pt.markdownDescription%
+---@field pt string[]
+-- %ltex.i18n.configuration.ltex.hiddenFalsePositives.ast-ES.markdownDescription%
+---@field ast-ES string[]
+-- %ltex.i18n.configuration.ltex.hiddenFalsePositives.en-GB.markdownDescription%
+---@field en-GB string[]
+-- %ltex.i18n.configuration.ltex.hiddenFalsePositives.pl-PL.markdownDescription%
+---@field pl-PL string[]
+-- %ltex.i18n.configuration.ltex.hiddenFalsePositives.ja-JP.markdownDescription%
+---@field ja-JP string[]
+-- %ltex.i18n.configuration.ltex.hiddenFalsePositives.sk-SK.markdownDescription%
+---@field sk-SK string[]
+-- %ltex.i18n.configuration.ltex.hiddenFalsePositives.ru-RU.markdownDescription%
+---@field ru-RU string[]
+-- %ltex.i18n.configuration.ltex.hiddenFalsePositives.pt-BR.markdownDescription%
+---@field pt-BR string[]
+-- %ltex.i18n.configuration.ltex.hiddenFalsePositives.sv.markdownDescription%
+---@field sv string[]
+-- %ltex.i18n.configuration.ltex.hiddenFalsePositives.de-AT.markdownDescription%
+---@field de-AT string[]
+-- %ltex.i18n.configuration.ltex.hiddenFalsePositives.da-DK.markdownDescription%
+---@field da-DK string[]
+-- %ltex.i18n.configuration.ltex.hiddenFalsePositives.nl-BE.markdownDescription%
+---@field nl-BE string[]
+-- %ltex.i18n.configuration.ltex.hiddenFalsePositives.gl-ES.markdownDescription%
+---@field gl-ES string[]
+-- %ltex.i18n.configuration.ltex.hiddenFalsePositives.br-FR.markdownDescription%
+---@field br-FR string[]
+-- %ltex.i18n.configuration.ltex.hiddenFalsePositives.nl.markdownDescription%
+---@field nl string[]
+-- %ltex.i18n.configuration.ltex.hiddenFalsePositives.en-NZ.markdownDescription%
+---@field en-NZ string[]
+-- %ltex.i18n.configuration.ltex.hiddenFalsePositives.eo.markdownDescription%
+---@field eo string[]
+-- %ltex.i18n.configuration.ltex.hiddenFalsePositives.el-GR.markdownDescription%
+---@field el-GR string[]
+-- %ltex.i18n.configuration.ltex.hiddenFalsePositives.ar.markdownDescription%
+---@field ar string[]
+-- %ltex.i18n.configuration.ltex.hiddenFalsePositives.es.markdownDescription%
+---@field es string[]
+-- %ltex.i18n.configuration.ltex.hiddenFalsePositives.fr.markdownDescription%
+---@field fr string[]
+-- %ltex.i18n.configuration.ltex.hiddenFalsePositives.en-CA.markdownDescription%
+---@field en-CA string[]
+-- %ltex.i18n.configuration.ltex.hiddenFalsePositives.de-DE.markdownDescription%
+---@field de-DE string[]
+
+---@class Settings.ltex.Trace
+-- %ltex.i18n.configuration.ltex.trace.server.markdownDescription%
+-- 
+-- ```lua
+-- default = "off"
+-- ```
+---@field server "off" | "messages" | "verbose"
+
+-- %ltex.i18n.configuration.ltex.dictionary.markdownDescription%
+-- 
+-- ```lua
+-- default = {}
+-- ```
+---@class Settings.ltex.Dictionary
+-- %ltex.i18n.configuration.ltex.dictionary.ca-ES.markdownDescription%
+---@field ca-ES string[]
+-- %ltex.i18n.configuration.ltex.dictionary.tl-PH.markdownDescription%
+---@field tl-PH string[]
+-- %ltex.i18n.configuration.ltex.dictionary.en.markdownDescription%
+---@field en string[]
+-- %ltex.i18n.configuration.ltex.dictionary.en-ZA.markdownDescription%
+---@field en-ZA string[]
+-- %ltex.i18n.configuration.ltex.dictionary.pt-MZ.markdownDescription%
+---@field pt-MZ string[]
+-- %ltex.i18n.configuration.ltex.dictionary.it.markdownDescription%
+---@field it string[]
+-- %ltex.i18n.configuration.ltex.dictionary.ca-ES-valencia.markdownDescription%
+---@field ca-ES-valencia string[]
+-- %ltex.i18n.configuration.ltex.dictionary.zh-CN.markdownDescription%
+---@field zh-CN string[]
+-- %ltex.i18n.configuration.ltex.dictionary.en-US.markdownDescription%
+---@field en-US string[]
+-- %ltex.i18n.configuration.ltex.dictionary.km-KH.markdownDescription%
+---@field km-KH string[]
+-- %ltex.i18n.configuration.ltex.dictionary.ro-RO.markdownDescription%
+---@field ro-RO string[]
+-- %ltex.i18n.configuration.ltex.dictionary.pt-PT.markdownDescription%
+---@field pt-PT string[]
+-- %ltex.i18n.configuration.ltex.dictionary.ta-IN.markdownDescription%
+---@field ta-IN string[]
+-- %ltex.i18n.configuration.ltex.dictionary.en-AU.markdownDescription%
+---@field en-AU string[]
+-- %ltex.i18n.configuration.ltex.dictionary.fa.markdownDescription%
+---@field fa string[]
+-- %ltex.i18n.configuration.ltex.dictionary.ga-IE.markdownDescription%
+---@field ga-IE string[]
+-- %ltex.i18n.configuration.ltex.dictionary.sl-SI.markdownDescription%
+---@field sl-SI string[]
+-- %ltex.i18n.configuration.ltex.dictionary.de.markdownDescription%
+---@field de string[]
+-- %ltex.i18n.configuration.ltex.dictionary.pt-AO.markdownDescription%
+---@field pt-AO string[]
+-- %ltex.i18n.configuration.ltex.dictionary.uk-UA.markdownDescription%
+---@field uk-UA string[]
+-- %ltex.i18n.configuration.ltex.dictionary.es-AR.markdownDescription%
+---@field es-AR string[]
+-- %ltex.i18n.configuration.ltex.dictionary.be-BY.markdownDescription%
+---@field be-BY string[]
+-- %ltex.i18n.configuration.ltex.dictionary.de-CH.markdownDescription%
+---@field de-CH string[]
+-- %ltex.i18n.configuration.ltex.dictionary.de-DE-x-simple-language.markdownDescription%
+---@field de-DE-x-simple-language string[]
+-- %ltex.i18n.configuration.ltex.dictionary.pt.markdownDescription%
+---@field pt string[]
+-- %ltex.i18n.configuration.ltex.dictionary.ast-ES.markdownDescription%
+---@field ast-ES string[]
+-- %ltex.i18n.configuration.ltex.dictionary.en-GB.markdownDescription%
+---@field en-GB string[]
+-- %ltex.i18n.configuration.ltex.dictionary.pl-PL.markdownDescription%
+---@field pl-PL string[]
+-- %ltex.i18n.configuration.ltex.dictionary.ja-JP.markdownDescription%
+---@field ja-JP string[]
+-- %ltex.i18n.configuration.ltex.dictionary.sk-SK.markdownDescription%
+---@field sk-SK string[]
+-- %ltex.i18n.configuration.ltex.dictionary.ru-RU.markdownDescription%
+---@field ru-RU string[]
+-- %ltex.i18n.configuration.ltex.dictionary.pt-BR.markdownDescription%
+---@field pt-BR string[]
+-- %ltex.i18n.configuration.ltex.dictionary.sv.markdownDescription%
+---@field sv string[]
+-- %ltex.i18n.configuration.ltex.dictionary.de-AT.markdownDescription%
+---@field de-AT string[]
+-- %ltex.i18n.configuration.ltex.dictionary.da-DK.markdownDescription%
+---@field da-DK string[]
+-- %ltex.i18n.configuration.ltex.dictionary.nl-BE.markdownDescription%
+---@field nl-BE string[]
+-- %ltex.i18n.configuration.ltex.dictionary.gl-ES.markdownDescription%
+---@field gl-ES string[]
+-- %ltex.i18n.configuration.ltex.dictionary.br-FR.markdownDescription%
+---@field br-FR string[]
+-- %ltex.i18n.configuration.ltex.dictionary.nl.markdownDescription%
+---@field nl string[]
+-- %ltex.i18n.configuration.ltex.dictionary.en-NZ.markdownDescription%
+---@field en-NZ string[]
+-- %ltex.i18n.configuration.ltex.dictionary.eo.markdownDescription%
+---@field eo string[]
+-- %ltex.i18n.configuration.ltex.dictionary.el-GR.markdownDescription%
+---@field el-GR string[]
+-- %ltex.i18n.configuration.ltex.dictionary.ar.markdownDescription%
+---@field ar string[]
+-- %ltex.i18n.configuration.ltex.dictionary.es.markdownDescription%
+---@field es string[]
+-- %ltex.i18n.configuration.ltex.dictionary.fr.markdownDescription%
+---@field fr string[]
+-- %ltex.i18n.configuration.ltex.dictionary.en-CA.markdownDescription%
+---@field en-CA string[]
+-- %ltex.i18n.configuration.ltex.dictionary.de-DE.markdownDescription%
+---@field de-DE string[]
+
+---@class Settings.ltex.AdditionalRules
+-- %ltex.i18n.configuration.ltex.additionalRules.word2VecModel.markdownDescription%
+-- 
+-- ```lua
+-- default = ""
+-- ```
+---@field word2VecModel string
+-- %ltex.i18n.configuration.ltex.additionalRules.neuralNetworkModel.markdownDescription%
+-- 
+-- ```lua
+-- default = ""
+-- ```
+---@field neuralNetworkModel string
+-- %ltex.i18n.configuration.ltex.additionalRules.enablePickyRules.markdownDescription%
+---@field enablePickyRules boolean
+-- %ltex.i18n.configuration.ltex.additionalRules.languageModel.markdownDescription%
+-- 
+-- ```lua
+-- default = ""
+-- ```
+---@field languageModel string
+-- %ltex.i18n.configuration.ltex.additionalRules.motherTongue.markdownDescription%
+-- 
+-- ```lua
+-- default = ""
+-- ```
+---@field motherTongue "" | "ar" | "ast-ES" | "be-BY" | "br-FR" | "ca-ES" | "ca-ES-valencia" | "da-DK" | "de" | "de-AT" | "de-CH" | "de-DE" | "de-DE-x-simple-language" | "el-GR" | "en" | "en-AU" | "en-CA" | "en-GB" | "en-NZ" | "en-US" | "en-ZA" | "eo" | "es" | "es-AR" | "fa" | "fr" | "ga-IE" | "gl-ES" | "it" | "ja-JP" | "km-KH" | "nl" | "nl-BE" | "pl-PL" | "pt" | "pt-AO" | "pt-BR" | "pt-MZ" | "pt-PT" | "ro-RO" | "ru-RU" | "sk-SK" | "sl-SI" | "sv" | "ta-IN" | "tl-PH" | "uk-UA" | "zh-CN"
+
+---@class Settings.ltex.Latex
+-- %ltex.i18n.configuration.ltex.latex.commands.markdownDescription%
+-- 
+-- ```lua
+-- default = {}
+-- ```
+---@field commands table
+-- %ltex.i18n.configuration.ltex.latex.environments.markdownDescription%
+-- 
+-- ```lua
+-- default = {}
+-- ```
+---@field environments table
+
+---@class Settings.ltex.Java
+-- %ltex.i18n.configuration.ltex.java.initialHeapSize.markdownDescription%
+-- 
+-- ```lua
+-- default = 64
+-- ```
+---@field initialHeapSize integer
+-- %ltex.i18n.configuration.ltex.java.path.markdownDescription%
+-- 
+-- ```lua
+-- default = ""
+-- ```
+---@field path string
+-- %ltex.i18n.configuration.ltex.java.maximumHeapSize.markdownDescription%
+-- 
+-- ```lua
+-- default = 512
+-- ```
+---@field maximumHeapSize integer
+
+---@class Settings.ltex.LanguageToolOrg
+-- %ltex.i18n.configuration.ltex.languageToolOrg.username.markdownDescription%
+-- 
+-- ```lua
+-- default = ""
+-- ```
+---@field username string
+-- %ltex.i18n.configuration.ltex.languageToolOrg.apiKey.markdownDescription%
+-- 
+-- ```lua
+-- default = ""
+-- ```
+---@field apiKey string
+
+---@class Settings.ltex.Markdown
+-- %ltex.i18n.configuration.ltex.markdown.nodes.markdownDescription%
+-- 
+-- ```lua
+-- default = {}
+-- ```
+---@field nodes table
+
+-- %ltex.i18n.configuration.ltex.disabledRules.markdownDescription%
+-- 
+-- ```lua
+-- default = {}
+-- ```
+---@class Settings.ltex.DisabledRules
+-- %ltex.i18n.configuration.ltex.disabledRules.ca-ES.markdownDescription%
+---@field ca-ES string[]
+-- %ltex.i18n.configuration.ltex.disabledRules.tl-PH.markdownDescription%
+---@field tl-PH string[]
+-- %ltex.i18n.configuration.ltex.disabledRules.en.markdownDescription%
+---@field en string[]
+-- %ltex.i18n.configuration.ltex.disabledRules.en-ZA.markdownDescription%
+---@field en-ZA string[]
+-- %ltex.i18n.configuration.ltex.disabledRules.pt-MZ.markdownDescription%
+---@field pt-MZ string[]
+-- %ltex.i18n.configuration.ltex.disabledRules.it.markdownDescription%
+---@field it string[]
+-- %ltex.i18n.configuration.ltex.disabledRules.ca-ES-valencia.markdownDescription%
+---@field ca-ES-valencia string[]
+-- %ltex.i18n.configuration.ltex.disabledRules.zh-CN.markdownDescription%
+---@field zh-CN string[]
+-- %ltex.i18n.configuration.ltex.disabledRules.en-US.markdownDescription%
+---@field en-US string[]
+-- %ltex.i18n.configuration.ltex.disabledRules.km-KH.markdownDescription%
+---@field km-KH string[]
+-- %ltex.i18n.configuration.ltex.disabledRules.ro-RO.markdownDescription%
+---@field ro-RO string[]
+-- %ltex.i18n.configuration.ltex.disabledRules.pt-PT.markdownDescription%
+---@field pt-PT string[]
+-- %ltex.i18n.configuration.ltex.disabledRules.ta-IN.markdownDescription%
+---@field ta-IN string[]
+-- %ltex.i18n.configuration.ltex.disabledRules.en-AU.markdownDescription%
+---@field en-AU string[]
+-- %ltex.i18n.configuration.ltex.disabledRules.fa.markdownDescription%
+---@field fa string[]
+-- %ltex.i18n.configuration.ltex.disabledRules.ga-IE.markdownDescription%
+---@field ga-IE string[]
+-- %ltex.i18n.configuration.ltex.disabledRules.sl-SI.markdownDescription%
+---@field sl-SI string[]
+-- %ltex.i18n.configuration.ltex.disabledRules.de.markdownDescription%
+---@field de string[]
+-- %ltex.i18n.configuration.ltex.disabledRules.pt-AO.markdownDescription%
+---@field pt-AO string[]
+-- %ltex.i18n.configuration.ltex.disabledRules.uk-UA.markdownDescription%
+---@field uk-UA string[]
+-- %ltex.i18n.configuration.ltex.disabledRules.es-AR.markdownDescription%
+---@field es-AR string[]
+-- %ltex.i18n.configuration.ltex.disabledRules.be-BY.markdownDescription%
+---@field be-BY string[]
+-- %ltex.i18n.configuration.ltex.disabledRules.de-CH.markdownDescription%
+---@field de-CH string[]
+-- %ltex.i18n.configuration.ltex.disabledRules.de-DE-x-simple-language.markdownDescription%
+---@field de-DE-x-simple-language string[]
+-- %ltex.i18n.configuration.ltex.disabledRules.pt.markdownDescription%
+---@field pt string[]
+-- %ltex.i18n.configuration.ltex.disabledRules.ast-ES.markdownDescription%
+---@field ast-ES string[]
+-- %ltex.i18n.configuration.ltex.disabledRules.en-GB.markdownDescription%
+---@field en-GB string[]
+-- %ltex.i18n.configuration.ltex.disabledRules.pl-PL.markdownDescription%
+---@field pl-PL string[]
+-- %ltex.i18n.configuration.ltex.disabledRules.ja-JP.markdownDescription%
+---@field ja-JP string[]
+-- %ltex.i18n.configuration.ltex.disabledRules.sk-SK.markdownDescription%
+---@field sk-SK string[]
+-- %ltex.i18n.configuration.ltex.disabledRules.ru-RU.markdownDescription%
+---@field ru-RU string[]
+-- %ltex.i18n.configuration.ltex.disabledRules.pt-BR.markdownDescription%
+---@field pt-BR string[]
+-- %ltex.i18n.configuration.ltex.disabledRules.sv.markdownDescription%
+---@field sv string[]
+-- %ltex.i18n.configuration.ltex.disabledRules.de-AT.markdownDescription%
+---@field de-AT string[]
+-- %ltex.i18n.configuration.ltex.disabledRules.da-DK.markdownDescription%
+---@field da-DK string[]
+-- %ltex.i18n.configuration.ltex.disabledRules.nl-BE.markdownDescription%
+---@field nl-BE string[]
+-- %ltex.i18n.configuration.ltex.disabledRules.gl-ES.markdownDescription%
+---@field gl-ES string[]
+-- %ltex.i18n.configuration.ltex.disabledRules.br-FR.markdownDescription%
+---@field br-FR string[]
+-- %ltex.i18n.configuration.ltex.disabledRules.nl.markdownDescription%
+---@field nl string[]
+-- %ltex.i18n.configuration.ltex.disabledRules.en-NZ.markdownDescription%
+---@field en-NZ string[]
+-- %ltex.i18n.configuration.ltex.disabledRules.eo.markdownDescription%
+---@field eo string[]
+-- %ltex.i18n.configuration.ltex.disabledRules.el-GR.markdownDescription%
+---@field el-GR string[]
+-- %ltex.i18n.configuration.ltex.disabledRules.ar.markdownDescription%
+---@field ar string[]
+-- %ltex.i18n.configuration.ltex.disabledRules.es.markdownDescription%
+---@field es string[]
+-- %ltex.i18n.configuration.ltex.disabledRules.fr.markdownDescription%
+---@field fr string[]
+-- %ltex.i18n.configuration.ltex.disabledRules.en-CA.markdownDescription%
+---@field en-CA string[]
+-- %ltex.i18n.configuration.ltex.disabledRules.de-DE.markdownDescription%
+---@field de-DE string[]
+
+---@class Settings.ltex.Ltex
+-- %ltex.i18n.configuration.ltex.language.markdownDescription%
+-- 
+-- ```lua
+-- default = "en-US"
+-- ```
+---@field language "auto" | "ar" | "ast-ES" | "be-BY" | "br-FR" | "ca-ES" | "ca-ES-valencia" | "da-DK" | "de" | "de-AT" | "de-CH" | "de-DE" | "de-DE-x-simple-language" | "el-GR" | "en" | "en-AU" | "en-CA" | "en-GB" | "en-NZ" | "en-US" | "en-ZA" | "eo" | "es" | "es-AR" | "fa" | "fr" | "ga-IE" | "gl-ES" | "it" | "ja-JP" | "km-KH" | "nl" | "nl-BE" | "pl-PL" | "pt" | "pt-AO" | "pt-BR" | "pt-MZ" | "pt-PT" | "ro-RO" | "ru-RU" | "sk-SK" | "sl-SI" | "sv" | "ta-IN" | "tl-PH" | "uk-UA" | "zh-CN"
+-- %ltex.i18n.configuration.ltex.enabledRules.markdownDescription%
+-- 
+-- ```lua
+-- default = {}
+-- ```
+---@field enabledRules Settings.ltex.EnabledRules
+-- %ltex.i18n.configuration.ltex.diagnosticSeverity.markdownDescription%
+-- 
+-- ```lua
+-- default = "information"
+-- ```
+---@field diagnosticSeverity 
+-- %ltex.i18n.configuration.ltex.completionEnabled.markdownDescription%
+---@field completionEnabled boolean
+-- %ltex.i18n.configuration.ltex.languageToolHttpServerUri.markdownDescription%
+-- 
+-- ```lua
+-- default = ""
+-- ```
+---@field languageToolHttpServerUri string
+---@field bibtex Settings.ltex.Bibtex
+---@field ltex-ls Settings.ltex.Ltex-ls
+-- %ltex.i18n.configuration.ltex.configurationTarget.markdownDescription%
+-- 
+-- ```lua
+-- default = {
+--   dictionary = "workspaceFolderExternalFile",
+--   disabledRules = "workspaceFolderExternalFile",
+--   hiddenFalsePositives = "workspaceFolderExternalFile"
+-- }
+-- ```
+---@field configurationTarget Settings.ltex.ConfigurationTarget
+-- %ltex.i18n.configuration.ltex.checkFrequency.markdownDescription%
+-- 
+-- ```lua
+-- default = "edit"
+-- ```
+---@field checkFrequency "edit" | "save" | "manual"
+-- %ltex.i18n.configuration.ltex.hiddenFalsePositives.markdownDescription%
+-- 
+-- ```lua
+-- default = {}
+-- ```
+---@field hiddenFalsePositives Settings.ltex.HiddenFalsePositives
+---@field trace Settings.ltex.Trace
+-- %ltex.i18n.configuration.ltex.sentenceCacheSize.markdownDescription%
+-- 
+-- ```lua
+-- default = 2000
+-- ```
+---@field sentenceCacheSize integer
+-- %ltex.i18n.configuration.ltex.dictionary.markdownDescription%
+-- 
+-- ```lua
+-- default = {}
+-- ```
+---@field dictionary Settings.ltex.Dictionary
+---@field additionalRules Settings.ltex.AdditionalRules
+-- %ltex.i18n.configuration.ltex.enabled.markdownDescription%
+-- 
+-- ```lua
+-- default = { "bibtex", "context", "context.tex", "html", "latex", "markdown", "org", "restructuredtext", "rsweave" }
+-- ```
+---@field enabled 
+---@field latex Settings.ltex.Latex
+---@field java Settings.ltex.Java
+---@field languageToolOrg Settings.ltex.LanguageToolOrg
+-- %ltex.i18n.configuration.ltex.clearDiagnosticsWhenClosingFile.markdownDescription%
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field clearDiagnosticsWhenClosingFile boolean
+---@field markdown Settings.ltex.Markdown
+-- %ltex.i18n.configuration.ltex.statusBarItem.markdownDescription%
+---@field statusBarItem boolean
+-- %ltex.i18n.configuration.ltex.disabledRules.markdownDescription%
+-- 
+-- ```lua
+-- default = {}
+-- ```
+---@field disabledRules Settings.ltex.DisabledRules
+
+---@class Settings.ltex
+---@field ltex Settings.ltex.Ltex
+
+---@class Settings.svelte.Trace
+-- Traces the communication between VS Code and the Svelte Language Server.
+-- 
+-- ```lua
+-- default = "off"
+-- ```
+---@field server "off" | "messages" | "verbose"
+
+---@class Settings.svelte.Language-server
+-- - You normally don't set this - Path to the language server executable. If you installed the "svelte-language-server" npm package, it's within there at "bin/server.js". Path can be either relative to your workspace root or absolute. Set this only if you want to use a custom version of the language server. This will then also use the workspace version of TypeScript. This setting can only be changed in user settings for security reasons.
+---@field ls-path string
+-- - You normally don't need this - Path to the node executable to use to spawn the language server. This is useful when you depend on native modules such as node-sass as without this they will run in the context of vscode, meaning node version mismatch is likely. Minimum required node version is 12.17. This setting can only be changed in user settings for security reasons.
+---@field runtime string
+-- - You normally don't set this - Enable more verbose logging for the language server useful for debugging language server execution.
+---@field debug boolean
+-- - You normally don't set this - At which port to spawn the language server. Can be used for attaching to the process for debugging / profiling. If you experience crashes due to "port already in use", try setting the port. -1 = default port is used.
+-- 
+-- ```lua
+-- default = -1
+-- ```
+---@field port number
+
+---@class Settings.svelte.Diagnostics
+-- Enable diagnostic messages for TypeScript
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enable boolean
+
+---@class Settings.svelte.DocumentSymbols
+-- Enable document symbols for TypeScript
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enable boolean
+
+---@class Settings.svelte.CodeActions
+-- Enable code actions for TypeScript
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enable boolean
+
+---@class Settings.svelte.Completions
+-- Enable completions for TypeScript
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enable boolean
+
+---@class Settings.svelte.SignatureHelp
+-- Enable signature help (parameter hints) for TypeScript
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enable boolean
+
+---@class Settings.svelte.SemanticTokens
+-- Enable semantic tokens (semantic highlight) for TypeScript.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enable boolean
+
+---@class Settings.svelte.Hover
+-- Enable hover info for TypeScript
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enable boolean
+
+---@class Settings.svelte.SelectionRange
+-- Enable selection range for TypeScript
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enable boolean
+
+---@class Settings.svelte.Typescript
+---@field diagnostics Settings.svelte.Diagnostics
+---@field documentSymbols Settings.svelte.DocumentSymbols
+---@field codeActions Settings.svelte.CodeActions
+---@field completions Settings.svelte.Completions
+-- Enable the TypeScript plugin
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enable boolean
+---@field signatureHelp Settings.svelte.SignatureHelp
+---@field semanticTokens Settings.svelte.SemanticTokens
+---@field hover Settings.svelte.Hover
+---@field selectionRange Settings.svelte.SelectionRange
+
+---@class Settings.svelte.Diagnostics
+-- Enable diagnostic messages for Svelte
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enable boolean
+
+---@class Settings.svelte.CodeActions
+-- Enable Code Actions for Svelte
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enable boolean
+
+---@class Settings.svelte.Completions
+-- Enable auto completions for Svelte
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enable boolean
+
+---@class Settings.svelte.Config
+-- Whether or not to indent code inside `<script>` and `<style>` tags. This option is ignored if there's any kind of configuration file, for example a `.prettierrc` file.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field svelteIndentScriptAndStyle boolean
+-- Format: join the keys `options`, `scripts`, `markup`, `styles` with a - in the order you want. This option is ignored if there's any kind of configuration file, for example a `.prettierrc` file.
+-- 
+-- ```lua
+-- default = "options-scripts-markup-styles"
+-- ```
+---@field svelteSortOrder string
+-- More strict HTML syntax. This option is ignored if there's any kind of configuration file, for example a `.prettierrc` file.
+---@field svelteStrictMode boolean
+-- Put the `>` of a multiline element on a new line. This option is ignored if there's any kind of configuration file, for example a `.prettierrc` file.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field svelteBracketNewLine boolean
+-- Maximum line width after which code is tried to be broken up. This is a Prettier core option. If you have the Prettier extension installed, this option is ignored and the corresponding option of that extension is used instead. This option is also ignored if there's any kind of configuration file, for example a `.prettierrc` file.
+-- 
+-- ```lua
+-- default = 80
+-- ```
+---@field printWidth number
+-- Use single quotes instead of double quotes, where possible. This is a Prettier core option. If you have the Prettier extension installed, this option is ignored and the corresponding option of that extension is used instead. This option is also ignored if there's any kind of configuration file, for example a `.prettierrc` file.
+---@field singleQuote boolean
+-- Option to enable/disable component attribute shorthand if attribute name and expression are the same. This option is ignored if there's any kind of configuration file, for example a `.prettierrc` file.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field svelteAllowShorthand boolean
+
+---@class Settings.svelte.Format
+---@field config Settings.svelte.Config
+-- Enable formatting for Svelte (includes css & js). You can set some formatting options through this extension. They will be ignored if there's any kind of configuration file, for example a `.prettierrc` file.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enable boolean
+
+---@class Settings.svelte.Hover
+-- Enable hover information for Svelte
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enable boolean
+
+---@class Settings.svelte.Rename
+-- Enable rename/move Svelte files functionality
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enable boolean
+
+---@class Settings.svelte.SelectionRange
+-- Enable selection range for Svelte
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enable boolean
+
+---@class Settings.svelte.Svelte
+---@field diagnostics Settings.svelte.Diagnostics
+-- The default language to use when generating new script tags
+-- 
+-- ```lua
+-- default = "none"
+-- ```
+---@field defaultScriptLanguage "none" | "ts"
+---@field codeActions Settings.svelte.CodeActions
+---@field completions Settings.svelte.Completions
+-- Enable the Svelte plugin
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enable boolean
+-- Svelte compiler warning codes to ignore or to treat as errors. Example: { 'css-unused-selector': 'ignore', 'unused-export-let': 'error'}
+-- 
+-- ```lua
+-- default = {}
+-- ```
+---@field compilerWarnings table
+---@field format Settings.svelte.Format
+---@field hover Settings.svelte.Hover
+---@field rename Settings.svelte.Rename
+-- Svelte files need to be transformed to something that TypeScript understands for intellisense. Version 2.0 of this transformation can be enabled with this setting. It will be the default, soon.
+---@field useNewTransformation boolean
+---@field selectionRange Settings.svelte.SelectionRange
+
+---@class Settings.svelte.TagComplete
+-- Enable HTML tag auto closing
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enable boolean
+
+---@class Settings.svelte.DocumentSymbols
+-- Enable document symbols for HTML
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enable boolean
+
+---@class Settings.svelte.Completions
+-- Enable emmet auto completions for HTML
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field emmet boolean
+-- Enable auto completions for HTML
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enable boolean
+
+---@class Settings.svelte.LinkedEditing
+-- Enable Linked Editing for HTML
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enable boolean
+
+---@class Settings.svelte.Hover
+-- Enable hover info for HTML
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enable boolean
+
+---@class Settings.svelte.Html
+---@field tagComplete Settings.svelte.TagComplete
+---@field documentSymbols Settings.svelte.DocumentSymbols
+---@field completions Settings.svelte.Completions
+-- Enable the HTML plugin
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enable boolean
+---@field linkedEditing Settings.svelte.LinkedEditing
+---@field hover Settings.svelte.Hover
+
+---@class Settings.svelte.Diagnostics
+-- Enable diagnostic messages for CSS
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enable boolean
+
+---@class Settings.svelte.DocumentSymbols
+-- Enable document symbols for CSS
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enable boolean
+
+---@class Settings.svelte.Hover
+-- Enable hover info for CSS
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enable boolean
+
+---@class Settings.svelte.ColorPresentations
+-- Enable color picker for CSS
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enable boolean
+
+---@class Settings.svelte.DocumentColors
+-- Enable document colors for CSS
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enable boolean
+
+---@class Settings.svelte.Completions
+-- Enable emmet auto completions for CSS
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field emmet boolean
+-- Enable auto completions for CSS
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enable boolean
+
+---@class Settings.svelte.SelectionRange
+-- Enable selection range for CSS
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enable boolean
+
+---@class Settings.svelte.Css
+---@field diagnostics Settings.svelte.Diagnostics
+---@field documentSymbols Settings.svelte.DocumentSymbols
+---@field hover Settings.svelte.Hover
+-- Enable the CSS plugin
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enable boolean
+---@field colorPresentations Settings.svelte.ColorPresentations
+-- Which css files should be checked for global variables (`--global-var: value;`). These variables are added to the css completions. String of comma-separated file paths or globs relative to workspace root.
+-- 
+-- ```lua
+-- default = ""
+-- ```
+---@field globals string
+---@field documentColors Settings.svelte.DocumentColors
+---@field completions Settings.svelte.Completions
+---@field selectionRange Settings.svelte.SelectionRange
+
+---@class Settings.svelte.Plugin
+---@field typescript Settings.svelte.Typescript
+---@field svelte Settings.svelte.Svelte
+---@field html Settings.svelte.Html
+---@field css Settings.svelte.Css
+
+---@class Settings.svelte.Svelte
+-- Ask on startup to enable the TypeScript plugin.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field ask-to-enable-ts-plugin boolean
+---@field trace Settings.svelte.Trace
+---@field language-server Settings.svelte.Language-server
+---@field plugin Settings.svelte.Plugin
+-- Enables a TypeScript plugin which provides intellisense for Svelte files inside TS/JS files.
+---@field enable-ts-plugin boolean
+
+---@class Settings.svelte
+---@field svelte Settings.svelte.Svelte
+
+---@class Settings.zeta_note.Trace
+-- Level of verbosity in communicating with the server
+-- 
+-- ```lua
+-- default = "verbose"
+-- ```
+---@field server "off" | "messages" | "verbose"
+
+---@class Settings.zeta_note.Marksman
+-- When set use this command to run the language server.
+-- The command is split on spaces: first part is the command name, the rest is the arguments.
+---@field customCommand string
+---@field trace Settings.zeta_note.Trace
+-- When set run the `#marksman.customCommand#` from this dir rather than workspace root.
+---@field customCommandDir string
+
+---@class Settings.zeta_note
+---@field marksman Settings.zeta_note.Marksman
+
+---@class Settings.nickel_ls.Server
+-- Logs the communication between VS Code and the language server.
+---@field debugLog boolean
+-- Enables performance tracing to the given file
+---@field trace string
+-- Path to nickel language server
+-- 
+-- ```lua
+-- default = "nls"
+-- ```
+---@field path string
+
+---@class Settings.nickel_ls.Nls
+---@field server Settings.nickel_ls.Server
+
+---@class Settings.nickel_ls
+---@field nls Settings.nickel_ls.Nls
+
+---@class Settings.flow.Trace
+-- Traces the communication between VSCode and the flow lsp service.
+-- 
+-- ```lua
+-- default = "off"
+-- ```
+---@field server 
+
+---@class Settings.flow.Flow
+-- If true will use flow bundled with this plugin if nothing works
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field useBundledFlow boolean
+-- Log level for output panel logs
+-- 
+-- ```lua
+-- default = "info"
+-- ```
+---@field logLevel "error" | "warn" | "info" | "trace"
+---@field trace Settings.flow.Trace
+-- Stop Flow on Exit
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field stopFlowOnExit boolean
+-- Type coverage diagnostic severity
+-- 
+-- ```lua
+-- default = "info"
+-- ```
+---@field coverageSeverity "error" | "warn" | "info"
+-- If true will show uncovered code by default
+---@field showUncovered boolean
+-- Absolute path to flow binary. Special var ${workspaceFolder} or ${flowconfigDir} can be used in path (NOTE: in windows you can use '/' and can omit '.cmd' in path)
+-- 
+-- ```lua
+-- default = "flow"
+-- ```
+---@field pathToFlow string
+-- Support using flow through your node_modules folder, WARNING: Checking this box is a security risk. When you open a project we will immediately run code contained within it.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field useNPMPackagedFlow boolean
+-- Is flow enabled
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enabled boolean
+-- Set value to enable flow lazy mode
+-- 
+-- ```lua
+-- default = nil
+-- ```
+---@field lazyMode string
+-- Complete functions with their parameter signature.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field useCodeSnippetOnFunctionSuggest boolean
+
+---@class Settings.flow
+---@field flow Settings.flow.Flow
+
+---@class Settings.tailwindcss.Lint
+-- Class variants not in the recommended order (applies in [JIT mode](https://tailwindcss.com/docs/just-in-time-mode) only)
+-- 
+-- ```lua
+-- default = "warning"
+-- ```
+---@field recommendedVariantOrder "ignore" | "warning" | "error"
+-- Class names on the same HTML element which apply the same CSS property or properties
+-- 
+-- ```lua
+-- default = "warning"
+-- ```
+---@field cssConflict "ignore" | "warning" | "error"
+-- Unknown screen name used with the [`@screen` directive](https://tailwindcss.com/docs/functions-and-directives/#screen)
+-- 
+-- ```lua
+-- default = "error"
+-- ```
+---@field invalidScreen "ignore" | "warning" | "error"
+-- Unknown variant name used with the [`@variants` directive](https://tailwindcss.com/docs/functions-and-directives/#variants)
+-- 
+-- ```lua
+-- default = "error"
+-- ```
+---@field invalidVariant "ignore" | "warning" | "error"
+-- Unknown value used with the [`@tailwind` directive](https://tailwindcss.com/docs/functions-and-directives/#tailwind)
+-- 
+-- ```lua
+-- default = "error"
+-- ```
+---@field invalidTailwindDirective "ignore" | "warning" | "error"
+-- Unknown or invalid path used with the [`theme` helper](https://tailwindcss.com/docs/functions-and-directives/#theme)
+-- 
+-- ```lua
+-- default = "error"
+-- ```
+---@field invalidConfigPath "ignore" | "warning" | "error"
+-- Unsupported use of the [`@apply` directive](https://tailwindcss.com/docs/functions-and-directives/#apply)
+-- 
+-- ```lua
+-- default = "error"
+-- ```
+---@field invalidApply "ignore" | "warning" | "error"
+
+---@class Settings.tailwindcss.Files
+-- Configure glob patterns to exclude from all IntelliSense features. Inherits all glob patterns from the `#files.exclude#` setting.
+-- 
+-- ```lua
+-- default = { "**/.git/**", "**/node_modules/**", "**/.hg/**" }
+-- ```
+---@field exclude string[]
+
+---@class Settings.tailwindcss.Experimental
+-- Manually specify the Tailwind config file or files that should be read to provide IntelliSense features. Can either be a single string value, or an object where each key is a config file path and each value is a glob or array of globs representing the set of files that the config file applies to.
+-- 
+-- ```lua
+-- default = nil
+-- ```
+---@field configFile string|table
+---@field classRegex array
+
+---@class Settings.tailwindcss.TailwindCSS
+---@field lint Settings.tailwindcss.Lint
+-- Show `px` equivalents for `rem` CSS values.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field showPixelEquivalents boolean
+-- Controls whether the editor should render inline color decorators for Tailwind CSS classes and helper functions.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field colorDecorators boolean
+-- Enable code actions.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field codeActions boolean
+-- Enable the Node.js inspector agent for the language server and listen on the specified port.
+-- 
+-- ```lua
+-- default = nil
+-- ```
+---@field inspectPort number
+-- Enable linting. Rules can be configured individually using the `tailwindcss.lint.*` settings
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field validate boolean
+---@field files Settings.tailwindcss.Files
+-- Enable features in languages that are not supported by default. Add a mapping here between the new language and an already supported language.
+--  E.g.: `{"plaintext": "html"}`
+-- 
+-- ```lua
+-- default = {}
+-- ```
+---@field includeLanguages table
+-- Root font size in pixels. Used to convert `rem` CSS values to their `px` equivalents. See `#tailwindCSS.showPixelEquivalents#`.
+-- 
+-- ```lua
+-- default = 16
+-- ```
+---@field rootFontSize number
+-- The HTML attributes for which to provide class completions, hover previews, linting etc.
+-- 
+-- ```lua
+-- default = { "class", "className", "ngClass" }
+-- ```
+---@field classAttributes string[]
+-- Enable hovers.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field hovers boolean
+---@field experimental Settings.tailwindcss.Experimental
+-- Enable autocomplete suggestions.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field suggestions boolean
+-- Enable class name completions when using Emmet-style syntax, for example `div.bg-red-500.uppercase`
+---@field emmetCompletions boolean
+
+---@class Settings.tailwindcss
+---@field tailwindCSS Settings.tailwindcss.TailwindCSS
+
+---@class Settings.hie.Config
+-- The depth of the search tree when performing "Attempt to fill hole". Bigger values will be able to derive more solutions, but will take exponentially more time.
+-- 
+-- ```lua
+-- default = 4
+-- ```
+---@field auto_gas integer
+-- Maximum number of `Use constructor <x>` code actions that can appear
+-- 
+-- ```lua
+-- default = 5
+-- ```
+---@field max_use_ctor_actions integer
+-- The timeout for Wingman actions, in seconds
+-- 
+-- ```lua
+-- default = 2
+-- ```
+---@field timeout_duration integer
+-- The severity to use when showing hole diagnostics. These are noisy, but some editors don't allow jumping to all severities.
+-- 
+-- ```lua
+-- default = nil
+-- ```
+---@field hole_severity 1 | 2 | 3 | 4 | vim.NIL
+-- Should Wingman emit styling markup when showing metaprogram proof states?
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field proofstate_styling boolean
+
+---@class Settings.hie.Tactics
+-- Enables tactics hover
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field hoverOn boolean
+-- Enables tactics code lenses
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field codeLensOn boolean
+-- Enables tactics code actions
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field codeActionsOn boolean
+---@field config Settings.hie.Config
+
+---@class Settings.hie.Retrie
+-- Enables retrie plugin
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field globalOn boolean
+
+---@class Settings.hie.Ghcide-code-actions-fill-holes
+-- Enables ghcide-code-actions-fill-holes plugin
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field globalOn boolean
+
+---@class Settings.hie.ChangeTypeSignature
+-- Enables changeTypeSignature plugin
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field globalOn boolean
+
+---@class Settings.hie.Ghcide-code-actions-type-signatures
+-- Enables ghcide-code-actions-type-signatures plugin
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field globalOn boolean
+
+---@class Settings.hie.Ghcide-code-actions-bindings
+-- Enables ghcide-code-actions-bindings plugin
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field globalOn boolean
+
+---@class Settings.hie.Class
+-- Enables class plugin
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field globalOn boolean
+
+---@class Settings.hie.Config
+-- Enable the diff output (WAS/NOW) of eval lenses
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field diff boolean
+-- Enable marking exceptions with `*** Exception:` similarly to doctest and GHCi.
+---@field exception boolean
+
+---@class Settings.hie.Eval
+-- Enables eval plugin
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field globalOn boolean
+---@field config Settings.hie.Config
+
+---@class Settings.hie.ImportLens
+-- Enables importLens code actions
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field codeActionsOn boolean
+-- Enables importLens code lenses
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field codeLensOn boolean
+
+---@class Settings.hie.Config
+-- Control how type lenses are shown
+-- 
+-- ```lua
+-- default = "always"
+-- ```
+---@field mode "always" | "exported" | "diagnostics"
+
+---@class Settings.hie.Ghcide-type-lenses
+-- Enables ghcide-type-lenses plugin
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field globalOn boolean
+---@field config Settings.hie.Config
+
+---@class Settings.hie.AlternateNumberFormat
+-- Enables alternateNumberFormat plugin
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field globalOn boolean
+
+---@class Settings.hie.Pragmas
+-- Enables pragmas completions
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field completionOn boolean
+-- Enables pragmas code actions
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field codeActionsOn boolean
+
+---@class Settings.hie.RefineImports
+-- Enables refineImports code actions
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field codeActionsOn boolean
+-- Enables refineImports code lenses
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field codeLensOn boolean
+
+---@class Settings.hie.Ghcide-code-actions-imports-exports
+-- Enables ghcide-code-actions-imports-exports plugin
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field globalOn boolean
+
+---@class Settings.hie.Config
+-- Flags used by hlint
+-- 
+-- ```lua
+-- default = {}
+-- ```
+---@field flags array
+
+---@class Settings.hie.Hlint
+-- Enables hlint diagnostics
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field diagnosticsOn boolean
+-- Enables hlint code actions
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field codeActionsOn boolean
+---@field config Settings.hie.Config
+
+---@class Settings.hie.Config
+-- Inserts snippets when using code completions
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field snippetsOn boolean
+-- Extends the import list automatically when completing a out-of-scope identifier
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field autoExtendOn boolean
+
+---@class Settings.hie.Ghcide-completions
+-- Enables ghcide-completions plugin
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field globalOn boolean
+---@field config Settings.hie.Config
+
+---@class Settings.hie.ModuleName
+-- Enables moduleName plugin
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field globalOn boolean
+
+---@class Settings.hie.Ghcide-hover-and-symbols
+-- Enables ghcide-hover-and-symbols hover
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field hoverOn boolean
+-- Enables ghcide-hover-and-symbols symbols
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field symbolsOn boolean
+
+---@class Settings.hie.CallHierarchy
+-- Enables callHierarchy plugin
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field globalOn boolean
+
+---@class Settings.hie.HaddockComments
+-- Enables haddockComments plugin
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field globalOn boolean
+
+---@class Settings.hie.Splice
+-- Enables splice plugin
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field globalOn boolean
+
+---@class Settings.hie.Config
+-- Enable experimental cross-module renaming
+---@field crossModule boolean
+
+---@class Settings.hie.Rename
+-- Enables rename plugin
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field globalOn boolean
+---@field config Settings.hie.Config
+
+---@class Settings.hie.QualifyImportedNames
+-- Enables qualifyImportedNames plugin
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field globalOn boolean
+
+---@class Settings.hie.Plugin
+---@field tactics Settings.hie.Tactics
+---@field retrie Settings.hie.Retrie
+---@field ghcide-code-actions-fill-holes Settings.hie.Ghcide-code-actions-fill-holes
+---@field changeTypeSignature Settings.hie.ChangeTypeSignature
+---@field ghcide-code-actions-type-signatures Settings.hie.Ghcide-code-actions-type-signatures
+---@field ghcide-code-actions-bindings Settings.hie.Ghcide-code-actions-bindings
+---@field class Settings.hie.Class
+---@field eval Settings.hie.Eval
+---@field importLens Settings.hie.ImportLens
+---@field ghcide-type-lenses Settings.hie.Ghcide-type-lenses
+---@field alternateNumberFormat Settings.hie.AlternateNumberFormat
+---@field pragmas Settings.hie.Pragmas
+---@field refineImports Settings.hie.RefineImports
+---@field ghcide-code-actions-imports-exports Settings.hie.Ghcide-code-actions-imports-exports
+---@field hlint Settings.hie.Hlint
+---@field ghcide-completions Settings.hie.Ghcide-completions
+---@field moduleName Settings.hie.ModuleName
+---@field ghcide-hover-and-symbols Settings.hie.Ghcide-hover-and-symbols
+---@field callHierarchy Settings.hie.CallHierarchy
+---@field haddockComments Settings.hie.HaddockComments
+---@field splice Settings.hie.Splice
+---@field rename Settings.hie.Rename
+---@field qualifyImportedNames Settings.hie.QualifyImportedNames
+
+---@class Settings.hie.Trace
+-- Sets the log level in the client side.
+-- 
+-- ```lua
+-- default = "info"
+-- ```
+---@field client "off" | "error" | "info" | "debug"
+-- Traces the communication between VS Code and the language server.
+-- 
+-- ```lua
+-- default = "off"
+-- ```
+---@field server "off" | "messages" | "verbose"
+
+---@class Settings.hie.Haskell
+-- When manageHLS is set to GHCup, this can overwrite the automatic toolchain configuration with a more specific one. When a tool is omitted, the extension will manage the version (for 'ghc' we try to figure out the version the project requires). The format is '{"tool": "version", ...}'. 'version' accepts all identifiers that 'ghcup' accepts.
+-- 
+-- ```lua
+-- default = {}
+-- ```
+---@field toolchain table
+-- An optional URL to override where ghcup checks for tool download info (usually at: https://raw.githubusercontent.com/haskell/ghcup-metadata/master/ghcup-0.0.7.yaml)
+-- 
+-- ```lua
+-- default = ""
+-- ```
+---@field metadataURL string
+-- Manually set a ghcup executable path.
+-- 
+-- ```lua
+-- default = ""
+-- ```
+---@field ghcupExecutablePath string
+-- Define environment variables for the language server.
+-- 
+-- ```lua
+-- default = {}
+-- ```
+---@field serverEnvironment table
+-- Whether to typecheck the entire project on load. It could drive to bad performance in large projects.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field checkProject boolean
+-- When opening 'Source' for external libraries, open in hackage by default. Set to false to instead open in vscode.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field openSourceInHackage boolean
+-- Manually set a language server executable. Can be something on the $PATH or the full path to the executable itself. Works with `~,` `${HOME}` and `${workspaceFolder}`. **Deprecated scope**: This option will be set to `machine` scope in a future release, so it can be changed only globally, not per workspace.
+-- 
+-- ```lua
+-- default = ""
+-- ```
+---@field serverExecutablePath string
+-- Whether to upgrade GHCup automatically when 'manageHLS' is set to 'GHCup'.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field upgradeGHCup boolean
+-- The formatter to use when formatting a document or range. Ensure the plugin is enabled.
+-- 
+-- ```lua
+-- default = "ormolu"
+-- ```
+---@field formattingProvider "brittany" | "floskell" | "fourmolu" | "ormolu" | "stylish-haskell" | "none"
+-- Maximum number of completions sent to the editor.
+-- 
+-- ```lua
+-- default = 40
+-- ```
+---@field maxCompletions integer
+---@field plugin Settings.hie.Plugin
+-- Pass additional arguments to the language server.
+-- 
+-- ```lua
+-- default = ""
+-- ```
+---@field serverExtraArgs string
+-- If set, redirects the logs to a file.
+-- 
+-- ```lua
+-- default = ""
+-- ```
+---@field logFile string
+---@field trace Settings.hie.Trace
+-- How to manage/find HLS installations.
+-- 
+-- ```lua
+-- default = "PATH"
+-- ```
+---@field manageHLS "GHCup" | "PATH"
+-- An optional path where downloaded metadata will be stored. Check the default value [here](https://github.com/haskell/vscode-haskell#downloaded-binaries)
+-- 
+-- ```lua
+-- default = ""
+-- ```
+---@field releasesDownloadStoragePath string
+-- When opening 'Documentation' for external libraries, open in hackage by default. Set to false to instead open in vscode.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field openDocumentationInHackage boolean
+-- An optional URL to override where ghcup checks for HLS-GHC compatibility list (usually at: https://raw.githubusercontent.com/haskell/ghcup-metadata/master/hls-metadata-0.0.1.json)
+-- 
+-- ```lua
+-- default = ""
+-- ```
+---@field releasesURL string
+-- Prompt before performing any downloads.
+-- 
+-- ```lua
+-- default = "true"
+-- ```
+---@field promptBeforeDownloads boolean
+
+---@class Settings.hie
+---@field haskell Settings.hie.Haskell
+
+---@class Settings.dartls
+
+---@class Settings.powershell_es.IntegratedConsole
+-- Switches focus to the console when a script selection is run or a script file is debugged. This is an accessibility feature. To disable it, set to false.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field focusConsoleOnExecute boolean
+-- Use the vscode API to clear the terminal since that's the only reliable way to clear the scrollback buffer. Turn this on if you're used to 'Clear-Host' clearing scroll history as well as clear-terminal-via-lsp.
+---@field forceClearScrollbackBuffer boolean
+-- Do not show the Powershell Extension Terminal banner on launch
+---@field suppressStartupBanner boolean
+-- Falls back to the legacy ReadLine experience. This will disable the use of PSReadLine in the PowerShell Extension Terminal.
+---@field useLegacyReadLine boolean
+-- Shows the Extension Terminal when the PowerShell extension is initialized. When disabled, the pane is not opened on startup, but the Extension Terminal is still created in order to power the extension's features.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field showOnStartup boolean
+-- Starts the Extension Terminal in the background. WARNING: If this is enabled, to access the terminal you must run the 'Show Extension Terminal' command, and once shown it cannot be put back into the background. This option completely hides the Extension Terminal from the terminals pane. You are probably looking for the 'showOnStartup' option instead.
+---@field startInBackground boolean
+
+---@class Settings.powershell_es.BugReporting
+-- Specifies the URL of the GitHub project in which to generate bug reports.
+-- 
+-- ```lua
+-- default = "https://github.com/PowerShell/vscode-powershell"
+-- ```
+---@field project string
+
+---@class Settings.powershell_es.CodeFormatting
+-- Replaces aliases with their aliased name.
+---@field autoCorrectAliases boolean
+-- Does not reformat one-line code blocks, such as "if (...) {...} else {...}".
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field ignoreOneLineBlock boolean
+-- Adds a space after a separator (',' and ';').
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field whitespaceAfterSeparator boolean
+-- Adds a newline (line break) after a closing brace.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field newLineAfterCloseBrace boolean
+-- Adds spaces before and after an operator ('=', '+', '-', etc.).
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field whitespaceAroundOperator boolean
+-- Adds a space between a keyword (if, elseif, while, switch, etc) and its associated conditional expression.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field whitespaceBeforeOpenParen boolean
+-- Places open brace on the same line as its associated statement.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field openBraceOnSameLine boolean
+-- REMOVED. Please use the "powershell.codeFormatting.addWhitespaceAroundPipe" setting instead. If you've used this setting before, we have moved it for you automatically.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field whitespaceAroundPipe boolean
+-- Adds a space between a keyword and its associated scriptblock expression.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field whitespaceBeforeOpenBrace boolean
+-- Adds a newline (line break) after an open brace.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field newLineAfterOpenBrace boolean
+-- Use single quotes if a string is not interpolated and its value does not contain a single quote.
+---@field useConstantStrings boolean
+-- Use correct casing for cmdlets.
+---@field useCorrectCasing boolean
+-- Adds a space before and after the pipeline operator ('|') if it is missing.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field addWhitespaceAroundPipe boolean
+-- Removes redundant whitespace between parameters.
+---@field whitespaceBetweenParameters boolean
+-- Multi-line pipeline style settings (default: NoIndentation).
+-- 
+-- ```lua
+-- default = "NoIndentation"
+-- ```
+---@field pipelineIndentationStyle "IncreaseIndentationForFirstPipeline" | "IncreaseIndentationAfterEveryPipeline" | "NoIndentation" | "None"
+-- Trims extraneous whitespace (more than 1 character) before and after the pipeline operator ('|').
+---@field trimWhitespaceAroundPipe boolean
+-- Align assignment statements in a hashtable or a DSC Configuration.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field alignPropertyValuePairs boolean
+-- Adds a space after an opening brace ('{') and before a closing brace ('}').
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field whitespaceInsideBrace boolean
+-- Sets the codeformatting options to follow the given indent style in a way that is compatible with PowerShell syntax. For more information about the brace styles please refer to https://github.com/PoshCode/PowerShellPracticeAndStyle/issues/81.
+-- 
+-- ```lua
+-- default = "Custom"
+-- ```
+---@field preset "Custom" | "Allman" | "OTBS" | "Stroustrup"
+
+---@class Settings.powershell_es.Developer
+-- Launches the language service with the /waitForDebugger flag to force it to wait for a .NET debugger to attach before proceeding.
+---@field editorServicesWaitForDebugger boolean
+-- An array of strings that enable experimental features in the PowerShell extension.
+-- 
+-- ```lua
+-- default = {}
+-- ```
+---@field featureFlags string[]
+-- When the PowerShell extension is starting up, it checks for a session file in order to connect to the language server. This setting determines how long until checking for the session file times out. (default is 240 seconds or 4 minutes)
+-- 
+-- ```lua
+-- default = 240
+-- ```
+---@field waitForSessionFileTimeoutSeconds number
+-- Specifies an alternate path to the folder containing modules that are bundled with the PowerShell extension (i.e. PowerShell Editor Services, PSScriptAnalyzer, Plaster)
+---@field bundledModulesPath string
+-- Sets the logging verbosity level for the PowerShell Editor Services host executable.  Valid values are 'Diagnostic', 'Verbose', 'Normal', 'Warning', 'Error', and 'None'
+-- 
+-- ```lua
+-- default = "Normal"
+-- ```
+---@field editorServicesLogLevel "Diagnostic" | "Verbose" | "Normal" | "Warning" | "Error" | "None"
+
+---@class Settings.powershell_es.Buttons
+-- Show the Run and Run Selection buttons in the editor title-bar.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field showRunButtons boolean
+-- Show buttons in the editor title-bar for moving the panel around.
+---@field showPanelMovementButtons boolean
+
+---@class Settings.powershell_es.ScriptAnalysis
+-- Enables real-time script analysis from PowerShell Script Analyzer. Uses the newest installed version of the PSScriptAnalyzer module or the version bundled with this extension, if it is newer.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enable boolean
+-- Specifies the path to a PowerShell Script Analyzer settings file. To override the default settings for all projects, enter an absolute path, or enter a path relative to your workspace.
+-- 
+-- ```lua
+-- default = "PSScriptAnalyzerSettings.psd1"
+-- ```
+---@field settingsPath string
+
+---@class Settings.powershell_es.StartAsLoginShell
+-- Starts the PowerShell extension's underlying PowerShell process as a login shell, if applicable.
+---@field linux boolean
+-- Starts the PowerShell extension's underlying PowerShell process as a login shell, if applicable.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field osx boolean
+
+---@class Settings.powershell_es.CodeFolding
+-- Shows the last line of a folded section similar to the default VSCode folding style. When disabled, the entire folded region is hidden.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field showLastLine boolean
+-- Enables syntax based code folding. When disabled, the default indentation based code folding is used.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enable boolean
+
+---@class Settings.powershell_es.SideBar
+-- Specifies the visibility of the Command Explorer in the PowerShell Side Bar.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field CommandExplorerVisibility boolean
+-- Specify array of Modules to exclude from Command Explorer listing.
+-- 
+-- ```lua
+-- default = {}
+-- ```
+---@field CommandExplorerExcludeFilter string[]
+
+---@class Settings.powershell_es.Debugging
+-- Determines whether a temporary PowerShell Extension Terminal is created for each debugging session. Useful for debugging PowerShell classes and binary modules.
+---@field createTemporaryIntegratedConsole boolean
+
+---@class Settings.powershell_es.Pester
+-- Use a CodeLens that is compatible with Pester 4. Disabling this will show 'Run Tests' on all It, Describe and Context blocks, and will correctly work only with Pester 5 and newer.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field useLegacyCodeLens boolean
+-- Defines the verbosity of output to be used. For Pester 5 and newer the default value FromPreference, will use the Output settings from the $PesterPreference defined in the caller context, and will default to Normal if there is none. For Pester 4 the FromPreference and Normal options map to All, and Minimal option maps to Fails.
+-- 
+-- ```lua
+-- default = "FromPreference"
+-- ```
+---@field outputVerbosity "FromPreference" | "None" | "Minimal" | "Normal" | "Detailed" | "Diagnostic"
+-- Defines the verbosity of output to be used when debugging a test or a block. For Pester 5 and newer the default value Diagnostic will print additional information about discovery, skipped and filtered tests, mocking and more.
+-- 
+-- ```lua
+-- default = "Diagnostic"
+-- ```
+---@field debugOutputVerbosity "None" | "Minimal" | "Normal" | "Detailed" | "Diagnostic"
+-- This setting controls the appearance of the 'Run Tests' and 'Debug Tests' CodeLenses that appears above Pester tests.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field codeLens boolean
+
+---@class Settings.powershell_es.Powershell
+-- Displays a code lens above function definitions showing the number of times the function is referenced in the workspace. Large workspaces should disable this setting due to high performance impact.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enableReferencesCodeLens boolean
+-- An explicit start path where the PowerShell Extension Terminal will be launched. Both the PowerShell process and the shell's location will be set to this directory. Predefined variables can be used (i.e. ${fileDirname} to use the current opened file's directory).
+-- 
+-- ```lua
+-- default = nil
+-- ```
+---@field cwd string
+-- Controls the comment-based help completion behavior triggered by typing '##'. Set the generated help style with 'BlockComment' or 'LineComment'. Disable the feature with 'Disabled'.
+-- 
+-- ```lua
+-- default = "BlockComment"
+-- ```
+---@field helpCompletion "Disabled" | "BlockComment" | "LineComment"
+-- Loads user and system-wide PowerShell profiles (profile.ps1 and Microsoft.VSCode_profile.ps1) into the PowerShell session. This affects IntelliSense and interactive script execution, but it does not affect the debugger.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enableProfileLoading boolean
+-- Specifies a list of versionName / exePath pairs where exePath points to a non-standard install location for PowerShell and versionName can be used to reference this path with the powershell.powerShellDefaultVersion setting.
+---@field powerShellAdditionalExePaths table
+-- Specifies the PowerShell version name, as displayed by the 'PowerShell: Show Session Menu' command, used when the extension loads e.g "Windows PowerShell (x86)" or "PowerShell Core 7 (x64)". You can specify additional PowerShell executables by using the "powershell.powerShellAdditionalExePaths" setting.
+---@field powerShellDefaultVersion string
+---@field integratedConsole Settings.powershell_es.IntegratedConsole
+---@field bugReporting Settings.powershell_es.BugReporting
+---@field codeFormatting Settings.powershell_es.CodeFormatting
+---@field developer Settings.powershell_es.Developer
+-- Starts PowerShell extension features automatically when a PowerShell file opens. If false, to start the extension, use the 'PowerShell: Restart Current Session' command. IntelliSense, code navigation, Extension Terminal, code formatting, and other features are not enabled until the extension starts.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field startAutomatically boolean
+-- Specifies whether you should be prompted to update your version of PowerShell.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field promptToUpdatePowerShell boolean
+---@field buttons Settings.powershell_es.Buttons
+---@field scriptAnalysis Settings.powershell_es.ScriptAnalysis
+-- REMOVED: Specifies whether you should be prompted to update your version of PackageManagement if it's under 1.4.6.
+---@field promptToUpdatePackageManagement boolean
+---@field startAsLoginShell Settings.powershell_es.StartAsLoginShell
+---@field codeFolding Settings.powershell_es.CodeFolding
+-- REMOVED: Please use the "powershell.powerShellAdditionalExePaths" setting instead.
+-- 
+-- ```lua
+-- default = ""
+-- ```
+---@field powerShellExePath string
+---@field sideBar Settings.powershell_es.SideBar
+---@field debugging Settings.powershell_es.Debugging
+-- REMOVED: Uses the 32-bit language service on 64-bit Windows. This setting has no effect on 32-bit Windows or on the PowerShell extension debugger, which has its own architecture configuration.
+---@field useX86Host boolean
+---@field pester Settings.powershell_es.Pester
+
+---@class Settings.powershell_es
+---@field powershell Settings.powershell_es.Powershell
+
+---@class Settings.hhvm.Ssh
+-- Additional command line options to pass when establishing the SSH connection
+---@field flags array
+-- Address for the remote development server to connect to (in the format `[user@]hostname`)
+---@field host string
+
+---@class Settings.hhvm.Docker
+-- Name of the local Docker container to run the language tools in
+---@field containerName string
+
+---@class Settings.hhvm.Remote
+-- Run the Hack language tools on an external host
+---@field enabled boolean
+---@field ssh Settings.hhvm.Ssh
+---@field docker Settings.hhvm.Docker
+-- Absolute location of workspace root in the remote file system
+---@field workspacePath string
+-- The remote connection method
+---@field type "ssh" | "docker"
+
+---@class Settings.hhvm.Trace
+-- Traces the communication between VS Code and the Hack & HHAST language servers
+-- 
+-- ```lua
+-- default = "off"
+-- ```
+---@field server "off" | "messages" | "verbose"
+
+---@class Settings.hhvm.Hack
+---@field remote Settings.hhvm.Remote
+---@field trace Settings.hhvm.Trace
+-- Whether to lint the entire project or just the open files
+-- 
+-- ```lua
+-- default = nil
+-- ```
+---@field hhastLintMode "whole-project" | "open-files"
+-- Enable calculation of Hack type coverage percentage for every file and display in status bar.
+---@field enableCoverageCheck boolean
+-- Absolute path to the workspace root directory. This will be the VS Code workspace root by default, but can be changed if the project is in a subdirectory or mounted in a Docker container.
+-- 
+-- ```lua
+-- default = nil
+-- ```
+---@field workspaceRootPath string
+-- Absolute path to the hh_client executable. This can be left empty if hh_client is already in your environment $PATH.
+-- 
+-- ```lua
+-- default = "hh_client"
+-- ```
+---@field clientPath string
+-- Start hh_client in Language Server mode. Only works for HHVM version 3.23 and above.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field useLanguageServer boolean
+-- Use an alternate `hhast-lint` path. Can be abolute or relative to workspace root.
+-- 
+-- ```lua
+-- default = "vendor/bin/hhast-lint"
+-- ```
+---@field hhastPath string
+-- Optional list of arguments passed to hhast-lint executable
+-- 
+-- ```lua
+-- default = {}
+-- ```
+---@field hhastArgs string[]
+-- Enable linting (needs [HHAST](https://github.com/hhvm/hhast) library set up and configured in project)
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field useHhast boolean
+
+---@class Settings.hhvm
+---@field hack Settings.hhvm.Hack
+
+---@class Settings.tsserver.ClassMemberSnippets
+-- %configuration.suggest.classMemberSnippets.enabled%
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enabled boolean
+
+---@class Settings.tsserver.Jsdoc
+-- %configuration.suggest.jsdoc.generateReturns%
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field generateReturns boolean
+
+---@class Settings.tsserver.Suggest
+-- %configuration.suggest.paths%
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field paths boolean
+---@field classMemberSnippets Settings.tsserver.ClassMemberSnippets
+-- %configuration.suggest.completeFunctionCalls%
+---@field completeFunctionCalls boolean
+-- %typescript.suggest.enabled%
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enabled boolean
+-- %configuration.suggest.completeJSDocs%
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field completeJSDocs boolean
+---@field jsdoc Settings.tsserver.Jsdoc
+-- %configuration.suggest.includeAutomaticOptionalChainCompletions%
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field includeAutomaticOptionalChainCompletions boolean
+-- %configuration.suggest.includeCompletionsForImportStatements%
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field includeCompletionsForImportStatements boolean
+-- %configuration.suggest.autoImports%
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field autoImports boolean
+-- %configuration.suggest.names%
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field names boolean
+
+---@class Settings.tsserver.ImplicitProjectConfig
+-- %configuration.implicitProjectConfig.experimentalDecorators%
+---@field experimentalDecorators boolean
+-- %configuration.implicitProjectConfig.checkJs%
+---@field checkJs boolean
+
+---@class Settings.tsserver.Validate
+-- %javascript.validate.enable%
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enable boolean
+
+---@class Settings.tsserver.Preferences
+-- %typescript.preferences.autoImportFileExcludePatterns%
+---@field autoImportFileExcludePatterns string[]
+-- %typescript.preferences.importModuleSpecifierEnding%
+-- 
+-- ```lua
+-- default = "auto"
+-- ```
+---@field importModuleSpecifierEnding "auto" | "minimal" | "index" | "js"
+-- %typescript.preferences.quoteStyle%
+-- 
+-- ```lua
+-- default = "auto"
+-- ```
+---@field quoteStyle "auto" | "single" | "double"
+-- %typescript.preferences.importModuleSpecifier%
+-- 
+-- ```lua
+-- default = "shortest"
+-- ```
+---@field importModuleSpecifier "shortest" | "relative" | "non-relative" | "project-relative"
+-- %typescript.preferences.useAliasesForRenames%
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field renameShorthandProperties boolean
+-- %typescript.preferences.jsxAttributeCompletionStyle%
+-- 
+-- ```lua
+-- default = "auto"
+-- ```
+---@field jsxAttributeCompletionStyle "auto" | "braces" | "none"
+-- %typescript.preferences.useAliasesForRenames%
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field useAliasesForRenames boolean
+
+---@class Settings.tsserver.ReferencesCodeLens
+-- %javascript.referencesCodeLens.enabled%
+---@field enabled boolean
+-- %javascript.referencesCodeLens.showOnAllFunctions%
+---@field showOnAllFunctions boolean
+
+---@class Settings.tsserver.VariableTypes
+-- %configuration.inlayHints.variableTypes.enabled%
+---@field enabled boolean
+-- %configuration.inlayHints.variableTypes.suppressWhenTypeMatchesName%
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field suppressWhenTypeMatchesName boolean
+
+---@class Settings.tsserver.FunctionLikeReturnTypes
+-- %configuration.inlayHints.functionLikeReturnTypes.enabled%
+---@field enabled boolean
+
+---@class Settings.tsserver.ParameterNames
+-- %configuration.inlayHints.parameterNames.enabled%
+-- 
+-- ```lua
+-- default = "none"
+-- ```
+---@field enabled "none" | "literals" | "all"
+-- %configuration.inlayHints.parameterNames.suppressWhenArgumentMatchesName%
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field suppressWhenArgumentMatchesName boolean
+
+---@class Settings.tsserver.ParameterTypes
+-- %configuration.inlayHints.parameterTypes.enabled%
+---@field enabled boolean
+
+---@class Settings.tsserver.EnumMemberValues
+-- %configuration.inlayHints.enumMemberValues.enabled%
+---@field enabled boolean
+
+---@class Settings.tsserver.PropertyDeclarationTypes
+-- %configuration.inlayHints.propertyDeclarationTypes.enabled%
+---@field enabled boolean
+
+---@class Settings.tsserver.InlayHints
+---@field variableTypes Settings.tsserver.VariableTypes
+---@field functionLikeReturnTypes Settings.tsserver.FunctionLikeReturnTypes
+---@field parameterNames Settings.tsserver.ParameterNames
+---@field parameterTypes Settings.tsserver.ParameterTypes
+---@field enumMemberValues Settings.tsserver.EnumMemberValues
+---@field propertyDeclarationTypes Settings.tsserver.PropertyDeclarationTypes
+
+---@class Settings.tsserver.Format
+-- %format.placeOpenBraceOnNewLineForControlBlocks%
+---@field placeOpenBraceOnNewLineForControlBlocks boolean
+-- %format.insertSpaceAfterOpeningAndBeforeClosingEmptyBraces%
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field insertSpaceAfterOpeningAndBeforeClosingEmptyBraces boolean
+-- %format.insertSpaceAfterSemicolonInForStatements%
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field insertSpaceAfterSemicolonInForStatements boolean
+-- %format.insertSpaceBeforeAndAfterBinaryOperators%
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field insertSpaceBeforeAndAfterBinaryOperators boolean
+-- %format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBrackets%
+---@field insertSpaceAfterOpeningAndBeforeClosingNonemptyBrackets boolean
+-- %format.insertSpaceAfterOpeningAndBeforeClosingNonemptyParenthesis%
+---@field insertSpaceAfterOpeningAndBeforeClosingNonemptyParenthesis boolean
+-- %format.placeOpenBraceOnNewLineForFunctions%
+---@field placeOpenBraceOnNewLineForFunctions boolean
+-- %format.insertSpaceAfterOpeningAndBeforeClosingJsxExpressionBraces%
+---@field insertSpaceAfterOpeningAndBeforeClosingJsxExpressionBraces boolean
+-- %javascript.format.enable%
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enable boolean
+-- %format.insertSpaceAfterConstructor%
+---@field insertSpaceAfterConstructor boolean
+-- %format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBraces%
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field insertSpaceAfterOpeningAndBeforeClosingNonemptyBraces boolean
+-- %format.insertSpaceAfterCommaDelimiter%
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field insertSpaceAfterCommaDelimiter boolean
+-- %format.semicolons%
+-- 
+-- ```lua
+-- default = "ignore"
+-- ```
+---@field semicolons "ignore" | "insert" | "remove"
+-- %format.insertSpaceAfterFunctionKeywordForAnonymousFunctions%
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field insertSpaceAfterFunctionKeywordForAnonymousFunctions boolean
+-- %format.insertSpaceBeforeFunctionParenthesis%
+---@field insertSpaceBeforeFunctionParenthesis boolean
+-- %format.insertSpaceAfterOpeningAndBeforeClosingTemplateStringBraces%
+---@field insertSpaceAfterOpeningAndBeforeClosingTemplateStringBraces boolean
+-- %format.insertSpaceAfterKeywordsInControlFlowStatements%
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field insertSpaceAfterKeywordsInControlFlowStatements boolean
+
+---@class Settings.tsserver.SuggestionActions
+-- %javascript.suggestionActions.enabled%
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enabled boolean
+
+---@class Settings.tsserver.UpdateImportsOnFileMove
+-- %typescript.updateImportsOnFileMove.enabled%
+-- 
+-- ```lua
+-- default = "prompt"
+-- ```
+---@field enabled "prompt" | "always" | "never"
+
+---@class Settings.tsserver.Javascript
+---@field suggest Settings.tsserver.Suggest
+---@field implicitProjectConfig Settings.tsserver.ImplicitProjectConfig
+-- %typescript.autoClosingTags%
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field autoClosingTags boolean
+---@field validate Settings.tsserver.Validate
+---@field preferences Settings.tsserver.Preferences
+---@field referencesCodeLens Settings.tsserver.ReferencesCodeLens
+---@field inlayHints Settings.tsserver.InlayHints
+---@field format Settings.tsserver.Format
+---@field suggestionActions Settings.tsserver.SuggestionActions
+---@field updateImportsOnFileMove Settings.tsserver.UpdateImportsOnFileMove
+
+---@class Settings.tsserver.Tsc
+-- %typescript.tsc.autoDetect%
+-- 
+-- ```lua
+-- default = "on"
+-- ```
+---@field autoDetect "on" | "off" | "build" | "watch"
+
+---@class Settings.tsserver.Format
+-- %format.placeOpenBraceOnNewLineForControlBlocks%
+---@field placeOpenBraceOnNewLineForControlBlocks boolean
+-- %format.insertSpaceAfterOpeningAndBeforeClosingEmptyBraces%
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field insertSpaceAfterOpeningAndBeforeClosingEmptyBraces boolean
+-- %format.insertSpaceAfterSemicolonInForStatements%
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field insertSpaceAfterSemicolonInForStatements boolean
+-- %format.insertSpaceBeforeAndAfterBinaryOperators%
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field insertSpaceBeforeAndAfterBinaryOperators boolean
+-- %format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBrackets%
+---@field insertSpaceAfterOpeningAndBeforeClosingNonemptyBrackets boolean
+-- %format.insertSpaceAfterOpeningAndBeforeClosingNonemptyParenthesis%
+---@field insertSpaceAfterOpeningAndBeforeClosingNonemptyParenthesis boolean
+-- %format.placeOpenBraceOnNewLineForFunctions%
+---@field placeOpenBraceOnNewLineForFunctions boolean
+-- %format.insertSpaceAfterOpeningAndBeforeClosingJsxExpressionBraces%
+---@field insertSpaceAfterOpeningAndBeforeClosingJsxExpressionBraces boolean
+-- %typescript.format.enable%
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enable boolean
+-- %format.insertSpaceAfterConstructor%
+---@field insertSpaceAfterConstructor boolean
+-- %format.insertSpaceAfterTypeAssertion%
+---@field insertSpaceAfterTypeAssertion boolean
+-- %format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBraces%
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field insertSpaceAfterOpeningAndBeforeClosingNonemptyBraces boolean
+-- %format.insertSpaceAfterCommaDelimiter%
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field insertSpaceAfterCommaDelimiter boolean
+-- %format.semicolons%
+-- 
+-- ```lua
+-- default = "ignore"
+-- ```
+---@field semicolons "ignore" | "insert" | "remove"
+-- %format.insertSpaceBeforeFunctionParenthesis%
+---@field insertSpaceBeforeFunctionParenthesis boolean
+-- %format.insertSpaceAfterFunctionKeywordForAnonymousFunctions%
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field insertSpaceAfterFunctionKeywordForAnonymousFunctions boolean
+-- %format.insertSpaceAfterOpeningAndBeforeClosingTemplateStringBraces%
+---@field insertSpaceAfterOpeningAndBeforeClosingTemplateStringBraces boolean
+-- %format.insertSpaceAfterKeywordsInControlFlowStatements%
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field insertSpaceAfterKeywordsInControlFlowStatements boolean
+
+---@class Settings.tsserver.Validate
+-- %typescript.validate.enable%
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enable boolean
+
+---@class Settings.tsserver.Check
+-- %typescript.check.npmIsInstalled%
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field npmIsInstalled boolean
+
+---@class Settings.tsserver.Surveys
+-- %configuration.surveys.enabled%
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enabled boolean
+
+---@class Settings.tsserver.ClassMemberSnippets
+-- %configuration.suggest.classMemberSnippets.enabled%
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enabled boolean
+
+---@class Settings.tsserver.Jsdoc
+-- %configuration.suggest.jsdoc.generateReturns%
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field generateReturns boolean
+
+---@class Settings.tsserver.ObjectLiteralMethodSnippets
+-- %configuration.suggest.objectLiteralMethodSnippets.enabled%
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enabled boolean
+
+---@class Settings.tsserver.Suggest
+-- %configuration.suggest.paths%
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field paths boolean
+---@field classMemberSnippets Settings.tsserver.ClassMemberSnippets
+-- %configuration.suggest.includeCompletionsWithSnippetText%
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field includeCompletionsWithSnippetText boolean
+-- %configuration.suggest.completeFunctionCalls%
+---@field completeFunctionCalls boolean
+-- %typescript.suggest.enabled%
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enabled boolean
+-- %configuration.suggest.includeAutomaticOptionalChainCompletions%
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field includeAutomaticOptionalChainCompletions boolean
+---@field jsdoc Settings.tsserver.Jsdoc
+-- %configuration.suggest.autoImports%
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field autoImports boolean
+-- %configuration.suggest.includeCompletionsForImportStatements%
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field includeCompletionsForImportStatements boolean
+---@field objectLiteralMethodSnippets Settings.tsserver.ObjectLiteralMethodSnippets
+-- %configuration.suggest.completeJSDocs%
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field completeJSDocs boolean
+
+---@class Settings.tsserver.WorkspaceSymbols
+-- %typescript.workspaceSymbols.scope%
+-- 
+-- ```lua
+-- default = "allOpenProjects"
+-- ```
+---@field scope "allOpenProjects" | "currentProject"
+
+---@class Settings.tsserver.ImplementationsCodeLens
+-- %typescript.implementationsCodeLens.enabled%
+---@field enabled boolean
+
+-- %configuration.tsserver.watchOptions%
+---@class Settings.tsserver.WatchOptions
+-- %configuration.tsserver.watchOptions.synchronousWatchDirectory%
+---@field synchronousWatchDirectory boolean
+-- %configuration.tsserver.watchOptions.watchFile%
+-- 
+-- ```lua
+-- default = "useFsEvents"
+-- ```
+---@field watchFile "fixedChunkSizePolling" | "fixedPollingInterval" | "priorityPollingInterval" | "dynamicPriorityPolling" | "useFsEvents" | "useFsEventsOnParentDirectory"
+-- %configuration.tsserver.watchOptions.watchDirectory%
+-- 
+-- ```lua
+-- default = "useFsEvents"
+-- ```
+---@field watchDirectory "fixedChunkSizePolling" | "fixedPollingInterval" | "dynamicPriorityPolling" | "useFsEvents"
+-- %configuration.tsserver.watchOptions.fallbackPolling%
+---@field fallbackPolling "fixedPollingInterval" | "priorityPollingInterval" | "dynamicPriorityPolling"
+
+---@class Settings.tsserver.Experimental
+-- %configuration.tsserver.experimental.enableProjectDiagnostics%
+---@field enableProjectDiagnostics boolean
+
+---@class Settings.tsserver.Tsserver
+-- %typescript.tsserver.enableTracing%
+---@field enableTracing boolean
+-- %typescript.tsserver.trace%
+-- 
+-- ```lua
+-- default = "off"
+-- ```
+---@field trace "off" | "messages" | "verbose"
+-- %typescript.tsserver.log%
+-- 
+-- ```lua
+-- default = "off"
+-- ```
+---@field log "off" | "terse" | "normal" | "verbose"
+-- %typescript.tsserver.pluginPaths%
+-- 
+-- ```lua
+-- default = {}
+-- ```
+---@field pluginPaths string[]
+-- %configuration.tsserver.watchOptions%
+---@field watchOptions Settings.tsserver.WatchOptions
+-- %configuration.tsserver.useSeparateSyntaxServer%
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field useSeparateSyntaxServer boolean
+-- %configuration.tsserver.maxTsServerMemory%
+-- 
+-- ```lua
+-- default = 3072
+-- ```
+---@field maxTsServerMemory number
+---@field experimental Settings.tsserver.Experimental
+-- %configuration.tsserver.useSyntaxServer%
+-- 
+-- ```lua
+-- default = "auto"
+-- ```
+---@field useSyntaxServer "always" | "never" | "auto"
+
+---@class Settings.tsserver.ReferencesCodeLens
+-- %typescript.referencesCodeLens.enabled%
+---@field enabled boolean
+-- %typescript.referencesCodeLens.showOnAllFunctions%
+---@field showOnAllFunctions boolean
+
+---@class Settings.tsserver.Preferences
+-- %typescript.preferences.autoImportFileExcludePatterns%
+---@field autoImportFileExcludePatterns string[]
+-- %typescript.preferences.importModuleSpecifierEnding%
+-- 
+-- ```lua
+-- default = "auto"
+-- ```
+---@field importModuleSpecifierEnding "auto" | "minimal" | "index" | "js"
+-- %typescript.preferences.includePackageJsonAutoImports%
+-- 
+-- ```lua
+-- default = "auto"
+-- ```
+---@field includePackageJsonAutoImports "auto" | "on" | "off"
+-- %typescript.preferences.quoteStyle%
+-- 
+-- ```lua
+-- default = "auto"
+-- ```
+---@field quoteStyle "auto" | "single" | "double"
+-- %typescript.preferences.jsxAttributeCompletionStyle%
+-- 
+-- ```lua
+-- default = "auto"
+-- ```
+---@field jsxAttributeCompletionStyle "auto" | "braces" | "none"
+-- %typescript.preferences.useAliasesForRenames%
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field renameShorthandProperties boolean
+-- %typescript.preferences.importModuleSpecifier%
+-- 
+-- ```lua
+-- default = "shortest"
+-- ```
+---@field importModuleSpecifier "shortest" | "relative" | "non-relative" | "project-relative"
+-- %typescript.preferences.useAliasesForRenames%
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field useAliasesForRenames boolean
+
+---@class Settings.tsserver.VariableTypes
+-- %configuration.inlayHints.variableTypes.suppressWhenTypeMatchesName%
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field suppressWhenTypeMatchesName boolean
+-- %configuration.inlayHints.variableTypes.enabled%
+---@field enabled boolean
+
+---@class Settings.tsserver.ParameterNames
+-- %configuration.inlayHints.parameterNames.enabled%
+-- 
+-- ```lua
+-- default = "none"
+-- ```
+---@field enabled "none" | "literals" | "all"
+-- %configuration.inlayHints.parameterNames.suppressWhenArgumentMatchesName%
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field suppressWhenArgumentMatchesName boolean
+
+---@class Settings.tsserver.PropertyDeclarationTypes
+-- %configuration.inlayHints.propertyDeclarationTypes.enabled%
+---@field enabled boolean
+
+---@class Settings.tsserver.EnumMemberValues
+-- %configuration.inlayHints.enumMemberValues.enabled%
+---@field enabled boolean
+
+---@class Settings.tsserver.ParameterTypes
+-- %configuration.inlayHints.parameterTypes.enabled%
+---@field enabled boolean
+
+---@class Settings.tsserver.FunctionLikeReturnTypes
+-- %configuration.inlayHints.functionLikeReturnTypes.enabled%
+---@field enabled boolean
+
+---@class Settings.tsserver.InlayHints
+---@field variableTypes Settings.tsserver.VariableTypes
+---@field parameterNames Settings.tsserver.ParameterNames
+---@field propertyDeclarationTypes Settings.tsserver.PropertyDeclarationTypes
+---@field enumMemberValues Settings.tsserver.EnumMemberValues
+---@field parameterTypes Settings.tsserver.ParameterTypes
+---@field functionLikeReturnTypes Settings.tsserver.FunctionLikeReturnTypes
+
+---@class Settings.tsserver.UpdateImportsOnFileMove
+-- %typescript.updateImportsOnFileMove.enabled%
+-- 
+-- ```lua
+-- default = "prompt"
+-- ```
+---@field enabled "prompt" | "always" | "never"
+
+---@class Settings.tsserver.SuggestionActions
+-- %typescript.suggestionActions.enabled%
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enabled boolean
+
+---@class Settings.tsserver.Typescript
+---@field tsc Settings.tsserver.Tsc
+---@field format Settings.tsserver.Format
+-- %typescript.autoClosingTags%
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field autoClosingTags boolean
+---@field validate Settings.tsserver.Validate
+-- %typescript.locale%
+-- 
+-- ```lua
+-- default = "auto"
+-- ```
+---@field locale "auto" | "de" | "es" | "en" | "fr" | "it" | "ja" | "ko" | "ru" | "zh-CN" | "zh-TW"
+-- %typescript.reportStyleChecksAsWarnings%
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field reportStyleChecksAsWarnings boolean
+-- %typescript.enablePromptUseWorkspaceTsdk%
+---@field enablePromptUseWorkspaceTsdk boolean
+-- %typescript.disableAutomaticTypeAcquisition%
+---@field disableAutomaticTypeAcquisition boolean
+---@field check Settings.tsserver.Check
+---@field surveys Settings.tsserver.Surveys
+---@field suggest Settings.tsserver.Suggest
+---@field workspaceSymbols Settings.tsserver.WorkspaceSymbols
+---@field implementationsCodeLens Settings.tsserver.ImplementationsCodeLens
+---@field tsserver Settings.tsserver.Tsserver
+---@field referencesCodeLens Settings.tsserver.ReferencesCodeLens
+---@field preferences Settings.tsserver.Preferences
+-- %typescript.npm%
+---@field npm string
+---@field inlayHints Settings.tsserver.InlayHints
+---@field updateImportsOnFileMove Settings.tsserver.UpdateImportsOnFileMove
+---@field suggestionActions Settings.tsserver.SuggestionActions
+-- %typescript.tsdk.desc%
+---@field tsdk string
+
+---@class Settings.tsserver.ImplicitProjectConfig
+-- %configuration.implicitProjectConfig.checkJs%
+---@field checkJs boolean
+-- %configuration.implicitProjectConfig.module%
+-- 
+-- ```lua
+-- default = "ESNext"
+-- ```
+---@field module "CommonJS" | "AMD" | "System" | "UMD" | "ES6" | "ES2015" | "ES2020" | "ESNext" | "None" | "ES2022" | "Node12" | "NodeNext"
+-- %configuration.implicitProjectConfig.strictNullChecks%
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field strictNullChecks boolean
+-- %configuration.implicitProjectConfig.strictFunctionTypes%
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field strictFunctionTypes boolean
+-- %configuration.implicitProjectConfig.experimentalDecorators%
+---@field experimentalDecorators boolean
+-- %configuration.implicitProjectConfig.target%
+-- 
+-- ```lua
+-- default = "ES2020"
+-- ```
+---@field target "ES3" | "ES5" | "ES6" | "ES2015" | "ES2016" | "ES2017" | "ES2018" | "ES2019" | "ES2020" | "ES2021" | "ES2022" | "ESNext"
+
+---@class Settings.tsserver.Js/ts
+---@field implicitProjectConfig Settings.tsserver.ImplicitProjectConfig
+
+---@class Settings.tsserver
+---@field javascript Settings.tsserver.Javascript
+---@field typescript Settings.tsserver.Typescript
+---@field js/ts Settings.tsserver.Js/ts
+
+---@class Settings.purescriptls.Trace
+-- Traces the communication between VSCode and the PureScript language service.
+-- 
+-- ```lua
+-- default = "off"
+-- ```
+---@field server "off" | "messages" | "verbose"
+
+---@class Settings.purescriptls.Purescript
+-- Module to prefer to insert when adding imports which have been re-exported. In order of preference, most preferred first.
+-- 
+-- ```lua
+-- default = { "Prelude" }
+-- ```
+---@field importsPreferredModules string[]
+-- Whether to automatically start/connect to purs IDE server when editing a PureScript file (includes connecting to an existing running instance). If this is disabled, various features like autocomplete, tooltips, and other type info will not work until start command is run manually.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field autoStartPscIde boolean
+-- Enable purs IDE server fast rebuild
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field fastRebuild boolean
+-- Whether to group completions in autocomplete results. Requires compiler 0.11.6
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field autocompleteGrouped boolean
+-- List of codegen targets to pass to the compiler for rebuild. e.g. js, corefn. If not specified (rather than empty array) this will not be passed and the compiler will default to js. Requires 0.12.1+
+-- 
+-- ```lua
+-- default = nil
+-- ```
+---@field codegenTargets string[]
+-- Whether to add the local npm bin directory to the PATH for purs IDE server and build command.
+---@field addNpmPath boolean
+-- Module to consider as your default prelude, if an auto-complete suggestion comes from this module it will be imported unqualified.
+-- 
+-- ```lua
+-- default = "Prelude"
+-- ```
+---@field preludeModule string
+-- Whether to automatically add imported identifiers when accepting autocomplete result.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field autocompleteAddImport boolean
+-- The warning codes to censor, both for fast rebuild and a full build. Unrelated to any psa setup. e.g.: ["ShadowedName","MissingTypeDeclaration"]
+-- 
+-- ```lua
+-- default = {}
+-- ```
+---@field censorWarnings string[]
+-- Whether to perform a full build on save with the configured build command (rather than IDE server fast rebuild). This is not generally recommended because it is slow, but it does mean that dependent modules are rebuilt as necessary.
+---@field fullBuildOnSave boolean
+-- Whether to always autocomplete from all built modules, or just those imported in the file. Suggestions from all modules always available by explicitly triggering autocomplete.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field autocompleteAllModules boolean
+-- Whether to add psc-package sources to the globs passed to the IDE server for source locations (specifically the output of `psc-package sources`, if this is a psc-package project). Update due to adding packages/changing package set requires psc-ide server restart.
+---@field addPscPackageSources boolean
+-- Enable declaration codelenses for export management
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field exportsCodeLens boolean
+-- Log level for purs IDE server
+-- 
+-- ```lua
+-- default = ""
+-- ```
+---@field pscIdelogLevel string
+-- Override purs ide output directory (output/ if not specified). This should match up to your build command
+-- 
+-- ```lua
+-- default = "output/"
+-- ```
+---@field outputDirectory string
+-- Enable declaration codelens to add types to declarations
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field declarationTypeCodeLens boolean
+-- Path to installed packages. Will be used to control globs passed to IDE server for source locations.  Change requires IDE server restart.
+-- 
+-- ```lua
+-- default = ""
+-- ```
+---@field packagePath string
+-- Location of purs executable (resolved wrt PATH)
+-- 
+-- ```lua
+-- default = "purs"
+-- ```
+---@field pursExe string
+---@field trace Settings.purescriptls.Trace
+-- Tool to use to for formatting. Must be installed and on PATH (or npm installed with addNpmPath set)
+-- 
+-- ```lua
+-- default = "purty"
+-- ```
+---@field formatter "none" | "purty" | "purs-tidy" | "pose"
+-- Path to application source root. Will be used to control globs passed to IDE server for source locations. Change requires IDE server restart.
+-- 
+-- ```lua
+-- default = "src"
+-- ```
+---@field sourcePath string
+-- Build command to use with arguments. Not passed to shell. eg `spago build --purs-args --json-errors`
+-- 
+-- ```lua
+-- default = "spago build --purs-args --json-errors"
+-- ```
+---@field buildCommand string
+-- Whether to add spago sources to the globs passed to the IDE server for source locations (specifically the output of `spago sources`, if this is a spago project). Update due to adding packages/changing package set requires psc-ide server restart.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field addSpagoSources boolean
+-- Maximum number of results to fetch for an autocompletion request. May improve performance on large projects.
+-- 
+-- ```lua
+-- default = nil
+-- ```
+---@field autocompleteLimit integer
+-- **EXPERIMENTAL** Enable purs IDE server fast rebuild of opened files. This includes both newly opened tabs and those present at startup.
+---@field buildOpenedFiles boolean
+-- Port to use for purs IDE server (whether an existing server or to start a new one). By default a random port is chosen (or an existing port in .psc-ide-port if present), if this is specified no attempt will be made to select an alternative port on failure.
+-- 
+-- ```lua
+-- default = nil
+-- ```
+---@field pscIdePort integer
+
+---@class Settings.purescriptls
+---@field purescript Settings.purescriptls.Purescript
+
+---@class Settings.pylsp.Pycodestyle
+-- Enable or disable the plugin.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enabled boolean
+-- Exclude files or directories which match these patterns.
+-- 
+-- ```lua
+-- default = {}
+-- ```
+---@field exclude string[]
+-- When parsing directories, only check filenames matching these patterns.
+-- 
+-- ```lua
+-- default = {}
+-- ```
+---@field filename string[]
+-- Select errors and warnings
+-- 
+-- ```lua
+-- default = {}
+-- ```
+---@field select string[]
+-- Set indentation spaces.
+-- 
+-- ```lua
+-- default = nil
+-- ```
+---@field indentSize integer
+-- Hang closing bracket instead of matching indentation of opening bracket's line.
+-- 
+-- ```lua
+-- default = nil
+-- ```
+---@field hangClosing boolean
+-- Ignore errors and warnings
+-- 
+-- ```lua
+-- default = {}
+-- ```
+---@field ignore string[]
+-- Set maximum allowed line length.
+-- 
+-- ```lua
+-- default = nil
+-- ```
+---@field maxLineLength number
+
+---@class Settings.pylsp.Pyflakes
+-- Enable or disable the plugin.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enabled boolean
+
+---@class Settings.pylsp.Yapf
+-- Enable or disable the plugin.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enabled boolean
+
+---@class Settings.pylsp.Jedi.Hover
+-- Enable or disable the plugin.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enabled boolean
+
+---@class Settings.pylsp.Jedi.Symbols
+-- Enable or disable the plugin.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enabled boolean
+-- If True includes symbols imported from other libraries.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field include_import_symbols boolean
+-- If True lists the names of all scopes instead of only the module namespace.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field all_scopes boolean
+
+---@class Settings.pylsp.Preload
+-- Enable or disable the plugin.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enabled boolean
+-- List of modules to import on startup
+-- 
+-- ```lua
+-- default = {}
+-- ```
+---@field modules string[]
+
+---@class Settings.pylsp.Mccabe
+-- Enable or disable the plugin.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enabled boolean
+-- The minimum threshold that triggers warnings about cyclomatic complexity.
+-- 
+-- ```lua
+-- default = 15
+-- ```
+---@field threshold number
+
+---@class Settings.pylsp.Pylint
+-- Enable or disable the plugin.
+---@field enabled boolean
+-- Executable to run pylint with. Enabling this will run pylint on unsaved files via stdin. Can slow down workflow. Only works with python3.
+-- 
+-- ```lua
+-- default = nil
+-- ```
+---@field executable string
+-- Arguments to pass to pylint.
+-- 
+-- ```lua
+-- default = {}
+-- ```
+---@field args string[]
+
+---@class Settings.pylsp.Jedi.References
+-- Enable or disable the plugin.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enabled boolean
+
+---@class Settings.pylsp.Flake8
+-- Path to the flake8 executable.
+-- 
+-- ```lua
+-- default = "flake8"
+-- ```
+---@field executable string
+-- List of errors and warnings to enable.
+-- 
+-- ```lua
+-- default = nil
+-- ```
+---@field select string[]
+-- Set indentation spaces.
+-- 
+-- ```lua
+-- default = nil
+-- ```
+---@field indentSize integer
+-- Hang closing bracket instead of matching indentation of opening bracket's line.
+-- 
+-- ```lua
+-- default = nil
+-- ```
+---@field hangClosing boolean
+-- List of errors and warnings to ignore (or skip).
+-- 
+-- ```lua
+-- default = {}
+-- ```
+---@field ignore string[]
+-- Path to the config file that will be the authoritative config source.
+-- 
+-- ```lua
+-- default = nil
+-- ```
+---@field config string
+-- Enable or disable the plugin.
+---@field enabled boolean
+-- Only check for filenames matching the patterns in this list.
+-- 
+-- ```lua
+-- default = nil
+-- ```
+---@field filename string
+-- A pairing of filenames and violation codes that defines which violations to ignore in a particular file, for example: `["file_path.py:W305,W304"]`).
+-- 
+-- ```lua
+-- default = {}
+-- ```
+---@field perFileIgnores string[]
+-- Maximum allowed line length for the entirety of this run.
+-- 
+-- ```lua
+-- default = nil
+-- ```
+---@field maxLineLength integer
+-- List of files or directories to exclude.
+-- 
+-- ```lua
+-- default = {}
+-- ```
+---@field exclude string[]
+
+---@class Settings.pylsp.Pydocstyle
+-- Enable or disable the plugin.
+---@field enabled boolean
+-- Ignore errors and warnings in addition to the specified convention.
+-- 
+-- ```lua
+-- default = {}
+-- ```
+---@field addIgnore string[]
+-- Search only dirs that exactly match the given regular expression; default is to match dirs which do not begin with a dot.
+-- 
+-- ```lua
+-- default = "[^\\.].*"
+-- ```
+---@field matchDir string
+-- Select errors and warnings
+-- 
+-- ```lua
+-- default = {}
+-- ```
+---@field select string[]
+-- Check only files that exactly match the given regular expression; default is to match files that don't start with 'test_' but end with '.py'.
+-- 
+-- ```lua
+-- default = "(?!test_).*\\.py"
+-- ```
+---@field match string
+-- Select errors and warnings in addition to the specified convention.
+-- 
+-- ```lua
+-- default = {}
+-- ```
+---@field addSelect string[]
+-- Ignore errors and warnings
+-- 
+-- ```lua
+-- default = {}
+-- ```
+---@field ignore string[]
+-- Choose the basic list of checked errors by specifying an existing convention.
+-- 
+-- ```lua
+-- default = nil
+-- ```
+---@field convention "pep257" | "numpy" | vim.NIL
+
+---@class Settings.pylsp.Jedi.Signature.Help
+-- Enable or disable the plugin.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enabled boolean
+
+---@class Settings.pylsp.Rope.Completion
+-- Enable or disable the plugin.
+---@field enabled boolean
+-- Resolve documentation and detail eagerly.
+---@field eager boolean
+
+---@class Settings.pylsp.Jedi
+-- Define environment variables for jedi.Script and Jedi.names.
+-- 
+-- ```lua
+-- default = nil
+-- ```
+---@field env_vars table
+-- Define environment for jedi.Script and Jedi.names.
+-- 
+-- ```lua
+-- default = nil
+-- ```
+---@field environment string
+-- Define extra paths for jedi.Script.
+-- 
+-- ```lua
+-- default = {}
+-- ```
+---@field extra_paths string[]
+
+---@class Settings.pylsp.Jedi.Definition
+-- Enable or disable the plugin.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enabled boolean
+-- If follow_imports is True will decide if it follow builtin imports.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field follow_builtin_imports boolean
+-- The goto call will follow imports.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field follow_imports boolean
+
+---@class Settings.pylsp.Jedi.Completion
+-- Enable or disable the plugin.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enabled boolean
+-- Adds class objects as a separate completion item.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field include_class_objects boolean
+-- Resolve documentation and detail eagerly.
+---@field eager boolean
+-- Adds function objects as a separate completion item.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field include_function_objects boolean
+-- How many labels and snippets (at most) should be resolved?
+-- 
+-- ```lua
+-- default = 25
+-- ```
+---@field resolve_at_most number
+-- Enable fuzzy when requesting autocomplete.
+---@field fuzzy boolean
+-- Auto-completes methods and classes with tabstops for each parameter.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field include_params boolean
+-- Modules for which labels and snippets should be cached.
+-- 
+-- ```lua
+-- default = { "pandas", "numpy", "tensorflow", "matplotlib" }
+-- ```
+---@field cache_for string[]
+
+---@class Settings.pylsp.Autopep8
+-- Enable or disable the plugin (disabling required to use `yapf`).
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enabled boolean
+
+---@class Settings.pylsp.Plugins
+---@field pycodestyle Settings.pylsp.Pycodestyle
+---@field pyflakes Settings.pylsp.Pyflakes
+---@field yapf Settings.pylsp.Yapf
+---@field jedi_hover Settings.pylsp.Jedi.Hover
+---@field jedi_symbols Settings.pylsp.Jedi.Symbols
+---@field preload Settings.pylsp.Preload
+---@field mccabe Settings.pylsp.Mccabe
+---@field pylint Settings.pylsp.Pylint
+---@field jedi_references Settings.pylsp.Jedi.References
+---@field flake8 Settings.pylsp.Flake8
+---@field pydocstyle Settings.pylsp.Pydocstyle
+---@field jedi_signature_help Settings.pylsp.Jedi.Signature.Help
+---@field rope_completion Settings.pylsp.Rope.Completion
+---@field jedi Settings.pylsp.Jedi
+---@field jedi_definition Settings.pylsp.Jedi.Definition
+---@field jedi_completion Settings.pylsp.Jedi.Completion
+---@field autopep8 Settings.pylsp.Autopep8
+
+---@class Settings.pylsp.Rope
+-- Builtin and c-extension modules that are allowed to be imported and inspected by rope.
+-- 
+-- ```lua
+-- default = nil
+-- ```
+---@field extensionModules string
+-- The name of the folder in which rope stores project configurations and data.  Pass `null` for not using such a folder at all.
+-- 
+-- ```lua
+-- default = nil
+-- ```
+---@field ropeFolder string[]
+
+---@class Settings.pylsp.Pylsp
+---@field plugins Settings.pylsp.Plugins
+---@field rope Settings.pylsp.Rope
+-- List of configuration sources to use.
+-- 
+-- ```lua
+-- default = { "pycodestyle" }
+-- ```
+---@field configurationSources string[]
+
+---@class Settings.pylsp
+---@field pylsp Settings.pylsp.Pylsp
+
+---@class Settings.awkls.Trace
+-- Traces the communication between VS Code and the language server.
+-- 
+-- ```lua
+-- default = "off"
+-- ```
+---@field server "off" | "messages" | "verbose"
+
+---@class Settings.awkls.Awk-ide-vscode
+---@field trace Settings.awkls.Trace
+
+---@class Settings.awkls
+---@field awk-ide-vscode Settings.awkls.Awk-ide-vscode
+
+---@class Settings.r_language_server.Lsp
+-- Enable Diagnostics
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field diagnostics boolean
+-- Debug R Language Server
+---@field debug boolean
+-- Use STDIO connection instead of TCP. (Unix/macOS users only)
+---@field use_stdio boolean
+-- Path to R binary for launching Language Server
+-- 
+-- ```lua
+-- default = ""
+-- ```
+---@field path string
+-- Override default LANG environment variable
+-- 
+-- ```lua
+-- default = ""
+-- ```
+---@field lang string
+-- The command line arguments to use when launching R Language Server
+-- 
+-- ```lua
+-- default = {}
+-- ```
+---@field args array
+
+---@class Settings.r_language_server.Rpath
+-- Path to an R executable for macOS. Must be "vanilla" R, not radian etc.!
+-- 
+-- ```lua
+-- default = ""
+-- ```
+---@field mac string
+-- Path to an R executable for Linux. Must be "vanilla" R, not radian etc.!
+-- 
+-- ```lua
+-- default = ""
+-- ```
+---@field linux string
+-- Path to an R executable for Windows. Must be "vanilla" R, not radian etc.!
+-- 
+-- ```lua
+-- default = ""
+-- ```
+---@field windows string
+
+---@class Settings.r_language_server.R
+---@field lsp Settings.r_language_server.Lsp
+---@field rpath Settings.r_language_server.Rpath
+
+---@class Settings.r_language_server
+---@field r Settings.r_language_server.R
+
+---@class Settings.java_language_server.Trace
+-- Traces the communication between VSCode and the language server.
+-- 
+-- ```lua
+-- default = "off"
+-- ```
+---@field server "off" | "messages" | "verbose"
+
+---@class Settings.java_language_server.Java
+-- Absolute path to your Java home directory
+---@field home string
+-- Command to debug one test method, for example ["mvn", "test", "-Dmaven.surefire.debug", "-Dtest=${class}#${method}". The test should start paused, listening for the debugger on port 5005.
+---@field debugTestMethod string[]
+-- Command to run one test method, for example ["mvn", "test", "-Dtest=${class}#${method}"
+---@field testMethod string[]
+-- List of modules to allow access to, for example ["jdk.compiler/com.sun.tools.javac.api"]
+---@field addExports string[]
+-- External dependencies of the form groupId:artifactId:version or groupId:artifactId:packaging:version:scope
+---@field externalDependencies string[]
+-- Command to run all tests in a class, for example ["mvn", "test", "-Dtest=${class}"
+---@field testClass string[]
+-- Relative paths from workspace root to .jar files, .zip files, or folders that should be included in the Java class path
+---@field classPath string[]
+---@field trace Settings.java_language_server.Trace
+
+---@class Settings.java_language_server
+---@field java Settings.java_language_server.Java
+
+---@class Settings.perlls.Perl
+-- Log level 0-2
+-- 
+-- ```lua
+-- default = 0
+-- ```
+---@field logLevel integer
+-- object with environment settings for command that starts the LanguageServer, e.g. can be used to set KUBECONFIG.
+-- 
+-- ```lua
+-- default = nil
+-- ```
+---@field env table
+-- optional, port for ssh to remote system
+-- 
+-- ```lua
+-- default = nil
+-- ```
+---@field sshPort string
+-- If set Perl::LanguageServer can run inside a container. Options are: 'docker', 'docker-compose', 'kubectl'
+-- 
+-- ```lua
+-- default = nil
+-- ```
+---@field containerCmd string
+-- Image to start or container to exec inside or pod to use
+-- 
+-- ```lua
+-- default = nil
+-- ```
+---@field containerName string
+-- if true, show also local variables in symbol view
+---@field showLocalVars boolean
+-- directory for caching of parsed symbols, if the directory does not exists, it will be created, defaults to ${workspace}/.vscode/perl-lang. This should be one unqiue directory per project and an absolute path.
+-- 
+-- ```lua
+-- default = nil
+-- ```
+---@field cacheDir string
+-- array with paths to add to perl library path. This setting is used by the syntax checker and for the debuggee and also for the LanguageServer itself. perl.perlInc should be absolute paths.
+-- 
+-- ```lua
+-- default = nil
+-- ```
+---@field perlInc array
+-- arguments for containerCmd. Varies depending on containerCmd.
+-- 
+-- ```lua
+-- default = nil
+-- ```
+---@field containerArgs array
+-- defaults to ssh on unix and plink on windows
+-- 
+-- ```lua
+-- default = nil
+-- ```
+---@field sshCmd string
+-- optional arguments for ssh
+-- 
+-- ```lua
+-- default = nil
+-- ```
+---@field sshArgs array
+-- defaults to perl
+-- 
+-- ```lua
+-- default = nil
+-- ```
+---@field perlCmd string
+-- If set, log output is written to the given logfile, instead of displaying it in the vscode output pane. Log output is always appended so you are responsible for rotating the file.
+-- 
+-- ```lua
+-- default = nil
+-- ```
+---@field logFile string
+-- mapping of local to remote paths
+-- 
+-- ```lua
+-- default = nil
+-- ```
+---@field pathMap array
+-- To start a new container, set to 'run', to execute inside an existing container set to 'exec'. Note: kubectl only supports 'exec'
+-- 
+-- ```lua
+-- default = "exec"
+-- ```
+---@field containerMode string
+-- directories to ignore, defaults to .vscode, .git, .svn
+-- 
+-- ```lua
+-- default = nil
+-- ```
+---@field ignoreDirs array
+-- if true, the LanguageServer will not cache the result of parsing source files on disk, so it can be used within readonly directories
+---@field disableCache boolean
+-- enable/disable this extension
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enable boolean
+-- port to use for connection between vscode and debug adapter inside Perl::LanguageServer. On a multi user system every user must use a different port.
+-- 
+-- ```lua
+-- default = 13603
+-- ```
+---@field debugAdapterPort integer
+-- path of the workspace root on remote system
+-- 
+-- ```lua
+-- default = nil
+-- ```
+---@field sshWorkspaceRoot string
+-- array for filtering perl file, defaults to *.pm|*.pl
+-- 
+-- ```lua
+-- default = nil
+-- ```
+---@field fileFilter array
+-- user for ssh login
+-- 
+-- ```lua
+-- default = nil
+-- ```
+---@field sshUser string
+-- ip address of remote system
+-- 
+-- ```lua
+-- default = nil
+-- ```
+---@field sshAddr string
+-- if debugAdapterPort is in use try ports from debugAdapterPort to debugAdapterPort + debugAdapterPortRange. Default 100.
+-- 
+-- ```lua
+-- default = 100
+-- ```
+---@field debugAdapterPortRange integer
+
+---@class Settings.perlls
+---@field perl Settings.perlls.Perl
+
+---@class Settings.rescriptls.InlayHints
+-- Enable (experimental) inlay hints.
+---@field enable boolean
+-- Maximum length of character for inlay hints. Set to null to have an unlimited length. Inlay hints that exceed the maximum length will not be shown.
+-- 
+-- ```lua
+-- default = 25
+-- ```
+---@field maxLength integer
+
+---@class Settings.rescriptls.Settings
+-- Whether you want the extension to prompt for autostarting a ReScript build if a project is opened with no build running.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field askToStartBuild boolean
+-- Enable (experimental) code lens for function definitions.
+---@field codeLens boolean
+-- Automatically start ReScript's code analysis.
+---@field autoRunCodeAnalysis boolean
+-- Path to the directory where ReScript binaries are. You can use it if you haven't or don't want to use the installed ReScript from node_modules in your project.
+-- 
+-- ```lua
+-- default = nil
+-- ```
+---@field binaryPath string
+-- Whether you want to allow the extension to format your code using its built in formatter when it cannot find a ReScript compiler version in your current project to use for formatting.
+---@field allowBuiltInFormatter boolean
+---@field inlayHints Settings.rescriptls.InlayHints
+
+---@class Settings.rescriptls.Rescript
+---@field settings Settings.rescriptls.Settings
+
+---@class Settings.rescriptls
+---@field rescript Settings.rescriptls.Rescript
+
+---@class Settings.sorbet.Sorbet
+-- Enable Sorbet Ruby IDE features
+---@field enabled boolean
+-- The default configuration to use from `sorbet.userLspConfigs` or `sorbet.lspConfigs`.  If unset, defaults to the first item in `sorbet.userLspConfigs` or `sorbet.lspConfigs`.
+---@field selectedLspConfigId string
+-- Show the extension output window on errors.
+---@field revealOutputOnError boolean
+-- Custom user LSP configurations that supplement `sorbet.lspConfigs` (and override configurations with the same id).  If you commit your VSCode settings to source control, you probably want to commit `sorbet.lspConfigs`, not this value.
+-- 
+-- ```lua
+-- default = {}
+-- ```
+---@field userLspConfigs object[]
+-- List of workspace file patterns that contribute to Sorbet's configuration.  Changes to any of those files should trigger a restart of any actively running Sorbet language server.
+-- 
+-- ```lua
+-- default = { "**/sorbet/config", "**/Gemfile", "**/Gemfile.lock" }
+-- ```
+---@field configFilePatterns string[]
+-- Standard Ruby LSP configurations.  If you commit your VSCode settings to source control, you probably want to commit *this* setting, not `sorbet.userLspConfigs`.
+-- 
+-- ```lua
+-- default = { {
+--     command = { "bundle", "exec", "srb", "typecheck", "--lsp" },
+--     cwd = "${workspaceFolder}",
+--     description = "Stable Sorbet Ruby IDE features",
+--     id = "stable",
+--     name = "Sorbet"
+--   }, {
+--     command = { "bundle", "exec", "srb", "typecheck", "--lsp", "--enable-all-beta-lsp-features" },
+--     cwd = "${workspaceFolder}",
+--     description = "Beta Sorbet Ruby IDE features",
+--     id = "beta",
+--     name = "Sorbet (Beta)"
+--   }, {
+--     command = { "bundle", "exec", "srb", "typecheck", "--lsp", "--enable-all-experimental-lsp-features" },
+--     cwd = "${workspaceFolder}",
+--     description = "Experimental Sorbet Ruby IDE features (warning: crashy, for developers only)",
+--     id = "experimental",
+--     name = "Sorbet (Experimental)"
+--   } }
+-- ```
+---@field lspConfigs object[]
+
+---@class Settings.sorbet
+---@field sorbet Settings.sorbet.Sorbet
+
+---@class Settings.eslint.Format
+-- Enables ESLint as a formatter.
+---@field enable boolean
+
+---@class Settings.eslint.LintTask
+-- Command line options applied when running the task for linting the whole workspace (see https://eslint.org/docs/user-guide/command-line-interface).
+-- 
+-- ```lua
+-- default = "."
+-- ```
+---@field options string
+-- Controls whether a task for linting the whole workspace will be available.
+---@field enable boolean
+
+---@class Settings.eslint.CodeActionsOnSave
+-- The rules that should be executed when computing the code actions on save or formatting a file. Defaults to the rules configured via the ESLint configuration
+-- 
+-- ```lua
+-- default = nil
+-- ```
+---@field rules 
+-- Specifies the code action mode. Possible values are 'all' and 'problems'.
+-- 
+-- ```lua
+-- default = "all"
+-- ```
+---@field mode "all" | "problems"
+
+---@class Settings.eslint.Rules
+-- A special rules customization section for text cells in notebook documents.
+---@field customizations object[]
+
+---@class Settings.eslint.Notebooks
+---@field rules Settings.eslint.Rules
+
+---@class Settings.eslint.Migration
+-- Whether ESlint should migrate auto fix on save settings.
+-- 
+-- ```lua
+-- default = "on"
+-- ```
+---@field 2_x "off" | "on"
+
+-- Show disable lint rule in the quick fix menu.
+-- 
+-- ```lua
+-- default = {
+--   commentStyle = "line",
+--   enable = true,
+--   location = "separateLine"
+-- }
+-- ```
+---@class Settings.eslint.DisableRuleComment
+-- Configure the disable rule code action to insert the comment on the same line or a new line.
+-- 
+-- ```lua
+-- default = "separateLine"
+-- ```
+---@field location "separateLine" | "sameLine"
+-- ```lua
+-- default = "line"
+-- ```
+---@field commentStyle "line" | "block"
+-- Show the disable code actions.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enable boolean
+
+-- Show open lint rule documentation web page in the quick fix menu.
+-- 
+-- ```lua
+-- default = {
+--   enable = true
+-- }
+-- ```
+---@class Settings.eslint.ShowDocumentation
+-- Show the documentation code actions.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enable boolean
+
+---@class Settings.eslint.CodeAction
+-- Show disable lint rule in the quick fix menu.
+-- 
+-- ```lua
+-- default = {
+--   commentStyle = "line",
+--   enable = true,
+--   location = "separateLine"
+-- }
+-- ```
+---@field disableRuleComment Settings.eslint.DisableRuleComment
+-- Show open lint rule documentation web page in the quick fix menu.
+-- 
+-- ```lua
+-- default = {
+--   enable = true
+-- }
+-- ```
+---@field showDocumentation Settings.eslint.ShowDocumentation
+
+---@class Settings.eslint.Rules
+-- Override the severity of one or more rules reported by this extension, regardless of the project's ESLint config. Use globs to apply default severities for multiple rules.
+---@field customizations object[]
+
+---@class Settings.eslint.Trace
+-- Traces the communication between VSCode and the eslint linter service.
+-- 
+-- ```lua
+-- default = "off"
+-- ```
+---@field server 
+
+---@class Settings.eslint.Eslint
+-- Enables ESLint debug mode (same as `--debug` on the command line)
+---@field debug boolean
+---@field format Settings.eslint.Format
+-- The location of the node binary to run ESLint under.
+-- 
+-- ```lua
+-- default = nil
+-- ```
+---@field runtime string
+---@field lintTask Settings.eslint.LintTask
+-- An array of language ids which should be validated by ESLint. If not installed ESLint will show an error.
+---@field validate array
+-- Turns auto fix on save on or off.
+---@field autoFixOnSave boolean
+-- The value of `NODE_ENV` to use when running eslint tasks.
+-- 
+-- ```lua
+-- default = nil
+-- ```
+---@field nodeEnv string
+-- An array of language ids for which the extension should probe if support is installed.
+-- 
+-- ```lua
+-- default = { "javascript", "javascriptreact", "typescript", "typescriptreact", "html", "vue", "markdown" }
+-- ```
+---@field probe string[]
+-- Controls whether a task for linting the whole workspace will be available.
+---@field provideLintTask boolean
+-- Specifies how the working directories ESLint is using are computed. ESLint resolves configuration files (e.g. `eslintrc`, `.eslintignore`) relative to a working directory so it is important to configure this correctly.
+---@field workingDirectories array
+---@field codeActionsOnSave Settings.eslint.CodeActionsOnSave
+---@field notebooks Settings.eslint.Notebooks
+---@field migration Settings.eslint.Migration
+---@field codeAction Settings.eslint.CodeAction
+-- Since version 7 ESLint offers a new API call ESLint. Use it even if the old CLIEngine is available. From version 8 on forward on ESLint class is available.
+---@field useESLintClass boolean
+---@field rules Settings.eslint.Rules
+-- Run the linter on save (onSave) or on type (onType)
+-- 
+-- ```lua
+-- default = "onType"
+-- ```
+---@field run "onSave" | "onType"
+-- Whether ESLint should issue a warning on ignored files.
+-- 
+-- ```lua
+-- default = "off"
+-- ```
+---@field onIgnoredFiles "warn" | "off"
+---@field trace Settings.eslint.Trace
+-- A path added to `NODE_PATH` when resolving the eslint module.
+-- 
+-- ```lua
+-- default = nil
+-- ```
+---@field nodePath string
+-- Always show the ESlint status bar item.
+---@field alwaysShowStatus boolean
+-- The package manager you use to install node modules.
+-- 
+-- ```lua
+-- default = "npm"
+-- ```
+---@field packageManager "npm" | "yarn" | "pnpm"
+-- Turns on quiet mode, which ignores warnings.
+---@field quiet boolean
+-- Additional exec argv argument passed to the runtime. This can for example be used to control the maximum heap space using --max_old_space_size
+-- 
+-- ```lua
+-- default = nil
+-- ```
+---@field execArgv 
+-- The eslint options object to provide args normally passed to eslint when executed from a command line (see https://eslint.org/docs/developer-guide/nodejs-api#eslint-class).
+-- 
+-- ```lua
+-- default = {}
+-- ```
+---@field options table
+-- Controls whether eslint is enabled or not.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enable boolean
+
+---@class Settings.eslint
+---@field eslint Settings.eslint.Eslint
+
+---@class Settings.omnisharp.Format
+-- Enable/disable default C# formatter (requires restart).
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enable boolean
+
+-- Provides options to control which modules (.dll files) the debugger will attempt to load symbols (.pdb files) for.
+-- 
+-- ```lua
+-- default = {
+--   excludedModules = {},
+--   mode = "loadAllButExcluded"
+-- }
+-- ```
+---@class Settings.omnisharp.ModuleFilter
+-- Array of modules that the debugger should load symbols for. Wildcards (example: MyCompany.*.dll) are supported.
+-- 
+-- This property is ignored unless 'mode' is set to 'loadOnlyIncluded'.
+-- 
+-- ```lua
+-- default = { "MyExampleModule.dll" }
+-- ```
+---@field includedModules string[]
+-- Controls which of the two basic operating modes the module filter operates in.
+-- 
+-- ```lua
+-- default = "loadAllButExcluded"
+-- ```
+---@field mode "loadAllButExcluded" | "loadOnlyIncluded"
+-- Array of modules that the debugger should NOT load symbols for. Wildcards (example: MyCompany.*.dll) are supported.
+-- 
+-- This property is ignored unless 'mode' is set to 'loadAllButExcluded'.
+-- 
+-- ```lua
+-- default = {}
+-- ```
+---@field excludedModules string[]
+-- If true, for any module NOT in the 'includedModules' array, the debugger will still check next to the module itself and the launching executable, but it will not check paths on the symbol search list. This option defaults to 'true'.
+-- 
+-- This property is ignored unless 'mode' is set to 'loadOnlyIncluded'.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field includeSymbolsNextToModules boolean
+
+-- Options to control how symbols (.pdb files) are found and loaded.
+-- 
+-- ```lua
+-- default = {
+--   searchMicrosoftSymbolServer = false,
+--   searchNuGetOrgSymbolServer = false,
+--   searchPaths = {}
+-- }
+-- ```
+---@class Settings.omnisharp.SymbolOptions
+-- Array of symbol server URLs (example: http​://MyExampleSymbolServer) or directories (example: /build/symbols) to search for .pdb files. These directories will be searched in addition to the default locations -- next to the module and the path where the pdb was originally dropped to.
+-- 
+-- ```lua
+-- default = {}
+-- ```
+---@field searchPaths string[]
+-- If 'true' the Microsoft Symbol server (https​://msdl.microsoft.com​/download/symbols) is added to the symbols search path. If unspecified, this option defaults to 'false'.
+---@field searchMicrosoftSymbolServer boolean
+-- Directory where symbols downloaded from symbol servers should be cached. If unspecified, on Windows the debugger will default to %TEMP%\SymbolCache, and on Linux and macOS the debugger will default to ~/.dotnet/symbolcache.
+-- 
+-- ```lua
+-- default = "~/.dotnet/symbolcache"
+-- ```
+---@field cachePath string
+-- Provides options to control which modules (.dll files) the debugger will attempt to load symbols (.pdb files) for.
+-- 
+-- ```lua
+-- default = {
+--   excludedModules = {},
+--   mode = "loadAllButExcluded"
+-- }
+-- ```
+---@field moduleFilter Settings.omnisharp.ModuleFilter
+-- If 'true' the NuGet.org symbol server (https​://symbols.nuget.org​/download/symbols) is added to the symbols search path. If unspecified, this option defaults to 'false'.
+---@field searchNuGetOrgSymbolServer boolean
+
+-- Optional flags to determine what types of messages should be logged to the output window.
+-- 
+-- ```lua
+-- default = {}
+-- ```
+---@class Settings.omnisharp.Logging
+-- Optional flag to determine whether exception messages should be logged to the output window.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field exceptions boolean
+-- Optional flag to determine whether module load events should be logged to the output window.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field moduleLoad boolean
+-- If true, engine logging will include `adapterElapsedTime` and `engineElapsedTime` properties to indicate the amount of time, in microseconds, that a request took.
+---@field elapsedTiming boolean
+-- Optional flag to determine whether diagnostic engine logs should be logged to the output window.
+---@field engineLogging boolean
+-- Controls if a message is logged when a thread in the target process exits. Default: `false`.
+---@field threadExit boolean
+-- Controls if a message is logged when the target process exits, or debugging is stopped. Default: `true`.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field processExit boolean
+-- Optional flag to determine if stdout text from the launching the web browser should be logged to the output window.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field browserStdOut boolean
+-- Optional flag to determine whether program output should be logged to the output window when not using an external console.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field programOutput boolean
+
+-- Options to use with the debugger when launching for unit test debugging.
+-- 
+-- ```lua
+-- default = {}
+-- ```
+---@class Settings.omnisharp.UnitTestDebuggingOptions
+-- For debug extension development only: if a port is specified VS Code tries to connect to a debug adapter running in server mode
+-- 
+-- ```lua
+-- default = 4711
+-- ```
+---@field debugServer number
+-- When true (the default state), the debugger will attempt faster evaluation by simulating execution of simple properties and methods.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field allowFastEvaluate boolean
+-- [Only supported in local macOS debugging] The architecture of the debuggee. This will automatically be detected unless this parameter is set. Allowed values are x86_64 or arm64.
+---@field targetArchitecture string
+-- Options to control how symbols (.pdb files) are found and loaded.
+-- 
+-- ```lua
+-- default = {
+--   searchMicrosoftSymbolServer = false,
+--   searchNuGetOrgSymbolServer = false,
+--   searchPaths = {}
+-- }
+-- ```
+---@field symbolOptions Settings.omnisharp.SymbolOptions
+-- Options to control how Source Link connects to web servers. For more information: https://aka.ms/VSCode-CS-LaunchJson#source-link-options
+-- 
+-- ```lua
+-- default = {
+--   ["*"] = {
+--     enabled = true
+--   }
+-- }
+-- ```
+---@field sourceLinkOptions table
+-- Type type of code to debug. Can be either 'coreclr' for .NET Core debugging, or 'clr' for Desktop .NET Framework. 'clr' only works on Windows as the Desktop framework is Windows-only.
+-- 
+-- ```lua
+-- default = "coreclr"
+-- ```
+---@field type "coreclr" | "clr"
+-- Optional flag to enable stepping over Properties and Operators.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enableStepFiltering boolean
+-- If true, when an optimized module (.dll compiled in the Release configuration) loads in the target process, the debugger will ask the Just-In-Time compiler to generate code with optimizations disabled. For more information: https://aka.ms/VSCode-CS-LaunchJson#suppress-jit-optimizations
+---@field suppressJITOptimizations boolean
+-- Optional flag to only show user code.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field justMyCode boolean
+-- Optional source file mappings passed to the debug engine. Example: '{ "C:\foo":"/home/user/foo" }'
+-- 
+-- ```lua
+-- default = {
+--   ["<insert-source-path-here>"] = "<insert-target-path-here>"
+-- }
+-- ```
+---@field sourceFileMap table
+-- Optional flag to require current source code to match the pdb.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field requireExactSource boolean
+-- Optional flags to determine what types of messages should be logged to the output window.
+-- 
+-- ```lua
+-- default = {}
+-- ```
+---@field logging Settings.omnisharp.Logging
+
+---@class Settings.omnisharp.SemanticHighlighting
+-- Enable/disable Semantic Highlighting for C# files (Razor files currently unsupported). Defaults to false. Close open files for changes to take effect.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enabled boolean
+
+---@class Settings.omnisharp.Types
+-- Display inline type hints
+---@field enabled boolean
+-- Show hints for variables with inferred types
+---@field forImplicitVariableTypes boolean
+-- Show hints for lambda parameter types
+---@field forLambdaParameterTypes boolean
+-- Show hints for implicit object creation
+---@field forImplicitObjectCreation boolean
+
+---@class Settings.omnisharp.Parameters
+-- Suppress hints when parameter name matches the method's intent
+---@field suppressForParametersThatMatchMethodIntent boolean
+-- Show hints for indexers
+---@field forIndexerParameters boolean
+-- Suppress hints when argument matches parameter name
+---@field suppressForParametersThatMatchArgumentName boolean
+-- Show hints for literals
+---@field forLiteralParameters boolean
+-- Show hints for everything else
+---@field forOtherParameters boolean
+-- Suppress hints when parameter names differ only by suffix
+---@field suppressForParametersThatDifferOnlyBySuffix boolean
+-- Show hints for 'new' expressions
+---@field forObjectCreationParameters boolean
+-- Display inline parameter name hints
+---@field enabled boolean
+
+---@class Settings.omnisharp.InlayHints
+---@field types Settings.omnisharp.Types
+---@field parameters Settings.omnisharp.Parameters
+
+---@class Settings.omnisharp.TestsCodeLens
+-- Specifies whether the run and debug test CodeLens should be shown.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enabled boolean
+
+---@class Settings.omnisharp.ReferencesCodeLens
+-- Array of custom symbol names for which CodeLens should be disabled.
+-- 
+-- ```lua
+-- default = {}
+-- ```
+---@field filteredSymbols string[]
+-- Specifies whether the references CodeLens should be shown.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enabled boolean
+
+---@class Settings.omnisharp.Csharp
+---@field format Settings.omnisharp.Format
+-- Specifies the maximum number of files for which diagnostics are reported for the whole workspace. If this limit is exceeded, diagnostics will be shown for currently opened files only. Specify 0 or less to disable the limit completely.
+-- 
+-- ```lua
+-- default = 1000
+-- ```
+---@field maxProjectFileCountForDiagnosticAnalysis number
+-- Suppress 'hidden' diagnostics (such as 'unnecessary using directives') from appearing in the editor or the Problems pane.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field suppressHiddenDiagnostics boolean
+-- Options to use with the debugger when launching for unit test debugging.
+-- 
+-- ```lua
+-- default = {}
+-- ```
+---@field unitTestDebuggingOptions Settings.omnisharp.UnitTestDebuggingOptions
+---@field semanticHighlighting Settings.omnisharp.SemanticHighlighting
+---@field inlayHints Settings.omnisharp.InlayHints
+---@field testsCodeLens Settings.omnisharp.TestsCodeLens
+-- Suppress the warning that the .NET Core SDK is not on the path.
+---@field suppressDotnetInstallWarning boolean
+-- Suppress the warning that project.json is no longer a supported project format for .NET Core applications
+---@field suppressProjectJsonWarning boolean
+-- Suppress the notification window to perform a 'dotnet restore' when dependencies can't be resolved.
+---@field suppressDotnetRestoreNotification boolean
+-- Suppress the notification window to add missing assets to build or debug the application.
+---@field suppressBuildAssetsNotification boolean
+-- Shows the OmniSharp log in the Output pane when OmniSharp reports an error.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field showOmnisharpLogOnError boolean
+---@field referencesCodeLens Settings.omnisharp.ReferencesCodeLens
+
+---@class Settings.omnisharp.Omnisharp
+-- Specifes whether OmniSharp should use VS Code editor settings for C# code formatting (use of tabs, indentation size).
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field useEditorFormattingSettings boolean
+-- Specified the path to a dotnet installation to use when "useModernNet" is set to true, instead of the default system one. This only influences the dotnet installation to use for hosting Omnisharp itself. Example: "/home/username/mycustomdotnetdirectory".
+---@field dotnetPath string
+-- Specifies the version of the .NET SDK to use for project loading instead of the highest version installed. Applies when "useModernNet" is set to true. Example: 6.0.300.
+---@field sdkVersion string
+-- Enables support for reading code style, naming convention and analyzer settings from .editorconfig.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enableEditorConfigSupport boolean
+-- Pass the --debug flag when launching the OmniSharp server to allow a debugger to be attached.
+---@field waitForDebugger boolean
+-- Specifies the level of logging output from the OmniSharp server.
+-- 
+-- ```lua
+-- default = "information"
+-- ```
+---@field loggingLevel "trace" | "debug" | "information" | "warning" | "error" | "critical"
+-- The name of the default solution used at start up if the repo has multiple solutions. e.g.'MyAwesomeSolution.sln'. Default value is `null` which will cause the first in alphabetical order to be chosen.
+---@field defaultLaunchSolution string
+-- Use OmniSharp build for .NET 6. This version _does not_ support non-SDK-style .NET Framework projects, including Unity. SDK-style Framework, .NET Core, and .NET 5+ projects should see significant performance improvements.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field useModernNet boolean
+-- Enables support for showing unimported types and unimported extension methods in completion lists. When committed, the appropriate using directive will be added at the top of the current file. This option can have a negative impact on initial completion responsiveness, particularly for the first few completion sessions after opening a solution.
+---@field enableImportCompletion boolean
+-- (EXPERIMENTAL) Enables support for resolving completion edits asynchronously. This can speed up time to show the completion list, particularly override and partial method completion lists, at the cost of slight delays after inserting a completion item. Most completion items will have no noticeable impact with this feature, but typing immediately after inserting an override or partial method completion, before the insert is completed, can have unpredictable results.
+---@field enableAsyncCompletion boolean
+-- Enables support for roslyn analyzers, code fixes and rulesets.
+---@field enableRoslynAnalyzers boolean
+-- Specifies whether 'using' directives should be grouped and sorted during document formatting.
+---@field organizeImportsOnFormat boolean
+-- Specifies the path to a .NET SDK installation to use for project loading instead of the highest version installed. Applies when "useModernNet" is set to true. Example: /home/username/dotnet/sdks/6.0.300.
+---@field sdkPath string
+-- Specifies the path to a mono installation to use when "useModernNet" is set to false, instead of the default system one. Example: "/Library/Frameworks/Mono.framework/Versions/Current"
+---@field monoPath string
+-- Enables support for decompiling external references instead of viewing metadata.
+---@field enableDecompilationSupport boolean
+-- If true, MSBuild project system will only load projects for files that were opened in the editor. This setting is useful for big C# codebases and allows for faster initialization of code navigation features only for projects that are relevant to code that is being edited. With this setting enabled OmniSharp may load fewer projects and may thus display incomplete reference lists for symbols.
+---@field enableMsBuildLoadProjectsOnDemand boolean
+-- Specifies whether the OmniSharp server will be automatically started or not. If false, OmniSharp can be started with the 'Restart OmniSharp' command
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field autoStart boolean
+-- Specifies the path to OmniSharp. When left empty the OmniSharp version pinned to the C# Extension is used. This can be the absolute path to an OmniSharp executable, a specific version number, or "latest". If a version number or "latest" is specified, the appropriate version of OmniSharp will be downloaded on your behalf. Setting "latest" is an opt-in into latest beta releases of OmniSharp.
+---@field path string
+-- Path to the .runsettings file which should be used when running unit tests.
+---@field testRunSettings string
+-- The time Visual Studio Code will wait for the OmniSharp server to start. Time is expressed in seconds.
+-- 
+-- ```lua
+-- default = 60
+-- ```
+---@field projectLoadTimeout number
+-- The maximum number of items that 'Go to Symbol in Workspace' operation can show. The limit is applied only when a positive number is specified here.
+-- 
+-- ```lua
+-- default = 1000
+-- ```
+---@field maxFindSymbolsItems number
+-- Only run analyzers against open files when 'enableRoslynAnalyzers' is true
+---@field analyzeOpenDocumentsOnly boolean
+-- Specifies whether to include preview versions of the .NET SDK when determining which version to use for project loading. Applies when "useModernNet" is set to true.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field sdkIncludePrereleases boolean
+-- The minimum number of characters to enter before 'Go to Symbol in Workspace' operation shows any results.
+-- 
+-- ```lua
+-- default = 0
+-- ```
+---@field minFindSymbolsFilterLength number
+-- Paths to a local download of the .NET CLI to use for running any user code.
+---@field dotNetCliPaths string[]
+-- The maximum number of projects to be shown in the 'Select Project' dropdown (maximum 250).
+-- 
+-- ```lua
+-- default = 250
+-- ```
+---@field maxProjectResults number
+-- Specifies whether notifications should be shown if OmniSharp encounters warnings or errors loading a project. Note that these warnings/errors are always emitted to the OmniSharp log
+---@field disableMSBuildDiagnosticWarning boolean
+
+---@class Settings.omnisharp.Format
+-- Enable/disable default Razor formatter.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enable boolean
+
+---@class Settings.omnisharp.LanguageServer
+-- Overrides the path to the Razor Language Server directory.
+---@field directory string
+-- Specifies whether to wait for debug attach when launching the language server.
+---@field debug boolean
+
+---@class Settings.omnisharp.Plugin
+-- Overrides the path to the Razor plugin dll.
+---@field path string
+
+---@class Settings.omnisharp.Razor
+-- Specifies whether to output all messages [Verbose], some messages [Messages] or not at all [Off].
+-- 
+-- ```lua
+-- default = "Off"
+-- ```
+---@field trace "Off" | "Messages" | "Verbose"
+---@field format Settings.omnisharp.Format
+-- Specifies whether to disable Razor language features.
+---@field disabled boolean
+---@field languageServer Settings.omnisharp.LanguageServer
+---@field plugin Settings.omnisharp.Plugin
+-- Forces the omnisharp-vscode extension to run in a mode that enables local Razor.VSCode deving.
+---@field devmode boolean
+
+---@class Settings.omnisharp
+---@field csharp Settings.omnisharp.Csharp
+---@field omnisharp Settings.omnisharp.Omnisharp
+---@field razor Settings.omnisharp.Razor
+
+---@class Settings.volar.Trace
+-- Traces the communication between VS Code and the language server.
+-- 
+-- ```lua
+-- default = "off"
+-- ```
+---@field server "off" | "messages" | "verbose"
+
+---@class Settings.volar.Volar-language-features
+---@field trace Settings.volar.Trace
+
+---@class Settings.volar.Trace
+-- Traces the communication between VS Code and the language server.
+-- 
+-- ```lua
+-- default = "off"
+-- ```
+---@field server "off" | "messages" | "verbose"
+
+---@class Settings.volar.Volar-language-features-2
+---@field trace Settings.volar.Trace
+
+---@class Settings.volar.Diagnostics
+-- Delay time for diagnostics.
+-- 
+-- ```lua
+-- default = 200
+-- ```
+---@field delay number
+
+---@class Settings.volar.CodeLens
+-- [references] code lens.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field references boolean
+-- [pug ☐] code lens.
+---@field pugTools boolean
+-- [ref sugar ☐] code lens.
+---@field scriptSetupTools boolean
+
+---@class Settings.volar.Icon
+-- Show Vite / Nuxt App preview icon.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field preview boolean
+-- Show split editor icon in title area of editor.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field splitEditors boolean
+
+---@class Settings.volar.Vueserver
+-- Use second server to progress heavy diagnostic works, the main server workhorse computing intellisense, operations such as auto-complete can respond faster. Note that this will lead to more memory usage.
+---@field useSecondServer boolean
+-- Defines how the host (editor) should sync document changes to the language server. SFC incremental parser only working when config "incremental".
+-- 
+-- ```lua
+-- default = "incremental"
+-- ```
+---@field textDocumentSync "incremental" | "full" | "none"
+-- Set --max-old-space-size option on server process. If you have problem on frequently "Request textDocument/** failed." error, try setting higher memory(MB) on it.
+-- 
+-- ```lua
+-- default = nil
+-- ```
+---@field maxOldSpaceSize number
+
+---@class Settings.volar.TakeOverMode
+-- Take over language support for *.ts.
+-- 
+-- ```lua
+-- default = "auto"
+-- ```
+---@field enabled "auto" | false
+
+---@class Settings.volar.Layout
+-- ```lua
+-- default = { "script", "scriptSetup", "styles" }
+-- ```
+---@field left array
+-- ```lua
+-- default = { "template", "customBlocks" }
+-- ```
+---@field right array
+
+---@class Settings.volar.SplitEditors
+---@field layout Settings.volar.Layout
+
+-- Whether to have initial indent.
+-- 
+-- ```lua
+-- default = {
+--   html = true
+-- }
+-- ```
+---@class Settings.volar.InitialIndent
+---@field json boolean
+---@field jsonc boolean
+---@field css boolean
+---@field javascriptreact boolean
+---@field javascript boolean
+---@field typescript boolean
+---@field typescriptreact boolean
+---@field scss boolean
+-- ```lua
+-- default = true
+-- ```
+---@field html boolean
+
+---@class Settings.volar.Format
+-- Whether to have initial indent.
+-- 
+-- ```lua
+-- default = {
+--   html = true
+-- }
+-- ```
+---@field initialIndent Settings.volar.InitialIndent
+
+---@class Settings.volar.Completion
+-- Preferred tag name case.
+-- 
+-- ```lua
+-- default = "auto"
+-- ```
+---@field preferredTagNameCase "auto" | "both" | "kebab" | "pascal"
+-- Enabled auto-import for component with tag completion.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field autoImportComponent boolean
+-- Preferred attr name case.
+-- 
+-- ```lua
+-- default = "auto-kebab"
+-- ```
+---@field preferredAttrNameCase "auto-kebab" | "auto-camel" | "kebab" | "camel"
+
+---@class Settings.volar.Script
+-- ```lua
+-- default = "node {NUXI_BIN} dev --port {PORT}"
+-- ```
+---@field nuxi string
+-- ```lua
+-- default = "node {VITE_BIN} --port={PORT}"
+-- ```
+---@field vite string
+
+---@class Settings.volar.Preview
+-- Component preview background style.
+---@field transparentGrid boolean
+---@field script Settings.volar.Script
+-- Component preview background color.
+-- 
+-- ```lua
+-- default = "#f0f0f0"
+-- ```
+---@field backgroundColor string
+-- Default port for component preview server.
+-- 
+-- ```lua
+-- default = 3333
+-- ```
+---@field port number
+
+---@class Settings.volar.UpdateImportsOnFileMove
+-- Enabled update imports on file move.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enabled boolean
+
+---@class Settings.volar.Volar
+---@field diagnostics Settings.volar.Diagnostics
+---@field codeLens Settings.volar.CodeLens
+-- Auto-complete Ref value with `.value`.
+---@field autoCompleteRefs boolean
+---@field icon Settings.volar.Icon
+---@field vueserver Settings.volar.Vueserver
+---@field takeOverMode Settings.volar.TakeOverMode
+---@field splitEditors Settings.volar.SplitEditors
+---@field format Settings.volar.Format
+---@field completion Settings.volar.Completion
+---@field preview Settings.volar.Preview
+-- Auto-wrap `()` to As Expression in interpolations for fix issue #520.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field autoWrapParentheses boolean
+---@field updateImportsOnFileMove Settings.volar.UpdateImportsOnFileMove
+
+---@class Settings.volar.Trace
+-- Traces the communication between VS Code and the language server.
+-- 
+-- ```lua
+-- default = "off"
+-- ```
+---@field server "off" | "messages" | "verbose"
+
+---@class Settings.volar.Volar-document-features
+---@field trace Settings.volar.Trace
+
+---@class Settings.volar
+---@field volar-language-features Settings.volar.Volar-language-features
+---@field volar-language-features-2 Settings.volar.Volar-language-features-2
+---@field volar Settings.volar.Volar
+---@field volar-document-features Settings.volar.Volar-document-features
+
+---@class Settings.puppet.FoldingRange
+-- Show or hide the last line in code folding regions
+---@field showLastLine boolean
+-- Enable/disable syntax aware code folding provider
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enable boolean
+
+---@class Settings.puppet.FormatOnType
+-- Sets the maximum file size (in Bytes) that document on-type formatting will occur. Setting this to zero (0) will disable the file size check. Note that large file sizes can cause performance issues.
+-- 
+-- ```lua
+-- default = 4096
+-- ```
+---@field maxFileSize integer
+-- Enable/disable the Puppet document on-type formatter, for example hashrocket alignment
+---@field enable boolean
+
+---@class Settings.puppet.Puppet
+-- The Puppet configuration directory. See https://puppet.com/docs/puppet/latest/dirs_confdir.html for more information
+-- 
+-- ```lua
+-- default = ""
+-- ```
+---@field confdir string
+-- The Puppet cache directory. See https://puppet.com/docs/puppet/latest/dirs_vardir.html for more information
+-- 
+-- ```lua
+-- default = ""
+-- ```
+---@field vardir string
+-- Additional module paths to use when starting the Editor Services. On Windows this is delimited with a semicolon, and on all other platforms, with a colon. For example C:\Path1;C:\Path2
+-- 
+-- ```lua
+-- default = ""
+-- ```
+---@field modulePath string
+-- The Puppet environment to use. See https://puppet.com/docs/puppet/latest/config_print.html#environments for more information
+-- 
+-- ```lua
+-- default = ""
+-- ```
+---@field environment string
+-- The version of Puppet to use. For example '5.4.0'. This is generally only applicable when using the PDK installation type. If Puppet Editor Services is unable to use this version, it will default to the latest available version of Puppet.
+-- 
+-- ```lua
+-- default = ""
+-- ```
+---@field version string
+
+---@class Settings.puppet.Tcp
+-- The IP address or hostname of the remote Puppet Editor Service to connect to, for example 'computer.domain' or '192.168.0.1'. Only applicable when the editorService.protocol is set to tcp
+---@field address string
+-- The TCP Port of the remote Puppet Editor Service to connect to. Only applicable when the editorService.protocol is set to tcp
+---@field port integer
+
+---@class Settings.puppet.Hover
+-- Enable or disable showing Puppet Module version information in the metadata.json file
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field showMetadataInfo boolean
+
+---@class Settings.puppet.EditorService
+---@field foldingRange Settings.puppet.FoldingRange
+-- The absolute filepath where the Puppet Editor Service will output the debugging log. By default no logfile is generated
+-- 
+-- ```lua
+-- default = ""
+-- ```
+---@field debugFilePath string
+---@field formatOnType Settings.puppet.FormatOnType
+-- An array of strings of experimental features to enable in the Puppet Editor Service
+-- 
+-- ```lua
+-- default = {}
+-- ```
+---@field featureFlags array
+-- Enable/disable advanced Puppet Language Features
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enable boolean
+---@field puppet Settings.puppet.Puppet
+---@field tcp Settings.puppet.Tcp
+-- Set the logging verbosity level for the Puppet Editor Service, with Debug producing the most output and Error producing the least
+-- 
+-- ```lua
+-- default = "normal"
+-- ```
+---@field loglevel "debug" | "error" | "normal" | "warning" | "verbose"
+-- The timeout to connect to the Puppet Editor Service
+-- 
+-- ```lua
+-- default = 10
+-- ```
+---@field timeout integer
+-- The protocol used to communicate with the Puppet Editor Service. By default the local STDIO protocol is used.
+-- 
+-- ```lua
+-- default = "stdio"
+-- ```
+---@field protocol "stdio" | "tcp"
+---@field hover Settings.puppet.Hover
+
+---@class Settings.puppet.Notification
+-- The type of notification used when a node graph is being generated. Default value of messagebox
+-- 
+-- ```lua
+-- default = "messagebox"
+-- ```
+---@field nodeGraph "messagebox" | "statusbar" | "none"
+-- The type of notification used when a running Puppet Resouce. Default value of messagebox
+-- 
+-- ```lua
+-- default = "messagebox"
+-- ```
+---@field puppetResource "messagebox" | "statusbar" | "none"
+
+---@class Settings.puppet.Format
+-- Enable/disable the Puppet document formatter
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enable boolean
+
+---@class Settings.puppet.PdkNewModule
+-- Enable/disable the PDK New Module icon in the Editor Title Bar
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enable boolean
+
+---@class Settings.puppet.TitleBar
+---@field pdkNewModule Settings.puppet.PdkNewModule
+
+---@class Settings.puppet.Pdk
+-- Enable/disable checking if installed PDK version is latest
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field checkVersion boolean
+
+---@class Settings.puppet.Validate
+-- Enable/disable using dependency resolution for Puppetfiles
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field resolvePuppetfiles boolean
+
+---@class Settings.puppet.Puppet
+---@field editorService Settings.puppet.EditorService
+---@field notification Settings.puppet.Notification
+-- The fully qualified path to the Puppet install directory. This can be a PDK or Puppet Agent installation. For example: 'C:\Program Files\Puppet Labs\Puppet' or '/opt/puppetlabs/puppet'. If this is not set the extension will attempt to detect the installation directory. Do **not** use when `#puppet.installType#` is set to `auto`
+---@field installDirectory string
+---@field format Settings.puppet.Format
+---@field titleBar Settings.puppet.TitleBar
+-- The type of Puppet installation. Either the Puppet Development Kit (pdk) or the Puppet Agent (agent). Choose `auto` to have the extension detect which to use automatically based on default install locations
+-- 
+-- ```lua
+-- default = "auto"
+-- ```
+---@field installType "auto" | "pdk" | "agent"
+---@field pdk Settings.puppet.Pdk
+---@field validate Settings.puppet.Validate
+
+---@class Settings.puppet
+---@field puppet Settings.puppet.Puppet
+
+---@class Settings.clangd.Clangd
+-- Extra clang flags used to parse files when no compilation database is found.
+-- 
+-- ```lua
+-- default = {}
+-- ```
+---@field fallbackFlags string[]
+-- Names a file that clangd should log a performance trace to, in chrome trace-viewer JSON format.
+---@field trace string
+-- The path to clangd executable, e.g.: /usr/bin/clangd.
+-- 
+-- ```lua
+-- default = "clangd"
+-- ```
+---@field path string
+-- Auto restart clangd (up to 4 times) if it crashes.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field restartAfterCrash boolean
+-- Always rank completion items on the server as you type. This produces more accurate results at the cost of higher latency than client-side filtering.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field serverCompletionRanking boolean
+-- Check for language server updates on startup.
+---@field checkUpdates boolean
+-- Enable semantic highlighting in clangd.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field semanticHighlighting boolean
+-- What to do when clangd configuration files are changed. Ignored for clangd 12+, which can reload such files itself.
+-- 
+-- ```lua
+-- default = "prompt"
+-- ```
+---@field onConfigChanged "prompt" | "restart" | "ignore"
+-- Warn about conflicting extensions and suggest disabling them.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field detectExtensionConflicts boolean
+-- Arguments for clangd server.
+-- 
+-- ```lua
+-- default = {}
+-- ```
+---@field arguments string[]
+
+---@class Settings.clangd
+---@field clangd Settings.clangd.Clangd
+
+---@class Settings.stylelint_lsp.Trace
+-- Capture trace messages from the server.
+-- 
+-- ```lua
+-- default = "off"
+-- ```
+---@field server "off" | "messages" | "verbose"
+
+---@class Settings.stylelint_lsp.Stylelintplus
+-- Run stylelint on javascript/typescript files.
+---@field cssInJs boolean
+-- Validate after making changes.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field validateOnType boolean
+---@field trace Settings.stylelint_lsp.Trace
+-- Auto-fix on format request.
+---@field autoFixOnFormat boolean
+-- If false, stylelint will not validate the file.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enable boolean
+-- Stylelint config. If config and configFile are unset, stylelint will automatically look for a config file.
+-- 
+-- ```lua
+-- default = nil
+-- ```
+---@field config table
+-- Auto-fix and format on save.
+---@field autoFixOnSave boolean
+-- Filetypes that coc-stylelintplus will lint.
+-- 
+-- ```lua
+-- default = { "css", "less", "postcss", "sass", "scss", "sugarss", "vue", "wxss" }
+-- ```
+---@field filetypes string[]
+-- Stylelint config overrides. These will be applied on top of the config, configFile, or auto-discovered config file loaded by stylelint.
+-- 
+-- ```lua
+-- default = nil
+-- ```
+---@field configOverrides table
+-- Stylelint config file. If config and configFile are unset, stylelint will automatically look for a config file.
+-- 
+-- ```lua
+-- default = nil
+-- ```
+---@field configFile string
+-- Validate after saving. Automatically enabled if autoFixOnSave is enabled.
+---@field validateOnSave boolean
+
+---@class Settings.stylelint_lsp
+---@field stylelintplus Settings.stylelint_lsp.Stylelintplus
+
+-- The host and port to use for external transports. (Ignored for stdio and socket transports.)
+-- 
+-- ```lua
+-- default = {
+--   host = "localhost",
+--   port = 7658
+-- }
+-- ```
+---@class Settings.solargraph.ExternalServer
+-- ```lua
+-- default = "localhost"
+-- ```
+---@field host string
+-- ```lua
+-- default = 7658
+-- ```
+---@field port integer
+
+---@class Settings.solargraph.Solargraph
+-- Enable diagnostics
+---@field diagnostics true | false
+-- Level of debug info to log. `warn` is least and `debug` is most.
+-- 
+-- ```lua
+-- default = "warn"
+-- ```
+---@field logLevel "warn" | "info" | "debug"
+-- Enable hover
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field hover true | false
+-- The type of transport to use.
+-- 
+-- ```lua
+-- default = "socket"
+-- ```
+---@field transport "socket" | "stdio" | "external"
+-- Enable finding references
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field references true | false
+-- Enable completion
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field completion true | false
+-- Enable symbol renaming
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field rename true | false
+-- Enable symbols
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field symbols true | false
+-- Enable automatic formatting while typing (WARNING: experimental)
+---@field autoformat true | false
+-- The host and port to use for external transports. (Ignored for stdio and socket transports.)
+-- 
+-- ```lua
+-- default = {
+--   host = "localhost",
+--   port = 7658
+-- }
+-- ```
+---@field externalServer Settings.solargraph.ExternalServer
+-- Enable folding ranges
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field folding boolean
+-- Path to the solargraph command.  Set this to an absolute path to select from multiple installed Ruby versions.
+-- 
+-- ```lua
+-- default = "solargraph"
+-- ```
+---@field commandPath string
+-- Use `bundle exec` to run solargraph. (If this is true, the solargraph.commandPath setting is ignored.)
+---@field useBundler boolean
+-- Path to the bundle executable, defaults to 'bundle'. Needs to be an absolute path for the 'bundle' exec/shim
+-- 
+-- ```lua
+-- default = "bundle"
+-- ```
+---@field bundlerPath string
+-- Automatically check if a new version of the Solargraph gem is available.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field checkGemVersion true | false
+-- Enable document formatting
+---@field formatting true | false
+-- Enable definitions (go to, etc.)
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field definitions true | false
+
+---@class Settings.solargraph
+---@field solargraph Settings.solargraph.Solargraph
+
+---@class Settings.terraformls
+
+---@class Settings.perlpls.Syntax
+-- Path to the perl binary to use for syntax checking
+---@field perl string
+-- Enable syntax checking
+---@field enabled boolean
+
+---@class Settings.perlpls.Perlcritic
+-- Enable perlcritic
+---@field enabled boolean
+-- Path to .perlcriticrc
+---@field perlcriticrc string
+
+---@class Settings.perlpls.Perl
+-- Path to .perltidyrc
+---@field perltidyrc string
+-- Current working directory to use
+---@field cwd string
+---@field syntax Settings.perlpls.Syntax
+-- Paths to add to @INC.
+---@field inc array
+---@field perlcritic Settings.perlpls.Perlcritic
+-- Arguments to pass to the pls command
+---@field plsargs array
+-- Path to the pls executable script
+---@field pls string
+
+---@class Settings.perlpls.Perltidy
+-- Path to .perltidyrc
+-- 
+-- ```lua
+-- default = "~/.perltidyrc"
+-- ```
+---@field perltidyrc string
+
+---@class Settings.perlpls.Syntax
+-- Enable syntax checking
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enabled boolean
+-- Path to the perl binary to use for syntax checking
+-- 
+-- ```lua
+-- default = ""
+-- ```
+---@field perl string
+-- Additional arguments to pass when syntax checking. This is useful if there is a BEGIN block in your code that changes behavior depending on the contents of @ARGV.
+-- 
+-- ```lua
+-- default = {}
+-- ```
+---@field args array
+
+---@class Settings.perlpls.Perlcritic
+-- Enable perlcritic
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enabled boolean
+-- Path to .perlcriticrc
+-- 
+-- ```lua
+-- default = "~/.perlcriticrc"
+-- ```
+---@field perlcriticrc string
+
+---@class Settings.perlpls.Pls
+---@field perltidy Settings.perlpls.Perltidy
+-- Current working directory to use
+-- 
+-- ```lua
+-- default = "."
+-- ```
+---@field cwd string
+---@field syntax Settings.perlpls.Syntax
+-- Paths to add to @INC.
+-- 
+-- ```lua
+-- default = {}
+-- ```
+---@field inc array
+---@field perlcritic Settings.perlpls.Perlcritic
+-- Arguments to pass to the pls command
+-- 
+-- ```lua
+-- default = {}
+-- ```
+---@field args array
+-- Path to the pls executable script
+-- 
+-- ```lua
+-- default = "pls"
+-- ```
+---@field cmd string
+
+---@class Settings.perlpls
+---@field perl Settings.perlpls.Perl
+---@field pls Settings.perlpls.Pls
+
+---@class Settings.vuels.Validation
+-- Validate props usage in <template> region. Show error/warning for not passing declared props to child components and show error for passing wrongly typed interpolation expressions
+---@field templateProps boolean
+-- Validate js/ts in <script>
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field script boolean
+-- Validate vue-html in <template> using eslint-plugin-vue
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field template boolean
+-- Validate interpolations in <template> region using TypeScript language service
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field interpolation boolean
+-- Validate css/scss/less/postcss in <style>
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field style boolean
+
+---@class Settings.vuels.Trace
+-- Traces the communication between VS Code and Vue Language Server.
+-- 
+-- ```lua
+-- default = "off"
+-- ```
+---@field server "off" | "messages" | "verbose"
+
+---@class Settings.vuels.Options
+-- Number of spaces per indentation level. Inherited by all formatters.
+-- 
+-- ```lua
+-- default = 2
+-- ```
+---@field tabSize number
+-- Use tabs for indentation. Inherited by all formatters.
+---@field useTabs boolean
+
+-- Global prettier config used by prettier formatter. Used by `prettier` and `prettier-eslint`.
+-- 
+-- Vetur will prefer a prettier config file at home directory if one exists.
+---@class Settings.vuels.Prettier
+
+-- Options for prettyhtml
+---@class Settings.vuels.Prettyhtml
+-- Whether to wrap attributes
+---@field wrapAttributes boolean
+-- Maximum amount of characters allowed per line
+-- 
+-- ```lua
+-- default = 100
+-- ```
+---@field printWidth number
+-- Whether to sort attributes
+---@field sortAttributes boolean
+-- Whether to use single quotes by default
+---@field singleQuote boolean
+
+-- Options for all default formatters
+-- 
+-- ```lua
+-- default = {
+--   ["js-beautify-html"] = {
+--     wrap_attributes = "force-expand-multiline"
+--   },
+--   prettyhtml = {
+--     printWidth = 100,
+--     singleQuote = false,
+--     sortAttributes = false,
+--     wrapAttributes = false
+--   }
+-- }
+-- ```
+---@class Settings.vuels.DefaultFormatterOptions
+-- Options for js-beautify
+---@field js-beautify-html table
+-- Global prettier config used by prettier formatter. Used by `prettier` and `prettier-eslint`.
+-- 
+-- Vetur will prefer a prettier config file at home directory if one exists.
+---@field prettier Settings.vuels.Prettier
+-- Options for prettyhtml
+---@field prettyhtml Settings.vuels.Prettyhtml
+
+---@class Settings.vuels.DefaultFormatter
+-- Default formatter for <script> region
+-- 
+-- ```lua
+-- default = "prettier"
+-- ```
+---@field js "none" | "prettier" | "prettier-eslint" | "vscode-typescript"
+-- Default formatter for <style> region
+-- 
+-- ```lua
+-- default = "prettier"
+-- ```
+---@field css "none" | "prettier"
+-- Default formatter for <template> region
+-- 
+-- ```lua
+-- default = "prettier"
+-- ```
+---@field html "none" | "prettyhtml" | "js-beautify-html" | "prettier"
+-- Default formatter for <style lang='stylus'> region
+-- 
+-- ```lua
+-- default = "stylus-supremacy"
+-- ```
+---@field stylus "none" | "stylus-supremacy"
+-- Default formatter for <script> region
+-- 
+-- ```lua
+-- default = "prettier"
+-- ```
+---@field ts "none" | "prettier" | "prettier-tslint" | "vscode-typescript"
+-- Default formatter for <style lang='scss'> region
+-- 
+-- ```lua
+-- default = "prettier"
+-- ```
+---@field scss "none" | "prettier"
+-- Default formatter for <style lang='sass'> region
+-- 
+-- ```lua
+-- default = "sass-formatter"
+-- ```
+---@field sass "none" | "sass-formatter"
+-- Default formatter for <style lang='postcss'> region
+-- 
+-- ```lua
+-- default = "prettier"
+-- ```
+---@field postcss "none" | "prettier"
+-- Default formatter for <style lang='less'> region
+-- 
+-- ```lua
+-- default = "prettier"
+-- ```
+---@field less "none" | "prettier"
+-- Default formatter for <template lang='pug'> region
+-- 
+-- ```lua
+-- default = "prettier"
+-- ```
+---@field pug "none" | "prettier"
+
+---@class Settings.vuels.Format
+---@field options Settings.vuels.Options
+-- Whether to have initial indent for <style> region
+---@field styleInitialIndent boolean
+-- Whether to have initial indent for <script> region
+---@field scriptInitialIndent boolean
+-- Enable/disable the Vetur document formatter.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enable boolean
+-- Options for all default formatters
+-- 
+-- ```lua
+-- default = {
+--   ["js-beautify-html"] = {
+--     wrap_attributes = "force-expand-multiline"
+--   },
+--   prettyhtml = {
+--     printWidth = 100,
+--     singleQuote = false,
+--     sortAttributes = false,
+--     wrapAttributes = false
+--   }
+-- }
+-- ```
+---@field defaultFormatterOptions Settings.vuels.DefaultFormatterOptions
+---@field defaultFormatter Settings.vuels.DefaultFormatter
+
+---@class Settings.vuels.LanguageFeatures
+-- Whether to enable semantic highlighting. Currently only works for typescript
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field semanticTokens boolean
+-- Whether to automatic updating import path when rename or move a file
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field updateImportOnFileMove boolean
+-- Whether to enable codeActions
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field codeActions boolean
+
+---@class Settings.vuels.Grammar
+-- Mapping from custom block tag name to language name. Used for generating grammar to support syntax highlighting for custom blocks.
+-- 
+-- ```lua
+-- default = {
+--   docs = "md",
+--   i18n = "json"
+-- }
+-- ```
+---@field customBlocks table
+
+-- Where Vetur source Scaffold Snippets from and how to indicate them. Set a source to "" to disable it.
+-- 
+-- - workspace: `<WORKSPACE>/.vscode/vetur/snippets`.
+-- - user: `<USER-DATA-DIR>/User/snippets/vetur`.
+-- - vetur: Bundled in Vetur.
+-- 
+-- The default is:
+-- ```
+-- "vetur.completion.scaffoldSnippetSources": {
+--   "workspace": "💼",
+--   "user": "🗒️",
+--   "vetur": "✌"
+-- }
+-- ```
+-- 
+-- Alternatively, you can do:
+-- 
+-- ```
+-- "vetur.completion.scaffoldSnippetSources": {
+--   "workspace": "(W)",
+--   "user": "(U)",
+--   "vetur": "(V)"
+-- }
+-- ```
+-- 
+-- Read more: https://vuejs.github.io/vetur/snippet.html.
+-- 
+-- ```lua
+-- default = {
+--   user = "🗒️",
+--   vetur = "✌",
+--   workspace = "💼"
+-- }
+-- ```
+---@class Settings.vuels.ScaffoldSnippetSources
+-- Show Scaffold Snippets from `<WORKSPACE>/.vscode/vetur/snippets`.
+-- 
+-- ```lua
+-- default = "💼"
+-- ```
+---@field workspace string
+-- Show Scaffold Snippets bundled in Vetur.
+-- 
+-- ```lua
+-- default = "✌"
+-- ```
+---@field vetur string
+-- Show Scaffold Snippets from `<USER-DATA-DIR>/User/snippets/vetur`.
+-- 
+-- ```lua
+-- default = "🗒️"
+-- ```
+---@field user string
+
+---@class Settings.vuels.Completion
+-- Casing conversion for tag completion
+-- 
+-- ```lua
+-- default = "kebab"
+-- ```
+---@field tagCasing "initial" | "kebab"
+-- Where Vetur source Scaffold Snippets from and how to indicate them. Set a source to "" to disable it.
+-- 
+-- - workspace: `<WORKSPACE>/.vscode/vetur/snippets`.
+-- - user: `<USER-DATA-DIR>/User/snippets/vetur`.
+-- - vetur: Bundled in Vetur.
+-- 
+-- The default is:
+-- ```
+-- "vetur.completion.scaffoldSnippetSources": {
+--   "workspace": "💼",
+--   "user": "🗒️",
+--   "vetur": "✌"
+-- }
+-- ```
+-- 
+-- Alternatively, you can do:
+-- 
+-- ```
+-- "vetur.completion.scaffoldSnippetSources": {
+--   "workspace": "(W)",
+--   "user": "(U)",
+--   "vetur": "(V)"
+-- }
+-- ```
+-- 
+-- Read more: https://vuejs.github.io/vetur/snippet.html.
+-- 
+-- ```lua
+-- default = {
+--   user = "🗒️",
+--   vetur = "✌",
+--   workspace = "💼"
+-- }
+-- ```
+---@field scaffoldSnippetSources Settings.vuels.ScaffoldSnippetSources
+-- Include completion for module export and auto import them
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field autoImport boolean
+
+---@class Settings.vuels.Experimental
+-- Enable template interpolation service that offers hover / definition / references in Vue interpolations.
+---@field templateInterpolationService boolean
+
+---@class Settings.vuels.Underline
+-- Enable underline `.value` when using composition API.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field refValue boolean
+
+---@class Settings.vuels.Dev
+-- Path to vls for Vetur developers. There are two ways of using it. 
+-- 
+-- 1. Clone vuejs/vetur from GitHub, build it and point it to the ABSOLUTE path of `/server`.
+-- 2. `yarn global add vls` and point Vetur to the installed location (`yarn global dir` + node_modules/vls)
+---@field vlsPath string
+-- Log level for VLS
+-- 
+-- ```lua
+-- default = "INFO"
+-- ```
+---@field logLevel "INFO" | "DEBUG"
+-- The port that VLS listens to. Can be used for attaching to the VLS Node process for debugging / profiling.
+-- 
+-- ```lua
+-- default = -1
+-- ```
+---@field vlsPort number
+
+---@class Settings.vuels.Vetur
+---@field validation Settings.vuels.Validation
+---@field trace Settings.vuels.Trace
+---@field format Settings.vuels.Format
+---@field languageFeatures Settings.vuels.LanguageFeatures
+-- Use dependencies from workspace. Support for TypeScript, Prettier, @starptech/prettyhtml, prettier-eslint, prettier-tslint, stylus-supremacy, @prettier/plugin-pug.
+---@field useWorkspaceDependencies boolean
+-- Vetur will warn about not setup correctly for the project. You can disable it.
+---@field ignoreProjectWarning boolean
+---@field grammar Settings.vuels.Grammar
+---@field completion Settings.vuels.Completion
+---@field experimental Settings.vuels.Experimental
+---@field underline Settings.vuels.Underline
+---@field dev Settings.vuels.Dev
+
+---@class Settings.vuels
+---@field vetur Settings.vuels.Vetur
+
+---@class Settings.als
+
+---@class Settings.intelephense.Trace
+-- Traces the communication between VSCode and the intelephense language server.
+-- 
+-- ```lua
+-- default = "off"
+-- ```
+---@field server "off" | "messages" | "verbose"
+
+---@class Settings.intelephense.Compatibility
+-- Resolves `BaseClass|static` union types to `static` instead of `BaseClass`.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field correctForBaseClassStaticUnionTypes boolean
+-- Resolves `ArrayAccess` and `Traversable` implementations that are unioned with a typed array to generic syntax. eg `ArrayAccessOrTraversable|ElementType[]` => `ArrayAccessOrTraversable<mixed, ElementType>`.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field correctForArrayAccessArrayAndTraversableArrayUnionTypes boolean
+
+---@class Settings.intelephense.Files
+-- Configure glob patterns to exclude certain files and folders from all language server features. Inherits from files.exclude.
+-- 
+-- ```lua
+-- default = { "**/.git/**", "**/.svn/**", "**/.hg/**", "**/CVS/**", "**/.DS_Store/**", "**/node_modules/**", "**/bower_components/**", "**/vendor/**/{Tests,tests}/**", "**/.history/**", "**/vendor/**/vendor/**" }
+-- ```
+---@field exclude string[]
+-- Configure glob patterns to make files available for language server features. Inherits from files.associations.
+-- 
+-- ```lua
+-- default = { "*.php", "*.phtml" }
+-- ```
+---@field associations array
+-- Maximum file size in bytes.
+-- 
+-- ```lua
+-- default = 1000000
+-- ```
+---@field maxSize number
+
+---@class Settings.intelephense.Telemetry
+-- Anonymous usage and crash data will be sent to Azure Application Insights. Inherits from telemetry.enableTelemetry.
+-- 
+-- ```lua
+-- default = nil
+-- ```
+---@field enabled boolean
+
+-- An object that describes the format of generated property phpdoc. The following snippet variables are available: SYMBOL_NAME; SYMBOL_KIND; SYMBOL_TYPE; SYMBOL_NAMESPACE.
+-- 
+-- ```lua
+-- default = {
+--   summary = "$1",
+--   tags = { "@var ${1:$SYMBOL_TYPE}" }
+-- }
+-- ```
+---@class Settings.intelephense.PropertyTemplate
+-- A snippet string representing a phpdoc summary.
+---@field summary string
+-- An array of snippet strings representing phpdoc tags.
+---@field tags string[]
+-- A snippet string representing a phpdoc description.
+---@field description string
+
+-- An object that describes the format of generated class/interface/trait phpdoc. The following snippet variables are available: SYMBOL_NAME; SYMBOL_KIND; SYMBOL_TYPE; SYMBOL_NAMESPACE.
+-- 
+-- ```lua
+-- default = {
+--   summary = "$1",
+--   tags = { "@package ${1:$SYMBOL_NAMESPACE}" }
+-- }
+-- ```
+---@class Settings.intelephense.ClassTemplate
+-- A snippet string representing a phpdoc summary.
+---@field summary string
+-- An array of snippet strings representing phpdoc tags.
+---@field tags string[]
+-- A snippet string representing a phpdoc description.
+---@field description string
+
+-- An object that describes the format of generated function/method phpdoc. The following snippet variables are available: SYMBOL_NAME; SYMBOL_KIND; SYMBOL_TYPE; SYMBOL_NAMESPACE.
+-- 
+-- ```lua
+-- default = {
+--   summary = "$1",
+--   tags = { "@param ${1:$SYMBOL_TYPE} $SYMBOL_NAME $2", "@return ${1:$SYMBOL_TYPE} $2", "@throws ${1:$SYMBOL_TYPE} $2" }
+-- }
+-- ```
+---@class Settings.intelephense.FunctionTemplate
+-- A snippet string representing a phpdoc summary.
+---@field summary string
+-- An array of snippet strings representing phpdoc tags.
+---@field tags string[]
+-- A snippet string representing a phpdoc description.
+---@field description string
+
+---@class Settings.intelephense.Phpdoc
+-- Fully qualified names will be used for types when true. When false short type names will be used and imported where appropriate. Overrides intelephense.completion.insertUseDeclaration.
+---@field useFullyQualifiedNames boolean
+-- ```lua
+-- default = "snippet"
+-- ```
+---@field textFormat "snippet" | "text"
+-- An object that describes the format of generated property phpdoc. The following snippet variables are available: SYMBOL_NAME; SYMBOL_KIND; SYMBOL_TYPE; SYMBOL_NAMESPACE.
+-- 
+-- ```lua
+-- default = {
+--   summary = "$1",
+--   tags = { "@var ${1:$SYMBOL_TYPE}" }
+-- }
+-- ```
+---@field propertyTemplate Settings.intelephense.PropertyTemplate
+-- Adds `@return void` to auto generated phpdoc for definitions that do not return a value.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field returnVoid boolean
+-- An object that describes the format of generated class/interface/trait phpdoc. The following snippet variables are available: SYMBOL_NAME; SYMBOL_KIND; SYMBOL_TYPE; SYMBOL_NAMESPACE.
+-- 
+-- ```lua
+-- default = {
+--   summary = "$1",
+--   tags = { "@package ${1:$SYMBOL_NAMESPACE}" }
+-- }
+-- ```
+---@field classTemplate Settings.intelephense.ClassTemplate
+-- An object that describes the format of generated function/method phpdoc. The following snippet variables are available: SYMBOL_NAME; SYMBOL_KIND; SYMBOL_TYPE; SYMBOL_NAMESPACE.
+-- 
+-- ```lua
+-- default = {
+--   summary = "$1",
+--   tags = { "@param ${1:$SYMBOL_TYPE} $SYMBOL_NAME $2", "@return ${1:$SYMBOL_TYPE} $2", "@throws ${1:$SYMBOL_TYPE} $2" }
+-- }
+-- ```
+---@field functionTemplate Settings.intelephense.FunctionTemplate
+
+---@class Settings.intelephense.References
+-- Glob patterns matching files and folders that should be excluded from references search.
+-- 
+-- ```lua
+-- default = { "**/vendor/**" }
+-- ```
+---@field exclude string[]
+
+---@class Settings.intelephense.Rename
+-- Glob patterns matching files and folders that should be excluded when renaming symbols. Rename operation will fail if the symbol definition is found in the excluded files/folders.
+-- 
+-- ```lua
+-- default = { "**/vendor/**" }
+-- ```
+---@field exclude string[]
+-- Controls the scope of a namespace rename operation.
+-- 
+-- ```lua
+-- default = "single"
+-- ```
+---@field namespaceMode "single" | "all"
+
+---@class Settings.intelephense.Diagnostics
+-- Enables diagnostics on type compatibility of arguments, property assignments, and return statements where types have been declared.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field typeErrors boolean
+-- Enables unused variable, private member, and import diagnostics.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field unusedSymbols boolean
+-- Enables duplicate symbol diagnostics.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field duplicateSymbols boolean
+-- Enables undefined function diagnostics.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field undefinedFunctions boolean
+-- Enables undefined static property diagnostics.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field undefinedProperties boolean
+-- Enables undefined constant diagnostics.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field undefinedConstants boolean
+-- Enables unexpected token diagnostics.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field unexpectedTokens boolean
+-- Enables diagnostics in embedded languages.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field embeddedLanguages boolean
+-- DEPRECATED. Use the setting for each symbol category.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field undefinedSymbols boolean
+-- Enables undefined class constant diagnostics.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field undefinedClassConstants boolean
+-- Enables reporting of various language constraint errors.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field languageConstraints boolean
+-- Enables undefined class, interface and trait diagnostics.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field undefinedTypes boolean
+-- Controls when diagnostics are run.
+-- 
+-- ```lua
+-- default = "onType"
+-- ```
+---@field run "onType" | "onSave"
+-- Enables undefined method diagnostics.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field undefinedMethods boolean
+-- Enables deprecated diagnostics.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field deprecated boolean
+-- Enables reporting of problems associated with method and class implementations. For example, unimplemented methods or method signature incompatibilities.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field implementationErrors boolean
+-- Enables argument count diagnostics.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field argumentCount boolean
+-- Enables diagnostics.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enable boolean
+-- Enables undefined variable diagnostics.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field undefinedVariables boolean
+
+---@class Settings.intelephense.Environment
+-- The directory of the entry point to the application (directory of index.php). Can be absolute or relative to the workspace folder. Used for resolving script inclusion and path suggestions.
+---@field documentRoot string
+-- When enabled '<?' will be parsed as a PHP open tag. Defaults to true.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field shortOpenTag boolean
+-- The include paths (as individual path items) as defined in the include_path ini setting or paths to external libraries. Can be absolute or relative to the workspace folder. Used for resolving script inclusion and/or adding external symbols to folder.
+---@field includePaths string[]
+-- A semver compatible string that represents the target PHP version. Used for providing version appropriate suggestions and diagnostics. PHP 5.3.0 and greater supported.
+-- 
+-- ```lua
+-- default = "8.1.0"
+-- ```
+---@field phpVersion string
+
+---@class Settings.intelephense.Completion
+-- Method and function completions will include parentheses and trigger parameter hints.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field triggerParameterHints boolean
+-- Global namespace constants and functions will be fully qualified (prefixed with a backslash).
+---@field fullyQualifyGlobalConstantsAndFunctions boolean
+-- Use declarations will be automatically inserted for namespaced classes, traits, interfaces, functions, and constants.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field insertUseDeclaration boolean
+-- The maximum number of completion items returned per request.
+-- 
+-- ```lua
+-- default = 100
+-- ```
+---@field maxItems number
+
+---@class Settings.intelephense.Format
+-- Enables formatting.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enable boolean
+-- Controls formatting style of braces
+-- 
+-- ```lua
+-- default = "psr12"
+-- ```
+---@field braces "psr12" | "allman" | "k&r"
+
+---@class Settings.intelephense.Intelephense
+-- DEPRECATED. Don't use this. Go to command palette and search for enter licence key.
+---@field licenceKey string
+---@field trace Settings.intelephense.Trace
+---@field compatibility Settings.intelephense.Compatibility
+---@field files Settings.intelephense.Files
+-- Path to a Node.js executable. Use this if you wish to use a different version of Node.js. Defaults to Node.js shipped with VSCode.
+---@field runtime string
+---@field telemetry Settings.intelephense.Telemetry
+---@field phpdoc Settings.intelephense.Phpdoc
+---@field references Settings.intelephense.References
+---@field rename Settings.intelephense.Rename
+---@field diagnostics Settings.intelephense.Diagnostics
+---@field environment Settings.intelephense.Environment
+---@field completion Settings.intelephense.Completion
+-- Configure stub files for built in symbols and common extensions. The default setting includes PHP core and all bundled extensions.
+-- 
+-- ```lua
+-- default = { "apache", "bcmath", "bz2", "calendar", "com_dotnet", "Core", "ctype", "curl", "date", "dba", "dom", "enchant", "exif", "FFI", "fileinfo", "filter", "fpm", "ftp", "gd", "gettext", "gmp", "hash", "iconv", "imap", "intl", "json", "ldap", "libxml", "mbstring", "meta", "mysqli", "oci8", "odbc", "openssl", "pcntl", "pcre", "PDO", "pdo_ibm", "pdo_mysql", "pdo_pgsql", "pdo_sqlite", "pgsql", "Phar", "posix", "pspell", "readline", "Reflection", "session", "shmop", "SimpleXML", "snmp", "soap", "sockets", "sodium", "SPL", "sqlite3", "standard", "superglobals", "sysvmsg", "sysvsem", "sysvshm", "tidy", "tokenizer", "xml", "xmlreader", "xmlrpc", "xmlwriter", "xsl", "Zend OPcache", "zip", "zlib" }
+-- ```
+---@field stubs string[]
+-- Maximum memory (in MB) that the server should use. On some systems this may only have effect when runtime has been set. Minimum 256.
+---@field maxMemory number
+---@field format Settings.intelephense.Format
+
+---@class Settings.intelephense
+---@field intelephense Settings.intelephense.Intelephense
+
+---@class Settings.html.Suggest
+-- %html.suggest.html5.desc%
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field html5 boolean
+
+---@class Settings.html.Hover
+-- %html.hover.references%
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field references boolean
+-- %html.hover.documentation%
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field documentation boolean
+
+---@class Settings.html.Completion
+-- %html.completion.attributeDefaultValue%
+-- 
+-- ```lua
+-- default = "doublequotes"
+-- ```
+---@field attributeDefaultValue "doublequotes" | "singlequotes" | "empty"
+
+---@class Settings.html.Format
+-- %html.format.unformattedContentDelimiter.desc%
+-- 
+-- ```lua
+-- default = ""
+-- ```
+---@field unformattedContentDelimiter string
+-- %html.format.indentInnerHtml.desc%
+---@field indentInnerHtml boolean
+-- %html.format.wrapLineLength.desc%
+-- 
+-- ```lua
+-- default = 120
+-- ```
+---@field wrapLineLength integer
+-- %html.format.enable.desc%
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enable boolean
+-- %html.format.maxPreserveNewLines.desc%
+-- 
+-- ```lua
+-- default = nil
+-- ```
+---@field maxPreserveNewLines number
+-- %html.format.unformatted.desc%
+-- 
+-- ```lua
+-- default = "wbr"
+-- ```
+---@field unformatted string
+-- %html.format.indentHandlebars.desc%
+---@field indentHandlebars boolean
+-- %html.format.preserveNewLines.desc%
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field preserveNewLines boolean
+-- %html.format.extraLiners.desc%
+-- 
+-- ```lua
+-- default = "head, body, /html"
+-- ```
+---@field extraLiners string
+-- %html.format.wrapAttributesIndentSize.desc%
+-- 
+-- ```lua
+-- default = nil
+-- ```
+---@field wrapAttributesIndentSize number
+-- %html.format.wrapAttributes.desc%
+-- 
+-- ```lua
+-- default = "auto"
+-- ```
+---@field wrapAttributes "auto" | "force" | "force-aligned" | "force-expand-multiline" | "aligned-multiple" | "preserve" | "preserve-aligned"
+-- %html.format.templating.desc%
+---@field templating boolean
+-- %html.format.contentUnformatted.desc%
+-- 
+-- ```lua
+-- default = "pre,code,textarea"
+-- ```
+---@field contentUnformatted string
+
+---@class Settings.html.Validate
+-- %html.validate.scripts%
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field scripts boolean
+-- %html.validate.styles%
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field styles boolean
+
+---@class Settings.html.Trace
+-- %html.trace.server.desc%
+-- 
+-- ```lua
+-- default = "off"
+-- ```
+---@field server "off" | "messages" | "verbose"
+
+---@class Settings.html.Html
+-- %html.autoCreateQuotes%
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field autoCreateQuotes boolean
+---@field suggest Settings.html.Suggest
+---@field hover Settings.html.Hover
+-- %html.autoClosingTags%
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field autoClosingTags boolean
+-- %html.mirrorCursorOnMatchingTag%
+---@field mirrorCursorOnMatchingTag boolean
+-- %html.customData.desc%
+-- 
+-- ```lua
+-- default = {}
+-- ```
+---@field customData string[]
+---@field completion Settings.html.Completion
+---@field format Settings.html.Format
+---@field validate Settings.html.Validate
+---@field trace Settings.html.Trace
+
+---@class Settings.html
+---@field html Settings.html.Html
+
+---@class Settings.yamlls.Trace
+-- Traces the communication between VSCode and the YAML language service.
+-- 
+-- ```lua
+-- default = "off"
+-- ```
+---@field server "off" | "messages" | "verbose"
+
+---@class Settings.yamlls.Format
+-- Print spaces between brackets in objects
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field bracketSpacing boolean
+-- Specify the line length that the printer will wrap on
+-- 
+-- ```lua
+-- default = 80
+-- ```
+---@field printWidth integer
+-- Enable/disable default YAML formatter
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enable boolean
+-- Always: wrap prose if it exeeds the print width, Never: never wrap the prose, Preserve: wrap prose as-is
+-- 
+-- ```lua
+-- default = "preserve"
+-- ```
+---@field proseWrap "preserve" | "never" | "always"
+-- Use single quotes instead of double quotes
+---@field singleQuote boolean
+
+---@class Settings.yamlls.SchemaStore
+-- URL of schema store catalog to use
+-- 
+-- ```lua
+-- default = "https://www.schemastore.org/api/json/catalog.json"
+-- ```
+---@field url string
+-- Automatically pull available YAML schemas from JSON Schema Store
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enable boolean
+
+---@class Settings.yamlls.Yaml
+---@field trace Settings.yamlls.Trace
+---@field format Settings.yamlls.Format
+-- The maximum number of outline symbols and folding regions computed (limited for performance reasons).
+-- 
+-- ```lua
+-- default = 5000
+-- ```
+---@field maxItemsComputed integer
+-- Custom tags for the parser to use
+-- 
+-- ```lua
+-- default = {}
+-- ```
+---@field customTags array
+-- Enable/disable validation feature
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field validate boolean
+---@field schemaStore Settings.yamlls.SchemaStore
+-- Enable/disable completion feature
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field completion boolean
+-- Associate schemas to YAML files in the current workspace
+-- 
+-- ```lua
+-- default = {}
+-- ```
+---@field schemas table
+-- Enable/disable hover feature
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field hover boolean
+-- Globally set additionalProperties to false for all objects. So if its true, no extra properties are allowed inside yaml.
+---@field disableAdditionalProperties boolean
+
+---@class Settings.yamlls.Telemetry
+-- Enable usage data and errors to be sent to Red Hat servers. Read our [privacy statement](https://developers.redhat.com/article/tool-data-collection).
+-- 
+-- ```lua
+-- default = nil
+-- ```
+---@field enabled boolean
+
+---@class Settings.yamlls.Redhat
+---@field telemetry Settings.yamlls.Telemetry
+
+---@class Settings.yamlls
+---@field yaml Settings.yamlls.Yaml
+---@field redhat Settings.yamlls.Redhat
+
+---@class Settings.bashls.BashIde
+-- Glob pattern for finding and parsing shell script files.
+-- 
+-- ```lua
+-- default = "**/*@(.sh|.inc|.bash|.command)"
+-- ```
+---@field globPattern string
+-- Configure explainshell server in order to get hover documentation on flags and options.
+-- 
+-- ```lua
+-- default = ""
+-- ```
+---@field explainshellEndpoint string
+-- Controls if parsing errors will be highlighted as problems.
+---@field highlightParsingErrors boolean
+
+---@class Settings.bashls
+---@field bashIde Settings.bashls.BashIde
+
+---@class Settings.jdtls.TypeHierarchy
+-- Enable/disable lazy loading the content in type hierarchy. Lazy loading could save a lot of loading time but every type should be expanded manually to load its content.
+---@field lazyLoad boolean
+
+---@class Settings.jdtls.ContentProvider
+-- Preferred content provider (a 3rd party decompiler id, usually)
+-- 
+-- ```lua
+-- default = nil
+-- ```
+---@field preferred string
+
+---@class Settings.jdtls.IncompleteClasspath
+-- Specifies the severity of the message when the classpath is incomplete for a Java file
+-- 
+-- ```lua
+-- default = "warning"
+-- ```
+---@field severity "ignore" | "info" | "warning" | "error"
+
+---@class Settings.jdtls.Errors
+---@field incompleteClasspath Settings.jdtls.IncompleteClasspath
+
+---@class Settings.jdtls.Quickfix
+-- Show quickfixes at the problem or line level.
+-- 
+-- ```lua
+-- default = "line"
+-- ```
+---@field showAt "line" | "problem"
+
+---@class Settings.jdtls.OrganizeImports
+-- Specifies the number of static imports added before a star-import declaration is used.
+-- 
+-- ```lua
+-- default = 99
+-- ```
+---@field staticStarThreshold integer
+-- Specifies the number of imports added before a star-import declaration is used.
+-- 
+-- ```lua
+-- default = 99
+-- ```
+---@field starThreshold integer
+
+---@class Settings.jdtls.Sources
+---@field organizeImports Settings.jdtls.OrganizeImports
+
+---@class Settings.jdtls.LombokSupport
+-- Whether to load lombok processors from project classpath
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enabled boolean
+
+---@class Settings.jdtls.ProtobufSupport
+-- Specify whether to automatically add Protobuf output source directories to the classpath.
+-- 
+-- **Note:** Only works for Gradle `com.google.protobuf` plugin `0.8.4` or higher.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enabled boolean
+
+---@class Settings.jdtls.AndroidSupport
+-- [Experimental] Specify whether to enable Android project importing. When set to `auto`, the Android support will be enabled in Visual Studio Code - Insiders.
+-- 
+-- **Note:** Only works for Android Gradle Plugin `3.2.0` or higher.
+-- 
+-- ```lua
+-- default = "auto"
+-- ```
+---@field enabled "auto" | "on" | "off"
+
+---@class Settings.jdtls.Java
+-- Specifies the folder path to the JDK (17 or more recent) used to launch the Java Language Server. This setting will replace the Java extension's embedded JRE to start the Java Language Server. 
+-- 
+-- On Windows, backslashes must be escaped, i.e.
+-- "java.jdt.ls.java.home":"C:\\Program Files\\Java\\jdk-17.0_3"
+-- 
+-- ```lua
+-- default = nil
+-- ```
+---@field home string
+
+---@class Settings.jdtls.Ls
+---@field lombokSupport Settings.jdtls.LombokSupport
+---@field protobufSupport Settings.jdtls.ProtobufSupport
+-- Specifies extra VM arguments used to launch the Java Language Server. Eg. use `-XX:+UseParallelGC -XX:GCTimeRatio=4 -XX:AdaptiveSizePolicyWeight=90 -Dsun.zip.disableMemoryMapping=true -Xmx1G -Xms100m -Xlog:jni+resolve=off` to optimize memory usage with the parallel garbage collector
+-- 
+-- ```lua
+-- default = "-XX:+UseParallelGC -XX:GCTimeRatio=4 -XX:AdaptiveSizePolicyWeight=90 -Dsun.zip.disableMemoryMapping=true -Xmx1G -Xms100m -Xlog:jni+resolve=off"
+-- ```
+---@field vmargs string
+---@field androidSupport Settings.jdtls.AndroidSupport
+---@field java Settings.jdtls.Java
+
+---@class Settings.jdtls.Jdt
+---@field ls Settings.jdtls.Ls
+
+---@class Settings.jdtls.Symbols
+-- Include method declarations from source files in symbol search.
+---@field includeSourceMethodDeclarations boolean
+
+---@class Settings.jdtls.ReferencesCodeLens
+-- Enable/disable the references code lens.
+---@field enabled boolean
+
+---@class Settings.jdtls.SaveActions
+-- Enable/disable auto organize imports on save action
+---@field organizeImports boolean
+
+---@class Settings.jdtls.SortMembers
+-- Reordering of fields, enum constants, and initializers can result in semantic and runtime changes due to different initialization and persistence order. This setting prevents this from occurring.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field avoidVolatileChanges boolean
+
+---@class Settings.jdtls.CodeAction
+---@field sortMembers Settings.jdtls.SortMembers
+
+---@class Settings.jdtls.ProgressReports
+-- [Experimental] Enable/disable progress reports from background processes on the server.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enabled boolean
+
+---@class Settings.jdtls.Maven
+-- Enable/disable download of Maven source artifacts as part of importing Maven projects.
+---@field downloadSources boolean
+-- Force update of Snapshots/Releases.
+---@field updateSnapshots boolean
+
+---@class Settings.jdtls.ParameterNames
+-- Enable/disable inlay hints for parameter names:
+-- ```java
+-- 
+-- Integer.valueOf(/* s: */ '123', /* radix: */ 10)
+--  
+-- ```
+--  `#java.inlayHints.parameterNames.exclusions#` can be used to disable the inlay hints for methods.
+-- 
+-- ```lua
+-- default = "literals"
+-- ```
+---@field enabled "none" | "literals" | "all"
+-- The patterns for the methods that will be disabled to show the inlay hints. Supported pattern examples:
+--  - `java.lang.Math.*` - All the methods from java.lang.Math.
+--  - `*.Arrays.asList` - Methods named as 'asList' in the types named as 'Arrays'.
+--  - `*.println(*)` - Methods named as 'println'.
+--  - `(from, to)` - Methods with two parameters named as 'from' and 'to'.
+--  - `(arg*)` - Methods with one parameter whose name starts with 'arg'.
+-- 
+-- ```lua
+-- default = {}
+-- ```
+---@field exclusions string[]
+
+---@class Settings.jdtls.InlayHints
+---@field parameterNames Settings.jdtls.ParameterNames
+
+---@class Settings.jdtls.Settings
+-- Specifies the url or file path to the [Eclipse formatter xml settings](https://github.com/redhat-developer/vscode-java/wiki/Formatter-settings).
+-- 
+-- ```lua
+-- default = nil
+-- ```
+---@field url string
+-- Optional formatter profile name from the Eclipse formatter settings.
+-- 
+-- ```lua
+-- default = nil
+-- ```
+---@field profile string
+
+---@class Settings.jdtls.OnType
+-- Enable/disable automatic block formatting when typing `;`, `<enter>` or `}`
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enabled boolean
+
+---@class Settings.jdtls.Comments
+-- Includes the comments during code formatting.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enabled boolean
+
+---@class Settings.jdtls.Format
+---@field settings Settings.jdtls.Settings
+-- Enable/disable default Java formatter
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enabled boolean
+---@field onType Settings.jdtls.OnType
+---@field comments Settings.jdtls.Comments
+
+---@class Settings.jdtls.Description
+-- Enable/disable to show the description in signature help.
+---@field enabled boolean
+
+---@class Settings.jdtls.SignatureHelp
+-- Enable/disable the signature help.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enabled boolean
+---@field description Settings.jdtls.Description
+
+---@class Settings.jdtls.HashCodeEquals
+-- Use 'instanceof' to compare types when generating the hashCode and equals methods.
+---@field useInstanceof boolean
+-- Use Objects.hash and Objects.equals when generating the hashCode and equals methods. This setting only applies to Java 7 and higher.
+---@field useJava7Objects boolean
+
+---@class Settings.jdtls.ToString
+-- Skip null values when generating the toString method.
+---@field skipNullValues boolean
+-- Limit number of items in arrays/collections/maps to list, if 0 then list all.
+-- 
+-- ```lua
+-- default = 0
+-- ```
+---@field limitElements integer
+-- List contents of arrays instead of using native toString().
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field listArrayContents boolean
+-- The template for generating the toString method.
+-- 
+-- ```lua
+-- default = "${object.className} [${member.name()}=${member.value}, ${otherMembers}]"
+-- ```
+---@field template string
+-- The code style for generating the toString method.
+-- 
+-- ```lua
+-- default = "STRING_CONCATENATION"
+-- ```
+---@field codeStyle "STRING_CONCATENATION" | "STRING_BUILDER" | "STRING_BUILDER_CHAINED" | "STRING_FORMAT"
+
+---@class Settings.jdtls.CodeGeneration
+-- Generate method comments when generating the methods.
+---@field generateComments boolean
+---@field hashCodeEquals Settings.jdtls.HashCodeEquals
+-- Specifies the insertion location of the code generated by source actions.
+-- 
+-- ```lua
+-- default = "afterCursor"
+-- ```
+---@field insertionLocation "afterCursor" | "beforeCursor" | "lastMember"
+---@field toString Settings.jdtls.ToString
+-- Use blocks in 'if' statements when generating the methods.
+---@field useBlocks boolean
+
+---@class Settings.jdtls.References
+-- Include the decompiled sources when finding references.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field includeDecompiledSources boolean
+-- Include getter, setter and builder/constructor when finding references.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field includeAccessors boolean
+
+---@class Settings.jdtls.Wrapper
+-- Defines allowed/disallowed SHA-256 checksums of Gradle Wrappers
+-- 
+-- ```lua
+-- default = {}
+-- ```
+---@field checksums object[]
+
+---@class Settings.jdtls.Gradle
+---@field wrapper Settings.jdtls.Wrapper
+
+---@class Settings.jdtls.Imports
+---@field gradle Settings.jdtls.Gradle
+
+---@class Settings.jdtls.Completion
+-- Enable/disable code completion support
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enabled boolean
+-- Defines the sorting order of import statements. A package or type name prefix (e.g. 'org.eclipse') is a valid entry. An import is always added to the most specific group.
+-- 
+-- ```lua
+-- default = { "java", "javax", "org", "com" }
+-- ```
+---@field importOrder array
+-- When set to true, method arguments are guessed when a method is selected from as list of code assist proposals.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field guessMethodArguments boolean
+-- Maximum number of completion results (not including snippets).
+-- `0` (the default value) disables the limit, all results are returned. In case of performance problems, consider setting a sensible limit.
+-- 
+-- ```lua
+-- default = 0
+-- ```
+---@field maxResults integer
+-- Defines the type filters. All types whose fully qualified name matches the selected filter strings will be ignored in content assist or quick fix proposals and when organizing imports. For example 'java.awt.*' will hide all types from the awt packages.
+-- 
+-- ```lua
+-- default = { "java.awt.*", "com.sun.*", "sun.*", "jdk.*", "org.graalvm.*", "io.micrometer.shaded.*" }
+-- ```
+---@field filteredTypes array
+-- Defines a list of static members or types with static members. Content assist will propose those static members even if the import is missing.
+-- 
+-- ```lua
+-- default = { "org.junit.Assert.*", "org.junit.Assume.*", "org.junit.jupiter.api.Assertions.*", "org.junit.jupiter.api.Assumptions.*", "org.junit.jupiter.api.DynamicContainer.*", "org.junit.jupiter.api.DynamicTest.*", "org.mockito.Mockito.*", "org.mockito.ArgumentMatchers.*", "org.mockito.Answers.*" }
+-- ```
+---@field favoriteStaticMembers array
+
+---@class Settings.jdtls.SelectionRange
+-- Enable/disable Smart Selection support for Java. Disabling this option will not affect the VS Code built-in word-based and bracket-based smart selection.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enabled boolean
+
+---@class Settings.jdtls.FoldingRange
+-- Enable/disable smart folding range support. If disabled, it will use the default indentation-based folding range provided by VS Code.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enabled boolean
+
+---@class Settings.jdtls.Trace
+-- Traces the communication between VS Code and the Java language server.
+-- 
+-- ```lua
+-- default = "off"
+-- ```
+---@field server "off" | "messages" | "verbose"
+
+---@class Settings.jdtls.Maven
+-- Path to Maven's user settings.xml
+-- 
+-- ```lua
+-- default = nil
+-- ```
+---@field userSettings string
+-- Path to Maven's global settings.xml
+-- 
+-- ```lua
+-- default = nil
+-- ```
+---@field globalSettings string
+-- Specifies severity if the plugin execution is not covered by Maven build lifecycle.
+-- 
+-- ```lua
+-- default = "warning"
+-- ```
+---@field notCoveredPluginExecutionSeverity "ignore" | "warning" | "error"
+
+---@class Settings.jdtls.Configuration
+-- Specifies how modifications on build files update the Java classpath/configuration
+-- 
+-- ```lua
+-- default = "interactive"
+-- ```
+---@field updateBuildConfiguration "disabled" | "interactive" | "automatic"
+-- Map Java Execution Environments to local JDKs.
+-- 
+-- ```lua
+-- default = {}
+-- ```
+---@field runtimes object[]
+---@field maven Settings.jdtls.Maven
+-- Controls whether to exclude extension-generated project settings files (.project, .classpath, .factorypath, .settings/) from the file explorer.
+---@field checkProjectSettingsExclusions boolean
+-- The number of days (if enabled) to keep unused workspace cache data. Beyond this limit, cached workspace data may be removed.
+-- 
+-- ```lua
+-- default = 90
+-- ```
+---@field workspaceCacheLimit integer
+
+---@class Settings.jdtls.ShowBuildStatusOnStart
+-- Automatically show build status on startup.
+-- 
+-- ```lua
+-- default = "notification"
+-- ```
+---@field enabled 
+
+---@class Settings.jdtls.ImplementationsCodeLens
+-- Enable/disable the implementations code lens.
+---@field enabled boolean
+
+---@class Settings.jdtls.Settings
+-- Specifies the url or file path to the workspace Java settings. See [Setting Global Preferences](https://github.com/redhat-developer/vscode-java/wiki/Settings-Global-Preferences)
+-- 
+-- ```lua
+-- default = nil
+-- ```
+---@field url string
+
+---@class Settings.jdtls.Eclipse
+-- Enable/disable download of Maven source artifacts for Eclipse projects.
+---@field downloadSources boolean
+
+---@class Settings.jdtls.Autobuild
+-- Enable/disable the 'auto build'
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enabled boolean
+
+---@class Settings.jdtls.Project
+-- Relative paths to the workspace where stores the source files. `Only` effective in the `WORKSPACE` scope. The setting will `NOT` affect Maven or Gradle project.
+-- 
+-- ```lua
+-- default = {}
+-- ```
+---@field sourcePaths string[]
+-- Specifies whether to import the Java projects, when opening the folder in Hybrid mode for the first time.
+-- 
+-- ```lua
+-- default = "automatic"
+-- ```
+---@field importOnFirstTimeStartup "disabled" | "interactive" | "automatic"
+-- Project encoding settings
+-- 
+-- ```lua
+-- default = "ignore"
+-- ```
+---@field encoding "ignore" | "warning" | "setDefault"
+-- Enable/disable the server-mode switch information, when Java projects import is skipped on startup.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field importHint boolean
+-- A relative path to the workspace where stores the compiled output. `Only` effective in the `WORKSPACE` scope. The setting will `NOT` affect Maven or Gradle project.
+-- 
+-- ```lua
+-- default = ""
+-- ```
+---@field outputPath string
+-- Configure glob patterns for referencing local libraries to a Java project.
+-- 
+-- ```lua
+-- default = { "lib/**/*.jar" }
+-- ```
+---@field referencedLibraries array|table
+-- Excludes files and folders from being refreshed by the Java Language Server, which can improve the overall performance. For example, ["node_modules",".git"] will exclude all files and folders named 'node_modules' or '.git'. Defaults to ["node_modules",".git"].
+-- 
+-- ```lua
+-- default = { "node_modules", ".git" }
+-- ```
+---@field resourceFilters array
+
+---@class Settings.jdtls.Analytics
+-- Show the recommended Dependency Analytics extension.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field show boolean
+
+---@class Settings.jdtls.Dependency
+---@field analytics Settings.jdtls.Analytics
+
+---@class Settings.jdtls.Recommendations
+---@field dependency Settings.jdtls.Dependency
+
+---@class Settings.jdtls.Templates
+-- Specifies the type comment for new Java type. Supports configuring multi-line comments with an array of strings, and using ${variable} to reference the [predefined variables](command:_java.templateVariables).
+-- 
+-- ```lua
+-- default = {}
+-- ```
+---@field typeComment array
+-- Specifies the file header comment for new Java file. Supports configuring multi-line comments with an array of strings, and using ${variable} to reference the [predefined variables](command:_java.templateVariables).
+-- 
+-- ```lua
+-- default = {}
+-- ```
+---@field fileHeader array
+
+---@class Settings.jdtls.Server
+-- The launch mode for the Java extension
+-- 
+-- ```lua
+-- default = "Hybrid"
+-- ```
+---@field launchMode "Standard" | "LightWeight" | "Hybrid"
+
+---@class Settings.jdtls.Offline
+-- Enable/disable the Maven offline mode.
+---@field enabled boolean
+
+---@class Settings.jdtls.Maven
+-- Enable/disable the Maven importer.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enabled boolean
+---@field offline Settings.jdtls.Offline
+
+---@class Settings.jdtls.Offline
+-- Enable/disable the Gradle offline mode.
+---@field enabled boolean
+
+---@class Settings.jdtls.Java
+-- The location to the JVM used to run the Gradle daemon.
+-- 
+-- ```lua
+-- default = nil
+-- ```
+---@field home string
+
+---@class Settings.jdtls.User
+-- Setting for GRADLE_USER_HOME.
+-- 
+-- ```lua
+-- default = nil
+-- ```
+---@field home string
+
+---@class Settings.jdtls.Wrapper
+-- Use Gradle from the 'gradle-wrapper.properties' file.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enabled boolean
+
+---@class Settings.jdtls.Gradle
+-- Use Gradle from the specified local installation directory or GRADLE_HOME if the Gradle wrapper is missing or disabled and no 'java.import.gradle.version' is specified.
+-- 
+-- ```lua
+-- default = nil
+-- ```
+---@field home string
+-- Arguments to pass to Gradle.
+-- 
+-- ```lua
+-- default = nil
+-- ```
+---@field arguments string
+-- Use Gradle from the specific version if the Gradle wrapper is missing or disabled.
+-- 
+-- ```lua
+-- default = nil
+-- ```
+---@field version string
+-- Enable/disable the Gradle importer.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enabled boolean
+---@field offline Settings.jdtls.Offline
+-- JVM arguments to pass to Gradle.
+-- 
+-- ```lua
+-- default = nil
+-- ```
+---@field jvmArguments string
+---@field java Settings.jdtls.Java
+---@field user Settings.jdtls.User
+---@field wrapper Settings.jdtls.Wrapper
+
+---@class Settings.jdtls.Import
+---@field maven Settings.jdtls.Maven
+-- Configure glob patterns for excluding folders. Use `!` to negate patterns to allow subfolders imports. You have to include a parent directory. The order is important.
+-- 
+-- ```lua
+-- default = { "**/node_modules/**", "**/.metadata/**", "**/archetype-resources/**", "**/META-INF/maven/**" }
+-- ```
+---@field exclusions array
+-- Specify whether the project metadata files(.project, .classpath, .factorypath, .settings/) will be generated at the project root. Click [HERE](command:_java.metadataFilesGeneration) to learn how to change the setting to make it take effect.
+---@field generatesMetadataFilesAtProjectRoot boolean
+---@field gradle Settings.jdtls.Gradle
+
+---@class Settings.jdtls.Java
+---@field typeHierarchy Settings.jdtls.TypeHierarchy
+---@field contentProvider Settings.jdtls.ContentProvider
+---@field errors Settings.jdtls.Errors
+---@field quickfix Settings.jdtls.Quickfix
+---@field sources Settings.jdtls.Sources
+---@field jdt Settings.jdtls.Jdt
+---@field symbols Settings.jdtls.Symbols
+---@field referencesCodeLens Settings.jdtls.ReferencesCodeLens
+---@field saveActions Settings.jdtls.SaveActions
+---@field codeAction Settings.jdtls.CodeAction
+---@field progressReports Settings.jdtls.ProgressReports
+---@field maven Settings.jdtls.Maven
+---@field inlayHints Settings.jdtls.InlayHints
+-- Max simultaneous project builds
+-- 
+-- ```lua
+-- default = 1
+-- ```
+---@field maxConcurrentBuilds integer
+-- Specifies the folder path to the JDK (17 or more recent) used to launch the Java Language Server.
+-- On Windows, backslashes must be escaped, i.e.
+-- "java.home":"C:\\Program Files\\Java\\jdk-17.0_3"
+-- 
+-- ```lua
+-- default = nil
+-- ```
+---@field home string
+---@field format Settings.jdtls.Format
+---@field signatureHelp Settings.jdtls.SignatureHelp
+---@field codeGeneration Settings.jdtls.CodeGeneration
+---@field references Settings.jdtls.References
+---@field imports Settings.jdtls.Imports
+---@field completion Settings.jdtls.Completion
+---@field selectionRange Settings.jdtls.SelectionRange
+---@field foldingRange Settings.jdtls.FoldingRange
+---@field trace Settings.jdtls.Trace
+---@field configuration Settings.jdtls.Configuration
+---@field showBuildStatusOnStart Settings.jdtls.ShowBuildStatusOnStart
+---@field implementationsCodeLens Settings.jdtls.ImplementationsCodeLens
+---@field settings Settings.jdtls.Settings
+---@field eclipse Settings.jdtls.Eclipse
+---@field autobuild Settings.jdtls.Autobuild
+---@field project Settings.jdtls.Project
+---@field recommendations Settings.jdtls.Recommendations
+---@field templates Settings.jdtls.Templates
+---@field server Settings.jdtls.Server
+---@field import Settings.jdtls.Import
+
+---@class Settings.jdtls
+---@field java Settings.jdtls.Java
+
+---@class Settings.cssls
+
+---@class Settings.perlnavigator.Trace
+-- Traces the communication between VS Code and the language server.
+-- 
+-- ```lua
+-- default = "messages"
+-- ```
+---@field server "off" | "messages" | "verbose"
+
+---@class Settings.perlnavigator.Perlnavigator
+-- Log to stdout from the navigator. Viewable in the Perl Navigator LSP log
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field logging boolean
+---@field trace Settings.perlnavigator.Trace
+-- Array of paths added to @INC. You can use $workspaceFolder as a placeholder.
+-- 
+-- ```lua
+-- default = {}
+-- ```
+---@field includePaths array
+-- Editor Diagnostic severity level for Critic severity 2
+-- 
+-- ```lua
+-- default = "hint"
+-- ```
+---@field severity2 "error" | "warning" | "info" | "hint" | "none"
+-- Editor Diagnostic severity level for Critic severity 3
+-- 
+-- ```lua
+-- default = "hint"
+-- ```
+---@field severity3 "error" | "warning" | "info" | "hint" | "none"
+-- Editor Diagnostic severity level for Critic severity 1
+-- 
+-- ```lua
+-- default = "hint"
+-- ```
+---@field severity1 "error" | "warning" | "info" | "hint" | "none"
+-- Editor Diagnostic severity level for Critic severity 4
+-- 
+-- ```lua
+-- default = "info"
+-- ```
+---@field severity4 "error" | "warning" | "info" | "hint" | "none"
+-- Path to perl critic profile. Otherwise perlcritic itself will default to ~/.perlcriticrc. (no aliases, .bat files or ~/)
+-- 
+-- ```lua
+-- default = ""
+-- ```
+---@field perlcriticProfile string
+-- Editor Diagnostic severity level for Critic severity 5
+-- 
+-- ```lua
+-- default = "warning"
+-- ```
+---@field severity5 "error" | "warning" | "info" | "hint" | "none"
+-- Path to perl tidy profile (no aliases, .bat files or ~/)
+-- 
+-- ```lua
+-- default = ""
+-- ```
+---@field perltidyProfile string
+-- Boolean to indicate if $project/lib should be added to the path by default
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field includeLib boolean
+-- Enable perl tidy.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field perltidyEnabled boolean
+-- Full path to the perl executable (no aliases, .bat files or ~/)
+-- 
+-- ```lua
+-- default = "perl"
+-- ```
+---@field perlPath string
+-- Enable warnings using -Mwarnings command switch
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enableWarnings boolean
+-- Enable perl critic.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field perlcriticEnabled boolean
+
+---@class Settings.perlnavigator
+---@field perlnavigator Settings.perlnavigator.Perlnavigator
+
+---@class Settings.rls.Rust
+-- Enable all Cargo features.
+---@field all_features boolean
+-- Instructs cargo to enable full documentation extraction during save-analysis while building the crate.
+-- 
+-- ```lua
+-- default = nil
+-- ```
+---@field full_docs boolean
+-- Enables code completion using racer.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field racer_completion boolean
+-- Do not enable default Cargo features.
+---@field no_default_features boolean
+-- Whether to surpress the deprecation notification on start up.
+---@field ignore_deprecation_warning boolean
+-- EXPERIMENTAL (requires `unstable_features`)
+-- If set, executes a given program responsible for rebuilding save-analysis to be loaded by the RLS. The program given should output a list of resulting .json files on stdout. 
+-- Implies `rust.build_on_save`: true.
+-- 
+-- ```lua
+-- default = nil
+-- ```
+---@field build_command string
+-- Enable unstable features.
+---@field unstable_features boolean
+-- Only index the project when a file is saved and not on change.
+---@field build_on_save boolean
+-- Overrides the default list of packages for which analysis is skipped.
+-- Available since RLS 1.38
+-- 
+-- ```lua
+-- default = { "cocoa", "gleam", "glium", "idna", "libc", "openssl", "rustc_serialize", "serde", "serde_json", "typenum", "unicode_normalization", "unicode_segmentation", "winapi" }
+-- ```
+---@field crate_blacklist array
+-- Time in milliseconds between receiving a change notification and starting build.
+-- 
+-- ```lua
+-- default = nil
+-- ```
+---@field wait_to_build number
+-- Flags added to RUSTFLAGS.
+-- 
+-- ```lua
+-- default = nil
+-- ```
+---@field rustflags string
+-- --sysroot
+-- 
+-- ```lua
+-- default = nil
+-- ```
+---@field sysroot string
+-- When specified, RLS will use the Rustfmt pointed at the path instead of the bundled one
+-- 
+-- ```lua
+-- default = nil
+-- ```
+---@field rustfmt_path string
+-- Show warnings.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field show_warnings boolean
+-- Specify to run analysis as if running `cargo check --bin <name>`. Use `null` to auto-detect. (unstable)
+-- 
+-- ```lua
+-- default = nil
+-- ```
+---@field build_bin string
+-- Controls eagerness of clippy diagnostics when available. Valid values are (case-insensitive):
+--  - "off": Disable clippy lints.
+--  - "on": Display the same diagnostics as command-line clippy invoked with no arguments (`clippy::all` unless overridden).
+--  - "opt-in": Only display the lints explicitly enabled in the code. Start by adding `#![warn(clippy::all)]` to the root of each crate you want linted.
+-- You need to install clippy via rustup if you haven't already.
+-- 
+-- ```lua
+-- default = "opt-in"
+-- ```
+---@field clippy_preference "on" | "opt-in" | "off"
+-- --target
+-- 
+-- ```lua
+-- default = nil
+-- ```
+---@field target string
+-- Number of Cargo jobs to be run in parallel.
+-- 
+-- ```lua
+-- default = nil
+-- ```
+---@field jobs number
+-- Specify to run analysis as if running `cargo check --lib`. Use `null` to auto-detect. (unstable)
+-- 
+-- ```lua
+-- default = nil
+-- ```
+---@field build_lib boolean
+-- Checks the project as if you were running cargo check --all-targets (I.e., check all targets and integration tests too).
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field all_targets boolean
+-- Settings passed down to rust-analyzer server
+-- 
+-- ```lua
+-- default = {}
+-- ```
+---@field rust-analyzer table
+-- A list of Cargo features to enable.
+-- 
+-- ```lua
+-- default = {}
+-- ```
+---@field features array
+-- When specified, it places the generated analysis files at the specified target directory. By default it is placed target/rls directory.
+-- 
+-- ```lua
+-- default = nil
+-- ```
+---@field target_dir string
+-- Build cfg(test) code. (unstable)
+---@field cfg_test boolean
+-- Clear the RUST_LOG environment variable before running rustc or cargo.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field clear_env_rust_log boolean
+-- Show additional context in hover tooltips when available. This is often the type local variable declaration.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field show_hover_context boolean
+
+---@class Settings.rls.Trace
+-- Traces the communication between VS Code and the Rust language server.
+-- 
+-- ```lua
+-- default = "off"
+-- ```
+---@field server "off" | "messages" | "verbose"
+
+---@class Settings.rls.Rust-client
+-- When set to true, RLS stderr is logged to a file at workspace root level. Requires reloading extension after change.
+---@field logToFile boolean
+---@field trace Settings.rls.Trace
+-- Path to rustup executable. Ignored if rustup is disabled.
+-- 
+-- ```lua
+-- default = "rustup"
+-- ```
+---@field rustupPath string
+-- Override RLS path. Only required for RLS developers. If you set this and use rustup, you should also set `rust-client.channel` to ensure your RLS sees the right libraries. If you don't use rustup, make sure to set `rust-client.disableRustup`.
+-- 
+-- ```lua
+-- default = nil
+-- ```
+---@field rlsPath string
+-- Update the Rust toolchain and its required components whenever the extension starts up.
+---@field updateOnStartup boolean
+-- Specifies message severity on which the output channel will be revealed. Requires reloading extension after change.
+-- 
+-- ```lua
+-- default = "never"
+-- ```
+---@field revealOutputChannelOn "info" | "warn" | "error" | "never"
+-- Disable usage of rustup and use rustc/rls/rust-analyzer from PATH.
+---@field disableRustup boolean
+-- Allow multiple projects in the same folder, along with removing the constraint that the cargo.toml must be located at the root. (Experimental: might not work for certain setups)
+-- 
+-- ```lua
+-- default = nil
+-- ```
+---@field enableMultiProjectSetup boolean
+-- Rust channel to invoke rustup with. Ignored if rustup is disabled. By default, uses the same channel as your currently open project.
+-- 
+-- ```lua
+-- default = "default"
+-- ```
+---@field channel 
+-- Start RLS automatically when opening a file or project.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field autoStartRls boolean
+-- The underlying LSP server used to provide IDE support for Rust projects.
+-- 
+-- ```lua
+-- default = "rls"
+-- ```
+---@field engine "rls" | "rust-analyzer"
+
+---@class Settings.rls
+---@field rust Settings.rls.Rust
+---@field rust-client Settings.rls.Rust-client
+
+---@class Settings.jsonls.SchemaDownload
+-- %json.enableSchemaDownload.desc%
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enable boolean
+
+---@class Settings.jsonls.Trace
+-- %json.tracing.desc%
+-- 
+-- ```lua
+-- default = "off"
+-- ```
+---@field server "off" | "messages" | "verbose"
+
+---@class Settings.jsonls.Format
+-- %json.format.keepLines.desc%
+---@field keepLines boolean
+-- %json.format.enable.desc%
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enable boolean
+
+---@class Settings.jsonls.ColorDecorators
+-- %json.colorDecorators.enable.desc%
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enable boolean
+
+---@class Settings.jsonls.Validate
+-- %json.validate.enable.desc%
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enable boolean
+
+---@class Settings.jsonls.Json
+---@field schemaDownload Settings.jsonls.SchemaDownload
+---@field trace Settings.jsonls.Trace
+---@field format Settings.jsonls.Format
+---@field colorDecorators Settings.jsonls.ColorDecorators
+-- %json.schemas.desc%
+---@field schemas object[]
+-- %json.maxItemsComputed.desc%
+-- 
+-- ```lua
+-- default = 5000
+-- ```
+---@field maxItemsComputed number
+---@field validate Settings.jsonls.Validate
+
+---@class Settings.jsonls
+---@field json Settings.jsonls.Json
+
+---@class Settings.psalm.Trace
+-- Traces the communication between VSCode and the Psalm language server.
+-- 
+-- ```lua
+-- default = "off"
+-- ```
+---@field server "off" | "messages" | "verbose"
+
+---@class Settings.psalm.Psalm
+-- Traces the communication between VSCode and the Psalm language server.
+-- 
+-- ```lua
+-- default = "INFO"
+-- ```
+---@field logLevel "NONE" | "ERROR" | "WARN" | "INFO" | "DEBUG" | "TRACE"
+-- Optional (Advanced). If provided, this overrides the Psalm script to use, e.g. vendor/bin/psalm-language-server. (Modifying requires VSCode reload)
+-- 
+-- ```lua
+-- default = nil
+-- ```
+---@field psalmScriptPath string
+-- This will hide the Psalm status from the status bar when it is started and running.  This is useful to clear up a cluttered status bar.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field hideStatusMessageWhenRunning boolean
+-- Enable --verbose mode on the Psalm Language Server (Modifying requires VSCode reload)
+---@field enableVerbose boolean
+-- A list of files to checkup for psalm configuration (relative to the workspace directory)
+-- 
+-- ```lua
+-- default = { "psalm.xml", "psalm.xml.dist" }
+-- ```
+---@field configPaths string[]
+-- Optional, defaults to searching for "php". The path to a PHP 7.0+ executable to use to execute the Psalm server. The PHP 7.0+ installation should preferably include and enable the PHP module `pcntl`. (Modifying requires VSCode reload)
+-- 
+-- ```lua
+-- default = nil
+-- ```
+---@field phpExecutablePath string
+-- If this is set to true, this VSCode extension will use TCP instead of the default STDIO to communicate with the Psalm language server. (Modifying requires VSCode reload)
+---@field connectToServerWithTcp boolean
+-- Enable this to enable unused variable and parameter detection
+---@field unusedVariableDetection boolean
+-- Optional (Advanced). Additional arguments to the Psalm language server. (Modifying requires VSCode reload)
+-- 
+-- ```lua
+-- default = {}
+-- ```
+---@field psalmScriptArgs string[]
+-- A list of file extensions to request Psalm to analyze. By default, this only includes 'php' (Modifying requires VSCode reload)
+-- 
+-- ```lua
+-- default = { {
+--     language = "php",
+--     scheme = "file"
+--   }, {
+--     language = "php",
+--     scheme = "untitled"
+--   } }
+-- ```
+---@field analyzedFileExtensions array
+-- Optional (Advanced), default is '-dxdebug.remote_autostart=0 -dxdebug.remote_enable=0 -dxdebug_profiler_enable=0'.  Additional PHP executable CLI arguments to use. (Modifying requires VSCode reload)
+-- 
+-- ```lua
+-- default = { "-dxdebug.remote_autostart=0", "-dxdebug.remote_enable=0", "-dxdebug_profiler_enable=0" }
+-- ```
+---@field phpExecutableArgs string[]
+-- Enable this to use PHP-provided ini defaults for memory and error display. (Modifying requires restart)
+---@field enableUseIniDefaults boolean
+-- Enable to disable autocomplete on methods and properties (Modifying requires VSCode reload)
+---@field disableAutoComplete boolean
+-- Optional (Advanced). If provided, this overrides the Psalm version detection (Modifying requires VSCode reload)
+-- 
+-- ```lua
+-- default = nil
+-- ```
+---@field psalmVersion string
+-- Enable this to print messages to the debug console when developing or debugging this VS Code extension. (Modifying requires VSCode reload)
+---@field enableDebugLog boolean
+-- The number of times the Language Server is allowed to crash and restart before it will no longer try to restart (Modifying requires VSCode reload)
+-- 
+-- ```lua
+-- default = 5
+-- ```
+---@field maxRestartCount number
+-- Optional (Advanced). If provided, this overrides the Psalm script to use, e.g. vendor/bin/psalm. (Modifying requires VSCode reload)
+-- 
+-- ```lua
+-- default = nil
+-- ```
+---@field psalmClientScriptPath string
+---@field trace Settings.psalm.Trace
+
+---@class Settings.psalm
+---@field psalm Settings.psalm.Psalm
+
+-- Allows a user to override the severity levels for individual diagnostics.
+-- 
+-- ```lua
+-- default = {}
+-- ```
+---@class Settings.pyright.DiagnosticSeverityOverrides
+-- Diagnostics for call expressions whose results are not consumed and are not None.
+-- 
+-- ```lua
+-- default = "none"
+-- ```
+---@field reportUnusedCallResult "none" | "information" | "warning" | "error"
+-- Diagnostics for function overloads that overlap in signature and obscure each other or have incompatible return types.
+-- 
+-- ```lua
+-- default = "none"
+-- ```
+---@field reportOverlappingOverload "none" | "information" | "warning" | "error"
+-- Diagnostics for imports that have no corresponding source file. This happens when a type stub is found, but the module source file was not found, indicating that the code may fail at runtime when using this execution environment. Type checking will be done using the type stub.
+-- 
+-- ```lua
+-- default = "warning"
+-- ```
+---@field reportMissingModuleSource "none" | "information" | "warning" | "error"
+-- Diagnostics for function decorators that have no type annotations. These obscure the function type, defeating many type analysis features.
+-- 
+-- ```lua
+-- default = "none"
+-- ```
+---@field reportUntypedFunctionDecorator "none" | "information" | "warning" | "error"
+-- Diagnostics for call arguments for functions or methods that have an unknown type.
+-- 
+-- ```lua
+-- default = "none"
+-- ```
+---@field reportUnknownArgumentType "none" | "information" | "warning" | "error"
+-- Diagnostics for input or return parameters for lambdas that have an unknown type.
+-- 
+-- ```lua
+-- default = "none"
+-- ```
+---@field reportUnknownLambdaType "none" | "information" | "warning" | "error"
+-- Diagnostics for an attempt to access a non-required key within a TypedDict without a check for its presence.
+-- 
+-- ```lua
+-- default = "error"
+-- ```
+---@field reportTypedDictNotRequiredAccess "none" | "information" | "warning" | "error"
+-- Diagnostics for a class with a private name (starting with an underscore) that is not accessed.
+-- 
+-- ```lua
+-- default = "none"
+-- ```
+---@field reportUnusedClass "none" | "information" | "warning" | "error"
+-- Diagnostics for '==' and '!=' comparisons that are statically determined to be unnecessary. Such calls are sometimes indicative of a programming error.
+-- 
+-- ```lua
+-- default = "none"
+-- ```
+---@field reportUnnecessaryComparison "none" | "information" | "warning" | "error"
+-- Diagnostics for instance variables that are not declared or initialized within class body or `__init__` method.
+-- 
+-- ```lua
+-- default = "none"
+-- ```
+---@field reportUninitializedInstanceVariable "none" | "information" | "warning" | "error"
+-- Diagnostics for cyclical import chains. These are not errors in Python, but they do slow down type analysis and often hint at architectural layering issues. Generally, they should be avoided.
+-- 
+-- ```lua
+-- default = "none"
+-- ```
+---@field reportImportCycles "none" | "information" | "warning" | "error"
+-- Diagnostics for the use of a module-level “__getattr__” function, indicating that the stub is incomplete.
+-- 
+-- ```lua
+-- default = "none"
+-- ```
+---@field reportIncompleteStub "none" | "information" | "warning" | "error"
+-- Diagnostics when “namedtuple” is used rather than “NamedTuple”. The former contains no type information, whereas the latter does.
+-- 
+-- ```lua
+-- default = "none"
+-- ```
+---@field reportUntypedNamedTuple "none" | "information" | "warning" | "error"
+-- Diagnostics for an attempt to use an Optional type as an operand to a binary or unary operator (like '+', '==', 'or', 'not').
+-- 
+-- ```lua
+-- default = "error"
+-- ```
+---@field reportOptionalOperand "none" | "information" | "warning" | "error"
+-- Diagnostics for an attempt to subscript (index) a variable with an Optional type.
+-- 
+-- ```lua
+-- default = "error"
+-- ```
+---@field reportOptionalSubscript "none" | "information" | "warning" | "error"
+-- Diagnostics for general type inconsistencies, unsupported operations, argument/parameter mismatches, etc. Covers all of the basic type-checking rules not covered by other rules. Does not include syntax errors.
+-- 
+-- ```lua
+-- default = "error"
+-- ```
+---@field reportGeneralTypeIssues "none" | "information" | "warning" | "error"
+-- Diagnostics for 'cast' calls that are statically determined to be unnecessary. Such calls are sometimes indicative of a programming error.
+-- 
+-- ```lua
+-- default = "none"
+-- ```
+---@field reportUnnecessaryCast "none" | "information" | "warning" | "error"
+-- Diagnostics for imports that have no corresponding type stub file (either a typeshed file or a custom type stub). The type checker requires type stubs to do its best job at analysis.
+-- 
+-- ```lua
+-- default = "none"
+-- ```
+---@field reportMissingTypeStubs "none" | "information" | "warning" | "error"
+-- Diagnostics for class decorators that have no type annotations. These obscure the class type, defeating many type analysis features.
+-- 
+-- ```lua
+-- default = "none"
+-- ```
+---@field reportUntypedClassDecorator "none" | "information" | "warning" | "error"
+-- Diagnostics for input or return parameters for functions or methods that have an unknown type.
+-- 
+-- ```lua
+-- default = "none"
+-- ```
+---@field reportUnknownParameterType "none" | "information" | "warning" | "error"
+-- Diagnostics for parameters that are missing a type annotation.
+-- 
+-- ```lua
+-- default = "none"
+-- ```
+---@field reportMissingParameterType "none" | "information" | "warning" | "error"
+-- Diagnostics for missing call to parent class for inherited `__init__` methods.
+-- 
+-- ```lua
+-- default = "none"
+-- ```
+---@field reportMissingSuperCall "none" | "information" | "warning" | "error"
+-- Diagnostics for unbound and possibly unbound variables.
+-- 
+-- ```lua
+-- default = "error"
+-- ```
+---@field reportUnboundVariable "none" | "information" | "warning" | "error"
+-- Diagnostics for 'isinstance' or 'issubclass' calls where the result is statically determined to be always true. Such calls are often indicative of a programming error.
+-- 
+-- ```lua
+-- default = "none"
+-- ```
+---@field reportUnnecessaryIsInstance "none" | "information" | "warning" | "error"
+-- Diagnostics for 'assert' statement that will provably always assert. This can be indicative of a programming error.
+-- 
+-- ```lua
+-- default = "warning"
+-- ```
+---@field reportAssertAlwaysTrue "none" | "information" | "warning" | "error"
+-- Diagnostics for incorrect usage of symbol imported from a "py.typed" module that is not re-exported from that module.
+-- 
+-- ```lua
+-- default = "error"
+-- ```
+---@field reportPrivateImportUsage "none" | "information" | "warning" | "error"
+-- Diagnostics for class or instance variables that have an unknown type.
+-- 
+-- ```lua
+-- default = "none"
+-- ```
+---@field reportUnknownMemberType "none" | "information" | "warning" | "error"
+-- Diagnostics for a variable that is not accessed.
+-- 
+-- ```lua
+-- default = "none"
+-- ```
+---@field reportUnusedVariable "none" | "information" | "warning" | "error"
+-- Diagnostics for an attempt to access a member of a variable with an Optional type.
+-- 
+-- ```lua
+-- default = "error"
+-- ```
+---@field reportOptionalMemberAccess "none" | "information" | "warning" | "error"
+-- Diagnostics for methods that override a method of the same name in a base class in an incompatible manner (wrong number of parameters, incompatible parameter types, or incompatible return type).
+-- 
+-- ```lua
+-- default = "none"
+-- ```
+---@field reportIncompatibleMethodOverride "none" | "information" | "warning" | "error"
+-- Diagnostics for generic class reference with missing type arguments.
+-- 
+-- ```lua
+-- default = "none"
+-- ```
+---@field reportMissingTypeArgument "none" | "information" | "warning" | "error"
+-- Diagnostics for unsupported operations performed on __all__.
+-- 
+-- ```lua
+-- default = "warning"
+-- ```
+---@field reportUnsupportedDunderAll "none" | "information" | "warning" | "error"
+-- Diagnostics for base classes whose type cannot be determined statically. These obscure the class type, defeating many type analysis features.
+-- 
+-- ```lua
+-- default = "none"
+-- ```
+---@field reportUntypedBaseClass "none" | "information" | "warning" | "error"
+-- Diagnostics for imports that have no corresponding imported python file or type stub file.
+-- 
+-- ```lua
+-- default = "error"
+-- ```
+---@field reportMissingImports "none" | "information" | "warning" | "error"
+-- Diagnostics for undefined variables.
+-- 
+-- ```lua
+-- default = "error"
+-- ```
+---@field reportUndefinedVariable "none" | "information" | "warning" | "error"
+-- Diagnostics for an imported symbol or module that is imported more than once.
+-- 
+-- ```lua
+-- default = "none"
+-- ```
+---@field reportDuplicateImport "none" | "information" | "warning" | "error"
+-- Diagnostics for 'match' statements that do not exhaustively match all possible values.
+-- 
+-- ```lua
+-- default = "none"
+-- ```
+---@field reportMatchNotExhaustive "none" | "information" | "warning" | "error"
+-- Diagnostics for improper use of type variables in a function signature.
+-- 
+-- ```lua
+-- default = "warning"
+-- ```
+---@field reportInvalidTypeVarUse "none" | "information" | "warning" | "error"
+-- Diagnostics for simple expressions whose value is not used in any way.
+-- 
+-- ```lua
+-- default = "warning"
+-- ```
+---@field reportUnusedExpression "none" | "information" | "warning" | "error"
+-- Diagnostics for usage of deprecated type comments.
+-- 
+-- ```lua
+-- default = "none"
+-- ```
+---@field reportTypeCommentUsage "none" | "information" | "warning" | "error"
+-- Diagnostics for an imported symbol that is not referenced within that file.
+-- 
+-- ```lua
+-- default = "none"
+-- ```
+---@field reportUnusedImport "none" | "information" | "warning" | "error"
+-- Diagnostics for type stub statements that do not conform to PEP 484.
+-- 
+-- ```lua
+-- default = "none"
+-- ```
+---@field reportInvalidStubStatement "none" | "information" | "warning" | "error"
+-- Diagnostics for overrides in subclasses that redefine a variable in an incompatible way.
+-- 
+-- ```lua
+-- default = "none"
+-- ```
+---@field reportIncompatibleVariableOverride "none" | "information" | "warning" | "error"
+-- Diagnostics for two or more string literals that follow each other, indicating an implicit concatenation. This is considered a bad practice and often masks bugs such as missing commas.
+-- 
+-- ```lua
+-- default = "none"
+-- ```
+---@field reportImplicitStringConcatenation "none" | "information" | "warning" | "error"
+-- Diagnostics for incorrect usage of private or protected variables or functions. Protected class members begin with a single underscore _ and can be accessed only by subclasses. Private class members begin with a double underscore but do not end in a double underscore and can be accessed only within the declaring class. Variables and functions declared outside of a class are considered private if their names start with either a single or double underscore, and they cannot be accessed outside of the declaring module.
+-- 
+-- ```lua
+-- default = "none"
+-- ```
+---@field reportPrivateUsage "none" | "information" | "warning" | "error"
+-- Diagnostics for attempts to redefine variables whose names are all-caps with underscores and numerals.
+-- 
+-- ```lua
+-- default = "none"
+-- ```
+---@field reportConstantRedefinition "none" | "information" | "warning" | "error"
+-- Diagnostics for an attempt to call a variable with an Optional type.
+-- 
+-- ```lua
+-- default = "error"
+-- ```
+---@field reportOptionalCall "none" | "information" | "warning" | "error"
+-- Diagnostics for member accesses on functions.
+-- 
+-- ```lua
+-- default = "none"
+-- ```
+---@field reportFunctionMemberAccess "none" | "information" | "warning" | "error"
+-- Diagnostics for an attempt to use an Optional type as an iterable value (e.g. within a for statement).
+-- 
+-- ```lua
+-- default = "error"
+-- ```
+---@field reportOptionalIterable "none" | "information" | "warning" | "error"
+-- Diagnostics for function calls within a default value initialization expression. Such calls can mask expensive operations that are performed at module initialization time.
+-- 
+-- ```lua
+-- default = "none"
+-- ```
+---@field reportCallInDefaultInitializer "none" | "information" | "warning" | "error"
+-- Diagnostics for '# type: ignore' comments that have no effect.
+-- 
+-- ```lua
+-- default = "none"
+-- ```
+---@field reportUnnecessaryTypeIgnoreComment "none" | "information" | "warning" | "error"
+-- Diagnostics for property whose setter and getter have mismatched types.
+-- 
+-- ```lua
+-- default = "none"
+-- ```
+---@field reportPropertyTypeMismatch "none" | "information" | "warning" | "error"
+-- Diagnostics for variables that have an unknown type..
+-- 
+-- ```lua
+-- default = "none"
+-- ```
+---@field reportUnknownVariableType "none" | "information" | "warning" | "error"
+-- Diagnostics for invalid escape sequences used within string literals. The Python specification indicates that such sequences will generate a syntax error in future versions.
+-- 
+-- ```lua
+-- default = "warning"
+-- ```
+---@field reportInvalidStringEscapeSequence "none" | "information" | "warning" | "error"
+-- Diagnostics for __init__ and __new__ methods whose signatures are inconsistent.
+-- 
+-- ```lua
+-- default = "none"
+-- ```
+---@field reportInconsistentConstructor "none" | "information" | "warning" | "error"
+-- Diagnostics for a function or method with a private name (starting with an underscore) that is not accessed.
+-- 
+-- ```lua
+-- default = "none"
+-- ```
+---@field reportUnusedFunction "none" | "information" | "warning" | "error"
+-- Diagnostics for an attempt to use an Optional type as a context manager (as a parameter to a with statement).
+-- 
+-- ```lua
+-- default = "error"
+-- ```
+---@field reportOptionalContextManager "none" | "information" | "warning" | "error"
+-- Diagnostics for call expressions that return a Coroutine and whose results are not consumed.
+-- 
+-- ```lua
+-- default = "error"
+-- ```
+---@field reportUnusedCoroutine "none" | "information" | "warning" | "error"
+-- Diagnostics for 'in' operation that is statically determined to be unnecessary. Such operations are sometimes indicative of a programming error.
+-- 
+-- ```lua
+-- default = "none"
+-- ```
+---@field reportUnnecessaryContains "none" | "information" | "warning" | "error"
+-- Diagnostics for an wildcard import from an external library.
+-- 
+-- ```lua
+-- default = "warning"
+-- ```
+---@field reportWildcardImportFromLibrary "none" | "information" | "warning" | "error"
+-- Diagnostics for a missing or misnamed “self” parameter in instance methods and “cls” parameter in class methods. Instance methods in metaclasses (classes that derive from “type”) are allowed to use “cls” for instance methods.
+-- 
+-- ```lua
+-- default = "warning"
+-- ```
+---@field reportSelfClsParameterName "none" | "information" | "warning" | "error"
+
+---@class Settings.pyright.Analysis
+-- Paths to look for typeshed modules.
+-- 
+-- ```lua
+-- default = {}
+-- ```
+---@field typeshedPaths string[]
+-- Specifies the level of logging for the Output panel
+-- 
+-- ```lua
+-- default = "Information"
+-- ```
+---@field logLevel "Error" | "Warning" | "Information" | "Trace"
+-- Automatically add common search paths like 'src'?
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field autoSearchPaths boolean
+-- Use library implementations to extract type information when type stub is not present.
+---@field useLibraryCodeForTypes boolean
+-- ```lua
+-- default = "openFilesOnly"
+-- ```
+---@field diagnosticMode "openFilesOnly" | "workspace"
+-- Additional import search resolution paths
+-- 
+-- ```lua
+-- default = {}
+-- ```
+---@field extraPaths string[]
+-- Allows a user to override the severity levels for individual diagnostics.
+-- 
+-- ```lua
+-- default = {}
+-- ```
+---@field diagnosticSeverityOverrides Settings.pyright.DiagnosticSeverityOverrides
+-- Defines the default rule set for type checking.
+-- 
+-- ```lua
+-- default = "basic"
+-- ```
+---@field typeCheckingMode "off" | "basic" | "strict"
+-- Offer auto-import completions.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field autoImportCompletions boolean
+-- Path to directory containing custom type stub files.
+-- 
+-- ```lua
+-- default = "typings"
+-- ```
+---@field stubPath string
+
+---@class Settings.pyright.Python
+---@field analysis Settings.pyright.Analysis
+-- Path to folder with a list of Virtual Environments.
+-- 
+-- ```lua
+-- default = ""
+-- ```
+---@field venvPath string
+-- Path to Python, you can use a custom version of Python.
+-- 
+-- ```lua
+-- default = "python"
+-- ```
+---@field pythonPath string
+
+---@class Settings.pyright.Pyright
+-- Disables type completion, definitions, and references.
+---@field disableLanguageServices boolean
+-- Disables the “Organize Imports” command.
+---@field disableOrganizeImports boolean
+
+---@class Settings.pyright
+---@field python Settings.pyright.Python
+---@field pyright Settings.pyright.Pyright
+
+---@class Settings.rust_analyzer.Experimental
+-- Whether to show experimental rust-analyzer diagnostics that might
+-- have more false positives than usual.
+---@field enable boolean
+
+---@class Settings.rust_analyzer.Diagnostics
+-- List of warnings that should be displayed with info severity.
+-- 
+-- The warnings will be indicated by a blue squiggly underline in code
+-- and a blue icon in the `Problems Panel`.
+-- 
+-- ```lua
+-- default = {}
+-- ```
+---@field warningsAsInfo string[]
+-- List of warnings that should be displayed with hint severity.
+-- 
+-- The warnings will be indicated by faded text or three dots in code
+-- and will not show up in the `Problems Panel`.
+-- 
+-- ```lua
+-- default = {}
+-- ```
+---@field warningsAsHint string[]
+-- List of rust-analyzer diagnostics to disable.
+-- 
+-- ```lua
+-- default = {}
+-- ```
+---@field disabled string[]
+---@field experimental Settings.rust_analyzer.Experimental
+-- Map of prefixes to be substituted when parsing diagnostic file paths.
+-- This should be the reverse mapping of what is passed to `rustc` as `--remap-path-prefix`.
+-- 
+-- ```lua
+-- default = {}
+-- ```
+---@field remapPrefix table
+-- Whether to show native rust-analyzer diagnostics.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enable boolean
+
+---@class Settings.rust_analyzer.Debug
+-- Optional source file mappings passed to the debug engine.
+-- 
+-- ```lua
+-- default = {
+--   ["/rustc/<id>"] = "${env:USERPROFILE}/.rustup/toolchains/<toolchain-id>/lib/rustlib/src/rust"
+-- }
+-- ```
+---@field sourceFileMap table|string
+-- Whether to open up the `Debug Panel` on debugging start.
+---@field openDebugPane boolean
+-- Optional settings passed to the debug engine. Example: `{ "lldb": { "terminal":"external"} }`
+-- 
+-- ```lua
+-- default = {}
+-- ```
+---@field engineSettings table
+-- Preferred debug engine.
+-- 
+-- ```lua
+-- default = "auto"
+-- ```
+---@field engine "auto" | "vadimcn.vscode-lldb" | "ms-vscode.cpptools"
+
+---@class Settings.rust_analyzer.Documentation
+-- Show documentation.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enable boolean
+
+---@class Settings.rust_analyzer.SignatureInfo
+-- Show full signature of the callable. Only shows parameters if disabled.
+-- 
+-- ```lua
+-- default = "full"
+-- ```
+---@field detail "full" | "parameters"
+---@field documentation Settings.rust_analyzer.Documentation
+
+---@class Settings.rust_analyzer.Links
+-- Use markdown syntax for links in hover.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enable boolean
+
+---@class Settings.rust_analyzer.References
+-- Whether to show `References` action. Only applies when
+-- `#rust-analyzer.hover.actions.enable#` is set.
+---@field enable boolean
+
+---@class Settings.rust_analyzer.Debug
+-- Whether to show `Debug` action. Only applies when
+-- `#rust-analyzer.hover.actions.enable#` is set.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enable boolean
+
+---@class Settings.rust_analyzer.GotoTypeDef
+-- Whether to show `Go to Type Definition` action. Only applies when
+-- `#rust-analyzer.hover.actions.enable#` is set.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enable boolean
+
+---@class Settings.rust_analyzer.Run
+-- Whether to show `Run` action. Only applies when
+-- `#rust-analyzer.hover.actions.enable#` is set.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enable boolean
+
+---@class Settings.rust_analyzer.Implementations
+-- Whether to show `Implementations` action. Only applies when
+-- `#rust-analyzer.hover.actions.enable#` is set.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enable boolean
+
+---@class Settings.rust_analyzer.Actions
+---@field references Settings.rust_analyzer.References
+---@field debug Settings.rust_analyzer.Debug
+---@field gotoTypeDef Settings.rust_analyzer.GotoTypeDef
+---@field run Settings.rust_analyzer.Run
+-- Whether to show HoverActions in Rust files.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enable boolean
+---@field implementations Settings.rust_analyzer.Implementations
+
+---@class Settings.rust_analyzer.Keywords
+-- Whether to show keyword hover popups. Only applies when
+-- `#rust-analyzer.hover.documentation.enable#` is set.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enable boolean
+
+---@class Settings.rust_analyzer.Documentation
+-- Whether to show documentation on hover.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enable boolean
+---@field keywords Settings.rust_analyzer.Keywords
+
+---@class Settings.rust_analyzer.Hover
+---@field links Settings.rust_analyzer.Links
+---@field actions Settings.rust_analyzer.Actions
+---@field documentation Settings.rust_analyzer.Documentation
+
+---@class Settings.rust_analyzer.Assist
+-- Placeholder expression to use for missing expressions in assists.
+-- 
+-- ```lua
+-- default = "todo"
+-- ```
+---@field expressionFillDefault "todo" | "default"
+
+---@class Settings.rust_analyzer.Specialization
+-- Use specialized semantic tokens for operators.
+-- 
+-- When enabled, rust-analyzer will emit special token types for operator tokens instead
+-- of the generic `operator` token type.
+---@field enable boolean
+
+---@class Settings.rust_analyzer.Operator
+-- Use semantic tokens for operators.
+-- 
+-- When disabled, rust-analyzer will emit semantic tokens only for operator tokens when
+-- they are tagged with modifiers.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enable boolean
+---@field specialization Settings.rust_analyzer.Specialization
+
+---@class Settings.rust_analyzer.Macro
+-- When enabled, rust-analyzer will emit a punctuation semantic token for the `!` of macro
+-- calls.
+---@field bang boolean
+
+---@class Settings.rust_analyzer.Separate
+---@field macro Settings.rust_analyzer.Macro
+
+---@class Settings.rust_analyzer.Specialization
+-- Use specialized semantic tokens for punctuations.
+-- 
+-- When enabled, rust-analyzer will emit special token types for punctuation tokens instead
+-- of the generic `punctuation` token type.
+---@field enable boolean
+
+---@class Settings.rust_analyzer.Punctuation
+-- Use semantic tokens for punctuations.
+-- 
+-- When disabled, rust-analyzer will emit semantic tokens only for punctuation tokens when
+-- they are tagged with modifiers or have a special role.
+---@field enable boolean
+---@field separate Settings.rust_analyzer.Separate
+---@field specialization Settings.rust_analyzer.Specialization
+
+---@class Settings.rust_analyzer.Strings
+-- Use semantic tokens for strings.
+-- 
+-- In some editors (e.g. vscode) semantic tokens override other highlighting grammars.
+-- By disabling semantic tokens for strings, other grammars can be used to highlight
+-- their contents.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enable boolean
+
+---@class Settings.rust_analyzer.Inject
+-- Inject additional highlighting into doc comments.
+-- 
+-- When enabled, rust-analyzer will highlight rust source in doc comments as well as intra
+-- doc links.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enable boolean
+
+---@class Settings.rust_analyzer.Comment
+---@field inject Settings.rust_analyzer.Inject
+
+---@class Settings.rust_analyzer.Doc
+---@field comment Settings.rust_analyzer.Comment
+
+---@class Settings.rust_analyzer.SemanticHighlighting
+---@field operator Settings.rust_analyzer.Operator
+---@field punctuation Settings.rust_analyzer.Punctuation
+---@field strings Settings.rust_analyzer.Strings
+---@field doc Settings.rust_analyzer.Doc
+
+---@class Settings.rust_analyzer.Lru
+-- Number of syntax trees rust-analyzer keeps in memory. Defaults to 128.
+-- 
+-- ```lua
+-- default = nil
+-- ```
+---@field capacity integer
+
+---@class Settings.rust_analyzer.Trait
+-- Whether to show `References` lens for Trait.
+-- Only applies when `#rust-analyzer.lens.enable#` is set.
+---@field enable boolean
+
+---@class Settings.rust_analyzer.Adt
+-- Whether to show `References` lens for Struct, Enum, and Union.
+-- Only applies when `#rust-analyzer.lens.enable#` is set.
+---@field enable boolean
+
+---@class Settings.rust_analyzer.Method
+-- Whether to show `Method References` lens. Only applies when
+-- `#rust-analyzer.lens.enable#` is set.
+---@field enable boolean
+
+---@class Settings.rust_analyzer.EnumVariant
+-- Whether to show `References` lens for Enum Variants.
+-- Only applies when `#rust-analyzer.lens.enable#` is set.
+---@field enable boolean
+
+---@class Settings.rust_analyzer.References
+---@field trait Settings.rust_analyzer.Trait
+---@field adt Settings.rust_analyzer.Adt
+---@field method Settings.rust_analyzer.Method
+---@field enumVariant Settings.rust_analyzer.EnumVariant
+
+---@class Settings.rust_analyzer.Debug
+-- Whether to show `Debug` lens. Only applies when
+-- `#rust-analyzer.lens.enable#` is set.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enable boolean
+
+---@class Settings.rust_analyzer.Run
+-- Whether to show `Run` lens. Only applies when
+-- `#rust-analyzer.lens.enable#` is set.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enable boolean
+
+---@class Settings.rust_analyzer.Implementations
+-- Whether to show `Implementations` lens. Only applies when
+-- `#rust-analyzer.lens.enable#` is set.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enable boolean
+
+---@class Settings.rust_analyzer.Lens
+---@field references Settings.rust_analyzer.References
+---@field debug Settings.rust_analyzer.Debug
+-- Whether to show CodeLens in Rust files.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enable boolean
+---@field run Settings.rust_analyzer.Run
+-- Internal config: use custom client-side commands even when the
+-- client doesn't set the corresponding capability.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field forceCustomCommands boolean
+---@field implementations Settings.rust_analyzer.Implementations
+
+---@class Settings.rust_analyzer.Granularity
+-- Whether to enforce the import granularity setting for all files. If set to false rust-analyzer will try to keep import styles consistent per file.
+---@field enforce boolean
+-- How imports should be grouped into use statements.
+-- 
+-- ```lua
+-- default = "crate"
+-- ```
+---@field group "preserve" | "crate" | "module" | "item"
+
+---@class Settings.rust_analyzer.Group
+-- Group inserted imports by the [following order](https://rust-analyzer.github.io/manual.html#auto-import). Groups are separated by newlines.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enable boolean
+
+---@class Settings.rust_analyzer.Merge
+-- Whether to allow import insertion to merge new imports into single path glob imports like `use std::fmt::*;`.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field glob boolean
+
+---@class Settings.rust_analyzer.Imports
+---@field granularity Settings.rust_analyzer.Granularity
+---@field group Settings.rust_analyzer.Group
+-- The path structure for newly inserted paths to use.
+-- 
+-- ```lua
+-- default = "plain"
+-- ```
+---@field prefix "plain" | "self" | "crate"
+---@field merge Settings.rust_analyzer.Merge
+
+---@class Settings.rust_analyzer.Postfix
+-- Whether to show postfix snippets like `dbg`, `if`, `not`, etc.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enable boolean
+
+---@class Settings.rust_analyzer.PrivateEditable
+-- Enables completions of private items and fields that are defined in the current workspace even if they are not visible at the current position.
+---@field enable boolean
+
+---@class Settings.rust_analyzer.Callable
+-- Whether to add parenthesis and argument snippets when completing function.
+-- 
+-- ```lua
+-- default = "fill_arguments"
+-- ```
+---@field snippets "fill_arguments" | "add_parentheses" | "none"
+
+---@class Settings.rust_analyzer.Autoself
+-- Toggles the additional completions that automatically show method calls and field accesses
+-- with `self` prefixed to them when inside a method.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enable boolean
+
+---@class Settings.rust_analyzer.Autoimport
+-- Toggles the additional completions that automatically add imports when completed.
+-- Note that your client must specify the `additionalTextEdits` LSP client capability to truly have this feature enabled.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enable boolean
+
+---@class Settings.rust_analyzer.Snippets
+-- Custom completion snippets.
+-- 
+-- ```lua
+-- default = {
+--   ["Arc::new"] = {
+--     body = "Arc::new(${receiver})",
+--     description = "Put the expression into an `Arc`",
+--     postfix = "arc",
+--     requires = "std::sync::Arc",
+--     scope = "expr"
+--   },
+--   ["Box::pin"] = {
+--     body = "Box::pin(${receiver})",
+--     description = "Put the expression into a pinned `Box`",
+--     postfix = "pinbox",
+--     requires = "std::boxed::Box",
+--     scope = "expr"
+--   },
+--   Err = {
+--     body = "Err(${receiver})",
+--     description = "Wrap the expression in a `Result::Err`",
+--     postfix = "err",
+--     scope = "expr"
+--   },
+--   Ok = {
+--     body = "Ok(${receiver})",
+--     description = "Wrap the expression in a `Result::Ok`",
+--     postfix = "ok",
+--     scope = "expr"
+--   },
+--   ["Rc::new"] = {
+--     body = "Rc::new(${receiver})",
+--     description = "Put the expression into an `Rc`",
+--     postfix = "rc",
+--     requires = "std::rc::Rc",
+--     scope = "expr"
+--   },
+--   Some = {
+--     body = "Some(${receiver})",
+--     description = "Wrap the expression in an `Option::Some`",
+--     postfix = "some",
+--     scope = "expr"
+--   }
+-- }
+-- ```
+---@field custom table
+
+---@class Settings.rust_analyzer.Completion
+---@field postfix Settings.rust_analyzer.Postfix
+---@field privateEditable Settings.rust_analyzer.PrivateEditable
+---@field callable Settings.rust_analyzer.Callable
+---@field autoself Settings.rust_analyzer.Autoself
+---@field autoimport Settings.rust_analyzer.Autoimport
+---@field snippets Settings.rust_analyzer.Snippets
+
+---@class Settings.rust_analyzer.CachePriming
+-- How many worker threads to handle priming caches. The default `0` means to pick automatically.
+-- 
+-- ```lua
+-- default = 0
+-- ```
+---@field numThreads number
+-- Warm up caches on project load.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enable boolean
+
+---@class Settings.rust_analyzer.Rustc
+-- Path to the Cargo.toml of the rust compiler workspace, for usage in rustc_private
+-- projects, or "discover" to try to automatically find it if the `rustc-dev` component
+-- is installed.
+-- 
+-- Any project which uses rust-analyzer with the rustcPrivate
+-- crates must set `[package.metadata.rust-analyzer] rustc_private=true` to use it.
+-- 
+-- This option does not take effect until rust-analyzer is restarted.
+-- 
+-- ```lua
+-- default = nil
+-- ```
+---@field source string
+
+---@class Settings.rust_analyzer.BuildScripts
+-- Override the command rust-analyzer uses to run build scripts and
+-- build procedural macros. The command is required to output json
+-- and should therefore include `--message-format=json` or a similar
+-- option.
+-- 
+-- By default, a cargo invocation will be constructed for the configured
+-- targets and features, with the following base command line:
+-- 
+-- ```bash
+-- cargo check --quiet --workspace --message-format=json --all-targets
+-- ```
+-- .
+-- 
+-- ```lua
+-- default = nil
+-- ```
+---@field overrideCommand string[]
+-- Run build scripts (`build.rs`) for more precise code analysis.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enable boolean
+-- Use `RUSTC_WRAPPER=rust-analyzer` when running build scripts to
+-- avoid checking unnecessary things.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field useRustcWrapper boolean
+
+---@class Settings.rust_analyzer.Cargo
+-- Whether to pass `--no-default-features` to cargo.
+---@field noDefaultFeatures boolean
+-- Automatically refresh project info via `cargo metadata` on
+-- `Cargo.toml` or `.cargo/config.toml` changes.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field autoreload boolean
+-- Compilation target override (target triple).
+-- 
+-- ```lua
+-- default = nil
+-- ```
+---@field target string
+---@field buildScripts Settings.rust_analyzer.BuildScripts
+-- Internal config for debugging, disables loading of sysroot crates.
+---@field noSysroot boolean
+-- List of features to activate.
+-- 
+-- Set this to `"all"` to pass `--all-features` to cargo.
+-- 
+-- ```lua
+-- default = {}
+-- ```
+---@field features 
+-- Unsets `#[cfg(test)]` for the specified crates.
+-- 
+-- ```lua
+-- default = { "core" }
+-- ```
+---@field unsetTest string[]
+
+---@class Settings.rust_analyzer.AutoClosingAngleBrackets
+-- Whether to insert closing angle brackets when typing an opening angle bracket of a generic argument list.
+---@field enable boolean
+
+---@class Settings.rust_analyzer.Typing
+-- Whether to prefix newlines after comments with the corresponding comment prefix.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field continueCommentsOnNewline boolean
+---@field autoClosingAngleBrackets Settings.rust_analyzer.AutoClosingAngleBrackets
+
+---@class Settings.rust_analyzer.Trace
+-- Trace requests to the rust-analyzer (this is usually overly verbose and not recommended for regular users).
+-- 
+-- ```lua
+-- default = "off"
+-- ```
+---@field server "off" | "messages" | "verbose"
+-- Enable logging of VS Code extensions itself.
+---@field extension boolean
+
+---@class Settings.rust_analyzer.Attributes
+-- Expand attribute macros. Requires `#rust-analyzer.procMacro.enable#` to be set.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enable boolean
+
+---@class Settings.rust_analyzer.ProcMacro
+-- Enable support for procedural macros, implies `#rust-analyzer.cargo.buildScripts.enable#`.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enable boolean
+---@field attributes Settings.rust_analyzer.Attributes
+-- These proc-macros will be ignored when trying to expand them.
+-- 
+-- This config takes a map of crate names with the exported proc-macro names to ignore as values.
+-- 
+-- ```lua
+-- default = {}
+-- ```
+---@field ignored table
+-- Internal config, path to proc-macro server executable (typically,
+-- this is rust-analyzer itself, but we override this in tests).
+-- 
+-- ```lua
+-- default = nil
+-- ```
+---@field server string
+
+---@class Settings.rust_analyzer.JoinLines
+-- Join lines merges consecutive declaration and initialization of an assignment.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field joinAssignments boolean
+-- Join lines removes trailing commas.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field removeTrailingComma boolean
+-- Join lines inserts else between consecutive ifs.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field joinElseIf boolean
+-- Join lines unwraps trivial blocks.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field unwrapTrivialBlock boolean
+
+---@class Settings.rust_analyzer.Search
+-- Workspace symbol search scope.
+-- 
+-- ```lua
+-- default = "workspace"
+-- ```
+---@field scope "workspace" | "workspace_and_dependencies"
+-- Limits the number of items returned from a workspace symbol search (Defaults to 128).
+-- Some clients like vs-code issue new searches on result filtering and don't require all results to be returned in the initial search.
+-- Other clients requires all results upfront and might require a higher limit.
+-- 
+-- ```lua
+-- default = 128
+-- ```
+---@field limit integer
+-- Workspace symbol search kind.
+-- 
+-- ```lua
+-- default = "only_types"
+-- ```
+---@field kind "only_types" | "all_symbols"
+
+---@class Settings.rust_analyzer.Symbol
+---@field search Settings.rust_analyzer.Search
+
+---@class Settings.rust_analyzer.Workspace
+---@field symbol Settings.rust_analyzer.Symbol
+
+---@class Settings.rust_analyzer.Notifications
+-- Whether to show `can't find Cargo.toml` error message.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field cargoTomlNotFound boolean
+
+---@class Settings.rust_analyzer.Files
+-- Controls file watching implementation.
+-- 
+-- ```lua
+-- default = "client"
+-- ```
+---@field watcher "client" | "server"
+-- These directories will be ignored by rust-analyzer. They are
+-- relative to the workspace root, and globs are not supported. You may
+-- also need to add the folders to Code's `files.watcherExclude`.
+-- 
+-- ```lua
+-- default = {}
+-- ```
+---@field excludeDirs string[]
+
+---@class Settings.rust_analyzer.RangeFormatting
+-- Enables the use of rustfmt's unstable range formatting command for the
+-- `textDocument/rangeFormatting` request. The rustfmt option is unstable and only
+-- available on a nightly build.
+---@field enable boolean
+
+---@class Settings.rust_analyzer.Rustfmt
+---@field rangeFormatting Settings.rust_analyzer.RangeFormatting
+-- Advanced option, fully override the command rust-analyzer uses for
+-- formatting.
+-- 
+-- ```lua
+-- default = nil
+-- ```
+---@field overrideCommand string[]
+-- Additional arguments to `rustfmt`.
+-- 
+-- ```lua
+-- default = {}
+-- ```
+---@field extraArgs string[]
+
+---@class Settings.rust_analyzer.Runnables
+-- Additional arguments to be passed to cargo for runnables such as
+-- tests or binaries. For example, it may be `--release`.
+-- 
+-- ```lua
+-- default = {}
+-- ```
+---@field extraArgs string[]
+-- Command to be executed instead of 'cargo' for runnables.
+-- 
+-- ```lua
+-- default = nil
+-- ```
+---@field command string
+
+---@class Settings.rust_analyzer.ClosureReturnTypeHints
+-- Whether to show inlay type hints for return types of closures.
+-- 
+-- ```lua
+-- default = "never"
+-- ```
+---@field enable "always" | "never" | "with_block"
+
+---@class Settings.rust_analyzer.ReborrowHints
+-- Whether to show inlay type hints for compiler inserted reborrows.
+-- 
+-- ```lua
+-- default = "never"
+-- ```
+---@field enable "always" | "never" | "mutable"
+
+---@class Settings.rust_analyzer.BindingModeHints
+-- Whether to show inlay type hints for binding modes.
+---@field enable boolean
+
+---@class Settings.rust_analyzer.ClosingBraceHints
+-- Minimum number of lines required before the `}` until the hint is shown (set to 0 or 1
+-- to always show them).
+-- 
+-- ```lua
+-- default = 25
+-- ```
+---@field minLines integer
+-- Whether to show inlay hints after a closing `}` to indicate what item it belongs to.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enable boolean
+
+---@class Settings.rust_analyzer.ChainingHints
+-- Whether to show inlay type hints for method chains.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enable boolean
+
+---@class Settings.rust_analyzer.ParameterHints
+-- Whether to show function parameter name inlay hints at the call
+-- site.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enable boolean
+
+---@class Settings.rust_analyzer.TypeHints
+-- Whether to hide inlay type hints for constructors.
+---@field hideNamedConstructor boolean
+-- Whether to hide inlay type hints for `let` statements that initialize to a closure.
+-- Only applies to closures with blocks, same as `#rust-analyzer.inlayHints.closureReturnTypeHints.enable#`.
+---@field hideClosureInitialization boolean
+-- Whether to show inlay type hints for variables.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enable boolean
+
+---@class Settings.rust_analyzer.LifetimeElisionHints
+-- Whether to prefer using parameter names as the name for elided lifetime hints if possible.
+---@field useParameterNames boolean
+-- Whether to show inlay type hints for elided lifetimes in function signatures.
+-- 
+-- ```lua
+-- default = "never"
+-- ```
+---@field enable "always" | "never" | "skip_trivial"
+
+---@class Settings.rust_analyzer.InlayHints
+---@field closureReturnTypeHints Settings.rust_analyzer.ClosureReturnTypeHints
+---@field reborrowHints Settings.rust_analyzer.ReborrowHints
+---@field bindingModeHints Settings.rust_analyzer.BindingModeHints
+---@field closingBraceHints Settings.rust_analyzer.ClosingBraceHints
+---@field chainingHints Settings.rust_analyzer.ChainingHints
+-- Maximum length for inlay hints. Set to null to have an unlimited length.
+-- 
+-- ```lua
+-- default = 25
+-- ```
+---@field maxLength integer
+-- Whether to render leading colons for type hints, and trailing colons for parameter hints.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field renderColons boolean
+---@field parameterHints Settings.rust_analyzer.ParameterHints
+---@field typeHints Settings.rust_analyzer.TypeHints
+---@field lifetimeElisionHints Settings.rust_analyzer.LifetimeElisionHints
+
+---@class Settings.rust_analyzer.CheckOnSave
+-- Whether to pass `--no-default-features` to Cargo. Defaults to
+-- `#rust-analyzer.cargo.noDefaultFeatures#`.
+-- 
+-- ```lua
+-- default = nil
+-- ```
+---@field noDefaultFeatures boolean
+-- Override the command rust-analyzer uses instead of `cargo check` for
+-- diagnostics on save. The command is required to output json and
+-- should therefor include `--message-format=json` or a similar option.
+-- 
+-- If you're changing this because you're using some tool wrapping
+-- Cargo, you might also want to change
+-- `#rust-analyzer.cargo.buildScripts.overrideCommand#`.
+-- 
+-- If there are multiple linked projects, this command is invoked for
+-- each of them, with the working directory being the project root
+-- (i.e., the folder containing the `Cargo.toml`).
+-- 
+-- An example command would be:
+-- 
+-- ```bash
+-- cargo check --workspace --message-format=json --all-targets
+-- ```
+-- .
+-- 
+-- ```lua
+-- default = nil
+-- ```
+---@field overrideCommand string[]
+-- Cargo command to use for `cargo check`.
+-- 
+-- ```lua
+-- default = "check"
+-- ```
+---@field command string
+-- Check for a specific target. Defaults to
+-- `#rust-analyzer.cargo.target#`.
+-- 
+-- ```lua
+-- default = nil
+-- ```
+---@field target string
+-- Check all targets and tests (`--all-targets`).
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field allTargets boolean
+-- Run specified `cargo check` command for diagnostics on save.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enable boolean
+-- List of features to activate. Defaults to
+-- `#rust-analyzer.cargo.features#`.
+-- 
+-- Set to `"all"` to pass `--all-features` to Cargo.
+-- 
+-- ```lua
+-- default = nil
+-- ```
+---@field features 
+-- Extra arguments for `cargo check`.
+-- 
+-- ```lua
+-- default = {}
+-- ```
+---@field extraArgs string[]
+
+---@class Settings.rust_analyzer.References
+-- Enables highlighting of related references while the cursor is on any identifier.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enable boolean
+
+---@class Settings.rust_analyzer.ExitPoints
+-- Enables highlighting of all exit points while the cursor is on any `return`, `?`, `fn`, or return type arrow (`->`).
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enable boolean
+
+---@class Settings.rust_analyzer.BreakPoints
+-- Enables highlighting of related references while the cursor is on `break`, `loop`, `while`, or `for` keywords.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enable boolean
+
+---@class Settings.rust_analyzer.YieldPoints
+-- Enables highlighting of all break points for a loop or block context while the cursor is on any `async` or `await` keywords.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enable boolean
+
+---@class Settings.rust_analyzer.HighlightRelated
+---@field references Settings.rust_analyzer.References
+---@field exitPoints Settings.rust_analyzer.ExitPoints
+---@field breakPoints Settings.rust_analyzer.BreakPoints
+---@field yieldPoints Settings.rust_analyzer.YieldPoints
+
+---@class Settings.rust_analyzer.Server
+-- Extra environment variables that will be passed to the rust-analyzer executable. Useful for passing e.g. `RA_LOG` for debugging.
+-- 
+-- ```lua
+-- default = nil
+-- ```
+---@field extraEnv table
+-- Path to rust-analyzer executable (points to bundled binary by default).
+-- 
+-- ```lua
+-- default = nil
+-- ```
+---@field path string
+
+---@class Settings.rust_analyzer.Rust-analyzer
+---@field diagnostics Settings.rust_analyzer.Diagnostics
+---@field debug Settings.rust_analyzer.Debug
+---@field signatureInfo Settings.rust_analyzer.SignatureInfo
+---@field hover Settings.rust_analyzer.Hover
+-- Disable project auto-discovery in favor of explicitly specified set
+-- of projects.
+-- 
+-- Elements must be paths pointing to `Cargo.toml`,
+-- `rust-project.json`, or JSON objects in `rust-project.json` format.
+-- 
+-- ```lua
+-- default = {}
+-- ```
+---@field linkedProjects any[]
+---@field assist Settings.rust_analyzer.Assist
+---@field semanticHighlighting Settings.rust_analyzer.SemanticHighlighting
+---@field lru Settings.rust_analyzer.Lru
+---@field lens Settings.rust_analyzer.Lens
+---@field imports Settings.rust_analyzer.Imports
+---@field completion Settings.rust_analyzer.Completion
+---@field cachePriming Settings.rust_analyzer.CachePriming
+---@field rustc Settings.rust_analyzer.Rustc
+---@field cargo Settings.rust_analyzer.Cargo
+-- Custom cargo runner extension ID.
+-- 
+-- ```lua
+-- default = nil
+-- ```
+---@field cargoRunner string
+---@field typing Settings.rust_analyzer.Typing
+---@field trace Settings.rust_analyzer.Trace
+---@field procMacro Settings.rust_analyzer.ProcMacro
+---@field joinLines Settings.rust_analyzer.JoinLines
+---@field workspace Settings.rust_analyzer.Workspace
+---@field notifications Settings.rust_analyzer.Notifications
+---@field files Settings.rust_analyzer.Files
+-- Environment variables passed to the runnable launched using `Test` or `Debug` lens or `rust-analyzer.run` command.
+-- 
+-- ```lua
+-- default = nil
+-- ```
+---@field runnableEnv 
+-- Whether to restart the server automatically when certain settings that require a restart are changed.
+---@field restartServerOnConfigChange boolean
+---@field rustfmt Settings.rust_analyzer.Rustfmt
+---@field runnables Settings.rust_analyzer.Runnables
+---@field inlayHints Settings.rust_analyzer.InlayHints
+---@field checkOnSave Settings.rust_analyzer.CheckOnSave
+---@field highlightRelated Settings.rust_analyzer.HighlightRelated
+---@field server Settings.rust_analyzer.Server
+
+---@class Settings.rust_analyzer
+---@field $generated-start 
+---@field rust-analyzer Settings.rust_analyzer.Rust-analyzer
+---@field $generated-end 
+
+---@class Settings.solidity_ls.Solidity
+-- Enables / disables the solidity formatter (prettier solidity default)
+-- 
+-- ```lua
+-- default = "prettier"
+-- ```
+---@field formatter "none" | "prettier"
+-- Compile downloading a remote solc binary file, for example: 'latest' or 'v0.4.3+commit.2353da71', use the command 'Solidity: Get solidity releases' to list all versions, or just right click in a solidity file to simply select the version
+-- 
+-- ```lua
+-- default = "latest"
+-- ```
+---@field compileUsingRemoteVersion string
+-- Enables as you type compilation of the document and error highlighting
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enabledAsYouTypeCompilationErrorCheck boolean
+-- Enables linting using either solium (ethlint) or solhint. Possible options 'solhint' and 'solium', the default is solhint
+-- 
+-- ```lua
+-- default = "solhint"
+-- ```
+---@field linter "" | "solhint" | "solium"
+-- Compile using a local solc binary file, please include the path of the file if wanted: 'C://v0.4.3+commit.2353da71.js'
+-- 
+-- ```lua
+-- default = ""
+-- ```
+---@field compileUsingLocalVersion string
+-- Optimize for how many times you intend to run the code. Lower values will optimize more for initial deployment cost, higher values will optimize more for high-frequency usage.
+-- 
+-- ```lua
+-- default = 200
+-- ```
+---@field compilerOptimization number
+-- Delay to trigger the validation of the changes of the current document (compilation, solium)
+-- 
+-- ```lua
+-- default = 1500
+-- ```
+---@field validationDelay number
+-- Windows Remappings to resolve contracts to local Windows files / directories (Note this overrides the generic remapping settings if the OS is Windows) , i.e: ["@openzeppelin/=C:/lib/openzeppelin-contracts","ds-test/=C:/lib/ds-test/src/"]
+-- 
+-- ```lua
+-- default = {}
+-- ```
+---@field remappingsWindows array
+-- The node modules package to find the solcjs compiler
+-- 
+-- ```lua
+-- default = "solc"
+-- ```
+---@field nodemodulespackage string
+-- Sets the default compiler to use
+-- 
+-- ```lua
+-- default = "remote"
+-- ```
+---@field defaultCompiler "remote" | "localFile" | "localNodeModule" | "embedded"
+-- Default directory where the Package Dependency store its contracts, i.e: 'src', 'contracts', or just a blank string '', this is used to avoid typing imports with subfolder paths
+-- 
+-- ```lua
+-- default = ""
+-- ```
+---@field packageDefaultDependenciesContractsDirectory string
+-- Solhint linting validation rules
+-- 
+-- ```lua
+-- default = nil
+-- ```
+---@field solhintRules table
+-- Unix Remappings to resolve contracts to local Unix files / directories (Note this overrides the generic remapping settings if the OS is Unix based), i.e: ["@openzeppelin/=/opt/lib/openzeppelin-contracts","ds-test/=/opt/lib/ds-test/src/"]
+-- 
+-- ```lua
+-- default = {}
+-- ```
+---@field remappingsUnix array
+-- Solium linting validation rules
+-- 
+-- ```lua
+-- default = {
+--   ["imports-on-top"] = 0,
+--   indentation = { "off", 4 },
+--   quotes = { "off", "double" },
+--   ["variable-declarations"] = 0
+-- }
+-- ```
+---@field soliumRules table
+-- Remappings to resolve contracts to local files / directories, i.e: ["@openzeppelin/=lib/openzeppelin-contracts","ds-test/=lib/ds-test/src/"]
+-- 
+-- ```lua
+-- default = {}
+-- ```
+---@field remappings array
+-- Default directory for Packages Dependencies, i.e: 'node_modules', 'lib'. This is used to avoid typing imports with that path prefix
+-- 
+-- ```lua
+-- default = "node_modules"
+-- ```
+---@field packageDefaultDependenciesDirectory string
+
+---@class Settings.solidity_ls
+---@field solidity Settings.solidity_ls.Solidity
+
+---@class Settings.denols.CodeLens
+-- Enables or disables the display of code lens information for references of items in the code.
+---@field references boolean
+-- Enables or disables the display of code lenses that allow running of individual tests in the code.
+---@field test boolean
+-- Enables or disables the display of code lens information for all functions in the code.
+---@field referencesAllFunctions boolean
+-- Additional arguments to use with the run test code lens.  Defaults to `[ "--allow-all", "--no-check" ]`.
+-- 
+-- ```lua
+-- default = { "--allow-all", "--no-check" }
+-- ```
+---@field testArgs string[]
+-- Enables or disables the display of code lens information for implementations of items in the code.
+---@field implementations boolean
+
+---@class Settings.denols.Testing
+-- Arguments to use when running tests via the Test Explorer.  Defaults to `[ "--allow-all" ]`.
+-- 
+-- ```lua
+-- default = { "--allow-all", "--no-check" }
+-- ```
+---@field args string[]
+-- Enable the testing API for the language server. When folder is Deno enabled, tests will be available in the Test Explorer view.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enable boolean
+
+---@class Settings.denols.Imports
+-- If enabled, when new hosts/origins are encountered that support import suggestions, you will be prompted to enable or disable it.  Defaults to `true`.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field autoDiscover boolean
+-- Controls which hosts are enabled for import suggestions.
+-- 
+-- ```lua
+-- default = {
+--   ["https://crux.land"] = true,
+--   ["https://deno.land"] = true,
+--   ["https://x.nest.land"] = true
+-- }
+-- ```
+---@field hosts table
+
+---@class Settings.denols.Suggest
+-- ```lua
+-- default = true
+-- ```
+---@field paths boolean
+---@field imports Settings.denols.Imports
+-- ```lua
+-- default = true
+-- ```
+---@field autoImports boolean
+---@field completeFunctionCalls boolean
+-- ```lua
+-- default = true
+-- ```
+---@field names boolean
+
+---@class Settings.denols.Deno
+-- The file path to an import map. This is the equivalent to using `--import-map` on the command line.
+-- 
+-- [Import maps](https://deno.land/manual@v1.6.0/linking_to_external_code/import_maps) provide a way to "relocate" modules based on their specifiers. The path can either be relative to the workspace, or an absolute path.
+-- 
+-- **Not recommended to be set globally.**
+-- 
+-- ```lua
+-- default = nil
+-- ```
+---@field importMap string
+-- **DANGER** disables verification of TLS certificates for the hosts provided. There is likely a better way to deal with any errors than use this option. This is like using `--unsafely-ignore-certificate-errors` in the Deno CLI.
+-- 
+-- ```lua
+-- default = nil
+-- ```
+---@field unsafelyIgnoreCertificateErrors string[]
+-- Controls if code will be type checked with Deno's unstable APIs. This is the equivalent to using `--unstable` on the command line.
+-- 
+-- **Not recommended to be enabled globally.**
+---@field unstable boolean
+-- A path to the `deno` CLI executable. By default, the extension looks for `deno` in the `PATH`, but if set, will use the path specified instead.
+-- 
+-- ```lua
+-- default = nil
+-- ```
+---@field path string
+-- Controls if the Deno Language Server is enabled. When enabled, the extension will disable the built-in VSCode JavaScript and TypeScript language services, and will use the Deno Language Server instead.
+-- 
+-- If you want to enable only part of your workspace folder, consider using `deno.enablePaths` setting instead.
+-- 
+-- **Not recommended to be enabled globally.**
+---@field enable boolean
+---@field codeLens Settings.denols.CodeLens
+-- A path to the cache directory for Deno. By default, the operating system's cache path plus `deno` is used, or the `DENO_DIR` environment variable, but if set, this path will be used instead.
+-- 
+-- ```lua
+-- default = nil
+-- ```
+---@field cache string
+-- Controls if linting information will be provided by the Deno Language Server.
+-- 
+-- **Not recommended to be enabled globally.**
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field lint boolean
+-- Determines if the internal debugging information for the Deno language server will be logged to the _Deno Language Server_ console.
+---@field internalDebug boolean
+-- The file path to a configuration file. This is the equivalent to using `--config` on the command line. The path can be either be relative to the workspace, or an absolute path.
+-- 
+-- It is recommend you name it `deno.json` or `deno.jsonc`.
+-- 
+-- **Not recommended to be set globally.**
+-- 
+-- ```lua
+-- default = nil
+-- ```
+---@field config string
+---@field testing Settings.denols.Testing
+-- Enables the Deno Language Server for specific paths, instead of for the whole workspace folder. This will disable the built in TypeScript/JavaScript language server for those paths.
+-- 
+-- When a value is set, the value of `"deno.enable"` is ignored.
+-- 
+-- The workspace folder is used as the base for the supplied paths. If for example you have all your Deno code in `worker` path in your workspace, you can add an item with the value of `./worker`, and the Deno will only provide diagnostics for the files within `worker` or any of its sub paths.
+-- 
+-- **Not recommended to be enabled in user settings.**
+-- 
+-- ```lua
+-- default = {}
+-- ```
+---@field enablePaths string[]
+-- A list of root certificate stores used to validate TLS certificates when fetching and caching remote resources. This overrides the `DENO_TLS_CA_STORE` environment variable if set.
+-- 
+-- ```lua
+-- default = nil
+-- ```
+---@field certificateStores string[]
+-- A path to a PEM certificate to use as the certificate authority when validating TLS certificates when fetching and caching remote resources. This is like using `--cert` on the Deno CLI and overrides the `DENO_CERT` environment variable if set.
+-- 
+-- ```lua
+-- default = nil
+-- ```
+---@field tlsCertificate string
+---@field suggest Settings.denols.Suggest
+
+---@class Settings.denols
+---@field deno Settings.denols.Deno
+
+---@class Settings.rome.Trace
+-- Traces the communication between VS Code and the language server.
+-- 
+-- ```lua
+-- default = "off"
+-- ```
+---@field server "off" | "messages" | "verbose"
+
+---@class Settings.rome.Rome.Lsp
+---@field trace Settings.rome.Trace
+
+---@class Settings.rome.Rome
+-- The rome lsp server executable.
+-- 
+-- ```lua
+-- default = nil
+-- ```
+---@field lspBin string
+
+---@class Settings.rome
+---@field rome_lsp Settings.rome.Rome.Lsp
+---@field rome Settings.rome.Rome
+
+---@class Settings.sourcekit
+
+---@class Settings.svlangserver
+
+---@class Settings.elixirls.Trace
+-- Traces the communication between VS Code and the Elixir language server.
+-- 
+-- ```lua
+-- default = "off"
+-- ```
+---@field server "off" | "messages" | "verbose"
+
+---@class Settings.elixirls.ElixirLS
+-- Additional file types capable of triggering a build on change
+-- 
+-- ```lua
+-- default = {}
+-- ```
+---@field additionalWatchedExtensions string[]
+-- Automatically fetch project dependencies when compiling
+---@field fetchDeps boolean
+---@field trace Settings.elixirls.Trace
+-- Run ElixirLS's rapid Dialyzer when code is saved
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field dialyzerEnabled boolean
+-- Show signature help after confirming autocomplete
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field signatureAfterComplete boolean
+-- Formatter to use for Dialyzer warnings
+-- 
+-- ```lua
+-- default = "dialyxir_long"
+-- ```
+---@field dialyzerFormat "dialyzer" | "dialyxir_short" | "dialyxir_long"
+-- Suggest @spec annotations inline using Dialyzer's inferred success typings (Requires Dialyzer)
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field suggestSpecs boolean
+-- Show code lenses to run tests in terminal
+---@field enableTestLenses boolean
+-- Environment variables to use for compilation
+---@field envVariables table
+-- Mix environment to use for compilation
+-- 
+-- ```lua
+-- default = "test"
+-- ```
+---@field mixEnv string
+-- Dialyzer options to enable or disable warnings. See Dialyzer's documentation for options. Note that the "race_conditions" option is unsupported
+-- 
+-- ```lua
+-- default = {}
+-- ```
+---@field dialyzerWarnOpts string[]
+-- Subdirectory containing Mix project if not in the project root
+-- 
+-- ```lua
+-- default = ""
+-- ```
+---@field projectDir string
+-- Mix target to use for compilation
+---@field mixTarget string
+
+---@class Settings.elixirls
+---@field elixirLS Settings.elixirls.ElixirLS

@@ -57,13 +57,10 @@ function M.update_schemas()
 end
 
 function M.build()
-  -- vim.fn.mkdir("build", "p")
-  -- M.clean()
-  -- M.update_index()
-  -- M.update_schemas()
-  M.build_types({ sumneko_lua = "" })
-
-  -- M.build_types()
+  M.clean()
+  M.update_index()
+  M.update_schemas()
+  require("settings.build.annotations").build()
 end
 
 M.build()
