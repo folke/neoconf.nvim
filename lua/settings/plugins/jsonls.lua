@@ -9,18 +9,23 @@ function M.setup()
   local hook = lsputil.add_hook_after
 
   lsputil.on_setup = hook(lsputil.on_setup, function(config)
-    config.on_new_config = hook(config.on_new_config, M.on_new_config)
+    config.on_new_config = hook(config.on_new_config, Util.protect(M.on_new_config, "Failed to setup jsonls"))
   end)
 end
 
-function M.on_new_config(config)
+function M.on_new_config(config, root_dir)
   if config.name == "jsonls" then
-    local options = require("settings.config").options
+    local options = Config.get({ file = root_dir })
+
+    if not options.plugins.jsonls.enabled then
+      return
+    end
+
     local schemas = config.settings.json and config.settings.json.schemas or {}
 
     local properties = {}
     for name, schema in pairs(Schema.get_lsp_schemas()) do
-      if options.jsonls.configured_servers_only == false or require("lspconfig.configs")[name] then
+      if options.plugins.jsonls.configured_servers_only == false or require("lspconfig.configs")[name] then
         properties[name] = {
           ["$ref"] = "file://" .. schema.settings_file,
         }
@@ -45,8 +50,10 @@ function M.on_new_config(config)
 
     for _, plugin in ipairs(require("settings.plugins").plugins) do
       if type(plugin.get_schema) == "function" then
-        local s = plugin.get_schema()
-        if s then
+        local ok, s = pcall(plugin.get_schema)
+        if not ok then
+          Util.error("Could not configure schema for a plugin\n\n" .. s)
+        elseif s then
           schema.schema.properties = Util.merge({}, schema.schema.properties, s.properties)
         end
       end
