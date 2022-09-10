@@ -49,15 +49,15 @@ function M.on_new_config(config, root_dir)
 end
 
 function M.on_update(fname)
-  local root_dir = Util.fqn(vim.fn.fnamemodify(fname, ":h"))
-
   local is_global = Util.is_global(fname)
 
   local clients = vim.lsp.get_active_clients()
 
   for _, client in ipairs(clients) do
+    local settings_root = require("settings.workspace").find_root({ file = client.config.root_dir })
+
     -- reload this client if the global file changed, or its root dir equals the local one
-    if is_global or client.config.root_dir == root_dir then
+    if is_global or Util.has_file(settings_root, client.config.root_dir) then
       local old = vim.deepcopy(client.config.settings)
 
       -- re-apply config from any other plugins that were overriding on_new_config
