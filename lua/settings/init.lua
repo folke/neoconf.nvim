@@ -1,9 +1,11 @@
 local M = {}
 
 function M.setup(opts)
-  require("settings.config").setup(opts)
-  require("settings.commands").setup()
-  require("settings.plugins").setup()
+  require("settings.util").try(function()
+    require("settings.config").setup(opts)
+    require("settings.commands").setup()
+    require("settings.plugins").setup()
+  end)
 end
 
 ---@generic T : table

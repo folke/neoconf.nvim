@@ -90,12 +90,26 @@ end
 
 function M.protect(fn, msg)
   return function(...)
-    local ret = table.pack(pcall(fn, ...))
-    if not ret[1] then
-      M.error((msg and msg .. "\n" or "") .. ret[2])
-    end
-    return table.unpack(ret)
+    local args = table.pack(...)
+
+    return xpcall(function()
+      return fn(table.unpack(args))
+    end, function(err)
+      local lines = {}
+      if msg then
+        table.insert(lines, msg)
+      end
+      table.insert(lines, err)
+      table.insert(lines, debug.traceback("", 3))
+
+      M.error(table.concat(lines, "\n"))
+      return err
+    end)
   end
+end
+
+function M.try(fn, msg)
+  M.protect(fn, msg)()
 end
 
 function M.config_path()
