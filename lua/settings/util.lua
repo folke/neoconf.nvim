@@ -90,10 +90,10 @@ end
 
 function M.protect(fn, msg)
   return function(...)
-    local args = table.pack(...)
+    local args = { ... }
 
     return xpcall(function()
-      return fn(table.unpack(args))
+      return fn(unpack(args))
     end, function(err)
       local lines = {}
       if msg then
