@@ -22,7 +22,7 @@ function M.expand(tbl)
   end
   local ret = M.new()
   for key, value in pairs(tbl) do
-    ret:set(key, value)
+    ret:set(key, M.expand(value))
   end
   return ret:get()
 end
@@ -76,10 +76,6 @@ function Settings:get(key, opts)
     node = node[part]
   end
 
-  if opts and opts.expand then
-    node = M.expand(node)
-  end
-
   if opts and opts.defaults then
     if node == nil then
       return opts.defaults
@@ -99,7 +95,7 @@ function Settings:load(file)
     local data = util.read_file(file)
     local ok, json = pcall(util.json_decode, data)
     if ok then
-      for k, v in pairs(json) do
+      for k, v in pairs(M.expand(json)) do
         self:set(k, v)
       end
     else
@@ -112,6 +108,9 @@ end
 ---@param settings Settings
 ---@return Settings
 function Settings:merge(settings, key)
+  if not settings then
+    return M.new()
+  end
   if settings.__index ~= Settings then
     settings = M.new(settings)
   end
@@ -133,7 +132,7 @@ end
 function M.get(fname, opts)
   opts = opts or {}
   fname = util.fqn(fname)
-  if not M._cache[fname] and opts.create ~= false then
+  if not M._cache[fname] and util.exists(fname) then
     M._cache[fname] = M.new():load(fname)
   end
   return M._cache[fname]
@@ -152,8 +151,8 @@ end
 function M.get_global()
   local settings = M.new()
 
-  util.for_each_global(function(file)
-    settings:merge(M.get(file))
+  util.for_each_global(function(file, key)
+    settings:merge(M.get(file), key)
   end)
 
   return settings
