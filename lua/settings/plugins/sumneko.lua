@@ -17,7 +17,7 @@ function M.on_new_config(config, root_dir)
     local settings = Config.get({ file = root_dir })
 
     local enabled = settings.plugins.sumneko_lua.enabled
-    if enabled == nil then
+    if not enabled and settings.plugins.sumneko_lua.enabled_for_neovim_config then
       enabled = Util.is_nvim_config(root_dir)
     end
 
