@@ -1,5 +1,6 @@
 local Util = require("settings.util")
 local Settings = require("settings.settings")
+local Config = require("settings.config")
 
 local M = {}
 
@@ -67,7 +68,19 @@ function M.get_files(opts)
     end, root_dir)
   end
 
-  return items
+  -- return files that exist or the default files.
+  -- never return imported file patterms that don't exist
+  return vim.tbl_filter(function(item)
+    if Util.exists(item.file) then
+      return true
+    end
+    if not item.is_global and item.file:find(Config.options.local_settings) then
+      return true
+    end
+    if item.is_global and item.file:find(Config.options.global_settings) then
+      return true
+    end
+  end, items)
 end
 
 function M.edit(opts)
