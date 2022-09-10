@@ -78,7 +78,7 @@ function Settings:get(key, opts)
 
   if opts and opts.defaults then
     if node == nil then
-      return opts.defaults
+      return vim.deepcopy(opts.defaults)
     end
     if type(node) ~= "table" then
       return node
