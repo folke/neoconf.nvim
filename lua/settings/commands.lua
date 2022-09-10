@@ -46,7 +46,7 @@ function M.setup()
       local fname = Util.fqn(event.match)
       -- clear cached settings for this file
       Settings.clear(fname)
-      require("settings.plugins").fire("on_update", event.match)
+      require("settings.plugins").fire("on_update", fname)
     end,
   })
 end
