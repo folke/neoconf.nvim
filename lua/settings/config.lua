@@ -1,9 +1,9 @@
 local M = {}
 
---- @class Config
+---@class Config
 M.defaults = {
-  local_settings = { ".nvim.settings.json", vscode = ".vscode/settings.json" },
-  global_settings = { "nvim.settings.json" },
+  local_settings = ".nvim.settings.json",
+  global_settings = "nvim.settings.json",
   plugins = {
     lspconfig = {
       enabled = true,
@@ -26,8 +26,41 @@ M.defaults = {
 --- @type Config
 M.options = {}
 
+---@class SettingsPattern
+---@field pattern string
+---@field key string|nil|fun(string):string
+
+---@type SettingsPattern[]
+M.local_patterns = {}
+
+---@type SettingsPattern[]
+M.global_patterns = {}
+
 function M.setup(options)
   M.options = vim.tbl_deep_extend("force", {}, M.defaults, options or {})
+
+  local util = require("settings.util")
+
+  M.local_patterns = {}
+  M.global_patterns = {}
+
+  if M.options.import.vscode then
+    table.insert(M.local_patterns, { pattern = ".vscode/settings.json", key = "vscode" })
+  end
+  if M.options.import.coc then
+    table.insert(M.local_patterns, { pattern = "coc-settings.json", key = "coc" })
+    table.insert(M.global_patterns, { pattern = "coc-settings.json", key = "coc" })
+  end
+  if M.options.import.nlsp then
+    local function nlsp_key(file)
+      return "nlsp." .. vim.fn.fnamemodify(file, ":t:r")
+    end
+    table.insert(M.local_patterns, { pattern = ".nlsp-settings/*.json", key = nlsp_key })
+    table.insert(M.global_patterns, { pattern = "nlsp-settings/*.json", key = nlsp_key })
+  end
+
+  vim.list_extend(M.local_patterns, util.expand(M.options.local_settings))
+  vim.list_extend(M.global_patterns, util.expand(M.options.global_settings))
 end
 
 ---@return Config

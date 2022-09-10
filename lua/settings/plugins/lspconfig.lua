@@ -8,7 +8,7 @@ function M.setup()
   local lsputil = require("lspconfig.util")
   local hook = lsputil.add_hook_before
 
-  local settings_root = lsputil.root_pattern(unpack(vim.tbl_values(Config.options.local_settings)))
+  local settings_root = lsputil.root_pattern(unpack(Util.file_patterns({ global = false })))
 
   lsputil.on_setup = hook(lsputil.on_setup, function(config)
     config.on_new_config = hook(config.on_new_config, Util.protect(M.on_new_config, "Failed to setup lspconfig"))

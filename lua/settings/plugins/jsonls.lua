@@ -45,7 +45,7 @@ function M.on_new_config(config, root_dir)
         },
         type = "object",
       },
-      fileMatch = { table.unpack(Config.options.global_settings), table.unpack(Config.options.local_settings) },
+      fileMatch = Util.file_patterns(),
     }
 
     for _, plugin in ipairs(require("settings.plugins").plugins) do

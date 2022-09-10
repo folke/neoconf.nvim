@@ -37,7 +37,7 @@ function M.setup()
 
   local group = vim.api.nvim_create_augroup("Settings", { clear = true })
   vim.api.nvim_create_autocmd("BufWritePost", {
-    pattern = Util.merge({}, Config.options.global_settings, vim.tbl_values(Config.options.local_settings)),
+    pattern = Util.file_patterns(),
     group = group,
     callback = function(event)
       local fname = Util.fqn(event.match)
@@ -61,11 +61,11 @@ function M.get_files(opts)
   if not opts.global then
     local root_dir = require("settings.workspace").find_root({ lsp = true })
     Util.for_each_local(function(f)
-      items[f] = { file = f }
+      table.insert(items, { file = f })
     end, root_dir)
   end
 
-  return vim.tbl_values(items)
+  return items
 end
 
 function M.edit(opts)

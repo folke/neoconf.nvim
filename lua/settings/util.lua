@@ -22,6 +22,25 @@ function M.merge(...)
   return ret
 end
 
+function M.file_patterns(opts)
+  opts = M.merge({ ["local"] = true, ["global"] = true }, opts)
+  local ret = {}
+
+  if opts["local"] then
+    for _, p in ipairs(Config.local_patterns) do
+      table.insert(ret, p.pattern)
+    end
+  end
+
+  if opts["global"] then
+    for _, p in ipairs(Config.global_patterns) do
+      table.insert(ret, p.pattern)
+    end
+  end
+
+  return ret
+end
+
 function M.path(str)
   local f = debug.getinfo(1, "S").source:sub(2)
   return M.fqn(vim.fn.fnamemodify(f, ":h:h:h") .. "/" .. (str or ""))
@@ -87,24 +106,37 @@ function M.is_nvim_config(path)
   return M.has_file(M.fqn(path), M.config_path())
 end
 
----@param patterns table
----@param fn fun(file: string|nil, key:string|nil, pattern:string)
+---@param patterns SettingsPattern[]
+---@param fn fun(file: string, key:string|nil, pattern:string)
+---@param root_dir string
 function M.for_each(patterns, fn, root_dir)
-  for key, pattern in pairs(patterns) do
-    if type(key) == "number" then
-      key = nil
+  for _, p in ipairs(patterns) do
+    local file = root_dir .. "/" .. p.pattern
+    ---@diagnostic disable-next-line: param-type-mismatch
+    for _, f in pairs(vim.fn.expand(file, false, true)) do
+      ---@diagnostic disable-next-line: param-type-mismatch
+      fn(f, type(p.key) == "function" and p.key(f) or p.key, p.pattern)
     end
-    local file = root_dir and root_dir .. "/" .. pattern
-    fn(file, key, pattern)
   end
 end
 
-function M.for_each_local(fn, root_dir)
-  M.for_each(Config.options.local_settings, fn, root_dir)
+---@param patterns string|(string|SettingsPattern)[]
+---@return SettingsPattern[]
+function M.expand(patterns)
+  return vim.tbl_map(function(p)
+    return type(p) == "string" and { pattern = p } or p
+  end, type(patterns) == "table" and patterns or { patterns })
 end
 
+---@param root_dir string
+---@param fn fun(file: string, key:string|nil, pattern:string)
+function M.for_each_local(fn, root_dir)
+  M.for_each(Config.local_patterns, fn, root_dir)
+end
+
+---@param fn fun(file: string, key:string|nil, pattern:string)
 function M.for_each_global(fn)
-  M.for_each(Config.options.global_settings, fn, vim.fn.stdpath("config"))
+  M.for_each(Config.global_patterns, fn, vim.fn.stdpath("config"))
 end
 
 function M.is_global(file)
