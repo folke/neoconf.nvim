@@ -1,5 +1,5 @@
 {
-  "lua-dev.nvim": {
+  "lua-dev": {
     "library": {
       "enabled": true,
       "plugins": [
@@ -7,7 +7,7 @@
       ]
     }
   },
-  "settings.nvim": {
+  "settings": {
     "plugins": {
       "sumneko_lua": {
         "enabled": true
@@ -16,6 +16,7 @@
   },
   "lspconfig": {
     "sumneko_lua": {
+      "Lua.completion.callSnippet": "Both",
       "Lua.workspace.library": []
     }
   }
