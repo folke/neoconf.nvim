@@ -2,6 +2,11 @@ local Util = require("settings.util")
 
 local M = {}
 
+---@class LspSchema
+---@field package_url string url of the package.json of the LSP server
+---@field settings_file string file of the settings json schema of the LSP server
+---@field build fun(props: table)
+
 --- @type table<string, LspSchema>
 M.overrides = {
   sumneko_lua = {

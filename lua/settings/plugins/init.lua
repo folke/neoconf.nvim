@@ -1,5 +1,11 @@
 local M = {}
 
+---@class SettingsPlugin
+---@field name string
+---@field setup fun()|nil
+---@field on_update fun(event)|nil
+---@field get_schema fun(): table|nil
+
 ---@type SettingsPlugin[]
 M.plugins = {}
 
