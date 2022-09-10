@@ -4,6 +4,11 @@ local M = {}
 M.defaults = {
   local_settings = ".nvim.settings.json",
   global_settings = "nvim.settings.json",
+  import = {
+    vscode = true,
+    coc = true,
+    nlsp = true,
+  },
   plugins = {
     lspconfig = {
       enabled = true,
