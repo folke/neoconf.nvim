@@ -25,7 +25,7 @@ function M.setup()
   M.register({
     get_schema = function()
       local defaults = require("settings.config").defaults
-      return require("settings.schema").plugin_schema("settings.nvim", defaults, "Settings for settings.nvim")
+      return require("settings.schema").plugin_schema("settings", defaults, "Settings for settings.nvim")
     end,
   })
   M.register(require("settings.plugins.lspconfig"))

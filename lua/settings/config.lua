@@ -69,7 +69,7 @@ function M.merge(options)
 end
 
 function M.get(opts)
-  return require("settings").get("settings.nvim", M.options, opts)
+  return require("settings").get("settings", M.options, opts)
 end
 
 return M
