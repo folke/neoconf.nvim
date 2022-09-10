@@ -58,7 +58,18 @@ function M.show_lsp_settings()
   }
   local clients = vim.lsp.get_active_clients({ bufnr = vim.api.nvim_get_current_buf() })
   for _, client in ipairs(clients) do
-    table.insert(content, "## " .. client.name .. "\n```lua\n" .. vim.inspect(client.config.settings) .. "\n```\n")
+    table.insert(content, "## " .. client.name .. "\n")
+
+    for _, item in ipairs(require("settings.commands").get_files({ file = client.config.root_dir })) do
+      if Util.exists(item.file) then
+        local line = "* " .. vim.fn.fnamemodify(item.file, ":~")
+        if item.is_global then
+          line = line .. "  "
+        end
+        table.insert(content, line)
+      end
+    end
+    table.insert(content, "```lua\n" .. vim.inspect(client.config.settings) .. "\n```\n")
   end
   M.show(table.concat(content, "\n"))
 end

@@ -62,7 +62,7 @@ function M.get_files(opts)
   end
 
   if not opts.global then
-    local root_dir = require("settings.workspace").find_root({ lsp = true })
+    local root_dir = require("settings.workspace").find_root({ lsp = true, file = opts.file })
     Util.for_each_local(function(f)
       table.insert(items, { file = f })
     end, root_dir)
