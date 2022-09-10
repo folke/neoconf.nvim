@@ -1,5 +1,4 @@
 local Util = require("settings.util")
-local Config = require("settings.config")
 local Settings = require("settings.settings")
 
 local M = {}
@@ -8,6 +7,9 @@ function M.setup()
   local commands = {
     lsp = function()
       require("settings.view").show_lsp_settings()
+    end,
+    show = function()
+      require("settings.view").show_settings()
     end,
     ["local"] = function()
       M.edit({ ["local"] = true })
