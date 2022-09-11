@@ -1,1 +1,423 @@
-{"properties":{"haskell.plugin.hlint.diagnosticsOn":{"type":"boolean","default":true,"description":"Enables hlint diagnostics","scope":"resource"},"haskell.serverEnvironment":{"type":"object","default":{},"scope":"resource","markdownDescription":"Define environment variables for the language server."},"haskell.plugin.importLens.codeActionsOn":{"type":"boolean","default":true,"description":"Enables importLens code actions","scope":"resource"},"haskell.promptBeforeDownloads":{"type":"boolean","default":"true","scope":"machine","markdownDescription":"Prompt before performing any downloads."},"haskell.plugin.importLens.codeLensOn":{"type":"boolean","default":true,"description":"Enables importLens code lenses","scope":"resource"},"haskell.manageHLS":{"enum":["GHCup","PATH"],"description":"How to manage\/find HLS installations.","enumDescriptions":["Will use ghcup and manage Haskell toolchain in the default location (usually '~\/.ghcup')","Discovers HLS and other executables in system PATH"],"type":"string","default":"PATH","scope":"resource"},"haskell.plugin.moduleName.globalOn":{"type":"boolean","default":true,"description":"Enables moduleName plugin","scope":"resource"},"haskell.plugin.pragmas.codeActionsOn":{"type":"boolean","default":true,"description":"Enables pragmas code actions","scope":"resource"},"haskell.toolchain":{"type":"object","default":{},"scope":"resource","description":"When manageHLS is set to GHCup, this can overwrite the automatic toolchain configuration with a more specific one. When a tool is omitted, the extension will manage the version (for 'ghc' we try to figure out the version the project requires). The format is '{\"tool\": \"version\", ...}'. 'version' accepts all identifiers that 'ghcup' accepts."},"haskell.upgradeGHCup":{"type":"boolean","default":true,"scope":"resource","description":"Whether to upgrade GHCup automatically when 'manageHLS' is set to 'GHCup'."},"haskell.plugin.tactics.hoverOn":{"type":"boolean","default":true,"description":"Enables tactics hover","scope":"resource"},"haskell.checkProject":{"type":"boolean","default":true,"scope":"resource","description":"Whether to typecheck the entire project on load. It could drive to bad performance in large projects."},"haskell.plugin.ghcide-hover-and-symbols.symbolsOn":{"type":"boolean","default":true,"description":"Enables ghcide-hover-and-symbols symbols","scope":"resource"},"haskell.maxCompletions":{"type":"integer","default":40,"scope":"resource","description":"Maximum number of completions sent to the editor."},"haskell.plugin.tactics.config.proofstate_styling":{"type":"boolean","default":true,"scope":"resource","markdownDescription":"Should Wingman emit styling markup when showing metaprogram proof states?"},"haskell.plugin.alternateNumberFormat.globalOn":{"type":"boolean","default":true,"description":"Enables alternateNumberFormat plugin","scope":"resource"},"haskell.plugin.tactics.config.max_use_ctor_actions":{"type":"integer","default":5,"scope":"resource","markdownDescription":"Maximum number of `Use constructor <x>` code actions that can appear"},"haskell.plugin.callHierarchy.globalOn":{"type":"boolean","default":true,"description":"Enables callHierarchy plugin","scope":"resource"},"haskell.plugin.tactics.config.hole_severity":{"enum":[1,2,3,4,null],"description":"The severity to use when showing hole diagnostics. These are noisy, but some editors don't allow jumping to all severities.","enumDescriptions":["error","warning","info","hint","none"],"type":"string","default":null,"scope":"resource"},"haskell.plugin.changeTypeSignature.globalOn":{"type":"boolean","default":true,"description":"Enables changeTypeSignature plugin","scope":"resource"},"haskell.plugin.tactics.config.auto_gas":{"type":"integer","default":4,"scope":"resource","markdownDescription":"The depth of the search tree when performing \"Attempt to fill hole\". Bigger values will be able to derive more solutions, but will take exponentially more time."},"haskell.plugin.class.globalOn":{"type":"boolean","default":true,"description":"Enables class plugin","scope":"resource"},"haskell.plugin.tactics.codeLensOn":{"type":"boolean","default":true,"description":"Enables tactics code lenses","scope":"resource"},"haskell.plugin.eval.config.diff":{"type":"boolean","default":true,"scope":"resource","markdownDescription":"Enable the diff output (WAS\/NOW) of eval lenses"},"haskell.plugin.tactics.codeActionsOn":{"type":"boolean","default":true,"description":"Enables tactics code actions","scope":"resource"},"haskell.plugin.eval.config.exception":{"type":"boolean","default":false,"scope":"resource","markdownDescription":"Enable marking exceptions with `*** Exception:` similarly to doctest and GHCi."},"haskell.plugin.splice.globalOn":{"type":"boolean","default":true,"description":"Enables splice plugin","scope":"resource"},"haskell.plugin.eval.globalOn":{"type":"boolean","default":true,"description":"Enables eval plugin","scope":"resource"},"haskell.plugin.retrie.globalOn":{"type":"boolean","default":true,"description":"Enables retrie plugin","scope":"resource"},"haskell.plugin.ghcide-code-actions-bindings.globalOn":{"type":"boolean","default":true,"description":"Enables ghcide-code-actions-bindings plugin","scope":"resource"},"haskell.plugin.rename.globalOn":{"type":"boolean","default":true,"description":"Enables rename plugin","scope":"resource"},"haskell.plugin.ghcide-code-actions-fill-holes.globalOn":{"type":"boolean","default":true,"description":"Enables ghcide-code-actions-fill-holes plugin","scope":"resource"},"haskell.plugin.rename.config.crossModule":{"type":"boolean","default":false,"scope":"resource","markdownDescription":"Enable experimental cross-module renaming"},"haskell.plugin.ghcide-code-actions-imports-exports.globalOn":{"type":"boolean","default":true,"description":"Enables ghcide-code-actions-imports-exports plugin","scope":"resource"},"haskell.formattingProvider":{"enum":["brittany","floskell","fourmolu","ormolu","stylish-haskell","none"],"description":"The formatter to use when formatting a document or range. Ensure the plugin is enabled.","type":"string","default":"ormolu","scope":"resource"},"haskell.plugin.ghcide-code-actions-type-signatures.globalOn":{"type":"boolean","default":true,"description":"Enables ghcide-code-actions-type-signatures plugin","scope":"resource"},"haskell.plugin.refineImports.codeLensOn":{"type":"boolean","default":true,"description":"Enables refineImports code lenses","scope":"resource"},"haskell.plugin.ghcide-completions.config.autoExtendOn":{"type":"boolean","default":true,"scope":"resource","markdownDescription":"Extends the import list automatically when completing a out-of-scope identifier"},"haskell.plugin.refineImports.codeActionsOn":{"type":"boolean","default":true,"description":"Enables refineImports code actions","scope":"resource"},"haskell.plugin.ghcide-completions.config.snippetsOn":{"type":"boolean","default":true,"scope":"resource","markdownDescription":"Inserts snippets when using code completions"},"haskell.plugin.qualifyImportedNames.globalOn":{"type":"boolean","default":true,"description":"Enables qualifyImportedNames plugin","scope":"resource"},"haskell.openDocumentationInHackage":{"type":"boolean","default":true,"scope":"resource","description":"When opening 'Documentation' for external libraries, open in hackage by default. Set to false to instead open in vscode."},"haskell.plugin.pragmas.completionOn":{"type":"boolean","default":true,"description":"Enables pragmas completions","scope":"resource"},"haskell.openSourceInHackage":{"type":"boolean","default":true,"scope":"resource","description":"When opening 'Source' for external libraries, open in hackage by default. Set to false to instead open in vscode."},"haskell.plugin.ghcide-completions.globalOn":{"type":"boolean","default":true,"description":"Enables ghcide-completions plugin","scope":"resource"},"haskell.trace.server":{"enum":["off","messages","verbose"],"description":"Traces the communication between VS Code and the language server.","type":"string","default":"off","scope":"resource"},"haskell.trace.client":{"enum":["off","error","info","debug"],"description":"Sets the log level in the client side.","type":"string","default":"info","scope":"resource"},"haskell.plugin.ghcide-type-lenses.config.mode":{"enum":["always","exported","diagnostics"],"description":"Control how type lenses are shown","enumDescriptions":["Always displays type lenses of global bindings","Only display type lenses of exported global bindings","Follows error messages produced by GHC about missing signatures"],"type":"string","default":"always","scope":"resource"},"haskell.logFile":{"type":"string","default":"","scope":"resource","description":"If set, redirects the logs to a file."},"haskell.plugin.ghcide-hover-and-symbols.hoverOn":{"type":"boolean","default":true,"description":"Enables ghcide-hover-and-symbols hover","scope":"resource"},"haskell.releasesURL":{"type":"string","default":"","scope":"resource","description":"An optional URL to override where ghcup checks for HLS-GHC compatibility list (usually at: https:\/\/raw.githubusercontent.com\/haskell\/ghcup-metadata\/master\/hls-metadata-0.0.1.json)"},"haskell.plugin.tactics.config.timeout_duration":{"type":"integer","default":2,"scope":"resource","markdownDescription":"The timeout for Wingman actions, in seconds"},"haskell.metadataURL":{"type":"string","default":"","scope":"resource","description":"An optional URL to override where ghcup checks for tool download info (usually at: https:\/\/raw.githubusercontent.com\/haskell\/ghcup-metadata\/master\/ghcup-0.0.7.yaml)"},"haskell.plugin.ghcide-type-lenses.globalOn":{"type":"boolean","default":true,"description":"Enables ghcide-type-lenses plugin","scope":"resource"},"haskell.releasesDownloadStoragePath":{"type":"string","default":"","scope":"resource","markdownDescription":"An optional path where downloaded metadata will be stored. Check the default value [here](https:\/\/github.com\/haskell\/vscode-haskell#downloaded-binaries)"},"haskell.plugin.haddockComments.globalOn":{"type":"boolean","default":true,"description":"Enables haddockComments plugin","scope":"resource"},"haskell.serverExecutablePath":{"type":"string","default":"","scope":"resource","markdownDescription":"Manually set a language server executable. Can be something on the $PATH or the full path to the executable itself. Works with `~,` `${HOME}` and `${workspaceFolder}`. **Deprecated scope**: This option will be set to `machine` scope in a future release, so it can be changed only globally, not per workspace."},"haskell.plugin.hlint.codeActionsOn":{"type":"boolean","default":true,"description":"Enables hlint code actions","scope":"resource"},"haskell.serverExtraArgs":{"type":"string","default":"","scope":"resource","markdownDescription":"Pass additional arguments to the language server."},"haskell.plugin.hlint.config.flags":{"type":"array","default":[],"scope":"resource","markdownDescription":"Flags used by hlint"},"haskell.ghcupExecutablePath":{"type":"string","default":"","scope":"resource","markdownDescription":"Manually set a ghcup executable path."}},"$schema":"http:\/\/json-schema.org\/draft-07\/schema#","description":"Haskell language support powered by the Haskell Language Server"}
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "description": "Haskell language support powered by the Haskell Language Server",
+  "properties": {
+    "haskell.checkProject": {
+      "default": true,
+      "description": "Whether to typecheck the entire project on load. It could drive to bad performance in large projects.",
+      "scope": "resource",
+      "type": "boolean"
+    },
+    "haskell.formattingProvider": {
+      "default": "ormolu",
+      "description": "The formatter to use when formatting a document or range. Ensure the plugin is enabled.",
+      "enum": [
+        "brittany",
+        "floskell",
+        "fourmolu",
+        "ormolu",
+        "stylish-haskell",
+        "none"
+      ],
+      "scope": "resource",
+      "type": "string"
+    },
+    "haskell.ghcupExecutablePath": {
+      "default": "",
+      "markdownDescription": "Manually set a ghcup executable path.",
+      "scope": "resource",
+      "type": "string"
+    },
+    "haskell.logFile": {
+      "default": "",
+      "description": "If set, redirects the logs to a file.",
+      "scope": "resource",
+      "type": "string"
+    },
+    "haskell.manageHLS": {
+      "default": "PATH",
+      "description": "How to manage/find HLS installations.",
+      "enum": [
+        "GHCup",
+        "PATH"
+      ],
+      "enumDescriptions": [
+        "Will use ghcup and manage Haskell toolchain in the default location (usually '~/.ghcup')",
+        "Discovers HLS and other executables in system PATH"
+      ],
+      "scope": "resource",
+      "type": "string"
+    },
+    "haskell.maxCompletions": {
+      "default": 40,
+      "description": "Maximum number of completions sent to the editor.",
+      "scope": "resource",
+      "type": "integer"
+    },
+    "haskell.metadataURL": {
+      "default": "",
+      "description": "An optional URL to override where ghcup checks for tool download info (usually at: https://raw.githubusercontent.com/haskell/ghcup-metadata/master/ghcup-0.0.7.yaml)",
+      "scope": "resource",
+      "type": "string"
+    },
+    "haskell.openDocumentationInHackage": {
+      "default": true,
+      "description": "When opening 'Documentation' for external libraries, open in hackage by default. Set to false to instead open in vscode.",
+      "scope": "resource",
+      "type": "boolean"
+    },
+    "haskell.openSourceInHackage": {
+      "default": true,
+      "description": "When opening 'Source' for external libraries, open in hackage by default. Set to false to instead open in vscode.",
+      "scope": "resource",
+      "type": "boolean"
+    },
+    "haskell.plugin.alternateNumberFormat.globalOn": {
+      "default": true,
+      "description": "Enables alternateNumberFormat plugin",
+      "scope": "resource",
+      "type": "boolean"
+    },
+    "haskell.plugin.callHierarchy.globalOn": {
+      "default": true,
+      "description": "Enables callHierarchy plugin",
+      "scope": "resource",
+      "type": "boolean"
+    },
+    "haskell.plugin.changeTypeSignature.globalOn": {
+      "default": true,
+      "description": "Enables changeTypeSignature plugin",
+      "scope": "resource",
+      "type": "boolean"
+    },
+    "haskell.plugin.class.globalOn": {
+      "default": true,
+      "description": "Enables class plugin",
+      "scope": "resource",
+      "type": "boolean"
+    },
+    "haskell.plugin.eval.config.diff": {
+      "default": true,
+      "markdownDescription": "Enable the diff output (WAS/NOW) of eval lenses",
+      "scope": "resource",
+      "type": "boolean"
+    },
+    "haskell.plugin.eval.config.exception": {
+      "default": false,
+      "markdownDescription": "Enable marking exceptions with `*** Exception:` similarly to doctest and GHCi.",
+      "scope": "resource",
+      "type": "boolean"
+    },
+    "haskell.plugin.eval.globalOn": {
+      "default": true,
+      "description": "Enables eval plugin",
+      "scope": "resource",
+      "type": "boolean"
+    },
+    "haskell.plugin.ghcide-code-actions-bindings.globalOn": {
+      "default": true,
+      "description": "Enables ghcide-code-actions-bindings plugin",
+      "scope": "resource",
+      "type": "boolean"
+    },
+    "haskell.plugin.ghcide-code-actions-fill-holes.globalOn": {
+      "default": true,
+      "description": "Enables ghcide-code-actions-fill-holes plugin",
+      "scope": "resource",
+      "type": "boolean"
+    },
+    "haskell.plugin.ghcide-code-actions-imports-exports.globalOn": {
+      "default": true,
+      "description": "Enables ghcide-code-actions-imports-exports plugin",
+      "scope": "resource",
+      "type": "boolean"
+    },
+    "haskell.plugin.ghcide-code-actions-type-signatures.globalOn": {
+      "default": true,
+      "description": "Enables ghcide-code-actions-type-signatures plugin",
+      "scope": "resource",
+      "type": "boolean"
+    },
+    "haskell.plugin.ghcide-completions.config.autoExtendOn": {
+      "default": true,
+      "markdownDescription": "Extends the import list automatically when completing a out-of-scope identifier",
+      "scope": "resource",
+      "type": "boolean"
+    },
+    "haskell.plugin.ghcide-completions.config.snippetsOn": {
+      "default": true,
+      "markdownDescription": "Inserts snippets when using code completions",
+      "scope": "resource",
+      "type": "boolean"
+    },
+    "haskell.plugin.ghcide-completions.globalOn": {
+      "default": true,
+      "description": "Enables ghcide-completions plugin",
+      "scope": "resource",
+      "type": "boolean"
+    },
+    "haskell.plugin.ghcide-hover-and-symbols.hoverOn": {
+      "default": true,
+      "description": "Enables ghcide-hover-and-symbols hover",
+      "scope": "resource",
+      "type": "boolean"
+    },
+    "haskell.plugin.ghcide-hover-and-symbols.symbolsOn": {
+      "default": true,
+      "description": "Enables ghcide-hover-and-symbols symbols",
+      "scope": "resource",
+      "type": "boolean"
+    },
+    "haskell.plugin.ghcide-type-lenses.config.mode": {
+      "default": "always",
+      "description": "Control how type lenses are shown",
+      "enum": [
+        "always",
+        "exported",
+        "diagnostics"
+      ],
+      "enumDescriptions": [
+        "Always displays type lenses of global bindings",
+        "Only display type lenses of exported global bindings",
+        "Follows error messages produced by GHC about missing signatures"
+      ],
+      "scope": "resource",
+      "type": "string"
+    },
+    "haskell.plugin.ghcide-type-lenses.globalOn": {
+      "default": true,
+      "description": "Enables ghcide-type-lenses plugin",
+      "scope": "resource",
+      "type": "boolean"
+    },
+    "haskell.plugin.haddockComments.globalOn": {
+      "default": true,
+      "description": "Enables haddockComments plugin",
+      "scope": "resource",
+      "type": "boolean"
+    },
+    "haskell.plugin.hlint.codeActionsOn": {
+      "default": true,
+      "description": "Enables hlint code actions",
+      "scope": "resource",
+      "type": "boolean"
+    },
+    "haskell.plugin.hlint.config.flags": {
+      "default": [],
+      "markdownDescription": "Flags used by hlint",
+      "scope": "resource",
+      "type": "array"
+    },
+    "haskell.plugin.hlint.diagnosticsOn": {
+      "default": true,
+      "description": "Enables hlint diagnostics",
+      "scope": "resource",
+      "type": "boolean"
+    },
+    "haskell.plugin.importLens.codeActionsOn": {
+      "default": true,
+      "description": "Enables importLens code actions",
+      "scope": "resource",
+      "type": "boolean"
+    },
+    "haskell.plugin.importLens.codeLensOn": {
+      "default": true,
+      "description": "Enables importLens code lenses",
+      "scope": "resource",
+      "type": "boolean"
+    },
+    "haskell.plugin.moduleName.globalOn": {
+      "default": true,
+      "description": "Enables moduleName plugin",
+      "scope": "resource",
+      "type": "boolean"
+    },
+    "haskell.plugin.pragmas.codeActionsOn": {
+      "default": true,
+      "description": "Enables pragmas code actions",
+      "scope": "resource",
+      "type": "boolean"
+    },
+    "haskell.plugin.pragmas.completionOn": {
+      "default": true,
+      "description": "Enables pragmas completions",
+      "scope": "resource",
+      "type": "boolean"
+    },
+    "haskell.plugin.qualifyImportedNames.globalOn": {
+      "default": true,
+      "description": "Enables qualifyImportedNames plugin",
+      "scope": "resource",
+      "type": "boolean"
+    },
+    "haskell.plugin.refineImports.codeActionsOn": {
+      "default": true,
+      "description": "Enables refineImports code actions",
+      "scope": "resource",
+      "type": "boolean"
+    },
+    "haskell.plugin.refineImports.codeLensOn": {
+      "default": true,
+      "description": "Enables refineImports code lenses",
+      "scope": "resource",
+      "type": "boolean"
+    },
+    "haskell.plugin.rename.config.crossModule": {
+      "default": false,
+      "markdownDescription": "Enable experimental cross-module renaming",
+      "scope": "resource",
+      "type": "boolean"
+    },
+    "haskell.plugin.rename.globalOn": {
+      "default": true,
+      "description": "Enables rename plugin",
+      "scope": "resource",
+      "type": "boolean"
+    },
+    "haskell.plugin.retrie.globalOn": {
+      "default": true,
+      "description": "Enables retrie plugin",
+      "scope": "resource",
+      "type": "boolean"
+    },
+    "haskell.plugin.splice.globalOn": {
+      "default": true,
+      "description": "Enables splice plugin",
+      "scope": "resource",
+      "type": "boolean"
+    },
+    "haskell.plugin.tactics.codeActionsOn": {
+      "default": true,
+      "description": "Enables tactics code actions",
+      "scope": "resource",
+      "type": "boolean"
+    },
+    "haskell.plugin.tactics.codeLensOn": {
+      "default": true,
+      "description": "Enables tactics code lenses",
+      "scope": "resource",
+      "type": "boolean"
+    },
+    "haskell.plugin.tactics.config.auto_gas": {
+      "default": 4,
+      "markdownDescription": "The depth of the search tree when performing \"Attempt to fill hole\". Bigger values will be able to derive more solutions, but will take exponentially more time.",
+      "scope": "resource",
+      "type": "integer"
+    },
+    "haskell.plugin.tactics.config.hole_severity": {
+      "default": null,
+      "description": "The severity to use when showing hole diagnostics. These are noisy, but some editors don't allow jumping to all severities.",
+      "enum": [
+        1,
+        2,
+        3,
+        4,
+        null
+      ],
+      "enumDescriptions": [
+        "error",
+        "warning",
+        "info",
+        "hint",
+        "none"
+      ],
+      "scope": "resource",
+      "type": "string"
+    },
+    "haskell.plugin.tactics.config.max_use_ctor_actions": {
+      "default": 5,
+      "markdownDescription": "Maximum number of `Use constructor <x>` code actions that can appear",
+      "scope": "resource",
+      "type": "integer"
+    },
+    "haskell.plugin.tactics.config.proofstate_styling": {
+      "default": true,
+      "markdownDescription": "Should Wingman emit styling markup when showing metaprogram proof states?",
+      "scope": "resource",
+      "type": "boolean"
+    },
+    "haskell.plugin.tactics.config.timeout_duration": {
+      "default": 2,
+      "markdownDescription": "The timeout for Wingman actions, in seconds",
+      "scope": "resource",
+      "type": "integer"
+    },
+    "haskell.plugin.tactics.hoverOn": {
+      "default": true,
+      "description": "Enables tactics hover",
+      "scope": "resource",
+      "type": "boolean"
+    },
+    "haskell.promptBeforeDownloads": {
+      "default": "true",
+      "markdownDescription": "Prompt before performing any downloads.",
+      "scope": "machine",
+      "type": "boolean"
+    },
+    "haskell.releasesDownloadStoragePath": {
+      "default": "",
+      "markdownDescription": "An optional path where downloaded metadata will be stored. Check the default value [here](https://github.com/haskell/vscode-haskell#downloaded-binaries)",
+      "scope": "resource",
+      "type": "string"
+    },
+    "haskell.releasesURL": {
+      "default": "",
+      "description": "An optional URL to override where ghcup checks for HLS-GHC compatibility list (usually at: https://raw.githubusercontent.com/haskell/ghcup-metadata/master/hls-metadata-0.0.1.json)",
+      "scope": "resource",
+      "type": "string"
+    },
+    "haskell.serverEnvironment": {
+      "default": {},
+      "markdownDescription": "Define environment variables for the language server.",
+      "scope": "resource",
+      "type": "object"
+    },
+    "haskell.serverExecutablePath": {
+      "default": "",
+      "markdownDescription": "Manually set a language server executable. Can be something on the $PATH or the full path to the executable itself. Works with `~,` `${HOME}` and `${workspaceFolder}`. **Deprecated scope**: This option will be set to `machine` scope in a future release, so it can be changed only globally, not per workspace.",
+      "scope": "resource",
+      "type": "string"
+    },
+    "haskell.serverExtraArgs": {
+      "default": "",
+      "markdownDescription": "Pass additional arguments to the language server.",
+      "scope": "resource",
+      "type": "string"
+    },
+    "haskell.toolchain": {
+      "default": {},
+      "description": "When manageHLS is set to GHCup, this can overwrite the automatic toolchain configuration with a more specific one. When a tool is omitted, the extension will manage the version (for 'ghc' we try to figure out the version the project requires). The format is '{\"tool\": \"version\", ...}'. 'version' accepts all identifiers that 'ghcup' accepts.",
+      "scope": "resource",
+      "type": "object"
+    },
+    "haskell.trace.client": {
+      "default": "info",
+      "description": "Sets the log level in the client side.",
+      "enum": [
+        "off",
+        "error",
+        "info",
+        "debug"
+      ],
+      "scope": "resource",
+      "type": "string"
+    },
+    "haskell.trace.server": {
+      "default": "off",
+      "description": "Traces the communication between VS Code and the language server.",
+      "enum": [
+        "off",
+        "messages",
+        "verbose"
+      ],
+      "scope": "resource",
+      "type": "string"
+    },
+    "haskell.upgradeGHCup": {
+      "default": true,
+      "description": "Whether to upgrade GHCup automatically when 'manageHLS' is set to 'GHCup'.",
+      "scope": "resource",
+      "type": "boolean"
+    }
+  }
+}

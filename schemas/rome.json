@@ -1,1 +1,30 @@
-{"properties":{"rome.lspBin":{"type":["string","null"],"default":null,"markdownDescription":"The rome lsp server executable."},"rome_lsp.trace.server":{"enum":["off","messages","verbose"],"description":"Traces the communication between VS Code and the language server.","enumDescriptions":["No traces","Error only","Full log"],"type":"string","default":"off","scope":"window"}},"$schema":"http:\/\/json-schema.org\/draft-07\/schema#","description":"Rome LSP VS Code Extension"}
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "description": "Rome LSP VS Code Extension",
+  "properties": {
+    "rome.lspBin": {
+      "default": null,
+      "markdownDescription": "The rome lsp server executable.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "rome_lsp.trace.server": {
+      "default": "off",
+      "description": "Traces the communication between VS Code and the language server.",
+      "enum": [
+        "off",
+        "messages",
+        "verbose"
+      ],
+      "enumDescriptions": [
+        "No traces",
+        "Error only",
+        "Full log"
+      ],
+      "scope": "window",
+      "type": "string"
+    }
+  }
+}

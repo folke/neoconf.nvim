@@ -1,1 +1,23 @@
-{"properties":{"nls.server.path":{"type":"string","default":"nls","scope":"window","description":"Path to nickel language server"},"nls.server.trace":{"type":"string","scope":"window","description":"Enables performance tracing to the given file"},"nls.server.debugLog":{"type":"boolean","default":false,"scope":"window","description":"Logs the communication between VS Code and the language server."}},"$schema":"http:\/\/json-schema.org\/draft-07\/schema#","description":"Nickel Language Server"}
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "description": "Nickel Language Server",
+  "properties": {
+    "nls.server.debugLog": {
+      "default": false,
+      "description": "Logs the communication between VS Code and the language server.",
+      "scope": "window",
+      "type": "boolean"
+    },
+    "nls.server.path": {
+      "default": "nls",
+      "description": "Path to nickel language server",
+      "scope": "window",
+      "type": "string"
+    },
+    "nls.server.trace": {
+      "description": "Enables performance tracing to the given file",
+      "scope": "window",
+      "type": "string"
+    }
+  }
+}

@@ -1,1 +1,136 @@
-{"properties":{"zls.inlay_hints_exclude_single_argument":{"type":"boolean","default":true,"scope":"resource","description":"don't show inlay hints for single argument calls"},"zls.operator_completions":{"type":"boolean","default":true,"scope":"resource","description":"Whether to enable `*` and `?` operators in completion lists"},"zls.trace.server":{"enum":["off","messages","verbose"],"description":"Traces the communication between VS Code and the language server.","type":"string","default":"off","scope":"window"},"zls.check_for_update":{"type":"boolean","default":"true","scope":"resource","description":"Whether to automatically check for new updates"},"zls.path":{"type":"string","format":"path","scope":"resource","description":"Path to `zls` executable. Example: `C:\/zls\/zig-cache\/bin\/zls.exe`."},"zls.debugLog":{"type":"boolean","scope":"resource","description":"Enable debug logging in release builds of zls."},"zls.enable_snippets":{"type":"boolean","default":false,"scope":"resource","description":"Whether to enable snippet completions"},"zls.enable_ast_check_diagnostics":{"type":"boolean","default":false,"scope":"resource","description":"Whether to enable ast-check diagnostics"},"zls.enable_import_embedfile_argument_completions":{"type":"boolean","default":false,"scope":"resource","description":"Whether to enable import\/embedFile argument completions (NOTE: these are triggered manually as updating the autotrigger characters may cause issues)"},"zls.zig_lib_path":{"type":"string","default":null,"scope":"resource","description":"Zig library path"},"zls.zig_exe_path":{"type":"string","default":null,"scope":"resource","description":"Zig executable path used to run the custom build runner. May be used to find a lib path if none is provided."},"zls.warn_style":{"type":"boolean","default":false,"scope":"resource","description":"Whether to pay attention to style issues. This is opt-in since the style guide explicitly states that the style info provided is a guideline only."},"zls.build_runner_path":{"type":"string","default":null,"scope":"resource","description":"Path to the build_runner.zig file."},"zls.builtin_path":{"type":"string","default":null,"scope":"resource","description":"Path to \"builtin;\" useful for debugging, automatically set if let null"},"zls.global_cache_path":{"type":"string","default":null,"scope":"resource","description":"Path to the global cache directory"},"zls.skip_std_references":{"type":"boolean","default":false,"scope":"resource","description":"Skips references to std. This will improve lookup speeds. Going to definition however will continue to work"},"zls.enable_semantic_tokens":{"type":"boolean","default":true,"scope":"resource","description":"Semantic token support"},"zls.max_detail_length":{"type":"integer","default":1048576,"scope":"resource","description":"The detail field of completions is truncated to be no longer than this (in bytes)."},"zls.enable_inlay_hints":{"type":"boolean","default":false,"scope":"resource","description":"Inlay hint support"},"zls.include_at_in_builtins":{"type":"boolean","default":false,"scope":"resource","description":"Whether the @ sign should be part of the completion of builtins"},"zls.inlay_hints_show_builtin":{"type":"boolean","default":true,"scope":"resource","description":"enable inlay hints for builtin functions"}},"$schema":"http:\/\/json-schema.org\/draft-07\/schema#","description":"VSCode frontend for zls"}
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "description": "VSCode frontend for zls",
+  "properties": {
+    "zls.build_runner_path": {
+      "default": null,
+      "description": "Path to the build_runner.zig file.",
+      "scope": "resource",
+      "type": "string"
+    },
+    "zls.builtin_path": {
+      "default": null,
+      "description": "Path to \"builtin;\" useful for debugging, automatically set if let null",
+      "scope": "resource",
+      "type": "string"
+    },
+    "zls.check_for_update": {
+      "default": "true",
+      "description": "Whether to automatically check for new updates",
+      "scope": "resource",
+      "type": "boolean"
+    },
+    "zls.debugLog": {
+      "description": "Enable debug logging in release builds of zls.",
+      "scope": "resource",
+      "type": "boolean"
+    },
+    "zls.enable_ast_check_diagnostics": {
+      "default": false,
+      "description": "Whether to enable ast-check diagnostics",
+      "scope": "resource",
+      "type": "boolean"
+    },
+    "zls.enable_import_embedfile_argument_completions": {
+      "default": false,
+      "description": "Whether to enable import/embedFile argument completions (NOTE: these are triggered manually as updating the autotrigger characters may cause issues)",
+      "scope": "resource",
+      "type": "boolean"
+    },
+    "zls.enable_inlay_hints": {
+      "default": false,
+      "description": "Inlay hint support",
+      "scope": "resource",
+      "type": "boolean"
+    },
+    "zls.enable_semantic_tokens": {
+      "default": true,
+      "description": "Semantic token support",
+      "scope": "resource",
+      "type": "boolean"
+    },
+    "zls.enable_snippets": {
+      "default": false,
+      "description": "Whether to enable snippet completions",
+      "scope": "resource",
+      "type": "boolean"
+    },
+    "zls.global_cache_path": {
+      "default": null,
+      "description": "Path to the global cache directory",
+      "scope": "resource",
+      "type": "string"
+    },
+    "zls.include_at_in_builtins": {
+      "default": false,
+      "description": "Whether the @ sign should be part of the completion of builtins",
+      "scope": "resource",
+      "type": "boolean"
+    },
+    "zls.inlay_hints_exclude_single_argument": {
+      "default": true,
+      "description": "don't show inlay hints for single argument calls",
+      "scope": "resource",
+      "type": "boolean"
+    },
+    "zls.inlay_hints_show_builtin": {
+      "default": true,
+      "description": "enable inlay hints for builtin functions",
+      "scope": "resource",
+      "type": "boolean"
+    },
+    "zls.max_detail_length": {
+      "default": 1048576,
+      "description": "The detail field of completions is truncated to be no longer than this (in bytes).",
+      "scope": "resource",
+      "type": "integer"
+    },
+    "zls.operator_completions": {
+      "default": true,
+      "description": "Whether to enable `*` and `?` operators in completion lists",
+      "scope": "resource",
+      "type": "boolean"
+    },
+    "zls.path": {
+      "description": "Path to `zls` executable. Example: `C:/zls/zig-cache/bin/zls.exe`.",
+      "format": "path",
+      "scope": "resource",
+      "type": "string"
+    },
+    "zls.skip_std_references": {
+      "default": false,
+      "description": "Skips references to std. This will improve lookup speeds. Going to definition however will continue to work",
+      "scope": "resource",
+      "type": "boolean"
+    },
+    "zls.trace.server": {
+      "default": "off",
+      "description": "Traces the communication between VS Code and the language server.",
+      "enum": [
+        "off",
+        "messages",
+        "verbose"
+      ],
+      "scope": "window",
+      "type": "string"
+    },
+    "zls.warn_style": {
+      "default": false,
+      "description": "Whether to pay attention to style issues. This is opt-in since the style guide explicitly states that the style info provided is a guideline only.",
+      "scope": "resource",
+      "type": "boolean"
+    },
+    "zls.zig_exe_path": {
+      "default": null,
+      "description": "Zig executable path used to run the custom build runner. May be used to find a lib path if none is provided.",
+      "scope": "resource",
+      "type": "string"
+    },
+    "zls.zig_lib_path": {
+      "default": null,
+      "description": "Zig library path",
+      "scope": "resource",
+      "type": "string"
+    }
+  }
+}

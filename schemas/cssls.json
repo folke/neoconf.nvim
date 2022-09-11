@@ -1,1 +1,5 @@
-{"properties":[],"$schema":"http:\/\/json-schema.org\/draft-07\/schema#","description":"%description%"}
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "description": "%description%",
+  "properties": []
+}

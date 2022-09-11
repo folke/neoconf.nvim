@@ -1,1 +1,5 @@
-{"properties":[],"$schema":"http:\/\/json-schema.org\/draft-07\/schema#","description":"Language support for Verilog and SystemVerilog."}
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "description": "Language support for Verilog and SystemVerilog.",
+  "properties": []
+}

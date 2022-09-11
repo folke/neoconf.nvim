@@ -1,1 +1,202 @@
-{"properties":{"html.validate.scripts":{"type":"boolean","default":true,"scope":"resource","description":"%html.validate.scripts%"},"html.format.preserveNewLines":{"type":"boolean","default":true,"scope":"resource","description":"%html.format.preserveNewLines.desc%"},"html.validate.styles":{"type":"boolean","default":true,"scope":"resource","description":"%html.validate.styles%"},"html.format.maxPreserveNewLines":{"type":["number","null"],"default":null,"scope":"resource","markdownDescription":"%html.format.maxPreserveNewLines.desc%"},"html.autoCreateQuotes":{"type":"boolean","default":true,"scope":"resource","description":"%html.autoCreateQuotes%"},"html.format.indentHandlebars":{"type":"boolean","default":false,"scope":"resource","markdownDescription":"%html.format.indentHandlebars.desc%"},"html.autoClosingTags":{"type":"boolean","default":true,"scope":"resource","description":"%html.autoClosingTags%"},"html.format.extraLiners":{"type":["string","null"],"default":"head, body, \/html","scope":"resource","markdownDescription":"%html.format.extraLiners.desc%"},"html.hover.documentation":{"type":"boolean","default":true,"scope":"resource","description":"%html.hover.documentation%"},"html.format.wrapAttributes":{"enum":["auto","force","force-aligned","force-expand-multiline","aligned-multiple","preserve","preserve-aligned"],"description":"%html.format.wrapAttributes.desc%","type":"string","default":"auto","scope":"resource","enumDescriptions":["%html.format.wrapAttributes.auto%","%html.format.wrapAttributes.force%","%html.format.wrapAttributes.forcealign%","%html.format.wrapAttributes.forcemultiline%","%html.format.wrapAttributes.alignedmultiple%","%html.format.wrapAttributes.preserve%","%html.format.wrapAttributes.preservealigned%"]},"html.completion.attributeDefaultValue":{"enum":["doublequotes","singlequotes","empty"],"description":"%html.completion.attributeDefaultValue%","type":"string","default":"doublequotes","enumDescriptions":["%html.completion.attributeDefaultValue.doublequotes%","%html.completion.attributeDefaultValue.singlequotes%","%html.completion.attributeDefaultValue.empty%"],"scope":"resource"},"html.mirrorCursorOnMatchingTag":{"description":"%html.mirrorCursorOnMatchingTag%","type":"boolean","default":false,"scope":"resource","deprecationMessage":"%html.mirrorCursorOnMatchingTagDeprecationMessage%"},"html.trace.server":{"enum":["off","messages","verbose"],"description":"%html.trace.server.desc%","type":"string","default":"off","scope":"window"},"html.customData":{"items":{"type":"string"},"type":"array","default":[],"scope":"resource","markdownDescription":"%html.customData.desc%"},"html.format.enable":{"type":"boolean","default":true,"scope":"window","description":"%html.format.enable.desc%"},"html.format.wrapLineLength":{"type":"integer","default":120,"scope":"resource","description":"%html.format.wrapLineLength.desc%"},"html.format.wrapAttributesIndentSize":{"type":["number","null"],"default":null,"scope":"resource","markdownDescription":"%html.format.wrapAttributesIndentSize.desc%"},"html.hover.references":{"type":"boolean","default":true,"scope":"resource","description":"%html.hover.references%"},"html.format.templating":{"type":"boolean","default":false,"scope":"resource","description":"%html.format.templating.desc%"},"html.format.unformatted":{"type":["string","null"],"default":"wbr","scope":"resource","markdownDescription":"%html.format.unformatted.desc%"},"html.format.unformattedContentDelimiter":{"type":"string","default":"","scope":"resource","markdownDescription":"%html.format.unformattedContentDelimiter.desc%"},"html.format.contentUnformatted":{"type":["string","null"],"default":"pre,code,textarea","scope":"resource","markdownDescription":"%html.format.contentUnformatted.desc%"},"html.suggest.html5":{"type":"boolean","default":true,"scope":"resource","description":"%html.suggest.html5.desc%"},"html.format.indentInnerHtml":{"type":"boolean","default":false,"scope":"resource","markdownDescription":"%html.format.indentInnerHtml.desc%"}},"$schema":"http:\/\/json-schema.org\/draft-07\/schema#","description":"%description%"}
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "description": "%description%",
+  "properties": {
+    "html.autoClosingTags": {
+      "default": true,
+      "description": "%html.autoClosingTags%",
+      "scope": "resource",
+      "type": "boolean"
+    },
+    "html.autoCreateQuotes": {
+      "default": true,
+      "description": "%html.autoCreateQuotes%",
+      "scope": "resource",
+      "type": "boolean"
+    },
+    "html.completion.attributeDefaultValue": {
+      "default": "doublequotes",
+      "description": "%html.completion.attributeDefaultValue%",
+      "enum": [
+        "doublequotes",
+        "singlequotes",
+        "empty"
+      ],
+      "enumDescriptions": [
+        "%html.completion.attributeDefaultValue.doublequotes%",
+        "%html.completion.attributeDefaultValue.singlequotes%",
+        "%html.completion.attributeDefaultValue.empty%"
+      ],
+      "scope": "resource",
+      "type": "string"
+    },
+    "html.customData": {
+      "default": [],
+      "items": {
+        "type": "string"
+      },
+      "markdownDescription": "%html.customData.desc%",
+      "scope": "resource",
+      "type": "array"
+    },
+    "html.format.contentUnformatted": {
+      "default": "pre,code,textarea",
+      "markdownDescription": "%html.format.contentUnformatted.desc%",
+      "scope": "resource",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "html.format.enable": {
+      "default": true,
+      "description": "%html.format.enable.desc%",
+      "scope": "window",
+      "type": "boolean"
+    },
+    "html.format.extraLiners": {
+      "default": "head, body, /html",
+      "markdownDescription": "%html.format.extraLiners.desc%",
+      "scope": "resource",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "html.format.indentHandlebars": {
+      "default": false,
+      "markdownDescription": "%html.format.indentHandlebars.desc%",
+      "scope": "resource",
+      "type": "boolean"
+    },
+    "html.format.indentInnerHtml": {
+      "default": false,
+      "markdownDescription": "%html.format.indentInnerHtml.desc%",
+      "scope": "resource",
+      "type": "boolean"
+    },
+    "html.format.maxPreserveNewLines": {
+      "default": null,
+      "markdownDescription": "%html.format.maxPreserveNewLines.desc%",
+      "scope": "resource",
+      "type": [
+        "number",
+        "null"
+      ]
+    },
+    "html.format.preserveNewLines": {
+      "default": true,
+      "description": "%html.format.preserveNewLines.desc%",
+      "scope": "resource",
+      "type": "boolean"
+    },
+    "html.format.templating": {
+      "default": false,
+      "description": "%html.format.templating.desc%",
+      "scope": "resource",
+      "type": "boolean"
+    },
+    "html.format.unformatted": {
+      "default": "wbr",
+      "markdownDescription": "%html.format.unformatted.desc%",
+      "scope": "resource",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "html.format.unformattedContentDelimiter": {
+      "default": "",
+      "markdownDescription": "%html.format.unformattedContentDelimiter.desc%",
+      "scope": "resource",
+      "type": "string"
+    },
+    "html.format.wrapAttributes": {
+      "default": "auto",
+      "description": "%html.format.wrapAttributes.desc%",
+      "enum": [
+        "auto",
+        "force",
+        "force-aligned",
+        "force-expand-multiline",
+        "aligned-multiple",
+        "preserve",
+        "preserve-aligned"
+      ],
+      "enumDescriptions": [
+        "%html.format.wrapAttributes.auto%",
+        "%html.format.wrapAttributes.force%",
+        "%html.format.wrapAttributes.forcealign%",
+        "%html.format.wrapAttributes.forcemultiline%",
+        "%html.format.wrapAttributes.alignedmultiple%",
+        "%html.format.wrapAttributes.preserve%",
+        "%html.format.wrapAttributes.preservealigned%"
+      ],
+      "scope": "resource",
+      "type": "string"
+    },
+    "html.format.wrapAttributesIndentSize": {
+      "default": null,
+      "markdownDescription": "%html.format.wrapAttributesIndentSize.desc%",
+      "scope": "resource",
+      "type": [
+        "number",
+        "null"
+      ]
+    },
+    "html.format.wrapLineLength": {
+      "default": 120,
+      "description": "%html.format.wrapLineLength.desc%",
+      "scope": "resource",
+      "type": "integer"
+    },
+    "html.hover.documentation": {
+      "default": true,
+      "description": "%html.hover.documentation%",
+      "scope": "resource",
+      "type": "boolean"
+    },
+    "html.hover.references": {
+      "default": true,
+      "description": "%html.hover.references%",
+      "scope": "resource",
+      "type": "boolean"
+    },
+    "html.mirrorCursorOnMatchingTag": {
+      "default": false,
+      "deprecationMessage": "%html.mirrorCursorOnMatchingTagDeprecationMessage%",
+      "description": "%html.mirrorCursorOnMatchingTag%",
+      "scope": "resource",
+      "type": "boolean"
+    },
+    "html.suggest.html5": {
+      "default": true,
+      "description": "%html.suggest.html5.desc%",
+      "scope": "resource",
+      "type": "boolean"
+    },
+    "html.trace.server": {
+      "default": "off",
+      "description": "%html.trace.server.desc%",
+      "enum": [
+        "off",
+        "messages",
+        "verbose"
+      ],
+      "scope": "window",
+      "type": "string"
+    },
+    "html.validate.scripts": {
+      "default": true,
+      "description": "%html.validate.scripts%",
+      "scope": "resource",
+      "type": "boolean"
+    },
+    "html.validate.styles": {
+      "default": true,
+      "description": "%html.validate.styles%",
+      "scope": "resource",
+      "type": "boolean"
+    }
+  }
+}

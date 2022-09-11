@@ -1,1 +1,73 @@
-{"properties":{"clangd.serverCompletionRanking":{"type":"boolean","default":true,"description":"Always rank completion items on the server as you type. This produces more accurate results at the cost of higher latency than client-side filtering."},"clangd.restartAfterCrash":{"type":"boolean","default":true,"description":"Auto restart clangd (up to 4 times) if it crashes."},"clangd.path":{"type":"string","default":"clangd","scope":"machine-overridable","description":"The path to clangd executable, e.g.: \/usr\/bin\/clangd."},"clangd.onConfigChanged":{"enum":["prompt","restart","ignore"],"description":"What to do when clangd configuration files are changed. Ignored for clangd 12+, which can reload such files itself.","type":"string","default":"prompt","enumDescriptions":["Prompt the user for restarting the server","Automatically restart the server","Do nothing"]},"clangd.arguments":{"type":"array","default":[],"description":"Arguments for clangd server.","items":{"type":"string"}},"clangd.trace":{"type":"string","description":"Names a file that clangd should log a performance trace to, in chrome trace-viewer JSON format."},"clangd.semanticHighlighting":{"type":"boolean","default":true,"description":"Enable semantic highlighting in clangd.","deprecationMessage":"Legacy semanticHighlights is no longer supported. Please use `editor.semanticHighlighting.enabled` instead."},"clangd.detectExtensionConflicts":{"type":"boolean","default":true,"description":"Warn about conflicting extensions and suggest disabling them."},"clangd.fallbackFlags":{"type":"array","default":[],"description":"Extra clang flags used to parse files when no compilation database is found.","items":{"type":"string"}},"clangd.checkUpdates":{"type":"boolean","default":false,"description":"Check for language server updates on startup."}},"$schema":"http:\/\/json-schema.org\/draft-07\/schema#","description":"C\/C++ completion, navigation, and insights"}
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "description": "C/C++ completion, navigation, and insights",
+  "properties": {
+    "clangd.arguments": {
+      "default": [],
+      "description": "Arguments for clangd server.",
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "clangd.checkUpdates": {
+      "default": false,
+      "description": "Check for language server updates on startup.",
+      "type": "boolean"
+    },
+    "clangd.detectExtensionConflicts": {
+      "default": true,
+      "description": "Warn about conflicting extensions and suggest disabling them.",
+      "type": "boolean"
+    },
+    "clangd.fallbackFlags": {
+      "default": [],
+      "description": "Extra clang flags used to parse files when no compilation database is found.",
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "clangd.onConfigChanged": {
+      "default": "prompt",
+      "description": "What to do when clangd configuration files are changed. Ignored for clangd 12+, which can reload such files itself.",
+      "enum": [
+        "prompt",
+        "restart",
+        "ignore"
+      ],
+      "enumDescriptions": [
+        "Prompt the user for restarting the server",
+        "Automatically restart the server",
+        "Do nothing"
+      ],
+      "type": "string"
+    },
+    "clangd.path": {
+      "default": "clangd",
+      "description": "The path to clangd executable, e.g.: /usr/bin/clangd.",
+      "scope": "machine-overridable",
+      "type": "string"
+    },
+    "clangd.restartAfterCrash": {
+      "default": true,
+      "description": "Auto restart clangd (up to 4 times) if it crashes.",
+      "type": "boolean"
+    },
+    "clangd.semanticHighlighting": {
+      "default": true,
+      "deprecationMessage": "Legacy semanticHighlights is no longer supported. Please use `editor.semanticHighlighting.enabled` instead.",
+      "description": "Enable semantic highlighting in clangd.",
+      "type": "boolean"
+    },
+    "clangd.serverCompletionRanking": {
+      "default": true,
+      "description": "Always rank completion items on the server as you type. This produces more accurate results at the cost of higher latency than client-side filtering.",
+      "type": "boolean"
+    },
+    "clangd.trace": {
+      "description": "Names a file that clangd should log a performance trace to, in chrome trace-viewer JSON format.",
+      "type": "string"
+    }
+  }
+}

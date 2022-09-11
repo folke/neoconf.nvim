@@ -1,1 +1,126 @@
-{"properties":{"perl.logLevel":{"type":"integer","default":0,"description":"Log level 0-2"},"perl.logFile":{"type":"string","default":null,"description":"If set, log output is written to the given logfile, instead of displaying it in the vscode output pane. Log output is always appended so you are responsible for rotating the file."},"perl.sshAddr":{"type":"string","default":null,"description":"ip address of remote system"},"perl.sshPort":{"type":"string","default":null,"description":"optional, port for ssh to remote system"},"perl.sshUser":{"type":"string","default":null,"description":"user for ssh login"},"perl.sshCmd":{"type":"string","default":null,"description":"defaults to ssh on unix and plink on windows"},"perl.sshWorkspaceRoot":{"type":"string","default":null,"description":"path of the workspace root on remote system"},"perl.perlCmd":{"type":"string","default":null,"description":"defaults to perl"},"perl.sshArgs":{"type":"array","default":null,"description":"optional arguments for ssh"},"perl.debugAdapterPortRange":{"type":"integer","default":100,"description":"if debugAdapterPort is in use try ports from debugAdapterPort to debugAdapterPort + debugAdapterPortRange. Default 100."},"perl.containerCmd":{"type":"string","default":null,"description":"If set Perl::LanguageServer can run inside a container. Options are: 'docker', 'docker-compose', 'kubectl'"},"perl.debugAdapterPort":{"type":"integer","default":13603,"description":"port to use for connection between vscode and debug adapter inside Perl::LanguageServer. On a multi user system every user must use a different port."},"perl.containerArgs":{"type":"array","default":null,"description":"arguments for containerCmd. Varies depending on containerCmd."},"perl.disableCache":{"type":"boolean","default":false,"description":"if true, the LanguageServer will not cache the result of parsing source files on disk, so it can be used within readonly directories"},"perl.containerMode":{"type":"string","default":"exec","description":"To start a new container, set to 'run', to execute inside an existing container set to 'exec'. Note: kubectl only supports 'exec'"},"perl.showLocalVars":{"type":"boolean","default":false,"description":"if true, show also local variables in symbol view"},"perl.containerName":{"type":"string","default":null,"description":"Image to start or container to exec inside or pod to use"},"perl.cacheDir":{"type":"string","default":null,"description":"directory for caching of parsed symbols, if the directory does not exists, it will be created, defaults to ${workspace}\/.vscode\/perl-lang. This should be one unqiue directory per project and an absolute path."},"perl.env":{"type":"object","default":null,"description":"object with environment settings for command that starts the LanguageServer, e.g. can be used to set KUBECONFIG."},"perl.ignoreDirs":{"type":"array","default":null,"description":"directories to ignore, defaults to .vscode, .git, .svn"},"perl.pathMap":{"type":"array","default":null,"description":"mapping of local to remote paths"},"perl.fileFilter":{"type":"array","default":null,"description":"array for filtering perl file, defaults to *.pm|*.pl"},"perl.enable":{"type":"boolean","default":true,"description":"enable\/disable this extension"},"perl.perlInc":{"type":"array","default":null,"description":"array with paths to add to perl library path. This setting is used by the syntax checker and for the debuggee and also for the LanguageServer itself. perl.perlInc should be absolute paths."}},"$schema":"http:\/\/json-schema.org\/draft-07\/schema#","description":"Language Server and Debugger for Perl"}
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "description": "Language Server and Debugger for Perl",
+  "properties": {
+    "perl.cacheDir": {
+      "default": null,
+      "description": "directory for caching of parsed symbols, if the directory does not exists, it will be created, defaults to ${workspace}/.vscode/perl-lang. This should be one unqiue directory per project and an absolute path.",
+      "type": "string"
+    },
+    "perl.containerArgs": {
+      "default": null,
+      "description": "arguments for containerCmd. Varies depending on containerCmd.",
+      "type": "array"
+    },
+    "perl.containerCmd": {
+      "default": null,
+      "description": "If set Perl::LanguageServer can run inside a container. Options are: 'docker', 'docker-compose', 'kubectl'",
+      "type": "string"
+    },
+    "perl.containerMode": {
+      "default": "exec",
+      "description": "To start a new container, set to 'run', to execute inside an existing container set to 'exec'. Note: kubectl only supports 'exec'",
+      "type": "string"
+    },
+    "perl.containerName": {
+      "default": null,
+      "description": "Image to start or container to exec inside or pod to use",
+      "type": "string"
+    },
+    "perl.debugAdapterPort": {
+      "default": 13603,
+      "description": "port to use for connection between vscode and debug adapter inside Perl::LanguageServer. On a multi user system every user must use a different port.",
+      "type": "integer"
+    },
+    "perl.debugAdapterPortRange": {
+      "default": 100,
+      "description": "if debugAdapterPort is in use try ports from debugAdapterPort to debugAdapterPort + debugAdapterPortRange. Default 100.",
+      "type": "integer"
+    },
+    "perl.disableCache": {
+      "default": false,
+      "description": "if true, the LanguageServer will not cache the result of parsing source files on disk, so it can be used within readonly directories",
+      "type": "boolean"
+    },
+    "perl.enable": {
+      "default": true,
+      "description": "enable/disable this extension",
+      "type": "boolean"
+    },
+    "perl.env": {
+      "default": null,
+      "description": "object with environment settings for command that starts the LanguageServer, e.g. can be used to set KUBECONFIG.",
+      "type": "object"
+    },
+    "perl.fileFilter": {
+      "default": null,
+      "description": "array for filtering perl file, defaults to *.pm|*.pl",
+      "type": "array"
+    },
+    "perl.ignoreDirs": {
+      "default": null,
+      "description": "directories to ignore, defaults to .vscode, .git, .svn",
+      "type": "array"
+    },
+    "perl.logFile": {
+      "default": null,
+      "description": "If set, log output is written to the given logfile, instead of displaying it in the vscode output pane. Log output is always appended so you are responsible for rotating the file.",
+      "type": "string"
+    },
+    "perl.logLevel": {
+      "default": 0,
+      "description": "Log level 0-2",
+      "type": "integer"
+    },
+    "perl.pathMap": {
+      "default": null,
+      "description": "mapping of local to remote paths",
+      "type": "array"
+    },
+    "perl.perlCmd": {
+      "default": null,
+      "description": "defaults to perl",
+      "type": "string"
+    },
+    "perl.perlInc": {
+      "default": null,
+      "description": "array with paths to add to perl library path. This setting is used by the syntax checker and for the debuggee and also for the LanguageServer itself. perl.perlInc should be absolute paths.",
+      "type": "array"
+    },
+    "perl.showLocalVars": {
+      "default": false,
+      "description": "if true, show also local variables in symbol view",
+      "type": "boolean"
+    },
+    "perl.sshAddr": {
+      "default": null,
+      "description": "ip address of remote system",
+      "type": "string"
+    },
+    "perl.sshArgs": {
+      "default": null,
+      "description": "optional arguments for ssh",
+      "type": "array"
+    },
+    "perl.sshCmd": {
+      "default": null,
+      "description": "defaults to ssh on unix and plink on windows",
+      "type": "string"
+    },
+    "perl.sshPort": {
+      "default": null,
+      "description": "optional, port for ssh to remote system",
+      "type": "string"
+    },
+    "perl.sshUser": {
+      "default": null,
+      "description": "user for ssh login",
+      "type": "string"
+    },
+    "perl.sshWorkspaceRoot": {
+      "default": null,
+      "description": "path of the workspace root on remote system",
+      "type": "string"
+    }
+  }
+}

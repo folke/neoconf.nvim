@@ -1,1 +1,50 @@
-{"properties":{"rescript.settings.allowBuiltInFormatter":{"type":"boolean","default":false,"scope":"language-overridable","description":"Whether you want to allow the extension to format your code using its built in formatter when it cannot find a ReScript compiler version in your current project to use for formatting."},"rescript.settings.binaryPath":{"type":["string","null"],"default":null,"description":"Path to the directory where ReScript binaries are. You can use it if you haven't or don't want to use the installed ReScript from node_modules in your project."},"rescript.settings.askToStartBuild":{"type":"boolean","default":true,"scope":"language-overridable","description":"Whether you want the extension to prompt for autostarting a ReScript build if a project is opened with no build running."},"rescript.settings.codeLens":{"type":"boolean","default":false,"description":"Enable (experimental) code lens for function definitions."},"rescript.settings.autoRunCodeAnalysis":{"type":"boolean","default":false,"description":"Automatically start ReScript's code analysis."},"rescript.settings.inlayHints.maxLength":{"type":["null","integer"],"default":25,"minimum":0,"markdownDescription":"Maximum length of character for inlay hints. Set to null to have an unlimited length. Inlay hints that exceed the maximum length will not be shown."},"rescript.settings.inlayHints.enable":{"type":"boolean","default":false,"description":"Enable (experimental) inlay hints."}},"$schema":"http:\/\/json-schema.org\/draft-07\/schema#","description":"ReScript language support (official)"}
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "description": "ReScript language support (official)",
+  "properties": {
+    "rescript.settings.allowBuiltInFormatter": {
+      "default": false,
+      "description": "Whether you want to allow the extension to format your code using its built in formatter when it cannot find a ReScript compiler version in your current project to use for formatting.",
+      "scope": "language-overridable",
+      "type": "boolean"
+    },
+    "rescript.settings.askToStartBuild": {
+      "default": true,
+      "description": "Whether you want the extension to prompt for autostarting a ReScript build if a project is opened with no build running.",
+      "scope": "language-overridable",
+      "type": "boolean"
+    },
+    "rescript.settings.autoRunCodeAnalysis": {
+      "default": false,
+      "description": "Automatically start ReScript's code analysis.",
+      "type": "boolean"
+    },
+    "rescript.settings.binaryPath": {
+      "default": null,
+      "description": "Path to the directory where ReScript binaries are. You can use it if you haven't or don't want to use the installed ReScript from node_modules in your project.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "rescript.settings.codeLens": {
+      "default": false,
+      "description": "Enable (experimental) code lens for function definitions.",
+      "type": "boolean"
+    },
+    "rescript.settings.inlayHints.enable": {
+      "default": false,
+      "description": "Enable (experimental) inlay hints.",
+      "type": "boolean"
+    },
+    "rescript.settings.inlayHints.maxLength": {
+      "default": 25,
+      "markdownDescription": "Maximum length of character for inlay hints. Set to null to have an unlimited length. Inlay hints that exceed the maximum length will not be shown.",
+      "minimum": 0,
+      "type": [
+        "null",
+        "integer"
+      ]
+    }
+  }
+}

@@ -1,1 +1,89 @@
-{"properties":{"stylelintplus.config":{"type":"object","default":null,"description":"Stylelint config. If config and configFile are unset, stylelint will automatically look for a config file.","scope":"resource"},"stylelintplus.configFile":{"type":"string","default":null,"description":"Stylelint config file. If config and configFile are unset, stylelint will automatically look for a config file.","scope":"resource"},"stylelintplus.configOverrides":{"type":"object","default":null,"description":"Stylelint config overrides. These will be applied on top of the config, configFile, or auto-discovered config file loaded by stylelint.","scope":"resource"},"stylelintplus.cssInJs":{"type":"boolean","default":false,"description":"Run stylelint on javascript\/typescript files.","scope":"window"},"stylelintplus.enable":{"type":"boolean","default":true,"description":"If false, stylelint will not validate the file.","scope":"resource"},"stylelintplus.filetypes":{"description":"Filetypes that coc-stylelintplus will lint.","items":{"type":"string"},"type":"array","default":["css","less","postcss","sass","scss","sugarss","vue","wxss"],"scope":"window"},"stylelintplus.validateOnType":{"type":"boolean","default":true,"description":"Validate after making changes.","scope":"resource"},"stylelintplus.autoFixOnFormat":{"type":"boolean","default":false,"description":"Auto-fix on format request.","scope":"resource"},"stylelintplus.validateOnSave":{"type":"boolean","default":false,"description":"Validate after saving. Automatically enabled if autoFixOnSave is enabled.","scope":"resource"},"stylelintplus.autoFixOnSave":{"type":"boolean","default":false,"description":"Auto-fix and format on save.","scope":"resource"},"stylelintplus.trace.server":{"enum":["off","messages","verbose"],"description":"Capture trace messages from the server.","type":"string","default":"off","scope":"window"}},"$schema":"http:\/\/json-schema.org\/draft-07\/schema#","description":"stylelint extension for coc.nvim supporting additional features"}
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "description": "stylelint extension for coc.nvim supporting additional features",
+  "properties": {
+    "stylelintplus.autoFixOnFormat": {
+      "default": false,
+      "description": "Auto-fix on format request.",
+      "scope": "resource",
+      "type": "boolean"
+    },
+    "stylelintplus.autoFixOnSave": {
+      "default": false,
+      "description": "Auto-fix and format on save.",
+      "scope": "resource",
+      "type": "boolean"
+    },
+    "stylelintplus.config": {
+      "default": null,
+      "description": "Stylelint config. If config and configFile are unset, stylelint will automatically look for a config file.",
+      "scope": "resource",
+      "type": "object"
+    },
+    "stylelintplus.configFile": {
+      "default": null,
+      "description": "Stylelint config file. If config and configFile are unset, stylelint will automatically look for a config file.",
+      "scope": "resource",
+      "type": "string"
+    },
+    "stylelintplus.configOverrides": {
+      "default": null,
+      "description": "Stylelint config overrides. These will be applied on top of the config, configFile, or auto-discovered config file loaded by stylelint.",
+      "scope": "resource",
+      "type": "object"
+    },
+    "stylelintplus.cssInJs": {
+      "default": false,
+      "description": "Run stylelint on javascript/typescript files.",
+      "scope": "window",
+      "type": "boolean"
+    },
+    "stylelintplus.enable": {
+      "default": true,
+      "description": "If false, stylelint will not validate the file.",
+      "scope": "resource",
+      "type": "boolean"
+    },
+    "stylelintplus.filetypes": {
+      "default": [
+        "css",
+        "less",
+        "postcss",
+        "sass",
+        "scss",
+        "sugarss",
+        "vue",
+        "wxss"
+      ],
+      "description": "Filetypes that coc-stylelintplus will lint.",
+      "items": {
+        "type": "string"
+      },
+      "scope": "window",
+      "type": "array"
+    },
+    "stylelintplus.trace.server": {
+      "default": "off",
+      "description": "Capture trace messages from the server.",
+      "enum": [
+        "off",
+        "messages",
+        "verbose"
+      ],
+      "scope": "window",
+      "type": "string"
+    },
+    "stylelintplus.validateOnSave": {
+      "default": false,
+      "description": "Validate after saving. Automatically enabled if autoFixOnSave is enabled.",
+      "scope": "resource",
+      "type": "boolean"
+    },
+    "stylelintplus.validateOnType": {
+      "default": true,
+      "description": "Validate after making changes.",
+      "scope": "resource",
+      "type": "boolean"
+    }
+  }
+}
