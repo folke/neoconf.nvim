@@ -10,7 +10,7 @@ function M.setup()
   Util.on_config({
     name = "settings/plugins/lspconfig",
     on_config = M.on_new_config,
-    root_dir = settings_root
+    root_dir = settings_root,
   })
 end
 
@@ -52,11 +52,11 @@ function M.on_update(fname)
       local old_config = vim.deepcopy(client.config.settings)
 
       -- retrieve new settings only
-      local new_config = vim.deepcopy(client.config.original_config)
+      local new_config = vim.deepcopy(client.config.original_config or {})
 
-      local _, document_config = pcall(function()
-        return require("lspconfig")[client.name].document_config
-      end)
+      local available = require("lspconfig.util").available_servers()
+      available = vim.tbl_contains(available, client.name)
+      local document_config = available and require("lspconfig")[client.name].document_config
 
       -- re-apply config from any other plugins that were overriding on_new_config
       if document_config and document_config.on_new_config then
@@ -67,7 +67,7 @@ function M.on_update(fname)
       end
 
       -- only keep the settings
-      client.config.settings = new_config.settings
+      client.config.settings = new_config.settings or {}
 
       -- only send update when confiuration actually changed
       if not vim.deep_equal(old_config, client.config.settings) then
