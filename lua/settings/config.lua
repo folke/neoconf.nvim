@@ -60,6 +60,7 @@ function M.setup(options)
     local function nlsp_key(file)
       return "nlsp." .. vim.fn.fnamemodify(file, ":t:r")
     end
+
     table.insert(M.local_patterns, { pattern = ".nlsp-settings/*.json", key = nlsp_key })
     table.insert(M.global_patterns, { pattern = "nlsp-settings/*.json", key = nlsp_key })
   end
