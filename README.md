@@ -1,6 +1,6 @@
-# 🗃️ Lsp Settings
+# 🗃️ settings.nvim
 
-**Workspace** is a lua plugin to manage global and workspace-local Neovim
+**Settings.nvim** is a lua plugin to manage global and workspace-local Neovim
 settings.
 
 ## ✅ Todo
