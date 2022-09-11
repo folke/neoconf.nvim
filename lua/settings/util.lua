@@ -37,11 +37,12 @@ function M.on_config(opts)
 
   lsputil.on_setup = hook(lsputil.on_setup, function(initial_config)
     if opts.on_config then
-      initial_config.on_new_config = hook(initial_config.on_new_config,
+      initial_config.on_new_config = hook(
+        initial_config.on_new_config,
         M.protect(function(config, root_dir)
           opts.on_config(config, root_dir, initial_config)
-        end,
-          "Failed to run client.before_init" .. (opts.name and (" for " .. opts.name) or "")))
+        end, "Failed to run client.before_init" .. (opts.name and (" for " .. opts.name) or ""))
+      )
     end
     if opts.root_dir then
       local root_dir = initial_config.root_dir
