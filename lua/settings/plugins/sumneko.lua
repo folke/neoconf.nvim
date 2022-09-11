@@ -4,12 +4,10 @@ local Config = require("settings.config")
 local M = {}
 
 function M.setup()
-  local lsputil = require("lspconfig.util")
-  local hook = lsputil.add_hook_after
-
-  lsputil.on_setup = hook(lsputil.on_setup, function(config)
-    config.on_new_config = hook(config.on_new_config, Util.protect(M.on_new_config, "Failed to setup sumneko_lua"))
-  end)
+  Util.on_config({
+    name = "settings/plugins/sumneko",
+    on_config = M.on_new_config,
+  })
 end
 
 function M.on_new_config(config, root_dir)

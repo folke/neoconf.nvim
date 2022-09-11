@@ -5,18 +5,13 @@ local Settings = require("settings.settings")
 local M = {}
 
 function M.setup()
-  local lsputil = require("lspconfig.util")
-  local hook = lsputil.add_hook_before
   local settings_root = Util.root_pattern(unpack(Util.file_patterns({ global = false })))
 
-
-  lsputil.on_setup = hook(lsputil.on_setup, function(config)
-    config.on_new_config = hook(config.on_new_config, Util.protect(M.on_new_config, "Failed to setup lspconfig"))
-    local root_dir = config.root_dir
-    config.root_dir = function(...)
-      return settings_root(...) or root_dir(...)
-    end
-  end)
+  Util.on_config({
+    name = "settings/plugins/lspconfig",
+    on_config = M.on_new_config,
+    root_dir = settings_root
+  })
 end
 
 function M.on_new_config(config, root_dir)
