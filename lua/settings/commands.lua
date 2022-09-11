@@ -13,10 +13,10 @@ function M.setup()
       require("settings.view").show_settings()
     end,
     ["local"] = function()
-      M.edit({ ["local"] = true })
+      M.edit({ ["global"] = false })
     end,
     global = function()
-      M.edit({ global = true })
+      M.edit({ ["local"] = false })
     end,
   }
 
@@ -34,7 +34,10 @@ function M.setup()
       if line:match("^Settings %w+ ") then
         return {}
       end
-      return vim.tbl_keys(commands)
+      local prefix = line:match("^Settings (%w*)")
+      return vim.tbl_filter(function(key)
+        return key:find(prefix) == 1
+      end, vim.tbl_keys(commands))
     end,
   })
 
@@ -53,15 +56,18 @@ end
 
 function M.get_files(opts)
   opts = opts or {}
+  opts["local"] = opts["local"] == nil and true or opts["local"]
+  opts["global"] = opts["global"] == nil and true or opts["global"]
+
   local items = {}
 
-  if not opts["local"] then
+  if opts["global"] then
     Util.for_each_global(function(file)
       table.insert(items, { file = file, is_global = true })
     end)
   end
 
-  if not opts.global then
+  if opts["local"] then
     local root_dir = require("settings.workspace").find_root({ lsp = true, file = opts.file })
     Util.for_each_local(function(f)
       table.insert(items, { file = f })
@@ -74,10 +80,10 @@ function M.get_files(opts)
     if Util.exists(item.file) then
       return true
     end
-    if not item.is_global and item.file:find(Config.options.local_settings) then
+    if not item.is_global and item.file:find("/" .. Config.options.local_settings) then
       return true
     end
-    if item.is_global and item.file:find(Config.options.global_settings) then
+    if item.is_global and item.file:find("/" .. Config.options.global_settings) then
       return true
     end
   end, items)
@@ -88,15 +94,9 @@ function M.edit(opts)
 
   local files = M.get_files(opts)
 
-  for _, item in ipairs(files) do
-    if opts["local"] and not item.is_global and Util.exists(item.file) then
-      vim.cmd("edit " .. item.file)
-      return
-    end
-    if opts["global"] and item.is_global and Util.exists(item.file) then
-      vim.cmd("edit " .. item.file)
-      return
-    end
+  if #files == 1 then
+    vim.cmd("edit " .. files[1].file)
+    return
   end
 
   table.sort(files, function(a, b)
