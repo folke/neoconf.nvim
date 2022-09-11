@@ -72,7 +72,7 @@ function M.json_decode(json)
   end
   ---@diagnostic disable-next-line: missing-parameter
   json = require("settings.json").json_strip_comments(json)
-  return vim.fn.json_decode(json)
+  return vim.json.decode(json)
 end
 
 function M.fqn(fname)
@@ -167,6 +167,18 @@ function M.fetch(url)
   local fd = io.popen(string.format("curl -s -k %q", url))
   if not fd then
     error(("Could not download %s"):format(url))
+  end
+  local ret = fd:read("*a")
+  fd:close()
+  return ret
+end
+
+function M.json_format(obj)
+  local tmp = os.tmpname()
+  M.write_file(tmp, vim.json.encode(obj))
+  local fd = io.popen("jq -S < " .. tmp)
+  if not fd then
+    error("Could not format json")
   end
   local ret = fd:read("*a")
   fd:close()
