@@ -18,6 +18,9 @@ function M.setup()
     global = function()
       M.edit({ ["local"] = false })
     end,
+    checkhealth = function()
+      vim.cmd([[checkhealth settings]])
+    end,
   }
 
   vim.api.nvim_create_user_command("Settings", function(args)
