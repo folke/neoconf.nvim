@@ -20,6 +20,7 @@ jobs:
         uses: kdheepak/panvimdoc@main
         with:
           vimdoc: settings.nvim
+          demojify: true
       - name: Build
         run: |
           nvim --headless -c "luafile ./lua/settings/build.lua" -c "q"
