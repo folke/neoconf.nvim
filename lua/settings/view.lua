@@ -5,8 +5,8 @@ local M = {}
 ---@param str string
 function M.show(str)
   local buf = vim.api.nvim_create_buf(false, false)
-  local vpad = 4
-  local hpad = 10
+  local vpad = 6
+  local hpad = 20
 
   local lines = {}
   for s in str:gmatch("([^\n]*)\n?") do
@@ -15,15 +15,18 @@ function M.show(str)
 
   vim.api.nvim_buf_set_lines(buf, 0, -1, true, lines)
 
-  local win = vim.api.nvim_open_win(buf, true, {
+  local opts = {
     relative = "editor",
-    width = vim.o.columns - hpad * 2,
-    height = vim.o.lines - vpad * 2,
-    row = vpad,
-    col = hpad,
+    width = math.min(vim.o.columns - hpad * 2, 150),
+    height = math.min(vim.o.lines - vpad * 2, 50),
     style = "minimal",
-    border = "solid",
-  })
+    border = "single",
+  }
+
+  opts.row = (vim.o.lines - opts.height) / 2
+  opts.col = (vim.o.columns - opts.width) / 2
+
+  local win = vim.api.nvim_open_win(buf, true, opts)
 
   vim.api.nvim_buf_set_option(buf, "filetype", "markdown")
   vim.api.nvim_buf_set_option(buf, "modifiable", false)
