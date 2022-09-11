@@ -2,7 +2,9 @@ local M = {}
 
 ---@class Config
 M.defaults = {
+  -- name of the local settings files
   local_settings = ".nvim.settings.json",
+  -- name of the global settings file in your Neovim config directory
   global_settings = "settings.json",
   -- import existing settinsg from other plugins
   import = {
