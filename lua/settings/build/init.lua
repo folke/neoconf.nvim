@@ -49,9 +49,9 @@ function M.update_schemas()
   for name, s in pairs(Schema.get_lsp_schemas()) do
     print(("Generating schema for %s"):format(name))
 
-    if not (util.exists(s.settings_file) and os.time() - util.mtime(s.settings_file) < 3600) then
+    if not util.exists(s.settings_file) then
       local schema = M.get_schema(s)
-      util.write_file(s.settings_file, vim.fn.json_encode(schema))
+      util.write_file(s.settings_file, util.json_format(schema))
     end
   end
 end
