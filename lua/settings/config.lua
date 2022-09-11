@@ -4,19 +4,30 @@ local M = {}
 M.defaults = {
   local_settings = ".nvim.settings.json",
   global_settings = "settings.json",
+  -- import existing settinsg from other plugins
   import = {
-    vscode = true,
-    coc = true,
-    nlsp = true,
+    vscode = true, -- local .vscode/settings.json
+    coc = true, -- global/local coc-settings.json
+    nlsp = true, -- nlsp-settings.nvim json settings
   },
+  -- send new configuration to lsp clients when changing json settings
+  live_reload = true,
+  -- set the filetype to jsonc for settings files, so you can use comments
+  -- make sure you have the jsonc treesitter parser installed!
+  filetype_jsonc = true,
   plugins = {
+    -- configures lsp clients with settings in the following order:
+    -- - lua settings passed in lspconfig setup
+    -- - global json settings
+    -- - local json settings
     lspconfig = {
       enabled = true,
     },
-    -- configures jsonls to get completion in .nvim.settings files
+    -- configures jsonls to get completion in .nvim.settings.json files
     jsonls = {
       enabled = true,
-      configured_servers_only = true, -- only show completion in json settings for configured lsp servers
+      -- only show completion in json settings for configured lsp servers
+      configured_servers_only = true,
     },
     -- configures sumneko_lua to get completion of lspconfig server settings
     sumneko_lua = {

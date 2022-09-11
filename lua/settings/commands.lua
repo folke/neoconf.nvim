@@ -41,17 +41,30 @@ function M.setup()
     end,
   })
 
-  local group = vim.api.nvim_create_augroup("Settings", { clear = true })
-  vim.api.nvim_create_autocmd("BufWritePost", {
-    pattern = Util.file_patterns(),
-    group = group,
-    callback = function(event)
-      local fname = Util.fqn(event.match)
-      -- clear cached settings for this file
-      Settings.clear(fname)
-      require("settings.plugins").fire("on_update", fname)
-    end,
-  })
+  if Config.options.live_reload then
+    local group = vim.api.nvim_create_augroup("Settings", { clear = true })
+    vim.api.nvim_create_autocmd("BufWritePost", {
+      pattern = Util.file_patterns(),
+      group = group,
+      callback = function(event)
+        local fname = Util.fqn(event.match)
+        -- clear cached settings for this file
+        Settings.clear(fname)
+        require("settings.plugins").fire("on_update", fname)
+      end,
+    })
+  end
+
+  if Config.options.filetype_jsonc then
+    local jsonc = {}
+    for _, p in ipairs(Util.file_patterns()) do
+      jsonc[p] = "jsonc"
+    end
+
+    vim.filetype.add({
+      pattern = jsonc,
+    })
+  end
 end
 
 function M.get_files(opts)
