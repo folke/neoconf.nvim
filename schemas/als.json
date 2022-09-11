@@ -1,1 +1,1 @@
-{"properties": [], "description": "A Language Server providing Ada and SPARK support in Visual Studio Code", "$schema": "http://json-schema.org/draft-07/schema#"}
+{"properties":[],"$schema":"http:\/\/json-schema.org\/draft-07\/schema#","description":"A Language Server providing Ada and SPARK support in Visual Studio Code"}
