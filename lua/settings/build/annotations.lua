@@ -50,7 +50,7 @@ function M.get_class(name)
   if name == M.class_name then
     return name
   end
-  local ret = { M.class_name }
+  local ret = { "_", M.class_name }
   for word in string.gmatch(name, "([^_]+)") do
     table.insert(ret, word:sub(1, 1):upper() .. word:sub(2))
   end
@@ -118,7 +118,7 @@ end
 function M.build_annotations(name)
   local file = util.path("schemas/" .. name .. ".json")
   local json = util.json_decode(util.read_file(file)) or {}
-  M.class_name = "Settings." .. name
+  M.class_name = "lspconfig.settings." .. name
 
   local schema = require("settings.settings").new()
   for key, prop in pairs(json.properties) do
@@ -132,7 +132,7 @@ end
 function M.build_lspconfig()
   local str = [[---@meta
 
----@class LspConfigOptions
+---@class _.lspconfig.options
 ---@field root_dir fun(filename, bufnr): string|nil
 ---@field name string
 ---@field filetypes string[] | nil
@@ -155,19 +155,24 @@ local lspconfig
     str = str
       .. ([[
 
----@class LspConfigOptions.%s: LspConfigOptions
----@field settings Settings.%s
+---@class lspconfig.options.%s: _.lspconfig.options
+---@field settings lspconfig.settings.%s
 
 lspconfig.%s = {
-  ---@param options LspConfigOptions.%s
+  ---@param options lspconfig.options.%s
   setup = function(options) end,
 }
-]]):format(name, name, name, name)
+]]     ):format(name, name, name, name)
   end
 
-  str = str .. "\n---@class LspConfigSettings\n"
+  str = str .. "\n---@class lspconfig.options\n"
   for name, _ in pairs(index) do
-    str = str .. ("---@field %s LspConfigOptions.%s\n"):format(name, name)
+    str = str .. ("---@field %s lspconfig.options.%s\n"):format(name, name)
+  end
+
+  str = str .. "\n---@class lspconfig.settings\n"
+  for name, _ in pairs(index) do
+    str = str .. ("---@field %s lspconfig.settings.%s\n"):format(name, name)
   end
 
   str = str .. "\n\n return lspconfig"
