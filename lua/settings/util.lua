@@ -30,20 +30,22 @@ function M.find_git_ancestor(...)
   return require("lspconfig.util").find_git_ancestor(...)
 end
 
----@param opts { on_config: fun(config, root_dir:string), root_dir: fun(), name: string }
+---@param opts { on_config: fun(config, root_dir:string, original_config), root_dir: fun(), name: string }
 function M.on_config(opts)
   local lsputil = require("lspconfig.util")
   local hook = lsputil.add_hook_after
 
-  lsputil.on_setup = hook(lsputil.on_setup, function(config)
+  lsputil.on_setup = hook(lsputil.on_setup, function(initial_config)
     if opts.on_config then
-      config.on_new_config = hook(config.on_new_config,
-        M.protect(opts.on_config,
+      initial_config.on_new_config = hook(initial_config.on_new_config,
+        M.protect(function(config, root_dir)
+          opts.on_config(config, root_dir, initial_config)
+        end,
           "Failed to run client.before_init" .. (opts.name and (" for " .. opts.name) or "")))
     end
     if opts.root_dir then
-      local root_dir = config.root_dir
-      config.root_dir = function(...)
+      local root_dir = initial_config.root_dir
+      initial_config.root_dir = function(...)
         return opts.root_dir(...) or root_dir(...)
       end
     end

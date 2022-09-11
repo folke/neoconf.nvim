@@ -14,18 +14,14 @@ function M.setup()
   })
 end
 
-function M.on_new_config(config, root_dir)
+function M.on_new_config(config, root_dir, original_config)
   local options = Config.get({ file = root_dir })
   if not options.plugins.lspconfig.enabled then
     return
   end
 
-  -- restore/backup current lsp settings
-  if config._lsp_settings then
-    config.settings = vim.deepcopy(config._lsp_settings)
-  else
-    config._lsp_settings = vim.deepcopy(config.settings)
-  end
+  -- backup original lsp config
+  config.original_config = vim.deepcopy(original_config)
 
   root_dir = require("settings.workspace").find_root({ file = root_dir })
 
@@ -53,15 +49,28 @@ function M.on_update(fname)
 
     -- reload this client if the global file changed, or its root dir equals the local one
     if is_global or Util.has_file(settings_root, client.config.root_dir) then
-      local old = vim.deepcopy(client.config.settings)
+      local old_config = vim.deepcopy(client.config.settings)
+
+      -- retrieve new settings only
+      local new_config = vim.deepcopy(client.config.original_config)
+
+      local _, document_config = pcall(function()
+        return require("lspconfig")[client.name].document_config
+      end)
 
       -- re-apply config from any other plugins that were overriding on_new_config
+      if document_config and document_config.on_new_config then
+        pcall(document_config.on_new_config, new_config, client.config.root_dir)
+      end
       if client.config.on_new_config then
-        pcall(client.config.on_new_config, client.config, client.config.root_dir)
+        pcall(client.config.on_new_config, new_config, client.config.root_dir)
       end
 
+      -- only keep the settings
+      client.config.settings = new_config.settings
+
       -- only send update when confiuration actually changed
-      if not vim.deep_equal(old, client.config.settings) then
+      if not vim.deep_equal(old_config, client.config.settings) then
         -- notify the lsp server of thr new config
         local ok = pcall(client.notify, "workspace/didChangeConfiguration", {
           settings = client.config.settings,
