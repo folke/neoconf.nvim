@@ -1,6 +1,5 @@
 local Util = require("settings.util")
 local Settings = require("settings.settings")
-local lsputil = require("lspconfig.util")
 
 local M = {}
 
@@ -17,7 +16,7 @@ function M.find_root(opts)
   local fname = Util.fqn(opts.file or vim.api.nvim_buf_get_name(buf))
 
   -- find the root dir that contains a local settings file
-  local root_dir = lsputil.root_pattern(unpack(Util.file_patterns({ global = false })))(fname)
+  local root_dir = Util.root_pattern(unpack(Util.file_patterns({ global = false })))(fname)
 
   -- fallback to lsp root_dir detection if in options
   if not root_dir and opts.lsp then
@@ -28,7 +27,7 @@ function M.find_root(opts)
   end
 
   -- fallback to git ancestor or cwd
-  return lsputil.find_git_ancestor(fname) or vim.fn.getcwd()
+  return Util.find_git_ancestor(fname) or vim.fn.getcwd()
 end
 
 ---@class WorkspaceOptions: WorkspaceFindOptions

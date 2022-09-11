@@ -22,6 +22,14 @@ function M.merge(...)
   return ret
 end
 
+function M.root_pattern(...)
+  return require("lspconfig.util").root_pattern(...)
+end
+
+function M.find_git_ancestor(...)
+  return require("lspconfig.util").find_git_ancestor(...)
+end
+
 function M.file_patterns(opts)
   opts = M.merge({ ["local"] = true, ["global"] = true }, opts)
   local ret = {}
