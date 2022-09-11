@@ -92,7 +92,10 @@ function M.process_object(name, prop)
   M.add_desc(lines, prop)
   table.insert(lines, "---@class " .. M.get_class(name))
   if prop.properties then
-    for field, child in pairs(prop.properties) do
+    local props = vim.tbl_keys(prop.properties)
+    table.sort(props)
+    for _, field in ipairs(props) do
+      local child = prop.properties[field]
       M.add_desc(lines, child)
 
       if child.type == "object" and child.properties then
@@ -150,8 +153,10 @@ local lspconfig
 
 ]]
 
-  local index = Schema.get_lsp_schemas()
-  for name, _ in pairs(index) do
+  local index = vim.tbl_keys(Schema.get_lsp_schemas())
+  table.sort(index)
+
+  for _, name in ipairs(index) do
     str = str
       .. ([[
 
@@ -166,12 +171,12 @@ lspconfig.%s = {
   end
 
   str = str .. "\n---@class lspconfig.options\n"
-  for name, _ in pairs(index) do
+  for _, name in ipairs(index) do
     str = str .. ("---@field %s lspconfig.options.%s\n"):format(name, name)
   end
 
   str = str .. "\n---@class lspconfig.settings\n"
-  for name, _ in pairs(index) do
+  for _, name, _ in ipairs(index) do
     str = str .. ("---@field %s lspconfig.settings.%s\n"):format(name, name)
   end
 
@@ -181,8 +186,9 @@ end
 
 function M.build()
   M.lines = { "---@meta\n" }
-  local index = Schema.get_lsp_schemas()
-  for name, _ in pairs(index) do
+  local index = vim.tbl_keys(Schema.get_lsp_schemas())
+  table.sort(index)
+  for _, name in ipairs(index) do
     M.build_annotations(name)
   end
 
