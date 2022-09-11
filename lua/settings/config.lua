@@ -3,7 +3,7 @@ local M = {}
 ---@class Config
 M.defaults = {
   local_settings = ".nvim.settings.json",
-  global_settings = "nvim.settings.json",
+  global_settings = "settings.json",
   import = {
     vscode = true,
     coc = true,
