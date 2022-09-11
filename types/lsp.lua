@@ -3578,7 +3578,7 @@
 ---@field java _.lspconfig.settings.jdtls.Java
 
 ---@class _.lspconfig.settings.jsonls.ColorDecorators
--- %json.colorDecorators.enable.desc%
+-- Enables or disables color decorators
 -- 
 -- ```lua
 -- default = true
@@ -3586,17 +3586,17 @@
 ---@field enable boolean
 
 ---@class _.lspconfig.settings.jsonls.Format
--- %json.format.enable.desc%
+-- Enable/disable default JSON formatter
 -- 
 -- ```lua
 -- default = true
 -- ```
 ---@field enable boolean
--- %json.format.keepLines.desc%
+-- Keep all existing new lines when formatting.
 ---@field keepLines boolean
 
 ---@class _.lspconfig.settings.jsonls.SchemaDownload
--- %json.enableSchemaDownload.desc%
+-- When enabled, JSON schemas can be fetched from http and https locations.
 -- 
 -- ```lua
 -- default = true
@@ -3604,7 +3604,7 @@
 ---@field enable boolean
 
 ---@class _.lspconfig.settings.jsonls.Trace
--- %json.tracing.desc%
+-- Traces the communication between VS Code and the JSON language server.
 -- 
 -- ```lua
 -- default = "off"
@@ -3612,7 +3612,7 @@
 ---@field server "off" | "messages" | "verbose"
 
 ---@class _.lspconfig.settings.jsonls.Validate
--- %json.validate.enable.desc%
+-- Enable/disable JSON validation.
 -- 
 -- ```lua
 -- default = true
@@ -3622,14 +3622,14 @@
 ---@class _.lspconfig.settings.jsonls.Json
 ---@field colorDecorators _.lspconfig.settings.jsonls.ColorDecorators
 ---@field format _.lspconfig.settings.jsonls.Format
--- %json.maxItemsComputed.desc%
+-- The maximum number of outline symbols and folding regions computed (limited for performance reasons).
 -- 
 -- ```lua
 -- default = 5000
 -- ```
 ---@field maxItemsComputed number
 ---@field schemaDownload _.lspconfig.settings.jsonls.SchemaDownload
--- %json.schemas.desc%
+-- Associate schemas to JSON files in the current project.
 ---@field schemas object[]
 ---@field trace _.lspconfig.settings.jsonls.Trace
 ---@field validate _.lspconfig.settings.jsonls.Validate

@@ -5,37 +5,37 @@
     "json.colorDecorators.enable": {
       "default": true,
       "deprecationMessage": "%json.colorDecorators.enable.deprecationMessage%",
-      "description": "%json.colorDecorators.enable.desc%",
+      "description": "Enables or disables color decorators",
       "scope": "window",
       "type": "boolean"
     },
     "json.format.enable": {
       "default": true,
-      "description": "%json.format.enable.desc%",
+      "description": "Enable/disable default JSON formatter",
       "scope": "window",
       "type": "boolean"
     },
     "json.format.keepLines": {
       "default": false,
-      "description": "%json.format.keepLines.desc%",
+      "description": "Keep all existing new lines when formatting.",
       "scope": "window",
       "type": "boolean"
     },
     "json.maxItemsComputed": {
       "default": 5000,
-      "description": "%json.maxItemsComputed.desc%",
+      "description": "The maximum number of outline symbols and folding regions computed (limited for performance reasons).",
       "type": "number"
     },
     "json.schemaDownload.enable": {
       "default": true,
-      "description": "%json.enableSchemaDownload.desc%",
+      "description": "When enabled, JSON schemas can be fetched from http and https locations.",
       "tags": [
         "usesOnlineServices"
       ],
       "type": "boolean"
     },
     "json.schemas": {
-      "description": "%json.schemas.desc%",
+      "description": "Associate schemas to JSON files in the current project.",
       "items": {
         "default": {
           "fileMatch": [
@@ -45,10 +45,10 @@
         },
         "properties": {
           "fileMatch": {
-            "description": "%json.schemas.fileMatch.desc%",
+            "description": "An array of file patterns to match against when resolving JSON files to schemas. `*` can be used as a wildcard. Exclusion patterns can also be defined and start with '!'. A file matches when there is at least one matching pattern and the last matching pattern is not an exclusion pattern.",
             "items": {
               "default": "MyFile.json",
-              "description": "%json.schemas.fileMatch.item.desc%",
+              "description": "A file pattern that can contain '*' to match against when resolving JSON files to schemas.",
               "type": "string"
             },
             "minItems": 1,
@@ -56,11 +56,11 @@
           },
           "schema": {
             "$ref": "http://json-schema.org/draft-07/schema#",
-            "description": "%json.schemas.schema.desc%"
+            "description": "The schema definition for the given URL. The schema only needs to be provided to avoid accesses to the schema URL."
           },
           "url": {
             "default": "/user.schema.json",
-            "description": "%json.schemas.url.desc%",
+            "description": "A URL to a schema or a relative path to a schema in the current directory",
             "type": "string"
           }
         },
@@ -71,7 +71,7 @@
     },
     "json.trace.server": {
       "default": "off",
-      "description": "%json.tracing.desc%",
+      "description": "Traces the communication between VS Code and the JSON language server.",
       "enum": [
         "off",
         "messages",
@@ -82,7 +82,7 @@
     },
     "json.validate.enable": {
       "default": true,
-      "description": "%json.validate.enable.desc%",
+      "description": "Enable/disable JSON validation.",
       "scope": "window",
       "type": "boolean"
     }
