@@ -99,18 +99,15 @@ function M.edit(opts)
     return
   end
 
-  table.sort(files, function(a, b)
-    local aa = Util.exists(a.file) and 100 or 0
-    local bb = Util.exists(b.file) and 100 or 0
-
-    if not a.is_global then
-      aa = aa + 10
-    end
-    if not b.is_global then
-      bb = bb + 10
-    end
-    return aa > bb
-  end)
+  local edit = {}
+  local create = {}
+  for _, item in ipairs(files) do
+    local l = Util.exists(item.file) and edit or create
+    table.insert(l, 1, item)
+  end
+  files = {}
+  vim.list_extend(files, edit)
+  vim.list_extend(files, create)
 
   vim.ui.select(files, {
     prompt = "Select settings file to create/edit",
