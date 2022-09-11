@@ -1,0 +1,28 @@
+name: CI
+on:
+  workflow_dispatch:
+  push:
+  schedule:
+    # Run this every day
+    - cron: '0 * * * *'
+
+jobs:
+  update-docs:
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Install dependencies
+        run: |
+          sudo add-apt-repository -y ppa:neovim-ppa/unstable
+          sudo apt-get -y update
+          sudo apt-get -y install doxygen luajit neovim python3-msgpack
+      - uses: actions/checkout@v3
+      - name: Build
+        run: |
+          nvim --headless -c "luafile ./lua/settings/build.lua" -c "q"
+      - name: Push changes
+        uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: "chore: auto-generate lsp schemas and lua annotations"
+          commit_user_name: "github-actions[bot]"
+          commit_user_email: "github-actions[bot]@users.noreply.github.com"
+          commit_author: "github-actions[bot] <github-actions[bot]@users.noreply.github.com>"
