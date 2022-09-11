@@ -105,12 +105,10 @@ function M.edit(opts)
     local l = Util.exists(item.file) and edit or create
     table.insert(l, 1, item)
   end
-  files = {}
-  vim.list_extend(files, edit)
-  vim.list_extend(files, create)
+  files = vim.list_extend(edit, create)
 
   vim.ui.select(files, {
-    prompt = "Select settings file to create/edit",
+    prompt = "Select the settings file to create/edit",
     format_item = function(item)
       local line = Util.exists(item.file) and "  edit " or "  create "
       line = line .. vim.fn.fnamemodify(item.file, ":~")
