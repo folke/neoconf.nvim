@@ -101,9 +101,7 @@ function M.json_decode(json)
   if json == "" then
     json = "{}"
   end
-  ---@diagnostic disable-next-line: missing-parameter
-  json = require("settings.json").json_strip_comments(json)
-  return vim.json.decode(json)
+  return require("settings.json.jsonc").decode_jsonc(json)
 end
 
 function M.fqn(fname)
