@@ -54,9 +54,7 @@ function M.on_update(fname)
       -- retrieve new settings only
       local new_config = vim.deepcopy(client.config.original_config or {})
 
-      local available = require("lspconfig.util").available_servers()
-      available = vim.tbl_contains(available, client.name)
-      local document_config = available and require("lspconfig")[client.name].document_config
+      local document_config = Util.has_lspconfig(client.name) and require("lspconfig")[client.name].document_config
 
       -- re-apply config from any other plugins that were overriding on_new_config
       if document_config and document_config.on_new_config then

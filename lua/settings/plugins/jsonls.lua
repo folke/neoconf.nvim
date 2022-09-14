@@ -23,7 +23,7 @@ function M.on_new_config(config, root_dir)
 
     local properties = {}
     for name, schema in pairs(Schema.get_lsp_schemas()) do
-      if options.plugins.jsonls.configured_servers_only == false or require("lspconfig.configs")[name] then
+      if options.plugins.jsonls.configured_servers_only == false or Util.has_lspconfig(name) then
         properties[name] = {
           ["$ref"] = "file://" .. schema.settings_file,
         }
