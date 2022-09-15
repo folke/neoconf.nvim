@@ -12,6 +12,9 @@ end
 
 function M.check()
   local util = require("settings.util")
+  if vim.fn.has("nvim-0.7.2") == 0 then
+    util.error("**settings.nvim** requires Neovim >= 0.7.2")
+  end
   local ok, lsputil = pcall(require, "lspconfig.util")
   if ok then
     if #lsputil.available_servers() == 0 then
