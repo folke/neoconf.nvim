@@ -1,15 +1,16 @@
-# 🗃️ settings.nvim
+# 💼 settings.nvim
 
 **Settings.nvim** is a lua plugin to manage global and workspace-local Neovim
 settings.
 
 ## ✅ Todo
 
+- [ ] new name since people seem to use settings as a module in their config (nvim-settings??)
+- [ ] split off lsp-config as separate plugin?
 - [x] naming for generated emmylua
-- [ ] generate list of supported lsp servers
+- [x] generate list of supported lsp servers
 - [x] name of plugin??
 - [x] importers?
-
 - [x] keymaps
 - [x] json => jsonc for settings files
 - [x] commands to edit json settings files
@@ -123,6 +124,8 @@ require("lspconfig").sumneko_lua.setup(...)
 ### Completion and Validation for your `Lua` Settings Files
 
 ### Importing Your Existing Settings
+
+## 📦 API
 
 ## ⭐ Acknowledgment
 
