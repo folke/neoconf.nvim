@@ -153,7 +153,7 @@ local lspconfig
 
 ]]
 
-  local index = vim.tbl_keys(Schema.get_lsp_schemas())
+  local index = vim.tbl_keys(require("nvim-settings.build.schemas").index())
   table.sort(index)
 
   for _, name in ipairs(index) do
@@ -186,7 +186,7 @@ end
 
 function M.build()
   M.lines = { "---@meta\n" }
-  local index = vim.tbl_keys(Schema.get_lsp_schemas())
+  local index = vim.tbl_keys(require("nvim-settings.build.schemas").index())
   table.sort(index)
   for _, name in ipairs(index) do
     M.build_annotations(name)

@@ -22,7 +22,7 @@ function M.on_new_config(config, root_dir)
     local schemas = config.settings.json and config.settings.json.schemas or {}
 
     local properties = {}
-    for name, schema in pairs(Schema.get_lsp_schemas()) do
+    for name, schema in pairs(require("nvim-settings.build.schemas").index()) do
       if options.plugins.jsonls.configured_servers_only == false or Util.has_lspconfig(name) then
         properties[name] = {
           ["$ref"] = "file://" .. schema.settings_file,

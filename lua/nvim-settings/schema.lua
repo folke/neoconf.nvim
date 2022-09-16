@@ -1,67 +1,35 @@
 local Util = require("nvim-settings.util")
+local Settings = require("nvim-settings.settings")
 
 local M = {}
 
----@class LspSchema
----@field package_url string url of the package.json of the LSP server
----@field settings_file string file of the settings json schema of the LSP server
----@field build fun(props: table)
-
---- @type table<string, LspSchema>
-M.overrides = {
-  sumneko_lua = {
-    build = function(props)
-      M.translate(props, "https://raw.githubusercontent.com/sumneko/vscode-lua/master/package.nls.json")
-    end,
-  },
-  jsonls = {
-    build = function(props)
-      M.translate(
-        props,
-        "https://raw.githubusercontent.com/microsoft/vscode/main/extensions/json-language-features/package.nls.json"
-      )
-    end,
-  },
-}
-
-function M.translate(props, nls_url)
-  local nls = Util.json_decode(Util.fetch(nls_url)) or {}
-
-  local function translate(desc)
-    return nls[desc:gsub("%%", "")] or desc
+local function _sub_schema(schema, key)
+  if schema.properties[key] then
+    return schema.properties[key]
   end
 
-  local function fixdoc(node)
-    if type(node) == "table" then
-      for k, v in pairs(node) do
-        if k == "description" or k == "markdownDescription" then
-          node[k] = translate(v)
+  for _, of in pairs({ "anyOf", "oneOf", "allOf" }) do
+    if schema[of] then
+      for _, o in pairs(schema[of]) do
+        local ret = M.get_sub_schema(o, key)
+        if ret then
+          return ret
         end
-        if k == "markdownEnumDescriptions" then
-          for i, d in ipairs(v) do
-            v[i] = translate(d)
-          end
-        end
-        fixdoc(v)
       end
     end
   end
-  fixdoc(props)
 end
 
----@return table<string, LspSchema>
-function M.get_lsp_schemas()
-  ---@type table<string, LspSchema>
-  local ret = {}
-  for server, package_json in pairs(require("nvim-settings.build.lsp")) do
-    ret[server] = { package_url = package_json }
+-- get a subschema based on a dotted key like `lspconfig.clangd`
+function M.get_sub_schema(schema, key)
+  local path = Settings.path(key)
+  local ret = schema
+  for _, p in pairs(path) do
+    ret = _sub_schema(ret, p)
+    if not ret then
+      return
+    end
   end
-  ret = vim.tbl_deep_extend("force", ret, M.overrides)
-
-  for name, schema in pairs(ret) do
-    schema.settings_file = Util.path("schemas/" .. name .. ".json")
-  end
-
   return ret
 end
 
