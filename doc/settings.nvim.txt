@@ -11,6 +11,7 @@ Table of Contents                            *settings.nvim-table-of-contents*
   - Setup                                                |settings.nvim-setup|
   - Configuration                                |settings.nvim-configuration|
   - Usage                                                |settings.nvim-usage|
+  - API                                                    |settings.nvim-api|
   - Acknowledgment                              |settings.nvim-acknowledgment|
   - Supported Language Servers      |settings.nvim-supported-language-servers|
 
@@ -23,6 +24,8 @@ settings.
 TODO                                                      *settings.nvim-todo*
 
 
+- new name since people seem to use settings as a module in their config (nvim-settings??)
+- split off lsp-config as separate plugin?
 - naming for generated emmylua
 - generate list of supported lsp servers
 - name of plugin??
@@ -148,6 +151,8 @@ COMPLETION AND VALIDATION FOR YOUR `JSON` SETTINGS FILES ~
 COMPLETION AND VALIDATION FOR YOUR `LUA` SETTINGS FILES ~
 
 IMPORTING YOUR EXISTING SETTINGS ~
+
+API                                                        *settings.nvim-api*
 
 ACKNOWLEDGMENT                                  *settings.nvim-acknowledgment*
 
