@@ -82,9 +82,9 @@ function M.path(str)
 end
 
 function M.read_file(file)
-  local fd = io.open(file)
+  local fd = io.open(file, "r")
   if not fd then
-    error(("Could not open file %s for writing"):format(file))
+    error(("Could not open file %s for reading"):format(file))
   end
   local data = fd:read("*a")
   fd:close()
@@ -214,6 +214,9 @@ function M.json_format(obj)
     error("Could not format json")
   end
   local ret = fd:read("*a")
+  if ret == "" then
+    error("Could not format json")
+  end
   fd:close()
   return ret
 end

@@ -117,7 +117,7 @@ function M.update_schemas()
 end
 
 function M.build()
-  -- M.clean()
+  M.clean()
   M.update_index()
   M.update_schemas()
 end
