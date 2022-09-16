@@ -230,7 +230,7 @@ end
 
 function M.notify(msg, level)
   vim.notify(msg, level, {
-    title = "Settings.nvim",
+    title = "settings.nvim",
     on_open = function(win)
       vim.api.nvim_win_set_option(win, "conceallevel", 3)
       local buf = vim.api.nvim_win_get_buf(win)
