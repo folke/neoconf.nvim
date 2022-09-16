@@ -9,7 +9,7 @@
       "type": "boolean"
     },
     "spectral.rulesetFile": {
-      "description": "Location of the ruleset file to use when validating. If omitted, the default is a .spectral.yml/.spectral.json in the same folder as the document being validated. Paths are relative to the workspace.",
+      "description": "Location of the ruleset file to use when validating. If omitted, the default is a .spectral.yml/.spectral.json in the same folder as the document being validated. Paths are relative to the workspace. This can also be a remote HTTP url.",
       "scope": "resource",
       "type": "string"
     },

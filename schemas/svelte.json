@@ -240,6 +240,12 @@
       "title": "Svelte: Hover",
       "type": "boolean"
     },
+    "svelte.plugin.svelte.note-new-transformation": {
+      "default": true,
+      "description": "There's a new transformation for improved intellisense which is now turned on by default. This note notifies you about it.",
+      "title": "Show a note about the new transformation",
+      "type": "boolean"
+    },
     "svelte.plugin.svelte.rename.enable": {
       "default": true,
       "description": "Enable rename/move Svelte files functionality",
@@ -253,7 +259,7 @@
       "type": "boolean"
     },
     "svelte.plugin.svelte.useNewTransformation": {
-      "default": false,
+      "default": true,
       "description": "Svelte files need to be transformed to something that TypeScript understands for intellisense. Version 2.0 of this transformation can be enabled with this setting. It will be the default, soon.",
       "title": "Use a new transformation for intellisense",
       "type": "boolean"

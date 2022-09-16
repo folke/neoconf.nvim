@@ -48,7 +48,8 @@
       "default": [
         "**/.git/**",
         "**/node_modules/**",
-        "**/.hg/**"
+        "**/.hg/**",
+        "**/.svn/**"
       ],
       "items": {
         "type": "string"

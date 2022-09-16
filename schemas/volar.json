@@ -226,6 +226,10 @@
         "null"
       ]
     },
+    "volar.vueserver.petiteVue.processHtmlFile": {
+      "default": false,
+      "type": "boolean"
+    },
     "volar.vueserver.textDocumentSync": {
       "default": "incremental",
       "description": "Defines how the host (editor) should sync document changes to the language server. SFC incremental parser only working when config \"incremental\".",
@@ -244,6 +248,10 @@
     "volar.vueserver.useSecondServer": {
       "default": false,
       "description": "Use second server to progress heavy diagnostic works, the main server workhorse computing intellisense, operations such as auto-complete can respond faster. Note that this will lead to more memory usage.",
+      "type": "boolean"
+    },
+    "volar.vueserver.vitePress.processMdFile": {
+      "default": false,
       "type": "boolean"
     }
   }
