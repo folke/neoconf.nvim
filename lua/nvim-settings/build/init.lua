@@ -1,5 +1,5 @@
-local util = require("settings.util")
-local Schema = require("settings.schema")
+local util = require("nvim-settings.util")
+local Schema = require("nvim-settings.schema")
 
 local M = {}
 
@@ -83,7 +83,7 @@ function M.build()
   M.clean()
   M.update_index()
   M.update_schemas()
-  require("settings.build.annotations").build()
+  require("nvim-settings.build.annotations").build()
   M.docs()
 end
 

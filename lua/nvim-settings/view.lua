@@ -1,4 +1,4 @@
-local Util = require("settings.util")
+local Util = require("nvim-settings.util")
 
 local M = {}
 
@@ -63,7 +63,7 @@ function M.show_lsp_settings()
   for _, client in ipairs(clients) do
     table.insert(content, "## " .. client.name .. "\n")
 
-    for _, item in ipairs(require("settings.commands").get_files({ file = client.config.root_dir })) do
+    for _, item in ipairs(require("nvim-settings.commands").get_files({ file = client.config.root_dir })) do
       if Util.exists(item.file) then
         local line = "* " .. vim.fn.fnamemodify(item.file, ":~")
         if item.is_global then
@@ -82,7 +82,7 @@ function M.show_settings()
     "# Settings\n",
   }
 
-  for _, item in ipairs(require("settings.commands").get_files()) do
+  for _, item in ipairs(require("nvim-settings.commands").get_files()) do
     if Util.exists(item.file) then
       local line = "* " .. vim.fn.fnamemodify(item.file, ":~")
       if item.is_global then
@@ -92,7 +92,7 @@ function M.show_settings()
     end
   end
 
-  local settings = require("settings").get()
+  local settings = require("nvim-settings").get()
 
   table.insert(content, "```lua\n" .. vim.inspect(settings) .. "\n```\n")
   M.show(table.concat(content, "\n"))

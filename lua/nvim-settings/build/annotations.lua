@@ -1,5 +1,5 @@
-local util = require("settings.util")
-local Schema = require("settings.schema")
+local util = require("nvim-settings.util")
+local Schema = require("nvim-settings.schema")
 
 local M = {}
 
@@ -123,7 +123,7 @@ function M.build_annotations(name)
   local json = util.json_decode(util.read_file(file)) or {}
   M.class_name = "lspconfig.settings." .. name
 
-  local schema = require("settings.settings").new()
+  local schema = require("nvim-settings.settings").new()
   for key, prop in pairs(json.properties) do
     prop.leaf = true
     schema:set(key, prop)

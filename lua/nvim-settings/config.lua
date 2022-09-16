@@ -57,7 +57,7 @@ M.global_patterns = {}
 function M.setup(options)
   M.options = vim.tbl_deep_extend("force", {}, M.defaults, options or {})
 
-  local util = require("settings.util")
+  local util = require("nvim-settings.util")
 
   M.local_patterns = {}
   M.global_patterns = {}
@@ -88,7 +88,7 @@ function M.merge(options)
 end
 
 function M.get(opts)
-  return require("settings").get("settings", M.options, opts)
+  return require("nvim-settings").get("settings", M.options, opts)
 end
 
 return M

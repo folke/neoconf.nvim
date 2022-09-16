@@ -1,6 +1,6 @@
-local Util = require("settings.util")
-local Config = require("settings.config")
-local Schema = require("settings.schema")
+local Util = require("nvim-settings.util")
+local Config = require("nvim-settings.config")
+local Schema = require("nvim-settings.schema")
 
 local M = {}
 
@@ -46,7 +46,7 @@ function M.on_new_config(config, root_dir)
       fileMatch = Util.file_patterns(),
     }
 
-    for _, plugin in ipairs(require("settings.plugins").plugins) do
+    for _, plugin in ipairs(require("nvim-settings.plugins").plugins) do
       if type(plugin.get_schema) == "function" then
         local ok, s = pcall(plugin.get_schema)
         if not ok then

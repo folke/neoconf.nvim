@@ -31,7 +31,7 @@ function utf8_char(c)
   error(string_format("invalid UTF-8 code '%x'", c))
 end
 
-local json = require("settings.json")
+local json = require("nvim-settings.json")
 
 local encode_escape_map = {
   ['"'] = '\\"',

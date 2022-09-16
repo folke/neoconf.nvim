@@ -30,13 +30,13 @@ end
 function M.setup()
   M.register({
     get_schema = function()
-      local defaults = require("settings.config").defaults
-      return require("settings.schema").plugin_schema("settings", defaults, "Settings for settings.nvim")
+      local defaults = require("nvim-settings.config").defaults
+      return require("nvim-settings.schema").plugin_schema("settings", defaults, "Settings for settings.nvim")
     end,
   })
-  M.register(require("settings.plugins.lspconfig"))
-  M.register(require("settings.plugins.jsonls"))
-  M.register(require("settings.plugins.sumneko"))
+  M.register(require("nvim-settings.plugins.lspconfig"))
+  M.register(require("nvim-settings.plugins.jsonls"))
+  M.register(require("nvim-settings.plugins.sumneko"))
 end
 
 return M

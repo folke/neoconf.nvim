@@ -1,6 +1,6 @@
-local Util = require("settings.util")
-local Config = require("settings.config")
-local Settings = require("settings.settings")
+local Util = require("nvim-settings.util")
+local Config = require("nvim-settings.config")
+local Settings = require("nvim-settings.settings")
 
 local M = {}
 
@@ -23,7 +23,7 @@ function M.on_new_config(config, root_dir, original_config)
   -- backup original lsp config
   config.original_config = vim.deepcopy(original_config)
 
-  root_dir = require("settings.workspace").find_root({ file = root_dir })
+  root_dir = require("nvim-settings.workspace").find_root({ file = root_dir })
 
   config.settings = Util.merge(
     config.settings,
@@ -45,7 +45,7 @@ function M.on_update(fname)
   local clients = vim.lsp.get_active_clients()
 
   for _, client in ipairs(clients) do
-    local settings_root = require("settings.workspace").find_root({ file = client.config.root_dir })
+    local settings_root = require("nvim-settings.workspace").find_root({ file = client.config.root_dir })
 
     -- reload this client if the global file changed, or its root dir equals the local one
     if is_global or Util.has_file(settings_root, client.config.root_dir) then
