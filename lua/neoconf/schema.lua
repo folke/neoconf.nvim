@@ -1,36 +1,49 @@
-local Util = require("nvim-settings.util")
-local Settings = require("nvim-settings.settings")
+local Util = require("neoconf.util")
+local Settings = require("neoconf.settings")
 
 local M = {}
 
-local function _sub_schema(schema, key)
-  if schema.properties[key] then
-    return schema.properties[key]
-  end
-
-  for _, of in pairs({ "anyOf", "oneOf", "allOf" }) do
-    if schema[of] then
-      for _, o in pairs(schema[of]) do
-        local ret = M.get_sub_schema(o, key)
-        if ret then
-          return ret
-        end
-      end
-    end
-  end
+---@class Schema
+---@field _schema Settings
+---@field file string
+local Schema = {}
+Schema.__index = function(table, key)
+  return Schema[key] or table._schema:get(key)
 end
 
--- get a subschema based on a dotted key like `lspconfig.clangd`
-function M.get_sub_schema(schema, key)
-  local path = Settings.path(key)
-  local ret = schema
-  for _, p in pairs(path) do
-    ret = _sub_schema(ret, p)
-    if not ret then
-      return
-    end
-  end
-  return ret
+---@return Schema
+function M.new(schema)
+  return setmetatable({ _schema = Settings.new(schema) }, Schema)
+end
+
+local function schema_key(key)
+  return table.concat(
+    vim.tbl_map(function(k)
+      return "properties." .. k
+    end, Settings.path(key)),
+    "."
+  )
+end
+
+function Schema:set(key, value)
+  return self._schema:set(schema_key(key), value)
+end
+
+function Schema:get(key)
+  return self._schema:get(schema_key(key))
+end
+
+function Schema:import(key, value)
+  return self:set(key, M.to_schema(value))
+end
+
+function M.get()
+  local schema = M.new()
+
+  schema:import("nvim-settings", require("neoconf.config").defaults)
+
+  require("neoconf.plugins").fire("on_schema", schema)
+  return schema
 end
 
 -- try to create a simple schema from a given value
@@ -57,17 +70,6 @@ function M.to_schema(value)
     return obj
   end
   return { type = "null" }
-end
-
-function M.plugin_schema(name, obj, description)
-  local schema = M.to_schema(obj)
-  schema.description = description
-  return {
-    type = "object",
-    properties = {
-      [name] = schema,
-    },
-  }
 end
 
 return M

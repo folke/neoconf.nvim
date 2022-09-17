@@ -1,6 +1,6 @@
-local Util = require("nvim-settings.util")
-local Config = require("nvim-settings.config")
-local Schema = require("nvim-settings.schema")
+local Util = require("neoconf.util")
+local Config = require("neoconf.config")
+local Schema = require("neoconf.schema")
 
 local M = {}
 
@@ -19,45 +19,18 @@ function M.on_new_config(config, root_dir)
       return
     end
 
+    local schema = Schema.get()
     local schemas = config.settings.json and config.settings.json.schemas or {}
 
-    local properties = {}
-    for name, schema in pairs(require("nvim-settings.build.schemas").index()) do
-      if options.plugins.jsonls.configured_servers_only == false or Util.has_lspconfig(name) then
-        properties[name] = {
-          ["$ref"] = "file://" .. schema.settings_file,
-        }
-      end
-    end
-
-    local schema = {
-      name = "nvim settings",
-      description = "Settings for Neovim",
-      schema = {
-        properties = {
-          lspconfig = {
-            description = "lsp server settings for lspconfig",
-            type = "object",
-            properties = properties,
-          },
-        },
-        type = "object",
+    table.insert(schemas, {
+      schema = schema:get(),
+      fileMatch = {
+        Util.fqn(vim.fn.stdpath("config") .. "/" .. options.global_settings),
+        options.local_settings,
       },
-      fileMatch = Util.file_patterns(),
-    }
+    })
 
-    for _, plugin in ipairs(require("nvim-settings.plugins").plugins) do
-      if type(plugin.get_schema) == "function" then
-        local ok, s = pcall(plugin.get_schema)
-        if not ok then
-          Util.error("Could not configure schema for a plugin\n\n" .. s)
-        elseif s then
-          schema.schema.properties = Util.merge({}, schema.schema.properties, s.properties)
-        end
-      end
-    end
-
-    table.insert(schemas, schema)
+    require("neoconf.import").on_schemas(schema, schemas)
 
     config.settings = Util.merge({}, config.settings, {
       json = {
