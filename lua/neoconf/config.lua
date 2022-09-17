@@ -3,9 +3,9 @@ local M = {}
 ---@class Config
 M.defaults = {
   -- name of the local settings files
-  local_settings = ".nvim.settings.json",
+  local_settings = ".neoconf.json",
   -- name of the global settings file in your Neovim config directory
-  global_settings = "settings.json",
+  global_settings = "neoconf.json",
   -- import existing settinsg from other plugins
   import = {
     vscode = true, -- local .vscode/settings.json

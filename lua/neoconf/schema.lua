@@ -40,7 +40,7 @@ end
 function M.get()
   local schema = M.new()
 
-  schema:import("nvim-settings", require("neoconf.config").defaults)
+  schema:import("neoconf", require("neoconf.config").defaults)
 
   require("neoconf.plugins").fire("on_schema", schema)
   return schema
