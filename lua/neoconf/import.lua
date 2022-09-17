@@ -42,36 +42,27 @@ end
 ---@param schema Schema
 ---@param schemas table
 function M.on_schemas(schema, schemas)
-  local servers = {}
-  local any_lsp = {
-    anyOf = {},
-  }
+  local servers = schema:get("lspconfig").properties
 
-  for name, s in pairs(require("neoconf.build.schemas").index()) do
-    if Config.options.plugins.jsonls.configured_servers_only == false or Util.has_lspconfig(name) then
-      table.insert(servers, name)
-      table.insert(any_lsp.anyOf, {
-        ["$ref"] = "file://" .. s.settings_file,
-      })
-    end
-  end
-
+  local patterns = {}
   if Config.options.import.vscode then
-    table.insert(schemas, {
-      fileMatch = { ".vscode/settings.json" },
-      schema = any_lsp,
-    })
+    table.insert(patterns, ".vscode/settings.json")
+  end
+  if Config.options.import.coc then
+    table.insert(patterns, "coc-settings.json")
   end
 
-  if Config.options.import.coc then
+  if #patterns > 0 then
     table.insert(schemas, {
-      fileMatch = { "coc-settings.json" },
-      schema = any_lsp,
+      fileMatch = patterns,
+      schema = {
+        anyOf = vim.tbl_values(servers),
+      },
     })
   end
 
   if Config.options.import.nlsp then
-    for _, server in ipairs(servers) do
+    for server, _ in pairs(servers) do
       table.insert(schemas, {
         fileMatch = { ("nlsp-settings/%s.json"):format(server), (".nlsp-settings/%s.json"):format(server) },
         schema = schema:get("lspconfig." .. server),
