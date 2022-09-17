@@ -19,11 +19,11 @@ jobs:
       - name: panvimdoc
         uses: kdheepak/panvimdoc@main
         with:
-          vimdoc: settings.nvim
+          vimdoc: neoconf.nvim
           demojify: true
       - name: Build
         run: |
-          nvim --headless -c "luafile ./lua/settings/build.lua" -c "q"
+          nvim --headless -c "luafile ./lua/neoconf/build/init.lua" -c "q"
       - name: Push changes
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
