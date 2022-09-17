@@ -1,27 +1,27 @@
-*settings.nvim.txt*       For NVIM v0.5.0       Last change: 2022 September 17
+*neoconf.nvim.txt*        For NVIM v0.5.0       Last change: 2022 September 17
 
 ==============================================================================
-Table of Contents                            *settings.nvim-table-of-contents*
+Table of Contents                             *neoconf.nvim-table-of-contents*
 
-1. settings.nvim                                 |settings.nvim-settings.nvim|
-  - Todo                                                  |settings.nvim-todo|
-  - Features                                          |settings.nvim-features|
-  - Requirements                                  |settings.nvim-requirements|
-  - Installation                                  |settings.nvim-installation|
-  - Setup                                                |settings.nvim-setup|
-  - Configuration                                |settings.nvim-configuration|
-  - Usage                                                |settings.nvim-usage|
-  - API                                                    |settings.nvim-api|
-  - Acknowledgment                              |settings.nvim-acknowledgment|
-  - Supported Language Servers      |settings.nvim-supported-language-servers|
+1. settings.nvim                                  |neoconf.nvim-settings.nvim|
+  - Todo                                                   |neoconf.nvim-todo|
+  - Features                                           |neoconf.nvim-features|
+  - Requirements                                   |neoconf.nvim-requirements|
+  - Installation                                   |neoconf.nvim-installation|
+  - Setup                                                 |neoconf.nvim-setup|
+  - Configuration                                 |neoconf.nvim-configuration|
+  - Usage                                                 |neoconf.nvim-usage|
+  - API                                                     |neoconf.nvim-api|
+  - Acknowledgment                               |neoconf.nvim-acknowledgment|
+  - Supported Language Servers       |neoconf.nvim-supported-language-servers|
 
 ==============================================================================
-1. settings.nvim                                 *settings.nvim-settings.nvim*
+1. settings.nvim                                  *neoconf.nvim-settings.nvim*
 
 **Settings.nvim** is a lua plugin to manage global and workspace-local Neovim
 settings.
 
-TODO                                                      *settings.nvim-todo*
+TODO                                                       *neoconf.nvim-todo*
 
 
 - new name since people seem to use settings as a module in their config (nvim-settings??)
@@ -40,7 +40,7 @@ TODO                                                      *settings.nvim-todo*
 - path.join (workspace.has_file)
 
 
-FEATURES                                              *settings.nvim-features*
+FEATURES                                               *neoconf.nvim-features*
 
 
 - configure Neovim using **JSON** files
@@ -59,13 +59,13 @@ FEATURES                                              *settings.nvim-features*
     settings file, the changes are applied immediately
 
 
-REQUIREMENTS                                      *settings.nvim-requirements*
+REQUIREMENTS                                       *neoconf.nvim-requirements*
 
 
 - Neovim >= 0.7.2
 
 
-INSTALLATION                                      *settings.nvim-installation*
+INSTALLATION                                       *neoconf.nvim-installation*
 
 Install the plugin with your preferred package manager:
 
@@ -83,7 +83,7 @@ PACKER <HTTPS://GITHUB.COM/WBTHOMASON/PACKER.NVIM> ~
 <
 
 
-SETUP                                                    *settings.nvim-setup*
+SETUP                                                     *neoconf.nvim-setup*
 
 It’s important that you set up `settings.nvim` **BEFORE** `nvim-lspconfig`.
 
@@ -95,7 +95,7 @@ It’s important that you set up `settings.nvim` **BEFORE** `nvim-lspconfig`.
 <
 
 
-CONFIGURATION                                    *settings.nvim-configuration*
+CONFIGURATION                                     *neoconf.nvim-configuration*
 
 **settings.nvim** comes with the following defaults:
 
@@ -142,7 +142,7 @@ CONFIGURATION                                    *settings.nvim-configuration*
 <
 
 
-USAGE                                                    *settings.nvim-usage*
+USAGE                                                     *neoconf.nvim-usage*
 
 THE `:SETTINGS` COMMAND ~
 
@@ -152,15 +152,15 @@ COMPLETION AND VALIDATION FOR YOUR `LUA` SETTINGS FILES ~
 
 IMPORTING YOUR EXISTING SETTINGS ~
 
-API                                                        *settings.nvim-api*
+API                                                         *neoconf.nvim-api*
 
-ACKNOWLEDGMENT                                  *settings.nvim-acknowledgment*
+ACKNOWLEDGMENT                                   *neoconf.nvim-acknowledgment*
 
 
 - json.lua <https://github.com/actboy168/json.lua> a pure-lua JSON library for parsing `jsonc` files
 
 
-SUPPORTED LANGUAGE SERVERS          *settings.nvim-supported-language-servers*
+SUPPORTED LANGUAGE SERVERS           *neoconf.nvim-supported-language-servers*
 
 
 - als <https://github.com/AdaCore/ada_language_server/tree/master/integration/vscode/ada/package.json>
