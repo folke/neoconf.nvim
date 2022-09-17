@@ -28,12 +28,6 @@ function M.register(plugin)
 end
 
 function M.setup()
-  M.register({
-    get_schema = function()
-      local defaults = require("neoconf.config").defaults
-      return require("neoconf.schema").plugin_schema("settings", defaults, "Settings for settings.nvim")
-    end,
-  })
   M.register(require("neoconf.plugins.lspconfig"))
   M.register(require("neoconf.plugins.jsonls"))
   M.register(require("neoconf.plugins.sumneko"))
