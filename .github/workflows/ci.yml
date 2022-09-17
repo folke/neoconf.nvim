@@ -23,7 +23,7 @@ jobs:
           demojify: true
       - name: Build
         run: |
-          nvim --headless -c "luafile ./lua/neoconf/build/init.lua" -c "q"
+          nvim -u NONE -E -R --headless --cmd "set rtp^=." --cmd "packloadall" --cmd "luafile lua/neoconf/build/init.lua" --cmd q
       - name: Push changes
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
