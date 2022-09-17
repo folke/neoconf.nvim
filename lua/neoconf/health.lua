@@ -1,24 +1,22 @@
-package.loaded["settings.health"] = nil
-
 local M = {}
 
 function M.check()
-  vim.fn["health#report_start"]("Settings.nvim")
+  vim.health.report_start("Settings.nvim")
 
   local function info(msg, ...)
-    vim.fn["health#report_info"](msg:format(...))
+    vim.health.report_info(msg:format(...))
   end
 
   local function ok(msg, ...)
-    vim.fn["health#report_ok"](msg:format(...))
+    vim.health.report_ok(msg:format(...))
   end
 
   local function warn(msg, ...)
-    vim.fn["health#report_warn"](msg:format(...))
+    vim.health.report_warn(msg:format(...))
   end
 
   local function error(msg, ...)
-    vim.fn["health#report_error"](msg:format(...))
+    vim.health.report_error(msg:format(...))
   end
 
   local _, ts = pcall(require, "nvim-treesitter.parsers")
@@ -57,6 +55,25 @@ function M.check()
     end
   else
     error("**lspconfig** not installed?")
+  end
+end
+
+function M.check_setup()
+  local util = require("neoconf.util")
+  if vim.fn.has("nvim-0.7.2") == 0 then
+    util.error("**settings.nvim** requires Neovim >= 0.7.2")
+  end
+  local ok, lsputil = pcall(require, "lspconfig.util")
+  if ok then
+    if #lsputil.available_servers() == 0 then
+      return true
+    else
+      util.error(
+        [[Setup `require("neoconf").setup()` should be run **BEFORE** setting up any lsp server with lspconfig]]
+      )
+    end
+  else
+    util.error("**nvim-lspconfig** not installed?")
   end
 end
 
