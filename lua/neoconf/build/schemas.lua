@@ -1,5 +1,5 @@
-local Util = require("nvim-settings.util")
-local Schema = require("nvim-settings.schema")
+local Util = require("neoconf.util")
+local Schema = require("neoconf.schema")
 
 local M = {}
 
@@ -106,7 +106,7 @@ function M.update_index()
 end
 
 function M.update_schemas()
-  for name, s in pairs(require("nvim-settings.build.schemas").index()) do
+  for name, s in pairs(require("neoconf.build.schemas").index()) do
     print(("Generating schema for %s"):format(name))
 
     if not Util.exists(s.settings_file) then

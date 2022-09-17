@@ -4,7 +4,7 @@ local M = {}
 ---@field name string
 ---@field setup fun()|nil
 ---@field on_update fun(event)|nil
----@field get_schema fun(): table|nil
+---@field on_schema fun(schema: Schema)
 
 ---@type SettingsPlugin[]
 M.plugins = {}
@@ -30,13 +30,13 @@ end
 function M.setup()
   M.register({
     get_schema = function()
-      local defaults = require("nvim-settings.config").defaults
-      return require("nvim-settings.schema").plugin_schema("settings", defaults, "Settings for settings.nvim")
+      local defaults = require("neoconf.config").defaults
+      return require("neoconf.schema").plugin_schema("settings", defaults, "Settings for settings.nvim")
     end,
   })
-  M.register(require("nvim-settings.plugins.lspconfig"))
-  M.register(require("nvim-settings.plugins.jsonls"))
-  M.register(require("nvim-settings.plugins.sumneko"))
+  M.register(require("neoconf.plugins.lspconfig"))
+  M.register(require("neoconf.plugins.jsonls"))
+  M.register(require("neoconf.plugins.sumneko"))
 end
 
 return M

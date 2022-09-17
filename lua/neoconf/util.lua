@@ -1,4 +1,4 @@
-local Config = require("nvim-settings.config")
+local Config = require("neoconf.config")
 
 local M = {}
 
@@ -105,7 +105,7 @@ function M.json_decode(json)
   if json == "" then
     json = "{}"
   end
-  return require("nvim-settings.json.jsonc").decode_jsonc(json)
+  return require("neoconf.json.jsonc").decode_jsonc(json)
 end
 
 function M.fqn(fname)

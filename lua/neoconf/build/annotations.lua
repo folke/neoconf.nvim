@@ -1,5 +1,5 @@
-local util = require("nvim-settings.util")
-local Schema = require("nvim-settings.schema")
+local util = require("neoconf.util")
+local Schema = require("neoconf.schema")
 
 local M = {}
 
@@ -123,7 +123,7 @@ function M.build_annotations(name)
   local json = util.json_decode(util.read_file(file)) or {}
   M.class_name = "lspconfig.settings." .. name
 
-  local schema = require("nvim-settings.settings").new()
+  local schema = require("neoconf.settings").new()
   for key, prop in pairs(json.properties) do
     prop.leaf = true
     schema:set(key, prop)
@@ -153,7 +153,7 @@ local lspconfig
 
 ]]
 
-  local index = vim.tbl_keys(require("nvim-settings.build.schemas").index())
+  local index = vim.tbl_keys(require("neoconf.build.schemas").index())
   table.sort(index)
 
   for _, name in ipairs(index) do
@@ -186,7 +186,7 @@ end
 
 function M.build()
   M.lines = { "---@meta\n" }
-  local index = vim.tbl_keys(require("nvim-settings.build.schemas").index())
+  local index = vim.tbl_keys(require("neoconf.build.schemas").index())
   table.sort(index)
   for _, name in ipairs(index) do
     M.build_annotations(name)

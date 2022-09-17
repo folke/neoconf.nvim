@@ -1,10 +1,10 @@
-local util = require("nvim-settings.util")
-local Schema = require("nvim-settings.schema")
+local util = require("neoconf.util")
+local Schema = require("neoconf.schema")
 
 local M = {}
 
 function M.docs()
-  local schemas = require("nvim-settings.build.schemas").index()
+  local schemas = require("neoconf.build.schemas").index()
   local keys = vim.tbl_keys(schemas)
   table.sort(keys)
   local lines = {}
@@ -27,8 +27,8 @@ function M.docs()
 end
 
 function M.build()
-  require("nvim-settings.build.schemas").build()
-  require("nvim-settings.build.annotations").build()
+  require("neoconf.build.schemas").build()
+  require("neoconf.build.annotations").build()
   M.docs()
 end
 

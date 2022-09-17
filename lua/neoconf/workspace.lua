@@ -1,5 +1,5 @@
-local Util = require("nvim-settings.util")
-local Settings = require("nvim-settings.settings")
+local Util = require("neoconf.util")
+local Settings = require("neoconf.settings")
 
 local M = {}
 

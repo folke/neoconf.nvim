@@ -1,16 +1,16 @@
-local Util = require("nvim-settings.util")
-local Settings = require("nvim-settings.settings")
-local Config = require("nvim-settings.config")
+local Util = require("neoconf.util")
+local Settings = require("neoconf.settings")
+local Config = require("neoconf.config")
 
 local M = {}
 
 function M.setup()
   local commands = {
     lsp = function()
-      require("nvim-settings.view").show_lsp_settings()
+      require("neoconf.view").show_lsp_settings()
     end,
     show = function()
-      require("nvim-settings.view").show_settings()
+      require("neoconf.view").show_settings()
     end,
     ["local"] = function()
       M.edit({ ["global"] = false })
@@ -23,7 +23,7 @@ function M.setup()
     end,
   }
 
-  vim.api.nvim_create_user_command("Settings", function(args)
+  vim.api.nvim_create_user_command("Neoconf", function(args)
     local cmd = vim.trim(args.args or "")
     if commands[cmd] then
       commands[cmd]()
@@ -53,7 +53,7 @@ function M.setup()
         local fname = Util.fqn(event.match)
         -- clear cached settings for this file
         Settings.clear(fname)
-        require("nvim-settings.plugins").fire("on_update", fname)
+        require("neoconf.plugins").fire("on_update", fname)
       end,
     })
   end
@@ -84,7 +84,7 @@ function M.get_files(opts)
   end
 
   if opts["local"] then
-    local root_dir = require("nvim-settings.workspace").find_root({ lsp = true, file = opts.file })
+    local root_dir = require("neoconf.workspace").find_root({ lsp = true, file = opts.file })
     Util.for_each_local(function(f)
       table.insert(items, { file = f })
     end, root_dir)

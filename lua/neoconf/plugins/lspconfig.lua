@@ -1,8 +1,23 @@
-local Util = require("nvim-settings.util")
-local Config = require("nvim-settings.config")
-local Settings = require("nvim-settings.settings")
+local Util = require("neoconf.util")
+local Config = require("neoconf.config")
+local Settings = require("neoconf.settings")
 
+---@type SettingsPlugin
 local M = {}
+
+function M.on_schema(schema)
+  schema:set("lspconfig", {
+    description = "lsp server settings for lspconfig",
+  })
+
+  for name, s in pairs(require("neoconf.build.schemas").index()) do
+    if Config.options.plugins.jsonls.configured_servers_only == false or Util.has_lspconfig(name) then
+      schema:set("lspconfig." .. name, {
+        ["$ref"] = "file://" .. s.settings_file,
+      })
+    end
+  end
+end
 
 function M.setup()
   local settings_root = Util.root_pattern(unpack(Util.file_patterns({ global = false })))
@@ -23,7 +38,7 @@ function M.on_new_config(config, root_dir, original_config)
   -- backup original lsp config
   config.original_config = vim.deepcopy(original_config)
 
-  root_dir = require("nvim-settings.workspace").find_root({ file = root_dir })
+  root_dir = require("neoconf.workspace").find_root({ file = root_dir })
 
   config.settings = Util.merge(
     config.settings,
@@ -45,7 +60,7 @@ function M.on_update(fname)
   local clients = vim.lsp.get_active_clients()
 
   for _, client in ipairs(clients) do
-    local settings_root = require("nvim-settings.workspace").find_root({ file = client.config.root_dir })
+    local settings_root = require("neoconf.workspace").find_root({ file = client.config.root_dir })
 
     -- reload this client if the global file changed, or its root dir equals the local one
     if is_global or Util.has_file(settings_root, client.config.root_dir) then
