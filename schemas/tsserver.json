@@ -136,13 +136,13 @@
     },
     "javascript.inlayHints.enumMemberValues.enabled": {
       "default": false,
-      "markdownDescription": "The text inside the ``` block is code and should not be localized.\n\nEnable/disable inlay hints for member values in enum declarations:\n```typescript\n\nenum MyValue {\n\tA /* = 0 */;\n\tB /* = 1 */;\n}\n \n```\nRequires using TypeScript 4.4+ in the workspace.",
+      "markdownDescription": "Enable/disable inlay hints for member values in enum declarations:\n```typescript\n\nenum MyValue {\n\tA /* = 0 */;\n\tB /* = 1 */;\n}\n \n```\nRequires using TypeScript 4.4+ in the workspace.\n\nThe text inside the ``` block is code and should not be localized.",
       "scope": "resource",
       "type": "boolean"
     },
     "javascript.inlayHints.functionLikeReturnTypes.enabled": {
       "default": false,
-      "markdownDescription": "The text inside the ``` block is code and should not be localized.\n\nEnable/disable inlay hints for implicit return types on function signatures:\n```typescript\n\nfunction foo() /* :number */ {\n\treturn Date.now();\n} \n \n```\nRequires using TypeScript 4.4+ in the workspace.",
+      "markdownDescription": "Enable/disable inlay hints for implicit return types on function signatures:\n```typescript\n\nfunction foo() /* :number */ {\n\treturn Date.now();\n} \n \n```\nRequires using TypeScript 4.4+ in the workspace.\n\nThe text inside the ``` block is code and should not be localized.",
       "scope": "resource",
       "type": "boolean"
     },
@@ -158,7 +158,7 @@
         "Enable parameter name hints only for literal arguments.",
         "Enable parameter name hints for literal and non-literal arguments."
       ],
-      "markdownDescription": "The text inside the ``` block is code and should not be localized.\n\nEnable/disable inlay hints for parameter names:\n```typescript\n\nparseInt(/* str: */ '123', /* radix: */ 8)\n \n```\nRequires using TypeScript 4.4+ in the workspace.",
+      "markdownDescription": "Enable/disable inlay hints for parameter names:\n```typescript\n\nparseInt(/* str: */ '123', /* radix: */ 8)\n \n```\nRequires using TypeScript 4.4+ in the workspace.\n\nThe text inside the ``` block is code and should not be localized.",
       "scope": "resource",
       "type": "string"
     },
@@ -170,19 +170,19 @@
     },
     "javascript.inlayHints.parameterTypes.enabled": {
       "default": false,
-      "markdownDescription": "The text inside the ``` block is code and should not be localized.\n\nEnable/disable inlay hints for implicit parameter types:\n```typescript\n\nel.addEventListener('click', e /* :MouseEvent */ => ...)\n \n```\nRequires using TypeScript 4.4+ in the workspace.",
+      "markdownDescription": "Enable/disable inlay hints for implicit parameter types:\n```typescript\n\nel.addEventListener('click', e /* :MouseEvent */ => ...)\n \n```\nRequires using TypeScript 4.4+ in the workspace.\n\nThe text inside the ``` block is code and should not be localized.",
       "scope": "resource",
       "type": "boolean"
     },
     "javascript.inlayHints.propertyDeclarationTypes.enabled": {
       "default": false,
-      "markdownDescription": "The text inside the ``` block is code and should not be localized.\n\nEnable/disable inlay hints for implicit types on property declarations:\n```typescript\n\nclass Foo {\n\tprop /* :number */ = Date.now();\n}\n \n```\nRequires using TypeScript 4.4+ in the workspace.",
+      "markdownDescription": "Enable/disable inlay hints for implicit types on property declarations:\n```typescript\n\nclass Foo {\n\tprop /* :number */ = Date.now();\n}\n \n```\nRequires using TypeScript 4.4+ in the workspace.\n\nThe text inside the ``` block is code and should not be localized.",
       "scope": "resource",
       "type": "boolean"
     },
     "javascript.inlayHints.variableTypes.enabled": {
       "default": false,
-      "markdownDescription": "The text inside the ``` block is code and should not be localized.\n\nEnable/disable inlay hints for implicit variable types:\n```typescript\n\nconst foo /* :number */ = Date.now();\n \n```\nRequires using TypeScript 4.4+ in the workspace.",
+      "markdownDescription": "Enable/disable inlay hints for implicit variable types:\n```typescript\n\nconst foo /* :number */ = Date.now();\n \n```\nRequires using TypeScript 4.4+ in the workspace.\n\nThe text inside the ``` block is code and should not be localized.",
       "scope": "resource",
       "type": "boolean"
     },
@@ -598,13 +598,13 @@
     },
     "typescript.inlayHints.enumMemberValues.enabled": {
       "default": false,
-      "markdownDescription": "The text inside the ``` block is code and should not be localized.\n\nEnable/disable inlay hints for member values in enum declarations:\n```typescript\n\nenum MyValue {\n\tA /* = 0 */;\n\tB /* = 1 */;\n}\n \n```\nRequires using TypeScript 4.4+ in the workspace.",
+      "markdownDescription": "Enable/disable inlay hints for member values in enum declarations:\n```typescript\n\nenum MyValue {\n\tA /* = 0 */;\n\tB /* = 1 */;\n}\n \n```\nRequires using TypeScript 4.4+ in the workspace.\n\nThe text inside the ``` block is code and should not be localized.",
       "scope": "resource",
       "type": "boolean"
     },
     "typescript.inlayHints.functionLikeReturnTypes.enabled": {
       "default": false,
-      "markdownDescription": "The text inside the ``` block is code and should not be localized.\n\nEnable/disable inlay hints for implicit return types on function signatures:\n```typescript\n\nfunction foo() /* :number */ {\n\treturn Date.now();\n} \n \n```\nRequires using TypeScript 4.4+ in the workspace.",
+      "markdownDescription": "Enable/disable inlay hints for implicit return types on function signatures:\n```typescript\n\nfunction foo() /* :number */ {\n\treturn Date.now();\n} \n \n```\nRequires using TypeScript 4.4+ in the workspace.\n\nThe text inside the ``` block is code and should not be localized.",
       "scope": "resource",
       "type": "boolean"
     },
@@ -620,7 +620,7 @@
         "Enable parameter name hints only for literal arguments.",
         "Enable parameter name hints for literal and non-literal arguments."
       ],
-      "markdownDescription": "The text inside the ``` block is code and should not be localized.\n\nEnable/disable inlay hints for parameter names:\n```typescript\n\nparseInt(/* str: */ '123', /* radix: */ 8)\n \n```\nRequires using TypeScript 4.4+ in the workspace.",
+      "markdownDescription": "Enable/disable inlay hints for parameter names:\n```typescript\n\nparseInt(/* str: */ '123', /* radix: */ 8)\n \n```\nRequires using TypeScript 4.4+ in the workspace.\n\nThe text inside the ``` block is code and should not be localized.",
       "scope": "resource",
       "type": "string"
     },
@@ -632,19 +632,19 @@
     },
     "typescript.inlayHints.parameterTypes.enabled": {
       "default": false,
-      "markdownDescription": "The text inside the ``` block is code and should not be localized.\n\nEnable/disable inlay hints for implicit parameter types:\n```typescript\n\nel.addEventListener('click', e /* :MouseEvent */ => ...)\n \n```\nRequires using TypeScript 4.4+ in the workspace.",
+      "markdownDescription": "Enable/disable inlay hints for implicit parameter types:\n```typescript\n\nel.addEventListener('click', e /* :MouseEvent */ => ...)\n \n```\nRequires using TypeScript 4.4+ in the workspace.\n\nThe text inside the ``` block is code and should not be localized.",
       "scope": "resource",
       "type": "boolean"
     },
     "typescript.inlayHints.propertyDeclarationTypes.enabled": {
       "default": false,
-      "markdownDescription": "The text inside the ``` block is code and should not be localized.\n\nEnable/disable inlay hints for implicit types on property declarations:\n```typescript\n\nclass Foo {\n\tprop /* :number */ = Date.now();\n}\n \n```\nRequires using TypeScript 4.4+ in the workspace.",
+      "markdownDescription": "Enable/disable inlay hints for implicit types on property declarations:\n```typescript\n\nclass Foo {\n\tprop /* :number */ = Date.now();\n}\n \n```\nRequires using TypeScript 4.4+ in the workspace.\n\nThe text inside the ``` block is code and should not be localized.",
       "scope": "resource",
       "type": "boolean"
     },
     "typescript.inlayHints.variableTypes.enabled": {
       "default": false,
-      "markdownDescription": "The text inside the ``` block is code and should not be localized.\n\nEnable/disable inlay hints for implicit variable types:\n```typescript\n\nconst foo /* :number */ = Date.now();\n \n```\nRequires using TypeScript 4.4+ in the workspace.",
+      "markdownDescription": "Enable/disable inlay hints for implicit variable types:\n```typescript\n\nconst foo /* :number */ = Date.now();\n \n```\nRequires using TypeScript 4.4+ in the workspace.\n\nThe text inside the ``` block is code and should not be localized.",
       "scope": "resource",
       "type": "boolean"
     },

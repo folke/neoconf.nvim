@@ -10959,8 +10959,6 @@
 ---@field experimentalDecorators boolean
 
 ---@class _.lspconfig.settings.tsserver.EnumMemberValues
--- The text inside the ``` block is code and should not be localized.
--- 
 -- Enable/disable inlay hints for member values in enum declarations:
 -- ```typescript
 -- 
@@ -10971,11 +10969,11 @@
 --  
 -- ```
 -- Requires using TypeScript 4.4+ in the workspace.
+-- 
+-- The text inside the ``` block is code and should not be localized.
 ---@field enabled boolean
 
 ---@class _.lspconfig.settings.tsserver.FunctionLikeReturnTypes
--- The text inside the ``` block is code and should not be localized.
--- 
 -- Enable/disable inlay hints for implicit return types on function signatures:
 -- ```typescript
 -- 
@@ -10985,11 +10983,11 @@
 --  
 -- ```
 -- Requires using TypeScript 4.4+ in the workspace.
+-- 
+-- The text inside the ``` block is code and should not be localized.
 ---@field enabled boolean
 
 ---@class _.lspconfig.settings.tsserver.ParameterNames
--- The text inside the ``` block is code and should not be localized.
--- 
 -- Enable/disable inlay hints for parameter names:
 -- ```typescript
 -- 
@@ -10997,6 +10995,8 @@
 --  
 -- ```
 -- Requires using TypeScript 4.4+ in the workspace.
+-- 
+-- The text inside the ``` block is code and should not be localized.
 -- 
 -- ```lua
 -- default = "none"
@@ -11010,8 +11010,6 @@
 ---@field suppressWhenArgumentMatchesName boolean
 
 ---@class _.lspconfig.settings.tsserver.ParameterTypes
--- The text inside the ``` block is code and should not be localized.
--- 
 -- Enable/disable inlay hints for implicit parameter types:
 -- ```typescript
 -- 
@@ -11019,11 +11017,11 @@
 --  
 -- ```
 -- Requires using TypeScript 4.4+ in the workspace.
+-- 
+-- The text inside the ``` block is code and should not be localized.
 ---@field enabled boolean
 
 ---@class _.lspconfig.settings.tsserver.PropertyDeclarationTypes
--- The text inside the ``` block is code and should not be localized.
--- 
 -- Enable/disable inlay hints for implicit types on property declarations:
 -- ```typescript
 -- 
@@ -11033,11 +11031,11 @@
 --  
 -- ```
 -- Requires using TypeScript 4.4+ in the workspace.
+-- 
+-- The text inside the ``` block is code and should not be localized.
 ---@field enabled boolean
 
 ---@class _.lspconfig.settings.tsserver.VariableTypes
--- The text inside the ``` block is code and should not be localized.
--- 
 -- Enable/disable inlay hints for implicit variable types:
 -- ```typescript
 -- 
@@ -11045,6 +11043,8 @@
 --  
 -- ```
 -- Requires using TypeScript 4.4+ in the workspace.
+-- 
+-- The text inside the ``` block is code and should not be localized.
 ---@field enabled boolean
 -- Suppress type hints on variables whose name is identical to the type name. Requires using TypeScript 4.8+ in the workspace.
 -- 
@@ -11332,8 +11332,6 @@
 ---@field enabled boolean
 
 ---@class _.lspconfig.settings.tsserver.EnumMemberValues
--- The text inside the ``` block is code and should not be localized.
--- 
 -- Enable/disable inlay hints for member values in enum declarations:
 -- ```typescript
 -- 
@@ -11344,11 +11342,11 @@
 --  
 -- ```
 -- Requires using TypeScript 4.4+ in the workspace.
+-- 
+-- The text inside the ``` block is code and should not be localized.
 ---@field enabled boolean
 
 ---@class _.lspconfig.settings.tsserver.FunctionLikeReturnTypes
--- The text inside the ``` block is code and should not be localized.
--- 
 -- Enable/disable inlay hints for implicit return types on function signatures:
 -- ```typescript
 -- 
@@ -11358,11 +11356,11 @@
 --  
 -- ```
 -- Requires using TypeScript 4.4+ in the workspace.
+-- 
+-- The text inside the ``` block is code and should not be localized.
 ---@field enabled boolean
 
 ---@class _.lspconfig.settings.tsserver.ParameterNames
--- The text inside the ``` block is code and should not be localized.
--- 
 -- Enable/disable inlay hints for parameter names:
 -- ```typescript
 -- 
@@ -11370,6 +11368,8 @@
 --  
 -- ```
 -- Requires using TypeScript 4.4+ in the workspace.
+-- 
+-- The text inside the ``` block is code and should not be localized.
 -- 
 -- ```lua
 -- default = "none"
@@ -11383,8 +11383,6 @@
 ---@field suppressWhenArgumentMatchesName boolean
 
 ---@class _.lspconfig.settings.tsserver.ParameterTypes
--- The text inside the ``` block is code and should not be localized.
--- 
 -- Enable/disable inlay hints for implicit parameter types:
 -- ```typescript
 -- 
@@ -11392,11 +11390,11 @@
 --  
 -- ```
 -- Requires using TypeScript 4.4+ in the workspace.
+-- 
+-- The text inside the ``` block is code and should not be localized.
 ---@field enabled boolean
 
 ---@class _.lspconfig.settings.tsserver.PropertyDeclarationTypes
--- The text inside the ``` block is code and should not be localized.
--- 
 -- Enable/disable inlay hints for implicit types on property declarations:
 -- ```typescript
 -- 
@@ -11406,11 +11404,11 @@
 --  
 -- ```
 -- Requires using TypeScript 4.4+ in the workspace.
+-- 
+-- The text inside the ``` block is code and should not be localized.
 ---@field enabled boolean
 
 ---@class _.lspconfig.settings.tsserver.VariableTypes
--- The text inside the ``` block is code and should not be localized.
--- 
 -- Enable/disable inlay hints for implicit variable types:
 -- ```typescript
 -- 
@@ -11418,6 +11416,8 @@
 --  
 -- ```
 -- Requires using TypeScript 4.4+ in the workspace.
+-- 
+-- The text inside the ``` block is code and should not be localized.
 ---@field enabled boolean
 -- Suppress type hints on variables whose name is identical to the type name. Requires using TypeScript 4.8+ in the workspace.
 -- 
