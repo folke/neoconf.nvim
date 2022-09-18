@@ -16,6 +16,7 @@ function M.docs()
       url = url
         :gsub("raw%.githubusercontent", "github")
         :gsub("/master/", "/tree/master/", 1)
+        :gsub("/develop/", "/tree/develop/", 1)
         :gsub("/main/", "/tree/main/", 1)
     end
     table.insert(lines, ("- [x] [%s](%s)"):format(name, url))
