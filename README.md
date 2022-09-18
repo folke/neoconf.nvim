@@ -5,7 +5,7 @@ settings.
 
 ## ✅ Todo
 
-- [ ] new name since people seem to use settings as a module in their config (nvim-settings??)
+- [x] new name since people seem to use settings as a module in their config (nvim-settings??)
 - [ ] split off lsp-config as separate plugin?
 - [x] naming for generated emmylua
 - [x] generate list of supported lsp servers
