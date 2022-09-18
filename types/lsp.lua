@@ -2384,7 +2384,7 @@
 ---@field haskell _.lspconfig.settings.hie.Haskell
 
 ---@class _.lspconfig.settings.html.Completion
--- %html.completion.attributeDefaultValue%
+-- Controls the default value for attributes when completion is accepted.
 -- 
 -- ```lua
 -- default = "doublequotes"
@@ -2392,67 +2392,67 @@
 ---@field attributeDefaultValue "doublequotes" | "singlequotes" | "empty"
 
 ---@class _.lspconfig.settings.html.Format
--- %html.format.contentUnformatted.desc%
+-- List of tags, comma separated, where the content shouldn't be reformatted. `null` defaults to the `pre` tag.
 -- 
 -- ```lua
 -- default = "pre,code,textarea"
 -- ```
 ---@field contentUnformatted string
--- %html.format.enable.desc%
+-- Enable/disable default HTML formatter.
 -- 
 -- ```lua
 -- default = true
 -- ```
 ---@field enable boolean
--- %html.format.extraLiners.desc%
+-- List of tags, comma separated, that should have an extra newline before them. `null` defaults to `"head, body, /html"`.
 -- 
 -- ```lua
 -- default = "head, body, /html"
 -- ```
 ---@field extraLiners string
--- %html.format.indentHandlebars.desc%
+-- Format and indent `{{#foo}}` and `{{/foo}}`.
 ---@field indentHandlebars boolean
--- %html.format.indentInnerHtml.desc%
+-- Indent `<head>` and `<body>` sections.
 ---@field indentInnerHtml boolean
--- %html.format.maxPreserveNewLines.desc%
+-- Maximum number of line breaks to be preserved in one chunk. Use `null` for unlimited.
 -- 
 -- ```lua
 -- default = <userdata 1>
 -- ```
 ---@field maxPreserveNewLines number
--- %html.format.preserveNewLines.desc%
+-- Controls whether existing line breaks before elements should be preserved. Only works before elements, not inside tags or for text.
 -- 
 -- ```lua
 -- default = true
 -- ```
 ---@field preserveNewLines boolean
--- %html.format.templating.desc%
+-- Honor django, erb, handlebars and php templating language tags.
 ---@field templating boolean
--- %html.format.unformatted.desc%
+-- List of tags, comma separated, that shouldn't be reformatted. `null` defaults to all tags listed at https://www.w3.org/TR/html5/dom.html#phrasing-content.
 -- 
 -- ```lua
 -- default = "wbr"
 -- ```
 ---@field unformatted string
--- %html.format.unformattedContentDelimiter.desc%
+-- Keep text content together between this string.
 -- 
 -- ```lua
 -- default = ""
 -- ```
 ---@field unformattedContentDelimiter string
--- %html.format.wrapAttributes.desc%
+-- Wrap attributes.
 -- 
 -- ```lua
 -- default = "auto"
 -- ```
 ---@field wrapAttributes "auto" | "force" | "force-aligned" | "force-expand-multiline" | "aligned-multiple" | "preserve" | "preserve-aligned"
--- %html.format.wrapAttributesIndentSize.desc%
+-- Indent wrapped attributes to after N characters. Use `null` to use the default indent size. Ignored if `#html.format.wrapAttributes#` is set to 'aligned'.
 -- 
 -- ```lua
 -- default = <userdata 1>
 -- ```
 ---@field wrapAttributesIndentSize number
--- %html.format.wrapLineLength.desc%
+-- Maximum amount of characters per line (0 = disable).
 -- 
 -- ```lua
 -- default = 120
@@ -2460,13 +2460,13 @@
 ---@field wrapLineLength integer
 
 ---@class _.lspconfig.settings.html.Hover
--- %html.hover.documentation%
+-- Show tag and attribute documentation in hover.
 -- 
 -- ```lua
 -- default = true
 -- ```
 ---@field documentation boolean
--- %html.hover.references%
+-- Show references to MDN in hover.
 -- 
 -- ```lua
 -- default = true
@@ -2474,7 +2474,7 @@
 ---@field references boolean
 
 ---@class _.lspconfig.settings.html.Suggest
--- %html.suggest.html5.desc%
+-- Controls whether the built-in HTML language support suggests HTML5 tags, properties and values.
 -- 
 -- ```lua
 -- default = true
@@ -2482,7 +2482,7 @@
 ---@field html5 boolean
 
 ---@class _.lspconfig.settings.html.Trace
--- %html.trace.server.desc%
+-- Traces the communication between VS Code and the HTML language server.
 -- 
 -- ```lua
 -- default = "off"
@@ -2490,13 +2490,13 @@
 ---@field server "off" | "messages" | "verbose"
 
 ---@class _.lspconfig.settings.html.Validate
--- %html.validate.scripts%
+-- Controls whether the built-in HTML language support validates embedded scripts.
 -- 
 -- ```lua
 -- default = true
 -- ```
 ---@field scripts boolean
--- %html.validate.styles%
+-- Controls whether the built-in HTML language support validates embedded styles.
 -- 
 -- ```lua
 -- default = true
@@ -2504,20 +2504,24 @@
 ---@field styles boolean
 
 ---@class _.lspconfig.settings.html.Html
--- %html.autoClosingTags%
+-- Enable/disable autoclosing of HTML tags.
 -- 
 -- ```lua
 -- default = true
 -- ```
 ---@field autoClosingTags boolean
--- %html.autoCreateQuotes%
+-- Enable/disable auto creation of quotes for HTML attribute assignment. The type of quotes can be configured by `#html.completion.attributeDefaultValue#`.
 -- 
 -- ```lua
 -- default = true
 -- ```
 ---@field autoCreateQuotes boolean
 ---@field completion _.lspconfig.settings.html.Completion
--- %html.customData.desc%
+-- A list of relative file paths pointing to JSON files following the [custom data format](https://github.com/microsoft/vscode-html-languageservice/blob/master/docs/customData.md).
+-- 
+-- VS Code loads custom data on startup to enhance its HTML support for the custom HTML tags, attributes and attribute values you specify in the JSON files.
+-- 
+-- The file paths are relative to workspace and only workspace folder settings are considered.
 -- 
 -- ```lua
 -- default = {}
@@ -2525,7 +2529,7 @@
 ---@field customData string[]
 ---@field format _.lspconfig.settings.html.Format
 ---@field hover _.lspconfig.settings.html.Hover
--- %html.mirrorCursorOnMatchingTag%
+-- Enable/disable mirroring cursor on matching HTML tag.
 ---@field mirrorCursorOnMatchingTag boolean
 ---@field suggest _.lspconfig.settings.html.Suggest
 ---@field trace _.lspconfig.settings.html.Trace
@@ -4056,27 +4060,27 @@
 ---@field kotlin _.lspconfig.settings.kotlin_language_server.Kotlin
 
 ---@class _.lspconfig.settings.ltex.AdditionalRules
--- %ltex.i18n.configuration.ltex.additionalRules.enablePickyRules.markdownDescription%
+-- Enable LanguageTool rules that are marked as picky and that are disabled by default, e.g., rules about passive voice, sentence length, etc., at the cost of more false positives.
 ---@field enablePickyRules boolean
--- %ltex.i18n.configuration.ltex.additionalRules.languageModel.markdownDescription%
+-- Optional path to a directory with rules of a language model with *n*-gram occurrence counts. Set this setting to the parent directory that contains subdirectories for languages (e.g., `en`).
 -- 
 -- ```lua
 -- default = ""
 -- ```
 ---@field languageModel string
--- %ltex.i18n.configuration.ltex.additionalRules.motherTongue.markdownDescription%
+-- Optional mother tongue of the user (e.g., `"de-DE"`). [More info...](https://valentjn.github.io/ltex/settings.html#ltexadditionalrulesmothertongue)
 -- 
 -- ```lua
 -- default = ""
 -- ```
 ---@field motherTongue "" | "ar" | "ast-ES" | "be-BY" | "br-FR" | "ca-ES" | "ca-ES-valencia" | "da-DK" | "de" | "de-AT" | "de-CH" | "de-DE" | "de-DE-x-simple-language" | "el-GR" | "en" | "en-AU" | "en-CA" | "en-GB" | "en-NZ" | "en-US" | "en-ZA" | "eo" | "es" | "es-AR" | "fa" | "fr" | "ga-IE" | "gl-ES" | "it" | "ja-JP" | "km-KH" | "nl" | "nl-BE" | "pl-PL" | "pt" | "pt-AO" | "pt-BR" | "pt-MZ" | "pt-PT" | "ro-RO" | "ru-RU" | "sk-SK" | "sl-SI" | "sv" | "ta-IN" | "tl-PH" | "uk-UA" | "zh-CN"
--- %ltex.i18n.configuration.ltex.additionalRules.neuralNetworkModel.markdownDescription%
+-- Optional path to a directory with rules of a pretrained neural network model.
 -- 
 -- ```lua
 -- default = ""
 -- ```
 ---@field neuralNetworkModel string
--- %ltex.i18n.configuration.ltex.additionalRules.word2VecModel.markdownDescription%
+-- Optional path to a directory with rules of a word2vec language model.
 -- 
 -- ```lua
 -- default = ""
@@ -4084,14 +4088,14 @@
 ---@field word2VecModel string
 
 ---@class _.lspconfig.settings.ltex.Bibtex
--- %ltex.i18n.configuration.ltex.bibtex.fields.markdownDescription%
+-- List of BibTeX fields whose values are to be checked in BibTeX files. [More info...](https://valentjn.github.io/ltex/settings.html#ltexbibtexfields)
 -- 
 -- ```lua
 -- default = {}
 -- ```
 ---@field fields table
 
--- %ltex.i18n.configuration.ltex.configurationTarget.markdownDescription%
+-- Controls which `settings.json` or external setting file ([see documentation](https://valentjn.github.io/ltex/vscode-ltex/setting-scopes-files.html#external-setting-files)) to update when using one of the quick fixes.
 -- 
 -- ```lua
 -- default = {
@@ -4105,424 +4109,424 @@
 ---@field disabledRules "user" | "workspace" | "workspaceFolder" | "userExternalFile" | "workspaceExternalFile" | "workspaceFolderExternalFile"
 ---@field hiddenFalsePositives "user" | "workspace" | "workspaceFolder" | "userExternalFile" | "workspaceExternalFile" | "workspaceFolderExternalFile"
 
--- %ltex.i18n.configuration.ltex.dictionary.markdownDescription%
+-- Lists of additional words that should not be counted as spelling errors. [More info...](https://valentjn.github.io/ltex/settings.html#ltexdictionary)
 -- 
 -- ```lua
 -- default = {}
 -- ```
 ---@class _.lspconfig.settings.ltex.Dictionary
--- %ltex.i18n.configuration.ltex.dictionary.ar.markdownDescription%
+-- List of additional `ar` (Arabic) words that should not be counted as spelling errors.
 ---@field ar string[]
--- %ltex.i18n.configuration.ltex.dictionary.ast-ES.markdownDescription%
+-- List of additional `ast-ES` (Asturian) words that should not be counted as spelling errors.
 ---@field ast-ES string[]
--- %ltex.i18n.configuration.ltex.dictionary.be-BY.markdownDescription%
+-- List of additional `be-BY` (Belarusian) words that should not be counted as spelling errors.
 ---@field be-BY string[]
--- %ltex.i18n.configuration.ltex.dictionary.br-FR.markdownDescription%
+-- List of additional `br-FR` (Breton) words that should not be counted as spelling errors.
 ---@field br-FR string[]
--- %ltex.i18n.configuration.ltex.dictionary.ca-ES.markdownDescription%
+-- List of additional `ca-ES` (Catalan) words that should not be counted as spelling errors.
 ---@field ca-ES string[]
--- %ltex.i18n.configuration.ltex.dictionary.ca-ES-valencia.markdownDescription%
+-- List of additional `ca-ES-valencia` (Catalan (Valencian)) words that should not be counted as spelling errors.
 ---@field ca-ES-valencia string[]
--- %ltex.i18n.configuration.ltex.dictionary.da-DK.markdownDescription%
+-- List of additional `da-DK` (Danish) words that should not be counted as spelling errors.
 ---@field da-DK string[]
--- %ltex.i18n.configuration.ltex.dictionary.de.markdownDescription%
+-- List of additional `de` (German) words that should not be counted as spelling errors.
 ---@field de string[]
--- %ltex.i18n.configuration.ltex.dictionary.de-AT.markdownDescription%
+-- List of additional `de-AT` (German (Austria)) words that should not be counted as spelling errors.
 ---@field de-AT string[]
--- %ltex.i18n.configuration.ltex.dictionary.de-CH.markdownDescription%
+-- List of additional `de-CH` (German (Swiss)) words that should not be counted as spelling errors.
 ---@field de-CH string[]
--- %ltex.i18n.configuration.ltex.dictionary.de-DE.markdownDescription%
+-- List of additional `de-DE` (German (Germany)) words that should not be counted as spelling errors.
 ---@field de-DE string[]
--- %ltex.i18n.configuration.ltex.dictionary.de-DE-x-simple-language.markdownDescription%
+-- List of additional `de-DE-x-simple-language` (Simple German) words that should not be counted as spelling errors.
 ---@field de-DE-x-simple-language string[]
--- %ltex.i18n.configuration.ltex.dictionary.el-GR.markdownDescription%
+-- List of additional `el-GR` (Greek) words that should not be counted as spelling errors.
 ---@field el-GR string[]
--- %ltex.i18n.configuration.ltex.dictionary.en.markdownDescription%
+-- List of additional `en` (English) words that should not be counted as spelling errors.
 ---@field en string[]
--- %ltex.i18n.configuration.ltex.dictionary.en-AU.markdownDescription%
+-- List of additional `en-AU` (English (Australian)) words that should not be counted as spelling errors.
 ---@field en-AU string[]
--- %ltex.i18n.configuration.ltex.dictionary.en-CA.markdownDescription%
+-- List of additional `en-CA` (English (Canadian)) words that should not be counted as spelling errors.
 ---@field en-CA string[]
--- %ltex.i18n.configuration.ltex.dictionary.en-GB.markdownDescription%
+-- List of additional `en-GB` (English (GB)) words that should not be counted as spelling errors.
 ---@field en-GB string[]
--- %ltex.i18n.configuration.ltex.dictionary.en-NZ.markdownDescription%
+-- List of additional `en-NZ` (English (New Zealand)) words that should not be counted as spelling errors.
 ---@field en-NZ string[]
--- %ltex.i18n.configuration.ltex.dictionary.en-US.markdownDescription%
+-- List of additional `en-US` (English (US)) words that should not be counted as spelling errors.
 ---@field en-US string[]
--- %ltex.i18n.configuration.ltex.dictionary.en-ZA.markdownDescription%
+-- List of additional `en-ZA` (English (South African)) words that should not be counted as spelling errors.
 ---@field en-ZA string[]
--- %ltex.i18n.configuration.ltex.dictionary.eo.markdownDescription%
+-- List of additional `eo` (Esperanto) words that should not be counted as spelling errors.
 ---@field eo string[]
--- %ltex.i18n.configuration.ltex.dictionary.es.markdownDescription%
+-- List of additional `es` (Spanish) words that should not be counted as spelling errors.
 ---@field es string[]
--- %ltex.i18n.configuration.ltex.dictionary.es-AR.markdownDescription%
+-- List of additional `es-AR` (Spanish (voseo)) words that should not be counted as spelling errors.
 ---@field es-AR string[]
--- %ltex.i18n.configuration.ltex.dictionary.fa.markdownDescription%
+-- List of additional `fa` (Persian) words that should not be counted as spelling errors.
 ---@field fa string[]
--- %ltex.i18n.configuration.ltex.dictionary.fr.markdownDescription%
+-- List of additional `fr` (French) words that should not be counted as spelling errors.
 ---@field fr string[]
--- %ltex.i18n.configuration.ltex.dictionary.ga-IE.markdownDescription%
+-- List of additional `ga-IE` (Irish) words that should not be counted as spelling errors.
 ---@field ga-IE string[]
--- %ltex.i18n.configuration.ltex.dictionary.gl-ES.markdownDescription%
+-- List of additional `gl-ES` (Galician) words that should not be counted as spelling errors.
 ---@field gl-ES string[]
--- %ltex.i18n.configuration.ltex.dictionary.it.markdownDescription%
+-- List of additional `it` (Italian) words that should not be counted as spelling errors.
 ---@field it string[]
--- %ltex.i18n.configuration.ltex.dictionary.ja-JP.markdownDescription%
+-- List of additional `ja-JP` (Japanese) words that should not be counted as spelling errors.
 ---@field ja-JP string[]
--- %ltex.i18n.configuration.ltex.dictionary.km-KH.markdownDescription%
+-- List of additional `km-KH` (Khmer) words that should not be counted as spelling errors.
 ---@field km-KH string[]
--- %ltex.i18n.configuration.ltex.dictionary.nl.markdownDescription%
+-- List of additional `nl` (Dutch) words that should not be counted as spelling errors.
 ---@field nl string[]
--- %ltex.i18n.configuration.ltex.dictionary.nl-BE.markdownDescription%
+-- List of additional `nl-BE` (Dutch (Belgium)) words that should not be counted as spelling errors.
 ---@field nl-BE string[]
--- %ltex.i18n.configuration.ltex.dictionary.pl-PL.markdownDescription%
+-- List of additional `pl-PL` (Polish) words that should not be counted as spelling errors.
 ---@field pl-PL string[]
--- %ltex.i18n.configuration.ltex.dictionary.pt.markdownDescription%
+-- List of additional `pt` (Portuguese) words that should not be counted as spelling errors.
 ---@field pt string[]
--- %ltex.i18n.configuration.ltex.dictionary.pt-AO.markdownDescription%
+-- List of additional `pt-AO` (Portuguese (Angola preAO)) words that should not be counted as spelling errors.
 ---@field pt-AO string[]
--- %ltex.i18n.configuration.ltex.dictionary.pt-BR.markdownDescription%
+-- List of additional `pt-BR` (Portuguese (Brazil)) words that should not be counted as spelling errors.
 ---@field pt-BR string[]
--- %ltex.i18n.configuration.ltex.dictionary.pt-MZ.markdownDescription%
+-- List of additional `pt-MZ` (Portuguese (Moçambique preAO)) words that should not be counted as spelling errors.
 ---@field pt-MZ string[]
--- %ltex.i18n.configuration.ltex.dictionary.pt-PT.markdownDescription%
+-- List of additional `pt-PT` (Portuguese (Portugal)) words that should not be counted as spelling errors.
 ---@field pt-PT string[]
--- %ltex.i18n.configuration.ltex.dictionary.ro-RO.markdownDescription%
+-- List of additional `ro-RO` (Romanian) words that should not be counted as spelling errors.
 ---@field ro-RO string[]
--- %ltex.i18n.configuration.ltex.dictionary.ru-RU.markdownDescription%
+-- List of additional `ru-RU` (Russian) words that should not be counted as spelling errors.
 ---@field ru-RU string[]
--- %ltex.i18n.configuration.ltex.dictionary.sk-SK.markdownDescription%
+-- List of additional `sk-SK` (Slovak) words that should not be counted as spelling errors.
 ---@field sk-SK string[]
--- %ltex.i18n.configuration.ltex.dictionary.sl-SI.markdownDescription%
+-- List of additional `sl-SI` (Slovenian) words that should not be counted as spelling errors.
 ---@field sl-SI string[]
--- %ltex.i18n.configuration.ltex.dictionary.sv.markdownDescription%
+-- List of additional `sv` (Swedish) words that should not be counted as spelling errors.
 ---@field sv string[]
--- %ltex.i18n.configuration.ltex.dictionary.ta-IN.markdownDescription%
+-- List of additional `ta-IN` (Tamil) words that should not be counted as spelling errors.
 ---@field ta-IN string[]
--- %ltex.i18n.configuration.ltex.dictionary.tl-PH.markdownDescription%
+-- List of additional `tl-PH` (Tagalog) words that should not be counted as spelling errors.
 ---@field tl-PH string[]
--- %ltex.i18n.configuration.ltex.dictionary.uk-UA.markdownDescription%
+-- List of additional `uk-UA` (Ukrainian) words that should not be counted as spelling errors.
 ---@field uk-UA string[]
--- %ltex.i18n.configuration.ltex.dictionary.zh-CN.markdownDescription%
+-- List of additional `zh-CN` (Chinese) words that should not be counted as spelling errors.
 ---@field zh-CN string[]
 
--- %ltex.i18n.configuration.ltex.disabledRules.markdownDescription%
+-- Lists of rules that should be disabled (if enabled by default by LanguageTool). [More info...](https://valentjn.github.io/ltex/settings.html#ltexdisabledrules)
 -- 
 -- ```lua
 -- default = {}
 -- ```
 ---@class _.lspconfig.settings.ltex.DisabledRules
--- %ltex.i18n.configuration.ltex.disabledRules.ar.markdownDescription%
+-- List of additional `ar` (Arabic) rules that should be disabled (if enabled by default by LanguageTool).
 ---@field ar string[]
--- %ltex.i18n.configuration.ltex.disabledRules.ast-ES.markdownDescription%
+-- List of additional `ast-ES` (Asturian) rules that should be disabled (if enabled by default by LanguageTool).
 ---@field ast-ES string[]
--- %ltex.i18n.configuration.ltex.disabledRules.be-BY.markdownDescription%
+-- List of additional `be-BY` (Belarusian) rules that should be disabled (if enabled by default by LanguageTool).
 ---@field be-BY string[]
--- %ltex.i18n.configuration.ltex.disabledRules.br-FR.markdownDescription%
+-- List of additional `br-FR` (Breton) rules that should be disabled (if enabled by default by LanguageTool).
 ---@field br-FR string[]
--- %ltex.i18n.configuration.ltex.disabledRules.ca-ES.markdownDescription%
+-- List of additional `ca-ES` (Catalan) rules that should be disabled (if enabled by default by LanguageTool).
 ---@field ca-ES string[]
--- %ltex.i18n.configuration.ltex.disabledRules.ca-ES-valencia.markdownDescription%
+-- List of additional `ca-ES-valencia` (Catalan (Valencian)) rules that should be disabled (if enabled by default by LanguageTool).
 ---@field ca-ES-valencia string[]
--- %ltex.i18n.configuration.ltex.disabledRules.da-DK.markdownDescription%
+-- List of additional `da-DK` (Danish) rules that should be disabled (if enabled by default by LanguageTool).
 ---@field da-DK string[]
--- %ltex.i18n.configuration.ltex.disabledRules.de.markdownDescription%
+-- List of additional `de` (German) rules that should be disabled (if enabled by default by LanguageTool).
 ---@field de string[]
--- %ltex.i18n.configuration.ltex.disabledRules.de-AT.markdownDescription%
+-- List of additional `de-AT` (German (Austria)) rules that should be disabled (if enabled by default by LanguageTool).
 ---@field de-AT string[]
--- %ltex.i18n.configuration.ltex.disabledRules.de-CH.markdownDescription%
+-- List of additional `de-CH` (German (Swiss)) rules that should be disabled (if enabled by default by LanguageTool).
 ---@field de-CH string[]
--- %ltex.i18n.configuration.ltex.disabledRules.de-DE.markdownDescription%
+-- List of additional `de-DE` (German (Germany)) rules that should be disabled (if enabled by default by LanguageTool).
 ---@field de-DE string[]
--- %ltex.i18n.configuration.ltex.disabledRules.de-DE-x-simple-language.markdownDescription%
+-- List of additional `de-DE-x-simple-language` (Simple German) rules that should be disabled (if enabled by default by LanguageTool).
 ---@field de-DE-x-simple-language string[]
--- %ltex.i18n.configuration.ltex.disabledRules.el-GR.markdownDescription%
+-- List of additional `el-GR` (Greek) rules that should be disabled (if enabled by default by LanguageTool).
 ---@field el-GR string[]
--- %ltex.i18n.configuration.ltex.disabledRules.en.markdownDescription%
+-- List of additional `en` (English) rules that should be disabled (if enabled by default by LanguageTool).
 ---@field en string[]
--- %ltex.i18n.configuration.ltex.disabledRules.en-AU.markdownDescription%
+-- List of additional `en-AU` (English (Australian)) rules that should be disabled (if enabled by default by LanguageTool).
 ---@field en-AU string[]
--- %ltex.i18n.configuration.ltex.disabledRules.en-CA.markdownDescription%
+-- List of additional `en-CA` (English (Canadian)) rules that should be disabled (if enabled by default by LanguageTool).
 ---@field en-CA string[]
--- %ltex.i18n.configuration.ltex.disabledRules.en-GB.markdownDescription%
+-- List of additional `en-GB` (English (GB)) rules that should be disabled (if enabled by default by LanguageTool).
 ---@field en-GB string[]
--- %ltex.i18n.configuration.ltex.disabledRules.en-NZ.markdownDescription%
+-- List of additional `en-NZ` (English (New Zealand)) rules that should be disabled (if enabled by default by LanguageTool).
 ---@field en-NZ string[]
--- %ltex.i18n.configuration.ltex.disabledRules.en-US.markdownDescription%
+-- List of additional `en-US` (English (US)) rules that should be disabled (if enabled by default by LanguageTool).
 ---@field en-US string[]
--- %ltex.i18n.configuration.ltex.disabledRules.en-ZA.markdownDescription%
+-- List of additional `en-ZA` (English (South African)) rules that should be disabled (if enabled by default by LanguageTool).
 ---@field en-ZA string[]
--- %ltex.i18n.configuration.ltex.disabledRules.eo.markdownDescription%
+-- List of additional `eo` (Esperanto) rules that should be disabled (if enabled by default by LanguageTool).
 ---@field eo string[]
--- %ltex.i18n.configuration.ltex.disabledRules.es.markdownDescription%
+-- List of additional `es` (Spanish) rules that should be disabled (if enabled by default by LanguageTool).
 ---@field es string[]
--- %ltex.i18n.configuration.ltex.disabledRules.es-AR.markdownDescription%
+-- List of additional `es-AR` (Spanish (voseo)) rules that should be disabled (if enabled by default by LanguageTool).
 ---@field es-AR string[]
--- %ltex.i18n.configuration.ltex.disabledRules.fa.markdownDescription%
+-- List of additional `fa` (Persian) rules that should be disabled (if enabled by default by LanguageTool).
 ---@field fa string[]
--- %ltex.i18n.configuration.ltex.disabledRules.fr.markdownDescription%
+-- List of additional `fr` (French) rules that should be disabled (if enabled by default by LanguageTool).
 ---@field fr string[]
--- %ltex.i18n.configuration.ltex.disabledRules.ga-IE.markdownDescription%
+-- List of additional `ga-IE` (Irish) rules that should be disabled (if enabled by default by LanguageTool).
 ---@field ga-IE string[]
--- %ltex.i18n.configuration.ltex.disabledRules.gl-ES.markdownDescription%
+-- List of additional `gl-ES` (Galician) rules that should be disabled (if enabled by default by LanguageTool).
 ---@field gl-ES string[]
--- %ltex.i18n.configuration.ltex.disabledRules.it.markdownDescription%
+-- List of additional `it` (Italian) rules that should be disabled (if enabled by default by LanguageTool).
 ---@field it string[]
--- %ltex.i18n.configuration.ltex.disabledRules.ja-JP.markdownDescription%
+-- List of additional `ja-JP` (Japanese) rules that should be disabled (if enabled by default by LanguageTool).
 ---@field ja-JP string[]
--- %ltex.i18n.configuration.ltex.disabledRules.km-KH.markdownDescription%
+-- List of additional `km-KH` (Khmer) rules that should be disabled (if enabled by default by LanguageTool).
 ---@field km-KH string[]
--- %ltex.i18n.configuration.ltex.disabledRules.nl.markdownDescription%
+-- List of additional `nl` (Dutch) rules that should be disabled (if enabled by default by LanguageTool).
 ---@field nl string[]
--- %ltex.i18n.configuration.ltex.disabledRules.nl-BE.markdownDescription%
+-- List of additional `nl-BE` (Dutch (Belgium)) rules that should be disabled (if enabled by default by LanguageTool).
 ---@field nl-BE string[]
--- %ltex.i18n.configuration.ltex.disabledRules.pl-PL.markdownDescription%
+-- List of additional `pl-PL` (Polish) rules that should be disabled (if enabled by default by LanguageTool).
 ---@field pl-PL string[]
--- %ltex.i18n.configuration.ltex.disabledRules.pt.markdownDescription%
+-- List of additional `pt` (Portuguese) rules that should be disabled (if enabled by default by LanguageTool).
 ---@field pt string[]
--- %ltex.i18n.configuration.ltex.disabledRules.pt-AO.markdownDescription%
+-- List of additional `pt-AO` (Portuguese (Angola preAO)) rules that should be disabled (if enabled by default by LanguageTool).
 ---@field pt-AO string[]
--- %ltex.i18n.configuration.ltex.disabledRules.pt-BR.markdownDescription%
+-- List of additional `pt-BR` (Portuguese (Brazil)) rules that should be disabled (if enabled by default by LanguageTool).
 ---@field pt-BR string[]
--- %ltex.i18n.configuration.ltex.disabledRules.pt-MZ.markdownDescription%
+-- List of additional `pt-MZ` (Portuguese (Moçambique preAO)) rules that should be disabled (if enabled by default by LanguageTool).
 ---@field pt-MZ string[]
--- %ltex.i18n.configuration.ltex.disabledRules.pt-PT.markdownDescription%
+-- List of additional `pt-PT` (Portuguese (Portugal)) rules that should be disabled (if enabled by default by LanguageTool).
 ---@field pt-PT string[]
--- %ltex.i18n.configuration.ltex.disabledRules.ro-RO.markdownDescription%
+-- List of additional `ro-RO` (Romanian) rules that should be disabled (if enabled by default by LanguageTool).
 ---@field ro-RO string[]
--- %ltex.i18n.configuration.ltex.disabledRules.ru-RU.markdownDescription%
+-- List of additional `ru-RU` (Russian) rules that should be disabled (if enabled by default by LanguageTool).
 ---@field ru-RU string[]
--- %ltex.i18n.configuration.ltex.disabledRules.sk-SK.markdownDescription%
+-- List of additional `sk-SK` (Slovak) rules that should be disabled (if enabled by default by LanguageTool).
 ---@field sk-SK string[]
--- %ltex.i18n.configuration.ltex.disabledRules.sl-SI.markdownDescription%
+-- List of additional `sl-SI` (Slovenian) rules that should be disabled (if enabled by default by LanguageTool).
 ---@field sl-SI string[]
--- %ltex.i18n.configuration.ltex.disabledRules.sv.markdownDescription%
+-- List of additional `sv` (Swedish) rules that should be disabled (if enabled by default by LanguageTool).
 ---@field sv string[]
--- %ltex.i18n.configuration.ltex.disabledRules.ta-IN.markdownDescription%
+-- List of additional `ta-IN` (Tamil) rules that should be disabled (if enabled by default by LanguageTool).
 ---@field ta-IN string[]
--- %ltex.i18n.configuration.ltex.disabledRules.tl-PH.markdownDescription%
+-- List of additional `tl-PH` (Tagalog) rules that should be disabled (if enabled by default by LanguageTool).
 ---@field tl-PH string[]
--- %ltex.i18n.configuration.ltex.disabledRules.uk-UA.markdownDescription%
+-- List of additional `uk-UA` (Ukrainian) rules that should be disabled (if enabled by default by LanguageTool).
 ---@field uk-UA string[]
--- %ltex.i18n.configuration.ltex.disabledRules.zh-CN.markdownDescription%
+-- List of additional `zh-CN` (Chinese) rules that should be disabled (if enabled by default by LanguageTool).
 ---@field zh-CN string[]
 
--- %ltex.i18n.configuration.ltex.enabledRules.markdownDescription%
+-- Lists of rules that should be enabled (if disabled by default by LanguageTool). [More info...](https://valentjn.github.io/ltex/settings.html#ltexenabledrules)
 -- 
 -- ```lua
 -- default = {}
 -- ```
 ---@class _.lspconfig.settings.ltex.EnabledRules
--- %ltex.i18n.configuration.ltex.enabledRules.ar.markdownDescription%
+-- List of additional `ar` (Arabic) rules that should be enabled (if disabled by default by LanguageTool).
 ---@field ar string[]
--- %ltex.i18n.configuration.ltex.enabledRules.ast-ES.markdownDescription%
+-- List of additional `ast-ES` (Asturian) rules that should be enabled (if disabled by default by LanguageTool).
 ---@field ast-ES string[]
--- %ltex.i18n.configuration.ltex.enabledRules.be-BY.markdownDescription%
+-- List of additional `be-BY` (Belarusian) rules that should be enabled (if disabled by default by LanguageTool).
 ---@field be-BY string[]
--- %ltex.i18n.configuration.ltex.enabledRules.br-FR.markdownDescription%
+-- List of additional `br-FR` (Breton) rules that should be enabled (if disabled by default by LanguageTool).
 ---@field br-FR string[]
--- %ltex.i18n.configuration.ltex.enabledRules.ca-ES.markdownDescription%
+-- List of additional `ca-ES` (Catalan) rules that should be enabled (if disabled by default by LanguageTool).
 ---@field ca-ES string[]
--- %ltex.i18n.configuration.ltex.enabledRules.ca-ES-valencia.markdownDescription%
+-- List of additional `ca-ES-valencia` (Catalan (Valencian)) rules that should be enabled (if disabled by default by LanguageTool).
 ---@field ca-ES-valencia string[]
--- %ltex.i18n.configuration.ltex.enabledRules.da-DK.markdownDescription%
+-- List of additional `da-DK` (Danish) rules that should be enabled (if disabled by default by LanguageTool).
 ---@field da-DK string[]
--- %ltex.i18n.configuration.ltex.enabledRules.de.markdownDescription%
+-- List of additional `de` (German) rules that should be enabled (if disabled by default by LanguageTool).
 ---@field de string[]
--- %ltex.i18n.configuration.ltex.enabledRules.de-AT.markdownDescription%
+-- List of additional `de-AT` (German (Austria)) rules that should be enabled (if disabled by default by LanguageTool).
 ---@field de-AT string[]
--- %ltex.i18n.configuration.ltex.enabledRules.de-CH.markdownDescription%
+-- List of additional `de-CH` (German (Swiss)) rules that should be enabled (if disabled by default by LanguageTool).
 ---@field de-CH string[]
--- %ltex.i18n.configuration.ltex.enabledRules.de-DE.markdownDescription%
+-- List of additional `de-DE` (German (Germany)) rules that should be enabled (if disabled by default by LanguageTool).
 ---@field de-DE string[]
--- %ltex.i18n.configuration.ltex.enabledRules.de-DE-x-simple-language.markdownDescription%
+-- List of additional `de-DE-x-simple-language` (Simple German) rules that should be enabled (if disabled by default by LanguageTool).
 ---@field de-DE-x-simple-language string[]
--- %ltex.i18n.configuration.ltex.enabledRules.el-GR.markdownDescription%
+-- List of additional `el-GR` (Greek) rules that should be enabled (if disabled by default by LanguageTool).
 ---@field el-GR string[]
--- %ltex.i18n.configuration.ltex.enabledRules.en.markdownDescription%
+-- List of additional `en` (English) rules that should be enabled (if disabled by default by LanguageTool).
 ---@field en string[]
--- %ltex.i18n.configuration.ltex.enabledRules.en-AU.markdownDescription%
+-- List of additional `en-AU` (English (Australian)) rules that should be enabled (if disabled by default by LanguageTool).
 ---@field en-AU string[]
--- %ltex.i18n.configuration.ltex.enabledRules.en-CA.markdownDescription%
+-- List of additional `en-CA` (English (Canadian)) rules that should be enabled (if disabled by default by LanguageTool).
 ---@field en-CA string[]
--- %ltex.i18n.configuration.ltex.enabledRules.en-GB.markdownDescription%
+-- List of additional `en-GB` (English (GB)) rules that should be enabled (if disabled by default by LanguageTool).
 ---@field en-GB string[]
--- %ltex.i18n.configuration.ltex.enabledRules.en-NZ.markdownDescription%
+-- List of additional `en-NZ` (English (New Zealand)) rules that should be enabled (if disabled by default by LanguageTool).
 ---@field en-NZ string[]
--- %ltex.i18n.configuration.ltex.enabledRules.en-US.markdownDescription%
+-- List of additional `en-US` (English (US)) rules that should be enabled (if disabled by default by LanguageTool).
 ---@field en-US string[]
--- %ltex.i18n.configuration.ltex.enabledRules.en-ZA.markdownDescription%
+-- List of additional `en-ZA` (English (South African)) rules that should be enabled (if disabled by default by LanguageTool).
 ---@field en-ZA string[]
--- %ltex.i18n.configuration.ltex.enabledRules.eo.markdownDescription%
+-- List of additional `eo` (Esperanto) rules that should be enabled (if disabled by default by LanguageTool).
 ---@field eo string[]
--- %ltex.i18n.configuration.ltex.enabledRules.es.markdownDescription%
+-- List of additional `es` (Spanish) rules that should be enabled (if disabled by default by LanguageTool).
 ---@field es string[]
--- %ltex.i18n.configuration.ltex.enabledRules.es-AR.markdownDescription%
+-- List of additional `es-AR` (Spanish (voseo)) rules that should be enabled (if disabled by default by LanguageTool).
 ---@field es-AR string[]
--- %ltex.i18n.configuration.ltex.enabledRules.fa.markdownDescription%
+-- List of additional `fa` (Persian) rules that should be enabled (if disabled by default by LanguageTool).
 ---@field fa string[]
--- %ltex.i18n.configuration.ltex.enabledRules.fr.markdownDescription%
+-- List of additional `fr` (French) rules that should be enabled (if disabled by default by LanguageTool).
 ---@field fr string[]
--- %ltex.i18n.configuration.ltex.enabledRules.ga-IE.markdownDescription%
+-- List of additional `ga-IE` (Irish) rules that should be enabled (if disabled by default by LanguageTool).
 ---@field ga-IE string[]
--- %ltex.i18n.configuration.ltex.enabledRules.gl-ES.markdownDescription%
+-- List of additional `gl-ES` (Galician) rules that should be enabled (if disabled by default by LanguageTool).
 ---@field gl-ES string[]
--- %ltex.i18n.configuration.ltex.enabledRules.it.markdownDescription%
+-- List of additional `it` (Italian) rules that should be enabled (if disabled by default by LanguageTool).
 ---@field it string[]
--- %ltex.i18n.configuration.ltex.enabledRules.ja-JP.markdownDescription%
+-- List of additional `ja-JP` (Japanese) rules that should be enabled (if disabled by default by LanguageTool).
 ---@field ja-JP string[]
--- %ltex.i18n.configuration.ltex.enabledRules.km-KH.markdownDescription%
+-- List of additional `km-KH` (Khmer) rules that should be enabled (if disabled by default by LanguageTool).
 ---@field km-KH string[]
--- %ltex.i18n.configuration.ltex.enabledRules.nl.markdownDescription%
+-- List of additional `nl` (Dutch) rules that should be enabled (if disabled by default by LanguageTool).
 ---@field nl string[]
--- %ltex.i18n.configuration.ltex.enabledRules.nl-BE.markdownDescription%
+-- List of additional `nl-BE` (Dutch (Belgium)) rules that should be enabled (if disabled by default by LanguageTool).
 ---@field nl-BE string[]
--- %ltex.i18n.configuration.ltex.enabledRules.pl-PL.markdownDescription%
+-- List of additional `pl-PL` (Polish) rules that should be enabled (if disabled by default by LanguageTool).
 ---@field pl-PL string[]
--- %ltex.i18n.configuration.ltex.enabledRules.pt.markdownDescription%
+-- List of additional `pt` (Portuguese) rules that should be enabled (if disabled by default by LanguageTool).
 ---@field pt string[]
--- %ltex.i18n.configuration.ltex.enabledRules.pt-AO.markdownDescription%
+-- List of additional `pt-AO` (Portuguese (Angola preAO)) rules that should be enabled (if disabled by default by LanguageTool).
 ---@field pt-AO string[]
--- %ltex.i18n.configuration.ltex.enabledRules.pt-BR.markdownDescription%
+-- List of additional `pt-BR` (Portuguese (Brazil)) rules that should be enabled (if disabled by default by LanguageTool).
 ---@field pt-BR string[]
--- %ltex.i18n.configuration.ltex.enabledRules.pt-MZ.markdownDescription%
+-- List of additional `pt-MZ` (Portuguese (Moçambique preAO)) rules that should be enabled (if disabled by default by LanguageTool).
 ---@field pt-MZ string[]
--- %ltex.i18n.configuration.ltex.enabledRules.pt-PT.markdownDescription%
+-- List of additional `pt-PT` (Portuguese (Portugal)) rules that should be enabled (if disabled by default by LanguageTool).
 ---@field pt-PT string[]
--- %ltex.i18n.configuration.ltex.enabledRules.ro-RO.markdownDescription%
+-- List of additional `ro-RO` (Romanian) rules that should be enabled (if disabled by default by LanguageTool).
 ---@field ro-RO string[]
--- %ltex.i18n.configuration.ltex.enabledRules.ru-RU.markdownDescription%
+-- List of additional `ru-RU` (Russian) rules that should be enabled (if disabled by default by LanguageTool).
 ---@field ru-RU string[]
--- %ltex.i18n.configuration.ltex.enabledRules.sk-SK.markdownDescription%
+-- List of additional `sk-SK` (Slovak) rules that should be enabled (if disabled by default by LanguageTool).
 ---@field sk-SK string[]
--- %ltex.i18n.configuration.ltex.enabledRules.sl-SI.markdownDescription%
+-- List of additional `sl-SI` (Slovenian) rules that should be enabled (if disabled by default by LanguageTool).
 ---@field sl-SI string[]
--- %ltex.i18n.configuration.ltex.enabledRules.sv.markdownDescription%
+-- List of additional `sv` (Swedish) rules that should be enabled (if disabled by default by LanguageTool).
 ---@field sv string[]
--- %ltex.i18n.configuration.ltex.enabledRules.ta-IN.markdownDescription%
+-- List of additional `ta-IN` (Tamil) rules that should be enabled (if disabled by default by LanguageTool).
 ---@field ta-IN string[]
--- %ltex.i18n.configuration.ltex.enabledRules.tl-PH.markdownDescription%
+-- List of additional `tl-PH` (Tagalog) rules that should be enabled (if disabled by default by LanguageTool).
 ---@field tl-PH string[]
--- %ltex.i18n.configuration.ltex.enabledRules.uk-UA.markdownDescription%
+-- List of additional `uk-UA` (Ukrainian) rules that should be enabled (if disabled by default by LanguageTool).
 ---@field uk-UA string[]
--- %ltex.i18n.configuration.ltex.enabledRules.zh-CN.markdownDescription%
+-- List of additional `zh-CN` (Chinese) rules that should be enabled (if disabled by default by LanguageTool).
 ---@field zh-CN string[]
 
--- %ltex.i18n.configuration.ltex.hiddenFalsePositives.markdownDescription%
+-- Lists of false-positive diagnostics to hide (by hiding all diagnostics of a specific rule within a specific sentence). [More info...](https://valentjn.github.io/ltex/settings.html#ltexhiddenfalsepositives)
 -- 
 -- ```lua
 -- default = {}
 -- ```
 ---@class _.lspconfig.settings.ltex.HiddenFalsePositives
--- %ltex.i18n.configuration.ltex.hiddenFalsePositives.ar.markdownDescription%
+-- List of `ar` (Arabic) false-positive diagnostics to hide.
 ---@field ar string[]
--- %ltex.i18n.configuration.ltex.hiddenFalsePositives.ast-ES.markdownDescription%
+-- List of `ast-ES` (Asturian) false-positive diagnostics to hide.
 ---@field ast-ES string[]
--- %ltex.i18n.configuration.ltex.hiddenFalsePositives.be-BY.markdownDescription%
+-- List of `be-BY` (Belarusian) false-positive diagnostics to hide.
 ---@field be-BY string[]
--- %ltex.i18n.configuration.ltex.hiddenFalsePositives.br-FR.markdownDescription%
+-- List of `br-FR` (Breton) false-positive diagnostics to hide.
 ---@field br-FR string[]
--- %ltex.i18n.configuration.ltex.hiddenFalsePositives.ca-ES.markdownDescription%
+-- List of `ca-ES` (Catalan) false-positive diagnostics to hide.
 ---@field ca-ES string[]
--- %ltex.i18n.configuration.ltex.hiddenFalsePositives.ca-ES-valencia.markdownDescription%
+-- List of `ca-ES-valencia` (Catalan (Valencian)) false-positive diagnostics to hide.
 ---@field ca-ES-valencia string[]
--- %ltex.i18n.configuration.ltex.hiddenFalsePositives.da-DK.markdownDescription%
+-- List of `da-DK` (Danish) false-positive diagnostics to hide.
 ---@field da-DK string[]
--- %ltex.i18n.configuration.ltex.hiddenFalsePositives.de.markdownDescription%
+-- List of `de` (German) false-positive diagnostics to hide.
 ---@field de string[]
--- %ltex.i18n.configuration.ltex.hiddenFalsePositives.de-AT.markdownDescription%
+-- List of `de-AT` (German (Austria)) false-positive diagnostics to hide.
 ---@field de-AT string[]
--- %ltex.i18n.configuration.ltex.hiddenFalsePositives.de-CH.markdownDescription%
+-- List of `de-CH` (German (Swiss)) false-positive diagnostics to hide.
 ---@field de-CH string[]
--- %ltex.i18n.configuration.ltex.hiddenFalsePositives.de-DE.markdownDescription%
+-- List of `de-DE` (German (Germany)) false-positive diagnostics to hide.
 ---@field de-DE string[]
--- %ltex.i18n.configuration.ltex.hiddenFalsePositives.de-DE-x-simple-language.markdownDescription%
+-- List of `de-DE-x-simple-language` (Simple German) false-positive diagnostics to hide.
 ---@field de-DE-x-simple-language string[]
--- %ltex.i18n.configuration.ltex.hiddenFalsePositives.el-GR.markdownDescription%
+-- List of `el-GR` (Greek) false-positive diagnostics to hide.
 ---@field el-GR string[]
--- %ltex.i18n.configuration.ltex.hiddenFalsePositives.en.markdownDescription%
+-- List of `en` (English) false-positive diagnostics to hide.
 ---@field en string[]
--- %ltex.i18n.configuration.ltex.hiddenFalsePositives.en-AU.markdownDescription%
+-- List of `en-AU` (English (Australian)) false-positive diagnostics to hide.
 ---@field en-AU string[]
--- %ltex.i18n.configuration.ltex.hiddenFalsePositives.en-CA.markdownDescription%
+-- List of `en-CA` (English (Canadian)) false-positive diagnostics to hide.
 ---@field en-CA string[]
--- %ltex.i18n.configuration.ltex.hiddenFalsePositives.en-GB.markdownDescription%
+-- List of `en-GB` (English (GB)) false-positive diagnostics to hide.
 ---@field en-GB string[]
--- %ltex.i18n.configuration.ltex.hiddenFalsePositives.en-NZ.markdownDescription%
+-- List of `en-NZ` (English (New Zealand)) false-positive diagnostics to hide.
 ---@field en-NZ string[]
--- %ltex.i18n.configuration.ltex.hiddenFalsePositives.en-US.markdownDescription%
+-- List of `en-US` (English (US)) false-positive diagnostics to hide.
 ---@field en-US string[]
--- %ltex.i18n.configuration.ltex.hiddenFalsePositives.en-ZA.markdownDescription%
+-- List of `en-ZA` (English (South African)) false-positive diagnostics to hide.
 ---@field en-ZA string[]
--- %ltex.i18n.configuration.ltex.hiddenFalsePositives.eo.markdownDescription%
+-- List of `eo` (Esperanto) false-positive diagnostics to hide.
 ---@field eo string[]
--- %ltex.i18n.configuration.ltex.hiddenFalsePositives.es.markdownDescription%
+-- List of `es` (Spanish) false-positive diagnostics to hide.
 ---@field es string[]
--- %ltex.i18n.configuration.ltex.hiddenFalsePositives.es-AR.markdownDescription%
+-- List of `es-AR` (Spanish (voseo)) false-positive diagnostics to hide.
 ---@field es-AR string[]
--- %ltex.i18n.configuration.ltex.hiddenFalsePositives.fa.markdownDescription%
+-- List of `fa` (Persian) false-positive diagnostics to hide.
 ---@field fa string[]
--- %ltex.i18n.configuration.ltex.hiddenFalsePositives.fr.markdownDescription%
+-- List of `fr` (French) false-positive diagnostics to hide.
 ---@field fr string[]
--- %ltex.i18n.configuration.ltex.hiddenFalsePositives.ga-IE.markdownDescription%
+-- List of `ga-IE` (Irish) false-positive diagnostics to hide.
 ---@field ga-IE string[]
--- %ltex.i18n.configuration.ltex.hiddenFalsePositives.gl-ES.markdownDescription%
+-- List of `gl-ES` (Galician) false-positive diagnostics to hide.
 ---@field gl-ES string[]
--- %ltex.i18n.configuration.ltex.hiddenFalsePositives.it.markdownDescription%
+-- List of `it` (Italian) false-positive diagnostics to hide.
 ---@field it string[]
--- %ltex.i18n.configuration.ltex.hiddenFalsePositives.ja-JP.markdownDescription%
+-- List of `ja-JP` (Japanese) false-positive diagnostics to hide.
 ---@field ja-JP string[]
--- %ltex.i18n.configuration.ltex.hiddenFalsePositives.km-KH.markdownDescription%
+-- List of `km-KH` (Khmer) false-positive diagnostics to hide.
 ---@field km-KH string[]
--- %ltex.i18n.configuration.ltex.hiddenFalsePositives.nl.markdownDescription%
+-- List of `nl` (Dutch) false-positive diagnostics to hide.
 ---@field nl string[]
--- %ltex.i18n.configuration.ltex.hiddenFalsePositives.nl-BE.markdownDescription%
+-- List of `nl-BE` (Dutch (Belgium)) false-positive diagnostics to hide.
 ---@field nl-BE string[]
--- %ltex.i18n.configuration.ltex.hiddenFalsePositives.pl-PL.markdownDescription%
+-- List of `pl-PL` (Polish) false-positive diagnostics to hide.
 ---@field pl-PL string[]
--- %ltex.i18n.configuration.ltex.hiddenFalsePositives.pt.markdownDescription%
+-- List of `pt` (Portuguese) false-positive diagnostics to hide.
 ---@field pt string[]
--- %ltex.i18n.configuration.ltex.hiddenFalsePositives.pt-AO.markdownDescription%
+-- List of `pt-AO` (Portuguese (Angola preAO)) false-positive diagnostics to hide.
 ---@field pt-AO string[]
--- %ltex.i18n.configuration.ltex.hiddenFalsePositives.pt-BR.markdownDescription%
+-- List of `pt-BR` (Portuguese (Brazil)) false-positive diagnostics to hide.
 ---@field pt-BR string[]
--- %ltex.i18n.configuration.ltex.hiddenFalsePositives.pt-MZ.markdownDescription%
+-- List of `pt-MZ` (Portuguese (Moçambique preAO)) false-positive diagnostics to hide.
 ---@field pt-MZ string[]
--- %ltex.i18n.configuration.ltex.hiddenFalsePositives.pt-PT.markdownDescription%
+-- List of `pt-PT` (Portuguese (Portugal)) false-positive diagnostics to hide.
 ---@field pt-PT string[]
--- %ltex.i18n.configuration.ltex.hiddenFalsePositives.ro-RO.markdownDescription%
+-- List of `ro-RO` (Romanian) false-positive diagnostics to hide.
 ---@field ro-RO string[]
--- %ltex.i18n.configuration.ltex.hiddenFalsePositives.ru-RU.markdownDescription%
+-- List of `ru-RU` (Russian) false-positive diagnostics to hide.
 ---@field ru-RU string[]
--- %ltex.i18n.configuration.ltex.hiddenFalsePositives.sk-SK.markdownDescription%
+-- List of `sk-SK` (Slovak) false-positive diagnostics to hide.
 ---@field sk-SK string[]
--- %ltex.i18n.configuration.ltex.hiddenFalsePositives.sl-SI.markdownDescription%
+-- List of `sl-SI` (Slovenian) false-positive diagnostics to hide.
 ---@field sl-SI string[]
--- %ltex.i18n.configuration.ltex.hiddenFalsePositives.sv.markdownDescription%
+-- List of `sv` (Swedish) false-positive diagnostics to hide.
 ---@field sv string[]
--- %ltex.i18n.configuration.ltex.hiddenFalsePositives.ta-IN.markdownDescription%
+-- List of `ta-IN` (Tamil) false-positive diagnostics to hide.
 ---@field ta-IN string[]
--- %ltex.i18n.configuration.ltex.hiddenFalsePositives.tl-PH.markdownDescription%
+-- List of `tl-PH` (Tagalog) false-positive diagnostics to hide.
 ---@field tl-PH string[]
--- %ltex.i18n.configuration.ltex.hiddenFalsePositives.uk-UA.markdownDescription%
+-- List of `uk-UA` (Ukrainian) false-positive diagnostics to hide.
 ---@field uk-UA string[]
--- %ltex.i18n.configuration.ltex.hiddenFalsePositives.zh-CN.markdownDescription%
+-- List of `zh-CN` (Chinese) false-positive diagnostics to hide.
 ---@field zh-CN string[]
 
 ---@class _.lspconfig.settings.ltex.Java
--- %ltex.i18n.configuration.ltex.java.initialHeapSize.markdownDescription%
+-- Initial size of the Java heap memory in megabytes (corresponds to Java's `-Xms` option, must be a positive integer). [More info...](https://valentjn.github.io/ltex/settings.html#ltexjavainitialheapsize)
 -- 
 -- ```lua
 -- default = 64
 -- ```
 ---@field initialHeapSize integer
--- %ltex.i18n.configuration.ltex.java.maximumHeapSize.markdownDescription%
+-- Maximum size of the Java heap memory in megabytes (corresponds to Java's `-Xmx` option, must be a positive integer). [More info...](https://valentjn.github.io/ltex/settings.html#ltexjavamaximumheapsize)
 -- 
 -- ```lua
 -- default = 512
 -- ```
 ---@field maximumHeapSize integer
--- %ltex.i18n.configuration.ltex.java.path.markdownDescription%
+-- If set to an empty string, LTeX uses a Java distribution that is bundled with ltex-ls. You can point this setting to an existing Java installation on your computer to use that installation instead. [More info...](https://valentjn.github.io/ltex/settings.html#ltexjavapath)
 -- 
 -- ```lua
 -- default = ""
@@ -4530,13 +4534,13 @@
 ---@field path string
 
 ---@class _.lspconfig.settings.ltex.LanguageToolOrg
--- %ltex.i18n.configuration.ltex.languageToolOrg.apiKey.markdownDescription%
+-- API key for Premium API access. Only relevant if `ltex.languageToolHttpServerUri` is set.
 -- 
 -- ```lua
 -- default = ""
 -- ```
 ---@field apiKey string
--- %ltex.i18n.configuration.ltex.languageToolOrg.username.markdownDescription%
+-- Username/email as used to log in at languagetool.org for Premium API access. Only relevant if `ltex.languageToolHttpServerUri` is set.
 -- 
 -- ```lua
 -- default = ""
@@ -4544,13 +4548,13 @@
 ---@field username string
 
 ---@class _.lspconfig.settings.ltex.Latex
--- %ltex.i18n.configuration.ltex.latex.commands.markdownDescription%
+-- List of LaTeX commands to be handled by the LaTeX parser, listed together with empty arguments (e.g., `"\ref{}"`, `"\documentclass[]{}"`). [More info...](https://valentjn.github.io/ltex/settings.html#ltexlatexcommands)
 -- 
 -- ```lua
 -- default = {}
 -- ```
 ---@field commands table
--- %ltex.i18n.configuration.ltex.latex.environments.markdownDescription%
+-- List of names of LaTeX environments to be handled by the LaTeX parser. [More info...](https://valentjn.github.io/ltex/settings.html#ltexlatexenvironments)
 -- 
 -- ```lua
 -- default = {}
@@ -4570,13 +4574,13 @@
 -- default = ""
 -- ```
 ---@field languageToolOrgUsername string
--- %ltex.i18n.configuration.ltex.ltex-ls.logLevel.markdownDescription%
+-- Logging level (verbosity) of the ltex-ls server log, which is accessible via `View` › `Output` › `LTeX Language Server`. [More info...](https://valentjn.github.io/ltex/settings.html#ltexltex-lsloglevel)
 -- 
 -- ```lua
 -- default = "fine"
 -- ```
 ---@field logLevel "severe" | "warning" | "info" | "config" | "fine" | "finer" | "finest"
--- %ltex.i18n.configuration.ltex.ltex-ls.path.markdownDescription%
+-- If set to an empty string, LTeX automatically downloads [ltex-ls from GitHub](https://github.com/valentjn/ltex-ls/releases), stores it in the folder of the extension, and uses it for the checking process. You can point this setting to an ltex-ls release you downloaded by yourself. [More info...](https://valentjn.github.io/ltex/settings.html#ltexltex-lspath)
 -- 
 -- ```lua
 -- default = ""
@@ -4584,7 +4588,7 @@
 ---@field path string
 
 ---@class _.lspconfig.settings.ltex.Markdown
--- %ltex.i18n.configuration.ltex.markdown.nodes.markdownDescription%
+-- List of Markdown node types to be handled by the Markdown parser. [More info...](https://valentjn.github.io/ltex/settings.html#ltexmarkdownnodes)
 -- 
 -- ```lua
 -- default = {}
@@ -4592,7 +4596,7 @@
 ---@field nodes table
 
 ---@class _.lspconfig.settings.ltex.Trace
--- %ltex.i18n.configuration.ltex.trace.server.markdownDescription%
+-- Debug setting to log the communication between language client and server. [More info...](https://valentjn.github.io/ltex/settings.html#ltextraceserver)
 -- 
 -- ```lua
 -- default = "off"
@@ -4602,21 +4606,21 @@
 ---@class _.lspconfig.settings.ltex.Ltex
 ---@field additionalRules _.lspconfig.settings.ltex.AdditionalRules
 ---@field bibtex _.lspconfig.settings.ltex.Bibtex
--- %ltex.i18n.configuration.ltex.checkFrequency.markdownDescription%
+-- Controls when documents should be checked. [More info...](https://valentjn.github.io/ltex/settings.html#ltexcheckfrequency)
 -- 
 -- ```lua
 -- default = "edit"
 -- ```
 ---@field checkFrequency "edit" | "save" | "manual"
--- %ltex.i18n.configuration.ltex.clearDiagnosticsWhenClosingFile.markdownDescription%
+-- If set to `true`, diagnostics of a file are cleared when the file is closed.
 -- 
 -- ```lua
 -- default = true
 -- ```
 ---@field clearDiagnosticsWhenClosingFile boolean
--- %ltex.i18n.configuration.ltex.completionEnabled.markdownDescription%
+-- Whether completion is enabled (also known as auto-completion, suggestions, or IntelliSense). [More info...](https://valentjn.github.io/ltex/settings.html#ltexcompletionenabled)
 ---@field completionEnabled boolean
--- %ltex.i18n.configuration.ltex.configurationTarget.markdownDescription%
+-- Controls which `settings.json` or external setting file ([see documentation](https://valentjn.github.io/ltex/vscode-ltex/setting-scopes-files.html#external-setting-files)) to update when using one of the quick fixes.
 -- 
 -- ```lua
 -- default = {
@@ -4626,50 +4630,50 @@
 -- }
 -- ```
 ---@field configurationTarget _.lspconfig.settings.ltex.ConfigurationTarget
--- %ltex.i18n.configuration.ltex.diagnosticSeverity.markdownDescription%
+-- Severity of the diagnostics corresponding to the grammar and spelling errors. [More info...](https://valentjn.github.io/ltex/settings.html#ltexdiagnosticseverity)
 -- 
 -- ```lua
 -- default = "information"
 -- ```
 ---@field diagnosticSeverity 
--- %ltex.i18n.configuration.ltex.dictionary.markdownDescription%
+-- Lists of additional words that should not be counted as spelling errors. [More info...](https://valentjn.github.io/ltex/settings.html#ltexdictionary)
 -- 
 -- ```lua
 -- default = {}
 -- ```
 ---@field dictionary _.lspconfig.settings.ltex.Dictionary
--- %ltex.i18n.configuration.ltex.disabledRules.markdownDescription%
+-- Lists of rules that should be disabled (if enabled by default by LanguageTool). [More info...](https://valentjn.github.io/ltex/settings.html#ltexdisabledrules)
 -- 
 -- ```lua
 -- default = {}
 -- ```
 ---@field disabledRules _.lspconfig.settings.ltex.DisabledRules
--- %ltex.i18n.configuration.ltex.enabled.markdownDescription%
+-- Controls whether the extension is enabled. Allows disabling LanguageTool on specific workspaces or for specific code language modes (i.e., file types). [More info...](https://valentjn.github.io/ltex/settings.html#ltexenabled)
 -- 
 -- ```lua
 -- default = { "bibtex", "context", "context.tex", "html", "latex", "markdown", "org", "restructuredtext", "rsweave" }
 -- ```
 ---@field enabled 
--- %ltex.i18n.configuration.ltex.enabledRules.markdownDescription%
+-- Lists of rules that should be enabled (if disabled by default by LanguageTool). [More info...](https://valentjn.github.io/ltex/settings.html#ltexenabledrules)
 -- 
 -- ```lua
 -- default = {}
 -- ```
 ---@field enabledRules _.lspconfig.settings.ltex.EnabledRules
--- %ltex.i18n.configuration.ltex.hiddenFalsePositives.markdownDescription%
+-- Lists of false-positive diagnostics to hide (by hiding all diagnostics of a specific rule within a specific sentence). [More info...](https://valentjn.github.io/ltex/settings.html#ltexhiddenfalsepositives)
 -- 
 -- ```lua
 -- default = {}
 -- ```
 ---@field hiddenFalsePositives _.lspconfig.settings.ltex.HiddenFalsePositives
 ---@field java _.lspconfig.settings.ltex.Java
--- %ltex.i18n.configuration.ltex.language.markdownDescription%
+-- The language (e.g., `"en-US"`) LanguageTool should check against. Use a specific variant like `"en-US"` or `"de-DE"` instead of the generic language code like `"en"` or `"de"` to obtain spelling corrections (in addition to grammar corrections). [More info...](https://valentjn.github.io/ltex/settings.html#ltexlanguage)
 -- 
 -- ```lua
 -- default = "en-US"
 -- ```
 ---@field language "auto" | "ar" | "ast-ES" | "be-BY" | "br-FR" | "ca-ES" | "ca-ES-valencia" | "da-DK" | "de" | "de-AT" | "de-CH" | "de-DE" | "de-DE-x-simple-language" | "el-GR" | "en" | "en-AU" | "en-CA" | "en-GB" | "en-NZ" | "en-US" | "en-ZA" | "eo" | "es" | "es-AR" | "fa" | "fr" | "ga-IE" | "gl-ES" | "it" | "ja-JP" | "km-KH" | "nl" | "nl-BE" | "pl-PL" | "pt" | "pt-AO" | "pt-BR" | "pt-MZ" | "pt-PT" | "ro-RO" | "ru-RU" | "sk-SK" | "sl-SI" | "sv" | "ta-IN" | "tl-PH" | "uk-UA" | "zh-CN"
--- %ltex.i18n.configuration.ltex.languageToolHttpServerUri.markdownDescription%
+-- If set to a non-empty string, LTeX will not use the bundled, built-in version of LanguageTool. Instead, LTeX will connect to an external [LanguageTool HTTP server](http://wiki.languagetool.org/http-server). Set this setting to the root URI of the server, and do not append `v2/check` or similar. [More info...](https://valentjn.github.io/ltex/settings.html#ltexlanguagetoolhttpserveruri)
 -- 
 -- ```lua
 -- default = ""
@@ -4679,13 +4683,13 @@
 ---@field latex _.lspconfig.settings.ltex.Latex
 ---@field ltex-ls _.lspconfig.settings.ltex.Ltex-ls
 ---@field markdown _.lspconfig.settings.ltex.Markdown
--- %ltex.i18n.configuration.ltex.sentenceCacheSize.markdownDescription%
+-- Size of the LanguageTool `ResultCache` in sentences (must be a positive integer). [More info...](https://valentjn.github.io/ltex/settings.html#ltexsentencecachesize)
 -- 
 -- ```lua
 -- default = 2000
 -- ```
 ---@field sentenceCacheSize integer
--- %ltex.i18n.configuration.ltex.statusBarItem.markdownDescription%
+-- If set to `true`, an item about the status of LTeX is shown permanently in the status bar.
 ---@field statusBarItem boolean
 ---@field trace _.lspconfig.settings.ltex.Trace
 
@@ -10877,71 +10881,71 @@
 ---@class lspconfig.settings.terraformls
 
 ---@class _.lspconfig.settings.tsserver.Format
--- %javascript.format.enable%
+-- Enable/disable default JavaScript formatter.
 -- 
 -- ```lua
 -- default = true
 -- ```
 ---@field enable boolean
--- %format.insertSpaceAfterCommaDelimiter%
+-- Defines space handling after a comma delimiter.
 -- 
 -- ```lua
 -- default = true
 -- ```
 ---@field insertSpaceAfterCommaDelimiter boolean
--- %format.insertSpaceAfterConstructor%
+-- Defines space handling after the constructor keyword.
 ---@field insertSpaceAfterConstructor boolean
--- %format.insertSpaceAfterFunctionKeywordForAnonymousFunctions%
+-- Defines space handling after function keyword for anonymous functions.
 -- 
 -- ```lua
 -- default = true
 -- ```
 ---@field insertSpaceAfterFunctionKeywordForAnonymousFunctions boolean
--- %format.insertSpaceAfterKeywordsInControlFlowStatements%
+-- Defines space handling after keywords in a control flow statement.
 -- 
 -- ```lua
 -- default = true
 -- ```
 ---@field insertSpaceAfterKeywordsInControlFlowStatements boolean
--- %format.insertSpaceAfterOpeningAndBeforeClosingEmptyBraces%
+-- Defines space handling after opening and before closing empty braces.
 -- 
 -- ```lua
 -- default = true
 -- ```
 ---@field insertSpaceAfterOpeningAndBeforeClosingEmptyBraces boolean
--- %format.insertSpaceAfterOpeningAndBeforeClosingJsxExpressionBraces%
+-- Defines space handling after opening and before closing JSX expression braces.
 ---@field insertSpaceAfterOpeningAndBeforeClosingJsxExpressionBraces boolean
--- %format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBraces%
+-- Defines space handling after opening and before closing non-empty braces.
 -- 
 -- ```lua
 -- default = true
 -- ```
 ---@field insertSpaceAfterOpeningAndBeforeClosingNonemptyBraces boolean
--- %format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBrackets%
+-- Defines space handling after opening and before closing non-empty brackets.
 ---@field insertSpaceAfterOpeningAndBeforeClosingNonemptyBrackets boolean
--- %format.insertSpaceAfterOpeningAndBeforeClosingNonemptyParenthesis%
+-- Defines space handling after opening and before closing non-empty parenthesis.
 ---@field insertSpaceAfterOpeningAndBeforeClosingNonemptyParenthesis boolean
--- %format.insertSpaceAfterOpeningAndBeforeClosingTemplateStringBraces%
+-- Defines space handling after opening and before closing template string braces.
 ---@field insertSpaceAfterOpeningAndBeforeClosingTemplateStringBraces boolean
--- %format.insertSpaceAfterSemicolonInForStatements%
+-- Defines space handling after a semicolon in a for statement.
 -- 
 -- ```lua
 -- default = true
 -- ```
 ---@field insertSpaceAfterSemicolonInForStatements boolean
--- %format.insertSpaceBeforeAndAfterBinaryOperators%
+-- Defines space handling after a binary operator.
 -- 
 -- ```lua
 -- default = true
 -- ```
 ---@field insertSpaceBeforeAndAfterBinaryOperators boolean
--- %format.insertSpaceBeforeFunctionParenthesis%
+-- Defines space handling before function argument parentheses.
 ---@field insertSpaceBeforeFunctionParenthesis boolean
--- %format.placeOpenBraceOnNewLineForControlBlocks%
+-- Defines whether an open brace is put onto a new line for control blocks or not.
 ---@field placeOpenBraceOnNewLineForControlBlocks boolean
--- %format.placeOpenBraceOnNewLineForFunctions%
+-- Defines whether an open brace is put onto a new line for functions or not.
 ---@field placeOpenBraceOnNewLineForFunctions boolean
--- %format.semicolons%
+-- Defines handling of optional semicolons. Requires using TypeScript 3.7 or newer in the workspace.
 -- 
 -- ```lua
 -- default = "ignore"
@@ -10949,27 +10953,56 @@
 ---@field semicolons "ignore" | "insert" | "remove"
 
 ---@class _.lspconfig.settings.tsserver.ImplicitProjectConfig
--- %configuration.implicitProjectConfig.checkJs%
+-- Enable/disable semantic checking of JavaScript files. Existing `jsconfig.json` or `tsconfig.json` files override this setting.
 ---@field checkJs boolean
--- %configuration.implicitProjectConfig.experimentalDecorators%
+-- Enable/disable `experimentalDecorators` in JavaScript files that are not part of a project. Existing `jsconfig.json` or `tsconfig.json` files override this setting.
 ---@field experimentalDecorators boolean
 
 ---@class _.lspconfig.settings.tsserver.EnumMemberValues
--- %configuration.inlayHints.enumMemberValues.enabled%
+-- The text inside the ``` block is code and should not be localized.
+-- 
+-- Enable/disable inlay hints for member values in enum declarations:
+-- ```typescript
+-- 
+-- enum MyValue {
+-- 	A /* = 0 */;
+-- 	B /* = 1 */;
+-- }
+--  
+-- ```
+-- Requires using TypeScript 4.4+ in the workspace.
 ---@field enabled boolean
 
 ---@class _.lspconfig.settings.tsserver.FunctionLikeReturnTypes
--- %configuration.inlayHints.functionLikeReturnTypes.enabled%
+-- The text inside the ``` block is code and should not be localized.
+-- 
+-- Enable/disable inlay hints for implicit return types on function signatures:
+-- ```typescript
+-- 
+-- function foo() /* :number */ {
+-- 	return Date.now();
+-- } 
+--  
+-- ```
+-- Requires using TypeScript 4.4+ in the workspace.
 ---@field enabled boolean
 
 ---@class _.lspconfig.settings.tsserver.ParameterNames
--- %configuration.inlayHints.parameterNames.enabled%
+-- The text inside the ``` block is code and should not be localized.
+-- 
+-- Enable/disable inlay hints for parameter names:
+-- ```typescript
+-- 
+-- parseInt(/* str: */ '123', /* radix: */ 8)
+--  
+-- ```
+-- Requires using TypeScript 4.4+ in the workspace.
 -- 
 -- ```lua
 -- default = "none"
 -- ```
 ---@field enabled "none" | "literals" | "all"
--- %configuration.inlayHints.parameterNames.suppressWhenArgumentMatchesName%
+-- Suppress parameter name hints on arguments whose text is identical to the parameter name.
 -- 
 -- ```lua
 -- default = true
@@ -10977,17 +11010,43 @@
 ---@field suppressWhenArgumentMatchesName boolean
 
 ---@class _.lspconfig.settings.tsserver.ParameterTypes
--- %configuration.inlayHints.parameterTypes.enabled%
+-- The text inside the ``` block is code and should not be localized.
+-- 
+-- Enable/disable inlay hints for implicit parameter types:
+-- ```typescript
+-- 
+-- el.addEventListener('click', e /* :MouseEvent */ => ...)
+--  
+-- ```
+-- Requires using TypeScript 4.4+ in the workspace.
 ---@field enabled boolean
 
 ---@class _.lspconfig.settings.tsserver.PropertyDeclarationTypes
--- %configuration.inlayHints.propertyDeclarationTypes.enabled%
+-- The text inside the ``` block is code and should not be localized.
+-- 
+-- Enable/disable inlay hints for implicit types on property declarations:
+-- ```typescript
+-- 
+-- class Foo {
+-- 	prop /* :number */ = Date.now();
+-- }
+--  
+-- ```
+-- Requires using TypeScript 4.4+ in the workspace.
 ---@field enabled boolean
 
 ---@class _.lspconfig.settings.tsserver.VariableTypes
--- %configuration.inlayHints.variableTypes.enabled%
+-- The text inside the ``` block is code and should not be localized.
+-- 
+-- Enable/disable inlay hints for implicit variable types:
+-- ```typescript
+-- 
+-- const foo /* :number */ = Date.now();
+--  
+-- ```
+-- Requires using TypeScript 4.4+ in the workspace.
 ---@field enabled boolean
--- %configuration.inlayHints.variableTypes.suppressWhenTypeMatchesName%
+-- Suppress type hints on variables whose name is identical to the type name. Requires using TypeScript 4.8+ in the workspace.
 -- 
 -- ```lua
 -- default = true
@@ -11003,39 +11062,39 @@
 ---@field variableTypes _.lspconfig.settings.tsserver.VariableTypes
 
 ---@class _.lspconfig.settings.tsserver.Preferences
--- %typescript.preferences.autoImportFileExcludePatterns%
+-- Specify glob patterns of files to exclude from auto imports. Requires using TypeScript 4.8 or newer in the workspace.
 ---@field autoImportFileExcludePatterns string[]
--- %typescript.preferences.importModuleSpecifier%
+-- Preferred path style for auto imports.
 -- 
 -- ```lua
 -- default = "shortest"
 -- ```
 ---@field importModuleSpecifier "shortest" | "relative" | "non-relative" | "project-relative"
--- %typescript.preferences.importModuleSpecifierEnding%
+-- Preferred path ending for auto imports. Requires using TypeScript 4.5+ in the workspace.
 -- 
 -- ```lua
 -- default = "auto"
 -- ```
 ---@field importModuleSpecifierEnding "auto" | "minimal" | "index" | "js"
--- %typescript.preferences.jsxAttributeCompletionStyle%
+-- Preferred style for JSX attribute completions.
 -- 
 -- ```lua
 -- default = "auto"
 -- ```
 ---@field jsxAttributeCompletionStyle "auto" | "braces" | "none"
--- %typescript.preferences.quoteStyle%
+-- Preferred quote style to use for quick fixes.
 -- 
 -- ```lua
 -- default = "auto"
 -- ```
 ---@field quoteStyle "auto" | "single" | "double"
--- %typescript.preferences.useAliasesForRenames%
+-- Enable/disable introducing aliases for object shorthand properties during renames. Requires using TypeScript 3.4 or newer in the workspace.
 -- 
 -- ```lua
 -- default = true
 -- ```
 ---@field renameShorthandProperties boolean
--- %typescript.preferences.useAliasesForRenames%
+-- Enable/disable introducing aliases for object shorthand properties during renames. Requires using TypeScript 3.4 or newer in the workspace.
 -- 
 -- ```lua
 -- default = true
@@ -11043,13 +11102,13 @@
 ---@field useAliasesForRenames boolean
 
 ---@class _.lspconfig.settings.tsserver.ReferencesCodeLens
--- %javascript.referencesCodeLens.enabled%
+-- Enable/disable references CodeLens in JavaScript files.
 ---@field enabled boolean
--- %javascript.referencesCodeLens.showOnAllFunctions%
+-- Enable/disable references CodeLens on all functions in JavaScript files.
 ---@field showOnAllFunctions boolean
 
 ---@class _.lspconfig.settings.tsserver.ClassMemberSnippets
--- %configuration.suggest.classMemberSnippets.enabled%
+-- Enable/disable snippet completions for class members. Requires using TypeScript 4.5+ in the workspace
 -- 
 -- ```lua
 -- default = true
@@ -11057,7 +11116,7 @@
 ---@field enabled boolean
 
 ---@class _.lspconfig.settings.tsserver.Jsdoc
--- %configuration.suggest.jsdoc.generateReturns%
+-- Enable/disable generating `@returns` annotations for JSDoc templates. Requires using TypeScript 4.2+ in the workspace.
 -- 
 -- ```lua
 -- default = true
@@ -11065,47 +11124,47 @@
 ---@field generateReturns boolean
 
 ---@class _.lspconfig.settings.tsserver.Suggest
--- %configuration.suggest.autoImports%
+-- Enable/disable auto import suggestions.
 -- 
 -- ```lua
 -- default = true
 -- ```
 ---@field autoImports boolean
 ---@field classMemberSnippets _.lspconfig.settings.tsserver.ClassMemberSnippets
--- %configuration.suggest.completeFunctionCalls%
+-- Complete functions with their parameter signature.
 ---@field completeFunctionCalls boolean
--- %configuration.suggest.completeJSDocs%
+-- Enable/disable suggestion to complete JSDoc comments.
 -- 
 -- ```lua
 -- default = true
 -- ```
 ---@field completeJSDocs boolean
--- %typescript.suggest.enabled%
+-- Enabled/disable autocomplete suggestions.
 -- 
 -- ```lua
 -- default = true
 -- ```
 ---@field enabled boolean
--- %configuration.suggest.includeAutomaticOptionalChainCompletions%
+-- Enable/disable showing completions on potentially undefined values that insert an optional chain call. Requires TS 3.7+ and strict null checks to be enabled.
 -- 
 -- ```lua
 -- default = true
 -- ```
 ---@field includeAutomaticOptionalChainCompletions boolean
--- %configuration.suggest.includeCompletionsForImportStatements%
+-- Enable/disable auto-import-style completions on partially-typed import statements. Requires using TypeScript 4.3+ in the workspace.
 -- 
 -- ```lua
 -- default = true
 -- ```
 ---@field includeCompletionsForImportStatements boolean
 ---@field jsdoc _.lspconfig.settings.tsserver.Jsdoc
--- %configuration.suggest.names%
+-- Enable/disable including unique names from the file in JavaScript suggestions. Note that name suggestions are always disabled in JavaScript code that is semantically checked using `@ts-check` or `checkJs`.
 -- 
 -- ```lua
 -- default = true
 -- ```
 ---@field names boolean
--- %configuration.suggest.paths%
+-- Enable/disable suggestions for paths in import statements and require calls.
 -- 
 -- ```lua
 -- default = true
@@ -11113,7 +11172,7 @@
 ---@field paths boolean
 
 ---@class _.lspconfig.settings.tsserver.SuggestionActions
--- %javascript.suggestionActions.enabled%
+-- Enable/disable suggestion diagnostics for JavaScript files in the editor.
 -- 
 -- ```lua
 -- default = true
@@ -11121,7 +11180,7 @@
 ---@field enabled boolean
 
 ---@class _.lspconfig.settings.tsserver.UpdateImportsOnFileMove
--- %typescript.updateImportsOnFileMove.enabled%
+-- Enable/disable automatic updating of import paths when you rename or move a file in VS Code.
 -- 
 -- ```lua
 -- default = "prompt"
@@ -11129,7 +11188,7 @@
 ---@field enabled "prompt" | "always" | "never"
 
 ---@class _.lspconfig.settings.tsserver.Validate
--- %javascript.validate.enable%
+-- Enable/disable JavaScript validation.
 -- 
 -- ```lua
 -- default = true
@@ -11137,7 +11196,7 @@
 ---@field enable boolean
 
 ---@class _.lspconfig.settings.tsserver.Javascript
--- %typescript.autoClosingTags%
+-- Enable/disable automatic closing of JSX tags.
 -- 
 -- ```lua
 -- default = true
@@ -11154,29 +11213,29 @@
 ---@field validate _.lspconfig.settings.tsserver.Validate
 
 ---@class _.lspconfig.settings.tsserver.ImplicitProjectConfig
--- %configuration.implicitProjectConfig.checkJs%
+-- Enable/disable semantic checking of JavaScript files. Existing `jsconfig.json` or `tsconfig.json` files override this setting.
 ---@field checkJs boolean
--- %configuration.implicitProjectConfig.experimentalDecorators%
+-- Enable/disable `experimentalDecorators` in JavaScript files that are not part of a project. Existing `jsconfig.json` or `tsconfig.json` files override this setting.
 ---@field experimentalDecorators boolean
--- %configuration.implicitProjectConfig.module%
+-- Sets the module system for the program. See more: https://www.typescriptlang.org/tsconfig#module.
 -- 
 -- ```lua
 -- default = "ESNext"
 -- ```
 ---@field module "CommonJS" | "AMD" | "System" | "UMD" | "ES6" | "ES2015" | "ES2020" | "ESNext" | "None" | "ES2022" | "Node12" | "NodeNext"
--- %configuration.implicitProjectConfig.strictFunctionTypes%
+-- Enable/disable [strict function types](https://www.typescriptlang.org/tsconfig#strictFunctionTypes) in JavaScript and TypeScript files that are not part of a project. Existing `jsconfig.json` or `tsconfig.json` files override this setting.
 -- 
 -- ```lua
 -- default = true
 -- ```
 ---@field strictFunctionTypes boolean
--- %configuration.implicitProjectConfig.strictNullChecks%
+-- Enable/disable [strict null checks](https://www.typescriptlang.org/tsconfig#strictNullChecks) in JavaScript and TypeScript files that are not part of a project. Existing `jsconfig.json` or `tsconfig.json` files override this setting.
 -- 
 -- ```lua
 -- default = true
 -- ```
 ---@field strictNullChecks boolean
--- %configuration.implicitProjectConfig.target%
+-- Set target JavaScript language version for emitted JavaScript and include library declarations. See more: https://www.typescriptlang.org/tsconfig#target.
 -- 
 -- ```lua
 -- default = "ES2020"
@@ -11187,7 +11246,7 @@
 ---@field implicitProjectConfig _.lspconfig.settings.tsserver.ImplicitProjectConfig
 
 ---@class _.lspconfig.settings.tsserver.Check
--- %typescript.check.npmIsInstalled%
+-- Check if npm is installed for [Automatic Type Acquisition](https://code.visualstudio.com/docs/nodejs/working-with-javascript#_typings-and-automatic-type-acquisition).
 -- 
 -- ```lua
 -- default = true
@@ -11195,73 +11254,73 @@
 ---@field npmIsInstalled boolean
 
 ---@class _.lspconfig.settings.tsserver.Format
--- %typescript.format.enable%
+-- Enable/disable default TypeScript formatter.
 -- 
 -- ```lua
 -- default = true
 -- ```
 ---@field enable boolean
--- %format.insertSpaceAfterCommaDelimiter%
+-- Defines space handling after a comma delimiter.
 -- 
 -- ```lua
 -- default = true
 -- ```
 ---@field insertSpaceAfterCommaDelimiter boolean
--- %format.insertSpaceAfterConstructor%
+-- Defines space handling after the constructor keyword.
 ---@field insertSpaceAfterConstructor boolean
--- %format.insertSpaceAfterFunctionKeywordForAnonymousFunctions%
+-- Defines space handling after function keyword for anonymous functions.
 -- 
 -- ```lua
 -- default = true
 -- ```
 ---@field insertSpaceAfterFunctionKeywordForAnonymousFunctions boolean
--- %format.insertSpaceAfterKeywordsInControlFlowStatements%
+-- Defines space handling after keywords in a control flow statement.
 -- 
 -- ```lua
 -- default = true
 -- ```
 ---@field insertSpaceAfterKeywordsInControlFlowStatements boolean
--- %format.insertSpaceAfterOpeningAndBeforeClosingEmptyBraces%
+-- Defines space handling after opening and before closing empty braces.
 -- 
 -- ```lua
 -- default = true
 -- ```
 ---@field insertSpaceAfterOpeningAndBeforeClosingEmptyBraces boolean
--- %format.insertSpaceAfterOpeningAndBeforeClosingJsxExpressionBraces%
+-- Defines space handling after opening and before closing JSX expression braces.
 ---@field insertSpaceAfterOpeningAndBeforeClosingJsxExpressionBraces boolean
--- %format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBraces%
+-- Defines space handling after opening and before closing non-empty braces.
 -- 
 -- ```lua
 -- default = true
 -- ```
 ---@field insertSpaceAfterOpeningAndBeforeClosingNonemptyBraces boolean
--- %format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBrackets%
+-- Defines space handling after opening and before closing non-empty brackets.
 ---@field insertSpaceAfterOpeningAndBeforeClosingNonemptyBrackets boolean
--- %format.insertSpaceAfterOpeningAndBeforeClosingNonemptyParenthesis%
+-- Defines space handling after opening and before closing non-empty parenthesis.
 ---@field insertSpaceAfterOpeningAndBeforeClosingNonemptyParenthesis boolean
--- %format.insertSpaceAfterOpeningAndBeforeClosingTemplateStringBraces%
+-- Defines space handling after opening and before closing template string braces.
 ---@field insertSpaceAfterOpeningAndBeforeClosingTemplateStringBraces boolean
--- %format.insertSpaceAfterSemicolonInForStatements%
+-- Defines space handling after a semicolon in a for statement.
 -- 
 -- ```lua
 -- default = true
 -- ```
 ---@field insertSpaceAfterSemicolonInForStatements boolean
--- %format.insertSpaceAfterTypeAssertion%
+-- Defines space handling after type assertions in TypeScript.
 ---@field insertSpaceAfterTypeAssertion boolean
--- %format.insertSpaceBeforeAndAfterBinaryOperators%
+-- Defines space handling after a binary operator.
 -- 
 -- ```lua
 -- default = true
 -- ```
 ---@field insertSpaceBeforeAndAfterBinaryOperators boolean
--- %format.insertSpaceBeforeFunctionParenthesis%
+-- Defines space handling before function argument parentheses.
 ---@field insertSpaceBeforeFunctionParenthesis boolean
--- %format.placeOpenBraceOnNewLineForControlBlocks%
+-- Defines whether an open brace is put onto a new line for control blocks or not.
 ---@field placeOpenBraceOnNewLineForControlBlocks boolean
--- %format.placeOpenBraceOnNewLineForFunctions%
+-- Defines whether an open brace is put onto a new line for functions or not.
 ---@field placeOpenBraceOnNewLineForFunctions boolean
--- %format.semicolons%
+-- Defines handling of optional semicolons. Requires using TypeScript 3.7 or newer in the workspace.
 -- 
 -- ```lua
 -- default = "ignore"
@@ -11269,25 +11328,54 @@
 ---@field semicolons "ignore" | "insert" | "remove"
 
 ---@class _.lspconfig.settings.tsserver.ImplementationsCodeLens
--- %typescript.implementationsCodeLens.enabled%
+-- Enable/disable implementations CodeLens. This CodeLens shows the implementers of an interface.
 ---@field enabled boolean
 
 ---@class _.lspconfig.settings.tsserver.EnumMemberValues
--- %configuration.inlayHints.enumMemberValues.enabled%
+-- The text inside the ``` block is code and should not be localized.
+-- 
+-- Enable/disable inlay hints for member values in enum declarations:
+-- ```typescript
+-- 
+-- enum MyValue {
+-- 	A /* = 0 */;
+-- 	B /* = 1 */;
+-- }
+--  
+-- ```
+-- Requires using TypeScript 4.4+ in the workspace.
 ---@field enabled boolean
 
 ---@class _.lspconfig.settings.tsserver.FunctionLikeReturnTypes
--- %configuration.inlayHints.functionLikeReturnTypes.enabled%
+-- The text inside the ``` block is code and should not be localized.
+-- 
+-- Enable/disable inlay hints for implicit return types on function signatures:
+-- ```typescript
+-- 
+-- function foo() /* :number */ {
+-- 	return Date.now();
+-- } 
+--  
+-- ```
+-- Requires using TypeScript 4.4+ in the workspace.
 ---@field enabled boolean
 
 ---@class _.lspconfig.settings.tsserver.ParameterNames
--- %configuration.inlayHints.parameterNames.enabled%
+-- The text inside the ``` block is code and should not be localized.
+-- 
+-- Enable/disable inlay hints for parameter names:
+-- ```typescript
+-- 
+-- parseInt(/* str: */ '123', /* radix: */ 8)
+--  
+-- ```
+-- Requires using TypeScript 4.4+ in the workspace.
 -- 
 -- ```lua
 -- default = "none"
 -- ```
 ---@field enabled "none" | "literals" | "all"
--- %configuration.inlayHints.parameterNames.suppressWhenArgumentMatchesName%
+-- Suppress parameter name hints on arguments whose text is identical to the parameter name.
 -- 
 -- ```lua
 -- default = true
@@ -11295,17 +11383,43 @@
 ---@field suppressWhenArgumentMatchesName boolean
 
 ---@class _.lspconfig.settings.tsserver.ParameterTypes
--- %configuration.inlayHints.parameterTypes.enabled%
+-- The text inside the ``` block is code and should not be localized.
+-- 
+-- Enable/disable inlay hints for implicit parameter types:
+-- ```typescript
+-- 
+-- el.addEventListener('click', e /* :MouseEvent */ => ...)
+--  
+-- ```
+-- Requires using TypeScript 4.4+ in the workspace.
 ---@field enabled boolean
 
 ---@class _.lspconfig.settings.tsserver.PropertyDeclarationTypes
--- %configuration.inlayHints.propertyDeclarationTypes.enabled%
+-- The text inside the ``` block is code and should not be localized.
+-- 
+-- Enable/disable inlay hints for implicit types on property declarations:
+-- ```typescript
+-- 
+-- class Foo {
+-- 	prop /* :number */ = Date.now();
+-- }
+--  
+-- ```
+-- Requires using TypeScript 4.4+ in the workspace.
 ---@field enabled boolean
 
 ---@class _.lspconfig.settings.tsserver.VariableTypes
--- %configuration.inlayHints.variableTypes.enabled%
+-- The text inside the ``` block is code and should not be localized.
+-- 
+-- Enable/disable inlay hints for implicit variable types:
+-- ```typescript
+-- 
+-- const foo /* :number */ = Date.now();
+--  
+-- ```
+-- Requires using TypeScript 4.4+ in the workspace.
 ---@field enabled boolean
--- %configuration.inlayHints.variableTypes.suppressWhenTypeMatchesName%
+-- Suppress type hints on variables whose name is identical to the type name. Requires using TypeScript 4.8+ in the workspace.
 -- 
 -- ```lua
 -- default = true
@@ -11321,45 +11435,45 @@
 ---@field variableTypes _.lspconfig.settings.tsserver.VariableTypes
 
 ---@class _.lspconfig.settings.tsserver.Preferences
--- %typescript.preferences.autoImportFileExcludePatterns%
+-- Specify glob patterns of files to exclude from auto imports. Requires using TypeScript 4.8 or newer in the workspace.
 ---@field autoImportFileExcludePatterns string[]
--- %typescript.preferences.importModuleSpecifier%
+-- Preferred path style for auto imports.
 -- 
 -- ```lua
 -- default = "shortest"
 -- ```
 ---@field importModuleSpecifier "shortest" | "relative" | "non-relative" | "project-relative"
--- %typescript.preferences.importModuleSpecifierEnding%
+-- Preferred path ending for auto imports. Requires using TypeScript 4.5+ in the workspace.
 -- 
 -- ```lua
 -- default = "auto"
 -- ```
 ---@field importModuleSpecifierEnding "auto" | "minimal" | "index" | "js"
--- %typescript.preferences.includePackageJsonAutoImports%
+-- Enable/disable searching `package.json` dependencies for available auto imports.
 -- 
 -- ```lua
 -- default = "auto"
 -- ```
 ---@field includePackageJsonAutoImports "auto" | "on" | "off"
--- %typescript.preferences.jsxAttributeCompletionStyle%
+-- Preferred style for JSX attribute completions.
 -- 
 -- ```lua
 -- default = "auto"
 -- ```
 ---@field jsxAttributeCompletionStyle "auto" | "braces" | "none"
--- %typescript.preferences.quoteStyle%
+-- Preferred quote style to use for quick fixes.
 -- 
 -- ```lua
 -- default = "auto"
 -- ```
 ---@field quoteStyle "auto" | "single" | "double"
--- %typescript.preferences.useAliasesForRenames%
+-- Enable/disable introducing aliases for object shorthand properties during renames. Requires using TypeScript 3.4 or newer in the workspace.
 -- 
 -- ```lua
 -- default = true
 -- ```
 ---@field renameShorthandProperties boolean
--- %typescript.preferences.useAliasesForRenames%
+-- Enable/disable introducing aliases for object shorthand properties during renames. Requires using TypeScript 3.4 or newer in the workspace.
 -- 
 -- ```lua
 -- default = true
@@ -11367,13 +11481,13 @@
 ---@field useAliasesForRenames boolean
 
 ---@class _.lspconfig.settings.tsserver.ReferencesCodeLens
--- %typescript.referencesCodeLens.enabled%
+-- Enable/disable references CodeLens in TypeScript files.
 ---@field enabled boolean
--- %typescript.referencesCodeLens.showOnAllFunctions%
+-- Enable/disable references CodeLens on all functions in TypeScript files.
 ---@field showOnAllFunctions boolean
 
 ---@class _.lspconfig.settings.tsserver.ClassMemberSnippets
--- %configuration.suggest.classMemberSnippets.enabled%
+-- Enable/disable snippet completions for class members. Requires using TypeScript 4.5+ in the workspace
 -- 
 -- ```lua
 -- default = true
@@ -11381,7 +11495,7 @@
 ---@field enabled boolean
 
 ---@class _.lspconfig.settings.tsserver.Jsdoc
--- %configuration.suggest.jsdoc.generateReturns%
+-- Enable/disable generating `@returns` annotations for JSDoc templates. Requires using TypeScript 4.2+ in the workspace.
 -- 
 -- ```lua
 -- default = true
@@ -11389,7 +11503,7 @@
 ---@field generateReturns boolean
 
 ---@class _.lspconfig.settings.tsserver.ObjectLiteralMethodSnippets
--- %configuration.suggest.objectLiteralMethodSnippets.enabled%
+-- Enable/disable snippet completions for methods in object literals. Requires using TypeScript 4.7+ in the workspace
 -- 
 -- ```lua
 -- default = true
@@ -11397,40 +11511,40 @@
 ---@field enabled boolean
 
 ---@class _.lspconfig.settings.tsserver.Suggest
--- %configuration.suggest.autoImports%
+-- Enable/disable auto import suggestions.
 -- 
 -- ```lua
 -- default = true
 -- ```
 ---@field autoImports boolean
 ---@field classMemberSnippets _.lspconfig.settings.tsserver.ClassMemberSnippets
--- %configuration.suggest.completeFunctionCalls%
+-- Complete functions with their parameter signature.
 ---@field completeFunctionCalls boolean
--- %configuration.suggest.completeJSDocs%
+-- Enable/disable suggestion to complete JSDoc comments.
 -- 
 -- ```lua
 -- default = true
 -- ```
 ---@field completeJSDocs boolean
--- %typescript.suggest.enabled%
+-- Enabled/disable autocomplete suggestions.
 -- 
 -- ```lua
 -- default = true
 -- ```
 ---@field enabled boolean
--- %configuration.suggest.includeAutomaticOptionalChainCompletions%
+-- Enable/disable showing completions on potentially undefined values that insert an optional chain call. Requires TS 3.7+ and strict null checks to be enabled.
 -- 
 -- ```lua
 -- default = true
 -- ```
 ---@field includeAutomaticOptionalChainCompletions boolean
--- %configuration.suggest.includeCompletionsForImportStatements%
+-- Enable/disable auto-import-style completions on partially-typed import statements. Requires using TypeScript 4.3+ in the workspace.
 -- 
 -- ```lua
 -- default = true
 -- ```
 ---@field includeCompletionsForImportStatements boolean
--- %configuration.suggest.includeCompletionsWithSnippetText%
+-- Enable/disable snippet completions from TS Server. Requires using TypeScript 4.3+ in the workspace.
 -- 
 -- ```lua
 -- default = true
@@ -11438,7 +11552,7 @@
 ---@field includeCompletionsWithSnippetText boolean
 ---@field jsdoc _.lspconfig.settings.tsserver.Jsdoc
 ---@field objectLiteralMethodSnippets _.lspconfig.settings.tsserver.ObjectLiteralMethodSnippets
--- %configuration.suggest.paths%
+-- Enable/disable suggestions for paths in import statements and require calls.
 -- 
 -- ```lua
 -- default = true
@@ -11446,7 +11560,7 @@
 ---@field paths boolean
 
 ---@class _.lspconfig.settings.tsserver.SuggestionActions
--- %typescript.suggestionActions.enabled%
+-- Enable/disable suggestion diagnostics for TypeScript files in the editor.
 -- 
 -- ```lua
 -- default = true
@@ -11454,7 +11568,7 @@
 ---@field enabled boolean
 
 ---@class _.lspconfig.settings.tsserver.Surveys
--- %configuration.surveys.enabled%
+-- Enabled/disable occasional surveys that help us improve VS Code's JavaScript and TypeScript support.
 -- 
 -- ```lua
 -- default = true
@@ -11462,7 +11576,7 @@
 ---@field enabled boolean
 
 ---@class _.lspconfig.settings.tsserver.Tsc
--- %typescript.tsc.autoDetect%
+-- Controls auto detection of tsc tasks.
 -- 
 -- ```lua
 -- default = "on"
@@ -11470,22 +11584,22 @@
 ---@field autoDetect "on" | "off" | "build" | "watch"
 
 ---@class _.lspconfig.settings.tsserver.Experimental
--- %configuration.tsserver.experimental.enableProjectDiagnostics%
+-- (Experimental) Enables project wide error reporting.
 ---@field enableProjectDiagnostics boolean
 
--- %configuration.tsserver.watchOptions%
+-- Configure which watching strategies should be used to keep track of files and directories. Requires using TypeScript 3.8+ in the workspace.
 ---@class _.lspconfig.settings.tsserver.WatchOptions
--- %configuration.tsserver.watchOptions.fallbackPolling%
+-- When using file system events, this option specifies the polling strategy that gets used when the system runs out of native file watchers and/or doesn't support native file watchers.
 ---@field fallbackPolling "fixedPollingInterval" | "priorityPollingInterval" | "dynamicPriorityPolling"
--- %configuration.tsserver.watchOptions.synchronousWatchDirectory%
+-- Disable deferred watching on directories. Deferred watching is useful when lots of file changes might occur at once (e.g. a change in node_modules from running npm install), but you might want to disable it with this flag for some less-common setups.
 ---@field synchronousWatchDirectory boolean
--- %configuration.tsserver.watchOptions.watchDirectory%
+-- Strategy for how entire directory trees are watched under systems that lack recursive file-watching functionality.
 -- 
 -- ```lua
 -- default = "useFsEvents"
 -- ```
 ---@field watchDirectory "fixedChunkSizePolling" | "fixedPollingInterval" | "dynamicPriorityPolling" | "useFsEvents"
--- %configuration.tsserver.watchOptions.watchFile%
+-- Strategy for how individual files are watched.
 -- 
 -- ```lua
 -- default = "useFsEvents"
@@ -11493,50 +11607,50 @@
 ---@field watchFile "fixedChunkSizePolling" | "fixedPollingInterval" | "priorityPollingInterval" | "dynamicPriorityPolling" | "useFsEvents" | "useFsEventsOnParentDirectory"
 
 ---@class _.lspconfig.settings.tsserver.Tsserver
--- %typescript.tsserver.enableTracing%
+-- Enables tracing TS server performance to a directory. These trace files can be used to diagnose TS Server performance issues. The log may contain file paths, source code, and other potentially sensitive information from your project.
 ---@field enableTracing boolean
 ---@field experimental _.lspconfig.settings.tsserver.Experimental
--- %typescript.tsserver.log%
+-- Enables logging of the TS server to a file. This log can be used to diagnose TS Server issues. The log may contain file paths, source code, and other potentially sensitive information from your project.
 -- 
 -- ```lua
 -- default = "off"
 -- ```
 ---@field log "off" | "terse" | "normal" | "verbose"
--- %configuration.tsserver.maxTsServerMemory%
+-- The maximum amount of memory (in MB) to allocate to the TypeScript server process.
 -- 
 -- ```lua
 -- default = 3072
 -- ```
 ---@field maxTsServerMemory number
--- %typescript.tsserver.pluginPaths%
+-- Additional paths to discover TypeScript Language Service plugins.
 -- 
 -- ```lua
 -- default = {}
 -- ```
 ---@field pluginPaths string[]
--- %typescript.tsserver.trace%
+-- Enables tracing of messages sent to the TS server. This trace can be used to diagnose TS Server issues. The trace may contain file paths, source code, and other potentially sensitive information from your project.
 -- 
 -- ```lua
 -- default = "off"
 -- ```
 ---@field trace "off" | "messages" | "verbose"
--- %configuration.tsserver.useSeparateSyntaxServer%
+-- Enable/disable spawning a separate TypeScript server that can more quickly respond to syntax related operations, such as calculating folding or computing document symbols. Requires using TypeScript 3.4.0 or newer in the workspace.
 -- 
 -- ```lua
 -- default = true
 -- ```
 ---@field useSeparateSyntaxServer boolean
--- %configuration.tsserver.useSyntaxServer%
+-- Controls if TypeScript launches a dedicated server to more quickly handle syntax related operations, such as computing code folding.
 -- 
 -- ```lua
 -- default = "auto"
 -- ```
 ---@field useSyntaxServer "always" | "never" | "auto"
--- %configuration.tsserver.watchOptions%
+-- Configure which watching strategies should be used to keep track of files and directories. Requires using TypeScript 3.8+ in the workspace.
 ---@field watchOptions _.lspconfig.settings.tsserver.WatchOptions
 
 ---@class _.lspconfig.settings.tsserver.UpdateImportsOnFileMove
--- %typescript.updateImportsOnFileMove.enabled%
+-- Enable/disable automatic updating of import paths when you rename or move a file in VS Code.
 -- 
 -- ```lua
 -- default = "prompt"
@@ -11544,7 +11658,7 @@
 ---@field enabled "prompt" | "always" | "never"
 
 ---@class _.lspconfig.settings.tsserver.Validate
--- %typescript.validate.enable%
+-- Enable/disable TypeScript validation.
 -- 
 -- ```lua
 -- default = true
@@ -11552,7 +11666,7 @@
 ---@field enable boolean
 
 ---@class _.lspconfig.settings.tsserver.WorkspaceSymbols
--- %typescript.workspaceSymbols.scope%
+-- Controls which files are searched by [go to symbol in workspace](https://code.visualstudio.com/docs/editor/editingevolved#_open-symbol-by-name).
 -- 
 -- ```lua
 -- default = "allOpenProjects"
@@ -11560,31 +11674,31 @@
 ---@field scope "allOpenProjects" | "currentProject"
 
 ---@class _.lspconfig.settings.tsserver.Typescript
--- %typescript.autoClosingTags%
+-- Enable/disable automatic closing of JSX tags.
 -- 
 -- ```lua
 -- default = true
 -- ```
 ---@field autoClosingTags boolean
 ---@field check _.lspconfig.settings.tsserver.Check
--- %typescript.disableAutomaticTypeAcquisition%
+-- Disables [automatic type acquisition](https://code.visualstudio.com/docs/nodejs/working-with-javascript#_typings-and-automatic-type-acquisition). Automatic type acquisition fetches `@types` packages from npm to improve IntelliSense for external libraries.
 ---@field disableAutomaticTypeAcquisition boolean
--- %typescript.enablePromptUseWorkspaceTsdk%
+-- Enables prompting of users to use the TypeScript version configured in the workspace for Intellisense.
 ---@field enablePromptUseWorkspaceTsdk boolean
 ---@field format _.lspconfig.settings.tsserver.Format
 ---@field implementationsCodeLens _.lspconfig.settings.tsserver.ImplementationsCodeLens
 ---@field inlayHints _.lspconfig.settings.tsserver.InlayHints
--- %typescript.locale%
+-- Sets the locale used to report JavaScript and TypeScript errors. Defaults to use VS Code's locale.
 -- 
 -- ```lua
 -- default = "auto"
 -- ```
 ---@field locale "auto" | "de" | "es" | "en" | "fr" | "it" | "ja" | "ko" | "ru" | "zh-CN" | "zh-TW"
--- %typescript.npm%
+-- Specifies the path to the npm executable used for [Automatic Type Acquisition](https://code.visualstudio.com/docs/nodejs/working-with-javascript#_typings-and-automatic-type-acquisition).
 ---@field npm string
 ---@field preferences _.lspconfig.settings.tsserver.Preferences
 ---@field referencesCodeLens _.lspconfig.settings.tsserver.ReferencesCodeLens
--- %typescript.reportStyleChecksAsWarnings%
+-- Report style checks as warnings.
 -- 
 -- ```lua
 -- default = true
@@ -11594,7 +11708,12 @@
 ---@field suggestionActions _.lspconfig.settings.tsserver.SuggestionActions
 ---@field surveys _.lspconfig.settings.tsserver.Surveys
 ---@field tsc _.lspconfig.settings.tsserver.Tsc
--- %typescript.tsdk.desc%
+-- Specifies the folder path to the tsserver and `lib*.d.ts` files under a TypeScript install to use for IntelliSense, for example: `./node_modules/typescript/lib`.
+-- 
+-- - When specified as a user setting, the TypeScript version from `typescript.tsdk` automatically replaces the built-in TypeScript version.
+-- - When specified as a workspace setting, `typescript.tsdk` allows you to switch to use that workspace version of TypeScript for IntelliSense with the `TypeScript: Select TypeScript version` command.
+-- 
+-- See the [TypeScript documentation](https://code.visualstudio.com/docs/typescript/typescript-compiling#_using-newer-typescript-versions) for more detail about managing TypeScript versions.
 ---@field tsdk string
 ---@field tsserver _.lspconfig.settings.tsserver.Tsserver
 ---@field updateImportsOnFileMove _.lspconfig.settings.tsserver.UpdateImportsOnFileMove

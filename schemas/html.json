@@ -1,31 +1,31 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "description": "%description%",
+  "description": "Provides rich language support for HTML and Handlebar files",
   "properties": {
     "html.autoClosingTags": {
       "default": true,
-      "description": "%html.autoClosingTags%",
+      "description": "Enable/disable autoclosing of HTML tags.",
       "scope": "resource",
       "type": "boolean"
     },
     "html.autoCreateQuotes": {
       "default": true,
-      "description": "%html.autoCreateQuotes%",
+      "description": "Enable/disable auto creation of quotes for HTML attribute assignment. The type of quotes can be configured by `#html.completion.attributeDefaultValue#`.",
       "scope": "resource",
       "type": "boolean"
     },
     "html.completion.attributeDefaultValue": {
       "default": "doublequotes",
-      "description": "%html.completion.attributeDefaultValue%",
+      "description": "Controls the default value for attributes when completion is accepted.",
       "enum": [
         "doublequotes",
         "singlequotes",
         "empty"
       ],
       "enumDescriptions": [
-        "%html.completion.attributeDefaultValue.doublequotes%",
-        "%html.completion.attributeDefaultValue.singlequotes%",
-        "%html.completion.attributeDefaultValue.empty%"
+        "Attribute value is set to \"\".",
+        "Attribute value is set to ''.",
+        "Attribute value is not set."
       ],
       "scope": "resource",
       "type": "string"
@@ -35,13 +35,13 @@
       "items": {
         "type": "string"
       },
-      "markdownDescription": "%html.customData.desc%",
+      "markdownDescription": "A list of relative file paths pointing to JSON files following the [custom data format](https://github.com/microsoft/vscode-html-languageservice/blob/master/docs/customData.md).\n\nVS Code loads custom data on startup to enhance its HTML support for the custom HTML tags, attributes and attribute values you specify in the JSON files.\n\nThe file paths are relative to workspace and only workspace folder settings are considered.",
       "scope": "resource",
       "type": "array"
     },
     "html.format.contentUnformatted": {
       "default": "pre,code,textarea",
-      "markdownDescription": "%html.format.contentUnformatted.desc%",
+      "markdownDescription": "List of tags, comma separated, where the content shouldn't be reformatted. `null` defaults to the `pre` tag.",
       "scope": "resource",
       "type": [
         "string",
@@ -50,13 +50,13 @@
     },
     "html.format.enable": {
       "default": true,
-      "description": "%html.format.enable.desc%",
+      "description": "Enable/disable default HTML formatter.",
       "scope": "window",
       "type": "boolean"
     },
     "html.format.extraLiners": {
       "default": "head, body, /html",
-      "markdownDescription": "%html.format.extraLiners.desc%",
+      "markdownDescription": "List of tags, comma separated, that should have an extra newline before them. `null` defaults to `\"head, body, /html\"`.",
       "scope": "resource",
       "type": [
         "string",
@@ -65,19 +65,19 @@
     },
     "html.format.indentHandlebars": {
       "default": false,
-      "markdownDescription": "%html.format.indentHandlebars.desc%",
+      "markdownDescription": "Format and indent `{{#foo}}` and `{{/foo}}`.",
       "scope": "resource",
       "type": "boolean"
     },
     "html.format.indentInnerHtml": {
       "default": false,
-      "markdownDescription": "%html.format.indentInnerHtml.desc%",
+      "markdownDescription": "Indent `<head>` and `<body>` sections.",
       "scope": "resource",
       "type": "boolean"
     },
     "html.format.maxPreserveNewLines": {
       "default": null,
-      "markdownDescription": "%html.format.maxPreserveNewLines.desc%",
+      "markdownDescription": "Maximum number of line breaks to be preserved in one chunk. Use `null` for unlimited.",
       "scope": "resource",
       "type": [
         "number",
@@ -86,19 +86,19 @@
     },
     "html.format.preserveNewLines": {
       "default": true,
-      "description": "%html.format.preserveNewLines.desc%",
+      "description": "Controls whether existing line breaks before elements should be preserved. Only works before elements, not inside tags or for text.",
       "scope": "resource",
       "type": "boolean"
     },
     "html.format.templating": {
       "default": false,
-      "description": "%html.format.templating.desc%",
+      "description": "Honor django, erb, handlebars and php templating language tags.",
       "scope": "resource",
       "type": "boolean"
     },
     "html.format.unformatted": {
       "default": "wbr",
-      "markdownDescription": "%html.format.unformatted.desc%",
+      "markdownDescription": "List of tags, comma separated, that shouldn't be reformatted. `null` defaults to all tags listed at https://www.w3.org/TR/html5/dom.html#phrasing-content.",
       "scope": "resource",
       "type": [
         "string",
@@ -107,13 +107,13 @@
     },
     "html.format.unformattedContentDelimiter": {
       "default": "",
-      "markdownDescription": "%html.format.unformattedContentDelimiter.desc%",
+      "markdownDescription": "Keep text content together between this string.",
       "scope": "resource",
       "type": "string"
     },
     "html.format.wrapAttributes": {
       "default": "auto",
-      "description": "%html.format.wrapAttributes.desc%",
+      "description": "Wrap attributes.",
       "enum": [
         "auto",
         "force",
@@ -124,20 +124,20 @@
         "preserve-aligned"
       ],
       "enumDescriptions": [
-        "%html.format.wrapAttributes.auto%",
-        "%html.format.wrapAttributes.force%",
-        "%html.format.wrapAttributes.forcealign%",
-        "%html.format.wrapAttributes.forcemultiline%",
-        "%html.format.wrapAttributes.alignedmultiple%",
-        "%html.format.wrapAttributes.preserve%",
-        "%html.format.wrapAttributes.preservealigned%"
+        "Wrap attributes only when line length is exceeded.",
+        "Wrap each attribute except first.",
+        "Wrap each attribute except first and keep aligned.",
+        "Wrap each attribute.",
+        "Wrap when line length is exceeded, align attributes vertically.",
+        "Preserve wrapping of attributes.",
+        "Preserve wrapping of attributes but align."
       ],
       "scope": "resource",
       "type": "string"
     },
     "html.format.wrapAttributesIndentSize": {
       "default": null,
-      "markdownDescription": "%html.format.wrapAttributesIndentSize.desc%",
+      "markdownDescription": "Indent wrapped attributes to after N characters. Use `null` to use the default indent size. Ignored if `#html.format.wrapAttributes#` is set to 'aligned'.",
       "scope": "resource",
       "type": [
         "number",
@@ -146,38 +146,38 @@
     },
     "html.format.wrapLineLength": {
       "default": 120,
-      "description": "%html.format.wrapLineLength.desc%",
+      "description": "Maximum amount of characters per line (0 = disable).",
       "scope": "resource",
       "type": "integer"
     },
     "html.hover.documentation": {
       "default": true,
-      "description": "%html.hover.documentation%",
+      "description": "Show tag and attribute documentation in hover.",
       "scope": "resource",
       "type": "boolean"
     },
     "html.hover.references": {
       "default": true,
-      "description": "%html.hover.references%",
+      "description": "Show references to MDN in hover.",
       "scope": "resource",
       "type": "boolean"
     },
     "html.mirrorCursorOnMatchingTag": {
       "default": false,
-      "deprecationMessage": "%html.mirrorCursorOnMatchingTagDeprecationMessage%",
-      "description": "%html.mirrorCursorOnMatchingTag%",
+      "deprecationMessage": "Deprecated in favor of `editor.linkedEditing`",
+      "description": "Enable/disable mirroring cursor on matching HTML tag.",
       "scope": "resource",
       "type": "boolean"
     },
     "html.suggest.html5": {
       "default": true,
-      "description": "%html.suggest.html5.desc%",
+      "description": "Controls whether the built-in HTML language support suggests HTML5 tags, properties and values.",
       "scope": "resource",
       "type": "boolean"
     },
     "html.trace.server": {
       "default": "off",
-      "description": "%html.trace.server.desc%",
+      "description": "Traces the communication between VS Code and the HTML language server.",
       "enum": [
         "off",
         "messages",
@@ -188,13 +188,13 @@
     },
     "html.validate.scripts": {
       "default": true,
-      "description": "%html.validate.scripts%",
+      "description": "Controls whether the built-in HTML language support validates embedded scripts.",
       "scope": "resource",
       "type": "boolean"
     },
     "html.validate.styles": {
       "default": true,
-      "description": "%html.validate.styles%",
+      "description": "Controls whether the built-in HTML language support validates embedded styles.",
       "scope": "resource",
       "type": "boolean"
     }

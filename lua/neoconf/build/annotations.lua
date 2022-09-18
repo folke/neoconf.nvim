@@ -167,7 +167,7 @@ lspconfig.%s = {
   ---@param options lspconfig.options.%s
   setup = function(options) end,
 }
-]]     ):format(name, name, name, name)
+]]):format(name, name, name, name)
   end
 
   str = str .. "\n---@class lspconfig.options\n"

@@ -6,22 +6,27 @@ local M = {}
 ---@class LspSchema
 ---@field package_url string url of the package.json of the LSP server
 ---@field settings_file string file of the settings json schema of the LSP server
----@field build fun(props: table)
+---@field translate? boolean
 
 --- @type table<string, LspSchema>
 M.overrides = {
   sumneko_lua = {
-    build = function(props)
-      M.translate(props, "https://raw.githubusercontent.com/sumneko/vscode-lua/master/package.nls.json")
-    end,
+    translate = true,
   },
   jsonls = {
-    build = function(props)
-      M.translate(
-        props,
-        "https://raw.githubusercontent.com/microsoft/vscode/main/extensions/json-language-features/package.nls.json"
-      )
-    end,
+    translate = true,
+  },
+  tsserver = {
+    translate = true,
+  },
+  ltex = {
+    translate = true,
+  },
+  html = {
+    translate = true,
+  },
+  cssls = {
+    translate = true,
   },
 }
 
@@ -45,16 +50,25 @@ function M.translate(props, nls_url)
   local nls = Util.json_decode(Util.fetch(nls_url)) or {}
 
   local function translate(desc)
-    return nls[desc:gsub("%%", "")] or desc
+    desc = nls[desc:gsub("%%", "")] or desc
+    if type(desc) == "table" then
+      desc = table.concat(vim.tbl_values(desc), "\n\n")
+    end
+    return desc
   end
 
   local function fixdoc(node)
     if type(node) == "table" then
       for k, v in pairs(node) do
-        if k == "description" or k == "markdownDescription" then
+        if
+          k == "description"
+          or k == "markdownDescription"
+          or k == "markdownDeprecationMessage"
+          or k == "deprecationMessage"
+        then
           node[k] = translate(v)
         end
-        if k == "markdownEnumDescriptions" then
+        if k == "enumDescriptions" or k == "markdownEnumDescriptions" then
           for i, d in ipairs(v) do
             v[i] = translate(d)
           end
@@ -81,15 +95,17 @@ function M.get_schema(schema)
     properties = config.properties
   end
 
-  if schema.build then
-    schema.build(properties)
-  end
-
-  return {
+  local ret = {
     ["$schema"] = "http://json-schema.org/draft-07/schema#",
     description = json.description,
     properties = properties,
   }
+
+  if schema.translate then
+    M.translate(ret, schema.package_url:gsub("package%.json$", "package.nls.json"))
+  end
+
+  return ret
 end
 
 function M.clean()
