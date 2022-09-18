@@ -27,7 +27,7 @@ function M.find_root(opts)
   end
 
   -- fallback to git ancestor or cwd
-  return Util.find_git_ancestor(fname) or vim.fn.getcwd()
+  return root_dir or Util.find_git_ancestor(fname) or vim.fn.getcwd()
 end
 
 ---@class WorkspaceOptions: WorkspaceFindOptions
