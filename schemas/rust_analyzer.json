@@ -55,6 +55,11 @@
       "markdownDescription": "Use `RUSTC_WRAPPER=rust-analyzer` when running build scripts to\navoid checking unnecessary things.",
       "type": "boolean"
     },
+    "rust-analyzer.cargo.extraEnv": {
+      "default": {},
+      "markdownDescription": "Extra environment variables that will be set when running cargo, rustc\nor other commands within the workspace. Useful for setting RUSTFLAGS.",
+      "type": "object"
+    },
     "rust-analyzer.cargo.features": {
       "anyOf": [
         {
@@ -134,6 +139,11 @@
       },
       "markdownDescription": "Extra arguments for `cargo check`.",
       "type": "array"
+    },
+    "rust-analyzer.checkOnSave.extraEnv": {
+      "default": {},
+      "markdownDescription": "Extra environment variables that will be set when running `cargo check`.",
+      "type": "object"
     },
     "rust-analyzer.checkOnSave.features": {
       "anyOf": [

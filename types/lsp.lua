@@ -7468,6 +7468,13 @@
 -- ```
 ---@field autoreload boolean
 ---@field buildScripts _.lspconfig.settings.rust_analyzer.BuildScripts
+-- Extra environment variables that will be set when running cargo, rustc
+-- or other commands within the workspace. Useful for setting RUSTFLAGS.
+-- 
+-- ```lua
+-- default = {}
+-- ```
+---@field extraEnv table
 -- List of features to activate.
 -- 
 -- Set this to `"all"` to pass `--all-features` to cargo.
@@ -7518,6 +7525,12 @@
 -- default = {}
 -- ```
 ---@field extraArgs string[]
+-- Extra environment variables that will be set when running `cargo check`.
+-- 
+-- ```lua
+-- default = {}
+-- ```
+---@field extraEnv table
 -- List of features to activate. Defaults to
 -- `#rust-analyzer.cargo.features#`.
 -- 
