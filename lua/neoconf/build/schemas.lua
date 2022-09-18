@@ -52,7 +52,9 @@ function M.translate(props, nls_url)
   local function translate(desc)
     desc = nls[desc:gsub("%%", "")] or desc
     if type(desc) == "table" then
-      desc = table.concat(vim.tbl_values(desc), "\n\n")
+      local lines = vim.tbl_values(desc)
+      table.sort(lines)
+      desc = table.concat(lines, "\n\n")
     end
     return desc
   end
