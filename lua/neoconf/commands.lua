@@ -45,9 +45,9 @@ function M.setup()
   })
 
   if Config.options.live_reload then
-    local group = vim.api.nvim_create_augroup("Settings", { clear = true })
+    local group = vim.api.nvim_create_augroup("Neoconf", { clear = true })
     vim.api.nvim_create_autocmd("BufWritePost", {
-      pattern = Util.file_patterns(),
+      pattern = Util.file_patterns({ autocmd = true }),
       group = group,
       callback = function(event)
         local fname = Util.fqn(event.match)

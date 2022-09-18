@@ -73,6 +73,14 @@ function M.file_patterns(opts)
     end
   end
 
+  if opts.autocmd then
+    for i, v in ipairs(ret) do
+      if v:find("/") then
+        ret[i] = "*/" .. v
+      end
+    end
+  end
+
   return ret
 end
 
