@@ -134,6 +134,10 @@
           "default": false,
           "type": "boolean"
         },
+        "less": {
+          "default": false,
+          "type": "boolean"
+        },
         "scss": {
           "default": false,
           "type": "boolean"

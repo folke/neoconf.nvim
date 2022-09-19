@@ -11782,6 +11782,7 @@
 ---@field javascriptreact boolean
 ---@field json boolean
 ---@field jsonc boolean
+---@field less boolean
 ---@field scss boolean
 ---@field typescript boolean
 ---@field typescriptreact boolean
