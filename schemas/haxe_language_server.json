@@ -159,6 +159,13 @@
                 "markdownDescription": "The Haxe command-line arguments.",
                 "type": "array"
               },
+              "files": {
+                "items": {
+                  "type": "string"
+                },
+                "markdownDescription": "Array of files/globbing patterns where the editor should automatically select this configuration.",
+                "type": "array"
+              },
               "label": {
                 "markdownDescription": "The label to use for displaying this configuration in the UI.",
                 "type": "string"
