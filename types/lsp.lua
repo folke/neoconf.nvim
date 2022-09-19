@@ -7530,6 +7530,7 @@
 -- ```
 ---@field extraArgs string[]
 -- Extra environment variables that will be set when running `cargo check`.
+-- Extends `#rust-analyzer.cargo.extraEnv#`.
 -- 
 -- ```lua
 -- default = {}
