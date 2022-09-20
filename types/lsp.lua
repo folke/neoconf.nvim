@@ -8744,7 +8744,7 @@
 -- ```
 ---@field run "onSave" | "onType"
 ---@field trace _.lspconfig.settings.spectral.Trace
--- An array of file globs (e.g., `**/*.yaml`) in minimatch glob format which should be validated by Spectral. If language identifiers are also specified, the file must match both in order to be validated.
+-- An array of file globs (e.g., `**/*.yaml`) in minimatch glob format which should be validated by Spectral. If language identifiers are also specified, the file must match both in order to be validated. You can also use negative file globs (e.g., `!**/package.json`) here to exclude files.
 ---@field validateFiles string[]
 -- An array of language IDs which should be validated by Spectral. If file globs are also specified, the file must match both in order to be validated.
 -- 
