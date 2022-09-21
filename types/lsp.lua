@@ -1952,12 +1952,18 @@
 ---@field globalOn boolean
 
 ---@class _.lspconfig.settings.hie.Class
--- Enables class plugin
+-- Enables class code actions
 -- 
 -- ```lua
 -- default = true
 -- ```
----@field globalOn boolean
+---@field codeActionsOn boolean
+-- Enables class code lenses
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field codeLensOn boolean
 
 ---@class _.lspconfig.settings.hie.Config
 -- Enable the diff output (WAS/NOW) of eval lenses
@@ -1972,6 +1978,22 @@
 ---@class _.lspconfig.settings.hie.Eval
 ---@field config _.lspconfig.settings.hie.Config
 -- Enables eval plugin
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field globalOn boolean
+
+---@class _.lspconfig.settings.hie.ExplicitFixity
+-- Enables explicitFixity plugin
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field globalOn boolean
+
+---@class _.lspconfig.settings.hie.Gadt
+-- Enables gadt plugin
 -- 
 -- ```lua
 -- default = true
@@ -2241,6 +2263,8 @@
 ---@field changeTypeSignature _.lspconfig.settings.hie.ChangeTypeSignature
 ---@field class _.lspconfig.settings.hie.Class
 ---@field eval _.lspconfig.settings.hie.Eval
+---@field explicitFixity _.lspconfig.settings.hie.ExplicitFixity
+---@field gadt _.lspconfig.settings.hie.Gadt
 ---@field ghcide-code-actions-bindings _.lspconfig.settings.hie.Ghcide-code-actions-bindings
 ---@field ghcide-code-actions-fill-holes _.lspconfig.settings.hie.Ghcide-code-actions-fill-holes
 ---@field ghcide-code-actions-imports-exports _.lspconfig.settings.hie.Ghcide-code-actions-imports-exports

@@ -90,9 +90,15 @@
       "scope": "resource",
       "type": "boolean"
     },
-    "haskell.plugin.class.globalOn": {
+    "haskell.plugin.class.codeActionsOn": {
       "default": true,
-      "description": "Enables class plugin",
+      "description": "Enables class code actions",
+      "scope": "resource",
+      "type": "boolean"
+    },
+    "haskell.plugin.class.codeLensOn": {
+      "default": true,
+      "description": "Enables class code lenses",
       "scope": "resource",
       "type": "boolean"
     },
@@ -111,6 +117,18 @@
     "haskell.plugin.eval.globalOn": {
       "default": true,
       "description": "Enables eval plugin",
+      "scope": "resource",
+      "type": "boolean"
+    },
+    "haskell.plugin.explicitFixity.globalOn": {
+      "default": true,
+      "description": "Enables explicitFixity plugin",
+      "scope": "resource",
+      "type": "boolean"
+    },
+    "haskell.plugin.gadt.globalOn": {
+      "default": true,
+      "description": "Enables gadt plugin",
       "scope": "resource",
       "type": "boolean"
     },
