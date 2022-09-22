@@ -3041,10 +3041,10 @@
 -- default = true
 -- ```
 ---@field guessMethodArguments boolean
--- Defines the sorting order of import statements. A package or type name prefix (e.g. 'org.eclipse') is a valid entry. An import is always added to the most specific group.
+-- Defines the sorting order of import statements. A package or type name prefix (e.g. 'org.eclipse') is a valid entry. An import is always added to the most specific group. As a result, the empty string (e.g. '') can be used to group all other imports. Static imports are prefixed with a '#'
 -- 
 -- ```lua
--- default = { "java", "javax", "org", "com" }
+-- default = { "#", "java", "javax", "org", "com", "" }
 -- ```
 ---@field importOrder array
 -- Maximum number of completion results (not including snippets).
