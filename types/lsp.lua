@@ -7179,6 +7179,10 @@
 -- ```
 ---@field maxLength integer
 
+---@class _.lspconfig.settings.rescriptls.SignatureHelp
+-- Enable (experimental) signature help for function calls.
+---@field enable boolean
+
 ---@class _.lspconfig.settings.rescriptls.Settings
 -- Whether you want to allow the extension to format your code using its built in formatter when it cannot find a ReScript compiler version in your current project to use for formatting.
 ---@field allowBuiltInFormatter boolean
@@ -7199,6 +7203,7 @@
 -- Enable (experimental) code lens for function definitions.
 ---@field codeLens boolean
 ---@field inlayHints _.lspconfig.settings.rescriptls.InlayHints
+---@field signatureHelp _.lspconfig.settings.rescriptls.SignatureHelp
 
 ---@class _.lspconfig.settings.rescriptls.Rescript
 ---@field settings _.lspconfig.settings.rescriptls.Settings

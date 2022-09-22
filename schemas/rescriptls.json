@@ -45,6 +45,11 @@
         "null",
         "integer"
       ]
+    },
+    "rescript.settings.signatureHelp.enable": {
+      "default": false,
+      "description": "Enable (experimental) signature help for function calls.",
+      "type": "boolean"
     }
   }
 }
