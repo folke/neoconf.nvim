@@ -7194,7 +7194,7 @@
 ---@field askToStartBuild boolean
 -- Automatically start ReScript's code analysis.
 ---@field autoRunCodeAnalysis boolean
--- Path to the directory where ReScript binaries are. You can use it if you haven't or don't want to use the installed ReScript from node_modules in your project.
+-- Path to the directory where cross-platform ReScript binaries are. You can use it if you haven't or don't want to use the installed ReScript from node_modules in your project.
 -- 
 -- ```lua
 -- default = <userdata 1>
@@ -7203,6 +7203,12 @@
 -- Enable (experimental) code lens for function definitions.
 ---@field codeLens boolean
 ---@field inlayHints _.lspconfig.settings.rescriptls.InlayHints
+-- Path to the directory where platform-specific ReScript binaries are. You can use it if you haven't or don't want to use the installed ReScript from node_modules in your project.
+-- 
+-- ```lua
+-- default = <userdata 1>
+-- ```
+---@field platformPath string
 ---@field signatureHelp _.lspconfig.settings.rescriptls.SignatureHelp
 
 ---@class _.lspconfig.settings.rescriptls.Rescript
