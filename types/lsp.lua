@@ -5110,6 +5110,12 @@
 ---@field organizeImportsOnFormat boolean
 -- Specifies the path to OmniSharp. When left empty the OmniSharp version pinned to the C# Extension is used. This can be the absolute path to an OmniSharp executable, a specific version number, or "latest". If a version number or "latest" is specified, the appropriate version of OmniSharp will be downloaded on your behalf. Setting "latest" is an opt-in into latest beta releases of OmniSharp.
 ---@field path string
+-- The exclude pattern used by OmniSharp to find all project files.
+-- 
+-- ```lua
+-- default = "**/node_modules/**,**/.git/**,**/bower_components/**"
+-- ```
+---@field projectFilesExcludePattern string
 -- The time Visual Studio Code will wait for the OmniSharp server to start. Time is expressed in seconds.
 -- 
 -- ```lua

@@ -442,6 +442,11 @@
       "scope": "machine",
       "type": "string"
     },
+    "omnisharp.projectFilesExcludePattern": {
+      "default": "**/node_modules/**,**/.git/**,**/bower_components/**",
+      "description": "The exclude pattern used by OmniSharp to find all project files.",
+      "type": "string"
+    },
     "omnisharp.projectLoadTimeout": {
       "default": 60,
       "description": "The time Visual Studio Code will wait for the OmniSharp server to start. Time is expressed in seconds.",
