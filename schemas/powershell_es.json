@@ -1,6 +1,6 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "description": "Develop PowerShell modules, commands and scripts in Visual Studio Code!",
+  "description": "(Preview) Develop PowerShell modules, commands and scripts in Visual Studio Code!",
   "properties": {
     "powershell.analyzeOpenDocumentsOnly": {
       "default": false,
