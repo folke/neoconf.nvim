@@ -1,6 +1,6 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "description": "This server can be configured using `workspace/didChangeConfiguration` method. Each configuration option is described below:",
+  "description": "This server can be configured using the `workspace/didChangeConfiguration` method. Each configuration option is described below. Note, a value of `null` means that we do not set a value and thus use the plugin's default value.",
   "properties": {
     "pylsp.configurationSources": {
       "default": [
@@ -10,7 +10,7 @@
       "items": {
         "enum": [
           "pycodestyle",
-          "pyflakes"
+          "flake8"
         ],
         "type": "string"
       },
@@ -180,7 +180,7 @@
     "pylsp.plugins.jedi_completion.resolve_at_most": {
       "default": 25,
       "description": "How many labels and snippets (at most) should be resolved?",
-      "type": "number"
+      "type": "integer"
     },
     "pylsp.plugins.jedi_definition.enabled": {
       "default": true,
@@ -235,7 +235,7 @@
     "pylsp.plugins.mccabe.threshold": {
       "default": 15,
       "description": "The minimum threshold that triggers warnings about cyclomatic complexity.",
-      "type": "number"
+      "type": "integer"
     },
     "pylsp.plugins.preload.enabled": {
       "default": true,
@@ -303,17 +303,20 @@
       "default": null,
       "description": "Set maximum allowed line length.",
       "type": [
-        "number",
+        "integer",
         "null"
       ]
     },
     "pylsp.plugins.pycodestyle.select": {
-      "default": [],
+      "default": null,
       "description": "Select errors and warnings",
       "items": {
         "type": "string"
       },
-      "type": "array",
+      "type": [
+        "array",
+        "null"
+      ],
       "uniqueItems": true
     },
     "pylsp.plugins.pydocstyle.addIgnore": {
@@ -372,12 +375,15 @@
       "type": "string"
     },
     "pylsp.plugins.pydocstyle.select": {
-      "default": [],
+      "default": null,
       "description": "Select errors and warnings",
       "items": {
         "type": "string"
       },
-      "type": "array",
+      "type": [
+        "array",
+        "null"
+      ],
       "uniqueItems": true
     },
     "pylsp.plugins.pyflakes.enabled": {
@@ -426,8 +432,8 @@
       "default": null,
       "description": "Builtin and c-extension modules that are allowed to be imported and inspected by rope.",
       "type": [
-        "null",
-        "string"
+        "string",
+        "null"
       ]
     },
     "pylsp.rope.ropeFolder": {
@@ -437,8 +443,8 @@
         "type": "string"
       },
       "type": [
-        "null",
-        "array"
+        "array",
+        "null"
       ],
       "uniqueItems": true
     }

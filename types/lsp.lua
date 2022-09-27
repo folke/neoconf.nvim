@@ -6390,7 +6390,7 @@
 -- ```lua
 -- default = 25
 -- ```
----@field resolve_at_most number
+---@field resolve_at_most integer
 
 ---@class _.lspconfig.settings.pylsp.Jedi.Definition
 -- Enable or disable the plugin.
@@ -6468,7 +6468,7 @@
 -- ```lua
 -- default = 15
 -- ```
----@field threshold number
+---@field threshold integer
 
 ---@class _.lspconfig.settings.pylsp.Preload
 -- Enable or disable the plugin.
@@ -6526,11 +6526,11 @@
 -- ```lua
 -- default = <userdata 1>
 -- ```
----@field maxLineLength number
+---@field maxLineLength integer
 -- Select errors and warnings
 -- 
 -- ```lua
--- default = {}
+-- default = <userdata 1>
 -- ```
 ---@field select string[]
 
@@ -6576,7 +6576,7 @@
 -- Select errors and warnings
 -- 
 -- ```lua
--- default = {}
+-- default = <userdata 1>
 -- ```
 ---@field select string[]
 
