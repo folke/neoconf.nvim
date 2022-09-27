@@ -5770,6 +5770,8 @@
 ---@field osx boolean
 
 ---@class _.lspconfig.settings.powershell_es.Powershell
+-- Only search for references within open documents. Enable this in large workspaces if memory is limited.
+---@field analyzeOpenDocumentsOnly boolean
 ---@field bugReporting _.lspconfig.settings.powershell_es.BugReporting
 ---@field buttons _.lspconfig.settings.powershell_es.Buttons
 ---@field codeFolding _.lspconfig.settings.powershell_es.CodeFolding
