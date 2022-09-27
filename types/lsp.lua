@@ -11795,9 +11795,9 @@
 -- Preferred tag name case.
 -- 
 -- ```lua
--- default = "auto"
+-- default = "auto-pascal"
 -- ```
----@field preferredTagNameCase "auto" | "both" | "kebab" | "pascal"
+---@field preferredTagNameCase "auto-kebab" | "auto-pascal" | "kebab" | "pascal"
 
 ---@class _.lspconfig.settings.volar.Diagnostics
 -- Delay time for diagnostics.

@@ -83,17 +83,17 @@
       "type": "string"
     },
     "volar.completion.preferredTagNameCase": {
-      "default": "auto",
+      "default": "auto-pascal",
       "description": "Preferred tag name case.",
       "enum": [
-        "auto",
-        "both",
+        "auto-kebab",
+        "auto-pascal",
         "kebab",
         "pascal"
       ],
       "enumDescriptions": [
-        "Auto Detect from Content",
-        "<kebab-case> and <PascalCase>",
+        "Auto Detect from Content (Preferred <kebab-case>)",
+        "Auto Detect from Content (Preferred <PascalCase>)",
         "<kebab-case>",
         "<PascalCase>"
       ],
