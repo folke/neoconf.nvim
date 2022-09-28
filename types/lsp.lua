@@ -3016,6 +3016,23 @@
 -- Use blocks in 'if' statements when generating the methods.
 ---@field useBlocks boolean
 
+---@class _.lspconfig.settings.jdtls.NullAnalysis
+-- Specify the Nonnull annotation types to be used for null analysis. If more than one annotation is specified, then the topmost annotation will be used first if it exists in your project dependencies.
+-- 
+-- ```lua
+-- default = { "javax.annotation.Nonnull", "org.eclipse.jdt.annotation.NonNull", "org.springframework.lang.NonNull" }
+-- ```
+---@field nonnull array
+-- Specify the Nullable annotation types to be used for null analysis. If more than one annotation is specified, then the topmost annotation will be used first if it exists in your project dependencies.
+-- 
+-- ```lua
+-- default = { "javax.annotation.Nullable", "org.eclipse.jdt.annotation.Nullable", "org.springframework.lang.Nullable" }
+-- ```
+---@field nullable array
+
+---@class _.lspconfig.settings.jdtls.Compile
+---@field nullAnalysis _.lspconfig.settings.jdtls.NullAnalysis
+
 ---@class _.lspconfig.settings.jdtls.Completion
 -- Enable/disable code completion support
 -- 
@@ -3557,6 +3574,7 @@
 ---@field autobuild _.lspconfig.settings.jdtls.Autobuild
 ---@field codeAction _.lspconfig.settings.jdtls.CodeAction
 ---@field codeGeneration _.lspconfig.settings.jdtls.CodeGeneration
+---@field compile _.lspconfig.settings.jdtls.Compile
 ---@field completion _.lspconfig.settings.jdtls.Completion
 ---@field configuration _.lspconfig.settings.jdtls.Configuration
 ---@field contentProvider _.lspconfig.settings.jdtls.ContentProvider

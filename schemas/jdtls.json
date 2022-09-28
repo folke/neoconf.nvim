@@ -94,6 +94,26 @@
       "scope": "window",
       "type": "boolean"
     },
+    "java.compile.nullAnalysis.nonnull": {
+      "default": [
+        "javax.annotation.Nonnull",
+        "org.eclipse.jdt.annotation.NonNull",
+        "org.springframework.lang.NonNull"
+      ],
+      "markdownDescription": "Specify the Nonnull annotation types to be used for null analysis. If more than one annotation is specified, then the topmost annotation will be used first if it exists in your project dependencies.",
+      "scope": "window",
+      "type": "array"
+    },
+    "java.compile.nullAnalysis.nullable": {
+      "default": [
+        "javax.annotation.Nullable",
+        "org.eclipse.jdt.annotation.Nullable",
+        "org.springframework.lang.Nullable"
+      ],
+      "markdownDescription": "Specify the Nullable annotation types to be used for null analysis. If more than one annotation is specified, then the topmost annotation will be used first if it exists in your project dependencies.",
+      "scope": "window",
+      "type": "array"
+    },
     "java.completion.enabled": {
       "default": true,
       "description": "Enable/disable code completion support",
