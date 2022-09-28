@@ -3421,10 +3421,10 @@
 -- default = { "lib/**/*.jar" }
 -- ```
 ---@field referencedLibraries array|table
--- Excludes files and folders from being refreshed by the Java Language Server, which can improve the overall performance. For example, ["node_modules",".git"] will exclude all files and folders named 'node_modules' or '.git'. Defaults to ["node_modules",".git"].
+-- Excludes files and folders from being refreshed by the Java Language Server, which can improve the overall performance. For example, ["node_modules","\.git"] will exclude all files and folders named 'node_modules' or '.git'. Pattern expressions must be compatible with `java.util.regex.Pattern`. Defaults to ["node_modules","\.git"].
 -- 
 -- ```lua
--- default = { "node_modules", ".git" }
+-- default = { "node_modules", "\\.git" }
 -- ```
 ---@field resourceFilters array
 -- Relative paths to the workspace where stores the source files. `Only` effective in the `WORKSPACE` scope. The setting will `NOT` affect Maven or Gradle project.
