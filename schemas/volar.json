@@ -2,39 +2,6 @@
   "$schema": "http://json-schema.org/draft-07/schema#",
   "description": "Language support for Vue 3",
   "properties": {
-    "volar-document-features.trace.server": {
-      "default": "off",
-      "description": "Traces the communication between VS Code and the language server.",
-      "enum": [
-        "off",
-        "messages",
-        "verbose"
-      ],
-      "scope": "window",
-      "type": "string"
-    },
-    "volar-language-features-2.trace.server": {
-      "default": "off",
-      "description": "Traces the communication between VS Code and the language server.",
-      "enum": [
-        "off",
-        "messages",
-        "verbose"
-      ],
-      "scope": "window",
-      "type": "string"
-    },
-    "volar-language-features.trace.server": {
-      "default": "off",
-      "description": "Traces the communication between VS Code and the language server.",
-      "enum": [
-        "off",
-        "messages",
-        "verbose"
-      ],
-      "scope": "window",
-      "type": "string"
-    },
     "volar.autoCompleteRefs": {
       "default": false,
       "description": "Auto-complete Ref value with `.value`.",
@@ -257,6 +224,39 @@
     "volar.vueserver.vitePress.processMdFile": {
       "default": false,
       "type": "boolean"
+    },
+    "vue-semantic-server-1.trace.server": {
+      "default": "off",
+      "description": "Traces the communication between VS Code and the language server.",
+      "enum": [
+        "off",
+        "messages",
+        "verbose"
+      ],
+      "scope": "window",
+      "type": "string"
+    },
+    "vue-semantic-server-2.trace.server": {
+      "default": "off",
+      "description": "Traces the communication between VS Code and the language server.",
+      "enum": [
+        "off",
+        "messages",
+        "verbose"
+      ],
+      "scope": "window",
+      "type": "string"
+    },
+    "vue-syntactic-server.trace.server": {
+      "default": "off",
+      "description": "Traces the communication between VS Code and the language server.",
+      "enum": [
+        "off",
+        "messages",
+        "verbose"
+      ],
+      "scope": "window",
+      "type": "string"
     }
   }
 }

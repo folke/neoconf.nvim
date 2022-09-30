@@ -11983,7 +11983,7 @@
 -- ```
 ---@field server "off" | "messages" | "verbose"
 
----@class _.lspconfig.settings.volar.Volar-document-features
+---@class _.lspconfig.settings.volar.Vue-semantic-server-1
 ---@field trace _.lspconfig.settings.volar.Trace
 
 ---@class _.lspconfig.settings.volar.Trace
@@ -11994,7 +11994,7 @@
 -- ```
 ---@field server "off" | "messages" | "verbose"
 
----@class _.lspconfig.settings.volar.Volar-language-features
+---@class _.lspconfig.settings.volar.Vue-semantic-server-2
 ---@field trace _.lspconfig.settings.volar.Trace
 
 ---@class _.lspconfig.settings.volar.Trace
@@ -12005,14 +12005,14 @@
 -- ```
 ---@field server "off" | "messages" | "verbose"
 
----@class _.lspconfig.settings.volar.Volar-language-features-2
+---@class _.lspconfig.settings.volar.Vue-syntactic-server
 ---@field trace _.lspconfig.settings.volar.Trace
 
 ---@class lspconfig.settings.volar
 ---@field volar _.lspconfig.settings.volar.Volar
----@field volar-document-features _.lspconfig.settings.volar.Volar-document-features
----@field volar-language-features _.lspconfig.settings.volar.Volar-language-features
----@field volar-language-features-2 _.lspconfig.settings.volar.Volar-language-features-2
+---@field vue-semantic-server-1 _.lspconfig.settings.volar.Vue-semantic-server-1
+---@field vue-semantic-server-2 _.lspconfig.settings.volar.Vue-semantic-server-2
+---@field vue-syntactic-server _.lspconfig.settings.volar.Vue-syntactic-server
 
 -- Where Vetur source Scaffold Snippets from and how to indicate them. Set a source to "" to disable it.
 -- 
