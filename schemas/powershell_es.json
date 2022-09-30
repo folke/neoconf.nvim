@@ -47,6 +47,11 @@
       "description": "Replaces aliases with their aliased name.",
       "type": "boolean"
     },
+    "powershell.codeFormatting.avoidSemicolonsAsLineTerminators": {
+      "default": false,
+      "description": "Removes redundant semicolon(s) at the end of a line where a line terminator is sufficient.",
+      "type": "boolean"
+    },
     "powershell.codeFormatting.ignoreOneLineBlock": {
       "default": true,
       "description": "Does not reformat one-line code blocks, such as \"if (...) {...} else {...}\".",

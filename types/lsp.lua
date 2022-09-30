@@ -5592,6 +5592,8 @@
 ---@field alignPropertyValuePairs boolean
 -- Replaces aliases with their aliased name.
 ---@field autoCorrectAliases boolean
+-- Removes redundant semicolon(s) at the end of a line where a line terminator is sufficient.
+---@field avoidSemicolonsAsLineTerminators boolean
 -- Does not reformat one-line code blocks, such as "if (...) {...} else {...}".
 -- 
 -- ```lua
