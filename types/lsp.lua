@@ -7552,8 +7552,17 @@
 ---@field features 
 -- Whether to pass `--no-default-features` to cargo.
 ---@field noDefaultFeatures boolean
--- Internal config for debugging, disables loading of sysroot crates.
----@field noSysroot boolean
+-- Relative path to the sysroot, or "discover" to try to automatically find it via
+-- "rustc --print sysroot".
+-- 
+-- Unsetting this disables sysroot loading.
+-- 
+-- This option does not take effect until rust-analyzer is restarted.
+-- 
+-- ```lua
+-- default = "discover"
+-- ```
+---@field sysroot string
 -- Compilation target override (target triple).
 -- 
 -- ```lua
