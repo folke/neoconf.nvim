@@ -11960,8 +11960,6 @@
 -- default = "incremental"
 -- ```
 ---@field textDocumentSync "incremental" | "full" | "none"
--- Use second server to progress heavy diagnostic works, the main server workhorse computing intellisense, operations such as auto-complete can respond faster. Note that this will lead to more memory usage.
----@field useSecondServer boolean
 ---@field vitePress _.lspconfig.settings.volar.VitePress
 
 ---@class _.lspconfig.settings.volar.Volar
@@ -11992,18 +11990,7 @@
 -- ```
 ---@field server "off" | "messages" | "verbose"
 
----@class _.lspconfig.settings.volar.Vue-semantic-server-1
----@field trace _.lspconfig.settings.volar.Trace
-
----@class _.lspconfig.settings.volar.Trace
--- Traces the communication between VS Code and the language server.
--- 
--- ```lua
--- default = "off"
--- ```
----@field server "off" | "messages" | "verbose"
-
----@class _.lspconfig.settings.volar.Vue-semantic-server-2
+---@class _.lspconfig.settings.volar.Vue-semantic-server
 ---@field trace _.lspconfig.settings.volar.Trace
 
 ---@class _.lspconfig.settings.volar.Trace
@@ -12019,8 +12006,7 @@
 
 ---@class lspconfig.settings.volar
 ---@field volar _.lspconfig.settings.volar.Volar
----@field vue-semantic-server-1 _.lspconfig.settings.volar.Vue-semantic-server-1
----@field vue-semantic-server-2 _.lspconfig.settings.volar.Vue-semantic-server-2
+---@field vue-semantic-server _.lspconfig.settings.volar.Vue-semantic-server
 ---@field vue-syntactic-server _.lspconfig.settings.volar.Vue-syntactic-server
 
 -- Where Vetur source Scaffold Snippets from and how to indicate them. Set a source to "" to disable it.

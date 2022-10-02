@@ -216,27 +216,11 @@
       ],
       "type": "string"
     },
-    "volar.vueserver.useSecondServer": {
-      "default": false,
-      "description": "Use second server to progress heavy diagnostic works, the main server workhorse computing intellisense, operations such as auto-complete can respond faster. Note that this will lead to more memory usage.",
-      "type": "boolean"
-    },
     "volar.vueserver.vitePress.processMdFile": {
       "default": false,
       "type": "boolean"
     },
-    "vue-semantic-server-1.trace.server": {
-      "default": "off",
-      "description": "Traces the communication between VS Code and the language server.",
-      "enum": [
-        "off",
-        "messages",
-        "verbose"
-      ],
-      "scope": "window",
-      "type": "string"
-    },
-    "vue-semantic-server-2.trace.server": {
+    "vue-semantic-server.trace.server": {
       "default": "off",
       "description": "Traces the communication between VS Code and the language server.",
       "enum": [
