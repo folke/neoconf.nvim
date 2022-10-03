@@ -188,6 +188,7 @@ SUPPORTED LANGUAGE SERVERS           *neoconf.nvim-supported-language-servers*
 - julials <https://github.com/julia-vscode/julia-vscode/tree/master/package.json>
 - kotlin_language_server <https://github.com/fwcd/vscode-kotlin/tree/master/package.json>
 - ltex <https://github.com/valentjn/vscode-ltex/tree/develop/package.json>
+- luau_lsp <https://github.com/JohnnyMorganz/luau-lsp/tree/main/editors/code/package.json>
 - nickel_ls <https://github.com/tweag/nickel/tree/master/lsp/client-extension/package.json>
 - omnisharp <https://github.com/OmniSharp/omnisharp-vscode/tree/master/package.json>
 - perlls <https://github.com/richterger/Perl-LanguageServer/tree/master/clients/vscode/perl/package.json>
