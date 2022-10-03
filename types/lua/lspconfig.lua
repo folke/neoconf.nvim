@@ -217,6 +217,14 @@ lspconfig.ltex = {
   setup = function(options) end,
 }
 
+---@class lspconfig.options.luau_lsp: _.lspconfig.options
+---@field settings lspconfig.settings.luau_lsp
+
+lspconfig.luau_lsp = {
+  ---@param options lspconfig.options.luau_lsp
+  setup = function(options) end,
+}
+
 ---@class lspconfig.options.nickel_ls: _.lspconfig.options
 ---@field settings lspconfig.settings.nickel_ls
 
@@ -515,6 +523,7 @@ lspconfig.zls = {
 ---@field julials lspconfig.options.julials
 ---@field kotlin_language_server lspconfig.options.kotlin_language_server
 ---@field ltex lspconfig.options.ltex
+---@field luau_lsp lspconfig.options.luau_lsp
 ---@field nickel_ls lspconfig.options.nickel_ls
 ---@field omnisharp lspconfig.options.omnisharp
 ---@field perlls lspconfig.options.perlls
@@ -576,6 +585,7 @@ lspconfig.zls = {
 ---@field julials lspconfig.settings.julials
 ---@field kotlin_language_server lspconfig.settings.kotlin_language_server
 ---@field ltex lspconfig.settings.ltex
+---@field luau_lsp lspconfig.settings.luau_lsp
 ---@field nickel_ls lspconfig.settings.nickel_ls
 ---@field omnisharp lspconfig.settings.omnisharp
 ---@field perlls lspconfig.settings.perlls

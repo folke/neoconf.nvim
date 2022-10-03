@@ -24,6 +24,7 @@
   "julials": "https://raw.githubusercontent.com/julia-vscode/julia-vscode/master/package.json",
   "kotlin_language_server": "https://raw.githubusercontent.com/fwcd/vscode-kotlin/master/package.json",
   "ltex": "https://raw.githubusercontent.com/valentjn/vscode-ltex/develop/package.json",
+  "luau_lsp": "https://raw.githubusercontent.com/JohnnyMorganz/luau-lsp/main/editors/code/package.json",
   "nickel_ls": "https://raw.githubusercontent.com/tweag/nickel/master/lsp/client-extension/package.json",
   "omnisharp": "https://raw.githubusercontent.com/OmniSharp/omnisharp-vscode/master/package.json",
   "perlls": "https://raw.githubusercontent.com/richterger/Perl-LanguageServer/master/clients/vscode/perl/package.json",

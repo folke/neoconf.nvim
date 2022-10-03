@@ -4738,6 +4738,184 @@
 ---@class lspconfig.settings.ltex
 ---@field ltex _.lspconfig.settings.ltex.Ltex
 
+---@class _.lspconfig.settings.luau_lsp.Trace
+-- Traces the communication between VS Code and the Luau language server.
+-- 
+-- ```lua
+-- default = "off"
+-- ```
+---@field server "off" | "messages" | "verbose"
+
+---@class _.lspconfig.settings.luau_lsp.Luau
+---@field trace _.lspconfig.settings.luau_lsp.Trace
+
+---@class _.lspconfig.settings.luau_lsp.Completion
+-- Enable autocomplete
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enabled boolean
+-- Suggest automatic imports in completion items
+---@field suggestImports boolean
+
+---@class _.lspconfig.settings.luau_lsp.Diagnostics
+-- Recompute diagnostics for dependents when a file changes. If `#luau-lsp.diagnostics.workspace#` is enabled, this is ignored
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field includeDependents boolean
+-- Compute diagnostics for the whole workspace
+---@field workspace boolean
+
+---@class _.lspconfig.settings.luau_lsp.Fflags
+-- Enable all (boolean) Luau FFlags by default. These flags can later be overriden by `#luau-lsp.fflags.override#` and `#luau-lsp.fflags.sync#`
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enableByDefault boolean
+-- Override FFlags passed to Luau
+-- 
+-- ```lua
+-- default = {}
+-- ```
+---@field override table
+-- Sync currently enabled FFlags with Roblox's published FFlags.
+-- This currently only syncs FFlags which begin with 'Luau'
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field sync boolean
+
+---@class _.lspconfig.settings.luau_lsp.Hover
+-- Enable hover
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enabled boolean
+-- Show function definitions on multiple lines
+---@field multilineFunctionDefinitions boolean
+-- Show table kinds
+---@field showTableKinds boolean
+-- Use strict DataModel types in hover display. When on, this is equivalent to autocompletion types. When off, this is equivalent to diagnostic types
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field strictDatamodelTypes boolean
+
+---@class _.lspconfig.settings.luau_lsp.InlayHints
+-- Show inlay hints for function return types
+---@field functionReturnTypes boolean
+-- Show inlay hints for function parameter names
+-- 
+-- ```lua
+-- default = "none"
+-- ```
+---@field parameterNames "none" | "literals" | "all"
+-- Show inlay hints for parameter types
+---@field parameterTypes boolean
+-- The maximum length a type hint should be before being truncated
+-- 
+-- ```lua
+-- default = 50
+-- ```
+---@field typeHintMaxLength number
+-- Show inlay hints for variable types
+---@field variableTypes boolean
+
+---@class _.lspconfig.settings.luau_lsp.Plugin
+-- Use Roblox Studio Plugin to provide DataModel information
+---@field enabled boolean
+-- Port number to connect to the Studio Plugin
+-- 
+-- ```lua
+-- default = 3667
+-- ```
+---@field port number
+
+---@class _.lspconfig.settings.luau_lsp.SignatureHelp
+-- Enable signature help
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enabled boolean
+
+---@class _.lspconfig.settings.luau_lsp.Sourcemap
+-- Automatically run the `rojo sourcemap` command to regenerate sourcemaps on changes
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field autogenerate boolean
+-- Whether Rojo sourcemap parsing is enabled
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enabled boolean
+-- Include non-script instances in the generated sourcemap
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field includeNonScripts boolean
+-- Path to the Rojo executable. If not provided, attempts to run `rojo` in the workspace directory, so it must be available on the PATH
+-- 
+-- ```lua
+-- default = <userdata 1>
+-- ```
+---@field rojoPath string
+-- The name of the Rojo project file to generate a sourcemap for.
+-- Only applies if `#luau-lsp.sourcemap.autogenerate#` is enabled
+-- 
+-- ```lua
+-- default = "default.project.json"
+-- ```
+---@field rojoProjectFile string
+
+---@class _.lspconfig.settings.luau_lsp.Types
+-- A list of paths to definition files to load in to the type checker. Note that definition file syntax is currently unstable and may change at any time
+-- 
+-- ```lua
+-- default = {}
+-- ```
+---@field definitionFiles string[]
+-- Load in and automatically update Roblox type definitions for the type checker
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field roblox boolean
+
+---@class _.lspconfig.settings.luau_lsp.Luau-lsp
+-- Automatically insert an `end` when opening a block
+---@field autocompleteEnd boolean
+---@field completion _.lspconfig.settings.luau_lsp.Completion
+---@field diagnostics _.lspconfig.settings.luau_lsp.Diagnostics
+---@field fflags _.lspconfig.settings.luau_lsp.Fflags
+---@field hover _.lspconfig.settings.luau_lsp.Hover
+-- Diagnostics will not be reported for any file matching these globs unless the file is currently open
+-- 
+-- ```lua
+-- default = { "**/_Index/**" }
+-- ```
+---@field ignoreGlobs string[]
+---@field inlayHints _.lspconfig.settings.luau_lsp.InlayHints
+---@field plugin _.lspconfig.settings.luau_lsp.Plugin
+---@field signatureHelp _.lspconfig.settings.luau_lsp.SignatureHelp
+---@field sourcemap _.lspconfig.settings.luau_lsp.Sourcemap
+---@field types _.lspconfig.settings.luau_lsp.Types
+
+---@class lspconfig.settings.luau_lsp
+---@field luau _.lspconfig.settings.luau_lsp.Luau
+---@field luau-lsp _.lspconfig.settings.luau_lsp.Luau-lsp
+
 ---@class _.lspconfig.settings.nickel_ls.Server
 -- Logs the communication between VS Code and the language server.
 ---@field debugLog boolean
