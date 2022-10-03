@@ -12016,6 +12016,14 @@
 -- ```
 ---@field delay number
 
+---@class _.lspconfig.settings.volar.Doctor
+-- Show known problems in status bar.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field statusBarItem boolean
+
 -- Whether to have initial indent.
 -- 
 -- ```lua
@@ -12152,6 +12160,7 @@
 ---@field codeLens _.lspconfig.settings.volar.CodeLens
 ---@field completion _.lspconfig.settings.volar.Completion
 ---@field diagnostics _.lspconfig.settings.volar.Diagnostics
+---@field doctor _.lspconfig.settings.volar.Doctor
 ---@field format _.lspconfig.settings.volar.Format
 ---@field icon _.lspconfig.settings.volar.Icon
 ---@field preview _.lspconfig.settings.volar.Preview

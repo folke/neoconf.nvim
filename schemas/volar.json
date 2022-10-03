@@ -71,6 +71,11 @@
       "description": "Delay time for diagnostics.",
       "type": "number"
     },
+    "volar.doctor.statusBarItem": {
+      "default": true,
+      "description": "Show known problems in status bar.",
+      "type": "boolean"
+    },
     "volar.format.initialIndent": {
       "default": {
         "html": true
