@@ -3904,6 +3904,12 @@
 -- default = "test/runtests.jl"
 -- ```
 ---@field liveTestFile string
+-- Number of processes to use for testing.
+-- 
+-- ```lua
+-- default = 1
+-- ```
+---@field numTestProcesses integer
 -- Julia package server. Sets the `JULIA_PKG_SERVER` environment variable *before* starting a Julia process. Leave this empty to use the systemwide default. Requires a restart of the Julia process.
 -- 
 -- ```lua
