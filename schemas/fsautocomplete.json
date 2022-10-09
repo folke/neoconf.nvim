@@ -61,6 +61,11 @@
       "description": "Sets the root path for finding locating the dotnet CLI binary. Defaults to the `dotnet` binary found on your system PATH.",
       "type": "string"
     },
+    "FSharp.enableAdaptiveLspServer": {
+      "default": false,
+      "description": "EXPERIMENTAL. Enables Enable LSP Server based on FSharp.Data.Adaptive. This can improve stability. Requires restart.",
+      "type": "boolean"
+    },
     "FSharp.enableAnalyzers": {
       "default": false,
       "description": "EXPERIMENTAL. Enables F# analyzers for custom code diagnostics. Requires restart.",

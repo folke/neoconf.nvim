@@ -1016,6 +1016,8 @@
 ---@field disableFailedProjectNotifications boolean
 -- Sets the root path for finding locating the dotnet CLI binary. Defaults to the `dotnet` binary found on your system PATH.
 ---@field dotnetRoot string
+-- EXPERIMENTAL. Enables Enable LSP Server based on FSharp.Data.Adaptive. This can improve stability. Requires restart.
+---@field enableAdaptiveLspServer boolean
 -- EXPERIMENTAL. Enables F# analyzers for custom code diagnostics. Requires restart.
 ---@field enableAnalyzers boolean
 -- Enables background services responsible for creating symbol cache and typechecking files in the background. Requires restart.
