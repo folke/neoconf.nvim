@@ -34,10 +34,10 @@ function M.setup()
     nargs = "?",
     desc = "Neovim Settings",
     complete = function(f, line, ...)
-      if line:match("^Neoconf %w+ ") then
+      if line:match("^%s*Neoconf %w+ ") then
         return {}
       end
-      local prefix = line:match("^Neoconf (%w*)")
+      local prefix = line:match("^%s*Neoconf (%w*)")
       return vim.tbl_filter(function(key)
         return key:find(prefix) == 1
       end, vim.tbl_keys(commands))
