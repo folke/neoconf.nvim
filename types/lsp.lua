@@ -1994,6 +1994,13 @@
 -- ```
 ---@field globalOn boolean
 
+---@class _.lspconfig.settings.hie.Config
+-- Call out to an external "fourmolu" executable, rather than using the bundled library
+---@field external boolean
+
+---@class _.lspconfig.settings.hie.Fourmolu
+---@field config _.lspconfig.settings.hie.Config
+
 ---@class _.lspconfig.settings.hie.Gadt
 -- Enables gadt plugin
 -- 
@@ -2266,6 +2273,7 @@
 ---@field class _.lspconfig.settings.hie.Class
 ---@field eval _.lspconfig.settings.hie.Eval
 ---@field explicitFixity _.lspconfig.settings.hie.ExplicitFixity
+---@field fourmolu _.lspconfig.settings.hie.Fourmolu
 ---@field gadt _.lspconfig.settings.hie.Gadt
 ---@field ghcide-code-actions-bindings _.lspconfig.settings.hie.Ghcide-code-actions-bindings
 ---@field ghcide-code-actions-fill-holes _.lspconfig.settings.hie.Ghcide-code-actions-fill-holes
