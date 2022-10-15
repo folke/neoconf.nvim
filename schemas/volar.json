@@ -202,6 +202,11 @@
         "null"
       ]
     },
+    "volar.vueserver.noProjectReferences": {
+      "default": false,
+      "description": "Ignore project references settings of tsconfig in language server for resolve issue #1916.",
+      "type": "boolean"
+    },
     "volar.vueserver.petiteVue.processHtmlFile": {
       "default": false,
       "type": "boolean"
