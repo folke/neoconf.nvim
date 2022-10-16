@@ -339,6 +339,54 @@
 -- ```
 ---@field testArgs string[]
 
+---@class _.lspconfig.settings.denols.EnumMemberValues
+-- Enable/disable inlay hints for enum values.
+---@field enabled boolean
+
+---@class _.lspconfig.settings.denols.FunctionLikeReturnTypes
+-- Enable/disable inlay hints for implicit function return types.
+---@field enabled boolean
+
+---@class _.lspconfig.settings.denols.ParameterNames
+-- Enable/disable inlay hints for parameter names.
+-- 
+-- ```lua
+-- default = "none"
+-- ```
+---@field enabled "none" | "literals" | "all"
+-- Do not display an inlay hint when the argument name matches the parameter.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field suppressWhenArgumentMatchesName boolean
+
+---@class _.lspconfig.settings.denols.ParameterTypes
+-- Enable/disable inlay hints for implicit parameter types.
+---@field enabled boolean
+
+---@class _.lspconfig.settings.denols.PropertyDeclarationTypes
+-- Enable/disable inlay hints for implicit property declarations.
+---@field enabled boolean
+
+---@class _.lspconfig.settings.denols.VariableTypes
+-- Enable/disable inlay hints for implicit variable types.
+---@field enabled boolean
+-- Suppress type hints where the variable name matches the implicit type.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field suppressWhenTypeMatchesName boolean
+
+---@class _.lspconfig.settings.denols.InlayHints
+---@field enumMemberValues _.lspconfig.settings.denols.EnumMemberValues
+---@field functionLikeReturnTypes _.lspconfig.settings.denols.FunctionLikeReturnTypes
+---@field parameterNames _.lspconfig.settings.denols.ParameterNames
+---@field parameterTypes _.lspconfig.settings.denols.ParameterTypes
+---@field propertyDeclarationTypes _.lspconfig.settings.denols.PropertyDeclarationTypes
+---@field variableTypes _.lspconfig.settings.denols.VariableTypes
+
 ---@class _.lspconfig.settings.denols.Imports
 -- If enabled, when new hosts/origins are encountered that support import suggestions, you will be prompted to enable or disable it.  Defaults to `true`.
 -- 
@@ -439,6 +487,7 @@
 -- default = <userdata 1>
 -- ```
 ---@field importMap string
+---@field inlayHints _.lspconfig.settings.denols.InlayHints
 -- Determines if the internal debugging information for the Deno language server will be logged to the _Deno Language Server_ console.
 ---@field internalDebug boolean
 -- Controls if linting information will be provided by the Deno Language Server.
