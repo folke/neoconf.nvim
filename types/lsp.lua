@@ -6450,26 +6450,48 @@
 -- default = true
 -- ```
 ---@field declarationTypeCodeLens boolean
+-- **EXPERIMENTAL** Enable diagnostics on file open, as per diagnostics on type
+---@field diagnosticsOnOpen boolean
+-- **EXPERIMENTAL** Enable rebuilding modules for diagnostics automatically on typing. This may provide quicker feedback on errors, but could interfere with other functionality.
+---@field diagnosticsOnType boolean
+-- **EXPERIMENTAL**
+-- 
+-- ```lua
+-- default = 100
+-- ```
+---@field diagnosticsOnTypeDebounce integer
 -- Enable declaration codelenses for export management
 -- 
 -- ```lua
 -- default = true
 -- ```
 ---@field exportsCodeLens boolean
--- Enable purs IDE server fast rebuild
+-- Enable purs IDE server fast rebuild (rebuilding single files on saving them)
 -- 
 -- ```lua
 -- default = true
 -- ```
 ---@field fastRebuild boolean
+-- Extension for foreign files
+-- 
+-- ```lua
+-- default = "js"
+-- ```
+---@field foreignExt string
 -- Tool to use to for formatting. Must be installed and on PATH (or npm installed with addNpmPath set)
 -- 
 -- ```lua
--- default = "purty"
+-- default = "purs-tidy"
 -- ```
 ---@field formatter "none" | "purty" | "purs-tidy" | "pose"
 -- Whether to perform a full build on save with the configured build command (rather than IDE server fast rebuild). This is not generally recommended because it is slow, but it does mean that dependent modules are rebuilt as necessary.
 ---@field fullBuildOnSave boolean
+-- Whether to show progress for full build on save (if enabled)
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field fullBuildOnSaveProgress boolean
 -- Module to prefer to insert when adding imports which have been re-exported. In order of preference, most preferred first.
 -- 
 -- ```lua

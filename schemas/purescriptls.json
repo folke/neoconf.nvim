@@ -90,6 +90,24 @@
       "scope": "resource",
       "type": "boolean"
     },
+    "purescript.diagnosticsOnOpen": {
+      "default": false,
+      "description": "**EXPERIMENTAL** Enable diagnostics on file open, as per diagnostics on type",
+      "scope": "resource",
+      "type": "boolean"
+    },
+    "purescript.diagnosticsOnType": {
+      "default": false,
+      "description": "**EXPERIMENTAL** Enable rebuilding modules for diagnostics automatically on typing. This may provide quicker feedback on errors, but could interfere with other functionality.",
+      "scope": "resource",
+      "type": "boolean"
+    },
+    "purescript.diagnosticsOnTypeDebounce": {
+      "default": 100,
+      "description": "**EXPERIMENTAL**",
+      "scope": "resource",
+      "type": "integer"
+    },
     "purescript.exportsCodeLens": {
       "default": true,
       "description": "Enable declaration codelenses for export management",
@@ -98,12 +116,18 @@
     },
     "purescript.fastRebuild": {
       "default": true,
-      "description": "Enable purs IDE server fast rebuild",
+      "description": "Enable purs IDE server fast rebuild (rebuilding single files on saving them)",
       "scope": "resource",
       "type": "boolean"
     },
+    "purescript.foreignExt": {
+      "default": "js",
+      "description": "Extension for foreign files",
+      "scope": "resource",
+      "type": "string"
+    },
     "purescript.formatter": {
-      "default": "purty",
+      "default": "purs-tidy",
       "description": "Tool to use to for formatting. Must be installed and on PATH (or npm installed with addNpmPath set)",
       "enum": [
         "none",
@@ -123,6 +147,12 @@
     "purescript.fullBuildOnSave": {
       "default": false,
       "description": "Whether to perform a full build on save with the configured build command (rather than IDE server fast rebuild). This is not generally recommended because it is slow, but it does mean that dependent modules are rebuilt as necessary.",
+      "scope": "resource",
+      "type": "boolean"
+    },
+    "purescript.fullBuildOnSaveProgress": {
+      "default": true,
+      "description": "Whether to show progress for full build on save (if enabled)",
       "scope": "resource",
       "type": "boolean"
     },
