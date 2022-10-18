@@ -2437,7 +2437,7 @@
 -- default = {}
 -- ```
 ---@field serverEnvironment table
--- Manually set a language server executable. Can be something on the $PATH or the full path to the executable itself. Works with `~,` `${HOME}` and `${workspaceFolder}`. **Deprecated scope**: This option will be set to `machine` scope in a future release, so it can be changed only globally, not per workspace.
+-- Manually set a language server executable. Can be something on the $PATH or the full path to the executable itself. Works with `~,` `${HOME}` and `${workspaceFolder}`.
 -- 
 -- ```lua
 -- default = ""
