@@ -39,6 +39,19 @@
       "markdownDescription": "Run build scripts (`build.rs`) for more precise code analysis.",
       "type": "boolean"
     },
+    "rust-analyzer.cargo.buildScripts.invocationStrategy": {
+      "default": "per_workspace",
+      "enum": [
+        "per_workspace",
+        "once"
+      ],
+      "enumDescriptions": [
+        "The command will be executed for each workspace from the corresponding workspace root.",
+        "The command will be executed once in the project root."
+      ],
+      "markdownDescription": "Specifies the invocation strategy to use when running the build scripts command.\nIf `per_workspace` is set, the command will be executed for each workspace from the\ncorresponding workspace root.\nIf `once` is set, the command will be executed once in the project root.\nThis config only has an effect when `#rust-analyzer.cargo.buildScripts.overrideCommand#`\nis set.",
+      "type": "string"
+    },
     "rust-analyzer.cargo.buildScripts.overrideCommand": {
       "default": null,
       "items": {
@@ -171,6 +184,19 @@
       ],
       "default": null,
       "markdownDescription": "List of features to activate. Defaults to\n`#rust-analyzer.cargo.features#`.\n\nSet to `\"all\"` to pass `--all-features` to Cargo."
+    },
+    "rust-analyzer.checkOnSave.invocationStrategy": {
+      "default": "per_workspace",
+      "enum": [
+        "per_workspace",
+        "once"
+      ],
+      "enumDescriptions": [
+        "The command will be executed for each workspace from the corresponding workspace root.",
+        "The command will be executed once in the project root."
+      ],
+      "markdownDescription": "Specifies the invocation strategy to use when running the checkOnSave command.\nIf `per_workspace` is set, the command will be executed for each workspace from the\ncorresponding workspace root.\nIf `once` is set, the command will be executed once in the project root.\nThis config only has an effect when `#rust-analyzer.cargo.buildScripts.overrideCommand#`\nis set.",
+      "type": "string"
     },
     "rust-analyzer.checkOnSave.noDefaultFeatures": {
       "default": null,

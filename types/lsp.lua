@@ -7766,6 +7766,17 @@
 -- default = true
 -- ```
 ---@field enable boolean
+-- Specifies the invocation strategy to use when running the build scripts command.
+-- If `per_workspace` is set, the command will be executed for each workspace from the
+-- corresponding workspace root.
+-- If `once` is set, the command will be executed once in the project root.
+-- This config only has an effect when `#rust-analyzer.cargo.buildScripts.overrideCommand#`
+-- is set.
+-- 
+-- ```lua
+-- default = "per_workspace"
+-- ```
+---@field invocationStrategy "per_workspace" | "once"
 -- Override the command rust-analyzer uses to run build scripts and
 -- build procedural macros. The command is required to output json
 -- and should therefore include `--message-format=json` or a similar
@@ -7882,6 +7893,17 @@
 -- default = <userdata 1>
 -- ```
 ---@field features 
+-- Specifies the invocation strategy to use when running the checkOnSave command.
+-- If `per_workspace` is set, the command will be executed for each workspace from the
+-- corresponding workspace root.
+-- If `once` is set, the command will be executed once in the project root.
+-- This config only has an effect when `#rust-analyzer.cargo.buildScripts.overrideCommand#`
+-- is set.
+-- 
+-- ```lua
+-- default = "per_workspace"
+-- ```
+---@field invocationStrategy "per_workspace" | "once"
 -- Whether to pass `--no-default-features` to Cargo. Defaults to
 -- `#rust-analyzer.cargo.noDefaultFeatures#`.
 -- 
