@@ -71,11 +71,6 @@
       "description": "EXPERIMENTAL. Enables F# analyzers for custom code diagnostics. Requires restart.",
       "type": "boolean"
     },
-    "FSharp.enableBackgroundServices": {
-      "default": true,
-      "description": "Enables background services responsible for creating symbol cache and typechecking files in the background. Requires restart.",
-      "type": "boolean"
-    },
     "FSharp.enableMSBuildProjectGraph": {
       "default": false,
       "description": "EXPERIMENTAL. Enables support for loading workspaces with MsBuild's ProjectGraph. This can improve load times. Requires restart.",
