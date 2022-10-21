@@ -12236,6 +12236,12 @@
 ---@field processMdFile boolean
 
 ---@class _.lspconfig.settings.volar.Vueserver
+-- List any additional file extensions that should be processed as Vue files (requires restart).
+-- 
+-- ```lua
+-- default = {}
+-- ```
+---@field additionalExtensions string[]
 -- Set --max-old-space-size option on server process. If you have problem on frequently "Request textDocument/** failed." error, try setting higher memory(MB) on it.
 -- 
 -- ```lua
