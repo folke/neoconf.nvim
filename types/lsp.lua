@@ -7760,10 +7760,20 @@
 -- default = true
 -- ```
 ---@field enable boolean
+-- Specifies the working directory for running build scripts.
+-- - "workspace": run build scripts for a workspace in the workspace's root directory.
+--     This is incompatible with `#rust-analyzer.cargo.buildScripts.invocationStrategy#` set to `once`.
+-- - "root": run build scripts in the project's root directory.
+-- This config only has an effect when `#rust-analyzer.cargo.buildScripts.overrideCommand#`
+-- is set.
+-- 
+-- ```lua
+-- default = "workspace"
+-- ```
+---@field invocationLocation "workspace" | "root"
 -- Specifies the invocation strategy to use when running the build scripts command.
--- If `per_workspace` is set, the command will be executed for each workspace from the
--- corresponding workspace root.
--- If `once` is set, the command will be executed once in the project root.
+-- If `per_workspace` is set, the command will be executed for each workspace.
+-- If `once` is set, the command will be executed once.
 -- This config only has an effect when `#rust-analyzer.cargo.buildScripts.overrideCommand#`
 -- is set.
 -- 
@@ -7887,10 +7897,20 @@
 -- default = <userdata 1>
 -- ```
 ---@field features 
+-- Specifies the working directory for running checks.
+-- - "workspace": run checks for workspaces in the corresponding workspaces' root directories.
+--     This falls back to "root" if `#rust-analyzer.cargo.checkOnSave.invocationStrategy#` is set to `once`.
+-- - "root": run checks in the project's root directory.
+-- This config only has an effect when `#rust-analyzer.cargo.buildScripts.overrideCommand#`
+-- is set.
+-- 
+-- ```lua
+-- default = "workspace"
+-- ```
+---@field invocationLocation "workspace" | "root"
 -- Specifies the invocation strategy to use when running the checkOnSave command.
--- If `per_workspace` is set, the command will be executed for each workspace from the
--- corresponding workspace root.
--- If `once` is set, the command will be executed once in the project root.
+-- If `per_workspace` is set, the command will be executed for each workspace.
+-- If `once` is set, the command will be executed once.
 -- This config only has an effect when `#rust-analyzer.cargo.buildScripts.overrideCommand#`
 -- is set.
 -- 
