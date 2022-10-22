@@ -12110,6 +12110,12 @@
 -- default = "auto-pascal"
 -- ```
 ---@field preferredTagNameCase "auto-kebab" | "auto-pascal" | "kebab" | "pascal"
+-- Trim "Vue" from import name from auto import.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field trimVueFromImportName boolean
 
 ---@class _.lspconfig.settings.volar.Diagnostics
 -- Delay time for diagnostics.
@@ -12242,6 +12248,12 @@
 -- default = {}
 -- ```
 ---@field additionalExtensions string[]
+-- Diagnostic update model.
+-- 
+-- ```lua
+-- default = "push"
+-- ```
+---@field diagnosticModel "push" | "pull"
 -- Set --max-old-space-size option on server process. If you have problem on frequently "Request textDocument/** failed." error, try setting higher memory(MB) on it.
 -- 
 -- ```lua

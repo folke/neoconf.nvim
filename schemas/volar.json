@@ -66,6 +66,11 @@
       ],
       "type": "string"
     },
+    "volar.completion.trimVueFromImportName": {
+      "default": true,
+      "description": "Trim \"Vue\" from import name from auto import.",
+      "type": "boolean"
+    },
     "volar.diagnostics.delay": {
       "default": 200,
       "description": "Delay time for diagnostics.",
@@ -201,6 +206,19 @@
         "type": "string"
       },
       "type": "array"
+    },
+    "volar.vueserver.diagnosticModel": {
+      "default": "push",
+      "description": "Diagnostic update model.",
+      "enum": [
+        "push",
+        "pull"
+      ],
+      "enumDescriptions": [
+        "Diagnostic push by language server.",
+        "Diagnostic pull by language client."
+      ],
+      "type": "string"
     },
     "volar.vueserver.maxOldSpaceSize": {
       "default": null,
