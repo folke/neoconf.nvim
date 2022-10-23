@@ -27,9 +27,9 @@
       "description": "[ref sugar ☐] code lens.",
       "type": "boolean"
     },
-    "volar.completion.autoImportComponent": {
+    "volar.completion.normalizeComponentAutoImportName": {
       "default": true,
-      "description": "Enabled auto-import for component with tag completion.",
+      "description": "Normalize import name for auto import. (\"myCompVue\" -> \"MyComp\")",
       "type": "boolean"
     },
     "volar.completion.preferredAttrNameCase": {
@@ -65,11 +65,6 @@
         "<PascalCase>"
       ],
       "type": "string"
-    },
-    "volar.completion.trimVueFromImportName": {
-      "default": true,
-      "description": "Trim \"Vue\" from import name from auto import.",
-      "type": "boolean"
     },
     "volar.diagnostics.delay": {
       "default": 200,

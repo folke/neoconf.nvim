@@ -12112,12 +12112,12 @@
 ---@field scriptSetupTools boolean
 
 ---@class _.lspconfig.settings.volar.Completion
--- Enabled auto-import for component with tag completion.
+-- Normalize import name for auto import. ("myCompVue" -> "MyComp")
 -- 
 -- ```lua
 -- default = true
 -- ```
----@field autoImportComponent boolean
+---@field normalizeComponentAutoImportName boolean
 -- Preferred attr name case.
 -- 
 -- ```lua
@@ -12130,12 +12130,6 @@
 -- default = "auto-pascal"
 -- ```
 ---@field preferredTagNameCase "auto-kebab" | "auto-pascal" | "kebab" | "pascal"
--- Trim "Vue" from import name from auto import.
--- 
--- ```lua
--- default = true
--- ```
----@field trimVueFromImportName boolean
 
 ---@class _.lspconfig.settings.volar.Diagnostics
 -- Delay time for diagnostics.
