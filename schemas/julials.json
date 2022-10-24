@@ -268,12 +268,6 @@
       "scope": "window",
       "type": "string"
     },
-    "julia.numTestProcesses": {
-      "default": 1,
-      "markdownDescription": "Number of processes to use for testing.",
-      "scope": "machine-overridable",
-      "type": "integer"
-    },
     "julia.packageServer": {
       "default": "",
       "markdownDescription": "Julia package server. Sets the `JULIA_PKG_SERVER` environment variable *before* starting a Julia process. Leave this empty to use the systemwide default. Requires a restart of the Julia process.",
