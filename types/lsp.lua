@@ -789,6 +789,8 @@
 -- default = <userdata 1>
 -- ```
 ---@field execArgv 
+-- Enable support of experimental Flat Config (aka eslint.config.js, supported by ESLint version 8.21 or later).
+---@field experimentalUseFlatConfig boolean
 ---@field format _.lspconfig.settings.eslint.Format
 ---@field lintTask _.lspconfig.settings.eslint.LintTask
 ---@field migration _.lspconfig.settings.eslint.Migration

@@ -125,6 +125,12 @@
       "markdownDescription": "Additional exec argv argument passed to the runtime. This can for example be used to control the maximum heap space using --max_old_space_size",
       "scope": "machine-overridable"
     },
+    "eslint.experimentalUseFlatConfig": {
+      "default": false,
+      "description": "Enable support of experimental Flat Config (aka eslint.config.js, supported by ESLint version 8.21 or later).",
+      "scope": "resource",
+      "type": "boolean"
+    },
     "eslint.format.enable": {
       "default": false,
       "description": "Enables ESLint as a formatter.",
