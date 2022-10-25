@@ -7711,6 +7711,12 @@
 -- default = <userdata 1>
 -- ```
 ---@field lspBin string
+-- Enable/Disable Rome handling renames in the workspace. (Experimental)
+-- 
+-- ```lua
+-- default = <userdata 1>
+-- ```
+---@field rename boolean
 
 ---@class _.lspconfig.settings.rome.Trace
 -- Traces the communication between VS Code and the language server.

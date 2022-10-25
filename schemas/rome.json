@@ -10,6 +10,14 @@
         "null"
       ]
     },
+    "rome.rename": {
+      "default": null,
+      "markdownDescription": "Enable/Disable Rome handling renames in the workspace. (Experimental)",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
     "rome_lsp.trace.server": {
       "default": "off",
       "description": "Traces the communication between VS Code and the language server.",
