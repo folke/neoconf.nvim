@@ -3088,6 +3088,14 @@
 ---@class _.lspconfig.settings.jdtls.Compile
 ---@field nullAnalysis _.lspconfig.settings.jdtls.NullAnalysis
 
+---@class _.lspconfig.settings.jdtls.Postfix
+-- Enable/disable postfix completion support. `#editor.snippetSuggestions#` can be used to customize how postfix snippets are sorted.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enabled boolean
+
 ---@class _.lspconfig.settings.jdtls.Completion
 -- Enable/disable code completion support
 -- 
@@ -3126,6 +3134,7 @@
 -- default = 0
 -- ```
 ---@field maxResults integer
+---@field postfix _.lspconfig.settings.jdtls.Postfix
 
 ---@class _.lspconfig.settings.jdtls.Maven
 -- Path to Maven's global settings.xml
