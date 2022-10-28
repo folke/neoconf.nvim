@@ -21,11 +21,11 @@
       "type": "boolean"
     },
     "wgsl-analyzer.diagnostics.nagaVersion": {
-      "default": "0.9",
+      "default": "0.10",
       "description": "Which version of naga to use for its diagnostics",
       "enum": [
-        "0.8",
         "0.9",
+        "0.10",
         "main"
       ],
       "type": "string"
