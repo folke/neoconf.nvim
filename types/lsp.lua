@@ -4832,6 +4832,12 @@
 -- default = true
 -- ```
 ---@field enabled boolean
+-- Fill parameter names in an autocompleted function call, which can be tabbed through. Requires `#luau-lsp.completion.addParentheses#` to be enabled
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field fillCallArguments boolean
 -- Suggest automatic imports in completion items
 ---@field suggestImports boolean
 

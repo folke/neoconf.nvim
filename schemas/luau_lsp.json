@@ -26,6 +26,12 @@
       "scope": "resource",
       "type": "boolean"
     },
+    "luau-lsp.completion.fillCallArguments": {
+      "default": true,
+      "markdownDescription": "Fill parameter names in an autocompleted function call, which can be tabbed through. Requires `#luau-lsp.completion.addParentheses#` to be enabled",
+      "scope": "resource",
+      "type": "boolean"
+    },
     "luau-lsp.completion.suggestImports": {
       "default": false,
       "markdownDescription": "Suggest automatic imports in completion items",
