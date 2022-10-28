@@ -4814,6 +4814,18 @@
 ---@field trace _.lspconfig.settings.luau_lsp.Trace
 
 ---@class _.lspconfig.settings.luau_lsp.Completion
+-- Add parentheses after completing a function call
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field addParentheses boolean
+-- If `#luau-lsp.completion.addParentheses#` is enabled, then include a tabstop after the parentheses for the cursor to move to
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field addTabstopAfterParentheses boolean
 -- Enable autocomplete
 -- 
 -- ```lua
