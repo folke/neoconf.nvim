@@ -12278,6 +12278,9 @@
 -- ```
 ---@field enabled boolean
 
+---@class _.lspconfig.settings.volar.Json
+---@field customBlockSchemaUrls table
+
 ---@class _.lspconfig.settings.volar.PetiteVue
 ---@field processHtmlFile boolean
 
@@ -12297,6 +12300,7 @@
 -- default = "push"
 -- ```
 ---@field diagnosticModel "push" | "pull"
+---@field json _.lspconfig.settings.volar.Json
 -- Set --max-old-space-size option on server process. If you have problem on frequently "Request textDocument/** failed." error, try setting higher memory(MB) on it.
 -- 
 -- ```lua
