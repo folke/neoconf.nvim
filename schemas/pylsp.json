@@ -110,6 +110,16 @@
       ],
       "uniqueItems": true
     },
+    "pylsp.plugins.jedi.auto_import_modules": {
+      "default": [
+        "numpy"
+      ],
+      "description": "List of module names for jedi.settings.auto_import_modules.",
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    },
     "pylsp.plugins.jedi.env_vars": {
       "default": null,
       "description": "Define environment variables for jedi.Script and Jedi.names.",

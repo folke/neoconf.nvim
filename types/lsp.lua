@@ -6641,6 +6641,12 @@
 ---@field select string[]
 
 ---@class _.lspconfig.settings.pylsp.Jedi
+-- List of module names for jedi.settings.auto_import_modules.
+-- 
+-- ```lua
+-- default = { "numpy" }
+-- ```
+---@field auto_import_modules string[]
 -- Define environment variables for jedi.Script and Jedi.names.
 -- 
 -- ```lua
