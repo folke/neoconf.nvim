@@ -3072,13 +3072,19 @@
 ---@field useBlocks boolean
 
 ---@class _.lspconfig.settings.jdtls.NullAnalysis
--- Specify the Nonnull annotation types to be used for null analysis. If more than one annotation is specified, then the topmost annotation will be used first if it exists in your project dependencies.
+-- Specify how to enable the annotation-based null analysis.
+-- 
+-- ```lua
+-- default = "disabled"
+-- ```
+---@field mode "disabled" | "interactive" | "automatic"
+-- Specify the Nonnull annotation types to be used for null analysis. If more than one annotation is specified, then the topmost annotation will be used first if it exists in project dependencies. This setting will be ignored if `java.compile.nullAnalysis.enabled` is set to `disabled`
 -- 
 -- ```lua
 -- default = { "javax.annotation.Nonnull", "org.eclipse.jdt.annotation.NonNull", "org.springframework.lang.NonNull" }
 -- ```
 ---@field nonnull array
--- Specify the Nullable annotation types to be used for null analysis. If more than one annotation is specified, then the topmost annotation will be used first if it exists in your project dependencies.
+-- Specify the Nullable annotation types to be used for null analysis. If more than one annotation is specified, then the topmost annotation will be used first if it exists in project dependencies. This setting will be ignored if `java.compile.nullAnalysis.enabled` is set to `disabled`
 -- 
 -- ```lua
 -- default = { "javax.annotation.Nullable", "org.eclipse.jdt.annotation.Nullable", "org.springframework.lang.Nullable" }
