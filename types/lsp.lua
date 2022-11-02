@@ -7783,6 +7783,9 @@
 ---@field rome_lsp _.lspconfig.settings.rome.Rome.Lsp
 
 ---@class _.lspconfig.settings.rust_analyzer.Assist
+-- Whether to insert #[must_use] when generating `as_` methods
+-- for enum variants.
+---@field emitMustUse boolean
 -- Placeholder expression to use for missing expressions in assists.
 -- 
 -- ```lua
