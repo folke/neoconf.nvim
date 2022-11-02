@@ -5663,6 +5663,24 @@
 -- default = ""
 -- ```
 ---@field perlcriticProfile string
+-- Enable perlimports as a linter.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field perlimportsLintEnabled boolean
+-- Path to perlimports.toml (no aliases, .bat files or ~/)
+-- 
+-- ```lua
+-- default = ""
+-- ```
+---@field perlimportsProfile string
+-- Enable perlimports as a tidier.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field perlimportsTidyEnabled boolean
 -- Enable perl tidy.
 -- 
 -- ```lua

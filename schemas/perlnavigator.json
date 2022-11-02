@@ -44,6 +44,24 @@
       "scope": "resource",
       "type": "string"
     },
+    "perlnavigator.perlimportsLintEnabled": {
+      "default": true,
+      "description": "Enable perlimports as a linter.",
+      "scope": "resource",
+      "type": "boolean"
+    },
+    "perlnavigator.perlimportsProfile": {
+      "default": "",
+      "description": "Path to perlimports.toml (no aliases, .bat files or ~/)",
+      "scope": "resource",
+      "type": "string"
+    },
+    "perlnavigator.perlimportsTidyEnabled": {
+      "default": true,
+      "description": "Enable perlimports as a tidier.",
+      "scope": "resource",
+      "type": "boolean"
+    },
     "perlnavigator.perltidyEnabled": {
       "default": true,
       "description": "Enable perl tidy.",
