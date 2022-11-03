@@ -9,6 +9,7 @@
     },
     "powershell.bugReporting.project": {
       "default": "https://github.com/PowerShell/vscode-powershell",
+      "deprecationMessage": "This setting was never meant to be changed!",
       "description": "Specifies the URL of the GitHub project in which to generate bug reports.",
       "type": "string"
     },
@@ -146,7 +147,7 @@
       "type": "boolean"
     },
     "powershell.cwd": {
-      "default": null,
+      "default": "",
       "description": "An explicit start path where the PowerShell Extension Terminal will be launched. Both the PowerShell process's and the shell's location will be set to this directory. A fully resolved path must be provided!",
       "type": "string"
     },
@@ -156,6 +157,7 @@
       "type": "boolean"
     },
     "powershell.developer.bundledModulesPath": {
+      "default": "../../PowerShellEditorServices/module",
       "description": "Specifies an alternate path to the folder containing modules that are bundled with the PowerShell extension (i.e. PowerShell Editor Services, PSScriptAnalyzer, Plaster)",
       "type": "string"
     },
@@ -216,6 +218,7 @@
       "type": "boolean"
     },
     "powershell.integratedConsole.forceClearScrollbackBuffer": {
+      "default": false,
       "description": "Use the vscode API to clear the terminal since that's the only reliable way to clear the scrollback buffer. Turn this on if you're used to 'Clear-Host' clearing scroll history as well as clear-terminal-via-lsp.",
       "type": "boolean"
     },
@@ -231,7 +234,7 @@
     },
     "powershell.integratedConsole.suppressStartupBanner": {
       "default": false,
-      "description": "Do not show the Powershell Extension Terminal banner on launch",
+      "description": "Do not show the PowerShell Extension Terminal banner on launch.",
       "type": "boolean"
     },
     "powershell.integratedConsole.useLegacyReadLine": {
@@ -278,10 +281,12 @@
       "additionalProperties": {
         "type": "string"
       },
+      "default": {},
       "description": "Specifies a list of versionName / exePath pairs where exePath points to a non-standard install location for PowerShell and versionName can be used to reference this path with the powershell.powerShellDefaultVersion setting.",
       "type": "object"
     },
     "powershell.powerShellDefaultVersion": {
+      "default": "",
       "description": "Specifies the PowerShell version name, as displayed by the 'PowerShell: Show Session Menu' command, used when the extension loads e.g \"Windows PowerShell (x86)\" or \"PowerShell Core 7 (x64)\". You can specify additional PowerShell executables by using the \"powershell.powerShellAdditionalExePaths\" setting.",
       "type": "string"
     },

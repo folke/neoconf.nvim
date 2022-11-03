@@ -5965,6 +5965,10 @@
 
 ---@class _.lspconfig.settings.powershell_es.Developer
 -- Specifies an alternate path to the folder containing modules that are bundled with the PowerShell extension (i.e. PowerShell Editor Services, PSScriptAnalyzer, Plaster)
+-- 
+-- ```lua
+-- default = "../../PowerShellEditorServices/module"
+-- ```
 ---@field bundledModulesPath string
 -- Sets the logging verbosity level for the PowerShell Editor Services host executable.  Valid values are 'Diagnostic', 'Verbose', 'Normal', 'Warning', 'Error', and 'None'
 -- 
@@ -6004,7 +6008,7 @@
 ---@field showOnStartup boolean
 -- Starts the Extension Terminal in the background. WARNING: If this is enabled, to access the terminal you must run the 'Show Extension Terminal' command, and once shown it cannot be put back into the background. This option completely hides the Extension Terminal from the terminals pane. You are probably looking for the 'showOnStartup' option instead.
 ---@field startInBackground boolean
--- Do not show the Powershell Extension Terminal banner on launch
+-- Do not show the PowerShell Extension Terminal banner on launch.
 ---@field suppressStartupBanner boolean
 -- Falls back to the legacy ReadLine experience. This will disable the use of PSReadLine in the PowerShell Extension Terminal.
 ---@field useLegacyReadLine boolean
@@ -6083,7 +6087,7 @@
 -- An explicit start path where the PowerShell Extension Terminal will be launched. Both the PowerShell process's and the shell's location will be set to this directory. A fully resolved path must be provided!
 -- 
 -- ```lua
--- default = <userdata 1>
+-- default = ""
 -- ```
 ---@field cwd string
 ---@field debugging _.lspconfig.settings.powershell_es.Debugging
@@ -6109,8 +6113,16 @@
 ---@field integratedConsole _.lspconfig.settings.powershell_es.IntegratedConsole
 ---@field pester _.lspconfig.settings.powershell_es.Pester
 -- Specifies a list of versionName / exePath pairs where exePath points to a non-standard install location for PowerShell and versionName can be used to reference this path with the powershell.powerShellDefaultVersion setting.
+-- 
+-- ```lua
+-- default = {}
+-- ```
 ---@field powerShellAdditionalExePaths table
 -- Specifies the PowerShell version name, as displayed by the 'PowerShell: Show Session Menu' command, used when the extension loads e.g "Windows PowerShell (x86)" or "PowerShell Core 7 (x64)". You can specify additional PowerShell executables by using the "powershell.powerShellAdditionalExePaths" setting.
+-- 
+-- ```lua
+-- default = ""
+-- ```
 ---@field powerShellDefaultVersion string
 -- REMOVED: Please use the "powershell.powerShellAdditionalExePaths" setting instead.
 -- 
