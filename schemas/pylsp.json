@@ -423,6 +423,16 @@
         "null"
       ]
     },
+    "pylsp.plugins.rope_autoimport.enabled": {
+      "default": false,
+      "description": "Enable or disable autoimport.",
+      "type": "boolean"
+    },
+    "pylsp.plugins.rope_autoimport.memory": {
+      "default": false,
+      "description": "Make the autoimport database memory only. Drastically increases startup time.",
+      "type": "boolean"
+    },
     "pylsp.plugins.rope_completion.eager": {
       "default": false,
       "description": "Resolve documentation and detail eagerly.",

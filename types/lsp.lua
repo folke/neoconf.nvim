@@ -6930,6 +6930,12 @@
 -- ```
 ---@field executable string
 
+---@class _.lspconfig.settings.pylsp.Rope.Autoimport
+-- Enable or disable autoimport.
+---@field enabled boolean
+-- Make the autoimport database memory only. Drastically increases startup time.
+---@field memory boolean
+
 ---@class _.lspconfig.settings.pylsp.Rope.Completion
 -- Resolve documentation and detail eagerly.
 ---@field eager boolean
@@ -6960,6 +6966,7 @@
 ---@field pydocstyle _.lspconfig.settings.pylsp.Pydocstyle
 ---@field pyflakes _.lspconfig.settings.pylsp.Pyflakes
 ---@field pylint _.lspconfig.settings.pylsp.Pylint
+---@field rope_autoimport _.lspconfig.settings.pylsp.Rope.Autoimport
 ---@field rope_completion _.lspconfig.settings.pylsp.Rope.Completion
 ---@field yapf _.lspconfig.settings.pylsp.Yapf
 
