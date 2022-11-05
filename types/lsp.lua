@@ -7219,6 +7219,12 @@
 -- default = "warning"
 -- ```
 ---@field reportSelfClsParameterName "none" | "information" | "warning" | "error"
+-- Diagnostics for files that are overriding a module in the stdlib.
+-- 
+-- ```lua
+-- default = "none"
+-- ```
+---@field reportShadowedImports "none" | "information" | "warning" | "error"
 -- Diagnostics for usage of deprecated type comments.
 -- 
 -- ```lua

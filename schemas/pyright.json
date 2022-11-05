@@ -406,6 +406,17 @@
           ],
           "type": "string"
         },
+        "reportShadowedImports": {
+          "default": "none",
+          "description": "Diagnostics for files that are overriding a module in the stdlib.",
+          "enum": [
+            "none",
+            "information",
+            "warning",
+            "error"
+          ],
+          "type": "string"
+        },
         "reportTypeCommentUsage": {
           "default": "none",
           "description": "Diagnostics for usage of deprecated type comments.",
