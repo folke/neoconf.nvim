@@ -353,6 +353,7 @@
       "enum": [
         "pep257",
         "numpy",
+        "google",
         null
       ],
       "type": [

@@ -6890,7 +6890,7 @@
 -- ```lua
 -- default = <userdata 1>
 -- ```
----@field convention "pep257" | "numpy" | <userdata 1>
+---@field convention "pep257" | "numpy" | "google" | <userdata 1>
 -- Enable or disable the plugin.
 ---@field enabled boolean
 -- Ignore errors and warnings
