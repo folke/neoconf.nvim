@@ -8417,6 +8417,14 @@
 -- ```
 ---@field enable "always" | "never" | "with_block"
 
+---@class _.lspconfig.settings.rust_analyzer.ExpressionAdjustmentHints
+-- Whether to show inlay hints for type adjustments.
+-- 
+-- ```lua
+-- default = "never"
+-- ```
+---@field enable "always" | "never" | "reborrow"
+
 ---@class _.lspconfig.settings.rust_analyzer.LifetimeElisionHints
 -- Whether to show inlay type hints for elided lifetimes in function signatures.
 -- 
@@ -8437,7 +8445,8 @@
 ---@field enable boolean
 
 ---@class _.lspconfig.settings.rust_analyzer.ReborrowHints
--- Whether to show inlay type hints for compiler inserted reborrows.
+-- Whether to show inlay hints for compiler inserted reborrows.
+-- This setting is deprecated in favor of #rust-analyzer.inlayHints.expressionAdjustmentHints.enable#.
 -- 
 -- ```lua
 -- default = "never"
@@ -8462,6 +8471,7 @@
 ---@field chainingHints _.lspconfig.settings.rust_analyzer.ChainingHints
 ---@field closingBraceHints _.lspconfig.settings.rust_analyzer.ClosingBraceHints
 ---@field closureReturnTypeHints _.lspconfig.settings.rust_analyzer.ClosureReturnTypeHints
+---@field expressionAdjustmentHints _.lspconfig.settings.rust_analyzer.ExpressionAdjustmentHints
 ---@field lifetimeElisionHints _.lspconfig.settings.rust_analyzer.LifetimeElisionHints
 -- Maximum length for inlay hints. Set to null to have an unlimited length.
 -- 
