@@ -9413,6 +9413,7 @@
 -- * close-non-object
 -- * deprecated
 -- * discard-returns
+-- * invisible
 -- 
 -- ```lua
 -- default = "Fallback"
@@ -9533,6 +9534,7 @@
 -- * close-non-object
 -- * deprecated
 -- * discard-returns
+-- * invisible
 -- 
 -- ```lua
 -- default = "Fallback"
@@ -9716,6 +9718,12 @@
 -- default = "Any"
 -- ```
 ---@field global-in-nil-env "Any" | "Opened" | "None" | "Any!" | "Opened!" | "None!"
+-- %config.diagnostics.invisible%
+-- 
+-- ```lua
+-- default = "Any"
+-- ```
+---@field invisible "Any" | "Opened" | "None" | "Any!" | "Opened!" | "None!"
 -- Enable lowercase global variable definition diagnostics.
 -- 
 -- ```lua
@@ -10046,6 +10054,12 @@
 -- default = "Warning"
 -- ```
 ---@field global-in-nil-env "Error" | "Warning" | "Information" | "Hint" | "Error!" | "Warning!" | "Information!" | "Hint!"
+-- %config.diagnostics.invisible%
+-- 
+-- ```lua
+-- default = "Warning"
+-- ```
+---@field invisible "Error" | "Warning" | "Information" | "Hint" | "Error!" | "Warning!" | "Information!" | "Hint!"
 -- Enable lowercase global variable definition diagnostics.
 -- 
 -- ```lua
@@ -10315,18 +10329,44 @@
 -- default = {}
 -- ```
 ---@field unusedLocalExclude string[]
--- Latency (milliseconds) for workspace diagnostics. When you start the workspace, or edit any file, the entire workspace will be re-diagnosed in the background. Set to negative to disable workspace diagnostics.
+-- Latency (milliseconds) for workspace diagnostics.
 -- 
 -- ```lua
 -- default = 3000
 -- ```
 ---@field workspaceDelay integer
+-- Set the time to trigger workspace diagnostics.
+-- 
+-- ```lua
+-- default = "OnSave"
+-- ```
+---@field workspaceEvent "OnChange" | "OnSave" | "None"
 -- Workspace diagnostics run rate (%). Decreasing this value reduces CPU usage, but also reduces the speed of workspace diagnostics. The diagnosis of the file you are currently editing is always done at full speed and is not affected by this setting.
 -- 
 -- ```lua
 -- default = 100
 -- ```
 ---@field workspaceRate integer
+
+---@class _.lspconfig.settings.sumneko_lua.Doc
+-- Treat specific field names as package, e.g. `m_*` means `XXX.m_id` and `XXX.m_type` are package, witch can only be accessed in the file where the definition is located.
+-- 
+-- ```lua
+-- default = {}
+-- ```
+---@field packageName string[]
+-- Treat specific field names as private, e.g. `m_*` means `XXX.m_id` and `XXX.m_type` are private, witch can only be accessed in the class where the definition is located.
+-- 
+-- ```lua
+-- default = {}
+-- ```
+---@field privateName string[]
+-- Treat specific field names as protected, e.g. `m_*` means `XXX.m_id` and `XXX.m_type` are protected, witch can only be accessed in the class where the definition is located and its subclasses.
+-- 
+-- ```lua
+-- default = {}
+-- ```
+---@field protectedName string[]
 
 ---@class _.lspconfig.settings.sumneko_lua.Format
 -- The default format configuration. Has a lower priority than `.editorconfig` file in the workspace.
@@ -10426,7 +10466,13 @@
 ---@field viewStringMax integer
 
 ---@class _.lspconfig.settings.sumneko_lua.Misc
--- [Command line parameters](https://github.com/sumneko/lua-telemetry-server/tree/master/method) when starting the language service in VSCode.
+-- Specify the executable path in VSCode.
+-- 
+-- ```lua
+-- default = ""
+-- ```
+---@field executablePath string
+-- [Command line parameters](https://github.com/sumneko/lua-telemetry-server/tree/master/method) when starting the language server in VSCode.
 -- 
 -- ```lua
 -- default = {}
@@ -10792,6 +10838,7 @@
 ---@class _.lspconfig.settings.sumneko_lua.Lua
 ---@field completion _.lspconfig.settings.sumneko_lua.Completion
 ---@field diagnostics _.lspconfig.settings.sumneko_lua.Diagnostics
+---@field doc _.lspconfig.settings.sumneko_lua.Doc
 ---@field format _.lspconfig.settings.sumneko_lua.Format
 ---@field hint _.lspconfig.settings.sumneko_lua.Hint
 ---@field hover _.lspconfig.settings.sumneko_lua.Hover
