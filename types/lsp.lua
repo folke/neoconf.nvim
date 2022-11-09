@@ -6651,6 +6651,12 @@
 -- default = <userdata 1>
 -- ```
 ---@field indentSize integer
+-- Maximum allowed complexity threshold.
+-- 
+-- ```lua
+-- default = <userdata 1>
+-- ```
+---@field maxComplexity integer
 -- Maximum allowed line length for the entirety of this run.
 -- 
 -- ```lua

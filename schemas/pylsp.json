@@ -80,6 +80,11 @@
         "null"
       ]
     },
+    "pylsp.plugins.flake8.maxComplexity": {
+      "default": null,
+      "description": "Maximum allowed complexity threshold.",
+      "type": "integer"
+    },
     "pylsp.plugins.flake8.maxLineLength": {
       "default": null,
       "description": "Maximum allowed line length for the entirety of this run.",
