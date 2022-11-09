@@ -8,6 +8,21 @@
       "scope": "window",
       "type": "boolean"
     },
+    "java.cleanup.actionsOnSave": {
+      "default": [],
+      "items": {
+        "enum": [
+          "qualifyMembers",
+          "qualifyStaticMembers",
+          "addOverride",
+          "addDeprecated"
+        ],
+        "type": "string"
+      },
+      "markdownDescription": "The list of clean ups to be run on the current document when it's saved. Clean ups can automatically fix code style or programming mistakes. Click [HERE](command:_java.learnMoreAboutCleanUps) to learn more about what each clean up does.",
+      "scope": "window",
+      "type": "array"
+    },
     "java.codeAction.sortMembers.avoidVolatileChanges": {
       "default": true,
       "description": "Reordering of fields, enum constants, and initializers can result in semantic and runtime changes due to different initialization and persistence order. This setting prevents this from occurring.",

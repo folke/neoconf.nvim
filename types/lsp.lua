@@ -3012,6 +3012,14 @@
 -- ```
 ---@field enabled boolean
 
+---@class _.lspconfig.settings.jdtls.Cleanup
+-- The list of clean ups to be run on the current document when it's saved. Clean ups can automatically fix code style or programming mistakes. Click [HERE](command:_java.learnMoreAboutCleanUps) to learn more about what each clean up does.
+-- 
+-- ```lua
+-- default = {}
+-- ```
+---@field actionsOnSave string[]
+
 ---@class _.lspconfig.settings.jdtls.SortMembers
 -- Reordering of fields, enum constants, and initializers can result in semantic and runtime changes due to different initialization and persistence order. This setting prevents this from occurring.
 -- 
@@ -3642,6 +3650,7 @@
 
 ---@class _.lspconfig.settings.jdtls.Java
 ---@field autobuild _.lspconfig.settings.jdtls.Autobuild
+---@field cleanup _.lspconfig.settings.jdtls.Cleanup
 ---@field codeAction _.lspconfig.settings.jdtls.CodeAction
 ---@field codeGeneration _.lspconfig.settings.jdtls.CodeGeneration
 ---@field compile _.lspconfig.settings.jdtls.Compile
