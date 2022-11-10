@@ -45,7 +45,7 @@
       "type": "string"
     },
     "perlnavigator.perlimportsLintEnabled": {
-      "default": true,
+      "default": false,
       "description": "Enable perlimports as a linter.",
       "scope": "resource",
       "type": "boolean"
@@ -57,7 +57,7 @@
       "type": "string"
     },
     "perlnavigator.perlimportsTidyEnabled": {
-      "default": true,
+      "default": false,
       "description": "Enable perlimports as a tidier.",
       "scope": "resource",
       "type": "boolean"
