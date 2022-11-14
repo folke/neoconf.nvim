@@ -11462,7 +11462,7 @@
 ---@field placeOpenBraceOnNewLineForControlBlocks boolean
 -- Defines whether an open brace is put onto a new line for functions or not.
 ---@field placeOpenBraceOnNewLineForFunctions boolean
--- Defines handling of optional semicolons. Requires using TypeScript 3.7 or newer in the workspace.
+-- Defines handling of optional semicolons.
 -- 
 -- ```lua
 -- default = "ignore"
@@ -11485,7 +11485,6 @@
 -- }
 --  
 -- ```
--- Requires using TypeScript 4.4+ in the workspace.
 -- 
 -- The text inside the ``` block is code and should not be localized.
 ---@field enabled boolean
@@ -11499,7 +11498,6 @@
 -- } 
 --  
 -- ```
--- Requires using TypeScript 4.4+ in the workspace.
 -- 
 -- The text inside the ``` block is code and should not be localized.
 ---@field enabled boolean
@@ -11511,7 +11509,6 @@
 -- parseInt(/* str: */ '123', /* radix: */ 8)
 --  
 -- ```
--- Requires using TypeScript 4.4+ in the workspace.
 -- 
 -- The text inside the ``` block is code and should not be localized.
 -- 
@@ -11533,7 +11530,6 @@
 -- el.addEventListener('click', e /* :MouseEvent */ => ...)
 --  
 -- ```
--- Requires using TypeScript 4.4+ in the workspace.
 -- 
 -- The text inside the ``` block is code and should not be localized.
 ---@field enabled boolean
@@ -11547,7 +11543,6 @@
 -- }
 --  
 -- ```
--- Requires using TypeScript 4.4+ in the workspace.
 -- 
 -- The text inside the ``` block is code and should not be localized.
 ---@field enabled boolean
@@ -11559,7 +11554,6 @@
 -- const foo /* :number */ = Date.now();
 --  
 -- ```
--- Requires using TypeScript 4.4+ in the workspace.
 -- 
 -- The text inside the ``` block is code and should not be localized.
 ---@field enabled boolean
@@ -11587,7 +11581,7 @@
 -- default = "shortest"
 -- ```
 ---@field importModuleSpecifier "shortest" | "relative" | "non-relative" | "project-relative"
--- Preferred path ending for auto imports. Requires using TypeScript 4.5+ in the workspace.
+-- Preferred path ending for auto imports.
 -- 
 -- ```lua
 -- default = "auto"
@@ -11599,19 +11593,19 @@
 -- default = "auto"
 -- ```
 ---@field jsxAttributeCompletionStyle "auto" | "braces" | "none"
--- Preferred quote style to use for quick fixes.
+-- Preferred quote style to use for Quick Fixes.
 -- 
 -- ```lua
 -- default = "auto"
 -- ```
 ---@field quoteStyle "auto" | "single" | "double"
--- Enable/disable introducing aliases for object shorthand properties during renames. Requires using TypeScript 3.4 or newer in the workspace.
+-- Enable/disable introducing aliases for object shorthand properties during renames.
 -- 
 -- ```lua
 -- default = true
 -- ```
 ---@field renameShorthandProperties boolean
--- Enable/disable introducing aliases for object shorthand properties during renames. Requires using TypeScript 3.4 or newer in the workspace.
+-- Enable/disable introducing aliases for object shorthand properties during renames.
 -- 
 -- ```lua
 -- default = true
@@ -11625,7 +11619,7 @@
 ---@field showOnAllFunctions boolean
 
 ---@class _.lspconfig.settings.tsserver.ClassMemberSnippets
--- Enable/disable snippet completions for class members. Requires using TypeScript 4.5+ in the workspace
+-- Enable/disable snippet completions for class members.
 -- 
 -- ```lua
 -- default = true
@@ -11633,7 +11627,7 @@
 ---@field enabled boolean
 
 ---@class _.lspconfig.settings.tsserver.Jsdoc
--- Enable/disable generating `@returns` annotations for JSDoc templates. Requires using TypeScript 4.2+ in the workspace.
+-- Enable/disable generating `@returns` annotations for JSDoc templates.
 -- 
 -- ```lua
 -- default = true
@@ -11662,13 +11656,13 @@
 -- default = true
 -- ```
 ---@field enabled boolean
--- Enable/disable showing completions on potentially undefined values that insert an optional chain call. Requires TS 3.7+ and strict null checks to be enabled.
+-- Enable/disable showing completions on potentially undefined values that insert an optional chain call. Requires strict null checks to be enabled.
 -- 
 -- ```lua
 -- default = true
 -- ```
 ---@field includeAutomaticOptionalChainCompletions boolean
--- Enable/disable auto-import-style completions on partially-typed import statements. Requires using TypeScript 4.3+ in the workspace.
+-- Enable/disable auto-import-style completions on partially-typed import statements.
 -- 
 -- ```lua
 -- default = true
@@ -11837,7 +11831,7 @@
 ---@field placeOpenBraceOnNewLineForControlBlocks boolean
 -- Defines whether an open brace is put onto a new line for functions or not.
 ---@field placeOpenBraceOnNewLineForFunctions boolean
--- Defines handling of optional semicolons. Requires using TypeScript 3.7 or newer in the workspace.
+-- Defines handling of optional semicolons.
 -- 
 -- ```lua
 -- default = "ignore"
@@ -11858,7 +11852,6 @@
 -- }
 --  
 -- ```
--- Requires using TypeScript 4.4+ in the workspace.
 -- 
 -- The text inside the ``` block is code and should not be localized.
 ---@field enabled boolean
@@ -11872,7 +11865,6 @@
 -- } 
 --  
 -- ```
--- Requires using TypeScript 4.4+ in the workspace.
 -- 
 -- The text inside the ``` block is code and should not be localized.
 ---@field enabled boolean
@@ -11884,7 +11876,6 @@
 -- parseInt(/* str: */ '123', /* radix: */ 8)
 --  
 -- ```
--- Requires using TypeScript 4.4+ in the workspace.
 -- 
 -- The text inside the ``` block is code and should not be localized.
 -- 
@@ -11906,7 +11897,6 @@
 -- el.addEventListener('click', e /* :MouseEvent */ => ...)
 --  
 -- ```
--- Requires using TypeScript 4.4+ in the workspace.
 -- 
 -- The text inside the ``` block is code and should not be localized.
 ---@field enabled boolean
@@ -11920,7 +11910,6 @@
 -- }
 --  
 -- ```
--- Requires using TypeScript 4.4+ in the workspace.
 -- 
 -- The text inside the ``` block is code and should not be localized.
 ---@field enabled boolean
@@ -11932,7 +11921,6 @@
 -- const foo /* :number */ = Date.now();
 --  
 -- ```
--- Requires using TypeScript 4.4+ in the workspace.
 -- 
 -- The text inside the ``` block is code and should not be localized.
 ---@field enabled boolean
@@ -11960,7 +11948,7 @@
 -- default = "shortest"
 -- ```
 ---@field importModuleSpecifier "shortest" | "relative" | "non-relative" | "project-relative"
--- Preferred path ending for auto imports. Requires using TypeScript 4.5+ in the workspace.
+-- Preferred path ending for auto imports.
 -- 
 -- ```lua
 -- default = "auto"
@@ -11978,19 +11966,19 @@
 -- default = "auto"
 -- ```
 ---@field jsxAttributeCompletionStyle "auto" | "braces" | "none"
--- Preferred quote style to use for quick fixes.
+-- Preferred quote style to use for Quick Fixes.
 -- 
 -- ```lua
 -- default = "auto"
 -- ```
 ---@field quoteStyle "auto" | "single" | "double"
--- Enable/disable introducing aliases for object shorthand properties during renames. Requires using TypeScript 3.4 or newer in the workspace.
+-- Enable/disable introducing aliases for object shorthand properties during renames.
 -- 
 -- ```lua
 -- default = true
 -- ```
 ---@field renameShorthandProperties boolean
--- Enable/disable introducing aliases for object shorthand properties during renames. Requires using TypeScript 3.4 or newer in the workspace.
+-- Enable/disable introducing aliases for object shorthand properties during renames.
 -- 
 -- ```lua
 -- default = true
@@ -12004,7 +11992,7 @@
 ---@field showOnAllFunctions boolean
 
 ---@class _.lspconfig.settings.tsserver.ClassMemberSnippets
--- Enable/disable snippet completions for class members. Requires using TypeScript 4.5+ in the workspace
+-- Enable/disable snippet completions for class members.
 -- 
 -- ```lua
 -- default = true
@@ -12012,7 +12000,7 @@
 ---@field enabled boolean
 
 ---@class _.lspconfig.settings.tsserver.Jsdoc
--- Enable/disable generating `@returns` annotations for JSDoc templates. Requires using TypeScript 4.2+ in the workspace.
+-- Enable/disable generating `@returns` annotations for JSDoc templates.
 -- 
 -- ```lua
 -- default = true
@@ -12020,7 +12008,7 @@
 ---@field generateReturns boolean
 
 ---@class _.lspconfig.settings.tsserver.ObjectLiteralMethodSnippets
--- Enable/disable snippet completions for methods in object literals. Requires using TypeScript 4.7+ in the workspace
+-- Enable/disable snippet completions for methods in object literals. Requires using TypeScript 4.7+ in the workspace.
 -- 
 -- ```lua
 -- default = true
@@ -12049,19 +12037,19 @@
 -- default = true
 -- ```
 ---@field enabled boolean
--- Enable/disable showing completions on potentially undefined values that insert an optional chain call. Requires TS 3.7+ and strict null checks to be enabled.
+-- Enable/disable showing completions on potentially undefined values that insert an optional chain call. Requires strict null checks to be enabled.
 -- 
 -- ```lua
 -- default = true
 -- ```
 ---@field includeAutomaticOptionalChainCompletions boolean
--- Enable/disable auto-import-style completions on partially-typed import statements. Requires using TypeScript 4.3+ in the workspace.
+-- Enable/disable auto-import-style completions on partially-typed import statements.
 -- 
 -- ```lua
 -- default = true
 -- ```
 ---@field includeCompletionsForImportStatements boolean
--- Enable/disable snippet completions from TS Server. Requires using TypeScript 4.3+ in the workspace.
+-- Enable/disable snippet completions from TS Server.
 -- 
 -- ```lua
 -- default = true
@@ -12104,7 +12092,7 @@
 -- (Experimental) Enables project wide error reporting.
 ---@field enableProjectDiagnostics boolean
 
--- Configure which watching strategies should be used to keep track of files and directories. Requires using TypeScript 3.8+ in the workspace.
+-- Configure which watching strategies should be used to keep track of files and directories.
 ---@class _.lspconfig.settings.tsserver.WatchOptions
 -- When using file system events, this option specifies the polling strategy that gets used when the system runs out of native file watchers and/or doesn't support native file watchers.
 ---@field fallbackPolling "fixedPollingInterval" | "priorityPollingInterval" | "dynamicPriorityPolling"
@@ -12151,7 +12139,7 @@
 -- default = "off"
 -- ```
 ---@field trace "off" | "messages" | "verbose"
--- Enable/disable spawning a separate TypeScript server that can more quickly respond to syntax related operations, such as calculating folding or computing document symbols. Requires using TypeScript 3.4.0 or newer in the workspace.
+-- Enable/disable spawning a separate TypeScript server that can more quickly respond to syntax related operations, such as calculating folding or computing document symbols.
 -- 
 -- ```lua
 -- default = true
@@ -12163,7 +12151,7 @@
 -- default = "auto"
 -- ```
 ---@field useSyntaxServer "always" | "never" | "auto"
--- Configure which watching strategies should be used to keep track of files and directories. Requires using TypeScript 3.8+ in the workspace.
+-- Configure which watching strategies should be used to keep track of files and directories.
 ---@field watchOptions _.lspconfig.settings.tsserver.WatchOptions
 
 ---@class _.lspconfig.settings.tsserver.UpdateImportsOnFileMove
