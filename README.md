@@ -1,4 +1,4 @@
-# 💼 settings.nvim
+# 💼 neoconf.nvim
 
 **Settings.nvim** is a Neovim plugin to manage global and workspace-local Neovim
 settings.
@@ -110,6 +110,8 @@ require("lspconfig").sumneko_lua.setup(...)
 - `:Neoconf global`: will show a ui to select one of the global json config files to edit
 - `:Neoconf show`: opens a floating window with the merged config
 - `:Neoconf lsp`: opens a floating window with your merged lsp config
+
+![image](https://user-images.githubusercontent.com/292349/202161064-16789740-f094-4729-97c2-b6509148a7fd.png)
 
 ### Completion and Validation for your `Json` Settings Files
 
