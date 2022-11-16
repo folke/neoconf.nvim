@@ -1074,7 +1074,7 @@
         "Search all open JavaScript or TypeScript projects for symbols.",
         "Only search for symbols in the current JavaScript or TypeScript project."
       ],
-      "markdownDescription": "Controls which files are searched by [go to symbol in workspace](https://code.visualstudio.com/docs/editor/editingevolved#_open-symbol-by-name).",
+      "markdownDescription": "Controls which files are searched by [Go to Symbol in Workspace](https://code.visualstudio.com/docs/editor/editingevolved#_open-symbol-by-name).",
       "scope": "window",
       "type": "string"
     }

@@ -12171,7 +12171,7 @@
 ---@field enable boolean
 
 ---@class _.lspconfig.settings.tsserver.WorkspaceSymbols
--- Controls which files are searched by [go to symbol in workspace](https://code.visualstudio.com/docs/editor/editingevolved#_open-symbol-by-name).
+-- Controls which files are searched by [Go to Symbol in Workspace](https://code.visualstudio.com/docs/editor/editingevolved#_open-symbol-by-name).
 -- 
 -- ```lua
 -- default = "allOpenProjects"
