@@ -56,7 +56,7 @@ PACKER <HTTPS://GITHUB.COM/WBTHOMASON/PACKER.NVIM> ~
 >
     -- Lua
     use({
-      "folke/neconf.nvim",
+      "folke/neoconf.nvim",
       module = "neoconf",
       config = function()
         require("neoconf").setup()
