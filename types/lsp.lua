@@ -725,7 +725,7 @@
 -- ```lua
 -- default = <userdata 1>
 -- ```
----@field rules 
+---@field rules string[]|any
 
 ---@class _.lspconfig.settings.eslint.Format
 -- Enables ESLint as a formatter.
@@ -766,7 +766,7 @@
 -- ```lua
 -- default = "off"
 -- ```
----@field server 
+---@field server "off" | "messages" | "verbose"|table
 
 ---@class _.lspconfig.settings.eslint.Eslint
 -- Always show the ESlint status bar item.
@@ -788,7 +788,7 @@
 -- ```lua
 -- default = <userdata 1>
 -- ```
----@field execArgv 
+---@field execArgv string[]|any
 -- Enable support of experimental Flat Config (aka eslint.config.js, supported by ESLint version 8.21 or later).
 ---@field experimentalUseFlatConfig boolean
 ---@field format _.lspconfig.settings.eslint.Format
@@ -852,9 +852,9 @@
 -- Since version 7 ESLint offers a new API call ESLint. Use it even if the old CLIEngine is available. From version 8 on forward on ESLint class is available.
 ---@field useESLintClass boolean
 -- An array of language ids which should be validated by ESLint. If not installed ESLint will show an error.
----@field validate array
+---@field validate any[]
 -- Specifies how the working directories ESLint is using are computed. ESLint resolves configuration files (e.g. `eslintrc`, `.eslintignore`) relative to a working directory so it is important to configure this correctly.
----@field workingDirectories array
+---@field workingDirectories any[]
 
 ---@class lspconfig.settings.eslint
 ---@field eslint _.lspconfig.settings.eslint.Eslint
@@ -865,7 +865,7 @@
 -- ```lua
 -- default = "off"
 -- ```
----@field server 
+---@field server "off" | "messages" | "verbose"
 
 ---@class _.lspconfig.settings.flow.Flow
 -- Type coverage diagnostic severity
@@ -1055,7 +1055,7 @@
 -- ```lua
 -- default = { "packages/Analyzers", "analyzers" }
 -- ```
----@field analyzersPath array
+---@field analyzersPath any[]
 -- Controls whether the solution explorer should automatically reveal and select files when opening them. If `sameAsFileExplorer` is set, then the value of the `explorer.autoReveal` setting will be used instead.
 -- 
 -- ```lua
@@ -1096,7 +1096,7 @@
 -- ```lua
 -- default = { ".git", "paket-files", ".fable", "packages", "node_modules" }
 -- ```
----@field excludeProjectDirectories array
+---@field excludeProjectDirectories any[]
 -- Includes external (from unopened modules and namespaces) symbols in autocomplete
 ---@field externalAutocomplete boolean
 ---@field fsac _.lspconfig.settings.fsautocomplete.Fsac
@@ -1105,7 +1105,7 @@
 -- ```lua
 -- default = {}
 -- ```
----@field fsiExtraParameters array
+---@field fsiExtraParameters any[]
 -- The path to the F# Interactive tool used by Ionide-FSharp (.NET Framework only, on .NET Core `FSharp.fsiSdkFilePath` is used)
 -- 
 -- ```lua
@@ -1763,7 +1763,7 @@
 -- ```lua
 -- default = {}
 -- ```
----@field configurations array
+---@field configurations any[]
 -- A regex that paths of source files have to match to be included in diagnostics. Defaults to `"${workspaceRoot}"` so only files within your workspace are included. You can use `"${haxelibPath}/<library-name>"` to only show results for a specific haxelib. Use `".*?"` to see all results, including haxelibs.
 -- 
 -- ```lua
@@ -1773,13 +1773,13 @@
 -- ```lua
 -- default = {}
 -- ```
----@field displayConfigurations array
+---@field displayConfigurations any[]
 -- Integer value for the port to open on the display server, or `"auto"`. Can be used to `--connect` Haxe build commands.
 -- 
 -- ```lua
 -- default = "auto"
 -- ```
----@field displayPort 
+---@field displayPort any
 -- Haxe completion server configuration
 -- 
 -- ```lua
@@ -1824,13 +1824,13 @@
 -- ```lua
 -- default = { "zpp_nape" }
 -- ```
----@field exclude array
+---@field exclude any[]
 -- Path to the Haxe executable or an object containing a Haxe executable configuration
 -- 
 -- ```lua
 -- default = "auto"
 -- ```
----@field executable 
+---@field executable any
 -- Sort order of imports
 -- 
 -- ```lua
@@ -1866,7 +1866,7 @@
 -- ```lua
 -- default = { "src", "source", "Source", "test", "tests" }
 -- ```
----@field renameSourceFolders array
+---@field renameSourceFolders any[]
 -- Configures which presentation options to use for generated tasks by default (see `presentation` in `tasks.json`).
 -- 
 -- ```lua
@@ -1901,7 +1901,7 @@
 
 ---@class _.lspconfig.settings.hhvm.Ssh
 -- Additional command line options to pass when establishing the SSH connection
----@field flags array
+---@field flags any[]
 -- Address for the remote development server to connect to (in the format `[user@]hostname`)
 ---@field host string
 
@@ -2154,7 +2154,7 @@
 -- ```lua
 -- default = {}
 -- ```
----@field flags array
+---@field flags any[]
 
 ---@class _.lspconfig.settings.hie.Hlint
 -- Enables hlint code actions
@@ -2793,7 +2793,7 @@
 -- ```lua
 -- default = { "*.php", "*.phtml" }
 -- ```
----@field associations array
+---@field associations any[]
 -- Configure glob patterns to exclude certain files and folders from all language server features. Inherits from files.exclude.
 -- 
 -- ```lua
@@ -3091,13 +3091,13 @@
 -- ```lua
 -- default = { "javax.annotation.Nonnull", "org.eclipse.jdt.annotation.NonNull", "org.springframework.lang.NonNull" }
 -- ```
----@field nonnull array
+---@field nonnull any[]
 -- Specify the Nullable annotation types to be used for null analysis. If more than one annotation is specified, then the topmost annotation will be used first if it exists in project dependencies. This setting will be ignored if `java.compile.nullAnalysis.enabled` is set to `disabled`
 -- 
 -- ```lua
 -- default = { "javax.annotation.Nullable", "org.eclipse.jdt.annotation.Nullable", "org.springframework.lang.Nullable" }
 -- ```
----@field nullable array
+---@field nullable any[]
 
 ---@class _.lspconfig.settings.jdtls.Compile
 ---@field nullAnalysis _.lspconfig.settings.jdtls.NullAnalysis
@@ -3122,13 +3122,13 @@
 -- ```lua
 -- default = { "org.junit.Assert.*", "org.junit.Assume.*", "org.junit.jupiter.api.Assertions.*", "org.junit.jupiter.api.Assumptions.*", "org.junit.jupiter.api.DynamicContainer.*", "org.junit.jupiter.api.DynamicTest.*", "org.mockito.Mockito.*", "org.mockito.ArgumentMatchers.*", "org.mockito.Answers.*" }
 -- ```
----@field favoriteStaticMembers array
+---@field favoriteStaticMembers any[]
 -- Defines the type filters. All types whose fully qualified name matches the selected filter strings will be ignored in content assist or quick fix proposals and when organizing imports. For example 'java.awt.*' will hide all types from the awt packages.
 -- 
 -- ```lua
 -- default = { "java.awt.*", "com.sun.*", "sun.*", "jdk.*", "org.graalvm.*", "io.micrometer.shaded.*" }
 -- ```
----@field filteredTypes array
+---@field filteredTypes any[]
 -- When set to true, method arguments are guessed when a method is selected from as list of code assist proposals.
 -- 
 -- ```lua
@@ -3140,7 +3140,7 @@
 -- ```lua
 -- default = { "#", "java", "javax", "org", "com", "" }
 -- ```
----@field importOrder array
+---@field importOrder any[]
 -- Maximum number of completion results (not including snippets).
 -- `0` (the default value) disables the limit, all results are returned. In case of performance problems, consider setting a sensible limit.
 -- 
@@ -3352,7 +3352,7 @@
 -- ```lua
 -- default = { "**/node_modules/**", "**/.metadata/**", "**/archetype-resources/**", "**/META-INF/maven/**" }
 -- ```
----@field exclusions array
+---@field exclusions any[]
 -- Specify whether the project metadata files(.project, .classpath, .factorypath, .settings/) will be generated at the project root. Click [HERE](command:_java.metadataFilesGeneration) to learn how to change the setting to make it take effect.
 ---@field generatesMetadataFilesAtProjectRoot boolean
 ---@field gradle _.lspconfig.settings.jdtls.Gradle
@@ -3498,13 +3498,13 @@
 -- ```lua
 -- default = { "lib/**/*.jar" }
 -- ```
----@field referencedLibraries array|table
+---@field referencedLibraries any[]|table
 -- Excludes files and folders from being refreshed by the Java Language Server, which can improve the overall performance. For example, ["node_modules","\.git"] will exclude all files and folders named 'node_modules' or '.git'. Pattern expressions must be compatible with `java.util.regex.Pattern`. Defaults to ["node_modules","\.git"].
 -- 
 -- ```lua
 -- default = { "node_modules", "\\.git" }
 -- ```
----@field resourceFilters array
+---@field resourceFilters any[]
 -- Relative paths to the workspace where stores the source files. `Only` effective in the `WORKSPACE` scope. The setting will `NOT` affect Maven or Gradle project.
 -- 
 -- ```lua
@@ -3586,7 +3586,7 @@
 -- ```lua
 -- default = "notification"
 -- ```
----@field enabled 
+---@field enabled "notification" | "terminal" | "off"|any
 
 ---@class _.lspconfig.settings.jdtls.Description
 -- Enable/disable to show the description in signature help.
@@ -3628,13 +3628,13 @@
 -- ```lua
 -- default = {}
 -- ```
----@field fileHeader array
+---@field fileHeader any[]
 -- Specifies the type comment for new Java type. Supports configuring multi-line comments with an array of strings, and using ${variable} to reference the [predefined variables](command:_java.templateVariables).
 -- 
 -- ```lua
 -- default = {}
 -- ```
----@field typeComment array
+---@field typeComment any[]
 
 ---@class _.lspconfig.settings.jdtls.Trace
 -- Traces the communication between VS Code and the Java language server.
@@ -3800,7 +3800,7 @@
 -- ```lua
 -- default = { "docs", "test" }
 -- ```
----@field disabledDirs array
+---@field disabledDirs any[]
 -- Check iterator syntax of loops. Will identify, for example, attempts to iterate over single values.
 -- 
 -- ```lua
@@ -3918,13 +3918,13 @@
 -- ```lua
 -- default = {}
 -- ```
----@field additionalArgs array
+---@field additionalArgs any[]
 -- Cell delimiter regular expressions for Julia files.
 -- 
 -- ```lua
 -- default = { "^##(?!#)", "^#(\\s?)%%", "^#-" }
 -- ```
----@field cellDelimiters array
+---@field cellDelimiters any[]
 -- Sets the mode for completions.
 -- 
 -- ```lua
@@ -3936,7 +3936,7 @@
 -- ```lua
 -- default = { "Base.", "-Base.!", "-Base.all", "-Base.all!", "-Base.any", "-Base.any!", "-Base.cd", "-Base.iterate", "-Base.collect", "-Base.collect_similar", "-Base._collect", "-Base.collect_to!", "-Base.collect_to_with_first!", "-Base.filter", "-Base.filter!", "-Base.foreach", "-Base.findall", "-Base.findfirst", "-Base.findlast", "-Base.findnext", "-Base.findprev", "-Base.Generator", "-Base.map", "-Base.map!", "-Base.maximum!", "-Base.minimum!", "-Base.mktemp", "-Base.mktempdir", "-Base.open", "-Base.prod!", "-Base.redirect_stderr", "-Base.redirect_stdin", "-Base.redirect_stdout", "-Base.reenable_sigint", "-Base.setindex!", "-Base.setprecision", "-Base.setrounding", "-Base.show", "-Base.sprint", "-Base.sum", "-Base.sum!", "-Base.task_local_storage", "-Base.timedwait", "-Base.withenv", "-Base.Broadcast", "Core", "Core.Compiler.", "Core.IR", "Core.Intrinsics", "DelimitedFiles", "Distributed", "LinearAlgebra.", "Serialization", "Statistics", "-Statistics.mean", "SparseArrays", "Mmap" }
 -- ```
----@field debuggerDefaultCompiled array
+---@field debuggerDefaultCompiled any[]
 -- Delete Julia .cov files when running tests with coverage, leaving only a .lcov file behind.
 -- 
 -- ```lua
@@ -4756,7 +4756,7 @@
 -- ```lua
 -- default = "information"
 -- ```
----@field diagnosticSeverity 
+---@field diagnosticSeverity any
 -- Lists of additional words that should not be counted as spelling errors. [More info...](https://valentjn.github.io/ltex/settings.html#ltexdictionary)
 -- 
 -- ```lua
@@ -4774,7 +4774,7 @@
 -- ```lua
 -- default = { "bibtex", "context", "context.tex", "html", "latex", "markdown", "org", "restructuredtext", "rsweave" }
 -- ```
----@field enabled 
+---@field enabled any
 -- Lists of rules that should be enabled (if disabled by default by LanguageTool). [More info...](https://valentjn.github.io/ltex/settings.html#ltexenabledrules)
 -- 
 -- ```lua
@@ -5492,7 +5492,7 @@
 -- ```lua
 -- default = <userdata 1>
 -- ```
----@field containerArgs array
+---@field containerArgs any[]
 -- If set Perl::LanguageServer can run inside a container. Options are: 'docker', 'docker-compose', 'kubectl'
 -- 
 -- ```lua
@@ -5542,13 +5542,13 @@
 -- ```lua
 -- default = <userdata 1>
 -- ```
----@field fileFilter array
+---@field fileFilter any[]
 -- directories to ignore, defaults to .vscode, .git, .svn
 -- 
 -- ```lua
 -- default = <userdata 1>
 -- ```
----@field ignoreDirs array
+---@field ignoreDirs any[]
 -- If set, log output is written to the given logfile, instead of displaying it in the vscode output pane. Log output is always appended so you are responsible for rotating the file.
 -- 
 -- ```lua
@@ -5566,7 +5566,7 @@
 -- ```lua
 -- default = <userdata 1>
 -- ```
----@field pathMap array
+---@field pathMap any[]
 -- defaults to perl
 -- 
 -- ```lua
@@ -5578,7 +5578,7 @@
 -- ```lua
 -- default = <userdata 1>
 -- ```
----@field perlInc array
+---@field perlInc any[]
 -- if true, show also local variables in symbol view
 ---@field showLocalVars boolean
 -- ip address of remote system
@@ -5592,7 +5592,7 @@
 -- ```lua
 -- default = <userdata 1>
 -- ```
----@field sshArgs array
+---@field sshArgs any[]
 -- defaults to ssh on unix and plink on windows
 -- 
 -- ```lua
@@ -5647,7 +5647,7 @@
 -- ```lua
 -- default = {}
 -- ```
----@field includePaths array
+---@field includePaths any[]
 -- Log to stdout from the navigator. Viewable in the Perl Navigator LSP log
 -- 
 -- ```lua
@@ -5745,14 +5745,14 @@
 -- Current working directory to use
 ---@field cwd string
 -- Paths to add to @INC.
----@field inc array
+---@field inc any[]
 ---@field perlcritic _.lspconfig.settings.perlpls.Perlcritic
 -- Path to .perltidyrc
 ---@field perltidyrc string
 -- Path to the pls executable script
 ---@field pls string
 -- Arguments to pass to the pls command
----@field plsargs array
+---@field plsargs any[]
 ---@field syntax _.lspconfig.settings.perlpls.Syntax
 
 ---@class _.lspconfig.settings.perlpls.Perlcritic
@@ -5783,7 +5783,7 @@
 -- ```lua
 -- default = {}
 -- ```
----@field args array
+---@field args any[]
 -- Enable syntax checking
 -- 
 -- ```lua
@@ -5803,7 +5803,7 @@
 -- ```lua
 -- default = {}
 -- ```
----@field args array
+---@field args any[]
 -- Path to the pls executable script
 -- 
 -- ```lua
@@ -5821,7 +5821,7 @@
 -- ```lua
 -- default = {}
 -- ```
----@field inc array
+---@field inc any[]
 ---@field perlcritic _.lspconfig.settings.perlpls.Perlcritic
 ---@field perltidy _.lspconfig.settings.perlpls.Perltidy
 ---@field syntax _.lspconfig.settings.perlpls.Syntax
@@ -6174,7 +6174,7 @@
 --     scheme = "untitled"
 --   } }
 -- ```
----@field analyzedFileExtensions array
+---@field analyzedFileExtensions any[]
 -- A list of files to checkup for psalm configuration (relative to the workspace directory)
 -- 
 -- ```lua
@@ -6336,7 +6336,7 @@
 -- ```lua
 -- default = {}
 -- ```
----@field featureFlags array
+---@field featureFlags any[]
 ---@field foldingRange _.lspconfig.settings.puppet.FoldingRange
 ---@field formatOnType _.lspconfig.settings.puppet.FormatOnType
 ---@field hover _.lspconfig.settings.puppet.Hover
@@ -7482,7 +7482,7 @@
 -- ```lua
 -- default = {}
 -- ```
----@field args array
+---@field args any[]
 -- Debug R Language Server
 ---@field debug boolean
 -- Enable Diagnostics
@@ -7636,13 +7636,13 @@
 -- ```lua
 -- default = { "cocoa", "gleam", "glium", "idna", "libc", "openssl", "rustc_serialize", "serde", "serde_json", "typenum", "unicode_normalization", "unicode_segmentation", "winapi" }
 -- ```
----@field crate_blacklist array
+---@field crate_blacklist any[]
 -- A list of Cargo features to enable.
 -- 
 -- ```lua
 -- default = {}
 -- ```
----@field features array
+---@field features any[]
 -- Instructs cargo to enable full documentation extraction during save-analysis while building the crate.
 -- 
 -- ```lua
@@ -7742,7 +7742,7 @@
 -- ```lua
 -- default = "default"
 -- ```
----@field channel 
+---@field channel string|"default" | "stable" | "beta" | "nightly"
 -- Disable usage of rustup and use rustc/rls/rust-analyzer from PATH.
 ---@field disableRustup boolean
 -- Allow multiple projects in the same folder, along with removing the constraint that the cargo.toml must be located at the root. (Experimental: might not work for certain setups)
@@ -7915,7 +7915,7 @@
 -- ```lua
 -- default = {}
 -- ```
----@field features 
+---@field features "all"|string[]
 -- Whether to pass `--no-default-features` to cargo.
 ---@field noDefaultFeatures boolean
 -- Relative path to the sysroot, or "discover" to try to automatically find it via
@@ -7982,7 +7982,7 @@
 -- ```lua
 -- default = <userdata 1>
 -- ```
----@field features 
+---@field features "all"|string[]|any
 -- Specifies the working directory for running checks.
 -- - "workspace": run checks for workspaces in the corresponding workspaces' root directories.
 --     This falls back to "root" if `#rust-analyzer.cargo.checkOnSave.invocationStrategy#` is set to `once`.
@@ -8906,7 +8906,7 @@
 -- ```lua
 -- default = <userdata 1>
 -- ```
----@field runnableEnv 
+---@field runnableEnv any|object[]|table
 ---@field runnables _.lspconfig.settings.rust_analyzer.Runnables
 ---@field rustc _.lspconfig.settings.rust_analyzer.Rustc
 ---@field rustfmt _.lspconfig.settings.rust_analyzer.Rustfmt
@@ -8918,8 +8918,8 @@
 ---@field workspace _.lspconfig.settings.rust_analyzer.Workspace
 
 ---@class lspconfig.settings.rust_analyzer
----@field $generated-end 
----@field $generated-start 
+---@field $generated-end any
+---@field $generated-start any
 ---@field rust-analyzer _.lspconfig.settings.rust_analyzer.Rust-analyzer
 
 -- The host and port to use for external transports. (Ignored for stdio and socket transports.)
@@ -9100,19 +9100,19 @@
 -- ```lua
 -- default = {}
 -- ```
----@field remappings array
+---@field remappings any[]
 -- Unix Remappings to resolve contracts to local Unix files / directories (Note this overrides the generic remapping settings if the OS is Unix based), i.e: ["@openzeppelin/=/opt/lib/openzeppelin-contracts","ds-test/=/opt/lib/ds-test/src/"]
 -- 
 -- ```lua
 -- default = {}
 -- ```
----@field remappingsUnix array
+---@field remappingsUnix any[]
 -- Windows Remappings to resolve contracts to local Windows files / directories (Note this overrides the generic remapping settings if the OS is Windows) , i.e: ["@openzeppelin/=C:/lib/openzeppelin-contracts","ds-test/=C:/lib/ds-test/src/"]
 -- 
 -- ```lua
 -- default = {}
 -- ```
----@field remappingsWindows array
+---@field remappingsWindows any[]
 -- Solhint linting validation rules
 -- 
 -- ```lua
@@ -11264,7 +11264,7 @@
 ---@class lspconfig.settings.svlangserver
 
 ---@class _.lspconfig.settings.tailwindcss.Experimental
----@field classRegex array
+---@field classRegex any[]
 -- Manually specify the Tailwind config file or files that should be read to provide IntelliSense features. Can either be a single string value, or an object where each key is a config file path and each value is a glob or array of globs representing the set of files that the config file applies to.
 -- 
 -- ```lua
@@ -12355,11 +12355,11 @@
 -- ```lua
 -- default = { "script", "scriptSetup", "styles" }
 -- ```
----@field left array
+---@field left any[]
 -- ```lua
 -- default = { "template", "customBlocks" }
 -- ```
----@field right array
+---@field right any[]
 
 ---@class _.lspconfig.settings.volar.SplitEditors
 ---@field layout _.lspconfig.settings.volar.Layout
@@ -12989,7 +12989,7 @@
 -- ```lua
 -- default = {}
 -- ```
----@field customTags array
+---@field customTags any[]
 -- Globally set additionalProperties to false for all objects. So if its true, no extra properties are allowed inside yaml.
 ---@field disableAdditionalProperties boolean
 ---@field format _.lspconfig.settings.yamlls.Format

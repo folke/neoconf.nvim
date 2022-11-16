@@ -67,6 +67,14 @@ function M.get_type(prop)
     )
   end
   local types = type(prop.type) == "table" and prop.type or { prop.type }
+  if vim.tbl_isempty(types) and type(prop.anyOf) == "table" then
+    return table.concat(
+      vim.tbl_map(function(p)
+        return M.get_type(p)
+      end, prop.anyOf),
+      "|"
+    )
+  end
   types = vim.tbl_map(function(t)
     if t == "null" then
       return
@@ -78,12 +86,16 @@ function M.get_type(prop)
         end
         return prop.items.type .. "[]"
       end
+      return "any[]"
     end
     if t == "object" then
       return "table"
     end
     return t
   end, types)
+  if vim.tbl_isempty(types) then
+    types = { "any" }
+  end
   return table.concat(vim.tbl_flatten(types), "|")
 end
 
