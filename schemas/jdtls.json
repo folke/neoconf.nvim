@@ -110,7 +110,7 @@
       "type": "boolean"
     },
     "java.compile.nullAnalysis.mode": {
-      "default": "disabled",
+      "default": "interactive",
       "enum": [
         "disabled",
         "interactive",

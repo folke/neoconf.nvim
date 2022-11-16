@@ -3083,7 +3083,7 @@
 -- Specify how to enable the annotation-based null analysis.
 -- 
 -- ```lua
--- default = "disabled"
+-- default = "interactive"
 -- ```
 ---@field mode "disabled" | "interactive" | "automatic"
 -- Specify the Nonnull annotation types to be used for null analysis. If more than one annotation is specified, then the topmost annotation will be used first if it exists in project dependencies. This setting will be ignored if `java.compile.nullAnalysis.enabled` is set to `disabled`
