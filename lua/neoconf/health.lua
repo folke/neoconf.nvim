@@ -32,10 +32,10 @@ function M.check()
     warn("**treesitter-nvim** not installed. Highlighting of jsonc files might be broken")
   end
 
-  if pcall(require, "lspconfig.util") then
-    ok("**lua-dev.nvim** is installed")
+  if pcall(require, "neodev") then
+    ok("**neodev.nvim** is installed")
   else
-    warn("**lua-dev.nvim** is not installed. You won't get any proper completion for your Neovim config.")
+    warn("**neodev.nvim** is not installed. You won't get any proper completion for your Neovim config.")
   end
 
   local _, lspconfig = pcall(require, "lspconfig.util")
