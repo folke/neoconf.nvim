@@ -4,7 +4,6 @@
 Table of Contents                             *neoconf.nvim-table-of-contents*
 
 1. settings.nvim                                  |neoconf.nvim-settings.nvim|
-  - Todo                                                   |neoconf.nvim-todo|
   - Features                                           |neoconf.nvim-features|
   - Requirements                                   |neoconf.nvim-requirements|
   - Installation                                   |neoconf.nvim-installation|
@@ -21,42 +20,20 @@ Table of Contents                             *neoconf.nvim-table-of-contents*
 **Settings.nvim** is a lua plugin to manage global and workspace-local Neovim
 settings.
 
-TODO                                                       *neoconf.nvim-todo*
-
-
-- new name since people seem to use settings as a module in their config (nvim-settings??)
-- split off lsp-config as separate plugin?
-- naming for generated emmylua
-- generate list of supported lsp servers
-- name of plugin??
-- importers?
-- keymaps
-- json => jsonc for settings files
-- commands to edit json settings files
-- less magic for patterns (use {name = .., key = .., …})
-- rename to settings.nvim??
-- check vscode config api
-- support lazy-loading of workspace.nvim and register plugins
-- path.join (workspace.has_file)
-
-
 FEATURES                                               *neoconf.nvim-features*
 
 
-- configure Neovim using **JSON** files
+- configure Neovim using **JSON** files (can have comments)
     - global settings: `~/.config/nvim/settings.json`
-    - local settings: `~/projects/foobar/.nvim.settings.json`
-- live reload of your settings
-- extensible plugin architecture
-- built-in plugins:
-    - **options:** configure global (`vim.opt`) and local (`vim.opt_local`)
-        options.
-    - **lsp**: configure the LSP clients using workspace settings.
-- some workspace plugins support existing vscode settings read from
-    `.vscode/settings.json`. For LSP for example, this means that existing
-    configuration for LSP servers work out of the box.
-- live-reload of your settings: whenever you change a local or global JSON
-    settings file, the changes are applied immediately
+    - local settings: `~/projects/foobar/.neoconf.json`
+- live reload of your lsp settings
+- import existing settings from vscode <https://github.com/microsoft/vscode>,
+    coc.nvim <https://github.com/neoclide/coc.nvim> and
+    nlsp-settings.nvim <https://github.com/tamago324/nlsp-settings.nvim>
+- auto-completion of all the settings in the **Json config files**
+- auto-completion of all LSP settings in your **Neovim Lua config files**
+- integrates with neodev.nvim <https://github.com/folke/neodev.nvim>.
+    See .neoconf.json <https://github.com/folke/neoconf.nvim/blob/main/.neoconf.json> in this repo.
 
 
 REQUIREMENTS                                       *neoconf.nvim-requirements*
@@ -88,28 +65,31 @@ SETUP                                                     *neoconf.nvim-setup*
 It’s important that you set up `settings.nvim` **BEFORE** `nvim-lspconfig`.
 
 >
-    require("settings").setup({
+    require("neoconf").setup({
       -- override any of the default settings here
     })
+    
+    -- setup your lsp servers as usual
     require("lspconfig").sumneko_lua.setup(...)
 <
 
 
 CONFIGURATION                                     *neoconf.nvim-configuration*
 
-**settings.nvim** comes with the following defaults:
+**neoconf.nvim** comes with the following defaults:
 
 >
     {
+    
       -- name of the local settings files
-      local_settings = ".nvim.settings.json",
+      local_settings = ".neoconf.json",
       -- name of the global settings file in your Neovim config directory
-      global_settings = "settings.json",
+      global_settings = "neoconf.json",
       -- import existing settinsg from other plugins
       import = {
         vscode = true, -- local .vscode/settings.json
         coc = true, -- global/local coc-settings.json
-        nlsp = true, -- nlsp-settings.nvim json settings
+        nlsp = true, -- global/local nlsp-settings.nvim json settings
       },
       -- send new configuration to lsp clients when changing json settings
       live_reload = true,
@@ -138,21 +118,121 @@ CONFIGURATION                                     *neoconf.nvim-configuration*
           enabled = false,
         },
       },
+    
     }
 <
 
 
 USAGE                                                     *neoconf.nvim-usage*
 
-THE `:SETTINGS` COMMAND ~
+THE `:NEOCONF` COMMAND ~
+
+
+- `:Neoconf`: will show a ui to select one of the local/global json config files to edit
+- `:Neoconf local`: will show a ui to select one of the local json config files to edit
+- `:Neoconf global`: will show a ui to select one of the global json config files to edit
+- `:Neoconf show`: opens a floating window with the merged config
+- `:Neoconf lsp`: opens a floating window with your merged lsp config
+
 
 COMPLETION AND VALIDATION FOR YOUR `JSON` SETTINGS FILES ~
 
 COMPLETION AND VALIDATION FOR YOUR `LUA` SETTINGS FILES ~
 
-IMPORTING YOUR EXISTING SETTINGS ~
+Completion of your lua settings should work out of the box. You can
+additionally use the exported types in other places.
+
+Example with a table containing LSP server settings
+
+>
+      ---@type lspconfig.options
+      local servers = {
+        ansiblels = {},
+        bashls = {},
+        clangd = {},
+        cssls = {},
+        dockerls = {},
+        tsserver = {},
+        svelte = {},
+        eslint = {},
+        html = {},
+        jsonls = {
+          settings = {
+            json = {
+              format = {
+                enable = true,
+              },
+              schemas = require("schemastore").json.schemas(),
+              validate = { enable = true },
+            },
+          },
+        },
+      }
+<
+
 
 API                                                         *neoconf.nvim-api*
+
+**Neodev** comes with an API that can be used by plugin developers to load
+global/local settings for their plugin.
+
+>
+    ---@class SettingsPlugin
+    ---@field name string
+    ---@field setup fun()|nil
+    ---@field on_update fun(event)|nil
+    ---@field on_schema fun(schema: Schema)
+    
+    -- Registers a plugin. Biggest use-case is to get auto-completion for your plugin in the json settings files
+    ---@param plugin SettingsPlugin
+    function Neodev.register(plugin) end
+    
+    ---@class WorkspaceOptions
+    ---@field file? string File will be used to determine the root_dir
+    ---@field buffer? buffer Buffer will be used to find the root_dir
+    ---@field lsp? boolean LSP root_dir will be used to determine the root_dir
+    ---@field local? boolean defaults to true. Merge local settings
+    ---@field global? boolean defaults to true. Merge global settings
+    
+    -- Returns the requested settings
+    ---@generic T : table
+    ---@param key? string Optional key to get settings for
+    ---@param defaults? T Optional table of defaults that will be merged in the result
+    ---@param opts? WorkspaceOptions options to determine the root_dir and what settings to merge
+    ---@return T
+    function Neoconf.get(key, defaults, opts) end
+<
+
+
+API Example
+
+>
+    -- default config for your plugin
+    local defaults = {
+      doit = true,
+      count = 1,
+      array = {},
+    }
+    
+    -- register your settings schema with Neodev, so auto-completion will work in the json files
+    require("neoconf.plugins").register({
+        on_schema = function(schema)
+        -- this call will create a json schema based on the lua types of your default settings
+        schema:import("myplugin", defaults)
+        -- Optionally update some of the json schema
+        schema:set("myplugin.array", {
+            description = "Special array containg booleans or numbers",
+            anyOf = {
+            { type = "boolean" },
+            { type = "integer" },
+            },
+            })
+        end,
+        })
+    
+    local my_settings = Neoconf.get("neodev", defaults)
+<
+
 
 ACKNOWLEDGMENT                                   *neoconf.nvim-acknowledgment*
 
