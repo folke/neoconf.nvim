@@ -31,7 +31,7 @@ Install the plugin with your preferred package manager:
 ```lua
 -- Lua
 use({
-  "folke/neconf.nvim",
+  "folke/neoconf.nvim",
   module = "neoconf",
   config = function()
     require("neoconf").setup()
@@ -225,6 +225,7 @@ local my_settings = Neoconf.get("neodev", defaults)
 ## 💻 Supported Language Servers
 
 <!-- GENERATED -->
+
 - [x] [als](https://github.com/AdaCore/ada_language_server/tree/master/integration/vscode/ada/package.json)
 - [x] [astro](https://github.com/withastro/language-tools/tree/main/packages/vscode/package.json)
 - [x] [awkls](https://github.com/Beaglefoot/awk-language-server/tree/master/client/package.json)

@@ -16,7 +16,7 @@
   },
   "lspconfig": {
     "sumneko_lua": {
-      "Lua.completion.callSnippet": "Replace"
+      "Lua.completion.callSnippet": "Replace",
     },
   }
 }
