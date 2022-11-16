@@ -17,8 +17,8 @@ Table of Contents                             *neoconf.nvim-table-of-contents*
 ==============================================================================
 1. neoconf.nvim                                    *neoconf.nvim-neoconf.nvim*
 
-**Settings.nvim** is a Neovim plugin to manage global and workspace-local
-Neovim settings.
+**Settings.nvim** is a Neovim plugin to manage global and project-local
+settings.
 
 <div class="figure">
 <img src="https://user-images.githubusercontent.com/292349/202160538-3711693c-14fd-4e8b-a9d1-ceda88bae00c.png" title="fig:"/>
