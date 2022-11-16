@@ -3,7 +3,7 @@
 ==============================================================================
 Table of Contents                             *neoconf.nvim-table-of-contents*
 
-1. settings.nvim                                  |neoconf.nvim-settings.nvim|
+1. neoconf.nvim                                    |neoconf.nvim-neoconf.nvim|
   - Features                                           |neoconf.nvim-features|
   - Requirements                                   |neoconf.nvim-requirements|
   - Installation                                   |neoconf.nvim-installation|
@@ -15,7 +15,7 @@ Table of Contents                             *neoconf.nvim-table-of-contents*
   - Supported Language Servers       |neoconf.nvim-supported-language-servers|
 
 ==============================================================================
-1. settings.nvim                                  *neoconf.nvim-settings.nvim*
+1. neoconf.nvim                                    *neoconf.nvim-neoconf.nvim*
 
 **Settings.nvim** is a Neovim plugin to manage global and workspace-local
 Neovim settings.
@@ -139,6 +139,11 @@ THE `:NEOCONF` COMMAND ~
 - `:Neoconf show`: opens a floating window with the merged config
 - `:Neoconf lsp`: opens a floating window with your merged lsp config
 
+
+<div class="figure">
+<img src="https://user-images.githubusercontent.com/292349/202161064-16789740-f094-4729-97c2-b6509148a7fd.png" title="fig:"/>
+<p class="caption">image</p>
+</div>
 
 COMPLETION AND VALIDATION FOR YOUR `JSON` SETTINGS FILES ~
 
