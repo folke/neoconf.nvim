@@ -17,8 +17,13 @@ Table of Contents                             *neoconf.nvim-table-of-contents*
 ==============================================================================
 1. settings.nvim                                  *neoconf.nvim-settings.nvim*
 
-**Settings.nvim** is a lua plugin to manage global and workspace-local Neovim
-settings.
+**Settings.nvim** is a Neovim plugin to manage global and workspace-local
+Neovim settings.
+
+<div class="figure">
+<img src="https://user-images.githubusercontent.com/292349/202160538-3711693c-14fd-4e8b-a9d1-ceda88bae00c.png" title="fig:"/>
+<p class="caption">image</p>
+</div>
 
 FEATURES                                               *neoconf.nvim-features*
 
@@ -137,10 +142,21 @@ THE `:NEOCONF` COMMAND ~
 
 COMPLETION AND VALIDATION FOR YOUR `JSON` SETTINGS FILES ~
 
+<div class="figure">
+<img src="https://user-images.githubusercontent.com/292349/202160792-f956e3af-535f-4ad6-8de4-d89854072f91.png" title="fig:"/>
+<p class="caption">image</p>
+</div>
+
 COMPLETION AND VALIDATION FOR YOUR `LUA` SETTINGS FILES ~
 
-Completion of your lua settings should work out of the box. You can
-additionally use the exported types in other places.
+Completion of your lua settings should work out of the box.
+
+<div class="figure">
+<img src="https://user-images.githubusercontent.com/292349/202160675-ea9a62b4-7084-40a3-966e-e9d5f0fb70ec.png" title="fig:"/>
+<p class="caption">image</p>
+</div>
+
+You can additionally use the exported types in other places.
 
 Example with a table containing LSP server settings
 
