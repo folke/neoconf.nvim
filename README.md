@@ -1,7 +1,6 @@
 # 💼 neoconf.nvim
 
-**Settings.nvim** is a Neovim plugin to manage global and workspace-local Neovim
-settings.
+**Settings.nvim** is a Neovim plugin to manage global and project-local settings.
 
 ![image](https://user-images.githubusercontent.com/292349/202160538-3711693c-14fd-4e8b-a9d1-ceda88bae00c.png)
 
