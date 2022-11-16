@@ -41,7 +41,7 @@ use({
 
 ## 🚀 Setup
 
-It's important that you set up `settings.nvim` **BEFORE** `nvim-lspconfig`.
+It's important that you set up `neoconf.nvim` **BEFORE** `nvim-lspconfig`.
 
 ```lua
 require("neoconf").setup({
