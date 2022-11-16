@@ -1,21 +1,22 @@
-name: CI
+name: Schemas
 on:
-  push:
+  workflow_dispatch:
+  schedule:
+    # Run this every hour
+    - cron: "0 * * * *"
 
 jobs:
-  schemas:
-    uses: ./.github/workflows/schemas.yml
-  docs:
+  update-docs:
     runs-on: ubuntu-latest
     steps:
+      - name: Install dependencies
+        run: |
+          wget https://github.com/neovim/neovim/releases/download/nightly/nvim-linux64.deb -O /tmp/nvim.deb
+          sudo dpkg -i /tmp/nvim.deb
       - uses: actions/checkout@v3
-      - name: Pull Updates
-        run: git pull
-      - name: panvimdoc
-        uses: kdheepak/panvimdoc@main
-        with:
-          vimdoc: neoconf.nvim
-          demojify: true
+      - name: Build
+        run: |
+          nvim -u NONE -E -R --headless --cmd "set rtp^=." --cmd "packloadall" --cmd "luafile lua/neoconf/build/init.lua" --cmd q
       - name: Push changes
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
