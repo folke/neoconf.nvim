@@ -1,6 +1,6 @@
 name: Schemas
 on:
-  workflow_dispatch:
+  workflow_call:
   schedule:
     # Run this every hour
     - cron: "0 * * * *"
