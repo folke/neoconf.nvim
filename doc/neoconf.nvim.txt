@@ -17,7 +17,7 @@ Table of Contents                             *neoconf.nvim-table-of-contents*
 ==============================================================================
 1. neoconf.nvim                                    *neoconf.nvim-neoconf.nvim*
 
-**Settings.nvim** is a Neovim plugin to manage global and project-local
+**neoconf.nvim** is a Neovim plugin to manage global and project-local
 settings.
 
 <div class="figure">
@@ -29,7 +29,7 @@ FEATURES                                               *neoconf.nvim-features*
 
 
 - configure Neovim using **JSON** files (can have comments)
-    - global settings: `~/.config/nvim/settings.json`
+    - global settings: `~/.config/nvim/neoconf.json`
     - local settings: `~/projects/foobar/.neoconf.json`
 - live reload of your lsp settings
 - import existing settings from vscode <https://github.com/microsoft/vscode>,
@@ -56,10 +56,10 @@ PACKER <HTTPS://GITHUB.COM/WBTHOMASON/PACKER.NVIM> ~
 >
     -- Lua
     use({
-      "folke/settings.nvim",
-      module = "settings",
+      "folke/neconf.nvim",
+      module = "neoconf",
       config = function()
-        require("settings").setup()
+        require("neoconf").setup()
       end,
     })
 <
@@ -67,7 +67,7 @@ PACKER <HTTPS://GITHUB.COM/WBTHOMASON/PACKER.NVIM> ~
 
 SETUP                                                     *neoconf.nvim-setup*
 
-It’s important that you set up `settings.nvim` **BEFORE** `nvim-lspconfig`.
+It’s important that you set up `neoconf.nvim` **BEFORE** `nvim-lspconfig`.
 
 >
     require("neoconf").setup({
