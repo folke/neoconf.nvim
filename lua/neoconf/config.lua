@@ -10,7 +10,7 @@ M.defaults = {
   import = {
     vscode = true, -- local .vscode/settings.json
     coc = true, -- global/local coc-settings.json
-    nlsp = true, -- nlsp-settings.nvim json settings
+    nlsp = true, -- global/local nlsp-settings.nvim json settings
   },
   -- send new configuration to lsp clients when changing json settings
   live_reload = true,

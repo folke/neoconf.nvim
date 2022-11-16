@@ -4,9 +4,9 @@ local Settings = require("neoconf.settings")
 local M = {}
 
 ---@class WorkspaceFindOptions
----@field file string
----@field buffer buffer
----@field lsp boolean
+---@field file? string
+---@field buffer? buffer
+---@field lsp? boolean
 
 ---@param opts WorkspaceFindOptions
 function M.find_root(opts)
@@ -31,8 +31,8 @@ function M.find_root(opts)
 end
 
 ---@class WorkspaceOptions: WorkspaceFindOptions
----@field local boolean
----@field global boolean
+---@field local? boolean defaults to true
+---@field global? boolean defaults to true
 
 ---@param opts WorkspaceOptions|nil
 ---@return { root_dir: string, settings: Settings }
