@@ -32,10 +32,6 @@ Install the plugin with your preferred package manager:
 -- Lua
 use({
   "folke/neoconf.nvim",
-  module = "neoconf",
-  config = function()
-    require("neoconf").setup()
-  end,
 })
 ```
 
