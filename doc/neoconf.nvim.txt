@@ -1,4 +1,4 @@
-*neoconf.nvim.txt*        For NVIM v0.5.0        Last change: 2022 November 16
+*neoconf.nvim.txt*        For NVIM v0.5.0        Last change: 2022 November 17
 
 ==============================================================================
 Table of Contents                             *neoconf.nvim-table-of-contents*
@@ -57,10 +57,6 @@ PACKER <HTTPS://GITHUB.COM/WBTHOMASON/PACKER.NVIM> ~
     -- Lua
     use({
       "folke/neoconf.nvim",
-      module = "neoconf",
-      config = function()
-        require("neoconf").setup()
-      end,
     })
 <
 
