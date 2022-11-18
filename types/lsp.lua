@@ -727,6 +727,10 @@
 -- ```
 ---@field rules string[]|any
 
+---@class _.lspconfig.settings.eslint.Experimental
+-- Enable support of experimental Flat Config (aka eslint.config.js, supported by ESLint version 8.21 or later).
+---@field useFlatConfig boolean
+
 ---@class _.lspconfig.settings.eslint.Format
 -- Enables ESLint as a formatter.
 ---@field enable boolean
@@ -789,8 +793,7 @@
 -- default = <userdata 1>
 -- ```
 ---@field execArgv string[]|any
--- Enable support of experimental Flat Config (aka eslint.config.js, supported by ESLint version 8.21 or later).
----@field experimentalUseFlatConfig boolean
+---@field experimental _.lspconfig.settings.eslint.Experimental
 ---@field format _.lspconfig.settings.eslint.Format
 ---@field lintTask _.lspconfig.settings.eslint.LintTask
 ---@field migration _.lspconfig.settings.eslint.Migration
