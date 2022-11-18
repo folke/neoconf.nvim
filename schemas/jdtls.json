@@ -15,7 +15,8 @@
           "qualifyMembers",
           "qualifyStaticMembers",
           "addOverride",
-          "addDeprecated"
+          "addDeprecated",
+          "stringConcatToTextBlock"
         ],
         "type": "string"
       },
@@ -126,7 +127,7 @@
         "org.eclipse.jdt.annotation.NonNull",
         "org.springframework.lang.NonNull"
       ],
-      "markdownDescription": "Specify the Nonnull annotation types to be used for null analysis. If more than one annotation is specified, then the topmost annotation will be used first if it exists in project dependencies. This setting will be ignored if `java.compile.nullAnalysis.enabled` is set to `disabled`",
+      "markdownDescription": "Specify the Nonnull annotation types to be used for null analysis. If more than one annotation is specified, then the topmost annotation will be used first if it exists in project dependencies. This setting will be ignored if `java.compile.nullAnalysis.mode` is set to `disabled`",
       "scope": "window",
       "type": "array"
     },
@@ -136,7 +137,7 @@
         "org.eclipse.jdt.annotation.Nullable",
         "org.springframework.lang.Nullable"
       ],
-      "markdownDescription": "Specify the Nullable annotation types to be used for null analysis. If more than one annotation is specified, then the topmost annotation will be used first if it exists in project dependencies. This setting will be ignored if `java.compile.nullAnalysis.enabled` is set to `disabled`",
+      "markdownDescription": "Specify the Nullable annotation types to be used for null analysis. If more than one annotation is specified, then the topmost annotation will be used first if it exists in project dependencies. This setting will be ignored if `java.compile.nullAnalysis.mode` is set to `disabled`",
       "scope": "window",
       "type": "array"
     },

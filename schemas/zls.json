@@ -15,7 +15,7 @@
       "type": "string"
     },
     "zls.check_for_update": {
-      "default": "true",
+      "default": true,
       "description": "Whether to automatically check for new updates",
       "scope": "resource",
       "type": "boolean"
