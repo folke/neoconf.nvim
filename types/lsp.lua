@@ -8182,6 +8182,8 @@
 -- ```
 ---@field enable boolean
 ---@field experimental _.lspconfig.settings.rust_analyzer.Experimental
+-- Whether to show the main part of the rendered rustc output of a diagnostic message.
+---@field previewRustcOutput boolean
 -- Map of prefixes to be substituted when parsing diagnostic file paths.
 -- This should be the reverse mapping of what is passed to `rustc` as `--remap-path-prefix`.
 -- 
