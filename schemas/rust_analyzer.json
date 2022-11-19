@@ -249,12 +249,19 @@
       ]
     },
     "rust-analyzer.checkOnSave.target": {
-      "default": null,
-      "markdownDescription": "Check for a specific target. Defaults to\n`#rust-analyzer.cargo.target#`.",
-      "type": [
-        "null",
-        "string"
-      ]
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        }
+      ],
+      "default": [],
+      "markdownDescription": "Check for specific targets. Defaults to `#rust-analyzer.cargo.target#` if empty.\n\nCan be a single target, e.g. `\"x86_64-unknown-linux-gnu\"` or a list of targets, e.g.\n`[\"aarch64-apple-darwin\", \"x86_64-apple-darwin\"]`.\n\nAliased as `\"checkOnSave.targets\"`."
     },
     "rust-analyzer.completion.autoimport.enable": {
       "default": true,

@@ -8037,13 +8037,17 @@
 -- default = <userdata 1>
 -- ```
 ---@field overrideCommand string[]
--- Check for a specific target. Defaults to
--- `#rust-analyzer.cargo.target#`.
+-- Check for specific targets. Defaults to `#rust-analyzer.cargo.target#` if empty.
+-- 
+-- Can be a single target, e.g. `"x86_64-unknown-linux-gnu"` or a list of targets, e.g.
+-- `["aarch64-apple-darwin", "x86_64-apple-darwin"]`.
+-- 
+-- Aliased as `"checkOnSave.targets"`.
 -- 
 -- ```lua
--- default = <userdata 1>
+-- default = {}
 -- ```
----@field target string
+---@field target string|string[]
 
 ---@class _.lspconfig.settings.rust_analyzer.Autoimport
 -- Toggles the additional completions that automatically add imports when completed.
