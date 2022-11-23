@@ -246,6 +246,12 @@
       "scope": "resource",
       "type": "array"
     },
+    "eslint.problems.shortenToSingleLine": {
+      "default": false,
+      "description": "Shorten the text spans of underlined problems to their first related line.",
+      "scope": "resource",
+      "type": "boolean"
+    },
     "eslint.provideLintTask": {
       "default": false,
       "deprecationMessage": "This option is deprecated. Use eslint.lintTask.enable instead.",

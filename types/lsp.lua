@@ -760,6 +760,10 @@
 ---@class _.lspconfig.settings.eslint.Notebooks
 ---@field rules _.lspconfig.settings.eslint.Rules
 
+---@class _.lspconfig.settings.eslint.Problems
+-- Shorten the text spans of underlined problems to their first related line.
+---@field shortenToSingleLine boolean
+
 ---@class _.lspconfig.settings.eslint.Rules
 -- Override the severity of one or more rules reported by this extension, regardless of the project's ESLint config. Use globs to apply default severities for multiple rules.
 ---@field customizations object[]
@@ -834,6 +838,7 @@
 -- default = { "javascript", "javascriptreact", "typescript", "typescriptreact", "html", "vue", "markdown" }
 -- ```
 ---@field probe string[]
+---@field problems _.lspconfig.settings.eslint.Problems
 -- Controls whether a task for linting the whole workspace will be available.
 ---@field provideLintTask boolean
 -- Turns on quiet mode, which ignores warnings.
