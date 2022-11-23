@@ -728,7 +728,7 @@
 ---@field rules string[]|any
 
 ---@class _.lspconfig.settings.eslint.Experimental
--- Enable support of experimental Flat Config (aka eslint.config.js, supported by ESLint version 8.21 or later).
+-- Enables support of experimental Flat Config (aka eslint.config.js, supported by ESLint version 8.21 or later).
 ---@field useFlatConfig boolean
 
 ---@class _.lspconfig.settings.eslint.Format
@@ -761,7 +761,7 @@
 ---@field rules _.lspconfig.settings.eslint.Rules
 
 ---@class _.lspconfig.settings.eslint.Problems
--- Shorten the text spans of underlined problems to their first related line.
+-- Shortens the text spans of underlined problems to their first related line.
 ---@field shortenToSingleLine boolean
 
 ---@class _.lspconfig.settings.eslint.Rules

@@ -127,7 +127,7 @@
     },
     "eslint.experimental.useFlatConfig": {
       "default": false,
-      "description": "Enable support of experimental Flat Config (aka eslint.config.js, supported by ESLint version 8.21 or later).",
+      "description": "Enables support of experimental Flat Config (aka eslint.config.js, supported by ESLint version 8.21 or later).",
       "scope": "resource",
       "type": "boolean"
     },
@@ -248,7 +248,7 @@
     },
     "eslint.problems.shortenToSingleLine": {
       "default": false,
-      "description": "Shorten the text spans of underlined problems to their first related line.",
+      "description": "Shortens the text spans of underlined problems to their first related line.",
       "scope": "resource",
       "type": "boolean"
     },
