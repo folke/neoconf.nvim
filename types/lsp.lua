@@ -8050,9 +8050,9 @@
 -- Aliased as `"checkOnSave.targets"`.
 -- 
 -- ```lua
--- default = {}
+-- default = <userdata 1>
 -- ```
----@field target string|string[]
+---@field target any|string|string[]
 
 ---@class _.lspconfig.settings.rust_analyzer.Autoimport
 -- Toggles the additional completions that automatically add imports when completed.
