@@ -3277,6 +3277,14 @@
 -- Enable/disable the implementations code lens.
 ---@field enabled boolean
 
+---@class _.lspconfig.settings.jdtls.AnnotationProcessing
+-- Enable/disable the annotation processing on Gradle projects and delegate Annotation Processing to JDT APT. Only works for Gradle 5.2 or higher.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enabled boolean
+
 ---@class _.lspconfig.settings.jdtls.Java
 -- The location to the JVM used to run the Gradle daemon.
 -- 
@@ -3306,6 +3314,7 @@
 ---@field enabled boolean
 
 ---@class _.lspconfig.settings.jdtls.Gradle
+---@field annotationProcessing _.lspconfig.settings.jdtls.AnnotationProcessing
 -- Arguments to pass to Gradle.
 -- 
 -- ```lua

@@ -411,6 +411,12 @@
       "scope": "window",
       "type": "boolean"
     },
+    "java.import.gradle.annotationProcessing.enabled": {
+      "default": true,
+      "description": "Enable/disable the annotation processing on Gradle projects and delegate Annotation Processing to JDT APT. Only works for Gradle 5.2 or higher.",
+      "scope": "window",
+      "type": "boolean"
+    },
     "java.import.gradle.arguments": {
       "default": null,
       "description": "Arguments to pass to Gradle.",
