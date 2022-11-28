@@ -235,6 +235,11 @@
       "default": false,
       "type": "boolean"
     },
+    "volar.vueserver.reverseConfigFilePriority": {
+      "default": false,
+      "description": "Reverse priority for tsconfig pickup.",
+      "type": "boolean"
+    },
     "volar.vueserver.textDocumentSync": {
       "default": "incremental",
       "description": "Defines how the host (editor) should sync document changes to the language server. SFC incremental parser only working when config \"incremental\".",

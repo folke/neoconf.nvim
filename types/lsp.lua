@@ -12435,6 +12435,8 @@
 -- Ignore project references settings of tsconfig in language server for resolve issue #1916.
 ---@field noProjectReferences boolean
 ---@field petiteVue _.lspconfig.settings.volar.PetiteVue
+-- Reverse priority for tsconfig pickup.
+---@field reverseConfigFilePriority boolean
 -- Defines how the host (editor) should sync document changes to the language server. SFC incremental parser only working when config "incremental".
 -- 
 -- ```lua
