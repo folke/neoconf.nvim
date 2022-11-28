@@ -12425,6 +12425,8 @@
 -- default = "push"
 -- ```
 ---@field diagnosticModel "push" | "pull"
+-- Disable file watcher in language server for better performance.
+---@field disableFileWatcher boolean
 ---@field json _.lspconfig.settings.volar.Json
 -- Set --max-old-space-size option on server process. If you have problem on frequently "Request textDocument/** failed." error, try setting higher memory(MB) on it.
 -- 

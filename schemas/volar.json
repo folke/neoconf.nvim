@@ -215,6 +215,11 @@
       ],
       "type": "string"
     },
+    "volar.vueserver.disableFileWatcher": {
+      "default": false,
+      "description": "Disable file watcher in language server for better performance.",
+      "type": "boolean"
+    },
     "volar.vueserver.json.customBlockSchemaUrls": {
       "type": "object"
     },
