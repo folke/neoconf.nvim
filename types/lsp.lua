@@ -9733,7 +9733,7 @@
 -- Enable diagnostics for setting the same field in a class more than once.
 -- 
 -- ```lua
--- default = "Any"
+-- default = "Opened"
 -- ```
 ---@field duplicate-set-field "Any" | "Opened" | "None" | "Any!" | "Opened!" | "None!"
 -- Enable empty code block diagnostics.

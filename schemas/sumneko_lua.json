@@ -817,7 +817,7 @@
           "type": "string"
         },
         "duplicate-set-field": {
-          "default": "Any",
+          "default": "Opened",
           "description": "Enable diagnostics for setting the same field in a class more than once.",
           "enum": [
             "Any",
