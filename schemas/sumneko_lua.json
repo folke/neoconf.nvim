@@ -649,7 +649,7 @@
         },
         "circle-doc-class": {
           "default": "Any",
-          "description": "%config.diagnostics.circle-doc-class%",
+          "description": "Enable diagnostics for two classes inheriting from each other introducing a circular relation.",
           "enum": [
             "Any",
             "Opened",
@@ -857,7 +857,7 @@
         },
         "invisible": {
           "default": "Any",
-          "description": "%config.diagnostics.invisible%",
+          "description": "Enable diagnostics for accesses to fields which are invisible.",
           "enum": [
             "Any",
             "Opened",
@@ -1383,7 +1383,7 @@
         },
         "circle-doc-class": {
           "default": "Warning",
-          "description": "%config.diagnostics.circle-doc-class%",
+          "description": "Enable diagnostics for two classes inheriting from each other introducing a circular relation.",
           "enum": [
             "Error",
             "Warning",
@@ -1623,7 +1623,7 @@
         },
         "invisible": {
           "default": "Warning",
-          "description": "%config.diagnostics.invisible%",
+          "description": "Enable diagnostics for accesses to fields which are invisible.",
           "enum": [
             "Error",
             "Warning",
@@ -2548,10 +2548,10 @@
       ],
       "markdownDescription": "File encoding. The `ansi` option is only available under the `Windows` platform.",
       "markdownEnumDescriptions": [
-        "%config.runtime.fileEncoding.utf8%",
-        "%config.runtime.fileEncoding.ansi%",
-        "%config.runtime.fileEncoding.utf16le%",
-        "%config.runtime.fileEncoding.utf16be%"
+        "utf8",
+        "ansi",
+        "utf16le",
+        "utf16be"
       ],
       "scope": "resource",
       "type": "string"
@@ -2750,21 +2750,21 @@
     },
     "Lua.typeFormat.config": {
       "additionalProperties": false,
-      "markdownDescription": "%config.typeFormat.config%",
+      "markdownDescription": "Configures the formatting behavior while typing Lua code.",
       "properties": {
         "auto_complete_end": {
           "default": "true",
-          "description": "%config.typeFormat.config.auto_complete_end%",
+          "description": "Controls if `end` is automatically completed at suitable positions.",
           "type": "string"
         },
         "auto_complete_table_sep": {
           "default": "true",
-          "description": "%config.typeFormat.config.auto_complete_table_sep%",
+          "description": "Controls if a separator is automatically appended at the end of a table declaration.",
           "type": "string"
         },
         "format_line": {
           "default": "true",
-          "description": "%config.typeFormat.config.format_line%",
+          "description": "Controls if a line is formatted at all.",
           "type": "string"
         }
       },

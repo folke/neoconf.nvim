@@ -9652,7 +9652,7 @@
 -- default = "Opened"
 -- ```
 ---@field cast-type-mismatch "Any" | "Opened" | "None" | "Any!" | "Opened!" | "None!"
--- %config.diagnostics.circle-doc-class%
+-- Enable diagnostics for two classes inheriting from each other introducing a circular relation.
 -- 
 -- ```lua
 -- default = "Any"
@@ -9748,7 +9748,7 @@
 -- default = "Any"
 -- ```
 ---@field global-in-nil-env "Any" | "Opened" | "None" | "Any!" | "Opened!" | "None!"
--- %config.diagnostics.invisible%
+-- Enable diagnostics for accesses to fields which are invisible.
 -- 
 -- ```lua
 -- default = "Any"
@@ -9988,7 +9988,7 @@
 -- default = "Warning"
 -- ```
 ---@field cast-type-mismatch "Error" | "Warning" | "Information" | "Hint" | "Error!" | "Warning!" | "Information!" | "Hint!"
--- %config.diagnostics.circle-doc-class%
+-- Enable diagnostics for two classes inheriting from each other introducing a circular relation.
 -- 
 -- ```lua
 -- default = "Warning"
@@ -10084,7 +10084,7 @@
 -- default = "Warning"
 -- ```
 ---@field global-in-nil-env "Error" | "Warning" | "Information" | "Hint" | "Error!" | "Warning!" | "Information!" | "Hint!"
--- %config.diagnostics.invisible%
+-- Enable diagnostics for accesses to fields which are invisible.
 -- 
 -- ```lua
 -- default = "Warning"
@@ -10762,21 +10762,21 @@
 -- 
 ---@field weakUnionCheck boolean
 
--- %config.typeFormat.config%
+-- Configures the formatting behavior while typing Lua code.
 ---@class _.lspconfig.settings.sumneko_lua.Config
--- %config.typeFormat.config.auto_complete_end%
+-- Controls if `end` is automatically completed at suitable positions.
 -- 
 -- ```lua
 -- default = "true"
 -- ```
 ---@field auto_complete_end string
--- %config.typeFormat.config.auto_complete_table_sep%
+-- Controls if a separator is automatically appended at the end of a table declaration.
 -- 
 -- ```lua
 -- default = "true"
 -- ```
 ---@field auto_complete_table_sep string
--- %config.typeFormat.config.format_line%
+-- Controls if a line is formatted at all.
 -- 
 -- ```lua
 -- default = "true"
@@ -10784,7 +10784,7 @@
 ---@field format_line string
 
 ---@class _.lspconfig.settings.sumneko_lua.TypeFormat
--- %config.typeFormat.config%
+-- Configures the formatting behavior while typing Lua code.
 ---@field config _.lspconfig.settings.sumneko_lua.Config
 
 ---@class _.lspconfig.settings.sumneko_lua.Window
