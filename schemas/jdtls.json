@@ -17,7 +17,11 @@
           "addOverride",
           "addDeprecated",
           "stringConcatToTextBlock",
-          "invertEquals"
+          "invertEquals",
+          "addFinalModifier",
+          "instanceofPatternMatch",
+          "lambdaExpression",
+          "switchExpression"
         ],
         "type": "string"
       },
