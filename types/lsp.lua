@@ -341,17 +341,25 @@
 
 ---@class _.lspconfig.settings.denols.EnumMemberValues
 -- Enable/disable inlay hints for enum values.
+-- 
+-- ```lua
+-- default = true
+-- ```
 ---@field enabled boolean
 
 ---@class _.lspconfig.settings.denols.FunctionLikeReturnTypes
 -- Enable/disable inlay hints for implicit function return types.
+-- 
+-- ```lua
+-- default = true
+-- ```
 ---@field enabled boolean
 
 ---@class _.lspconfig.settings.denols.ParameterNames
 -- Enable/disable inlay hints for parameter names.
 -- 
 -- ```lua
--- default = "none"
+-- default = "all"
 -- ```
 ---@field enabled "none" | "literals" | "all"
 -- Do not display an inlay hint when the argument name matches the parameter.
@@ -363,14 +371,26 @@
 
 ---@class _.lspconfig.settings.denols.ParameterTypes
 -- Enable/disable inlay hints for implicit parameter types.
+-- 
+-- ```lua
+-- default = true
+-- ```
 ---@field enabled boolean
 
 ---@class _.lspconfig.settings.denols.PropertyDeclarationTypes
 -- Enable/disable inlay hints for implicit property declarations.
+-- 
+-- ```lua
+-- default = true
+-- ```
 ---@field enabled boolean
 
 ---@class _.lspconfig.settings.denols.VariableTypes
 -- Enable/disable inlay hints for implicit variable types.
+-- 
+-- ```lua
+-- default = true
+-- ```
 ---@field enabled boolean
 -- Suppress type hints where the variable name matches the implicit type.
 -- 
@@ -11276,6 +11296,17 @@
 -- ```
 ---@field server "off" | "messages" | "verbose"
 
+---@class _.lspconfig.settings.svelte.SvelteKitFilesContextMenu
+-- Show a context menu to generate SvelteKit files. "always" to always show it. "never" to always disable it. "auto" to show it when in a SvelteKit project. 
+-- 
+-- ```lua
+-- default = "auto"
+-- ```
+---@field enable "auto" | "never" | "always"
+
+---@class _.lspconfig.settings.svelte.Ui
+---@field svelteKitFilesContextMenu _.lspconfig.settings.svelte.SvelteKitFilesContextMenu
+
 ---@class _.lspconfig.settings.svelte.Svelte
 -- Ask on startup to enable the TypeScript plugin.
 -- 
@@ -11288,6 +11319,7 @@
 ---@field language-server _.lspconfig.settings.svelte.Language-server
 ---@field plugin _.lspconfig.settings.svelte.Plugin
 ---@field trace _.lspconfig.settings.svelte.Trace
+---@field ui _.lspconfig.settings.svelte.Ui
 
 ---@class lspconfig.settings.svelte
 ---@field svelte _.lspconfig.settings.svelte.Svelte

@@ -327,6 +327,16 @@
         "verbose"
       ],
       "type": "string"
+    },
+    "svelte.ui.svelteKitFilesContextMenu.enable": {
+      "default": "auto",
+      "description": "Show a context menu to generate SvelteKit files. \"always\" to always show it. \"never\" to always disable it. \"auto\" to show it when in a SvelteKit project. ",
+      "enum": [
+        "auto",
+        "never",
+        "always"
+      ],
+      "type": "string"
     }
   }
 }
