@@ -3,7 +3,8 @@
     "library": {
       "enabled": true,
       "plugins": [
-        "nvim-lspconfig"
+        "nvim-lspconfig",
+        "lsp"
       ]
     }
   },

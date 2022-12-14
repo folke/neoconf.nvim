@@ -74,7 +74,7 @@ function M.merge(options)
 end
 
 function M.get(opts)
-  return require("neoconf").get("settings", M.options, opts)
+  return require("neoconf").get("neoconf", M.options, opts)
 end
 
 return M
