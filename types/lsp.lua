@@ -5814,6 +5814,14 @@
 -- ```
 ---@field perltidyrc string
 
+---@class _.lspconfig.settings.perlpls.Podchecker
+-- Enable podchecker (requires Pod::Checker to be installed)
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enabled boolean
+
 ---@class _.lspconfig.settings.perlpls.Syntax
 -- Additional arguments to pass when syntax checking. This is useful if there is a BEGIN block in your code that changes behavior depending on the contents of @ARGV.
 -- 
@@ -5861,6 +5869,7 @@
 ---@field inc any[]
 ---@field perlcritic _.lspconfig.settings.perlpls.Perlcritic
 ---@field perltidy _.lspconfig.settings.perlpls.Perltidy
+---@field podchecker _.lspconfig.settings.perlpls.Podchecker
 ---@field syntax _.lspconfig.settings.perlpls.Syntax
 
 ---@class lspconfig.settings.perlpls

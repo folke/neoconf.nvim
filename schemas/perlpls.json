@@ -91,6 +91,11 @@
       "description": "Path to .perltidyrc",
       "type": "string"
     },
+    "pls.podchecker.enabled": {
+      "default": true,
+      "description": "Enable podchecker (requires Pod::Checker to be installed)",
+      "type": "boolean"
+    },
     "pls.syntax.args": {
       "default": [],
       "description": "Additional arguments to pass when syntax checking. This is useful if there is a BEGIN block in your code that changes behavior depending on the contents of @ARGV.",
