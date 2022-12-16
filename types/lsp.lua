@@ -819,6 +819,8 @@
 ---@field execArgv string[]|any
 ---@field experimental _.lspconfig.settings.eslint.Experimental
 ---@field format _.lspconfig.settings.eslint.Format
+-- If true, untitled files won't be validated by ESLint.
+---@field ignoreUntitled boolean
 ---@field lintTask _.lspconfig.settings.eslint.LintTask
 ---@field migration _.lspconfig.settings.eslint.Migration
 -- The value of `NODE_ENV` to use when running eslint tasks.
@@ -3169,6 +3171,12 @@
 -- default = { "#", "java", "javax", "org", "com", "" }
 -- ```
 ---@field importOrder any[]
+-- Specify whether to match case for code completion.
+-- 
+-- ```lua
+-- default = "auto"
+-- ```
+---@field matchCase "auto" | "firstLetter" | "off"
 -- Maximum number of completion results (not including snippets).
 -- `0` (the default value) disables the limit, all results are returned. In case of performance problems, consider setting a sensible limit.
 -- 

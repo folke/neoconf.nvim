@@ -200,6 +200,22 @@
       "scope": "window",
       "type": "array"
     },
+    "java.completion.matchCase": {
+      "default": "auto",
+      "enum": [
+        "auto",
+        "firstLetter",
+        "off"
+      ],
+      "enumDescriptions": [
+        "Only match case for the first letter when using Visual Studio Code - Insiders.",
+        "Match case for the first letter when doing completion.",
+        "Do not match case when doing completion."
+      ],
+      "markdownDescription": "Specify whether to match case for code completion.",
+      "scope": "window",
+      "type": "string"
+    },
     "java.completion.maxResults": {
       "default": 0,
       "markdownDescription": "Maximum number of completion results (not including snippets).\n`0` (the default value) disables the limit, all results are returned. In case of performance problems, consider setting a sensible limit.",
