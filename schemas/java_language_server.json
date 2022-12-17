@@ -23,6 +23,13 @@
       },
       "type": "array"
     },
+    "java.docPath": {
+      "description": "Relative paths from workspace root to .jar files or .zip files containing source code, or to folders that should be included in the Java doc path",
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    },
     "java.externalDependencies": {
       "description": "External dependencies of the form groupId:artifactId:version or groupId:artifactId:packaging:version:scope",
       "items": {

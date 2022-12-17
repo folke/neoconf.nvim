@@ -797,8 +797,6 @@
 ---@field server "off" | "messages" | "verbose"|table
 
 ---@class _.lspconfig.settings.eslint.Eslint
--- Always show the ESlint status bar item.
----@field alwaysShowStatus boolean
 -- Turns auto fix on save on or off.
 ---@field autoFixOnSave boolean
 ---@field codeAction _.lspconfig.settings.eslint.CodeAction
@@ -3021,6 +3019,8 @@
 ---@field classPath string[]
 -- Command to debug one test method, for example ["mvn", "test", "-Dmaven.surefire.debug", "-Dtest=${class}#${method}". The test should start paused, listening for the debugger on port 5005.
 ---@field debugTestMethod string[]
+-- Relative paths from workspace root to .jar files or .zip files containing source code, or to folders that should be included in the Java doc path
+---@field docPath string[]
 -- External dependencies of the form groupId:artifactId:version or groupId:artifactId:packaging:version:scope
 ---@field externalDependencies string[]
 -- Absolute path to your Java home directory
