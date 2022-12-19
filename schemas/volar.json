@@ -2,6 +2,11 @@
   "$schema": "http://json-schema.org/draft-07/schema#",
   "description": "Language support for Vue 3",
   "properties": {
+    "volar.addSpaceBetweenDoubleCurlyBrackets": {
+      "default": true,
+      "description": "Auto add space between double curly brackets: {{|}} -> {{ | }}",
+      "type": "boolean"
+    },
     "volar.autoCompleteRefs": {
       "default": false,
       "description": "Auto-complete Ref value with `.value`.",
@@ -70,6 +75,11 @@
       "default": 200,
       "description": "Delay time for diagnostics.",
       "type": "number"
+    },
+    "volar.doctor.checkVueTsc": {
+      "default": false,
+      "description": "Check vue-tsc version.",
+      "type": "boolean"
     },
     "volar.doctor.statusBarItem": {
       "default": true,
@@ -197,6 +207,11 @@
       },
       "type": "array"
     },
+    "volar.vueserver.configFilePath": {
+      "default": "./volar.config.js",
+      "description": "Path to volar.config.js.",
+      "type": "string"
+    },
     "volar.vueserver.diagnosticModel": {
       "default": "push",
       "description": "Diagnostic update model.",
@@ -217,6 +232,11 @@
     },
     "volar.vueserver.json.customBlockSchemaUrls": {
       "type": "object"
+    },
+    "volar.vueserver.maxFileSize": {
+      "default": 20971520,
+      "description": "Maximum file size for Vue Server to load. (default: 20MB)",
+      "type": "number"
     },
     "volar.vueserver.maxOldSpaceSize": {
       "default": null,

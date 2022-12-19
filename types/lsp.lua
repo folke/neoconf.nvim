@@ -1146,7 +1146,7 @@
 -- default = ""
 -- ```
 ---@field fsiSdkFilePath string
--- Enables generation of `msbuild.binlog` files for project loading. It works only for fresh, non-cached project loading. Run `F#: Clear Project Cache` and reload window to force fresh loading of all projects. These files can be loaded and inspected using the [MSBuild Structured Logger](https://github.com/KirillOsenkov/MSBuildStructuredLog)
+-- Enables generation of `msbuild.binlog` files for project loading. It works only for fresh, non-cached project loading. Run `F#: Clear Project Cache` and `Developer: Reload Window` to force fresh loading of all projects. These files can be loaded and inspected using the [MSBuild Structured Logger](https://github.com/KirillOsenkov/MSBuildStructuredLog)
 ---@field generateBinlog boolean
 -- The number of spaces used for indentation when generating code, e.g. for interface stubs
 -- 
@@ -12351,6 +12351,8 @@
 ---@field delay number
 
 ---@class _.lspconfig.settings.volar.Doctor
+-- Check vue-tsc version.
+---@field checkVueTsc boolean
 -- Show known problems in status bar.
 -- 
 -- ```lua
@@ -12470,6 +12472,12 @@
 -- default = {}
 -- ```
 ---@field additionalExtensions string[]
+-- Path to volar.config.js.
+-- 
+-- ```lua
+-- default = "./volar.config.js"
+-- ```
+---@field configFilePath string
 -- Diagnostic update model.
 -- 
 -- ```lua
@@ -12479,6 +12487,12 @@
 -- Disable file watcher in language server for better performance.
 ---@field disableFileWatcher boolean
 ---@field json _.lspconfig.settings.volar.Json
+-- Maximum file size for Vue Server to load. (default: 20MB)
+-- 
+-- ```lua
+-- default = 20971520
+-- ```
+---@field maxFileSize number
 -- Set --max-old-space-size option on server process. If you have problem on frequently "Request textDocument/** failed." error, try setting higher memory(MB) on it.
 -- 
 -- ```lua
@@ -12499,6 +12513,12 @@
 ---@field vitePress _.lspconfig.settings.volar.VitePress
 
 ---@class _.lspconfig.settings.volar.Volar
+-- Auto add space between double curly brackets: {{|}} -> {{ | }}
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field addSpaceBetweenDoubleCurlyBrackets boolean
 -- Auto-complete Ref value with `.value`.
 ---@field autoCompleteRefs boolean
 -- Auto-wrap `()` to As Expression in interpolations for fix issue #520.
