@@ -12399,6 +12399,8 @@
 -- default = true
 -- ```
 ---@field preview boolean
+-- Show split editor icon in title area of editor.
+---@field splitEditors boolean
 
 ---@class _.lspconfig.settings.volar.Script
 -- ```lua

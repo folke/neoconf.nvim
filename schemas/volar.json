@@ -140,6 +140,11 @@
       "description": "Show Vite / Nuxt App preview icon.",
       "type": "boolean"
     },
+    "volar.icon.splitEditors": {
+      "default": false,
+      "description": "Show split editor icon in title area of editor.",
+      "type": "boolean"
+    },
     "volar.preview.backgroundColor": {
       "default": "#f0f0f0",
       "description": "Component preview background color.",
