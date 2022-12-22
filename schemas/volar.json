@@ -112,6 +112,10 @@
           "default": false,
           "type": "boolean"
         },
+        "json5": {
+          "default": false,
+          "type": "boolean"
+        },
         "jsonc": {
           "default": false,
           "type": "boolean"

@@ -636,6 +636,11 @@
       "markdownDescription": "Whether to prefer using parameter names as the name for elided lifetime hints if possible.",
       "type": "boolean"
     },
+    "rust-analyzer.inlayHints.locationLinks": {
+      "default": true,
+      "markdownDescription": "Whether to use location links for parts of type mentioned in inlay hints.",
+      "type": "boolean"
+    },
     "rust-analyzer.inlayHints.maxLength": {
       "default": 25,
       "markdownDescription": "Maximum length for inlay hints. Set to null to have an unlimited length.",

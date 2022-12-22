@@ -8548,6 +8548,12 @@
 ---@field closureReturnTypeHints _.lspconfig.settings.rust_analyzer.ClosureReturnTypeHints
 ---@field expressionAdjustmentHints _.lspconfig.settings.rust_analyzer.ExpressionAdjustmentHints
 ---@field lifetimeElisionHints _.lspconfig.settings.rust_analyzer.LifetimeElisionHints
+-- Whether to use location links for parts of type mentioned in inlay hints.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field locationLinks boolean
 -- Maximum length for inlay hints. Set to null to have an unlimited length.
 -- 
 -- ```lua
@@ -11204,20 +11210,8 @@
 ---@field enable boolean
 ---@field format _.lspconfig.settings.svelte.Format
 ---@field hover _.lspconfig.settings.svelte.Hover
--- There's a new transformation for improved intellisense which is now turned on by default. This note notifies you about it.
--- 
--- ```lua
--- default = true
--- ```
----@field note-new-transformation boolean
 ---@field rename _.lspconfig.settings.svelte.Rename
 ---@field selectionRange _.lspconfig.settings.svelte.SelectionRange
--- Svelte files need to be transformed to something that TypeScript understands for intellisense. Version 2.0 of this transformation can be enabled with this setting. It will be the default, soon.
--- 
--- ```lua
--- default = true
--- ```
----@field useNewTransformation boolean
 
 ---@class _.lspconfig.settings.svelte.CodeActions
 -- Enable code actions for TypeScript
@@ -12376,6 +12370,7 @@
 ---@field javascript boolean
 ---@field javascriptreact boolean
 ---@field json boolean
+---@field json5 boolean
 ---@field jsonc boolean
 ---@field less boolean
 ---@field scss boolean
