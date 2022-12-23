@@ -616,6 +616,11 @@
       "markdownDescription": "Whether to show inlay hints for type adjustments.",
       "type": "string"
     },
+    "rust-analyzer.inlayHints.expressionAdjustmentHints.hideOutsideUnsafe": {
+      "default": false,
+      "markdownDescription": "Whether to hide inlay hints for type adjustments outside of `unsafe` blocks.",
+      "type": "boolean"
+    },
     "rust-analyzer.inlayHints.lifetimeElisionHints.enable": {
       "default": "never",
       "enum": [

@@ -8499,6 +8499,8 @@
 -- default = "never"
 -- ```
 ---@field enable "always" | "never" | "reborrow"
+-- Whether to hide inlay hints for type adjustments outside of `unsafe` blocks.
+---@field hideOutsideUnsafe boolean
 
 ---@class _.lspconfig.settings.rust_analyzer.LifetimeElisionHints
 -- Whether to show inlay type hints for elided lifetimes in function signatures.
