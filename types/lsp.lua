@@ -7860,6 +7860,8 @@
 -- default = <userdata 1>
 -- ```
 ---@field rename boolean
+-- Require a Rome configuration file to enable syntax errors, formatting and linting. Requires Rome 12 or newer.
+---@field requireConfiguration boolean
 
 ---@class _.lspconfig.settings.rome.Trace
 -- Traces the communication between VS Code and the language server.

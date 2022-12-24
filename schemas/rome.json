@@ -18,6 +18,11 @@
         "null"
       ]
     },
+    "rome.requireConfiguration": {
+      "default": false,
+      "markdownDescription": "Require a Rome configuration file to enable syntax errors, formatting and linting. Requires Rome 12 or newer.",
+      "type": "boolean"
+    },
     "rome_lsp.trace.server": {
       "default": "off",
       "description": "Traces the communication between VS Code and the language server.",
