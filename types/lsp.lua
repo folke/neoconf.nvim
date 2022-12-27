@@ -13151,13 +13151,13 @@
 ---@field server "off" | "messages" | "verbose"
 
 ---@class _.lspconfig.settings.zls.Zls
--- Path to the build_runner.zig file.
+-- Path to the `build_runner.zig` file provided by zls. null is equivalent to `${executable_directory}/build_runner.zig`
 -- 
 -- ```lua
 -- default = <userdata 1>
 -- ```
 ---@field build_runner_path string
--- Path to "builtin;" useful for debugging, automatically set if let null
+-- Path to 'builtin;' useful for debugging, automatically set if let null
 -- 
 -- ```lua
 -- default = <userdata 1>
@@ -13172,46 +13172,58 @@
 -- Enable debug logging in release builds of zls.
 ---@field debugLog boolean
 -- Whether to enable ast-check diagnostics
+-- 
+-- ```lua
+-- default = true
+-- ```
 ---@field enable_ast_check_diagnostics boolean
--- Whether to enable import/embedFile argument completions (NOTE: these are triggered manually as updating the autotrigger characters may cause issues)
+-- Whether to automatically fix errors on save. Currently supports adding and removing discards.
+---@field enable_autofix boolean
+-- Whether to enable import/embedFile argument completions
 ---@field enable_import_embedfile_argument_completions boolean
--- Inlay hint support
+-- Enables inlay hint support when the client also supports it
 ---@field enable_inlay_hints boolean
--- Semantic token support
+-- Enables semantic token support when the client also supports it
 -- 
 -- ```lua
 -- default = true
 -- ```
 ---@field enable_semantic_tokens boolean
--- Whether to enable snippet completions
+-- Enables snippet completions when the client also supports them
 ---@field enable_snippets boolean
--- Path to the global cache directory
+-- Path to a directroy that will be used as zig's cache. null is equivalent to `${KnownFloders.Cache}/zls`
 -- 
 -- ```lua
 -- default = <userdata 1>
 -- ```
 ---@field global_cache_path string
+-- Whether to highlight global var declarations
+---@field highlight_global_var_declarations boolean
 -- Whether the @ sign should be part of the completion of builtins
 ---@field include_at_in_builtins boolean
--- don't show inlay hints for single argument calls
+-- Don't show inlay hints for single argument calls
 -- 
 -- ```lua
 -- default = true
 -- ```
 ---@field inlay_hints_exclude_single_argument boolean
--- enable inlay hints for builtin functions
+-- Hides inlay hints when parameter name matches the identifier (e.g. foo: foo)
+---@field inlay_hints_hide_redundant_param_names boolean
+-- Hides inlay hints when parameter name matches the last token of a parameter node (e.g. foo: bar.foo, foo: &foo)
+---@field inlay_hints_hide_redundant_param_names_last_token boolean
+-- Enable inlay hints for builtin functions
 -- 
 -- ```lua
 -- default = true
 -- ```
 ---@field inlay_hints_show_builtin boolean
--- The detail field of completions is truncated to be no longer than this (in bytes).
+-- The detail field of completions is truncated to be no longer than this (in bytes)
 -- 
 -- ```lua
 -- default = 1048576
 -- ```
 ---@field max_detail_length integer
--- Whether to enable `*` and `?` operators in completion lists
+-- Enables `*` and `?` operators in completion lists
 -- 
 -- ```lua
 -- default = true
@@ -13219,18 +13231,20 @@
 ---@field operator_completions boolean
 -- Path to `zls` executable. Example: `C:/zls/zig-cache/bin/zls.exe`.
 ---@field path string
--- Skips references to std. This will improve lookup speeds. Going to definition however will continue to work
+-- When true, skips searching for references in std. Improves lookup speed for functions in user's code. Renaming and go-to-definition will continue to work as is
 ---@field skip_std_references boolean
 ---@field trace _.lspconfig.settings.zls.Trace
--- Whether to pay attention to style issues. This is opt-in since the style guide explicitly states that the style info provided is a guideline only.
+-- Whether to use the comptime interpreter
+---@field use_comptime_interpreter boolean
+-- Enables warnings for style guideline mismatches
 ---@field warn_style boolean
--- Zig executable path used to run the custom build runner. May be used to find a lib path if none is provided.
+-- Zig executable path, e.g. `/path/to/zig/zig`, used to run the custom build runner. If `null`, zig is looked up in `PATH`. Will be used to infer the zig standard library path if none is provided
 -- 
 -- ```lua
 -- default = <userdata 1>
 -- ```
 ---@field zig_exe_path string
--- Zig library path
+-- Zig library path, e.g. `/path/to/zig/lib/zig`, used to analyze std library imports
 -- 
 -- ```lua
 -- default = <userdata 1>
