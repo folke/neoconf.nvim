@@ -202,6 +202,11 @@
       "description": "Enable or disable the plugin.",
       "type": "boolean"
     },
+    "pylsp.plugins.jedi_definition.follow_builtin_definitions": {
+      "default": true,
+      "description": "Follow builtin and extension definitions to stubs.",
+      "type": "boolean"
+    },
     "pylsp.plugins.jedi_definition.follow_builtin_imports": {
       "default": true,
       "description": "If follow_imports is True will decide if it follow builtin imports.",

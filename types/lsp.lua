@@ -6806,6 +6806,12 @@
 -- default = true
 -- ```
 ---@field enabled boolean
+-- Follow builtin and extension definitions to stubs.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field follow_builtin_definitions boolean
 -- If follow_imports is True will decide if it follow builtin imports.
 -- 
 -- ```lua
