@@ -12421,7 +12421,7 @@
 -- Component preview background color.
 -- 
 -- ```lua
--- default = "#f0f0f0"
+-- default = "#fff"
 -- ```
 ---@field backgroundColor string
 -- Default port for component preview server.

@@ -150,7 +150,7 @@
       "type": "boolean"
     },
     "volar.preview.backgroundColor": {
-      "default": "#f0f0f0",
+      "default": "#fff",
       "description": "Component preview background color.",
       "type": "string"
     },
