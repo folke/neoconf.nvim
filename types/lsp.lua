@@ -8500,6 +8500,14 @@
 -- ```
 ---@field enable "always" | "never" | "with_block"
 
+---@class _.lspconfig.settings.rust_analyzer.DiscriminantHints
+-- Whether to show enum variant discriminant hints.
+-- 
+-- ```lua
+-- default = "never"
+-- ```
+---@field enable "always" | "never" | "fieldless"
+
 ---@class _.lspconfig.settings.rust_analyzer.ExpressionAdjustmentHints
 -- Whether to show inlay hints for type adjustments.
 -- 
@@ -8556,6 +8564,7 @@
 ---@field chainingHints _.lspconfig.settings.rust_analyzer.ChainingHints
 ---@field closingBraceHints _.lspconfig.settings.rust_analyzer.ClosingBraceHints
 ---@field closureReturnTypeHints _.lspconfig.settings.rust_analyzer.ClosureReturnTypeHints
+---@field discriminantHints _.lspconfig.settings.rust_analyzer.DiscriminantHints
 ---@field expressionAdjustmentHints _.lspconfig.settings.rust_analyzer.ExpressionAdjustmentHints
 ---@field lifetimeElisionHints _.lspconfig.settings.rust_analyzer.LifetimeElisionHints
 -- Whether to use location links for parts of type mentioned in inlay hints.
