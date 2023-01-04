@@ -1,4 +1,4 @@
-*neoconf.nvim.txt*        For NVIM v0.5.0        Last change: 2022 December 14
+*neoconf.nvim.txt*       For Neovim >= 0.8.0      Last change: 2023 January 04
 
 ==============================================================================
 Table of Contents                             *neoconf.nvim-table-of-contents*
@@ -53,7 +53,7 @@ Install the plugin with your preferred package manager:
 
 PACKER <HTTPS://GITHUB.COM/WBTHOMASON/PACKER.NVIM> ~
 
->
+>lua
     -- Lua
     use({
       "folke/neoconf.nvim",
@@ -65,7 +65,7 @@ SETUP                                                     *neoconf.nvim-setup*
 
 It’s important that you set up `neoconf.nvim` **BEFORE** `nvim-lspconfig`.
 
->
+>lua
     require("neoconf").setup({
       -- override any of the default settings here
     })
@@ -79,7 +79,7 @@ CONFIGURATION                                     *neoconf.nvim-configuration*
 
 **neoconf.nvim** comes with the following defaults:
 
->
+>lua
     {
     
       -- name of the local settings files
@@ -161,7 +161,7 @@ You can additionally use the exported types in other places.
 
 Example with a table containing LSP server settings
 
->
+>lua
       ---@type lspconfig.options
       local servers = {
         ansiblels = {},
@@ -193,7 +193,7 @@ API                                                         *neoconf.nvim-api*
 **Neodev** comes with an API that can be used by plugin developers to load
 global/local settings for their plugin.
 
->
+>lua
     ---@class SettingsPlugin
     ---@field name string
     ---@field setup fun()|nil
@@ -223,7 +223,7 @@ global/local settings for their plugin.
 
 API Example
 
->
+>lua
     -- default config for your plugin
     local defaults = {
       doit = true,
@@ -314,7 +314,7 @@ SUPPORTED LANGUAGE SERVERS           *neoconf.nvim-supported-language-servers*
 - tailwindcss <https://github.com/tailwindlabs/tailwindcss-intellisense/tree/master/packages/vscode-tailwindcss/package.json>
 - terraformls <https://github.com/hashicorp/vscode-terraform/tree/master/package.json>
 - tsserver <https://github.com/microsoft/vscode/tree/main/extensions/typescript-language-features/package.json>
-- volar <https://github.com/johnsoncodehk/volar/tree/master/extensions/vscode-vue-language-features/package.json>
+- volar <https://github.com/johnsoncodehk/volar/tree/master/vue-language-tools/vscode-vue/package.json>
 - vuels <https://github.com/vuejs/vetur/tree/master/package.json>
 - wgls_analyzer <https://github.com/wgsl-analyzer/wgsl-analyzer/tree/main/editors/code/package.json>
 - yamlls <https://github.com/redhat-developer/vscode-yaml/tree/master/package.json>
