@@ -187,21 +187,10 @@
       ],
       "type": "array"
     },
-    "volar.takeOverMode.enabled": {
-      "default": "auto",
-      "description": "Take over language support for *.ts.",
-      "enum": [
-        "auto",
-        false
-      ],
-      "enumDescriptions": [
-        "Auto enable take over mode when built-in TS extension disabled.",
-        "Never enable take over mode."
-      ],
-      "type": [
-        "boolean",
-        "string"
-      ]
+    "volar.takeOverMode.extension": {
+      "default": "Vue.volar",
+      "description": "The extension that take over language support for *.ts.",
+      "type": "string"
     },
     "volar.updateImportsOnFileMove.enabled": {
       "default": true,

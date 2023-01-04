@@ -411,6 +411,11 @@
       "markdownDescription": "Map of prefixes to be substituted when parsing diagnostic file paths.\nThis should be the reverse mapping of what is passed to `rustc` as `--remap-path-prefix`.",
       "type": "object"
     },
+    "rust-analyzer.diagnostics.useRustcErrorCode": {
+      "default": false,
+      "markdownDescription": "Whether to use the rustc error code.",
+      "type": "boolean"
+    },
     "rust-analyzer.diagnostics.warningsAsHint": {
       "default": [],
       "items": {

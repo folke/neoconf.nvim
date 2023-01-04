@@ -8262,6 +8262,8 @@
 -- default = {}
 -- ```
 ---@field remapPrefix table
+-- Whether to use the rustc error code.
+---@field useRustcErrorCode boolean
 -- List of warnings that should be displayed with hint severity.
 -- 
 -- The warnings will be indicated by faded text or three dots in code
@@ -12457,12 +12459,12 @@
 ---@field layout _.lspconfig.settings.volar.Layout
 
 ---@class _.lspconfig.settings.volar.TakeOverMode
--- Take over language support for *.ts.
+-- The extension that take over language support for *.ts.
 -- 
 -- ```lua
--- default = "auto"
+-- default = "Vue.volar"
 -- ```
----@field enabled "auto" | false
+---@field extension string
 
 ---@class _.lspconfig.settings.volar.UpdateImportsOnFileMove
 -- Enabled update imports on file move.
