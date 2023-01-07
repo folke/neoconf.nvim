@@ -4913,10 +4913,6 @@
 
 ---@class _.lspconfig.settings.luau_lsp.Fflags
 -- Enable all (boolean) Luau FFlags by default. These flags can later be overriden by `#luau-lsp.fflags.override#` and `#luau-lsp.fflags.sync#`
--- 
--- ```lua
--- default = true
--- ```
 ---@field enableByDefault boolean
 -- Override FFlags passed to Luau
 -- 

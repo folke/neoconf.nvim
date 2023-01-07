@@ -51,7 +51,7 @@
       "type": "boolean"
     },
     "luau-lsp.fflags.enableByDefault": {
-      "default": true,
+      "default": false,
       "markdownDescription": "Enable all (boolean) Luau FFlags by default. These flags can later be overriden by `#luau-lsp.fflags.override#` and `#luau-lsp.fflags.sync#`",
       "scope": "window",
       "type": "boolean"
