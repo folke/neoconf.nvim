@@ -244,20 +244,40 @@
 ---@field awk-ide-vscode _.lspconfig.settings.awkls.Awk-ide-vscode
 
 ---@class _.lspconfig.settings.bashls.BashIde
--- Configure explainshell server in order to get hover documentation on flags and options.
+-- Maximum number of files to analyze in the background. Set to 0 to disable background analysis.
+-- 
+-- ```lua
+-- default = 500
+-- ```
+---@field backgroundAnalysisMaxFiles number
+-- Configure explainshell server endpoint in order to get hover documentation on flags and options.
 -- 
 -- ```lua
 -- default = ""
 -- ```
 ---@field explainshellEndpoint string
--- Glob pattern for finding and parsing shell script files.
+-- Glob pattern for finding and parsing shell script files in the workspace. Used by the background analysis features across files.
 -- 
 -- ```lua
 -- default = "**/*@(.sh|.inc|.bash|.command)"
 -- ```
 ---@field globPattern string
--- Controls if parsing errors will be highlighted as problems.
+-- Controls if Treesitter parsing errors will be highlighted as problems.
 ---@field highlightParsingErrors boolean
+-- Controls how symbols (e.g. variables and functions) are included and used for completion and documentation. If false (default and recommended), then we only include symbols from sourced files (i.e. using non dynamic statements like 'source file.sh' or '. file.sh'). If true, then all symbols from the workspace are included.
+---@field includeAllWorkspaceSymbols boolean
+-- Additional ShellCheck arguments. Note that we already add the following arguments: --shell, --format, --external-sources.
+-- 
+-- ```lua
+-- default = ""
+-- ```
+---@field shellcheckArguments string
+-- Controls the executable used for ShellCheck linting information. An empty string will disable linting.
+-- 
+-- ```lua
+-- default = "shellcheck"
+-- ```
+---@field shellcheckPath string
 
 ---@class lspconfig.settings.bashls
 ---@field bashIde _.lspconfig.settings.bashls.BashIde
