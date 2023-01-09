@@ -2,6 +2,9 @@
   "$schema": "http://json-schema.org/draft-07/schema#",
   "description": "Language support for Vue 3",
   "properties": {
+    "typescript.tsdk": {
+      "type": "string"
+    },
     "volar.addSpaceBetweenDoubleCurlyBrackets": {
       "default": true,
       "description": "Auto add space between double curly brackets: {{|}} -> {{ | }}",
@@ -32,7 +35,7 @@
       "description": "[ref sugar ☐] code lens.",
       "type": "boolean"
     },
-    "volar.completion.normalizeComponentAutoImportName": {
+    "volar.completion.normalizeComponentImportName": {
       "default": true,
       "description": "Normalize import name for auto import. (\"myCompVue\" -> \"MyComp\")",
       "type": "boolean"

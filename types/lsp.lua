@@ -12341,6 +12341,9 @@
 ---@field js/ts _.lspconfig.settings.tsserver.Js/ts
 ---@field typescript _.lspconfig.settings.tsserver.Typescript
 
+---@class _.lspconfig.settings.volar.Typescript
+---@field tsdk string
+
 ---@class _.lspconfig.settings.volar.CodeLens
 -- [pug ☐] code lens.
 ---@field pugTools boolean
@@ -12359,7 +12362,7 @@
 -- ```lua
 -- default = true
 -- ```
----@field normalizeComponentAutoImportName boolean
+---@field normalizeComponentImportName boolean
 -- Preferred attr name case.
 -- 
 -- ```lua
@@ -12596,6 +12599,7 @@
 ---@field trace _.lspconfig.settings.volar.Trace
 
 ---@class lspconfig.settings.volar
+---@field typescript _.lspconfig.settings.volar.Typescript
 ---@field volar _.lspconfig.settings.volar.Volar
 ---@field vue-semantic-server _.lspconfig.settings.volar.Vue-semantic-server
 ---@field vue-syntactic-server _.lspconfig.settings.volar.Vue-syntactic-server
