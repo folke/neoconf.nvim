@@ -605,6 +605,8 @@
 ---@field envVariables table
 -- Automatically fetch project dependencies when compiling
 ---@field fetchDeps boolean
+-- Absolute path to alternative ElixirLS release that will override packaged release.
+---@field languageServerOverridePath string
 -- Mix environment to use for compilation
 -- 
 -- ```lua
@@ -8028,7 +8030,7 @@
 -- ```
 ---@field unsetTest string[]
 
----@class _.lspconfig.settings.rust_analyzer.CheckOnSave
+---@class _.lspconfig.settings.rust_analyzer.Check
 -- Check all targets and tests (`--all-targets`).
 -- 
 -- ```lua
@@ -8041,12 +8043,6 @@
 -- default = "check"
 -- ```
 ---@field command string
--- Run specified `cargo check` command for diagnostics on save.
--- 
--- ```lua
--- default = true
--- ```
----@field enable boolean
 -- Extra arguments for `cargo check`.
 -- 
 -- ```lua
@@ -8099,7 +8095,9 @@
 ---@field noDefaultFeatures boolean
 -- Override the command rust-analyzer uses instead of `cargo check` for
 -- diagnostics on save. The command is required to output json and
--- should therefore include `--message-format=json` or a similar option.
+-- should therefore include `--message-format=json` or a similar option
+-- (if your client supports the `colorDiagnosticOutput` experimental
+-- capability, you can use `--message-format=json-diagnostic-rendered-ansi`).
 -- 
 -- If you're changing this because you're using some tool wrapping
 -- Cargo, you might also want to change
@@ -8130,7 +8128,7 @@
 -- ```lua
 -- default = <userdata 1>
 -- ```
----@field target any|string|string[]
+---@field targets any|string|string[]
 
 ---@class _.lspconfig.settings.rust_analyzer.Autoimport
 -- Toggles the additional completions that automatically add imports when completed.
@@ -8535,6 +8533,12 @@
 ---@field enable "always" | "never" | "reborrow"
 -- Whether to hide inlay hints for type adjustments outside of `unsafe` blocks.
 ---@field hideOutsideUnsafe boolean
+-- Whether to show inlay hints as postfix ops (`.*` instead of `*`, etc).
+-- 
+-- ```lua
+-- default = "prefix"
+-- ```
+---@field mode "prefix" | "postfix" | "prefer_prefix" | "prefer_postfix"
 
 ---@class _.lspconfig.settings.rust_analyzer.LifetimeElisionHints
 -- Whether to show inlay type hints for elided lifetimes in function signatures.
@@ -8985,7 +8989,13 @@
 -- default = <userdata 1>
 -- ```
 ---@field cargoRunner string
----@field checkOnSave _.lspconfig.settings.rust_analyzer.CheckOnSave
+---@field check _.lspconfig.settings.rust_analyzer.Check
+-- Run the check command for diagnostics on save.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field checkOnSave boolean
 ---@field completion _.lspconfig.settings.rust_analyzer.Completion
 ---@field debug _.lspconfig.settings.rust_analyzer.Debug
 ---@field diagnostics _.lspconfig.settings.rust_analyzer.Diagnostics
@@ -9008,6 +9018,12 @@
 ---@field linkedProjects any[]
 ---@field lru _.lspconfig.settings.rust_analyzer.Lru
 ---@field notifications _.lspconfig.settings.rust_analyzer.Notifications
+-- How many worker threads in the main loop. The default `null` means to pick automatically.
+-- 
+-- ```lua
+-- default = <userdata 1>
+-- ```
+---@field numThreads integer
 ---@field procMacro _.lspconfig.settings.rust_analyzer.ProcMacro
 ---@field references _.lspconfig.settings.rust_analyzer.References
 -- Whether to restart the server automatically when certain settings that require a restart are changed.

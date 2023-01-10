@@ -151,22 +151,17 @@
         "string"
       ]
     },
-    "rust-analyzer.checkOnSave.allTargets": {
+    "rust-analyzer.check.allTargets": {
       "default": true,
       "markdownDescription": "Check all targets and tests (`--all-targets`).",
       "type": "boolean"
     },
-    "rust-analyzer.checkOnSave.command": {
+    "rust-analyzer.check.command": {
       "default": "check",
       "markdownDescription": "Cargo command to use for `cargo check`.",
       "type": "string"
     },
-    "rust-analyzer.checkOnSave.enable": {
-      "default": true,
-      "markdownDescription": "Run specified `cargo check` command for diagnostics on save.",
-      "type": "boolean"
-    },
-    "rust-analyzer.checkOnSave.extraArgs": {
+    "rust-analyzer.check.extraArgs": {
       "default": [],
       "items": {
         "type": "string"
@@ -174,12 +169,12 @@
       "markdownDescription": "Extra arguments for `cargo check`.",
       "type": "array"
     },
-    "rust-analyzer.checkOnSave.extraEnv": {
+    "rust-analyzer.check.extraEnv": {
       "default": {},
       "markdownDescription": "Extra environment variables that will be set when running `cargo check`.\nExtends `#rust-analyzer.cargo.extraEnv#`.",
       "type": "object"
     },
-    "rust-analyzer.checkOnSave.features": {
+    "rust-analyzer.check.features": {
       "anyOf": [
         {
           "enum": [
@@ -203,7 +198,7 @@
       "default": null,
       "markdownDescription": "List of features to activate. Defaults to\n`#rust-analyzer.cargo.features#`.\n\nSet to `\"all\"` to pass `--all-features` to Cargo."
     },
-    "rust-analyzer.checkOnSave.invocationLocation": {
+    "rust-analyzer.check.invocationLocation": {
       "default": "workspace",
       "enum": [
         "workspace",
@@ -216,7 +211,7 @@
       "markdownDescription": "Specifies the working directory for running checks.\n- \"workspace\": run checks for workspaces in the corresponding workspaces' root directories.\n    This falls back to \"root\" if `#rust-analyzer.cargo.checkOnSave.invocationStrategy#` is set to `once`.\n- \"root\": run checks in the project's root directory.\nThis config only has an effect when `#rust-analyzer.cargo.buildScripts.overrideCommand#`\nis set.",
       "type": "string"
     },
-    "rust-analyzer.checkOnSave.invocationStrategy": {
+    "rust-analyzer.check.invocationStrategy": {
       "default": "per_workspace",
       "enum": [
         "per_workspace",
@@ -229,7 +224,7 @@
       "markdownDescription": "Specifies the invocation strategy to use when running the checkOnSave command.\nIf `per_workspace` is set, the command will be executed for each workspace.\nIf `once` is set, the command will be executed once.\nThis config only has an effect when `#rust-analyzer.cargo.buildScripts.overrideCommand#`\nis set.",
       "type": "string"
     },
-    "rust-analyzer.checkOnSave.noDefaultFeatures": {
+    "rust-analyzer.check.noDefaultFeatures": {
       "default": null,
       "markdownDescription": "Whether to pass `--no-default-features` to Cargo. Defaults to\n`#rust-analyzer.cargo.noDefaultFeatures#`.",
       "type": [
@@ -237,18 +232,18 @@
         "boolean"
       ]
     },
-    "rust-analyzer.checkOnSave.overrideCommand": {
+    "rust-analyzer.check.overrideCommand": {
       "default": null,
       "items": {
         "type": "string"
       },
-      "markdownDescription": "Override the command rust-analyzer uses instead of `cargo check` for\ndiagnostics on save. The command is required to output json and\nshould therefore include `--message-format=json` or a similar option.\n\nIf you're changing this because you're using some tool wrapping\nCargo, you might also want to change\n`#rust-analyzer.cargo.buildScripts.overrideCommand#`.\n\nIf there are multiple linked projects, this command is invoked for\neach of them, with the working directory being the project root\n(i.e., the folder containing the `Cargo.toml`).\n\nAn example command would be:\n\n```bash\ncargo check --workspace --message-format=json --all-targets\n```\n.",
+      "markdownDescription": "Override the command rust-analyzer uses instead of `cargo check` for\ndiagnostics on save. The command is required to output json and\nshould therefore include `--message-format=json` or a similar option\n(if your client supports the `colorDiagnosticOutput` experimental\ncapability, you can use `--message-format=json-diagnostic-rendered-ansi`).\n\nIf you're changing this because you're using some tool wrapping\nCargo, you might also want to change\n`#rust-analyzer.cargo.buildScripts.overrideCommand#`.\n\nIf there are multiple linked projects, this command is invoked for\neach of them, with the working directory being the project root\n(i.e., the folder containing the `Cargo.toml`).\n\nAn example command would be:\n\n```bash\ncargo check --workspace --message-format=json --all-targets\n```\n.",
       "type": [
         "null",
         "array"
       ]
     },
-    "rust-analyzer.checkOnSave.target": {
+    "rust-analyzer.check.targets": {
       "anyOf": [
         {
           "type": "null"
@@ -265,6 +260,11 @@
       ],
       "default": null,
       "markdownDescription": "Check for specific targets. Defaults to `#rust-analyzer.cargo.target#` if empty.\n\nCan be a single target, e.g. `\"x86_64-unknown-linux-gnu\"` or a list of targets, e.g.\n`[\"aarch64-apple-darwin\", \"x86_64-apple-darwin\"]`.\n\nAliased as `\"checkOnSave.targets\"`."
+    },
+    "rust-analyzer.checkOnSave": {
+      "default": true,
+      "markdownDescription": "Run the check command for diagnostics on save.",
+      "type": "boolean"
     },
     "rust-analyzer.completion.autoimport.enable": {
       "default": true,
@@ -641,6 +641,23 @@
       "markdownDescription": "Whether to hide inlay hints for type adjustments outside of `unsafe` blocks.",
       "type": "boolean"
     },
+    "rust-analyzer.inlayHints.expressionAdjustmentHints.mode": {
+      "default": "prefix",
+      "enum": [
+        "prefix",
+        "postfix",
+        "prefer_prefix",
+        "prefer_postfix"
+      ],
+      "enumDescriptions": [
+        "Always show adjustment hints as prefix (`*expr`).",
+        "Always show adjustment hints as postfix (`expr.*`).",
+        "Show prefix or postfix depending on which uses less parenthesis, prefering prefix.",
+        "Show prefix or postfix depending on which uses less parenthesis, prefering postfix."
+      ],
+      "markdownDescription": "Whether to show inlay hints as postfix ops (`.*` instead of `*`, etc).",
+      "type": "string"
+    },
     "rust-analyzer.inlayHints.lifetimeElisionHints.enable": {
       "default": "never",
       "enum": [
@@ -817,6 +834,15 @@
       "default": true,
       "markdownDescription": "Whether to show `can't find Cargo.toml` error message.",
       "type": "boolean"
+    },
+    "rust-analyzer.numThreads": {
+      "default": null,
+      "markdownDescription": "How many worker threads in the main loop. The default `null` means to pick automatically.",
+      "minimum": 0,
+      "type": [
+        "null",
+        "integer"
+      ]
     },
     "rust-analyzer.procMacro.attributes.enable": {
       "default": true,

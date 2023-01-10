@@ -84,6 +84,12 @@
       "scope": "resource",
       "type": "boolean"
     },
+    "elixirLS.languageServerOverridePath": {
+      "description": "Absolute path to alternative ElixirLS release that will override packaged release.",
+      "minLength": 0,
+      "scope": "resource",
+      "type": "string"
+    },
     "elixirLS.mixEnv": {
       "default": "test",
       "description": "Mix environment to use for compilation",
