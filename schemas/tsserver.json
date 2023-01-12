@@ -843,12 +843,6 @@
       "scope": "resource",
       "type": "boolean"
     },
-    "typescript.suggest.includeCompletionsWithSnippetText": {
-      "default": true,
-      "description": "Enable/disable snippet completions from TS Server.",
-      "scope": "resource",
-      "type": "boolean"
-    },
     "typescript.suggest.jsdoc.generateReturns": {
       "default": true,
       "markdownDescription": "Enable/disable generating `@returns` annotations for JSDoc templates.",
