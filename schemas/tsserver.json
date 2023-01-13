@@ -472,6 +472,15 @@
       "scope": "window",
       "type": "boolean"
     },
+    "typescript.experimental.tsserver.web.enableProjectWideIntellisense": {
+      "default": false,
+      "description": "Enable/disable project-wide IntelliSense on web. Requires that VS Code is running in a trusted context.",
+      "scope": "window",
+      "tags": [
+        "experimental"
+      ],
+      "type": "boolean"
+    },
     "typescript.format.enable": {
       "default": true,
       "description": "Enable/disable default TypeScript formatter.",

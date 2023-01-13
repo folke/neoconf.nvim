@@ -11897,6 +11897,16 @@
 -- ```
 ---@field npmIsInstalled boolean
 
+---@class _.lspconfig.settings.tsserver.Web
+-- Enable/disable project-wide IntelliSense on web. Requires that VS Code is running in a trusted context.
+---@field enableProjectWideIntellisense boolean
+
+---@class _.lspconfig.settings.tsserver.Tsserver
+---@field web _.lspconfig.settings.tsserver.Web
+
+---@class _.lspconfig.settings.tsserver.Experimental
+---@field tsserver _.lspconfig.settings.tsserver.Tsserver
+
 ---@class _.lspconfig.settings.tsserver.Format
 -- Enable/disable default TypeScript formatter.
 -- 
@@ -12317,6 +12327,7 @@
 ---@field disableAutomaticTypeAcquisition boolean
 -- Enables prompting of users to use the TypeScript version configured in the workspace for Intellisense.
 ---@field enablePromptUseWorkspaceTsdk boolean
+---@field experimental _.lspconfig.settings.tsserver.Experimental
 ---@field format _.lspconfig.settings.tsserver.Format
 ---@field implementationsCodeLens _.lspconfig.settings.tsserver.ImplementationsCodeLens
 ---@field inlayHints _.lspconfig.settings.tsserver.InlayHints
