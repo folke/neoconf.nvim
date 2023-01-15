@@ -7138,6 +7138,12 @@
 -- default = "none"
 -- ```
 ---@field reportConstantRedefinition "none" | "information" | "warning" | "error"
+-- Diagnostics for use of deprecated classes or functions.
+-- 
+-- ```lua
+-- default = "none"
+-- ```
+---@field reportDeprecated "none" | "information" | "warning" | "error"
 -- Diagnostics for an imported symbol or module that is imported more than once.
 -- 
 -- ```lua

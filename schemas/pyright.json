@@ -76,6 +76,17 @@
           ],
           "type": "string"
         },
+        "reportDeprecated": {
+          "default": "none",
+          "description": "Diagnostics for use of deprecated classes or functions.",
+          "enum": [
+            "none",
+            "information",
+            "warning",
+            "error"
+          ],
+          "type": "string"
+        },
         "reportDuplicateImport": {
           "default": "none",
           "description": "Diagnostics for an imported symbol or module that is imported more than once.",
