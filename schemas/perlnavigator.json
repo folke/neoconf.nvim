@@ -38,9 +38,29 @@
       "scope": "resource",
       "type": "boolean"
     },
+    "perlnavigator.perlcriticExclude": {
+      "description": "Regex pattern with policies to exclude for perl critic (normally in profile)",
+      "scope": "resource",
+      "type": "string"
+    },
+    "perlnavigator.perlcriticInclude": {
+      "description": "Regex pattern with policies to include for perl critic (normally in profile)",
+      "scope": "resource",
+      "type": "string"
+    },
     "perlnavigator.perlcriticProfile": {
       "default": "",
       "description": "Path to perl critic profile. Otherwise perlcritic itself will default to ~/.perlcriticrc. (no aliases, .bat files or ~/)",
+      "scope": "resource",
+      "type": "string"
+    },
+    "perlnavigator.perlcriticSeverity": {
+      "description": "Override severity level for perl critic (normally in profile)",
+      "scope": "resource",
+      "type": "number"
+    },
+    "perlnavigator.perlcriticTheme": {
+      "description": "Override theme for perl critic (normally in profile)",
       "scope": "resource",
       "type": "string"
     },

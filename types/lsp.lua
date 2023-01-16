@@ -5735,12 +5735,20 @@
 -- default = true
 -- ```
 ---@field perlcriticEnabled boolean
+-- Regex pattern with policies to exclude for perl critic (normally in profile)
+---@field perlcriticExclude string
+-- Regex pattern with policies to include for perl critic (normally in profile)
+---@field perlcriticInclude string
 -- Path to perl critic profile. Otherwise perlcritic itself will default to ~/.perlcriticrc. (no aliases, .bat files or ~/)
 -- 
 -- ```lua
 -- default = ""
 -- ```
 ---@field perlcriticProfile string
+-- Override severity level for perl critic (normally in profile)
+---@field perlcriticSeverity number
+-- Override theme for perl critic (normally in profile)
+---@field perlcriticTheme string
 -- Enable perlimports as a linter.
 ---@field perlimportsLintEnabled boolean
 -- Path to perlimports.toml (no aliases, .bat files or ~/)
