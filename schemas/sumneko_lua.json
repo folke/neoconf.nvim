@@ -2,6 +2,18 @@
   "$schema": "http://json-schema.org/draft-07/schema#",
   "description": "Lua Language Server coded by Lua",
   "properties": {
+    "Lua.addonManager.authentication.noAsk": {
+      "default": false,
+      "markdownDescription": "Don't ask to sign in on startup.",
+      "scope": "resource",
+      "type": "boolean"
+    },
+    "Lua.codeLens.enable": {
+      "default": false,
+      "markdownDescription": "Enable code lens.",
+      "scope": "resource",
+      "type": "boolean"
+    },
     "Lua.completion.autoRequire": {
       "default": true,
       "markdownDescription": "When the input looks like a file name, automatically `require` this file.",
@@ -180,6 +192,7 @@
           "missing-return-value",
           "need-check-nil",
           "need-paren",
+          "nesting-long-mark",
           "newfield-call",
           "newline-call",
           "no-unknown",
@@ -649,7 +662,7 @@
         },
         "circle-doc-class": {
           "default": "Any",
-          "description": "Enable diagnostics for two classes inheriting from each other introducing a circular relation.",
+          "description": "%config.diagnostics.circle-doc-class%",
           "enum": [
             "Any",
             "Opened",
@@ -1383,7 +1396,7 @@
         },
         "circle-doc-class": {
           "default": "Warning",
-          "description": "Enable diagnostics for two classes inheriting from each other introducing a circular relation.",
+          "description": "%config.diagnostics.circle-doc-class%",
           "enum": [
             "Error",
             "Warning",
@@ -2202,7 +2215,7 @@
     },
     "Lua.format.defaultConfig": {
       "additionalProperties": false,
-      "default": {},
+      "default": [],
       "markdownDescription": "The default format configuration. Has a lower priority than `.editorconfig` file in the workspace.\nRead [formatter docs](https://github.com/CppCXY/EmmyLuaCodeStyle/tree/master/docs) to learn usage.\n",
       "patternProperties": {
         ".*": {
@@ -2548,10 +2561,10 @@
       ],
       "markdownDescription": "File encoding. The `ansi` option is only available under the `Windows` platform.",
       "markdownEnumDescriptions": [
-        "utf8",
-        "ansi",
-        "utf16le",
-        "utf16be"
+        "%config.runtime.fileEncoding.utf8%",
+        "%config.runtime.fileEncoding.ansi%",
+        "%config.runtime.fileEncoding.utf16le%",
+        "%config.runtime.fileEncoding.utf16be%"
       ],
       "scope": "resource",
       "type": "string"
@@ -2627,7 +2640,7 @@
     },
     "Lua.runtime.special": {
       "additionalProperties": false,
-      "default": {},
+      "default": [],
       "markdownDescription": "The custom global variables are regarded as some special built-in variables, and the language server will provide special support\nThe following example shows that 'include' is treated as' require '.\n```json\n\"Lua.runtime.special\" : {\n    \"include\" : \"require\"\n}\n```\n",
       "patternProperties": {
         ".*": {
@@ -2717,18 +2730,6 @@
       "markdownDescription": "Custom words for spell checking.",
       "scope": "resource",
       "type": "array"
-    },
-    "Lua.telemetry.enable": {
-      "default": null,
-      "markdownDescription": "Enable telemetry to send your editor information and error logs over the network. Read our privacy policy [here](https://github.com/sumneko/lua-language-server/wiki/Home#privacy).\n",
-      "scope": "resource",
-      "tags": [
-        "telemetry"
-      ],
-      "type": [
-        "boolean",
-        "null"
-      ]
     },
     "Lua.type.castNumberToInteger": {
       "default": true,

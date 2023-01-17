@@ -773,6 +773,23 @@
       "scope": "window",
       "type": "string"
     },
+    "java.sharedIndexes.enabled": {
+      "default": "auto",
+      "enum": [
+        "auto",
+        "on",
+        "off"
+      ],
+      "markdownDescription": "[Experimental] Specify whether to share indexes between different workspaces. When set to `auto`, shared indexes will be enabled in Visual Studio Code - Insiders.",
+      "scope": "window",
+      "type": "string"
+    },
+    "java.sharedIndexes.location": {
+      "default": "",
+      "markdownDescription": "Specifies a common index location for all workspaces. See default values as follows:\n \nWindows: First use `\"$APPDATA\\\\.jdt\\\\index\"`, or `\"~\\\\.jdt\\\\index\"` if it does not exist\n \nmacOS: `\"~/Library/Caches/.jdt/index\"`\n \nLinux: First use `\"$XDG_CACHE_HOME/.jdt/index\"`, or `\"~/.cache/.jdt/index\"` if it does not exist",
+      "scope": "window",
+      "type": "string"
+    },
     "java.showBuildStatusOnStart.enabled": {
       "anyOf": [
         {

@@ -3653,6 +3653,26 @@
 -- ```
 ---@field url string
 
+---@class _.lspconfig.settings.jdtls.SharedIndexes
+-- [Experimental] Specify whether to share indexes between different workspaces. When set to `auto`, shared indexes will be enabled in Visual Studio Code - Insiders.
+-- 
+-- ```lua
+-- default = "auto"
+-- ```
+---@field enabled "auto" | "on" | "off"
+-- Specifies a common index location for all workspaces. See default values as follows:
+--  
+-- Windows: First use `"$APPDATA\\.jdt\\index"`, or `"~\\.jdt\\index"` if it does not exist
+--  
+-- macOS: `"~/Library/Caches/.jdt/index"`
+--  
+-- Linux: First use `"$XDG_CACHE_HOME/.jdt/index"`, or `"~/.cache/.jdt/index"` if it does not exist
+-- 
+-- ```lua
+-- default = ""
+-- ```
+---@field location string
+
 ---@class _.lspconfig.settings.jdtls.ShowBuildStatusOnStart
 -- Automatically show build status on startup.
 -- 
@@ -3764,6 +3784,7 @@
 ---@field selectionRange _.lspconfig.settings.jdtls.SelectionRange
 ---@field server _.lspconfig.settings.jdtls.Server
 ---@field settings _.lspconfig.settings.jdtls.Settings
+---@field sharedIndexes _.lspconfig.settings.jdtls.SharedIndexes
 ---@field showBuildStatusOnStart _.lspconfig.settings.jdtls.ShowBuildStatusOnStart
 ---@field signatureHelp _.lspconfig.settings.jdtls.SignatureHelp
 ---@field sources _.lspconfig.settings.jdtls.Sources
@@ -8609,12 +8630,6 @@
 ---@field discriminantHints _.lspconfig.settings.rust_analyzer.DiscriminantHints
 ---@field expressionAdjustmentHints _.lspconfig.settings.rust_analyzer.ExpressionAdjustmentHints
 ---@field lifetimeElisionHints _.lspconfig.settings.rust_analyzer.LifetimeElisionHints
--- Whether to use location links for parts of type mentioned in inlay hints.
--- 
--- ```lua
--- default = true
--- ```
----@field locationLinks boolean
 -- Maximum length for inlay hints. Set to null to have an unlimited length.
 -- 
 -- ```lua
@@ -9430,6 +9445,17 @@
 ---@class lspconfig.settings.stylelint_lsp
 ---@field stylelintplus _.lspconfig.settings.stylelint_lsp.Stylelintplus
 
+---@class _.lspconfig.settings.sumneko_lua.Authentication
+-- Don't ask to sign in on startup.
+---@field noAsk boolean
+
+---@class _.lspconfig.settings.sumneko_lua.AddonManager
+---@field authentication _.lspconfig.settings.sumneko_lua.Authentication
+
+---@class _.lspconfig.settings.sumneko_lua.CodeLens
+-- Enable code lens.
+---@field enable boolean
+
 ---@class _.lspconfig.settings.sumneko_lua.Completion
 -- When the input looks like a file name, automatically `require` this file.
 -- 
@@ -9776,7 +9802,7 @@
 -- default = "Opened"
 -- ```
 ---@field cast-type-mismatch "Any" | "Opened" | "None" | "Any!" | "Opened!" | "None!"
--- Enable diagnostics for two classes inheriting from each other introducing a circular relation.
+-- %config.diagnostics.circle-doc-class%
 -- 
 -- ```lua
 -- default = "Any"
@@ -10112,7 +10138,7 @@
 -- default = "Warning"
 -- ```
 ---@field cast-type-mismatch "Error" | "Warning" | "Information" | "Hint" | "Error!" | "Warning!" | "Information!" | "Hint!"
--- Enable diagnostics for two classes inheriting from each other introducing a circular relation.
+-- %config.diagnostics.circle-doc-class%
 -- 
 -- ```lua
 -- default = "Warning"
@@ -10859,15 +10885,6 @@
 -- ```
 ---@field dict string[]
 
----@class _.lspconfig.settings.sumneko_lua.Telemetry
--- Enable telemetry to send your editor information and error logs over the network. Read our privacy policy [here](https://github.com/sumneko/lua-language-server/wiki/Home#privacy).
--- 
--- 
--- ```lua
--- default = <userdata 1>
--- ```
----@field enable boolean
-
 ---@class _.lspconfig.settings.sumneko_lua.Type
 -- Allowed to assign the `number` type to the `integer` type.
 -- 
@@ -10990,6 +11007,8 @@
 ---@field userThirdParty string[]
 
 ---@class _.lspconfig.settings.sumneko_lua.Lua
+---@field addonManager _.lspconfig.settings.sumneko_lua.AddonManager
+---@field codeLens _.lspconfig.settings.sumneko_lua.CodeLens
 ---@field completion _.lspconfig.settings.sumneko_lua.Completion
 ---@field diagnostics _.lspconfig.settings.sumneko_lua.Diagnostics
 ---@field doc _.lspconfig.settings.sumneko_lua.Doc
@@ -11001,7 +11020,6 @@
 ---@field semantic _.lspconfig.settings.sumneko_lua.Semantic
 ---@field signatureHelp _.lspconfig.settings.sumneko_lua.SignatureHelp
 ---@field spell _.lspconfig.settings.sumneko_lua.Spell
----@field telemetry _.lspconfig.settings.sumneko_lua.Telemetry
 ---@field type _.lspconfig.settings.sumneko_lua.Type
 ---@field typeFormat _.lspconfig.settings.sumneko_lua.TypeFormat
 ---@field window _.lspconfig.settings.sumneko_lua.Window
