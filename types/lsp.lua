@@ -9445,13 +9445,6 @@
 ---@class lspconfig.settings.stylelint_lsp
 ---@field stylelintplus _.lspconfig.settings.stylelint_lsp.Stylelintplus
 
----@class _.lspconfig.settings.sumneko_lua.Authentication
--- Don't ask to sign in on startup.
----@field noAsk boolean
-
----@class _.lspconfig.settings.sumneko_lua.AddonManager
----@field authentication _.lspconfig.settings.sumneko_lua.Authentication
-
 ---@class _.lspconfig.settings.sumneko_lua.CodeLens
 -- Enable code lens.
 ---@field enable boolean
@@ -11007,7 +11000,6 @@
 ---@field userThirdParty string[]
 
 ---@class _.lspconfig.settings.sumneko_lua.Lua
----@field addonManager _.lspconfig.settings.sumneko_lua.AddonManager
 ---@field codeLens _.lspconfig.settings.sumneko_lua.CodeLens
 ---@field completion _.lspconfig.settings.sumneko_lua.Completion
 ---@field diagnostics _.lspconfig.settings.sumneko_lua.Diagnostics
