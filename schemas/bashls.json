@@ -18,11 +18,6 @@
       "description": "Glob pattern for finding and parsing shell script files in the workspace. Used by the background analysis features across files.",
       "type": "string"
     },
-    "bashIde.highlightParsingErrors": {
-      "default": false,
-      "description": "Controls if Treesitter parsing errors will be highlighted as problems.",
-      "type": "boolean"
-    },
     "bashIde.includeAllWorkspaceSymbols": {
       "default": false,
       "description": "Controls how symbols (e.g. variables and functions) are included and used for completion and documentation. If false (default and recommended), then we only include symbols from sourced files (i.e. using non dynamic statements like 'source file.sh' or '. file.sh'). If true, then all symbols from the workspace are included.",

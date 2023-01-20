@@ -21,7 +21,8 @@
           "addFinalModifier",
           "instanceofPatternMatch",
           "lambdaExpression",
-          "switchExpression"
+          "switchExpression",
+          "tryWithResource"
         ],
         "type": "string"
       },
@@ -488,6 +489,12 @@
     "java.import.gradle.wrapper.enabled": {
       "default": true,
       "description": "Use Gradle from the 'gradle-wrapper.properties' file.",
+      "scope": "window",
+      "type": "boolean"
+    },
+    "java.import.maven.disableTestClasspathFlag": {
+      "default": false,
+      "description": "Enable/disable test classpath segregation. When enabled, this permits the usage of test resources within a Maven project as dependencies within the compile scope of other projects.",
       "scope": "window",
       "type": "boolean"
     },

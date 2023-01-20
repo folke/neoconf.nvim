@@ -262,8 +262,6 @@
 -- default = "**/*@(.sh|.inc|.bash|.command)"
 -- ```
 ---@field globPattern string
--- Controls if Treesitter parsing errors will be highlighted as problems.
----@field highlightParsingErrors boolean
 -- Controls how symbols (e.g. variables and functions) are included and used for completion and documentation. If false (default and recommended), then we only include symbols from sourced files (i.e. using non dynamic statements like 'source file.sh' or '. file.sh'). If true, then all symbols from the workspace are included.
 ---@field includeAllWorkspaceSymbols boolean
 -- Controls the log level of the language server.
@@ -3411,6 +3409,8 @@
 ---@field enabled boolean
 
 ---@class _.lspconfig.settings.jdtls.Maven
+-- Enable/disable test classpath segregation. When enabled, this permits the usage of test resources within a Maven project as dependencies within the compile scope of other projects.
+---@field disableTestClasspathFlag boolean
 -- Enable/disable the Maven importer.
 -- 
 -- ```lua
