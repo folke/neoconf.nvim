@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.0.1](https://github.com/folke/neoconf.nvim/compare/v1.0.0...v1.0.1) (2023-01-22)
+
+
+### Bug Fixes
+
+* add types/lua to workspace ([8a4e133](https://github.com/folke/neoconf.nvim/commit/8a4e1336f156ca2f66849725199b05d3150d869c))
+* **health:** settings.nvim -&gt; neoconf.nvim ([52df9fc](https://github.com/folke/neoconf.nvim/commit/52df9fcd2aec9caf2918062df7b6f11b2afd2443))
+
 ## 1.0.0 (2023-01-04)
 
 
