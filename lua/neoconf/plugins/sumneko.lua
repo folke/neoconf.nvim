@@ -28,7 +28,7 @@ function M.on_new_config(config, root_dir)
         },
       }, config.settings)
 
-      table.insert(config.settings.Lua.workspace.library, Util.path("types"))
+      vim.list_extend(config.settings.Lua.workspace.library, { Util.path("types"), Util.path("types") .. "/lua" })
     end
   end
 end
