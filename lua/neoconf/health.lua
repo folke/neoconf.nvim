@@ -1,7 +1,7 @@
 local M = {}
 
 function M.check()
-  vim.health.report_start("Settings.nvim")
+  vim.health.report_start("neoconf.nvim")
 
   local function info(msg, ...)
     vim.health.report_info(msg:format(...))
