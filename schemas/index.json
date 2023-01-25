@@ -54,6 +54,7 @@
   "terraformls": "https://raw.githubusercontent.com/hashicorp/vscode-terraform/master/package.json",
   "tsserver": "https://raw.githubusercontent.com/microsoft/vscode/main/extensions/typescript-language-features/package.json",
   "volar": "https://raw.githubusercontent.com/johnsoncodehk/volar/master/vue-language-tools/vscode-vue/package.json",
+  "vtsls": "https://raw.githubusercontent.com/yioneko/vtsls/main/packages/service/configuration.schema.json",
   "vuels": "https://raw.githubusercontent.com/vuejs/vetur/master/package.json",
   "wgls_analyzer": "https://raw.githubusercontent.com/wgsl-analyzer/wgsl-analyzer/main/editors/code/package.json",
   "yamlls": "https://raw.githubusercontent.com/redhat-developer/vscode-yaml/master/package.json",

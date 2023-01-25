@@ -5025,6 +5025,14 @@
 -- ```
 ---@field port number
 
+---@class _.lspconfig.settings.luau_lsp.Require
+-- How string requires should be interpreted
+-- 
+-- ```lua
+-- default = "relativeToWorkspaceRoot"
+-- ```
+---@field mode "relativeToWorkspaceRoot" | "relativeToFile"
+
 ---@class _.lspconfig.settings.luau_lsp.SignatureHelp
 -- Enable signature help
 -- 
@@ -5095,6 +5103,7 @@
 ---@field ignoreGlobs string[]
 ---@field inlayHints _.lspconfig.settings.luau_lsp.InlayHints
 ---@field plugin _.lspconfig.settings.luau_lsp.Plugin
+---@field require _.lspconfig.settings.luau_lsp.Require
 ---@field signatureHelp _.lspconfig.settings.luau_lsp.SignatureHelp
 ---@field sourcemap _.lspconfig.settings.luau_lsp.Sourcemap
 ---@field types _.lspconfig.settings.luau_lsp.Types
@@ -12654,6 +12663,851 @@
 ---@field volar _.lspconfig.settings.volar.Volar
 ---@field vue-semantic-server _.lspconfig.settings.volar.Vue-semantic-server
 ---@field vue-syntactic-server _.lspconfig.settings.volar.Vue-syntactic-server
+
+---@class _.lspconfig.settings.vtsls.Format
+-- Enable/disable default JavaScript formatter.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enable boolean
+-- Defines space handling after a comma delimiter.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field insertSpaceAfterCommaDelimiter boolean
+-- Defines space handling after the constructor keyword.
+---@field insertSpaceAfterConstructor boolean
+-- Defines space handling after function keyword for anonymous functions.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field insertSpaceAfterFunctionKeywordForAnonymousFunctions boolean
+-- Defines space handling after keywords in a control flow statement.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field insertSpaceAfterKeywordsInControlFlowStatements boolean
+-- Defines space handling after opening and before closing empty braces.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field insertSpaceAfterOpeningAndBeforeClosingEmptyBraces boolean
+-- Defines space handling after opening and before closing JSX expression braces.
+---@field insertSpaceAfterOpeningAndBeforeClosingJsxExpressionBraces boolean
+-- Defines space handling after opening and before closing non-empty braces.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field insertSpaceAfterOpeningAndBeforeClosingNonemptyBraces boolean
+-- Defines space handling after opening and before closing non-empty brackets.
+---@field insertSpaceAfterOpeningAndBeforeClosingNonemptyBrackets boolean
+-- Defines space handling after opening and before closing non-empty parenthesis.
+---@field insertSpaceAfterOpeningAndBeforeClosingNonemptyParenthesis boolean
+-- Defines space handling after opening and before closing template string braces.
+---@field insertSpaceAfterOpeningAndBeforeClosingTemplateStringBraces boolean
+-- Defines space handling after a semicolon in a for statement.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field insertSpaceAfterSemicolonInForStatements boolean
+-- Defines space handling after a binary operator.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field insertSpaceBeforeAndAfterBinaryOperators boolean
+-- Defines space handling before function argument parentheses.
+---@field insertSpaceBeforeFunctionParenthesis boolean
+-- Defines whether an open brace is put onto a new line for control blocks or not.
+---@field placeOpenBraceOnNewLineForControlBlocks boolean
+-- Defines whether an open brace is put onto a new line for functions or not.
+---@field placeOpenBraceOnNewLineForFunctions boolean
+-- Defines handling of optional semicolons.
+-- 
+-- ```lua
+-- default = "ignore"
+-- ```
+---@field semicolons "ignore" | "insert" | "remove"
+
+---@class _.lspconfig.settings.vtsls.ImplicitProjectConfig
+-- Enable/disable semantic checking of JavaScript files. Existing `jsconfig.json` or `tsconfig.json` files override this setting.
+---@field checkJs boolean
+-- Enable/disable `experimentalDecorators` in JavaScript files that are not part of a project. Existing `jsconfig.json` or `tsconfig.json` files override this setting.
+---@field experimentalDecorators boolean
+
+---@class _.lspconfig.settings.vtsls.EnumMemberValues
+-- Enable/disable inlay hints for member values in enum declarations:
+-- ```typescript
+-- 
+-- enum MyValue {
+-- 	A /* = 0 */;
+-- 	B /* = 1 */;
+-- }
+--  
+-- ```
+---@field enabled boolean
+
+---@class _.lspconfig.settings.vtsls.FunctionLikeReturnTypes
+-- Enable/disable inlay hints for implicit return types on function signatures:
+-- ```typescript
+-- 
+-- function foo() /* :number */ {
+-- 	return Date.now();
+-- } 
+--  
+-- ```
+---@field enabled boolean
+
+---@class _.lspconfig.settings.vtsls.ParameterNames
+-- Enable/disable inlay hints for parameter names:
+-- ```typescript
+-- 
+-- parseInt(/* str: */ '123', /* radix: */ 8)
+--  
+-- ```
+-- 
+-- ```lua
+-- default = "none"
+-- ```
+---@field enabled "none" | "literals" | "all"
+-- Suppress parameter name hints on arguments whose text is identical to the parameter name.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field suppressWhenArgumentMatchesName boolean
+
+---@class _.lspconfig.settings.vtsls.ParameterTypes
+-- Enable/disable inlay hints for implicit parameter types:
+-- ```typescript
+-- 
+-- el.addEventListener('click', e /* :MouseEvent */ => ...)
+--  
+-- ```
+---@field enabled boolean
+
+---@class _.lspconfig.settings.vtsls.PropertyDeclarationTypes
+-- Enable/disable inlay hints for implicit types on property declarations:
+-- ```typescript
+-- 
+-- class Foo {
+-- 	prop /* :number */ = Date.now();
+-- }
+--  
+-- ```
+---@field enabled boolean
+
+---@class _.lspconfig.settings.vtsls.VariableTypes
+-- Enable/disable inlay hints for implicit variable types:
+-- ```typescript
+-- 
+-- const foo /* :number */ = Date.now();
+--  
+-- ```
+---@field enabled boolean
+-- Suppress type hints on variables whose name is identical to the type name. Requires using TypeScript 4.8+ in the workspace.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field suppressWhenTypeMatchesName boolean
+
+---@class _.lspconfig.settings.vtsls.InlayHints
+---@field enumMemberValues _.lspconfig.settings.vtsls.EnumMemberValues
+---@field functionLikeReturnTypes _.lspconfig.settings.vtsls.FunctionLikeReturnTypes
+---@field parameterNames _.lspconfig.settings.vtsls.ParameterNames
+---@field parameterTypes _.lspconfig.settings.vtsls.ParameterTypes
+---@field propertyDeclarationTypes _.lspconfig.settings.vtsls.PropertyDeclarationTypes
+---@field variableTypes _.lspconfig.settings.vtsls.VariableTypes
+
+---@class _.lspconfig.settings.vtsls.Preferences
+-- Specify glob patterns of files to exclude from auto imports. Requires using TypeScript 4.8 or newer in the workspace.
+---@field autoImportFileExcludePatterns string[]
+-- Preferred path style for auto imports.
+-- 
+-- ```lua
+-- default = "shortest"
+-- ```
+---@field importModuleSpecifier "shortest" | "relative" | "non-relative" | "project-relative"
+-- Preferred path ending for auto imports.
+-- 
+-- ```lua
+-- default = "auto"
+-- ```
+---@field importModuleSpecifierEnding "auto" | "minimal" | "index" | "js"
+-- Preferred style for JSX attribute completions.
+-- 
+-- ```lua
+-- default = "auto"
+-- ```
+---@field jsxAttributeCompletionStyle "auto" | "braces" | "none"
+-- Preferred quote style to use for Quick Fixes.
+-- 
+-- ```lua
+-- default = "auto"
+-- ```
+---@field quoteStyle "auto" | "single" | "double"
+-- Enable/disable introducing aliases for object shorthand properties during renames.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field renameShorthandProperties boolean
+-- Enable/disable introducing aliases for object shorthand properties during renames.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field useAliasesForRenames boolean
+
+---@class _.lspconfig.settings.vtsls.ReferencesCodeLens
+-- Enable/disable references CodeLens in JavaScript files.
+---@field enabled boolean
+-- Enable/disable references CodeLens on all functions in JavaScript files.
+---@field showOnAllFunctions boolean
+
+---@class _.lspconfig.settings.vtsls.ClassMemberSnippets
+-- Enable/disable snippet completions for class members.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enabled boolean
+
+---@class _.lspconfig.settings.vtsls.Jsdoc
+-- Enable/disable generating `@returns` annotations for JSDoc templates.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field generateReturns boolean
+
+---@class _.lspconfig.settings.vtsls.Suggest
+-- Enable/disable auto import suggestions.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field autoImports boolean
+---@field classMemberSnippets _.lspconfig.settings.vtsls.ClassMemberSnippets
+-- Complete functions with their parameter signature.
+---@field completeFunctionCalls boolean
+-- Enable/disable suggestion to complete JSDoc comments.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field completeJSDocs boolean
+-- Enabled/disable autocomplete suggestions.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enabled boolean
+-- Enable/disable showing completions on potentially undefined values that insert an optional chain call. Requires strict null checks to be enabled.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field includeAutomaticOptionalChainCompletions boolean
+-- Enable/disable auto-import-style completions on partially-typed import statements.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field includeCompletionsForImportStatements boolean
+---@field jsdoc _.lspconfig.settings.vtsls.Jsdoc
+-- Enable/disable including unique names from the file in JavaScript suggestions. Note that name suggestions are always disabled in JavaScript code that is semantically checked using `@ts-check` or `checkJs`.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field names boolean
+-- Enable/disable suggestions for paths in import statements and require calls.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field paths boolean
+
+---@class _.lspconfig.settings.vtsls.SuggestionActions
+-- Enable/disable suggestion diagnostics for JavaScript files in the editor.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enabled boolean
+
+---@class _.lspconfig.settings.vtsls.UpdateImportsOnFileMove
+-- Enable/disable automatic updating of import paths when you rename or move a file in VS Code.
+-- 
+-- ```lua
+-- default = "prompt"
+-- ```
+---@field enabled "prompt" | "always" | "never"
+
+---@class _.lspconfig.settings.vtsls.Validate
+-- Enable/disable JavaScript validation.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enable boolean
+
+---@class _.lspconfig.settings.vtsls.Javascript
+-- Enable/disable automatic closing of JSX tags.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field autoClosingTags boolean
+---@field format _.lspconfig.settings.vtsls.Format
+---@field implicitProjectConfig _.lspconfig.settings.vtsls.ImplicitProjectConfig
+---@field inlayHints _.lspconfig.settings.vtsls.InlayHints
+---@field preferences _.lspconfig.settings.vtsls.Preferences
+---@field referencesCodeLens _.lspconfig.settings.vtsls.ReferencesCodeLens
+---@field suggest _.lspconfig.settings.vtsls.Suggest
+---@field suggestionActions _.lspconfig.settings.vtsls.SuggestionActions
+---@field updateImportsOnFileMove _.lspconfig.settings.vtsls.UpdateImportsOnFileMove
+---@field validate _.lspconfig.settings.vtsls.Validate
+
+---@class _.lspconfig.settings.vtsls.ImplicitProjectConfig
+-- Enable/disable semantic checking of JavaScript files. Existing `jsconfig.json` or `tsconfig.json` files override this setting.
+---@field checkJs boolean
+-- Enable/disable `experimentalDecorators` in JavaScript files that are not part of a project. Existing `jsconfig.json` or `tsconfig.json` files override this setting.
+---@field experimentalDecorators boolean
+-- Sets the module system for the program. See more: https://www.typescriptlang.org/tsconfig#module.
+-- 
+-- ```lua
+-- default = "ESNext"
+-- ```
+---@field module "CommonJS" | "AMD" | "System" | "UMD" | "ES6" | "ES2015" | "ES2020" | "ESNext" | "None" | "ES2022" | "Node12" | "NodeNext"
+-- Enable/disable [strict function types](https://www.typescriptlang.org/tsconfig#strictFunctionTypes) in JavaScript and TypeScript files that are not part of a project. Existing `jsconfig.json` or `tsconfig.json` files override this setting.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field strictFunctionTypes boolean
+-- Enable/disable [strict null checks](https://www.typescriptlang.org/tsconfig#strictNullChecks) in JavaScript and TypeScript files that are not part of a project. Existing `jsconfig.json` or `tsconfig.json` files override this setting.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field strictNullChecks boolean
+-- Set target JavaScript language version for emitted JavaScript and include library declarations. See more: https://www.typescriptlang.org/tsconfig#target.
+-- 
+-- ```lua
+-- default = "ES2020"
+-- ```
+---@field target "ES3" | "ES5" | "ES6" | "ES2015" | "ES2016" | "ES2017" | "ES2018" | "ES2019" | "ES2020" | "ES2021" | "ES2022" | "ESNext"
+
+---@class _.lspconfig.settings.vtsls.Js/ts
+---@field implicitProjectConfig _.lspconfig.settings.vtsls.ImplicitProjectConfig
+
+---@class _.lspconfig.settings.vtsls.Check
+-- Check if npm is installed for [Automatic Type Acquisition](https://code.visualstudio.com/docs/nodejs/working-with-javascript#_typings-and-automatic-type-acquisition).
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field npmIsInstalled boolean
+
+---@class _.lspconfig.settings.vtsls.Web
+-- Enable/disable project-wide IntelliSense on web. Requires that VS Code is running in a trusted context.
+---@field enableProjectWideIntellisense boolean
+
+---@class _.lspconfig.settings.vtsls.Tsserver
+---@field web _.lspconfig.settings.vtsls.Web
+
+---@class _.lspconfig.settings.vtsls.Experimental
+---@field tsserver _.lspconfig.settings.vtsls.Tsserver
+
+---@class _.lspconfig.settings.vtsls.Format
+-- Enable/disable default TypeScript formatter.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enable boolean
+-- Defines space handling after a comma delimiter.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field insertSpaceAfterCommaDelimiter boolean
+-- Defines space handling after the constructor keyword.
+---@field insertSpaceAfterConstructor boolean
+-- Defines space handling after function keyword for anonymous functions.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field insertSpaceAfterFunctionKeywordForAnonymousFunctions boolean
+-- Defines space handling after keywords in a control flow statement.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field insertSpaceAfterKeywordsInControlFlowStatements boolean
+-- Defines space handling after opening and before closing empty braces.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field insertSpaceAfterOpeningAndBeforeClosingEmptyBraces boolean
+-- Defines space handling after opening and before closing JSX expression braces.
+---@field insertSpaceAfterOpeningAndBeforeClosingJsxExpressionBraces boolean
+-- Defines space handling after opening and before closing non-empty braces.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field insertSpaceAfterOpeningAndBeforeClosingNonemptyBraces boolean
+-- Defines space handling after opening and before closing non-empty brackets.
+---@field insertSpaceAfterOpeningAndBeforeClosingNonemptyBrackets boolean
+-- Defines space handling after opening and before closing non-empty parenthesis.
+---@field insertSpaceAfterOpeningAndBeforeClosingNonemptyParenthesis boolean
+-- Defines space handling after opening and before closing template string braces.
+---@field insertSpaceAfterOpeningAndBeforeClosingTemplateStringBraces boolean
+-- Defines space handling after a semicolon in a for statement.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field insertSpaceAfterSemicolonInForStatements boolean
+-- Defines space handling after type assertions in TypeScript.
+---@field insertSpaceAfterTypeAssertion boolean
+-- Defines space handling after a binary operator.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field insertSpaceBeforeAndAfterBinaryOperators boolean
+-- Defines space handling before function argument parentheses.
+---@field insertSpaceBeforeFunctionParenthesis boolean
+-- Defines whether an open brace is put onto a new line for control blocks or not.
+---@field placeOpenBraceOnNewLineForControlBlocks boolean
+-- Defines whether an open brace is put onto a new line for functions or not.
+---@field placeOpenBraceOnNewLineForFunctions boolean
+-- Defines handling of optional semicolons.
+-- 
+-- ```lua
+-- default = "ignore"
+-- ```
+---@field semicolons "ignore" | "insert" | "remove"
+
+---@class _.lspconfig.settings.vtsls.ImplementationsCodeLens
+-- Enable/disable implementations CodeLens. This CodeLens shows the implementers of an interface.
+---@field enabled boolean
+
+---@class _.lspconfig.settings.vtsls.EnumMemberValues
+-- Enable/disable inlay hints for member values in enum declarations:
+-- ```typescript
+-- 
+-- enum MyValue {
+-- 	A /* = 0 */;
+-- 	B /* = 1 */;
+-- }
+--  
+-- ```
+---@field enabled boolean
+
+---@class _.lspconfig.settings.vtsls.FunctionLikeReturnTypes
+-- Enable/disable inlay hints for implicit return types on function signatures:
+-- ```typescript
+-- 
+-- function foo() /* :number */ {
+-- 	return Date.now();
+-- } 
+--  
+-- ```
+---@field enabled boolean
+
+---@class _.lspconfig.settings.vtsls.ParameterNames
+-- Enable/disable inlay hints for parameter names:
+-- ```typescript
+-- 
+-- parseInt(/* str: */ '123', /* radix: */ 8)
+--  
+-- ```
+-- 
+-- ```lua
+-- default = "none"
+-- ```
+---@field enabled "none" | "literals" | "all"
+-- Suppress parameter name hints on arguments whose text is identical to the parameter name.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field suppressWhenArgumentMatchesName boolean
+
+---@class _.lspconfig.settings.vtsls.ParameterTypes
+-- Enable/disable inlay hints for implicit parameter types:
+-- ```typescript
+-- 
+-- el.addEventListener('click', e /* :MouseEvent */ => ...)
+--  
+-- ```
+---@field enabled boolean
+
+---@class _.lspconfig.settings.vtsls.PropertyDeclarationTypes
+-- Enable/disable inlay hints for implicit types on property declarations:
+-- ```typescript
+-- 
+-- class Foo {
+-- 	prop /* :number */ = Date.now();
+-- }
+--  
+-- ```
+---@field enabled boolean
+
+---@class _.lspconfig.settings.vtsls.VariableTypes
+-- Enable/disable inlay hints for implicit variable types:
+-- ```typescript
+-- 
+-- const foo /* :number */ = Date.now();
+--  
+-- ```
+---@field enabled boolean
+-- Suppress type hints on variables whose name is identical to the type name. Requires using TypeScript 4.8+ in the workspace.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field suppressWhenTypeMatchesName boolean
+
+---@class _.lspconfig.settings.vtsls.InlayHints
+---@field enumMemberValues _.lspconfig.settings.vtsls.EnumMemberValues
+---@field functionLikeReturnTypes _.lspconfig.settings.vtsls.FunctionLikeReturnTypes
+---@field parameterNames _.lspconfig.settings.vtsls.ParameterNames
+---@field parameterTypes _.lspconfig.settings.vtsls.ParameterTypes
+---@field propertyDeclarationTypes _.lspconfig.settings.vtsls.PropertyDeclarationTypes
+---@field variableTypes _.lspconfig.settings.vtsls.VariableTypes
+
+---@class _.lspconfig.settings.vtsls.Preferences
+-- Specify glob patterns of files to exclude from auto imports. Requires using TypeScript 4.8 or newer in the workspace.
+---@field autoImportFileExcludePatterns string[]
+-- Preferred path style for auto imports.
+-- 
+-- ```lua
+-- default = "shortest"
+-- ```
+---@field importModuleSpecifier "shortest" | "relative" | "non-relative" | "project-relative"
+-- Preferred path ending for auto imports.
+-- 
+-- ```lua
+-- default = "auto"
+-- ```
+---@field importModuleSpecifierEnding "auto" | "minimal" | "index" | "js"
+-- Enable/disable searching `package.json` dependencies for available auto imports.
+-- 
+-- ```lua
+-- default = "auto"
+-- ```
+---@field includePackageJsonAutoImports "auto" | "on" | "off"
+-- Preferred style for JSX attribute completions.
+-- 
+-- ```lua
+-- default = "auto"
+-- ```
+---@field jsxAttributeCompletionStyle "auto" | "braces" | "none"
+-- Preferred quote style to use for Quick Fixes.
+-- 
+-- ```lua
+-- default = "auto"
+-- ```
+---@field quoteStyle "auto" | "single" | "double"
+-- Enable/disable introducing aliases for object shorthand properties during renames.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field renameShorthandProperties boolean
+-- Enable/disable introducing aliases for object shorthand properties during renames.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field useAliasesForRenames boolean
+
+---@class _.lspconfig.settings.vtsls.ReferencesCodeLens
+-- Enable/disable references CodeLens in TypeScript files.
+---@field enabled boolean
+-- Enable/disable references CodeLens on all functions in TypeScript files.
+---@field showOnAllFunctions boolean
+
+---@class _.lspconfig.settings.vtsls.ClassMemberSnippets
+-- Enable/disable snippet completions for class members.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enabled boolean
+
+---@class _.lspconfig.settings.vtsls.Jsdoc
+-- Enable/disable generating `@returns` annotations for JSDoc templates.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field generateReturns boolean
+
+---@class _.lspconfig.settings.vtsls.ObjectLiteralMethodSnippets
+-- Enable/disable snippet completions for methods in object literals. Requires using TypeScript 4.7+ in the workspace.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enabled boolean
+
+---@class _.lspconfig.settings.vtsls.Suggest
+-- Enable/disable auto import suggestions.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field autoImports boolean
+---@field classMemberSnippets _.lspconfig.settings.vtsls.ClassMemberSnippets
+-- Complete functions with their parameter signature.
+---@field completeFunctionCalls boolean
+-- Enable/disable suggestion to complete JSDoc comments.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field completeJSDocs boolean
+-- Enabled/disable autocomplete suggestions.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enabled boolean
+-- Enable/disable showing completions on potentially undefined values that insert an optional chain call. Requires strict null checks to be enabled.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field includeAutomaticOptionalChainCompletions boolean
+-- Enable/disable auto-import-style completions on partially-typed import statements.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field includeCompletionsForImportStatements boolean
+---@field jsdoc _.lspconfig.settings.vtsls.Jsdoc
+---@field objectLiteralMethodSnippets _.lspconfig.settings.vtsls.ObjectLiteralMethodSnippets
+-- Enable/disable suggestions for paths in import statements and require calls.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field paths boolean
+
+---@class _.lspconfig.settings.vtsls.SuggestionActions
+-- Enable/disable suggestion diagnostics for TypeScript files in the editor.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enabled boolean
+
+---@class _.lspconfig.settings.vtsls.Surveys
+-- Enabled/disable occasional surveys that help us improve VS Code's JavaScript and TypeScript support.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enabled boolean
+
+---@class _.lspconfig.settings.vtsls.Tsc
+-- Controls auto detection of tsc tasks.
+-- 
+-- ```lua
+-- default = "on"
+-- ```
+---@field autoDetect "on" | "off" | "build" | "watch"
+
+---@class _.lspconfig.settings.vtsls.Experimental
+-- (Experimental) Enables project wide error reporting.
+---@field enableProjectDiagnostics boolean
+
+-- Configure which watching strategies should be used to keep track of files and directories.
+---@class _.lspconfig.settings.vtsls.WatchOptions
+-- When using file system events, this option specifies the polling strategy that gets used when the system runs out of native file watchers and/or doesn't support native file watchers.
+---@field fallbackPolling "fixedPollingInterval" | "priorityPollingInterval" | "dynamicPriorityPolling"
+-- Disable deferred watching on directories. Deferred watching is useful when lots of file changes might occur at once (e.g. a change in node_modules from running npm install), but you might want to disable it with this flag for some less-common setups.
+---@field synchronousWatchDirectory boolean
+-- Strategy for how entire directory trees are watched under systems that lack recursive file-watching functionality.
+-- 
+-- ```lua
+-- default = "useFsEvents"
+-- ```
+---@field watchDirectory "fixedChunkSizePolling" | "fixedPollingInterval" | "dynamicPriorityPolling" | "useFsEvents"
+-- Strategy for how individual files are watched.
+-- 
+-- ```lua
+-- default = "useFsEvents"
+-- ```
+---@field watchFile "fixedChunkSizePolling" | "fixedPollingInterval" | "priorityPollingInterval" | "dynamicPriorityPolling" | "useFsEvents" | "useFsEventsOnParentDirectory"
+
+---@class _.lspconfig.settings.vtsls.Tsserver
+-- Enables tracing TS server performance to a directory. These trace files can be used to diagnose TS Server performance issues. The log may contain file paths, source code, and other potentially sensitive information from your project.
+---@field enableTracing boolean
+---@field experimental _.lspconfig.settings.vtsls.Experimental
+-- Enables logging of the TS server to a file. This log can be used to diagnose TS Server issues. The log may contain file paths, source code, and other potentially sensitive information from your project.
+-- 
+-- ```lua
+-- default = "off"
+-- ```
+---@field log "off" | "terse" | "normal" | "verbose"
+-- The maximum amount of memory (in MB) to allocate to the TypeScript server process.
+-- 
+-- ```lua
+-- default = 3072
+-- ```
+---@field maxTsServerMemory number
+-- Additional paths to discover TypeScript Language Service plugins.
+-- 
+-- ```lua
+-- default = {}
+-- ```
+---@field pluginPaths string[]
+-- Enables tracing of messages sent to the TS server. This trace can be used to diagnose TS Server issues. The trace may contain file paths, source code, and other potentially sensitive information from your project.
+-- 
+-- ```lua
+-- default = "off"
+-- ```
+---@field trace "off" | "messages" | "verbose"
+-- Enable/disable spawning a separate TypeScript server that can more quickly respond to syntax related operations, such as calculating folding or computing document symbols.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field useSeparateSyntaxServer boolean
+-- Controls if TypeScript launches a dedicated server to more quickly handle syntax related operations, such as computing code folding.
+-- 
+-- ```lua
+-- default = "auto"
+-- ```
+---@field useSyntaxServer "always" | "never" | "auto"
+-- Configure which watching strategies should be used to keep track of files and directories.
+---@field watchOptions _.lspconfig.settings.vtsls.WatchOptions
+
+---@class _.lspconfig.settings.vtsls.UpdateImportsOnFileMove
+-- Enable/disable automatic updating of import paths when you rename or move a file in VS Code.
+-- 
+-- ```lua
+-- default = "prompt"
+-- ```
+---@field enabled "prompt" | "always" | "never"
+
+---@class _.lspconfig.settings.vtsls.Validate
+-- Enable/disable TypeScript validation.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enable boolean
+
+---@class _.lspconfig.settings.vtsls.WorkspaceSymbols
+-- Controls which files are searched by [Go to Symbol in Workspace](https://code.visualstudio.com/docs/editor/editingevolved#_open-symbol-by-name).
+-- 
+-- ```lua
+-- default = "allOpenProjects"
+-- ```
+---@field scope "allOpenProjects" | "currentProject"
+
+---@class _.lspconfig.settings.vtsls.Typescript
+-- Enable/disable automatic closing of JSX tags.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field autoClosingTags boolean
+---@field check _.lspconfig.settings.vtsls.Check
+-- Disables [automatic type acquisition](https://code.visualstudio.com/docs/nodejs/working-with-javascript#_typings-and-automatic-type-acquisition). Automatic type acquisition fetches `@types` packages from npm to improve IntelliSense for external libraries.
+---@field disableAutomaticTypeAcquisition boolean
+-- Enables prompting of users to use the TypeScript version configured in the workspace for Intellisense.
+---@field enablePromptUseWorkspaceTsdk boolean
+---@field experimental _.lspconfig.settings.vtsls.Experimental
+---@field format _.lspconfig.settings.vtsls.Format
+---@field implementationsCodeLens _.lspconfig.settings.vtsls.ImplementationsCodeLens
+---@field inlayHints _.lspconfig.settings.vtsls.InlayHints
+-- Sets the locale used to report JavaScript and TypeScript errors. Defaults to use VS Code's locale.
+-- 
+-- ```lua
+-- default = "auto"
+-- ```
+---@field locale "auto" | "de" | "es" | "en" | "fr" | "it" | "ja" | "ko" | "ru" | "zh-CN" | "zh-TW"
+-- Specifies the path to the npm executable used for [Automatic Type Acquisition](https://code.visualstudio.com/docs/nodejs/working-with-javascript#_typings-and-automatic-type-acquisition).
+---@field npm string
+---@field preferences _.lspconfig.settings.vtsls.Preferences
+---@field referencesCodeLens _.lspconfig.settings.vtsls.ReferencesCodeLens
+-- Report style checks as warnings.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field reportStyleChecksAsWarnings boolean
+---@field suggest _.lspconfig.settings.vtsls.Suggest
+---@field suggestionActions _.lspconfig.settings.vtsls.SuggestionActions
+---@field surveys _.lspconfig.settings.vtsls.Surveys
+---@field tsc _.lspconfig.settings.vtsls.Tsc
+-- Specifies the folder path to the tsserver and `lib*.d.ts` files under a TypeScript install to use for IntelliSense, for example: `./node_modules/typescript/lib`.
+-- 
+-- - When specified as a user setting, the TypeScript version from `typescript.tsdk` automatically replaces the built-in TypeScript version.
+-- - When specified as a workspace setting, `typescript.tsdk` allows you to switch to use that workspace version of TypeScript for IntelliSense with the `TypeScript: Select TypeScript version` command.
+-- 
+-- See the [TypeScript documentation](https://code.visualstudio.com/docs/typescript/typescript-compiling#_using-newer-typescript-versions) for more detail about managing TypeScript versions.
+---@field tsdk string
+---@field tsserver _.lspconfig.settings.vtsls.Tsserver
+---@field updateImportsOnFileMove _.lspconfig.settings.vtsls.UpdateImportsOnFileMove
+---@field validate _.lspconfig.settings.vtsls.Validate
+---@field workspaceSymbols _.lspconfig.settings.vtsls.WorkspaceSymbols
+
+---@class _.lspconfig.settings.vtsls.Format
+---@field baseIndentSize number
+---@field convertTabsToSpaces boolean
+---@field indentSize number
+-- 0: None 1: Block 2: Smart
+---@field indentStyle number
+---@field newLineCharacter string
+---@field tabSize number
+---@field trimTrailingWhitespace boolean
+
+---@class _.lspconfig.settings.vtsls.Javascript
+---@field format _.lspconfig.settings.vtsls.Format
+
+---@class _.lspconfig.settings.vtsls.Format
+---@field baseIndentSize number
+---@field convertTabsToSpaces boolean
+---@field indentSize number
+-- 0: None 1: Block 2: Smart
+---@field indentStyle number
+---@field newLineCharacter string
+---@field tabSize number
+---@field trimTrailingWhitespace boolean
+
+---@class _.lspconfig.settings.vtsls.Typescript
+---@field format _.lspconfig.settings.vtsls.Format
+
+---@class _.lspconfig.settings.vtsls.Vtsls
+---@field javascript _.lspconfig.settings.vtsls.Javascript
+---@field typescript _.lspconfig.settings.vtsls.Typescript
+
+---@class lspconfig.settings.vtsls
+---@field javascript _.lspconfig.settings.vtsls.Javascript
+---@field js/ts _.lspconfig.settings.vtsls.Js/ts
+---@field typescript _.lspconfig.settings.vtsls.Typescript
+---@field vtsls _.lspconfig.settings.vtsls.Vtsls
 
 -- Where Vetur source Scaffold Snippets from and how to indicate them. Set a source to "" to disable it.
 -- 

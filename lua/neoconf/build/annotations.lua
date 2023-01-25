@@ -22,6 +22,9 @@ end
 
 function M.add_desc(lines, prop, prefix)
   local ret = prop.markdownDescription or prop.description
+  if type(ret) == "table" and ret.message then
+    ret = ret.message
+  end
   if prop.default then
     if prop.default == vim.NIL then
       prop.default = nil

@@ -157,6 +157,19 @@
       "scope": "window",
       "type": "number"
     },
+    "luau-lsp.require.mode": {
+      "default": "relativeToWorkspaceRoot",
+      "enum": [
+        "relativeToWorkspaceRoot",
+        "relativeToFile"
+      ],
+      "enumDescriptions": [
+        "String requires are interpreted relative to the root of the workspace",
+        "String requires are interpreted relative to the current file"
+      ],
+      "markdownDescription": "How string requires should be interpreted",
+      "type": "string"
+    },
     "luau-lsp.signatureHelp.enabled": {
       "default": true,
       "markdownDescription": "Enable signature help",

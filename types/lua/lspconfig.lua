@@ -457,6 +457,14 @@ lspconfig.volar = {
   setup = function(options) end,
 }
 
+---@class lspconfig.options.vtsls: _.lspconfig.options
+---@field settings lspconfig.settings.vtsls
+
+lspconfig.vtsls = {
+  ---@param options lspconfig.options.vtsls
+  setup = function(options) end,
+}
+
 ---@class lspconfig.options.vuels: _.lspconfig.options
 ---@field settings lspconfig.settings.vuels
 
@@ -553,6 +561,7 @@ lspconfig.zls = {
 ---@field terraformls lspconfig.options.terraformls
 ---@field tsserver lspconfig.options.tsserver
 ---@field volar lspconfig.options.volar
+---@field vtsls lspconfig.options.vtsls
 ---@field vuels lspconfig.options.vuels
 ---@field wgls_analyzer lspconfig.options.wgls_analyzer
 ---@field yamlls lspconfig.options.yamlls
@@ -615,6 +624,7 @@ lspconfig.zls = {
 ---@field terraformls lspconfig.settings.terraformls
 ---@field tsserver lspconfig.settings.tsserver
 ---@field volar lspconfig.settings.volar
+---@field vtsls lspconfig.settings.vtsls
 ---@field vuels lspconfig.settings.vuels
 ---@field wgls_analyzer lspconfig.settings.wgls_analyzer
 ---@field yamlls lspconfig.settings.yamlls
