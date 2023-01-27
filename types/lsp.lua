@@ -814,6 +814,70 @@
 -- Override the severity of one or more rules reported by this extension, regardless of the project's ESLint config. Use globs to apply default severities for multiple rules.
 ---@field customizations object[]
 
+-- The time budget in milliseconds to spend on computing fixes before showing a warning or error.
+-- 
+-- ```lua
+-- default = {
+--   error = 6000,
+--   warn = 3000
+-- }
+-- ```
+---@class _.lspconfig.settings.eslint.OnFixes
+-- The time budget in milliseconds to spend on computing fixes before showing an error.
+-- 
+-- ```lua
+-- default = 6000
+-- ```
+---@field error number
+-- The time budget in milliseconds to spend on computing fixes before showing a warning.
+-- 
+-- ```lua
+-- default = 3000
+-- ```
+---@field warn number
+
+-- The time budget in milliseconds to spend on validation before showing a warning or error.
+-- 
+-- ```lua
+-- default = {
+--   error = 8000,
+--   warn = 4000
+-- }
+-- ```
+---@class _.lspconfig.settings.eslint.OnValidation
+-- The time budget in milliseconds to spend on validation before showing an error.
+-- 
+-- ```lua
+-- default = 8000
+-- ```
+---@field error number
+-- The time budget in milliseconds to spend on validation before showing a warning.
+-- 
+-- ```lua
+-- default = 4000
+-- ```
+---@field warn number
+
+---@class _.lspconfig.settings.eslint.TimeBudget
+-- The time budget in milliseconds to spend on computing fixes before showing a warning or error.
+-- 
+-- ```lua
+-- default = {
+--   error = 6000,
+--   warn = 3000
+-- }
+-- ```
+---@field onFixes _.lspconfig.settings.eslint.OnFixes
+-- The time budget in milliseconds to spend on validation before showing a warning or error.
+-- 
+-- ```lua
+-- default = {
+--   error = 8000,
+--   warn = 4000
+-- }
+-- ```
+---@field onValidation _.lspconfig.settings.eslint.OnValidation
+
 ---@class _.lspconfig.settings.eslint.Trace
 -- Traces the communication between VSCode and the eslint linter service.
 -- 
@@ -902,6 +966,7 @@
 -- default = <userdata 1>
 -- ```
 ---@field runtime string
+---@field timeBudget _.lspconfig.settings.eslint.TimeBudget
 ---@field trace _.lspconfig.settings.eslint.Trace
 -- Since version 7 ESLint offers a new API call ESLint. Use it even if the old CLIEngine is available. From version 8 on forward on ESLint class is available.
 ---@field useESLintClass boolean
@@ -4957,6 +5022,8 @@
 -- default = true
 -- ```
 ---@field includeDependents boolean
+-- Use strict DataModel types in diagnostics. When on, this is equivalent to the more expressive autocompletion types. When this is off, `game`/`script`/`workspace` (and their members) are all typed as `any`, and helps to prevent false positives. [Read More](https://github.com/JohnnyMorganz/luau-lsp/issues/83#issuecomment-1192865024)
+---@field strictDatamodelTypes boolean
 -- Compute diagnostics for the whole workspace
 ---@field workspace boolean
 
@@ -5081,6 +5148,12 @@
 -- default = {}
 -- ```
 ---@field definitionFiles string[]
+-- A list of paths to documentation files which provide documentation support to the definition files provided
+-- 
+-- ```lua
+-- default = {}
+-- ```
+---@field documentationFiles string[]
 -- Load in and automatically update Roblox type definitions for the type checker
 -- 
 -- ```lua

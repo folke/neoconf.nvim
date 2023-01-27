@@ -44,6 +44,12 @@
       "scope": "resource",
       "type": "boolean"
     },
+    "luau-lsp.diagnostics.strictDatamodelTypes": {
+      "default": false,
+      "markdownDescription": "Use strict DataModel types in diagnostics. When on, this is equivalent to the more expressive autocompletion types. When this is off, `game`/`script`/`workspace` (and their members) are all typed as `any`, and helps to prevent false positives. [Read More](https://github.com/JohnnyMorganz/luau-lsp/issues/83#issuecomment-1192865024)",
+      "scope": "resource",
+      "type": "boolean"
+    },
     "luau-lsp.diagnostics.workspace": {
       "default": false,
       "markdownDescription": "Compute diagnostics for the whole workspace",
@@ -212,6 +218,15 @@
         "type": "string"
       },
       "markdownDescription": "A list of paths to definition files to load in to the type checker. Note that definition file syntax is currently unstable and may change at any time",
+      "scope": "window",
+      "type": "array"
+    },
+    "luau-lsp.types.documentationFiles": {
+      "default": [],
+      "items": {
+        "type": "string"
+      },
+      "markdownDescription": "A list of paths to documentation files which provide documentation support to the definition files provided",
       "scope": "window",
       "type": "array"
     },

@@ -309,6 +309,52 @@
         "null"
       ]
     },
+    "eslint.timeBudget.onFixes": {
+      "default": {
+        "error": 6000,
+        "warn": 3000
+      },
+      "markdownDescription": "The time budget in milliseconds to spend on computing fixes before showing a warning or error.",
+      "properties": {
+        "error": {
+          "default": 6000,
+          "markdownDescription": "The time budget in milliseconds to spend on computing fixes before showing an error.",
+          "minimum": 0,
+          "type": "number"
+        },
+        "warn": {
+          "default": 3000,
+          "markdownDescription": "The time budget in milliseconds to spend on computing fixes before showing a warning.",
+          "minimum": 0,
+          "type": "number"
+        }
+      },
+      "scope": "resource",
+      "type": "object"
+    },
+    "eslint.timeBudget.onValidation": {
+      "default": {
+        "error": 8000,
+        "warn": 4000
+      },
+      "markdownDescription": "The time budget in milliseconds to spend on validation before showing a warning or error.",
+      "properties": {
+        "error": {
+          "default": 8000,
+          "markdownDescription": "The time budget in milliseconds to spend on validation before showing an error.",
+          "minimum": 0,
+          "type": "number"
+        },
+        "warn": {
+          "default": 4000,
+          "markdownDescription": "The time budget in milliseconds to spend on validation before showing a warning.",
+          "minimum": 0,
+          "type": "number"
+        }
+      },
+      "scope": "resource",
+      "type": "object"
+    },
     "eslint.trace.server": {
       "anyOf": [
         {
