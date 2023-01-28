@@ -365,25 +365,17 @@
 
 ---@class _.lspconfig.settings.denols.EnumMemberValues
 -- Enable/disable inlay hints for enum values.
--- 
--- ```lua
--- default = true
--- ```
 ---@field enabled boolean
 
 ---@class _.lspconfig.settings.denols.FunctionLikeReturnTypes
 -- Enable/disable inlay hints for implicit function return types.
--- 
--- ```lua
--- default = true
--- ```
 ---@field enabled boolean
 
 ---@class _.lspconfig.settings.denols.ParameterNames
 -- Enable/disable inlay hints for parameter names.
 -- 
 -- ```lua
--- default = "all"
+-- default = "none"
 -- ```
 ---@field enabled "none" | "literals" | "all"
 -- Do not display an inlay hint when the argument name matches the parameter.
@@ -395,26 +387,14 @@
 
 ---@class _.lspconfig.settings.denols.ParameterTypes
 -- Enable/disable inlay hints for implicit parameter types.
--- 
--- ```lua
--- default = true
--- ```
 ---@field enabled boolean
 
 ---@class _.lspconfig.settings.denols.PropertyDeclarationTypes
 -- Enable/disable inlay hints for implicit property declarations.
--- 
--- ```lua
--- default = true
--- ```
 ---@field enabled boolean
 
 ---@class _.lspconfig.settings.denols.VariableTypes
 -- Enable/disable inlay hints for implicit variable types.
--- 
--- ```lua
--- default = true
--- ```
 ---@field enabled boolean
 -- Suppress type hints where the variable name matches the implicit type.
 -- 

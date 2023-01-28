@@ -112,19 +112,19 @@
       "type": "string"
     },
     "deno.inlayHints.enumMemberValues.enabled": {
-      "default": true,
+      "default": false,
       "markdownDescription": "Enable/disable inlay hints for enum values.",
       "scope": "resource",
       "type": "boolean"
     },
     "deno.inlayHints.functionLikeReturnTypes.enabled": {
-      "default": true,
+      "default": false,
       "markdownDescription": "Enable/disable inlay hints for implicit function return types.",
       "scope": "resource",
       "type": "boolean"
     },
     "deno.inlayHints.parameterNames.enabled": {
-      "default": "all",
+      "default": "none",
       "enum": [
         "none",
         "literals",
@@ -146,19 +146,19 @@
       "type": "boolean"
     },
     "deno.inlayHints.parameterTypes.enabled": {
-      "default": true,
+      "default": false,
       "markdownDescription": "Enable/disable inlay hints for implicit parameter types.",
       "scope": "resource",
       "type": "boolean"
     },
     "deno.inlayHints.propertyDeclarationTypes.enabled": {
-      "default": true,
+      "default": false,
       "markdownDescription": "Enable/disable inlay hints for implicit property declarations.",
       "scope": "resource",
       "type": "boolean"
     },
     "deno.inlayHints.variableTypes.enabled": {
-      "default": true,
+      "default": false,
       "markdownDescription": "Enable/disable inlay hints for implicit variable types.",
       "scope": "resource",
       "type": "boolean"
