@@ -9857,7 +9857,7 @@
 -- default = "Opened"
 -- ```
 ---@field cast-type-mismatch "Any" | "Opened" | "None" | "Any!" | "Opened!" | "None!"
--- %config.diagnostics.circle-doc-class%
+-- 
 -- 
 -- ```lua
 -- default = "Any"
@@ -10193,7 +10193,7 @@
 -- default = "Warning"
 -- ```
 ---@field cast-type-mismatch "Error" | "Warning" | "Information" | "Hint" | "Error!" | "Warning!" | "Information!" | "Hint!"
--- %config.diagnostics.circle-doc-class%
+-- 
 -- 
 -- ```lua
 -- default = "Warning"
@@ -10721,109 +10721,109 @@
 -- * `disable`: always disable
 -- 
 ---@class _.lspconfig.settings.sumneko_lua.Builtin
--- %config.runtime.builtin.basic%
+-- 
 -- 
 -- ```lua
 -- default = "default"
 -- ```
 ---@field basic "default" | "enable" | "disable"
--- %config.runtime.builtin.bit%
+-- 
 -- 
 -- ```lua
 -- default = "default"
 -- ```
 ---@field bit "default" | "enable" | "disable"
--- %config.runtime.builtin.bit32%
+-- 
 -- 
 -- ```lua
 -- default = "default"
 -- ```
 ---@field bit32 "default" | "enable" | "disable"
--- %config.runtime.builtin.builtin%
+-- 
 -- 
 -- ```lua
 -- default = "default"
 -- ```
 ---@field builtin "default" | "enable" | "disable"
--- %config.runtime.builtin.coroutine%
+-- 
 -- 
 -- ```lua
 -- default = "default"
 -- ```
 ---@field coroutine "default" | "enable" | "disable"
--- %config.runtime.builtin.debug%
+-- 
 -- 
 -- ```lua
 -- default = "default"
 -- ```
 ---@field debug "default" | "enable" | "disable"
--- %config.runtime.builtin.ffi%
+-- 
 -- 
 -- ```lua
 -- default = "default"
 -- ```
 ---@field ffi "default" | "enable" | "disable"
--- %config.runtime.builtin.io%
+-- 
 -- 
 -- ```lua
 -- default = "default"
 -- ```
 ---@field io "default" | "enable" | "disable"
--- %config.runtime.builtin.jit%
+-- 
 -- 
 -- ```lua
 -- default = "default"
 -- ```
 ---@field jit "default" | "enable" | "disable"
--- %config.runtime.builtin.math%
+-- 
 -- 
 -- ```lua
 -- default = "default"
 -- ```
 ---@field math "default" | "enable" | "disable"
--- %config.runtime.builtin.os%
+-- 
 -- 
 -- ```lua
 -- default = "default"
 -- ```
 ---@field os "default" | "enable" | "disable"
--- %config.runtime.builtin.package%
+-- 
 -- 
 -- ```lua
 -- default = "default"
 -- ```
 ---@field package "default" | "enable" | "disable"
--- %config.runtime.builtin.string%
+-- 
 -- 
 -- ```lua
 -- default = "default"
 -- ```
 ---@field string "default" | "enable" | "disable"
--- %config.runtime.builtin.string.buffer%
+-- 
 -- 
 -- ```lua
 -- default = "default"
 -- ```
 ---@field string.buffer "default" | "enable" | "disable"
--- %config.runtime.builtin.table%
+-- 
 -- 
 -- ```lua
 -- default = "default"
 -- ```
 ---@field table "default" | "enable" | "disable"
--- %config.runtime.builtin.table.clear%
+-- 
 -- 
 -- ```lua
 -- default = "default"
 -- ```
 ---@field table.clear "default" | "enable" | "disable"
--- %config.runtime.builtin.table.new%
+-- 
 -- 
 -- ```lua
 -- default = "default"
 -- ```
 ---@field table.new "default" | "enable" | "disable"
--- %config.runtime.builtin.utf8%
+-- 
 -- 
 -- ```lua
 -- default = "default"

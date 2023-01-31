@@ -656,7 +656,7 @@
         },
         "circle-doc-class": {
           "default": "Any",
-          "description": "%config.diagnostics.circle-doc-class%",
+          "description": "",
           "enum": [
             "Any",
             "Opened",
@@ -1390,7 +1390,7 @@
         },
         "circle-doc-class": {
           "default": "Warning",
-          "description": "%config.diagnostics.circle-doc-class%",
+          "description": "",
           "enum": [
             "Error",
             "Warning",
@@ -2362,7 +2362,7 @@
       "properties": {
         "basic": {
           "default": "default",
-          "description": "%config.runtime.builtin.basic%",
+          "description": "",
           "enum": [
             "default",
             "enable",
@@ -2372,7 +2372,7 @@
         },
         "bit": {
           "default": "default",
-          "description": "%config.runtime.builtin.bit%",
+          "description": "",
           "enum": [
             "default",
             "enable",
@@ -2382,7 +2382,7 @@
         },
         "bit32": {
           "default": "default",
-          "description": "%config.runtime.builtin.bit32%",
+          "description": "",
           "enum": [
             "default",
             "enable",
@@ -2392,7 +2392,7 @@
         },
         "builtin": {
           "default": "default",
-          "description": "%config.runtime.builtin.builtin%",
+          "description": "",
           "enum": [
             "default",
             "enable",
@@ -2402,7 +2402,7 @@
         },
         "coroutine": {
           "default": "default",
-          "description": "%config.runtime.builtin.coroutine%",
+          "description": "",
           "enum": [
             "default",
             "enable",
@@ -2412,7 +2412,7 @@
         },
         "debug": {
           "default": "default",
-          "description": "%config.runtime.builtin.debug%",
+          "description": "",
           "enum": [
             "default",
             "enable",
@@ -2422,7 +2422,7 @@
         },
         "ffi": {
           "default": "default",
-          "description": "%config.runtime.builtin.ffi%",
+          "description": "",
           "enum": [
             "default",
             "enable",
@@ -2432,7 +2432,7 @@
         },
         "io": {
           "default": "default",
-          "description": "%config.runtime.builtin.io%",
+          "description": "",
           "enum": [
             "default",
             "enable",
@@ -2442,7 +2442,7 @@
         },
         "jit": {
           "default": "default",
-          "description": "%config.runtime.builtin.jit%",
+          "description": "",
           "enum": [
             "default",
             "enable",
@@ -2452,7 +2452,7 @@
         },
         "math": {
           "default": "default",
-          "description": "%config.runtime.builtin.math%",
+          "description": "",
           "enum": [
             "default",
             "enable",
@@ -2462,7 +2462,7 @@
         },
         "os": {
           "default": "default",
-          "description": "%config.runtime.builtin.os%",
+          "description": "",
           "enum": [
             "default",
             "enable",
@@ -2472,7 +2472,7 @@
         },
         "package": {
           "default": "default",
-          "description": "%config.runtime.builtin.package%",
+          "description": "",
           "enum": [
             "default",
             "enable",
@@ -2482,7 +2482,7 @@
         },
         "string": {
           "default": "default",
-          "description": "%config.runtime.builtin.string%",
+          "description": "",
           "enum": [
             "default",
             "enable",
@@ -2492,7 +2492,7 @@
         },
         "string.buffer": {
           "default": "default",
-          "description": "%config.runtime.builtin.string.buffer%",
+          "description": "",
           "enum": [
             "default",
             "enable",
@@ -2502,7 +2502,7 @@
         },
         "table": {
           "default": "default",
-          "description": "%config.runtime.builtin.table%",
+          "description": "",
           "enum": [
             "default",
             "enable",
@@ -2512,7 +2512,7 @@
         },
         "table.clear": {
           "default": "default",
-          "description": "%config.runtime.builtin.table.clear%",
+          "description": "",
           "enum": [
             "default",
             "enable",
@@ -2522,7 +2522,7 @@
         },
         "table.new": {
           "default": "default",
-          "description": "%config.runtime.builtin.table.new%",
+          "description": "",
           "enum": [
             "default",
             "enable",
@@ -2532,7 +2532,7 @@
         },
         "utf8": {
           "default": "default",
-          "description": "%config.runtime.builtin.utf8%",
+          "description": "",
           "enum": [
             "default",
             "enable",
@@ -2555,10 +2555,10 @@
       ],
       "markdownDescription": "File encoding. The `ansi` option is only available under the `Windows` platform.",
       "markdownEnumDescriptions": [
-        "%config.runtime.fileEncoding.utf8%",
-        "%config.runtime.fileEncoding.ansi%",
-        "%config.runtime.fileEncoding.utf16le%",
-        "%config.runtime.fileEncoding.utf16be%"
+        "",
+        "",
+        "",
+        ""
       ],
       "scope": "resource",
       "type": "string"
@@ -2677,11 +2677,11 @@
       ],
       "markdownDescription": "Lua runtime version.",
       "markdownEnumDescriptions": [
-        "%config.runtime.version.Lua 5.1%",
-        "%config.runtime.version.Lua 5.2%",
-        "%config.runtime.version.Lua 5.3%",
-        "%config.runtime.version.Lua 5.4%",
-        "%config.runtime.version.LuaJIT%"
+        "",
+        "",
+        "",
+        "",
+        ""
       ],
       "scope": "resource",
       "type": "string"
