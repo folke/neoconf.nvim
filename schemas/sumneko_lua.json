@@ -2823,19 +2823,6 @@
       "scope": "resource",
       "type": "integer"
     },
-    "Lua.workspace.supportScheme": {
-      "default": [
-        "file",
-        "untitled",
-        "git"
-      ],
-      "items": {
-        "type": "string"
-      },
-      "markdownDescription": "Provide language server for the Lua files of the following scheme.",
-      "scope": "resource",
-      "type": "array"
-    },
     "Lua.workspace.useGitIgnore": {
       "default": true,
       "markdownDescription": "Ignore files list in `.gitignore` .",
