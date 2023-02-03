@@ -3652,6 +3652,20 @@
 ---@class _.lspconfig.settings.jdtls.Recommendations
 ---@field dependency _.lspconfig.settings.jdtls.Dependency
 
+---@class _.lspconfig.settings.jdtls.Interface
+-- Specify whether to replace all the occurrences of the subtype with the new extracted interface.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field replace boolean
+
+---@class _.lspconfig.settings.jdtls.Extract
+---@field interface _.lspconfig.settings.jdtls.Interface
+
+---@class _.lspconfig.settings.jdtls.Refactoring
+---@field extract _.lspconfig.settings.jdtls.Extract
+
 ---@class _.lspconfig.settings.jdtls.References
 -- Include getter, setter and builder/constructor when finding references.
 -- 
@@ -3823,6 +3837,7 @@
 ---@field project _.lspconfig.settings.jdtls.Project
 ---@field quickfix _.lspconfig.settings.jdtls.Quickfix
 ---@field recommendations _.lspconfig.settings.jdtls.Recommendations
+---@field refactoring _.lspconfig.settings.jdtls.Refactoring
 ---@field references _.lspconfig.settings.jdtls.References
 ---@field referencesCodeLens _.lspconfig.settings.jdtls.ReferencesCodeLens
 ---@field saveActions _.lspconfig.settings.jdtls.SaveActions

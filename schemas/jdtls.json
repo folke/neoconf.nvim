@@ -728,6 +728,11 @@
       "scope": "window",
       "type": "boolean"
     },
+    "java.refactoring.extract.interface.replace": {
+      "default": true,
+      "markdownDescription": "Specify whether to replace all the occurrences of the subtype with the new extracted interface.",
+      "type": "boolean"
+    },
     "java.references.includeAccessors": {
       "default": true,
       "description": "Include getter, setter and builder/constructor when finding references.",
