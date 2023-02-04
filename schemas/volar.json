@@ -20,11 +20,6 @@
       "description": "Auto-wrap `()` to As Expression in interpolations for fix issue #520.",
       "type": "boolean"
     },
-    "volar.codeLens.pugTools": {
-      "default": false,
-      "description": "[pug ☐] code lens.",
-      "type": "boolean"
-    },
     "volar.codeLens.references": {
       "default": true,
       "description": "[references] code lens.",

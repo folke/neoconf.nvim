@@ -236,6 +236,18 @@
       "scope": "window",
       "type": "boolean"
     },
+    "java.configuration.maven.defaultMojoExecutionAction": {
+      "default": "ignore",
+      "description": "Specifies default mojo execution action when no associated metadata can be detected.",
+      "enum": [
+        "ignore",
+        "warn",
+        "error",
+        "execute"
+      ],
+      "scope": "window",
+      "type": "string"
+    },
     "java.configuration.maven.globalSettings": {
       "default": null,
       "description": "Path to Maven's global settings.xml",

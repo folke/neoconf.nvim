@@ -3258,6 +3258,12 @@
 ---@field postfix _.lspconfig.settings.jdtls.Postfix
 
 ---@class _.lspconfig.settings.jdtls.Maven
+-- Specifies default mojo execution action when no associated metadata can be detected.
+-- 
+-- ```lua
+-- default = "ignore"
+-- ```
+---@field defaultMojoExecutionAction "ignore" | "warn" | "error" | "execute"
 -- Path to Maven's global settings.xml
 -- 
 -- ```lua
@@ -10883,7 +10889,7 @@
 ---@field path string[]
 -- When enabled, `runtime.path` will only search the first level of directories, see the description of `runtime.path`.
 ---@field pathStrict boolean
--- Plugin path. Please read [wiki](https://github.com/sumneko/lua-language-server/wiki/Plugins) to learn more.
+-- Plugin path. Please read [wiki](https://github.com/LuaLS/lua-language-server/wiki/Plugins) to learn more.
 -- 
 -- ```lua
 -- default = ""
@@ -11063,7 +11069,7 @@
 -- default = true
 -- ```
 ---@field useGitIgnore boolean
--- Add private third-party library configuration file paths here, please refer to the built-in [configuration file path](https://github.com/sumneko/lua-language-server/tree/master/meta/3rd)
+-- Add private third-party library configuration file paths here, please refer to the built-in [configuration file path](https://github.com/LuaLS/lua-language-server/tree/master/meta/3rd)
 -- 
 -- ```lua
 -- default = {}
@@ -12467,8 +12473,6 @@
 ---@field tsdk string
 
 ---@class _.lspconfig.settings.volar.CodeLens
--- [pug ☐] code lens.
----@field pugTools boolean
 -- [references] code lens.
 -- 
 -- ```lua

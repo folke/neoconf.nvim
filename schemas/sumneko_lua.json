@@ -2619,7 +2619,7 @@
     },
     "Lua.runtime.plugin": {
       "default": "",
-      "markdownDescription": "Plugin path. Please read [wiki](https://github.com/sumneko/lua-language-server/wiki/Plugins) to learn more.",
+      "markdownDescription": "Plugin path. Please read [wiki](https://github.com/LuaLS/lua-language-server/wiki/Plugins) to learn more.",
       "scope": "resource",
       "type": "string"
     },
@@ -2834,7 +2834,7 @@
       "items": {
         "type": "string"
       },
-      "markdownDescription": "Add private third-party library configuration file paths here, please refer to the built-in [configuration file path](https://github.com/sumneko/lua-language-server/tree/master/meta/3rd)",
+      "markdownDescription": "Add private third-party library configuration file paths here, please refer to the built-in [configuration file path](https://github.com/LuaLS/lua-language-server/tree/master/meta/3rd)",
       "scope": "resource",
       "type": "array"
     }
