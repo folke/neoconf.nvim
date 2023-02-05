@@ -25,11 +25,6 @@
       "description": "[references] code lens.",
       "type": "boolean"
     },
-    "volar.codeLens.scriptSetupTools": {
-      "default": false,
-      "description": "[ref sugar ☐] code lens.",
-      "type": "boolean"
-    },
     "volar.completion.normalizeComponentImportName": {
       "default": true,
       "description": "Normalize import name for auto import. (\"myCompVue\" -> \"MyComp\")",
@@ -98,6 +93,10 @@
           "default": true,
           "type": "boolean"
         },
+        "jade": {
+          "default": false,
+          "type": "boolean"
+        },
         "javascript": {
           "default": false,
           "type": "boolean"
@@ -119,6 +118,10 @@
           "type": "boolean"
         },
         "less": {
+          "default": false,
+          "type": "boolean"
+        },
+        "sass": {
           "default": false,
           "type": "boolean"
         },

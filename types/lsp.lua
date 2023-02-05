@@ -12479,8 +12479,6 @@
 -- default = true
 -- ```
 ---@field references boolean
--- [ref sugar ☐] code lens.
----@field scriptSetupTools boolean
 
 ---@class _.lspconfig.settings.volar.Completion
 -- Normalize import name for auto import. ("myCompVue" -> "MyComp")
@@ -12533,12 +12531,14 @@
 -- default = true
 -- ```
 ---@field html boolean
+---@field jade boolean
 ---@field javascript boolean
 ---@field javascriptreact boolean
 ---@field json boolean
 ---@field json5 boolean
 ---@field jsonc boolean
 ---@field less boolean
+---@field sass boolean
 ---@field scss boolean
 ---@field typescript boolean
 ---@field typescriptreact boolean
