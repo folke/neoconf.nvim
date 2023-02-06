@@ -42,6 +42,11 @@
       "description": "if true, the LanguageServer will not cache the result of parsing source files on disk, so it can be used within readonly directories",
       "type": "boolean"
     },
+    "perl.disablePassEnv": {
+      "default": null,
+      "description": "per default enviroment from vscode will be passed to debuggee, syntax check and perltidy. If set to true, no enviroment variables will be passed.",
+      "type": "boolean"
+    },
     "perl.enable": {
       "default": true,
       "description": "enable/disable this extension",

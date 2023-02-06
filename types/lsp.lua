@@ -5698,6 +5698,12 @@
 ---@field debugAdapterPortRange integer
 -- if true, the LanguageServer will not cache the result of parsing source files on disk, so it can be used within readonly directories
 ---@field disableCache boolean
+-- per default enviroment from vscode will be passed to debuggee, syntax check and perltidy. If set to true, no enviroment variables will be passed.
+-- 
+-- ```lua
+-- default = <userdata 1>
+-- ```
+---@field disablePassEnv boolean
 -- enable/disable this extension
 -- 
 -- ```lua
