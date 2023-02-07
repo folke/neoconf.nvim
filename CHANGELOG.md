@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.0.2](https://github.com/folke/neoconf.nvim/compare/v1.0.1...v1.0.2) (2023-02-07)
+
+
+### Bug Fixes
+
+* **annotations:** fixed comment parsing ([4f8916d](https://github.com/folke/neoconf.nvim/commit/4f8916d22081b76ee5931155adedf55d0c9f645b))
+* only expand top-level and lspconfig settings. Fixes [#11](https://github.com/folke/neoconf.nvim/issues/11) ([274c770](https://github.com/folke/neoconf.nvim/commit/274c7700d911b6d0b5e01b9b8b8ef765c5d726d3))
+
 ## [1.0.1](https://github.com/folke/neoconf.nvim/compare/v1.0.0...v1.0.1) (2023-01-22)
 
 
