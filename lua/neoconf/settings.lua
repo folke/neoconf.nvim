@@ -22,7 +22,7 @@ function M.expand(tbl)
   end
   local ret = M.new()
   for key, value in pairs(tbl) do
-    ret:set(key, M.expand(value))
+    ret:set(key, value)
   end
   return ret:get()
 end
@@ -64,6 +64,7 @@ function Settings:set(key, value)
   node[parts[#parts]] = value
 end
 
+---@param opts? {defaults?:table, expand?:boolean}
 function Settings:get(key, opts)
   ---@type table|nil
   local node = self._settings
@@ -74,6 +75,10 @@ function Settings:get(key, opts)
       break
     end
     node = node[part]
+  end
+
+  if opts and opts.expand and type(node) == "table" then
+    node = M.expand(node)
   end
 
   if opts and opts.defaults then
