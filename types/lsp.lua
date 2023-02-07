@@ -7760,8 +7760,12 @@
 ---@field maxLength integer
 
 ---@class _.lspconfig.settings.rescriptls.SignatureHelp
--- Enable (experimental) signature help for function calls.
----@field enable boolean
+-- Enable signature help for function calls.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enabled boolean
 
 ---@class _.lspconfig.settings.rescriptls.Settings
 -- Whether you want to allow the extension to format your code using its built in formatter when it cannot find a ReScript compiler version in your current project to use for formatting.
@@ -8147,6 +8151,15 @@
 -- default = "discover"
 -- ```
 ---@field sysroot string
+-- Relative path to the sysroot library sources. If left unset, this will default to
+-- `{cargo.sysroot}/lib/rustlib/src/rust/library`.
+-- 
+-- This option does not take effect until rust-analyzer is restarted.
+-- 
+-- ```lua
+-- default = <userdata 1>
+-- ```
+---@field sysrootSrc string
 -- Compilation target override (target triple).
 -- 
 -- ```lua
@@ -10734,7 +10747,7 @@
 -- default = ""
 -- ```
 ---@field executablePath string
--- [Command line parameters](https://github.com/sumneko/lua-telemetry-server/tree/master/method) when starting the language server in VSCode.
+-- [Command line parameters](https://github.com/LuaLS/lua-telemetry-server/tree/master/method) when starting the language server in VSCode.
 -- 
 -- ```lua
 -- default = {}

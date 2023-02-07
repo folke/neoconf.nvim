@@ -54,9 +54,9 @@
         "null"
       ]
     },
-    "rescript.settings.signatureHelp.enable": {
-      "default": false,
-      "description": "Enable (experimental) signature help for function calls.",
+    "rescript.settings.signatureHelp.enabled": {
+      "default": true,
+      "description": "Enable signature help for function calls.",
       "type": "boolean"
     }
   }

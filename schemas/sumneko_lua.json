@@ -2352,7 +2352,7 @@
       "items": {
         "type": "string"
       },
-      "markdownDescription": "[Command line parameters](https://github.com/sumneko/lua-telemetry-server/tree/master/method) when starting the language server in VSCode.",
+      "markdownDescription": "[Command line parameters](https://github.com/LuaLS/lua-telemetry-server/tree/master/method) when starting the language server in VSCode.",
       "scope": "resource",
       "type": "array"
     },

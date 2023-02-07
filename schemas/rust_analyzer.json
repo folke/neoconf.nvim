@@ -125,6 +125,14 @@
         "string"
       ]
     },
+    "rust-analyzer.cargo.sysrootSrc": {
+      "default": null,
+      "markdownDescription": "Relative path to the sysroot library sources. If left unset, this will default to\n`{cargo.sysroot}/lib/rustlib/src/rust/library`.\n\nThis option does not take effect until rust-analyzer is restarted.",
+      "type": [
+        "null",
+        "string"
+      ]
+    },
     "rust-analyzer.cargo.target": {
       "default": null,
       "markdownDescription": "Compilation target override (target triple).",
