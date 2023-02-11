@@ -8363,6 +8363,12 @@
 ---@field autoimport _.lspconfig.settings.rust_analyzer.Autoimport
 ---@field autoself _.lspconfig.settings.rust_analyzer.Autoself
 ---@field callable _.lspconfig.settings.rust_analyzer.Callable
+-- Maximum number of completions to return. If `None`, the limit is infinite.
+-- 
+-- ```lua
+-- default = <userdata 1>
+-- ```
+---@field limit integer
 ---@field postfix _.lspconfig.settings.rust_analyzer.Postfix
 ---@field privateEditable _.lspconfig.settings.rust_analyzer.PrivateEditable
 ---@field snippets _.lspconfig.settings.rust_analyzer.Snippets

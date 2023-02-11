@@ -299,6 +299,15 @@
       "markdownDescription": "Whether to add parenthesis and argument snippets when completing function.",
       "type": "string"
     },
+    "rust-analyzer.completion.limit": {
+      "default": null,
+      "markdownDescription": "Maximum number of completions to return. If `None`, the limit is infinite.",
+      "minimum": 0,
+      "type": [
+        "null",
+        "integer"
+      ]
+    },
     "rust-analyzer.completion.postfix.enable": {
       "default": true,
       "markdownDescription": "Whether to show postfix snippets like `dbg`, `if`, `not`, etc.",
