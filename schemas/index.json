@@ -47,7 +47,7 @@
   "sourcekit": "https://raw.githubusercontent.com/swift-server/vscode-swift/main/package.json",
   "spectral": "https://raw.githubusercontent.com/stoplightio/vscode-spectral/master/package.json",
   "stylelint_lsp": "https://raw.githubusercontent.com/bmatcuk/coc-stylelintplus/master/package.json",
-  "sumneko_lua": "https://raw.githubusercontent.com/sumneko/vscode-lua/master/package.json",
+  "lua_ls": "https://raw.githubusercontent.com/LuaLS/vscode-lua/master/package.json",
   "svelte": "https://raw.githubusercontent.com/sveltejs/language-tools/master/packages/svelte-vscode/package.json",
   "svlangserver": "https://raw.githubusercontent.com/eirikpre/VSCode-SystemVerilog/master/package.json",
   "tailwindcss": "https://raw.githubusercontent.com/tailwindlabs/tailwindcss-intellisense/master/packages/vscode-tailwindcss/package.json",

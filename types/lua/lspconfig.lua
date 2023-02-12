@@ -401,11 +401,11 @@ lspconfig.stylelint_lsp = {
   setup = function(options) end,
 }
 
----@class lspconfig.options.sumneko_lua: _.lspconfig.options
----@field settings lspconfig.settings.sumneko_lua
+---@class lspconfig.options.lua_ls: _.lspconfig.options
+---@field settings lspconfig.settings.lua_ls
 
-lspconfig.sumneko_lua = {
-  ---@param options lspconfig.options.sumneko_lua
+lspconfig.lua_ls = {
+  ---@param options lspconfig.options.lua_ls
   setup = function(options) end,
 }
 
@@ -554,7 +554,7 @@ lspconfig.zls = {
 ---@field sourcekit lspconfig.options.sourcekit
 ---@field spectral lspconfig.options.spectral
 ---@field stylelint_lsp lspconfig.options.stylelint_lsp
----@field sumneko_lua lspconfig.options.sumneko_lua
+---@field lua_ls lspconfig.options.lua_ls
 ---@field svelte lspconfig.options.svelte
 ---@field svlangserver lspconfig.options.svlangserver
 ---@field tailwindcss lspconfig.options.tailwindcss
@@ -617,7 +617,7 @@ lspconfig.zls = {
 ---@field sourcekit lspconfig.settings.sourcekit
 ---@field spectral lspconfig.settings.spectral
 ---@field stylelint_lsp lspconfig.settings.stylelint_lsp
----@field sumneko_lua lspconfig.settings.sumneko_lua
+---@field lua_ls lspconfig.settings.lua_ls
 ---@field svelte lspconfig.settings.svelte
 ---@field svlangserver lspconfig.settings.svlangserver
 ---@field tailwindcss lspconfig.settings.tailwindcss

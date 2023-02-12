@@ -48,10 +48,10 @@ function M.check()
     else
       warn("**lspconfig jsonls** is not installed? You won't get any auto completion in your settings files")
     end
-    if vim.tbl_contains(available, "sumneko_lua") then
-      ok("**lspconfig sumneko_lua** is installed")
+    if vim.tbl_contains(available, "lua_ls") then
+      ok("**lspconfig lua_ls** is installed")
     else
-      warn("**lspconfig sumneko_lua** is not installed? You won't get any auto completion in your lua settings files")
+      warn("**lspconfig lua_ls** is not installed? You won't get any auto completion in your lua settings files")
     end
   else
     error("**lspconfig** not installed?")

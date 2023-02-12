@@ -45,7 +45,7 @@ require("neoconf").setup({
 })
 
 -- setup your lsp servers as usual
-require("lspconfig").sumneko_lua.setup(...)
+require("lspconfig").lua_ls.setup(...)
 ```
 
 ## ⚙️ Configuration
@@ -84,9 +84,9 @@ require("lspconfig").sumneko_lua.setup(...)
       -- only show completion in json settings for configured lsp servers
       configured_servers_only = true,
     },
-    -- configures sumneko_lua to get completion of lspconfig server settings
-    sumneko_lua = {
-      -- by default, sumneko_lua annotations are only enabled in your neovim config directory
+    -- configures lua_ls to get completion of lspconfig server settings
+    lua_ls = {
+      -- by default, lua_ls annotations are only enabled in your neovim config directory
       enabled_for_neovim_config = true,
       -- explicitely enable adding annotations. Mostly relevant to put in your local .nvim.settings.json file
       enabled = false,
@@ -269,7 +269,7 @@ local my_settings = Neoconf.get("neodev", defaults)
 - [x] [sourcekit](https://github.com/swift-server/vscode-swift/tree/main/package.json)
 - [x] [spectral](https://github.com/stoplightio/vscode-spectral/tree/master/package.json)
 - [x] [stylelint_lsp](https://github.com/bmatcuk/coc-stylelintplus/tree/master/package.json)
-- [x] [sumneko_lua](https://github.com/sumneko/vscode-lua/tree/master/package.json)
+- [x] [lua_ls](https://github.com/LuaLS/vscode-lua/tree/master/package.json)
 - [x] [svelte](https://github.com/sveltejs/language-tools/tree/master/packages/svelte-vscode/package.json)
 - [x] [svlangserver](https://github.com/eirikpre/VSCode-SystemVerilog/tree/master/package.json)
 - [x] [tailwindcss](https://github.com/tailwindlabs/tailwindcss-intellisense/tree/master/packages/vscode-tailwindcss/package.json)
