@@ -285,6 +285,7 @@ SUPPORTED LANGUAGE SERVERS           *neoconf.nvim-supported-language-servers*
 - julials <https://github.com/julia-vscode/julia-vscode/tree/master/package.json>
 - kotlin_language_server <https://github.com/fwcd/vscode-kotlin/tree/master/package.json>
 - ltex <https://github.com/valentjn/vscode-ltex/tree/develop/package.json>
+- lua_ls <https://github.com/LuaLS/vscode-lua/tree/master/package.json>
 - luau_lsp <https://github.com/JohnnyMorganz/luau-lsp/tree/main/editors/code/package.json>
 - nickel_ls <https://github.com/tweag/nickel/tree/master/lsp/client-extension/package.json>
 - omnisharp <https://github.com/OmniSharp/omnisharp-vscode/tree/master/package.json>
@@ -308,7 +309,6 @@ SUPPORTED LANGUAGE SERVERS           *neoconf.nvim-supported-language-servers*
 - sourcekit <https://github.com/swift-server/vscode-swift/tree/main/package.json>
 - spectral <https://github.com/stoplightio/vscode-spectral/tree/master/package.json>
 - stylelint_lsp <https://github.com/bmatcuk/coc-stylelintplus/tree/master/package.json>
-- lua_ls <https://github.com/LuaLS/vscode-lua/tree/master/package.json>
 - svelte <https://github.com/sveltejs/language-tools/tree/master/packages/svelte-vscode/package.json>
 - svlangserver <https://github.com/eirikpre/VSCode-SystemVerilog/tree/master/package.json>
 - tailwindcss <https://github.com/tailwindlabs/tailwindcss-intellisense/tree/master/packages/vscode-tailwindcss/package.json>
