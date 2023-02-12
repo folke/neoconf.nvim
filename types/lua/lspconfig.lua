@@ -217,6 +217,14 @@ lspconfig.ltex = {
   setup = function(options) end,
 }
 
+---@class lspconfig.options.lua_ls: _.lspconfig.options
+---@field settings lspconfig.settings.lua_ls
+
+lspconfig.lua_ls = {
+  ---@param options lspconfig.options.lua_ls
+  setup = function(options) end,
+}
+
 ---@class lspconfig.options.luau_lsp: _.lspconfig.options
 ---@field settings lspconfig.settings.luau_lsp
 
@@ -401,14 +409,6 @@ lspconfig.stylelint_lsp = {
   setup = function(options) end,
 }
 
----@class lspconfig.options.lua_ls: _.lspconfig.options
----@field settings lspconfig.settings.lua_ls
-
-lspconfig.lua_ls = {
-  ---@param options lspconfig.options.lua_ls
-  setup = function(options) end,
-}
-
 ---@class lspconfig.options.svelte: _.lspconfig.options
 ---@field settings lspconfig.settings.svelte
 
@@ -531,6 +531,7 @@ lspconfig.zls = {
 ---@field julials lspconfig.options.julials
 ---@field kotlin_language_server lspconfig.options.kotlin_language_server
 ---@field ltex lspconfig.options.ltex
+---@field lua_ls lspconfig.options.lua_ls
 ---@field luau_lsp lspconfig.options.luau_lsp
 ---@field nickel_ls lspconfig.options.nickel_ls
 ---@field omnisharp lspconfig.options.omnisharp
@@ -554,7 +555,6 @@ lspconfig.zls = {
 ---@field sourcekit lspconfig.options.sourcekit
 ---@field spectral lspconfig.options.spectral
 ---@field stylelint_lsp lspconfig.options.stylelint_lsp
----@field lua_ls lspconfig.options.lua_ls
 ---@field svelte lspconfig.options.svelte
 ---@field svlangserver lspconfig.options.svlangserver
 ---@field tailwindcss lspconfig.options.tailwindcss
@@ -594,6 +594,7 @@ lspconfig.zls = {
 ---@field julials lspconfig.settings.julials
 ---@field kotlin_language_server lspconfig.settings.kotlin_language_server
 ---@field ltex lspconfig.settings.ltex
+---@field lua_ls lspconfig.settings.lua_ls
 ---@field luau_lsp lspconfig.settings.luau_lsp
 ---@field nickel_ls lspconfig.settings.nickel_ls
 ---@field omnisharp lspconfig.settings.omnisharp
@@ -617,7 +618,6 @@ lspconfig.zls = {
 ---@field sourcekit lspconfig.settings.sourcekit
 ---@field spectral lspconfig.settings.spectral
 ---@field stylelint_lsp lspconfig.settings.stylelint_lsp
----@field lua_ls lspconfig.settings.lua_ls
 ---@field svelte lspconfig.settings.svelte
 ---@field svlangserver lspconfig.settings.svlangserver
 ---@field tailwindcss lspconfig.settings.tailwindcss
