@@ -5,7 +5,7 @@ local M = {}
 
 function M.setup()
   Util.on_config({
-    name = "settings/plugins/sumneko",
+    name = "settings/plugins/lua_ls",
     on_config = M.on_new_config,
   })
 end

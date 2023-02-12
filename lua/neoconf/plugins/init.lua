@@ -30,7 +30,7 @@ end
 function M.setup()
   M.register(require("neoconf.plugins.lspconfig"))
   M.register(require("neoconf.plugins.jsonls"))
-  M.register(require("neoconf.plugins.sumneko"))
+  M.register(require("neoconf.plugins.lua_ls"))
 end
 
 return M
