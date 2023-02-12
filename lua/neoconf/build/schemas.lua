@@ -10,7 +10,7 @@ local M = {}
 
 --- @type table<string, LspSchema>
 M.overrides = {
-  sumneko_lua = {
+  lua_ls = {
     translate = true,
   },
   jsonls = {

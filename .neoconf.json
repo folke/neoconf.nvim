@@ -10,13 +10,13 @@
   },
   "neoconf": {
     "plugins": {
-      "sumneko_lua": {
+      "lua_ls": {
         "enabled": true
       },
     }
   },
   "lspconfig": {
-    "sumneko_lua": {
+    "lua_ls": {
       "Lua.completion.callSnippet": "Replace",
     },
   }

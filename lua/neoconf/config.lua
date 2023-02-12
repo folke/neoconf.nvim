@@ -31,9 +31,9 @@ M.defaults = {
       -- only show completion in json settings for configured lsp servers
       configured_servers_only = true,
     },
-    -- configures sumneko_lua to get completion of lspconfig server settings
-    sumneko_lua = {
-      -- by default, sumneko_lua annotations are only enabled in your neovim config directory
+    -- configures lua_ls to get completion of lspconfig server settings
+    lua_ls = {
+      -- by default, lua_ls annotations are only enabled in your neovim config directory
       enabled_for_neovim_config = true,
       -- explicitely enable adding annotations. Mostly relevant to put in your local .nvim.settings.json file
       enabled = false,

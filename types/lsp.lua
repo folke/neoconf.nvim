@@ -9553,11 +9553,11 @@
 ---@class lspconfig.settings.stylelint_lsp
 ---@field stylelintplus _.lspconfig.settings.stylelint_lsp.Stylelintplus
 
----@class _.lspconfig.settings.sumneko_lua.CodeLens
+---@class _.lspconfig.settings.lua_ls.CodeLens
 -- Enable code lens.
 ---@field enable boolean
 
----@class _.lspconfig.settings.sumneko_lua.Completion
+---@class _.lspconfig.settings.lua_ls.Completion
 -- When the input looks like a file name, automatically `require` this file.
 -- 
 -- ```lua
@@ -9628,7 +9628,7 @@
 -- `Fallback` means that diagnostics in this group are controlled by `diagnostics.neededFileStatus` separately.
 -- Other settings will override individual settings without end of `!`.
 -- 
----@class _.lspconfig.settings.sumneko_lua.GroupFileStatus
+---@class _.lspconfig.settings.lua_ls.GroupFileStatus
 -- * ambiguity-1
 -- * count-down-loop
 -- * different-requires
@@ -9749,7 +9749,7 @@
 -- `Fallback` means that diagnostics in this group are controlled by `diagnostics.severity` separately.
 -- Other settings will override individual settings without end of `!`.
 -- 
----@class _.lspconfig.settings.sumneko_lua.GroupSeverity
+---@class _.lspconfig.settings.lua_ls.GroupSeverity
 -- * ambiguity-1
 -- * count-down-loop
 -- * different-requires
@@ -9872,7 +9872,7 @@
 -- 
 -- End with `!` means override the group setting `diagnostics.groupFileStatus`.
 -- 
----@class _.lspconfig.settings.sumneko_lua.NeededFileStatus
+---@class _.lspconfig.settings.lua_ls.NeededFileStatus
 -- Enable ambiguous operator precedence diagnostics. For example, the `num or 0 + 1` expression will be suggested `(num or 0) + 1` instead.
 -- 
 -- ```lua
@@ -10208,7 +10208,7 @@
 -- 
 -- End with `!` means override the group setting `diagnostics.groupSeverity`.
 -- 
----@class _.lspconfig.settings.sumneko_lua.Severity
+---@class _.lspconfig.settings.lua_ls.Severity
 -- Enable ambiguous operator precedence diagnostics. For example, the `num or 0 + 1` expression will be suggested `(num or 0) + 1` instead.
 -- 
 -- ```lua
@@ -10540,7 +10540,7 @@
 -- ```
 ---@field unused-vararg "Error" | "Warning" | "Information" | "Hint" | "Error!" | "Warning!" | "Information!" | "Hint!"
 
----@class _.lspconfig.settings.sumneko_lua.Diagnostics
+---@class _.lspconfig.settings.lua_ls.Diagnostics
 -- Disabled diagnostic (Use code in hover brackets).
 -- 
 -- ```lua
@@ -10574,12 +10574,12 @@
 -- `Fallback` means that diagnostics in this group are controlled by `diagnostics.neededFileStatus` separately.
 -- Other settings will override individual settings without end of `!`.
 -- 
----@field groupFileStatus _.lspconfig.settings.sumneko_lua.GroupFileStatus
+---@field groupFileStatus _.lspconfig.settings.lua_ls.GroupFileStatus
 -- Modify the diagnostic severity in a group.
 -- `Fallback` means that diagnostics in this group are controlled by `diagnostics.severity` separately.
 -- Other settings will override individual settings without end of `!`.
 -- 
----@field groupSeverity _.lspconfig.settings.sumneko_lua.GroupSeverity
+---@field groupSeverity _.lspconfig.settings.lua_ls.GroupSeverity
 -- How to diagnose ignored files.
 -- 
 -- ```lua
@@ -10598,12 +10598,12 @@
 -- 
 -- End with `!` means override the group setting `diagnostics.groupFileStatus`.
 -- 
----@field neededFileStatus _.lspconfig.settings.sumneko_lua.NeededFileStatus
+---@field neededFileStatus _.lspconfig.settings.lua_ls.NeededFileStatus
 -- Modify the diagnostic severity.
 -- 
 -- End with `!` means override the group setting `diagnostics.groupSeverity`.
 -- 
----@field severity _.lspconfig.settings.sumneko_lua.Severity
+---@field severity _.lspconfig.settings.lua_ls.Severity
 -- Do not diagnose `unused-local` when the variable name matches the following pattern.
 -- 
 -- ```lua
@@ -10629,7 +10629,7 @@
 -- ```
 ---@field workspaceRate integer
 
----@class _.lspconfig.settings.sumneko_lua.Doc
+---@class _.lspconfig.settings.lua_ls.Doc
 -- Treat specific field names as package, e.g. `m_*` means `XXX.m_id` and `XXX.m_type` are package, witch can only be accessed in the file where the definition is located.
 -- 
 -- ```lua
@@ -10649,7 +10649,7 @@
 -- ```
 ---@field protectedName string[]
 
----@class _.lspconfig.settings.sumneko_lua.Format
+---@class _.lspconfig.settings.lua_ls.Format
 -- The default format configuration. Has a lower priority than `.editorconfig` file in the workspace.
 -- Read [formatter docs](https://github.com/CppCXY/EmmyLuaCodeStyle/tree/master/docs) to learn usage.
 -- 
@@ -10665,7 +10665,7 @@
 -- ```
 ---@field enable boolean
 
----@class _.lspconfig.settings.sumneko_lua.Hint
+---@class _.lspconfig.settings.lua_ls.Hint
 -- Show hints of array index when constructing a table.
 -- 
 -- ```lua
@@ -10701,7 +10701,7 @@
 -- Show hints of type at assignment operation.
 ---@field setType boolean
 
----@class _.lspconfig.settings.sumneko_lua.Hover
+---@class _.lspconfig.settings.lua_ls.Hover
 -- Enable hover.
 -- 
 -- ```lua
@@ -10746,7 +10746,7 @@
 -- ```
 ---@field viewStringMax integer
 
----@class _.lspconfig.settings.sumneko_lua.Misc
+---@class _.lspconfig.settings.lua_ls.Misc
 -- Specify the executable path in VSCode.
 -- 
 -- ```lua
@@ -10766,7 +10766,7 @@
 -- * `enable`: always enable
 -- * `disable`: always disable
 -- 
----@class _.lspconfig.settings.sumneko_lua.Builtin
+---@class _.lspconfig.settings.lua_ls.Builtin
 -- 
 -- 
 -- ```lua
@@ -10876,14 +10876,14 @@
 -- ```
 ---@field utf8 "default" | "enable" | "disable"
 
----@class _.lspconfig.settings.sumneko_lua.Runtime
+---@class _.lspconfig.settings.lua_ls.Runtime
 -- Adjust the enabled state of the built-in library. You can disable (or redefine) the non-existent library according to the actual runtime environment.
 -- 
 -- * `default`: Indicates that the library will be enabled or disabled according to the runtime version
 -- * `enable`: always enable
 -- * `disable`: always disable
 -- 
----@field builtin _.lspconfig.settings.sumneko_lua.Builtin
+---@field builtin _.lspconfig.settings.lua_ls.Builtin
 -- File encoding. The `ansi` option is only available under the `Windows` platform.
 -- 
 -- ```lua
@@ -10948,7 +10948,7 @@
 -- ```
 ---@field version "Lua 5.1" | "Lua 5.2" | "Lua 5.3" | "Lua 5.4" | "LuaJIT"
 
----@class _.lspconfig.settings.sumneko_lua.Semantic
+---@class _.lspconfig.settings.lua_ls.Semantic
 -- Semantic coloring of type annotations.
 -- 
 -- ```lua
@@ -10970,7 +10970,7 @@
 -- ```
 ---@field variable boolean
 
----@class _.lspconfig.settings.sumneko_lua.SignatureHelp
+---@class _.lspconfig.settings.lua_ls.SignatureHelp
 -- Enable signature help.
 -- 
 -- ```lua
@@ -10978,7 +10978,7 @@
 -- ```
 ---@field enable boolean
 
----@class _.lspconfig.settings.sumneko_lua.Spell
+---@class _.lspconfig.settings.lua_ls.Spell
 -- Custom words for spell checking.
 -- 
 -- ```lua
@@ -10986,7 +10986,7 @@
 -- ```
 ---@field dict string[]
 
----@class _.lspconfig.settings.sumneko_lua.Type
+---@class _.lspconfig.settings.lua_ls.Type
 -- Allowed to assign the `number` type to the `integer` type.
 -- 
 -- ```lua
@@ -11005,7 +11005,7 @@
 ---@field weakUnionCheck boolean
 
 -- Configures the formatting behavior while typing Lua code.
----@class _.lspconfig.settings.sumneko_lua.Config
+---@class _.lspconfig.settings.lua_ls.Config
 -- Controls if `end` is automatically completed at suitable positions.
 -- 
 -- ```lua
@@ -11025,11 +11025,11 @@
 -- ```
 ---@field format_line string
 
----@class _.lspconfig.settings.sumneko_lua.TypeFormat
+---@class _.lspconfig.settings.lua_ls.TypeFormat
 -- Configures the formatting behavior while typing Lua code.
----@field config _.lspconfig.settings.sumneko_lua.Config
+---@field config _.lspconfig.settings.lua_ls.Config
 
----@class _.lspconfig.settings.sumneko_lua.Window
+---@class _.lspconfig.settings.lua_ls.Window
 -- Show progress bar in status bar.
 -- 
 -- ```lua
@@ -11043,7 +11043,7 @@
 -- ```
 ---@field statusBar boolean
 
----@class _.lspconfig.settings.sumneko_lua.Workspace
+---@class _.lspconfig.settings.lua_ls.Workspace
 -- Automatic detection and adaptation of third-party libraries, currently supported libraries are:
 -- 
 -- * OpenResty
@@ -11101,26 +11101,26 @@
 -- ```
 ---@field userThirdParty string[]
 
----@class _.lspconfig.settings.sumneko_lua.Lua
----@field codeLens _.lspconfig.settings.sumneko_lua.CodeLens
----@field completion _.lspconfig.settings.sumneko_lua.Completion
----@field diagnostics _.lspconfig.settings.sumneko_lua.Diagnostics
----@field doc _.lspconfig.settings.sumneko_lua.Doc
----@field format _.lspconfig.settings.sumneko_lua.Format
----@field hint _.lspconfig.settings.sumneko_lua.Hint
----@field hover _.lspconfig.settings.sumneko_lua.Hover
----@field misc _.lspconfig.settings.sumneko_lua.Misc
----@field runtime _.lspconfig.settings.sumneko_lua.Runtime
----@field semantic _.lspconfig.settings.sumneko_lua.Semantic
----@field signatureHelp _.lspconfig.settings.sumneko_lua.SignatureHelp
----@field spell _.lspconfig.settings.sumneko_lua.Spell
----@field type _.lspconfig.settings.sumneko_lua.Type
----@field typeFormat _.lspconfig.settings.sumneko_lua.TypeFormat
----@field window _.lspconfig.settings.sumneko_lua.Window
----@field workspace _.lspconfig.settings.sumneko_lua.Workspace
+---@class _.lspconfig.settings.lua_ls.Lua
+---@field codeLens _.lspconfig.settings.lua_ls.CodeLens
+---@field completion _.lspconfig.settings.lua_ls.Completion
+---@field diagnostics _.lspconfig.settings.lua_ls.Diagnostics
+---@field doc _.lspconfig.settings.lua_ls.Doc
+---@field format _.lspconfig.settings.lua_ls.Format
+---@field hint _.lspconfig.settings.lua_ls.Hint
+---@field hover _.lspconfig.settings.lua_ls.Hover
+---@field misc _.lspconfig.settings.lua_ls.Misc
+---@field runtime _.lspconfig.settings.lua_ls.Runtime
+---@field semantic _.lspconfig.settings.lua_ls.Semantic
+---@field signatureHelp _.lspconfig.settings.lua_ls.SignatureHelp
+---@field spell _.lspconfig.settings.lua_ls.Spell
+---@field type _.lspconfig.settings.lua_ls.Type
+---@field typeFormat _.lspconfig.settings.lua_ls.TypeFormat
+---@field window _.lspconfig.settings.lua_ls.Window
+---@field workspace _.lspconfig.settings.lua_ls.Workspace
 
----@class lspconfig.settings.sumneko_lua
----@field Lua _.lspconfig.settings.sumneko_lua.Lua
+---@class lspconfig.settings.lua_ls
+---@field Lua _.lspconfig.settings.lua_ls.Lua
 
 ---@class _.lspconfig.settings.svelte.Language-server
 -- - You normally don't set this - Enable more verbose logging for the language server useful for debugging language server execution.
