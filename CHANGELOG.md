@@ -1,5 +1,14 @@
 # Changelog
 
+## [1.0.3](https://github.com/folke/neoconf.nvim/compare/v1.0.2...v1.0.3) (2023-02-12)
+
+
+### Bug Fixes
+
+* lua_ls schema ([8b3f2b5](https://github.com/folke/neoconf.nvim/commit/8b3f2b56e6760a92b5df97b0b182d31405f7458e))
+* rename sumneko_lua -&gt; lua_ls ([#12](https://github.com/folke/neoconf.nvim/issues/12)) ([156a3ee](https://github.com/folke/neoconf.nvim/commit/156a3eed89ffef5f926102e1bc9e372946385074))
+* temp fix for sumneok_lua -&gt; lua_ls rename ([e3479df](https://github.com/folke/neoconf.nvim/commit/e3479df94d63b3f29481278cc8527e1ded902aaf))
+
 ## [1.0.2](https://github.com/folke/neoconf.nvim/compare/v1.0.1...v1.0.2) (2023-02-07)
 
 
