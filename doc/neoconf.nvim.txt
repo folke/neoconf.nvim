@@ -1,4 +1,4 @@
-*neoconf.nvim.txt*      For Neovim >= 0.8.0      Last change: 2023 February 07
+*neoconf.nvim.txt*      For Neovim >= 0.8.0      Last change: 2023 February 12
 
 ==============================================================================
 Table of Contents                             *neoconf.nvim-table-of-contents*
@@ -308,13 +308,13 @@ SUPPORTED LANGUAGE SERVERS           *neoconf.nvim-supported-language-servers*
 - sourcekit <https://github.com/swift-server/vscode-swift/tree/main/package.json>
 - spectral <https://github.com/stoplightio/vscode-spectral/tree/master/package.json>
 - stylelint_lsp <https://github.com/bmatcuk/coc-stylelintplus/tree/master/package.json>
-- lua_ls <https://github.com/sumneko/vscode-lua/tree/master/package.json>
+- lua_ls <https://github.com/LuaLS/vscode-lua/tree/master/package.json>
 - svelte <https://github.com/sveltejs/language-tools/tree/master/packages/svelte-vscode/package.json>
 - svlangserver <https://github.com/eirikpre/VSCode-SystemVerilog/tree/master/package.json>
 - tailwindcss <https://github.com/tailwindlabs/tailwindcss-intellisense/tree/master/packages/vscode-tailwindcss/package.json>
 - terraformls <https://github.com/hashicorp/vscode-terraform/tree/master/package.json>
 - tsserver <https://github.com/microsoft/vscode/tree/main/extensions/typescript-language-features/package.json>
-- volar <https://github.com/johnsoncodehk/volar/tree/master/vue-language-tools/vscode-vue/package.json>
+- volar <https://github.com/vuejs/language-tools/tree/master/packages/vscode-vue/package.json>
 - vtsls <https://github.com/yioneko/vtsls/tree/main/packages/service/configuration.schema.json>
 - vuels <https://github.com/vuejs/vetur/tree/master/package.json>
 - wgls_analyzer <https://github.com/wgsl-analyzer/wgsl-analyzer/tree/main/editors/code/package.json>
