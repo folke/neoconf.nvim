@@ -34,7 +34,12 @@ M.overrides = {
 function M.index()
   ---@type table<string, LspSchema>
   local ret = {}
-  for server, package_json in pairs(vim.json.decode(Util.read_file(Util.path("schemas/index.json")))) do
+  local packages = vim.json.decode(Util.read_file(Util.path("schemas/index.json")))
+
+  packages["lua_ls"] = "https://github.com/LuaLS/vscode-lua/blob/master/package.json"
+  packages["sumneko_lua"] = nil
+
+  for server, package_json in pairs(packages) do
     ret[server] = { package_url = package_json }
   end
   ret = vim.tbl_deep_extend("force", ret, M.overrides)
