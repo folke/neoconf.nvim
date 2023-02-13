@@ -140,37 +140,9 @@
       },
       "type": "object"
     },
-    "volar.icon.preview": {
-      "default": true,
-      "description": "Show Vite / Nuxt App preview icon.",
-      "type": "boolean"
-    },
     "volar.icon.splitEditors": {
       "default": false,
       "description": "Show split editor icon in title area of editor.",
-      "type": "boolean"
-    },
-    "volar.preview.backgroundColor": {
-      "default": "#fff",
-      "description": "Component preview background color.",
-      "type": "string"
-    },
-    "volar.preview.port": {
-      "default": 3333,
-      "description": "Default port for component preview server.",
-      "type": "number"
-    },
-    "volar.preview.script.nuxi": {
-      "default": "node {NUXI_BIN} dev --port {PORT}",
-      "type": "string"
-    },
-    "volar.preview.script.vite": {
-      "default": "node {VITE_BIN} --port={PORT}",
-      "type": "string"
-    },
-    "volar.preview.transparentGrid": {
-      "default": false,
-      "description": "Component preview background style.",
       "type": "boolean"
     },
     "volar.splitEditors.layout.left": {
