@@ -2651,7 +2651,8 @@
             "xpcall",
             "assert",
             "error",
-            "type"
+            "type",
+            "os.exit"
           ],
           "type": "string"
         }

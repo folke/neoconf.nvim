@@ -4948,7 +4948,7 @@
 -- ```
 ---@field hiddenFalsePositives _.lspconfig.settings.ltex.HiddenFalsePositives
 ---@field java _.lspconfig.settings.ltex.Java
--- The language (e.g., `"en-US"`) LanguageTool should check against. Use a specific variant like `"en-US"` or `"de-DE"` instead of the generic language code like `"en"` or `"de"` to obtain spelling corrections (in addition to grammar corrections). [More info...](https://valentjn.github.io/ltex/settings.html#ltexlanguage)
+-- The language (e.g., `"en-US"`) LanguageTool should check against. If possible, use a specific variant like `"en-US"` or `"de-DE"` instead of the generic language code like `"en"` or `"de"` to obtain spelling corrections (in addition to grammar corrections). [More info...](https://valentjn.github.io/ltex/settings.html#ltexlanguage)
 -- 
 -- ```lua
 -- default = "en-US"
