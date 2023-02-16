@@ -2209,7 +2209,7 @@
     },
     "Lua.format.defaultConfig": {
       "additionalProperties": false,
-      "default": [],
+      "default": {},
       "markdownDescription": "The default format configuration. Has a lower priority than `.editorconfig` file in the workspace.\nRead [formatter docs](https://github.com/CppCXY/EmmyLuaCodeStyle/tree/master/docs) to learn usage.\n",
       "patternProperties": {
         ".*": {
@@ -2634,7 +2634,7 @@
     },
     "Lua.runtime.special": {
       "additionalProperties": false,
-      "default": [],
+      "default": {},
       "markdownDescription": "The custom global variables are regarded as some special built-in variables, and the language server will provide special support\nThe following example shows that 'include' is treated as' require '.\n```json\n\"Lua.runtime.special\" : {\n    \"include\" : \"require\"\n}\n```\n",
       "patternProperties": {
         ".*": {

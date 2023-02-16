@@ -12582,6 +12582,10 @@
 -- Show split editor icon in title area of editor.
 ---@field splitEditors boolean
 
+---@class _.lspconfig.settings.volar.InlayHints
+-- Show inlay hints for missing required props.
+---@field missingRequiredProps boolean
+
 ---@class _.lspconfig.settings.volar.Layout
 -- ```lua
 -- default = { "script", "scriptSetup", "styles" }
@@ -12688,6 +12692,7 @@
 ---@field doctor _.lspconfig.settings.volar.Doctor
 ---@field format _.lspconfig.settings.volar.Format
 ---@field icon _.lspconfig.settings.volar.Icon
+---@field inlayHints _.lspconfig.settings.volar.InlayHints
 ---@field splitEditors _.lspconfig.settings.volar.SplitEditors
 ---@field takeOverMode _.lspconfig.settings.volar.TakeOverMode
 ---@field updateImportsOnFileMove _.lspconfig.settings.volar.UpdateImportsOnFileMove
