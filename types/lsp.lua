@@ -12584,6 +12584,10 @@
 
 ---@class _.lspconfig.settings.volar.InlayHints
 -- Show inlay hints for missing required props.
+-- 
+-- ```lua
+-- default = true
+-- ```
 ---@field missingRequiredProps boolean
 
 ---@class _.lspconfig.settings.volar.Layout

@@ -146,7 +146,7 @@
       "type": "boolean"
     },
     "volar.inlayHints.missingRequiredProps": {
-      "default": false,
+      "default": true,
       "description": "Show inlay hints for missing required props.",
       "type": "boolean"
     },
