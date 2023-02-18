@@ -4977,6 +4977,14 @@
 ---@class lspconfig.settings.ltex
 ---@field ltex _.lspconfig.settings.ltex.Ltex
 
+---@class _.lspconfig.settings.lua_ls.AddonManager
+-- Set the on/off state for the addon manager.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enable boolean
+
 ---@class _.lspconfig.settings.lua_ls.CodeLens
 -- Enable code lens.
 ---@field enable boolean
@@ -6526,6 +6534,7 @@
 ---@field userThirdParty string[]
 
 ---@class _.lspconfig.settings.lua_ls.Lua
+---@field addonManager _.lspconfig.settings.lua_ls.AddonManager
 ---@field codeLens _.lspconfig.settings.lua_ls.CodeLens
 ---@field completion _.lspconfig.settings.lua_ls.Completion
 ---@field diagnostics _.lspconfig.settings.lua_ls.Diagnostics
@@ -12583,6 +12592,12 @@
 ---@field splitEditors boolean
 
 ---@class _.lspconfig.settings.volar.InlayHints
+-- Show inlay hints for event argument in inline handlers.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field eventArgumentInInlineHandlers boolean
 -- Show inlay hints for missing required props.
 -- 
 -- ```lua

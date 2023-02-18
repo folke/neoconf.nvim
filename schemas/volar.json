@@ -145,6 +145,11 @@
       "description": "Show split editor icon in title area of editor.",
       "type": "boolean"
     },
+    "volar.inlayHints.eventArgumentInInlineHandlers": {
+      "default": true,
+      "description": "Show inlay hints for event argument in inline handlers.",
+      "type": "boolean"
+    },
     "volar.inlayHints.missingRequiredProps": {
       "default": true,
       "description": "Show inlay hints for missing required props.",

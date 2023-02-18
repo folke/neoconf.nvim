@@ -2,6 +2,12 @@
   "$schema": "http://json-schema.org/draft-07/schema#",
   "description": "Lua Language Server coded by Lua",
   "properties": {
+    "Lua.addonManager.enable": {
+      "default": true,
+      "markdownDescription": "Set the on/off state for the addon manager.",
+      "scope": "resource",
+      "type": "boolean"
+    },
     "Lua.codeLens.enable": {
       "default": false,
       "markdownDescription": "Enable code lens.",
