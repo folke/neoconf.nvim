@@ -1051,6 +1051,8 @@
 ---@class _.lspconfig.settings.fsautocomplete.Fsac
 -- Appends the '--attachdebugger' argument to fsac, this will allow you to attach a debugger.
 ---@field attachDebugger boolean
+-- Configures FsAutoComplete with settings intended to reduce memory consumption. Requires restart.
+---@field conserveMemory boolean
 -- additional CLI arguments to be provided to the dotnet runner for FSAC
 -- 
 -- ```lua
@@ -12664,6 +12666,8 @@
 ---@field diagnosticModel "push" | "pull"
 -- Disable file watcher in language server for better performance.
 ---@field disableFileWatcher boolean
+-- Enable this option if you want to get complete CompletionList in language client. (Disable for better performance)
+---@field fullCompletionList boolean
 ---@field json _.lspconfig.settings.volar.Json
 -- Maximum file size for Vue Server to load. (default: 20MB)
 -- 

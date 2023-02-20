@@ -211,6 +211,11 @@
       "description": "Disable file watcher in language server for better performance.",
       "type": "boolean"
     },
+    "volar.vueserver.fullCompletionList": {
+      "default": false,
+      "description": "Enable this option if you want to get complete CompletionList in language client. (Disable for better performance)",
+      "type": "boolean"
+    },
     "volar.vueserver.json.customBlockSchemaUrls": {
       "type": "object"
     },

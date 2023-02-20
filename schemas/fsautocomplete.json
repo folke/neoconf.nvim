@@ -114,6 +114,11 @@
       "description": "Appends the '--attachdebugger' argument to fsac, this will allow you to attach a debugger.",
       "type": "boolean"
     },
+    "FSharp.fsac.conserveMemory": {
+      "default": false,
+      "description": "Configures FsAutoComplete with settings intended to reduce memory consumption. Requires restart.",
+      "type": "boolean"
+    },
     "FSharp.fsac.dotnetArgs": {
       "default": [],
       "description": "additional CLI arguments to be provided to the dotnet runner for FSAC",
