@@ -1065,6 +1065,8 @@
 -- default = ""
 -- ```
 ---@field netCoreDllPath string
+-- EXPERIMENTAL: Speed up analyzing of projects in parallel. Requires restart.
+---@field parallelReferenceResolution boolean
 -- An array of log categories for FSAC to filter out. These can be found by viewing your log output and noting the text in between the brackets in the log line. For example, in the log line `[16:07:14.626 INF] [Compiler] done compiling foo.fsx`, the category is 'Compiler'. 
 -- 
 -- ```lua
