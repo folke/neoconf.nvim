@@ -955,7 +955,7 @@
       "items": {
         "type": "string"
       },
-      "markdownDescription": "Advanced option, fully override the command rust-analyzer uses for\nformatting.",
+      "markdownDescription": "Advanced option, fully override the command rust-analyzer uses for\nformatting. This should be the equivalent of `rustfmt` here, and\nnot that of `cargo fmt`. The file contents will be passed on the\nstandard input and the formatted result will be read from the\nstandard output.",
       "type": [
         "null",
         "array"
