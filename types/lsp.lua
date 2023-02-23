@@ -1059,7 +1059,7 @@
 -- default = {}
 -- ```
 ---@field dotnetArgs string[]
--- The path to the 'fsautocomplete.dll', useful for debugging a self-built fsac.
+-- The path to the 'fsautocomplete.dll', useful for debugging a self-built fsac. Requires restart.
 -- 
 -- ```lua
 -- default = ""

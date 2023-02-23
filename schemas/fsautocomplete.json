@@ -129,7 +129,7 @@
     },
     "FSharp.fsac.netCoreDllPath": {
       "default": "",
-      "description": "The path to the 'fsautocomplete.dll', useful for debugging a self-built fsac.",
+      "description": "The path to the 'fsautocomplete.dll', useful for debugging a self-built fsac. Requires restart.",
       "scope": "machine-overridable",
       "type": "string"
     },
