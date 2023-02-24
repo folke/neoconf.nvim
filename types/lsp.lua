@@ -13977,9 +13977,9 @@
 -- Which version of naga to use for its diagnostics
 -- 
 -- ```lua
--- default = "0.10"
+-- default = "0.11"
 -- ```
----@field nagaVersion "0.9" | "0.10" | "main"
+---@field nagaVersion "0.10" | "0.11" | "main"
 -- Controls whether to show type errors.
 -- 
 -- ```lua
