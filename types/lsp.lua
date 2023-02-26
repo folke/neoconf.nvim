@@ -1806,6 +1806,41 @@
 -- ```
 ---@field level "full" | "filtered" | "off"
 
+-- Options for compilation server recording
+-- 
+-- ```lua
+-- default = {
+--   enabled = false,
+--   exclude = {},
+--   excludeUntracked = false,
+--   path = ".haxelsp/recording/",
+--   watch = {}
+-- }
+-- ```
+---@class _.lspconfig.settings.haxe_language_server.ServerRecording
+-- Enable recording of communication with Haxe Server to produce reproducible logs.
+---@field enabled boolean
+-- Do not track these files in git/svn logged changes.
+-- 
+-- ```lua
+-- default = {}
+-- ```
+---@field exclude any[]
+-- Do not add untracked files to recording.
+---@field excludeUntracked boolean
+-- Root folder to use to save data related to server recording.
+-- 
+-- ```lua
+-- default = ".haxelsp/recording/"
+-- ```
+---@field path string
+-- Additional paths to watch for changes (e.g. resources used for compilation)
+-- 
+-- ```lua
+-- default = {}
+-- ```
+---@field watch any[]
+
 -- Configures which presentation options to use for generated tasks by default (see `presentation` in `tasks.json`).
 -- 
 -- ```lua
@@ -1970,6 +2005,18 @@
 -- default = { "src", "source", "Source", "test", "tests" }
 -- ```
 ---@field renameSourceFolders any[]
+-- Options for compilation server recording
+-- 
+-- ```lua
+-- default = {
+--   enabled = false,
+--   exclude = {},
+--   excludeUntracked = false,
+--   path = ".haxelsp/recording/",
+--   watch = {}
+-- }
+-- ```
+---@field serverRecording _.lspconfig.settings.haxe_language_server.ServerRecording
 -- Configures which presentation options to use for generated tasks by default (see `presentation` in `tasks.json`).
 -- 
 -- ```lua

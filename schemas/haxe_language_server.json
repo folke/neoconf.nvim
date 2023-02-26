@@ -678,6 +678,45 @@
       "markdownDescription": "Folders to look for renamable identifiers. Rename will not see or touch files outside of those folders.",
       "type": "array"
     },
+    "haxe.serverRecording": {
+      "additionalProperties": false,
+      "default": {
+        "enabled": false,
+        "exclude": [],
+        "excludeUntracked": false,
+        "path": ".haxelsp/recording/",
+        "watch": []
+      },
+      "markdownDescription": "Options for compilation server recording",
+      "properties": {
+        "enabled": {
+          "default": false,
+          "markdownDescription": "Enable recording of communication with Haxe Server to produce reproducible logs.",
+          "type": "boolean"
+        },
+        "exclude": {
+          "default": [],
+          "markdownDescription": "Do not track these files in git/svn logged changes.",
+          "type": "array"
+        },
+        "excludeUntracked": {
+          "default": false,
+          "markdownDescription": "Do not add untracked files to recording.",
+          "type": "boolean"
+        },
+        "path": {
+          "default": ".haxelsp/recording/",
+          "markdownDescription": "Root folder to use to save data related to server recording.",
+          "type": "string"
+        },
+        "watch": {
+          "default": [],
+          "markdownDescription": "Additional paths to watch for changes (e.g. resources used for compilation)",
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
     "haxe.taskPresentation": {
       "additionalProperties": false,
       "default": {
