@@ -220,6 +220,16 @@
       "description": "Controls if type-annotation inlay hints will be displayed for bindings.",
       "type": "boolean"
     },
+    "FSharp.inlineValues.enabled": {
+      "default": false,
+      "description": "Enables rendering all kinds of hints inline with your code. Currently supports pipelineHints, which are like LineLenses that appear along each step of a chain of piped expressions",
+      "type": "boolean"
+    },
+    "FSharp.inlineValues.prefix": {
+      "default": "  // ",
+      "description": "The prefix used when rendering inline values.",
+      "type": "string"
+    },
     "FSharp.interfaceStubGeneration": {
       "default": true,
       "description": "Enables a codefix that generates missing interface members when inside of an interface implementation expression",
@@ -263,6 +273,27 @@
     "FSharp.msbuildAutoshow": {
       "default": false,
       "description": "Automatically shows the MSBuild output panel when MSBuild functionality is invoked",
+      "type": "boolean"
+    },
+    "FSharp.notifications.trace": {
+      "default": false,
+      "description": "Enables more verbose notifications using System.Diagnostics.Activity to view traces from FSharp.Compiler.Service.",
+      "type": "boolean"
+    },
+    "FSharp.notifications.traceNamespaces": {
+      "default": [
+        "BoundModel.TypeCheck",
+        "BackgroundCompiler."
+      ],
+      "description": "The set of System.Diagnostics.Activity names to watch.",
+      "required": [
+        "FSharp.notifications.trace"
+      ],
+      "type": "array"
+    },
+    "FSharp.openTelemetry.enabled": {
+      "default": false,
+      "description": "Enables OpenTelemetry exporter. See https://opentelemetry.io/docs/reference/specification/protocol/exporter/ for environment variables to configure for the exporter. Requires Restart.",
       "type": "boolean"
     },
     "FSharp.pipelineHints.enabled": {

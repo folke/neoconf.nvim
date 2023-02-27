@@ -1096,6 +1096,16 @@
 -- ```
 ---@field typeAnnotations boolean
 
+---@class _.lspconfig.settings.fsautocomplete.InlineValues
+-- Enables rendering all kinds of hints inline with your code. Currently supports pipelineHints, which are like LineLenses that appear along each step of a chain of piped expressions
+---@field enabled boolean
+-- The prefix used when rendering inline values.
+-- 
+-- ```lua
+-- default = "  // "
+-- ```
+---@field prefix string
+
 ---@class _.lspconfig.settings.fsautocomplete.LineLens
 -- Usage mode for LineLens. If `never`, LineLens will never be shown.  If `replaceCodeLens`, LineLens will be placed in a decoration on top of the current line.
 -- 
@@ -1109,6 +1119,20 @@
 -- default = "  // "
 -- ```
 ---@field prefix string
+
+---@class _.lspconfig.settings.fsautocomplete.Notifications
+-- Enables more verbose notifications using System.Diagnostics.Activity to view traces from FSharp.Compiler.Service.
+---@field trace boolean
+-- The set of System.Diagnostics.Activity names to watch.
+-- 
+-- ```lua
+-- default = { "BoundModel.TypeCheck", "BackgroundCompiler." }
+-- ```
+---@field traceNamespaces any[]
+
+---@class _.lspconfig.settings.fsautocomplete.OpenTelemetry
+-- Enables OpenTelemetry exporter. See https://opentelemetry.io/docs/reference/specification/protocol/exporter/ for environment variables to configure for the exporter. Requires Restart.
+---@field enabled boolean
 
 ---@class _.lspconfig.settings.fsautocomplete.PipelineHints
 -- Enables PipeLine hints, which are like LineLenses that appear along each step of a chain of piped expressions
@@ -1242,6 +1266,7 @@
 -- ```
 ---@field infoPanelUpdate "onCursorMove" | "onHover" | "both" | "none"
 ---@field inlayHints _.lspconfig.settings.fsautocomplete.InlayHints
+---@field inlineValues _.lspconfig.settings.fsautocomplete.InlineValues
 -- Enables a codefix that generates missing interface members when inside of an interface implementation expression
 -- 
 -- ```lua
@@ -1275,6 +1300,8 @@
 ---@field linter boolean
 -- Automatically shows the MSBuild output panel when MSBuild functionality is invoked
 ---@field msbuildAutoshow boolean
+---@field notifications _.lspconfig.settings.fsautocomplete.Notifications
+---@field openTelemetry _.lspconfig.settings.fsautocomplete.OpenTelemetry
 ---@field pipelineHints _.lspconfig.settings.fsautocomplete.PipelineHints
 -- Enables a codefix that will generate missing record fields when inside a record construction expression
 -- 
