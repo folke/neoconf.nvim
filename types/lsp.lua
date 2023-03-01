@@ -10410,6 +10410,10 @@
 ---@field renderColons boolean
 ---@field typeHints _.lspconfig.settings.rust_analyzer.TypeHints
 
+---@class _.lspconfig.settings.rust_analyzer.Interpret
+-- Enables the experimental support for interpreting tests.
+---@field tests boolean
+
 ---@class _.lspconfig.settings.rust_analyzer.JoinLines
 -- Join lines merges consecutive declaration and initialization of an assignment.
 -- 
@@ -10806,6 +10810,7 @@
 ---@field hover _.lspconfig.settings.rust_analyzer.Hover
 ---@field imports _.lspconfig.settings.rust_analyzer.Imports
 ---@field inlayHints _.lspconfig.settings.rust_analyzer.InlayHints
+---@field interpret _.lspconfig.settings.rust_analyzer.Interpret
 ---@field joinLines _.lspconfig.settings.rust_analyzer.JoinLines
 ---@field lens _.lspconfig.settings.rust_analyzer.Lens
 -- Disable project auto-discovery in favor of explicitly specified set
