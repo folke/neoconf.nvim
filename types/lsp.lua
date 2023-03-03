@@ -5056,7 +5056,7 @@
 ---@field ltex _.lspconfig.settings.ltex.Ltex
 
 ---@class _.lspconfig.settings.lua_ls.AddonManager
--- Set the on/off state for the addon manager.
+-- 
 -- 
 -- ```lua
 -- default = true
@@ -11117,6 +11117,8 @@
 -- default = {}
 -- ```
 ---@field userLspConfigs object[]
+-- Shows warning for untyped values.
+---@field warnUntypedValue boolean
 
 ---@class lspconfig.settings.sorbet
 ---@field sorbet _.lspconfig.settings.sorbet.Sorbet

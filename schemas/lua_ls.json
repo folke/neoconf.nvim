@@ -4,7 +4,7 @@
   "properties": {
     "Lua.addonManager.enable": {
       "default": true,
-      "markdownDescription": "Set the on/off state for the addon manager.",
+      "markdownDescription": "",
       "scope": "resource",
       "type": "boolean"
     },
