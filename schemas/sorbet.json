@@ -165,11 +165,6 @@
         "type": "object"
       },
       "type": "array"
-    },
-    "sorbet.warnUntypedValue": {
-      "default": false,
-      "description": "Shows warning for untyped values.",
-      "type": "boolean"
     }
   }
 }

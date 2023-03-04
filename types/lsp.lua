@@ -11117,8 +11117,6 @@
 -- default = {}
 -- ```
 ---@field userLspConfigs object[]
--- Shows warning for untyped values.
----@field warnUntypedValue boolean
 
 ---@class lspconfig.settings.sorbet
 ---@field sorbet _.lspconfig.settings.sorbet.Sorbet
