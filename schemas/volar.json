@@ -69,12 +69,7 @@
       "description": "Delay time for diagnostics.",
       "type": "number"
     },
-    "volar.doctor.checkVueTsc": {
-      "default": false,
-      "description": "Check vue-tsc version.",
-      "type": "boolean"
-    },
-    "volar.doctor.statusBarItem": {
+    "volar.doctor.status": {
       "default": true,
       "description": "Show known problems in status bar.",
       "type": "boolean"

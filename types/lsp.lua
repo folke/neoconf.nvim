@@ -12629,14 +12629,12 @@
 ---@field delay number
 
 ---@class _.lspconfig.settings.volar.Doctor
--- Check vue-tsc version.
----@field checkVueTsc boolean
 -- Show known problems in status bar.
 -- 
 -- ```lua
 -- default = true
 -- ```
----@field statusBarItem boolean
+---@field status boolean
 
 -- Whether to have initial indent.
 -- 
