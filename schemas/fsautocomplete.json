@@ -151,12 +151,6 @@
       "markdownDescription": "An array of additional command line parameters to pass to FSI when it is started. See [the Microsoft documentation](https://docs.microsoft.com/en-us/dotnet/fsharp/language-reference/fsharp-interactive-options) for an exhaustive list.",
       "type": "array"
     },
-    "FSharp.fsiFilePath": {
-      "default": "",
-      "description": "The path to the F# Interactive tool used by Ionide-FSharp (.NET Framework only, on .NET Core `FSharp.fsiSdkFilePath` is used)",
-      "scope": "machine-overridable",
-      "type": "string"
-    },
     "FSharp.fsiSdkFilePath": {
       "default": "",
       "description": "The path to the F# Interactive tool used by Ionide-FSharp (When using .NET SDK scripts)",
@@ -390,11 +384,6 @@
     "FSharp.unusedOpensAnalyzer": {
       "default": true,
       "description": "Enables detection of unused opens",
-      "type": "boolean"
-    },
-    "FSharp.useSdkScripts": {
-      "default": true,
-      "description": "Use 'dotnet fsi' instead of 'fsi.exe'/'fsharpi' to start an FSI session",
       "type": "boolean"
     },
     "FSharp.verboseLogging": {

@@ -11,6 +11,12 @@
       "type": "array",
       "uniqueItems": true
     },
+    "elixirLS.autoBuild": {
+      "default": true,
+      "description": "Trigger ElixirLS build when code is saved",
+      "scope": "resource",
+      "type": "boolean"
+    },
     "elixirLS.dialyzerEnabled": {
       "default": true,
       "description": "Run ElixirLS's rapid Dialyzer when code is saved",

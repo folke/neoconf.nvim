@@ -565,6 +565,12 @@
 -- default = {}
 -- ```
 ---@field additionalWatchedExtensions string[]
+-- Trigger ElixirLS build when code is saved
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field autoBuild boolean
 -- Run ElixirLS's rapid Dialyzer when code is saved
 -- 
 -- ```lua
@@ -1233,12 +1239,6 @@
 -- default = {}
 -- ```
 ---@field fsiExtraParameters any[]
--- The path to the F# Interactive tool used by Ionide-FSharp (.NET Framework only, on .NET Core `FSharp.fsiSdkFilePath` is used)
--- 
--- ```lua
--- default = ""
--- ```
----@field fsiFilePath string
 -- The path to the F# Interactive tool used by Ionide-FSharp (When using .NET SDK scripts)
 -- 
 -- ```lua
@@ -1380,12 +1380,6 @@
 -- default = true
 -- ```
 ---@field unusedOpensAnalyzer boolean
--- Use 'dotnet fsi' instead of 'fsi.exe'/'fsharpi' to start an FSI session
--- 
--- ```lua
--- default = true
--- ```
----@field useSdkScripts boolean
 -- Logs additional information to F# output channel. This is equivalent to passing the `--verbose` flag to FSAC. Requires restart.
 ---@field verboseLogging boolean
 -- The deep level of directory hierarchy when searching for sln/projects
@@ -13640,6 +13634,19 @@
 ---@field validate _.lspconfig.settings.vtsls.Validate
 ---@field workspaceSymbols _.lspconfig.settings.vtsls.WorkspaceSymbols
 
+---@class _.lspconfig.settings.vtsls.Completion
+-- Execute fuzzy match of completion items on server side. Enable this will help filter out useless completion items from tsserver.
+---@field enableServerSideFuzzyMatch boolean
+-- Maximum number of completion entries to return. Recommend to toggle `enableServerSideFuzzyMatch` either to preserve items with higher accuracy.
+-- 
+-- ```lua
+-- default = <userdata 1>
+-- ```
+---@field entriesLimit number
+
+---@class _.lspconfig.settings.vtsls.Experimental
+---@field completion _.lspconfig.settings.vtsls.Completion
+
 ---@class _.lspconfig.settings.vtsls.Format
 ---@field baseIndentSize number
 ---@field convertTabsToSpaces boolean
@@ -13667,6 +13674,7 @@
 ---@field format _.lspconfig.settings.vtsls.Format
 
 ---@class _.lspconfig.settings.vtsls.Vtsls
+---@field experimental _.lspconfig.settings.vtsls.Experimental
 ---@field javascript _.lspconfig.settings.vtsls.Javascript
 ---@field typescript _.lspconfig.settings.vtsls.Typescript
 
