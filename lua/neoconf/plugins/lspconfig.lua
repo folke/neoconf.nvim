@@ -13,7 +13,12 @@ function M.on_schema(schema)
   for name, s in pairs(require("neoconf.build.schemas").index()) do
     if Config.options.plugins.jsonls.configured_servers_only == false or Util.has_lspconfig(name) then
       schema:set("lspconfig." .. name, {
-        ["$ref"] = "file://" .. s.settings_file,
+        anyOf = {
+          { const = "false", description = "Set to false to disable this lsp server" },
+          {
+            ["$ref"] = "file://" .. s.settings_file,
+          },
+        },
       })
     end
   end
@@ -39,6 +44,11 @@ function M.on_new_config(config, root_dir, original_config)
   config.original_config = vim.deepcopy(original_config)
 
   root_dir = require("neoconf.workspace").find_root({ file = root_dir })
+  local enabled = Settings.get_local(root_dir):get("lspconfig." .. config.name, { expand = true })
+  if enabled == false then
+    config.enabled = false
+    return
+  end
 
   config.settings = Util.merge(
     config.settings,
