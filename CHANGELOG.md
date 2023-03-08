@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.0](https://github.com/folke/neoconf.nvim/compare/v1.0.3...v1.1.0) (2023-03-08)
+
+
+### Features
+
+* **lspconfig:** allow setting the lsp server to false to disable it in your project. Fixes [#1](https://github.com/folke/neoconf.nvim/issues/1) ([835da21](https://github.com/folke/neoconf.nvim/commit/835da21fd71c9e91248b00b5066dc2d1306f4d6b))
+
 ## [1.0.3](https://github.com/folke/neoconf.nvim/compare/v1.0.2...v1.0.3) (2023-02-12)
 
 
