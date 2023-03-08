@@ -1,18 +1,18 @@
-*neoconf.nvim.txt*      For Neovim >= 0.8.0      Last change: 2023 February 12
+*neoconf.nvim.txt*        For Neovim >= 0.8.0       Last change: 2023 March 08
 
 ==============================================================================
 Table of Contents                             *neoconf.nvim-table-of-contents*
 
 1. neoconf.nvim                                    |neoconf.nvim-neoconf.nvim|
-  - Features                                           |neoconf.nvim-features|
-  - Requirements                                   |neoconf.nvim-requirements|
-  - Installation                                   |neoconf.nvim-installation|
-  - Setup                                                 |neoconf.nvim-setup|
-  - Configuration                                 |neoconf.nvim-configuration|
-  - Usage                                                 |neoconf.nvim-usage|
-  - API                                                     |neoconf.nvim-api|
-  - Acknowledgment                               |neoconf.nvim-acknowledgment|
-  - Supported Language Servers       |neoconf.nvim-supported-language-servers|
+  - Features                              |neoconf.nvim-neoconf.nvim-features|
+  - Requirements                      |neoconf.nvim-neoconf.nvim-requirements|
+  - Installation                      |neoconf.nvim-neoconf.nvim-installation|
+  - Setup                                    |neoconf.nvim-neoconf.nvim-setup|
+  - Configuration                    |neoconf.nvim-neoconf.nvim-configuration|
+  - Usage                                    |neoconf.nvim-neoconf.nvim-usage|
+  - API                                        |neoconf.nvim-neoconf.nvim-api|
+  - Acknowledgment                  |neoconf.nvim-neoconf.nvim-acknowledgment|
+  - Supported Language Servers|neoconf.nvim-neoconf.nvim-supported-language-servers|
 
 ==============================================================================
 1. neoconf.nvim                                    *neoconf.nvim-neoconf.nvim*
@@ -20,12 +20,8 @@ Table of Contents                             *neoconf.nvim-table-of-contents*
 **neoconf.nvim** is a Neovim plugin to manage global and project-local
 settings.
 
-<div class="figure">
-<img src="https://user-images.githubusercontent.com/292349/202160538-3711693c-14fd-4e8b-a9d1-ceda88bae00c.png" title="fig:"/>
-<p class="caption">image</p>
-</div>
 
-FEATURES                                               *neoconf.nvim-features*
+FEATURES                                  *neoconf.nvim-neoconf.nvim-features*
 
 
 - configure Neovim using **JSON** files (can have comments)
@@ -41,17 +37,18 @@ FEATURES                                               *neoconf.nvim-features*
     See .neoconf.json <https://github.com/folke/neoconf.nvim/blob/main/.neoconf.json> in this repo.
 
 
-REQUIREMENTS                                       *neoconf.nvim-requirements*
+REQUIREMENTS                          *neoconf.nvim-neoconf.nvim-requirements*
 
 
 - Neovim >= 0.7.2
 
 
-INSTALLATION                                       *neoconf.nvim-installation*
+INSTALLATION                          *neoconf.nvim-neoconf.nvim-installation*
 
 Install the plugin with your preferred package manager:
 
-PACKER <HTTPS://GITHUB.COM/WBTHOMASON/PACKER.NVIM> ~
+
+PACKER ~
 
 >lua
     -- Lua
@@ -61,7 +58,7 @@ PACKER <HTTPS://GITHUB.COM/WBTHOMASON/PACKER.NVIM> ~
 <
 
 
-SETUP                                                     *neoconf.nvim-setup*
+SETUP                                        *neoconf.nvim-neoconf.nvim-setup*
 
 It’s important that you set up `neoconf.nvim` **BEFORE** `nvim-lspconfig`.
 
@@ -75,7 +72,7 @@ It’s important that you set up `neoconf.nvim` **BEFORE** `nvim-lspconfig`.
 <
 
 
-CONFIGURATION                                     *neoconf.nvim-configuration*
+CONFIGURATION                        *neoconf.nvim-neoconf.nvim-configuration*
 
 **neoconf.nvim** comes with the following defaults:
 
@@ -124,42 +121,29 @@ CONFIGURATION                                     *neoconf.nvim-configuration*
 <
 
 
-USAGE                                                     *neoconf.nvim-usage*
-
-THE `:NEOCONF` COMMAND ~
+USAGE                                        *neoconf.nvim-neoconf.nvim-usage*
 
 
-- `:Neoconf`: will show a ui to select one of the local/global json config files to edit
-- `:Neoconf local`: will show a ui to select one of the local json config files to edit
-- `:Neoconf global`: will show a ui to select one of the global json config files to edit
-- `:Neoconf show`: opens a floating window with the merged config
-- `:Neoconf lsp`: opens a floating window with your merged lsp config
+THE :NEOCONF COMMAND ~
 
 
-<div class="figure">
-<img src="https://user-images.githubusercontent.com/292349/202161064-16789740-f094-4729-97c2-b6509148a7fd.png" title="fig:"/>
-<p class="caption">image</p>
-</div>
+- `:Neoconf`will show a ui to select one of the local/global json config files to edit
+- `:Neoconf local`will show a ui to select one of the local json config files to edit
+- `:Neoconf global`will show a ui to select one of the global json config files to edit
+- `:Neoconf show`opens a floating window with the merged config
+- `:Neoconf lsp`opens a floating window with your merged lsp config
 
-COMPLETION AND VALIDATION FOR YOUR `JSON` SETTINGS FILES ~
 
-<div class="figure">
-<img src="https://user-images.githubusercontent.com/292349/202160792-f956e3af-535f-4ad6-8de4-d89854072f91.png" title="fig:"/>
-<p class="caption">image</p>
-</div>
+COMPLETION AND VALIDATION FOR YOUR JSON SETTINGS FILES ~
 
-COMPLETION AND VALIDATION FOR YOUR `LUA` SETTINGS FILES ~
+
+COMPLETION AND VALIDATION FOR YOUR LUA SETTINGS FILES ~
 
 Completion of your lua settings should work out of the box.
 
-<div class="figure">
-<img src="https://user-images.githubusercontent.com/292349/202160675-ea9a62b4-7084-40a3-966e-e9d5f0fb70ec.png" title="fig:"/>
-<p class="caption">image</p>
-</div>
-
 You can additionally use the exported types in other places.
 
-Example with a table containing LSP server settings
+Example with a table containing LSP server settings ~
 
 >lua
       ---@type lspconfig.options
@@ -188,7 +172,7 @@ Example with a table containing LSP server settings
 <
 
 
-API                                                         *neoconf.nvim-api*
+API                                            *neoconf.nvim-neoconf.nvim-api*
 
 **Neodev** comes with an API that can be used by plugin developers to load
 global/local settings for their plugin.
@@ -220,8 +204,7 @@ global/local settings for their plugin.
     function Neoconf.get(key, defaults, opts) end
 <
 
-
-API Example
+API Example ~
 
 >lua
     -- default config for your plugin
@@ -251,13 +234,13 @@ API Example
 <
 
 
-ACKNOWLEDGMENT                                   *neoconf.nvim-acknowledgment*
+ACKNOWLEDGMENT                      *neoconf.nvim-neoconf.nvim-acknowledgment*
 
 
 - json.lua <https://github.com/actboy168/json.lua> a pure-lua JSON library for parsing `jsonc` files
 
 
-SUPPORTED LANGUAGE SERVERS           *neoconf.nvim-supported-language-servers*
+SUPPORTED LANGUAGE SERVERS*neoconf.nvim-neoconf.nvim-supported-language-servers*
 
 
 - als <https://github.com/AdaCore/ada_language_server/tree/master/integration/vscode/ada/package.json>
@@ -322,6 +305,13 @@ SUPPORTED LANGUAGE SERVERS           *neoconf.nvim-supported-language-servers*
 - zeta_note <https://github.com/artempyanykh/zeta-note-vscode/tree/main/package.json>
 - zls <https://github.com/zigtools/zls-vscode/tree/master/package.json>
 
+==============================================================================
+2. Links                                                  *neoconf.nvim-links*
+
+1. *image*: https://user-images.githubusercontent.com/292349/202160538-3711693c-14fd-4e8b-a9d1-ceda88bae00c.png
+2. *image*: https://user-images.githubusercontent.com/292349/202161064-16789740-f094-4729-97c2-b6509148a7fd.png
+3. *image*: https://user-images.githubusercontent.com/292349/202160792-f956e3af-535f-4ad6-8de4-d89854072f91.png
+4. *image*: https://user-images.githubusercontent.com/292349/202160675-ea9a62b4-7084-40a3-966e-e9d5f0fb70ec.png
 
 Generated by panvimdoc <https://github.com/kdheepak/panvimdoc>
 
