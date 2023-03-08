@@ -8,6 +8,7 @@
       "items": {
         "type": "string"
       },
+      "scope": "resource",
       "type": "array",
       "uniqueItems": true
     },
@@ -76,6 +77,7 @@
     "elixirLS.enableTestLenses": {
       "default": false,
       "description": "Show code lenses to run tests in terminal",
+      "scope": "resource",
       "type": "boolean"
     },
     "elixirLS.envVariables": {
@@ -119,6 +121,7 @@
     "elixirLS.signatureAfterComplete": {
       "default": true,
       "description": "Show signature help after confirming autocomplete",
+      "scope": "resource",
       "type": "boolean"
     },
     "elixirLS.suggestSpecs": {
@@ -135,6 +138,7 @@
         "messages",
         "verbose"
       ],
+      "scope": "window",
       "type": "string"
     }
   }
