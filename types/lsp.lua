@@ -13637,7 +13637,7 @@
 ---@class _.lspconfig.settings.vtsls.Completion
 -- Execute fuzzy match of completion items on server side. Enable this will help filter out useless completion items from tsserver.
 ---@field enableServerSideFuzzyMatch boolean
--- Maximum number of completion entries to return. Recommend to toggle `enableServerSideFuzzyMatch` either to preserve items with higher accuracy.
+-- Maximum number of completion entries to return. Recommend to also toggle `enableServerSideFuzzyMatch` to preserve items with higher accuracy.
 -- 
 -- ```lua
 -- default = <userdata 1>
