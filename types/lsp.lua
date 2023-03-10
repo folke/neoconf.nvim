@@ -5050,7 +5050,7 @@
 ---@field ltex _.lspconfig.settings.ltex.Ltex
 
 ---@class _.lspconfig.settings.lua_ls.AddonManager
--- 
+-- Whether the addon manager is enabled or not.
 -- 
 -- ```lua
 -- default = true
