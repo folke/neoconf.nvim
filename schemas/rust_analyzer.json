@@ -457,6 +457,17 @@
       "markdownDescription": "List of warnings that should be displayed with info severity.\n\nThe warnings will be indicated by a blue squiggly underline in code\nand a blue icon in the `Problems Panel`.",
       "type": "array"
     },
+    "rust-analyzer.discoverProjectCommand": {
+      "default": null,
+      "items": {
+        "type": "string"
+      },
+      "markdownDescription": "Sets the command that rust-analyzer uses to generate `rust-project.json` files. This command should only be used\n if a build system like Buck or Bazel is also in use. The command must accept files as arguments and return \n a rust-project.json over stdout.",
+      "type": [
+        "null",
+        "array"
+      ]
+    },
     "rust-analyzer.files.excludeDirs": {
       "default": [],
       "items": {

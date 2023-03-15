@@ -10805,6 +10805,14 @@
 ---@field completion _.lspconfig.settings.rust_analyzer.Completion
 ---@field debug _.lspconfig.settings.rust_analyzer.Debug
 ---@field diagnostics _.lspconfig.settings.rust_analyzer.Diagnostics
+-- Sets the command that rust-analyzer uses to generate `rust-project.json` files. This command should only be used
+--  if a build system like Buck or Bazel is also in use. The command must accept files as arguments and return 
+--  a rust-project.json over stdout.
+-- 
+-- ```lua
+-- default = <userdata 1>
+-- ```
+---@field discoverProjectCommand string[]
 ---@field files _.lspconfig.settings.rust_analyzer.Files
 ---@field highlightRelated _.lspconfig.settings.rust_analyzer.HighlightRelated
 ---@field hover _.lspconfig.settings.rust_analyzer.Hover
