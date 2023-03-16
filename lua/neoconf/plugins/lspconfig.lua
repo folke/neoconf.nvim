@@ -16,7 +16,7 @@ function M.on_schema(schema)
         anyOf = {
           { const = "false", description = "Set to false to disable this lsp server" },
           {
-            ["$ref"] = "file://" .. s.settings_file:gsub("\\", "/"),
+            ["$ref"] = vim.uri_from_fname(s.settings_file),
           },
         },
       })
