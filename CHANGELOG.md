@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.1.1](https://github.com/folke/neoconf.nvim/compare/v1.1.0...v1.1.1) (2023-03-16)
+
+
+### Bug Fixes
+
+* **lspconfig:** replace backslashes on windows. Fixes [#18](https://github.com/folke/neoconf.nvim/issues/18) ([7297592](https://github.com/folke/neoconf.nvim/commit/72975929074d663a46854422252b6bb099ae56ba))
+* **schema:** correctly format uri. Fixes [#18](https://github.com/folke/neoconf.nvim/issues/18) ([67acada](https://github.com/folke/neoconf.nvim/commit/67acada4ed1d1386373f9a325acd95b315ac827c))
+
 ## [1.1.0](https://github.com/folke/neoconf.nvim/compare/v1.0.3...v1.1.0) (2023-03-08)
 
 
