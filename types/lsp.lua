@@ -8883,10 +8883,6 @@
 ---@field disableOrganizeImports boolean
 
 -- Allows a user to override the severity levels for individual diagnostics.
--- 
--- ```lua
--- default = {}
--- ```
 ---@class _.lspconfig.settings.pyright.DiagnosticSeverityOverrides
 -- Diagnostics for 'assert' statement that will provably always assert. This can be indicative of a programming error.
 -- 
@@ -9285,10 +9281,6 @@
 -- ```
 ---@field diagnosticMode "openFilesOnly" | "workspace"
 -- Allows a user to override the severity levels for individual diagnostics.
--- 
--- ```lua
--- default = {}
--- ```
 ---@field diagnosticSeverityOverrides _.lspconfig.settings.pyright.DiagnosticSeverityOverrides
 -- Additional import search resolution paths
 -- 
