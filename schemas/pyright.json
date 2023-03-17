@@ -119,6 +119,17 @@
           ],
           "type": "string"
         },
+        "reportImplicitOverride": {
+          "default": "none",
+          "description": "Diagnostics for overridden methods that do not include an `@override` decorator.",
+          "enum": [
+            "none",
+            "information",
+            "warning",
+            "error"
+          ],
+          "type": "string"
+        },
         "reportImplicitStringConcatenation": {
           "default": "none",
           "description": "Diagnostics for two or more string literals that follow each other, indicating an implicit concatenation. This is considered a bad practice and often masks bugs such as missing commas.",

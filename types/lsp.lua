@@ -8926,6 +8926,12 @@
 -- default = "error"
 -- ```
 ---@field reportGeneralTypeIssues "none" | "information" | "warning" | "error"
+-- Diagnostics for overridden methods that do not include an `@override` decorator.
+-- 
+-- ```lua
+-- default = "none"
+-- ```
+---@field reportImplicitOverride "none" | "information" | "warning" | "error"
 -- Diagnostics for two or more string literals that follow each other, indicating an implicit concatenation. This is considered a bad practice and often masks bugs such as missing commas.
 -- 
 -- ```lua
