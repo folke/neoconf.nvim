@@ -141,12 +141,12 @@
       "type": "boolean"
     },
     "volar.inlayHints.eventArgumentInInlineHandlers": {
-      "default": true,
+      "default": false,
       "description": "Show inlay hints for event argument in inline handlers.",
       "type": "boolean"
     },
     "volar.inlayHints.missingRequiredProps": {
-      "default": true,
+      "default": false,
       "description": "Show inlay hints for missing required props.",
       "type": "boolean"
     },
