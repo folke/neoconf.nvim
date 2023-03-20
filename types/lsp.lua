@@ -1057,6 +1057,12 @@
 ---@class _.lspconfig.settings.fsautocomplete.Fsac
 -- Appends the '--attachdebugger' argument to fsac, this will allow you to attach a debugger.
 ---@field attachDebugger boolean
+-- The MemoryCacheOptions.SizeLimit for caching typechecks.
+-- 
+-- ```lua
+-- default = 200
+-- ```
+---@field cachedTypeCheckCount integer
 -- Configures FsAutoComplete with settings intended to reduce memory consumption. Requires restart.
 ---@field conserveMemory boolean
 -- additional CLI arguments to be provided to the dotnet runner for FSAC
@@ -1134,7 +1140,7 @@
 -- ```lua
 -- default = { "BoundModel.TypeCheck", "BackgroundCompiler." }
 -- ```
----@field traceNamespaces any[]
+---@field traceNamespaces string[]
 
 ---@class _.lspconfig.settings.fsautocomplete.OpenTelemetry
 -- Enables OpenTelemetry exporter. See https://opentelemetry.io/docs/reference/specification/protocol/exporter/ for environment variables to configure for the exporter. Requires Restart.

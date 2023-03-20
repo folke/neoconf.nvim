@@ -114,6 +114,11 @@
       "description": "Appends the '--attachdebugger' argument to fsac, this will allow you to attach a debugger.",
       "type": "boolean"
     },
+    "FSharp.fsac.cachedTypeCheckCount": {
+      "default": 200,
+      "description": "The MemoryCacheOptions.SizeLimit for caching typechecks.",
+      "type": "integer"
+    },
     "FSharp.fsac.conserveMemory": {
       "default": false,
       "description": "Configures FsAutoComplete with settings intended to reduce memory consumption. Requires restart.",
@@ -280,6 +285,9 @@
         "BackgroundCompiler."
       ],
       "description": "The set of System.Diagnostics.Activity names to watch.",
+      "items": {
+        "type": "string"
+      },
       "required": [
         "FSharp.notifications.trace"
       ],
