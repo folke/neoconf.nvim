@@ -51,7 +51,17 @@ function M.on_config(opts)
     if opts.root_dir then
       local root_dir = initial_config.root_dir
       initial_config.root_dir = function(...)
-        return opts.root_dir(...) or root_dir(...)
+        local b = root_dir(...)
+        if not b then
+          return
+        end
+        local a = opts.root_dir(...)
+
+        if a and b then
+          -- return longest
+          return #a > #b and a or b
+        end
+        return a or b
       end
     end
   end)
