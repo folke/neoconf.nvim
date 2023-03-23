@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.2.0](https://github.com/folke/neoconf.nvim/compare/v1.1.1...v1.2.0) (2023-03-23)
+
+
+### Features
+
+* better support for root_dir in monorepos. Always return longest. Fixes [#14](https://github.com/folke/neoconf.nvim/issues/14) Fixes [#10](https://github.com/folke/neoconf.nvim/issues/10) ([9214879](https://github.com/folke/neoconf.nvim/commit/9214879f83ad407988871e43e0697cff2b721f2b))
+
 ## [1.1.1](https://github.com/folke/neoconf.nvim/compare/v1.1.0...v1.1.1) (2023-03-16)
 
 
