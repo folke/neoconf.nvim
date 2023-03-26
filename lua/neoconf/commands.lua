@@ -134,7 +134,7 @@ function M.edit(opts)
   vim.ui.select(files, {
     prompt = "Select the settings file to create/edit",
     format_item = function(item)
-      local line = Util.exists(item.file) and "  edit " or "  create "
+      local line = Util.exists(item.file) and "  edit " or "  create "
       line = line .. vim.fn.fnamemodify(item.file, ":~")
       if item.is_global then
         line = line .. "  "
