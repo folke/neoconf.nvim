@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.2.1](https://github.com/folke/neoconf.nvim/compare/v1.2.0...v1.2.1) (2023-03-26)
+
+
+### Bug Fixes
+
+* **icons:** fixed obsolete icons with nerdfix ([5feed54](https://github.com/folke/neoconf.nvim/commit/5feed54641f169b9fd1c8cd89cc9227237136ee7))
+
 ## [1.2.0](https://github.com/folke/neoconf.nvim/compare/v1.1.1...v1.2.0) (2023-03-23)
 
 
