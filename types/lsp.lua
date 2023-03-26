@@ -12774,12 +12774,6 @@
 ---@field petiteVue _.lspconfig.settings.volar.PetiteVue
 -- Reverse priority for tsconfig pickup.
 ---@field reverseConfigFilePriority boolean
--- Defines how the host (editor) should sync document changes to the language server. SFC incremental parser only working when config "incremental".
--- 
--- ```lua
--- default = "incremental"
--- ```
----@field textDocumentSync "incremental" | "full" | "none"
 ---@field vitePress _.lspconfig.settings.volar.VitePress
 
 ---@class _.lspconfig.settings.volar.Volar

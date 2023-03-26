@@ -241,21 +241,6 @@
       "description": "Reverse priority for tsconfig pickup.",
       "type": "boolean"
     },
-    "volar.vueserver.textDocumentSync": {
-      "default": "incremental",
-      "description": "Defines how the host (editor) should sync document changes to the language server. SFC incremental parser only working when config \"incremental\".",
-      "enum": [
-        "incremental",
-        "full",
-        "none"
-      ],
-      "enumDescriptions": [
-        "Documents are synced by sending the full content on open. After that only incremental updates to the document are send.",
-        "Documents are synced by always sending the full content of the document.",
-        "Documents should not be synced at all."
-      ],
-      "type": "string"
-    },
     "volar.vueserver.vitePress.processMdFile": {
       "default": false,
       "type": "boolean"
