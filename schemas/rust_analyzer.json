@@ -1048,6 +1048,11 @@
         "string"
       ]
     },
+    "rust-analyzer.showUnlinkedFileNotification": {
+      "default": true,
+      "markdownDescription": "Whether to show a notification for unlinked files asking the user to add the corresponding Cargo.toml to the linked projects setting.",
+      "type": "boolean"
+    },
     "rust-analyzer.signatureInfo.detail": {
       "default": "full",
       "enum": [
