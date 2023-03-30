@@ -894,6 +894,16 @@
       "description": "Enable/disable lazy loading the content in type hierarchy. Lazy loading could save a lot of loading time but every type should be expanded manually to load its content.",
       "scope": "window",
       "type": "boolean"
+    },
+    "redhat.telemetry.enabled": {
+      "default": null,
+      "markdownDescription": "Enable usage data and errors to be sent to Red Hat servers. Read our [privacy statement](https://developers.redhat.com/article/tool-data-collection).",
+      "scope": "window",
+      "tags": [
+        "usesOnlineServices",
+        "telemetry"
+      ],
+      "type": "boolean"
     }
   }
 }

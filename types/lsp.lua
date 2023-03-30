@@ -3939,8 +3939,20 @@
 ---@field trace _.lspconfig.settings.jdtls.Trace
 ---@field typeHierarchy _.lspconfig.settings.jdtls.TypeHierarchy
 
+---@class _.lspconfig.settings.jdtls.Telemetry
+-- Enable usage data and errors to be sent to Red Hat servers. Read our [privacy statement](https://developers.redhat.com/article/tool-data-collection).
+-- 
+-- ```lua
+-- default = <userdata 1>
+-- ```
+---@field enabled boolean
+
+---@class _.lspconfig.settings.jdtls.Redhat
+---@field telemetry _.lspconfig.settings.jdtls.Telemetry
+
 ---@class lspconfig.settings.jdtls
 ---@field java _.lspconfig.settings.jdtls.Java
+---@field redhat _.lspconfig.settings.jdtls.Redhat
 
 ---@class _.lspconfig.settings.jsonls.ColorDecorators
 -- Enables or disables color decorators
