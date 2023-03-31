@@ -78,6 +78,12 @@
       "scope": "resource",
       "type": "boolean"
     },
+    "haskell.plugin.cabal.globalOn": {
+      "default": true,
+      "description": "Enables cabal plugin",
+      "scope": "resource",
+      "type": "boolean"
+    },
     "haskell.plugin.callHierarchy.globalOn": {
       "default": true,
       "description": "Enables callHierarchy plugin",
@@ -120,9 +126,15 @@
       "scope": "resource",
       "type": "boolean"
     },
-    "haskell.plugin.explicitFixity.globalOn": {
+    "haskell.plugin.explicit-fields.globalOn": {
       "default": true,
-      "description": "Enables explicitFixity plugin",
+      "description": "Enables explicit-fields plugin",
+      "scope": "resource",
+      "type": "boolean"
+    },
+    "haskell.plugin.explicit-fixity.globalOn": {
+      "default": true,
+      "description": "Enables explicit-fixity plugin",
       "scope": "resource",
       "type": "boolean"
     },

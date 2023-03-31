@@ -866,6 +866,11 @@
         "integer"
       ]
     },
+    "rust-analyzer.lru.query.capacities": {
+      "default": {},
+      "markdownDescription": "Sets the LRU capacity of the specified queries.",
+      "type": "object"
+    },
     "rust-analyzer.notifications.cargoTomlNotFound": {
       "default": true,
       "markdownDescription": "Whether to show `can't find Cargo.toml` error message.",

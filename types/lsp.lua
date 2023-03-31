@@ -2161,6 +2161,14 @@
 -- ```
 ---@field globalOn boolean
 
+---@class _.lspconfig.settings.hie.Cabal
+-- Enables cabal plugin
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field globalOn boolean
+
 ---@class _.lspconfig.settings.hie.CallHierarchy
 -- Enables callHierarchy plugin
 -- 
@@ -2210,8 +2218,16 @@
 -- ```
 ---@field globalOn boolean
 
----@class _.lspconfig.settings.hie.ExplicitFixity
--- Enables explicitFixity plugin
+---@class _.lspconfig.settings.hie.Explicit-fields
+-- Enables explicit-fields plugin
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field globalOn boolean
+
+---@class _.lspconfig.settings.hie.Explicit-fixity
+-- Enables explicit-fixity plugin
 -- 
 -- ```lua
 -- default = true
@@ -2492,11 +2508,13 @@
 
 ---@class _.lspconfig.settings.hie.Plugin
 ---@field alternateNumberFormat _.lspconfig.settings.hie.AlternateNumberFormat
+---@field cabal _.lspconfig.settings.hie.Cabal
 ---@field callHierarchy _.lspconfig.settings.hie.CallHierarchy
 ---@field changeTypeSignature _.lspconfig.settings.hie.ChangeTypeSignature
 ---@field class _.lspconfig.settings.hie.Class
 ---@field eval _.lspconfig.settings.hie.Eval
----@field explicitFixity _.lspconfig.settings.hie.ExplicitFixity
+---@field explicit-fields _.lspconfig.settings.hie.Explicit-fields
+---@field explicit-fixity _.lspconfig.settings.hie.Explicit-fixity
 ---@field fourmolu _.lspconfig.settings.hie.Fourmolu
 ---@field gadt _.lspconfig.settings.hie.Gadt
 ---@field ghcide-code-actions-bindings _.lspconfig.settings.hie.Ghcide-code-actions-bindings
@@ -10536,6 +10554,14 @@
 ---@field references _.lspconfig.settings.rust_analyzer.References
 ---@field run _.lspconfig.settings.rust_analyzer.Run
 
+---@class _.lspconfig.settings.rust_analyzer.Query
+-- Sets the LRU capacity of the specified queries.
+-- 
+-- ```lua
+-- default = {}
+-- ```
+---@field capacities table
+
 ---@class _.lspconfig.settings.rust_analyzer.Lru
 -- Number of syntax trees rust-analyzer keeps in memory. Defaults to 128.
 -- 
@@ -10543,6 +10569,7 @@
 -- default = <userdata 1>
 -- ```
 ---@field capacity integer
+---@field query _.lspconfig.settings.rust_analyzer.Query
 
 ---@class _.lspconfig.settings.rust_analyzer.Notifications
 -- Whether to show `can't find Cargo.toml` error message.
