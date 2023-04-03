@@ -12814,8 +12814,6 @@
 -- default = <userdata 1>
 -- ```
 ---@field maxOldSpaceSize number
--- Ignore project references settings of tsconfig in language server for resolve issue #1916.
----@field noProjectReferences boolean
 ---@field petiteVue _.lspconfig.settings.volar.PetiteVue
 -- Reverse priority for tsconfig pickup.
 ---@field reverseConfigFilePriority boolean
