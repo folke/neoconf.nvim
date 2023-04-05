@@ -60,7 +60,7 @@ function M.setup()
   end
 
   if Config.options.filetype_jsonc then
-    vim.api.nvim_create_autocmd("BufRead", {
+    vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
       pattern = Util.file_patterns({ autocmd = true }),
       group = group,
       callback = function(event)
