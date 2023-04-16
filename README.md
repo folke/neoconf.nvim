@@ -59,7 +59,7 @@ require("lspconfig").lua_ls.setup(...)
   local_settings = ".neoconf.json",
   -- name of the global settings file in your Neovim config directory
   global_settings = "neoconf.json",
-  -- import existing settinsg from other plugins
+  -- import existing settings from other plugins
   import = {
     vscode = true, -- local .vscode/settings.json
     coc = true, -- global/local coc-settings.json
