@@ -18,6 +18,11 @@
       "description": "Enable Sorbet Ruby IDE features",
       "type": "boolean"
     },
+    "sorbet.highlightUntyped": {
+      "default": false,
+      "description": "Shows warning for untyped values.",
+      "type": "boolean"
+    },
     "sorbet.lspConfigs": {
       "default": [
         {

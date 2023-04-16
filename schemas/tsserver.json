@@ -192,6 +192,12 @@
       "scope": "resource",
       "type": "boolean"
     },
+    "javascript.preferGoToSourceDefinition": {
+      "default": false,
+      "description": "Makes Go to Definition avoid type declaration files when possible by triggering Go to Source Definition instead. This allows Go to Source Definition to be triggered with the mouse gesture. Requires using TypeScript 4.7+ in the workspace.",
+      "scope": "window",
+      "type": "boolean"
+    },
     "javascript.preferences.autoImportFileExcludePatterns": {
       "items": {
         "type": "string"
@@ -267,6 +273,12 @@
       ],
       "scope": "language-overridable",
       "type": "string"
+    },
+    "javascript.preferences.renameMatchingJsxTags": {
+      "default": true,
+      "description": "When on a JSX tag, try to rename the matching tag instead of renaming the symbol. Requires using TypeScript 5.1+ in the workspace.",
+      "scope": "language-overridable",
+      "type": "boolean"
     },
     "javascript.preferences.renameShorthandProperties": {
       "default": true,
@@ -687,6 +699,12 @@
       "scope": "machine",
       "type": "string"
     },
+    "typescript.preferGoToSourceDefinition": {
+      "default": false,
+      "description": "Makes Go to Definition avoid type declaration files when possible by triggering Go to Source Definition instead. This allows Go to Source Definition to be triggered with the mouse gesture. Requires using TypeScript 4.7+ in the workspace.",
+      "scope": "window",
+      "type": "boolean"
+    },
     "typescript.preferences.autoImportFileExcludePatterns": {
       "items": {
         "type": "string"
@@ -778,6 +796,12 @@
       ],
       "scope": "language-overridable",
       "type": "string"
+    },
+    "typescript.preferences.renameMatchingJsxTags": {
+      "default": true,
+      "description": "When on a JSX tag, try to rename the matching tag instead of renaming the symbol. Requires using TypeScript 5.1+ in the workspace.",
+      "scope": "language-overridable",
+      "type": "boolean"
     },
     "typescript.preferences.renameShorthandProperties": {
       "default": true,
@@ -947,17 +971,6 @@
       },
       "scope": "machine",
       "type": "array"
-    },
-    "typescript.tsserver.trace": {
-      "default": "off",
-      "description": "Enables tracing of messages sent to the TS server. This trace can be used to diagnose TS Server issues. The trace may contain file paths, source code, and other potentially sensitive information from your project.",
-      "enum": [
-        "off",
-        "messages",
-        "verbose"
-      ],
-      "scope": "window",
-      "type": "string"
     },
     "typescript.tsserver.useSeparateSyntaxServer": {
       "default": true,

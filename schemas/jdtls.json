@@ -303,7 +303,8 @@
               "JavaSE-16",
               "JavaSE-17",
               "JavaSE-18",
-              "JavaSE-19"
+              "JavaSE-19",
+              "JavaSE-20"
             ],
             "type": "string"
           },

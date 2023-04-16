@@ -1191,6 +1191,8 @@
 ---@field abstractClassStubGenerationObjectIdentifier string
 -- Enables a panel for FSI that shows the value of all existing bindings in the FSI session
 ---@field addFsiWatcher boolean
+-- Enables a codefix that adds a private access modifier
+---@field addPrivateAccessModifier boolean
 -- Directories in the array are used as a source of custom analyzers. Requires restart.
 -- 
 -- ```lua
@@ -1208,7 +1210,11 @@
 ---@field disableFailedProjectNotifications boolean
 -- Sets the root path for finding locating the dotnet CLI binary. Defaults to the `dotnet` binary found on your system PATH.
 ---@field dotnetRoot string
--- EXPERIMENTAL. Enables Enable LSP Server based on FSharp.Data.Adaptive. This can improve stability. Requires restart.
+-- Enables Enable LSP Server based on FSharp.Data.Adaptive. This can improve stability. Requires restart.
+-- 
+-- ```lua
+-- default = true
+-- ```
 ---@field enableAdaptiveLspServer boolean
 -- EXPERIMENTAL. Enables F# analyzers for custom code diagnostics. Requires restart.
 ---@field enableAnalyzers boolean
@@ -7153,8 +7159,8 @@
 -- }
 -- ```
 ---@field symbolOptions _.lspconfig.settings.omnisharp.SymbolOptions
--- [Only supported in local macOS debugging] The architecture of the debuggee. This will automatically be detected unless this parameter is set. Allowed values are x86_64 or arm64.
----@field targetArchitecture string
+-- The architecture of the debuggee. This will automatically be detected unless this parameter is set. Allowed values are x86_64 or arm64. This value is ignored on Linux.
+---@field targetArchitecture "x86_64" | "arm64"
 -- Type type of code to debug. Can be either 'coreclr' for .NET Core debugging, or 'clr' for Desktop .NET Framework. 'clr' only works on Windows as the Desktop framework is Windows-only.
 -- 
 -- ```lua
@@ -9357,6 +9363,10 @@
 -- ```
 ---@field typeshedPaths string[]
 -- Use library implementations to extract type information when type stub is not present.
+-- 
+-- ```lua
+-- default = true
+-- ```
 ---@field useLibraryCodeForTypes boolean
 
 ---@class _.lspconfig.settings.pyright.Python
@@ -10427,6 +10437,12 @@
 ---@field chainingHints _.lspconfig.settings.rust_analyzer.ChainingHints
 ---@field closingBraceHints _.lspconfig.settings.rust_analyzer.ClosingBraceHints
 ---@field closureReturnTypeHints _.lspconfig.settings.rust_analyzer.ClosureReturnTypeHints
+-- Closure notation in type and chaining inaly hints.
+-- 
+-- ```lua
+-- default = "impl_fn"
+-- ```
+---@field closureStyle "impl_fn" | "rust_analyzer" | "with_id" | "hide"
 ---@field discriminantHints _.lspconfig.settings.rust_analyzer.DiscriminantHints
 ---@field expressionAdjustmentHints _.lspconfig.settings.rust_analyzer.ExpressionAdjustmentHints
 ---@field lifetimeElisionHints _.lspconfig.settings.rust_analyzer.LifetimeElisionHints
@@ -11070,6 +11086,8 @@
 -- default = "solhint"
 -- ```
 ---@field linter "" | "solhint" | "solium"
+-- Enables mono repo support in the current workspace, a project folder will be signaled if a file is found on the current folder or above including: remappings.txt, truffle-config.js, brownie-config.yaml, foundry.toml, hardhat.config.js, dappfile
+---@field monoRepoSupport boolean
 -- The node modules package to find the solcjs compiler
 -- 
 -- ```lua
@@ -11142,6 +11160,8 @@
 ---@field configFilePatterns string[]
 -- Enable Sorbet Ruby IDE features
 ---@field enabled boolean
+-- Shows warning for untyped values.
+---@field highlightUntyped boolean
 -- Standard Ruby LSP configurations.  If you commit your VSCode settings to source control, you probably want to commit *this* setting, not `sorbet.userLspConfigs`.
 -- 
 -- ```lua
@@ -12012,6 +12032,12 @@
 -- default = "auto"
 -- ```
 ---@field quoteStyle "auto" | "single" | "double"
+-- When on a JSX tag, try to rename the matching tag instead of renaming the symbol. Requires using TypeScript 5.1+ in the workspace.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field renameMatchingJsxTags boolean
 -- Enable/disable introducing aliases for object shorthand properties during renames.
 -- 
 -- ```lua
@@ -12129,6 +12155,8 @@
 ---@field format _.lspconfig.settings.tsserver.Format
 ---@field implicitProjectConfig _.lspconfig.settings.tsserver.ImplicitProjectConfig
 ---@field inlayHints _.lspconfig.settings.tsserver.InlayHints
+-- Makes Go to Definition avoid type declaration files when possible by triggering Go to Source Definition instead. This allows Go to Source Definition to be triggered with the mouse gesture. Requires using TypeScript 4.7+ in the workspace.
+---@field preferGoToSourceDefinition boolean
 ---@field preferences _.lspconfig.settings.tsserver.Preferences
 ---@field referencesCodeLens _.lspconfig.settings.tsserver.ReferencesCodeLens
 ---@field suggest _.lspconfig.settings.tsserver.Suggest
@@ -12395,6 +12423,12 @@
 -- default = "auto"
 -- ```
 ---@field quoteStyle "auto" | "single" | "double"
+-- When on a JSX tag, try to rename the matching tag instead of renaming the symbol. Requires using TypeScript 5.1+ in the workspace.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field renameMatchingJsxTags boolean
 -- Enable/disable introducing aliases for object shorthand properties during renames.
 -- 
 -- ```lua
@@ -12550,12 +12584,6 @@
 -- default = {}
 -- ```
 ---@field pluginPaths string[]
--- Enables tracing of messages sent to the TS server. This trace can be used to diagnose TS Server issues. The trace may contain file paths, source code, and other potentially sensitive information from your project.
--- 
--- ```lua
--- default = "off"
--- ```
----@field trace "off" | "messages" | "verbose"
 -- Enable/disable spawning a separate TypeScript server that can more quickly respond to syntax related operations, such as calculating folding or computing document symbols.
 -- 
 -- ```lua
@@ -12619,6 +12647,8 @@
 ---@field locale "auto" | "de" | "es" | "en" | "fr" | "it" | "ja" | "ko" | "ru" | "zh-CN" | "zh-TW"
 -- Specifies the path to the npm executable used for [Automatic Type Acquisition](https://code.visualstudio.com/docs/nodejs/working-with-javascript#_typings-and-automatic-type-acquisition).
 ---@field npm string
+-- Makes Go to Definition avoid type declaration files when possible by triggering Go to Source Definition instead. This allows Go to Source Definition to be triggered with the mouse gesture. Requires using TypeScript 4.7+ in the workspace.
+---@field preferGoToSourceDefinition boolean
 ---@field preferences _.lspconfig.settings.tsserver.Preferences
 ---@field referencesCodeLens _.lspconfig.settings.tsserver.ReferencesCodeLens
 -- Report style checks as warnings.

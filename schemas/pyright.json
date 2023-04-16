@@ -797,7 +797,7 @@
       "type": "array"
     },
     "python.analysis.useLibraryCodeForTypes": {
-      "default": false,
+      "default": true,
       "description": "Use library implementations to extract type information when type stub is not present.",
       "scope": "resource",
       "type": "boolean"

@@ -22,6 +22,11 @@
       "description": "Enables a panel for FSI that shows the value of all existing bindings in the FSI session",
       "type": "boolean"
     },
+    "FSharp.addPrivateAccessModifier": {
+      "default": false,
+      "description": "Enables a codefix that adds a private access modifier",
+      "type": "boolean"
+    },
     "FSharp.analyzersPath": {
       "default": [
         "packages/Analyzers",
@@ -62,8 +67,8 @@
       "type": "string"
     },
     "FSharp.enableAdaptiveLspServer": {
-      "default": false,
-      "description": "EXPERIMENTAL. Enables Enable LSP Server based on FSharp.Data.Adaptive. This can improve stability. Requires restart.",
+      "default": true,
+      "description": "Enables Enable LSP Server based on FSharp.Data.Adaptive. This can improve stability. Requires restart.",
       "type": "boolean"
     },
     "FSharp.enableAnalyzers": {
