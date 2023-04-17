@@ -60,21 +60,17 @@ function M.setup()
   end
 
   if Config.options.filetype_jsonc then
-    vim.api.nvim_create_autocmd("BufRead", {
-      pattern = Util.file_patterns({ autocmd = true }),
-      group = group,
-      callback = function(event)
-        vim.api.nvim_buf_set_option(event.buf, "filetype", "jsonc")
-      end,
-    })
-    -- local jsonc = {}
-    -- for _, p in ipairs(Util.file_patterns()) do
-    --   jsonc[p] = "jsonc"
-    -- end
-    --
-    -- vim.filetype.add({
-    --   pattern = jsonc,
-    -- })
+    if vim.g.do_legacy_filetype then
+      vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
+        pattern = Util.file_patterns({ autocmd = true }),
+        group = group,
+        callback = function(event)
+          vim.api.nvim_buf_set_option(event.buf, "filetype", "jsonc")
+        end,
+      })
+    else
+      vim.filetype.add(Util.filetype_patterns())
+    end
   end
 end
 

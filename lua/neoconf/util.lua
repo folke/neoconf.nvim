@@ -67,6 +67,8 @@ function M.on_config(opts)
   end)
 end
 
+---@param opts? { local: boolean, global: boolean, autocmd: boolean }
+---@return string[]
 function M.file_patterns(opts)
   opts = M.merge({ ["local"] = true, ["global"] = true }, opts)
   local ret = {}
@@ -92,6 +94,25 @@ function M.file_patterns(opts)
   end
 
   return ret
+end
+
+---@return { pattern: table<string, string>, filename: table<string, string> }
+function M.filetype_patterns()
+  local pattern = {}
+  local filename = {}
+
+  for _, p in ipairs(M.file_patterns({ autocmd = true })) do
+    if p:find("/") ~= nil then
+      pattern[".*/" .. p:gsub("%.", "%."):gsub("%*", ".*")] = "jsonc"
+    else
+      filename[p] = "jsonc"
+    end
+  end
+
+  return {
+    pattern = pattern,
+    filename = filename,
+  }
 end
 
 function M.path(str)
