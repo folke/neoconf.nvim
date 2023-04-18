@@ -13094,6 +13094,12 @@
 -- default = "auto"
 -- ```
 ---@field quoteStyle "auto" | "single" | "double"
+-- When on a JSX tag, try to rename the matching tag instead of renaming the symbol. Requires using TypeScript 5.1+ in the workspace.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field renameMatchingJsxTags boolean
 -- Enable/disable introducing aliases for object shorthand properties during renames.
 -- 
 -- ```lua
@@ -13211,6 +13217,8 @@
 ---@field format _.lspconfig.settings.vtsls.Format
 ---@field implicitProjectConfig _.lspconfig.settings.vtsls.ImplicitProjectConfig
 ---@field inlayHints _.lspconfig.settings.vtsls.InlayHints
+-- Makes Go to Definition avoid type declaration files when possible by triggering Go to Source Definition instead. This allows Go to Source Definition to be triggered with the mouse gesture. Requires using TypeScript 4.7+ in the workspace.
+---@field preferGoToSourceDefinition boolean
 ---@field preferences _.lspconfig.settings.vtsls.Preferences
 ---@field referencesCodeLens _.lspconfig.settings.vtsls.ReferencesCodeLens
 ---@field suggest _.lspconfig.settings.vtsls.Suggest
@@ -13465,6 +13473,12 @@
 -- default = "auto"
 -- ```
 ---@field quoteStyle "auto" | "single" | "double"
+-- When on a JSX tag, try to rename the matching tag instead of renaming the symbol. Requires using TypeScript 5.1+ in the workspace.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field renameMatchingJsxTags boolean
 -- Enable/disable introducing aliases for object shorthand properties during renames.
 -- 
 -- ```lua
@@ -13620,12 +13634,6 @@
 -- default = {}
 -- ```
 ---@field pluginPaths string[]
--- Enables tracing of messages sent to the TS server. This trace can be used to diagnose TS Server issues. The trace may contain file paths, source code, and other potentially sensitive information from your project.
--- 
--- ```lua
--- default = "off"
--- ```
----@field trace "off" | "messages" | "verbose"
 -- Enable/disable spawning a separate TypeScript server that can more quickly respond to syntax related operations, such as calculating folding or computing document symbols.
 -- 
 -- ```lua
@@ -13689,6 +13697,8 @@
 ---@field locale "auto" | "de" | "es" | "en" | "fr" | "it" | "ja" | "ko" | "ru" | "zh-CN" | "zh-TW"
 -- Specifies the path to the npm executable used for [Automatic Type Acquisition](https://code.visualstudio.com/docs/nodejs/working-with-javascript#_typings-and-automatic-type-acquisition).
 ---@field npm string
+-- Makes Go to Definition avoid type declaration files when possible by triggering Go to Source Definition instead. This allows Go to Source Definition to be triggered with the mouse gesture. Requires using TypeScript 4.7+ in the workspace.
+---@field preferGoToSourceDefinition boolean
 ---@field preferences _.lspconfig.settings.vtsls.Preferences
 ---@field referencesCodeLens _.lspconfig.settings.vtsls.ReferencesCodeLens
 -- Report style checks as warnings.

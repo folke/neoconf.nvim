@@ -194,6 +194,11 @@
       "markdownDescription": "Suppress type hints on variables whose name is identical to the type name. Requires using TypeScript 4.8+ in the workspace.",
       "type": "boolean"
     },
+    "javascript.preferGoToSourceDefinition": {
+      "default": false,
+      "description": "Makes Go to Definition avoid type declaration files when possible by triggering Go to Source Definition instead. This allows Go to Source Definition to be triggered with the mouse gesture. Requires using TypeScript 4.7+ in the workspace.",
+      "type": "boolean"
+    },
     "javascript.preferences.autoImportFileExcludePatterns": {
       "items": {
         "type": "string"
@@ -264,6 +269,11 @@
         "Always use double quotes: `\"`"
       ],
       "type": "string"
+    },
+    "javascript.preferences.renameMatchingJsxTags": {
+      "default": true,
+      "description": "When on a JSX tag, try to rename the matching tag instead of renaming the symbol. Requires using TypeScript 5.1+ in the workspace.",
+      "type": "boolean"
     },
     "javascript.preferences.renameShorthandProperties": {
       "default": true,
@@ -651,6 +661,11 @@
       "markdownDescription": "Specifies the path to the npm executable used for [Automatic Type Acquisition](https://code.visualstudio.com/docs/nodejs/working-with-javascript#_typings-and-automatic-type-acquisition).",
       "type": "string"
     },
+    "typescript.preferGoToSourceDefinition": {
+      "default": false,
+      "description": "Makes Go to Definition avoid type declaration files when possible by triggering Go to Source Definition instead. This allows Go to Source Definition to be triggered with the mouse gesture. Requires using TypeScript 4.7+ in the workspace.",
+      "type": "boolean"
+    },
     "typescript.preferences.autoImportFileExcludePatterns": {
       "items": {
         "type": "string"
@@ -736,6 +751,11 @@
         "Always use double quotes: `\"`"
       ],
       "type": "string"
+    },
+    "typescript.preferences.renameMatchingJsxTags": {
+      "default": true,
+      "description": "When on a JSX tag, try to rename the matching tag instead of renaming the symbol. Requires using TypeScript 5.1+ in the workspace.",
+      "type": "boolean"
     },
     "typescript.preferences.renameShorthandProperties": {
       "default": true,
@@ -878,16 +898,6 @@
         "type": "string"
       },
       "type": "array"
-    },
-    "typescript.tsserver.trace": {
-      "default": "off",
-      "description": "Enables tracing of messages sent to the TS server. This trace can be used to diagnose TS Server issues. The trace may contain file paths, source code, and other potentially sensitive information from your project.",
-      "enum": [
-        "off",
-        "messages",
-        "verbose"
-      ],
-      "type": "string"
     },
     "typescript.tsserver.useSeparateSyntaxServer": {
       "default": true,
