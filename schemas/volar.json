@@ -5,70 +5,6 @@
     "typescript.tsdk": {
       "type": "string"
     },
-    "volar.addSpaceBetweenDoubleCurlyBrackets": {
-      "default": true,
-      "description": "Auto add space between double curly brackets: {{|}} -> {{ | }}",
-      "type": "boolean"
-    },
-    "volar.autoCompleteRefs": {
-      "default": false,
-      "description": "Auto-complete Ref value with `.value`.",
-      "type": "boolean"
-    },
-    "volar.autoWrapParentheses": {
-      "default": true,
-      "description": "Auto-wrap `()` to As Expression in interpolations for fix issue #520.",
-      "type": "boolean"
-    },
-    "volar.codeLens.references": {
-      "default": true,
-      "description": "[references] code lens.",
-      "type": "boolean"
-    },
-    "volar.completion.normalizeComponentImportName": {
-      "default": true,
-      "description": "Normalize import name for auto import. (\"myCompVue\" -> \"MyComp\")",
-      "type": "boolean"
-    },
-    "volar.completion.preferredAttrNameCase": {
-      "default": "auto-kebab",
-      "description": "Preferred attr name case.",
-      "enum": [
-        "auto-kebab",
-        "auto-camel",
-        "kebab",
-        "camel"
-      ],
-      "enumDescriptions": [
-        "Auto Detect from Content (Preferred :kebab-case=\"...\")",
-        "Auto Detect from Content (Preferred :camelCase=\"...\")",
-        ":kebab-case=\"...\"",
-        ":camelCase=\"...\""
-      ],
-      "type": "string"
-    },
-    "volar.completion.preferredTagNameCase": {
-      "default": "auto-pascal",
-      "description": "Preferred tag name case.",
-      "enum": [
-        "auto-kebab",
-        "auto-pascal",
-        "kebab",
-        "pascal"
-      ],
-      "enumDescriptions": [
-        "Auto Detect from Content (Preferred <kebab-case>)",
-        "Auto Detect from Content (Preferred <PascalCase>)",
-        "<kebab-case>",
-        "<PascalCase>"
-      ],
-      "type": "string"
-    },
-    "volar.diagnostics.delay": {
-      "default": 200,
-      "description": "Delay time for diagnostics.",
-      "type": "number"
-    },
     "volar.doctor.status": {
       "default": true,
       "description": "Show known problems in status bar.",
@@ -140,16 +76,6 @@
       "description": "Show split editor icon in title area of editor.",
       "type": "boolean"
     },
-    "volar.inlayHints.eventArgumentInInlineHandlers": {
-      "default": false,
-      "description": "Show inlay hints for event argument in inline handlers.",
-      "type": "boolean"
-    },
-    "volar.inlayHints.missingRequiredProps": {
-      "default": false,
-      "description": "Show inlay hints for missing required props.",
-      "type": "boolean"
-    },
     "volar.splitEditors.layout.left": {
       "default": [
         "script",
@@ -169,11 +95,6 @@
       "default": "Vue.volar",
       "description": "The extension that take over language support for *.ts.",
       "type": "string"
-    },
-    "volar.updateImportsOnFileMove.enabled": {
-      "default": true,
-      "description": "Enabled update imports on file move.",
-      "type": "boolean"
     },
     "volar.vueserver.additionalExtensions": {
       "default": [],
@@ -200,11 +121,6 @@
         "Diagnostic pull by language client."
       ],
       "type": "string"
-    },
-    "volar.vueserver.disableFileWatcher": {
-      "default": false,
-      "description": "Disable file watcher in language server for better performance.",
-      "type": "boolean"
     },
     "volar.vueserver.fullCompletionList": {
       "default": false,
@@ -261,6 +177,85 @@
       ],
       "scope": "window",
       "type": "string"
+    },
+    "vue.features.autoInsert.bracketSpacing": {
+      "default": true,
+      "description": "Auto add space between double curly brackets: {{|}} -> {{ | }}",
+      "type": "boolean"
+    },
+    "vue.features.autoInsert.dotValue": {
+      "default": false,
+      "description": "Auto-complete Ref value with `.value`.",
+      "type": "boolean"
+    },
+    "vue.features.autoInsert.parentheses": {
+      "default": true,
+      "description": "Auto-wrap `()` to As Expression in interpolations for fix issue #520.",
+      "type": "boolean"
+    },
+    "vue.features.codeActions.enable": {
+      "default": false,
+      "description": "Enabled code actions.",
+      "type": "boolean"
+    },
+    "vue.features.codeLens.enable": {
+      "default": true,
+      "description": "Enabled code lens.",
+      "type": "boolean"
+    },
+    "vue.features.complete.normalizeComponentImportName": {
+      "default": true,
+      "description": "Normalize import name for auto import. (\"myCompVue\" -> \"MyComp\")",
+      "type": "boolean"
+    },
+    "vue.features.complete.propNameCasing": {
+      "default": "autoKebab",
+      "description": "Preferred attr name case.",
+      "enum": [
+        "autoKebab",
+        "autoCamel",
+        "kebab",
+        "camel"
+      ],
+      "enumDescriptions": [
+        "Auto Detect from Content (Fallback to :kebab-case=\"...\" if detect failed)",
+        "Auto Detect from Content (Fallback to :camelCase=\"...\" if detect failed)",
+        ":kebab-case=\"...\"",
+        ":camelCase=\"...\""
+      ],
+      "type": "string"
+    },
+    "vue.features.complete.tagNameCasing": {
+      "default": "autoPascal",
+      "description": "Preferred tag name case.",
+      "enum": [
+        "autoKebab",
+        "autoPascal",
+        "kebab",
+        "pascal"
+      ],
+      "enumDescriptions": [
+        "Auto Detect from Content (Fallback to <kebab-case> if detect failed)",
+        "Auto Detect from Content  (Fallback to <PascalCase> if detect failed)",
+        "<kebab-case>",
+        "<PascalCase>"
+      ],
+      "type": "string"
+    },
+    "vue.features.inlayHints.inlineHandlerLeading": {
+      "default": false,
+      "description": "Show inlay hints for event argument in inline handlers.",
+      "type": "boolean"
+    },
+    "vue.features.inlayHints.missingProps": {
+      "default": false,
+      "description": "Show inlay hints for missing required props.",
+      "type": "boolean"
+    },
+    "vue.features.updateImportsOnFileMove.enable": {
+      "default": false,
+      "description": "Enabled update imports on file move.",
+      "type": "boolean"
     }
   }
 }

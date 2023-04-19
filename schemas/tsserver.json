@@ -499,6 +499,12 @@
       "scope": "window",
       "type": "boolean"
     },
+    "typescript.format.indentSwitchCase": {
+      "default": true,
+      "description": "Indent case clauses in switch statements.",
+      "scope": "resource",
+      "type": "boolean"
+    },
     "typescript.format.insertSpaceAfterCommaDelimiter": {
       "default": true,
       "description": "Defines space handling after a comma delimiter.",

@@ -12222,6 +12222,12 @@
 -- default = true
 -- ```
 ---@field enable boolean
+-- Indent case clauses in switch statements.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field indentSwitchCase boolean
 -- Defines space handling after a comma delimiter.
 -- 
 -- ```lua
@@ -12681,42 +12687,6 @@
 ---@class _.lspconfig.settings.volar.Typescript
 ---@field tsdk string
 
----@class _.lspconfig.settings.volar.CodeLens
--- [references] code lens.
--- 
--- ```lua
--- default = true
--- ```
----@field references boolean
-
----@class _.lspconfig.settings.volar.Completion
--- Normalize import name for auto import. ("myCompVue" -> "MyComp")
--- 
--- ```lua
--- default = true
--- ```
----@field normalizeComponentImportName boolean
--- Preferred attr name case.
--- 
--- ```lua
--- default = "auto-kebab"
--- ```
----@field preferredAttrNameCase "auto-kebab" | "auto-camel" | "kebab" | "camel"
--- Preferred tag name case.
--- 
--- ```lua
--- default = "auto-pascal"
--- ```
----@field preferredTagNameCase "auto-kebab" | "auto-pascal" | "kebab" | "pascal"
-
----@class _.lspconfig.settings.volar.Diagnostics
--- Delay time for diagnostics.
--- 
--- ```lua
--- default = 200
--- ```
----@field delay number
-
 ---@class _.lspconfig.settings.volar.Doctor
 -- Show known problems in status bar.
 -- 
@@ -12764,12 +12734,6 @@
 -- Show split editor icon in title area of editor.
 ---@field splitEditors boolean
 
----@class _.lspconfig.settings.volar.InlayHints
--- Show inlay hints for event argument in inline handlers.
----@field eventArgumentInInlineHandlers boolean
--- Show inlay hints for missing required props.
----@field missingRequiredProps boolean
-
 ---@class _.lspconfig.settings.volar.Layout
 -- ```lua
 -- default = { "script", "scriptSetup", "styles" }
@@ -12790,14 +12754,6 @@
 -- default = "Vue.volar"
 -- ```
 ---@field extension string
-
----@class _.lspconfig.settings.volar.UpdateImportsOnFileMove
--- Enabled update imports on file move.
--- 
--- ```lua
--- default = true
--- ```
----@field enabled boolean
 
 ---@class _.lspconfig.settings.volar.Json
 ---@field customBlockSchemaUrls table
@@ -12827,8 +12783,6 @@
 -- default = "push"
 -- ```
 ---@field diagnosticModel "push" | "pull"
--- Disable file watcher in language server for better performance.
----@field disableFileWatcher boolean
 -- Enable this option if you want to get complete CompletionList in language client. (Disable for better performance)
 ---@field fullCompletionList boolean
 ---@field json _.lspconfig.settings.volar.Json
@@ -12850,31 +12804,81 @@
 ---@field vitePress _.lspconfig.settings.volar.VitePress
 
 ---@class _.lspconfig.settings.volar.Volar
+---@field doctor _.lspconfig.settings.volar.Doctor
+---@field format _.lspconfig.settings.volar.Format
+---@field icon _.lspconfig.settings.volar.Icon
+---@field splitEditors _.lspconfig.settings.volar.SplitEditors
+---@field takeOverMode _.lspconfig.settings.volar.TakeOverMode
+---@field vueserver _.lspconfig.settings.volar.Vueserver
+
+---@class _.lspconfig.settings.volar.AutoInsert
 -- Auto add space between double curly brackets: {{|}} -> {{ | }}
 -- 
 -- ```lua
 -- default = true
 -- ```
----@field addSpaceBetweenDoubleCurlyBrackets boolean
+---@field bracketSpacing boolean
 -- Auto-complete Ref value with `.value`.
----@field autoCompleteRefs boolean
+---@field dotValue boolean
 -- Auto-wrap `()` to As Expression in interpolations for fix issue #520.
 -- 
 -- ```lua
 -- default = true
 -- ```
----@field autoWrapParentheses boolean
+---@field parentheses boolean
+
+---@class _.lspconfig.settings.volar.CodeActions
+-- Enabled code actions.
+---@field enable boolean
+
+---@class _.lspconfig.settings.volar.CodeLens
+-- Enabled code lens.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enable boolean
+
+---@class _.lspconfig.settings.volar.Complete
+-- Normalize import name for auto import. ("myCompVue" -> "MyComp")
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field normalizeComponentImportName boolean
+-- Preferred attr name case.
+-- 
+-- ```lua
+-- default = "autoKebab"
+-- ```
+---@field propNameCasing "autoKebab" | "autoCamel" | "kebab" | "camel"
+-- Preferred tag name case.
+-- 
+-- ```lua
+-- default = "autoPascal"
+-- ```
+---@field tagNameCasing "autoKebab" | "autoPascal" | "kebab" | "pascal"
+
+---@class _.lspconfig.settings.volar.InlayHints
+-- Show inlay hints for event argument in inline handlers.
+---@field inlineHandlerLeading boolean
+-- Show inlay hints for missing required props.
+---@field missingProps boolean
+
+---@class _.lspconfig.settings.volar.UpdateImportsOnFileMove
+-- Enabled update imports on file move.
+---@field enable boolean
+
+---@class _.lspconfig.settings.volar.Features
+---@field autoInsert _.lspconfig.settings.volar.AutoInsert
+---@field codeActions _.lspconfig.settings.volar.CodeActions
 ---@field codeLens _.lspconfig.settings.volar.CodeLens
----@field completion _.lspconfig.settings.volar.Completion
----@field diagnostics _.lspconfig.settings.volar.Diagnostics
----@field doctor _.lspconfig.settings.volar.Doctor
----@field format _.lspconfig.settings.volar.Format
----@field icon _.lspconfig.settings.volar.Icon
+---@field complete _.lspconfig.settings.volar.Complete
 ---@field inlayHints _.lspconfig.settings.volar.InlayHints
----@field splitEditors _.lspconfig.settings.volar.SplitEditors
----@field takeOverMode _.lspconfig.settings.volar.TakeOverMode
 ---@field updateImportsOnFileMove _.lspconfig.settings.volar.UpdateImportsOnFileMove
----@field vueserver _.lspconfig.settings.volar.Vueserver
+
+---@class _.lspconfig.settings.volar.Vue
+---@field features _.lspconfig.settings.volar.Features
 
 ---@class _.lspconfig.settings.volar.Trace
 -- Traces the communication between VS Code and the language server.
@@ -12901,6 +12905,7 @@
 ---@class lspconfig.settings.volar
 ---@field typescript _.lspconfig.settings.volar.Typescript
 ---@field volar _.lspconfig.settings.volar.Volar
+---@field vue _.lspconfig.settings.volar.Vue
 ---@field vue-semantic-server _.lspconfig.settings.volar.Vue-semantic-server
 ---@field vue-syntactic-server _.lspconfig.settings.volar.Vue-syntactic-server
 
