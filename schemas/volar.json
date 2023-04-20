@@ -194,9 +194,14 @@
       "type": "boolean"
     },
     "vue.features.codeActions.enable": {
-      "default": false,
+      "default": true,
       "description": "Enabled code actions.",
       "type": "boolean"
+    },
+    "vue.features.codeActions.saveTimeLimit": {
+      "default": 500,
+      "description": "Time limit for code actions on save (ms).",
+      "type": "number"
     },
     "vue.features.codeLens.enable": {
       "default": true,

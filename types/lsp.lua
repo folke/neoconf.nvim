@@ -1408,159 +1408,369 @@
 ---@class lspconfig.settings.fsautocomplete
 ---@field FSharp _.lspconfig.settings.fsautocomplete.FSharp
 
----@class _.lspconfig.settings.grammarly.Suggestions
--- Flags use of conjunctions such as 'but' and 'and' at the beginning of sentences.
----@field ConjunctionAtStartOfSentence boolean
+---@class _.lspconfig.settings.grammarly.SuggestionCategories
+-- Flags use of conjunctions such as "but" and "and" at the beginning of sentences.
+-- 
+-- ```lua
+-- default = "off"
+-- ```
+---@field conjugationAtStartOfSentence "on" | "off"
 -- Suggests ways to sound more natural and fluent.
 -- 
 -- ```lua
--- default = true
+-- default = "on"
 -- ```
----@field Fluency boolean
--- Flags use of personal pronouns such as 'I' and 'you' in academic writing.
----@field InformalPronounsAcademic boolean
+---@field fluency "on" | "off"
+-- Flags use of personal pronouns such as "I" and "you" in academic writing.
+-- 
+-- ```lua
+-- default = "off"
+-- ```
+---@field informalPronounsAcademic "on" | "off"
 -- Suggests adding missing spacing after a numeral when writing times.
 -- 
 -- ```lua
--- default = true
+-- default = "on"
 -- ```
----@field MissingSpaces boolean
+---@field missingSpaces "on" | "off"
 -- Flags a series of nouns that modify a final noun.
 -- 
 -- ```lua
--- default = true
+-- default = "on"
 -- ```
----@field NounStrings boolean
+---@field nounStrings "on" | "off"
 -- Suggests spelling out numbers at the beginning of sentences.
 -- 
 -- ```lua
--- default = true
+-- default = "on"
 -- ```
----@field NumbersBeginningSentences boolean
+---@field numbersBeginningSentences "on" | "off"
 -- Suggests spelling out numbers zero through ten.
 -- 
 -- ```lua
--- default = true
+-- default = "on"
 -- ```
----@field NumbersZeroThroughTen boolean
+---@field numbersZeroThroughTen "on" | "off"
 -- Suggests adding the Oxford comma after the second-to-last item in a list of things.
----@field OxfordComma boolean
+-- 
+-- ```lua
+-- default = "off"
+-- ```
+---@field oxfordComma "on" | "off"
 -- Flags use of passive voice.
----@field PassiveVoice boolean
+-- 
+-- ```lua
+-- default = "off"
+-- ```
+---@field passiveVoice "on" | "off"
 -- Suggests using person-first language to refer respectfully to an individual with a disability.
 -- 
 -- ```lua
--- default = true
+-- default = "on"
 -- ```
----@field PersonFirstLanguage boolean
+---@field personFirstLanguage "on" | "off"
 -- Suggests alternatives to potentially biased language related to older adults.
 -- 
 -- ```lua
--- default = true
+-- default = "on"
 -- ```
----@field PossiblyBiasedLanguageAgeRelated boolean
+---@field possiblyBiasedLanguageAgeRelated "on" | "off"
 -- Suggests alternatives to potentially ableist language.
 -- 
 -- ```lua
--- default = true
+-- default = "on"
 -- ```
----@field PossiblyBiasedLanguageDisabilityRelated boolean
+---@field possiblyBiasedLanguageDisabilityRelated "on" | "off"
 -- Suggests alternatives to potentially biased language related to parenting and family systems.
 -- 
 -- ```lua
--- default = true
+-- default = "on"
 -- ```
----@field PossiblyBiasedLanguageFamilyRelated boolean
+---@field possiblyBiasedLanguageFamilyRelated "on" | "off"
 -- Suggests alternatives to potentially gender-biased and non-inclusive phrasing.
 -- 
 -- ```lua
--- default = true
+-- default = "on"
 -- ```
----@field PossiblyBiasedLanguageGenderRelated boolean
+---@field possiblyBiasedLanguageGenderRelated "on" | "off"
 -- Suggests alternatives to language related to human slavery.
 -- 
 -- ```lua
--- default = true
+-- default = "on"
 -- ```
----@field PossiblyBiasedLanguageHumanRights boolean
+---@field possiblyBiasedLanguageHumanRights "on" | "off"
 -- Suggests alternatives to terms with origins in the institution of slavery.
 -- 
 -- ```lua
--- default = true
+-- default = "on"
 -- ```
----@field PossiblyBiasedLanguageHumanRightsRelated boolean
+---@field possiblyBiasedLanguageHumanRightsRelated "on" | "off"
 -- Flags LGBTQIA+-related terms that may be seen as biased, outdated, or disrespectful in some contexts.
 -- 
 -- ```lua
--- default = true
+-- default = "on"
 -- ```
----@field PossiblyBiasedLanguageLgbtqiaRelated boolean
+---@field possiblyBiasedLanguageLGBTQIARelated "on" | "off"
 -- Suggests alternatives to potentially biased language related to race and ethnicity.
 -- 
 -- ```lua
--- default = true
+-- default = "on"
 -- ```
----@field PossiblyBiasedLanguageRaceEthnicityRelated boolean
+---@field possiblyBiasedLanguageRaceEthnicityRelated "on" | "off"
 -- Suggests alternatives to language that may be considered politically incorrect.
 -- 
 -- ```lua
--- default = true
+-- default = "on"
 -- ```
----@field PossiblyPoliticallyIncorrectLanguage boolean
--- Flags use of prepositions such as 'with' and 'in' at the end of sentences.
----@field PrepositionAtTheEndOfSentence boolean
+---@field possiblyPoliticallyIncorrectLanguage "on" | "off"
+-- Flags use of prepositions such as "with" and "in" at the end of sentences.
+-- 
+-- ```lua
+-- default = "off"
+-- ```
+---@field prepositionAtTheEndOfSentence "on" | "off"
 -- Suggests placing punctuation before closing quotation marks.
 -- 
 -- ```lua
--- default = true
+-- default = "on"
 -- ```
----@field PunctuationWithQuotation boolean
+---@field punctuationWithQuotation "on" | "off"
 -- Flags long, complicated sentences that could potentially confuse your reader.
 -- 
 -- ```lua
--- default = true
+-- default = "on"
 -- ```
----@field ReadabilityFillerwords boolean
+---@field readabilityFillerWords "on" | "off"
 -- Suggests splitting long, complicated sentences that could potentially confuse your reader.
 -- 
 -- ```lua
--- default = true
+-- default = "on"
 -- ```
----@field ReadabilityTransforms boolean
+---@field readabilityTransforms "on" | "off"
 -- Flags series of sentences that follow the same pattern.
 -- 
 -- ```lua
--- default = true
+-- default = "on"
 -- ```
----@field SentenceVariety boolean
+---@field sentenceVariety "on" | "off"
 -- Suggests removing extra spaces surrounding a slash.
 -- 
 -- ```lua
--- default = true
+-- default = "on"
 -- ```
----@field SpacesSurroundingSlash boolean
--- Suggests rewriting split infinitives so that an adverb doesn't come between 'to' and the verb.
+---@field spacesSurroundingSlash "on" | "off"
+-- Suggests rewriting split infinitives so that an adverb doesn't come between "to" and the verb.
 -- 
 -- ```lua
--- default = true
+-- default = "on"
 -- ```
----@field SplitInfinitive boolean
+---@field splitInfinitive "on" | "off"
 -- Suggests completing all incomplete sentences, including stylistic sentence fragments that may be intentional.
----@field StylisticFragments boolean
+-- 
+-- ```lua
+-- default = "off"
+-- ```
+---@field stylisticFragments "on" | "off"
 -- Flags unnecessary use of ellipses (...).
----@field UnnecessaryEllipses boolean
+-- 
+-- ```lua
+-- default = "off"
+-- ```
+---@field unnecessaryEllipses "on" | "off"
 -- Suggests alternatives to words that occur frequently in the same paragraph.
 -- 
 -- ```lua
--- default = true
+-- default = "on"
 -- ```
----@field Variety boolean
+---@field variety "on" | "off"
+-- Suggests alternatives to bland and overused words such as "good" and "nice".
+-- 
+-- ```lua
+-- default = "on"
+-- ```
+---@field vocabulary "on" | "off"
+
+---@class _.lspconfig.settings.grammarly.Suggestions
+-- Flags use of conjunctions such as 'but' and 'and' at the beginning of sentences.
+-- 
+-- ```lua
+-- default = <userdata 1>
+-- ```
+---@field ConjunctionAtStartOfSentence true | false | <userdata 1>
+-- Suggests ways to sound more natural and fluent.
+-- 
+-- ```lua
+-- default = <userdata 1>
+-- ```
+---@field Fluency true | false | <userdata 1>
+-- Flags use of personal pronouns such as 'I' and 'you' in academic writing.
+-- 
+-- ```lua
+-- default = <userdata 1>
+-- ```
+---@field InformalPronounsAcademic true | false | <userdata 1>
+-- Suggests adding missing spacing after a numeral when writing times.
+-- 
+-- ```lua
+-- default = <userdata 1>
+-- ```
+---@field MissingSpaces true | false | <userdata 1>
+-- Flags a series of nouns that modify a final noun.
+-- 
+-- ```lua
+-- default = <userdata 1>
+-- ```
+---@field NounStrings true | false | <userdata 1>
+-- Suggests spelling out numbers at the beginning of sentences.
+-- 
+-- ```lua
+-- default = <userdata 1>
+-- ```
+---@field NumbersBeginningSentences true | false | <userdata 1>
+-- Suggests spelling out numbers zero through ten.
+-- 
+-- ```lua
+-- default = <userdata 1>
+-- ```
+---@field NumbersZeroThroughTen true | false | <userdata 1>
+-- Suggests adding the Oxford comma after the second-to-last item in a list of things.
+-- 
+-- ```lua
+-- default = <userdata 1>
+-- ```
+---@field OxfordComma true | false | <userdata 1>
+-- Flags use of passive voice.
+-- 
+-- ```lua
+-- default = <userdata 1>
+-- ```
+---@field PassiveVoice true | false | <userdata 1>
+-- Suggests using person-first language to refer respectfully to an individual with a disability.
+-- 
+-- ```lua
+-- default = <userdata 1>
+-- ```
+---@field PersonFirstLanguage true | false | <userdata 1>
+-- Suggests alternatives to potentially biased language related to older adults.
+-- 
+-- ```lua
+-- default = <userdata 1>
+-- ```
+---@field PossiblyBiasedLanguageAgeRelated true | false | <userdata 1>
+-- Suggests alternatives to potentially ableist language.
+-- 
+-- ```lua
+-- default = <userdata 1>
+-- ```
+---@field PossiblyBiasedLanguageDisabilityRelated true | false | <userdata 1>
+-- Suggests alternatives to potentially biased language related to parenting and family systems.
+-- 
+-- ```lua
+-- default = <userdata 1>
+-- ```
+---@field PossiblyBiasedLanguageFamilyRelated true | false | <userdata 1>
+-- Suggests alternatives to potentially gender-biased and non-inclusive phrasing.
+-- 
+-- ```lua
+-- default = <userdata 1>
+-- ```
+---@field PossiblyBiasedLanguageGenderRelated true | false | <userdata 1>
+-- Suggests alternatives to language related to human slavery.
+-- 
+-- ```lua
+-- default = <userdata 1>
+-- ```
+---@field PossiblyBiasedLanguageHumanRights true | false | <userdata 1>
+-- Suggests alternatives to terms with origins in the institution of slavery.
+-- 
+-- ```lua
+-- default = <userdata 1>
+-- ```
+---@field PossiblyBiasedLanguageHumanRightsRelated true | false | <userdata 1>
+-- Flags LGBTQIA+-related terms that may be seen as biased, outdated, or disrespectful in some contexts.
+-- 
+-- ```lua
+-- default = <userdata 1>
+-- ```
+---@field PossiblyBiasedLanguageLgbtqiaRelated true | false | <userdata 1>
+-- Suggests alternatives to potentially biased language related to race and ethnicity.
+-- 
+-- ```lua
+-- default = <userdata 1>
+-- ```
+---@field PossiblyBiasedLanguageRaceEthnicityRelated true | false | <userdata 1>
+-- Suggests alternatives to language that may be considered politically incorrect.
+-- 
+-- ```lua
+-- default = <userdata 1>
+-- ```
+---@field PossiblyPoliticallyIncorrectLanguage true | false | <userdata 1>
+-- Flags use of prepositions such as 'with' and 'in' at the end of sentences.
+-- 
+-- ```lua
+-- default = <userdata 1>
+-- ```
+---@field PrepositionAtTheEndOfSentence true | false | <userdata 1>
+-- Suggests placing punctuation before closing quotation marks.
+-- 
+-- ```lua
+-- default = <userdata 1>
+-- ```
+---@field PunctuationWithQuotation true | false | <userdata 1>
+-- Flags long, complicated sentences that could potentially confuse your reader.
+-- 
+-- ```lua
+-- default = <userdata 1>
+-- ```
+---@field ReadabilityFillerwords true | false | <userdata 1>
+-- Suggests splitting long, complicated sentences that could potentially confuse your reader.
+-- 
+-- ```lua
+-- default = <userdata 1>
+-- ```
+---@field ReadabilityTransforms true | false | <userdata 1>
+-- Flags series of sentences that follow the same pattern.
+-- 
+-- ```lua
+-- default = <userdata 1>
+-- ```
+---@field SentenceVariety true | false | <userdata 1>
+-- Suggests removing extra spaces surrounding a slash.
+-- 
+-- ```lua
+-- default = <userdata 1>
+-- ```
+---@field SpacesSurroundingSlash true | false | <userdata 1>
+-- Suggests rewriting split infinitives so that an adverb doesn't come between 'to' and the verb.
+-- 
+-- ```lua
+-- default = <userdata 1>
+-- ```
+---@field SplitInfinitive true | false | <userdata 1>
+-- Suggests completing all incomplete sentences, including stylistic sentence fragments that may be intentional.
+-- 
+-- ```lua
+-- default = <userdata 1>
+-- ```
+---@field StylisticFragments true | false | <userdata 1>
+-- Flags unnecessary use of ellipses (...).
+-- 
+-- ```lua
+-- default = <userdata 1>
+-- ```
+---@field UnnecessaryEllipses true | false | <userdata 1>
+-- Suggests alternatives to words that occur frequently in the same paragraph.
+-- 
+-- ```lua
+-- default = <userdata 1>
+-- ```
+---@field Variety true | false | <userdata 1>
 -- Suggests alternatives to bland and overused words such as 'good' and 'nice'.
 -- 
 -- ```lua
--- default = true
+-- default = <userdata 1>
 -- ```
----@field Vocabulary boolean
+---@field Vocabulary true | false | <userdata 1>
 
 ---@class _.lspconfig.settings.grammarly.Config
 -- Specific variety of English being written. See [this article](https://support.grammarly.com/hc/en-us/articles/115000089992-Select-between-British-English-American-English-Canadian-English-and-Australian-English) for differences.
@@ -1575,6 +1785,7 @@
 -- default = "general"
 -- ```
 ---@field documentDomain "academic" | "business" | "general" | "mail" | "casual" | "creative"
+---@field suggestionCategories _.lspconfig.settings.grammarly.SuggestionCategories
 ---@field suggestions _.lspconfig.settings.grammarly.Suggestions
 
 ---@class _.lspconfig.settings.grammarly.Files
@@ -10437,7 +10648,7 @@
 ---@field chainingHints _.lspconfig.settings.rust_analyzer.ChainingHints
 ---@field closingBraceHints _.lspconfig.settings.rust_analyzer.ClosingBraceHints
 ---@field closureReturnTypeHints _.lspconfig.settings.rust_analyzer.ClosureReturnTypeHints
--- Closure notation in type and chaining inaly hints.
+-- Closure notation in type and chaining inlay hints.
 -- 
 -- ```lua
 -- default = "impl_fn"
@@ -10731,14 +10942,14 @@
 ---@field macro _.lspconfig.settings.rust_analyzer.Macro
 
 ---@class _.lspconfig.settings.rust_analyzer.Specialization
--- Use specialized semantic tokens for punctuations.
+-- Use specialized semantic tokens for punctuation.
 -- 
 -- When enabled, rust-analyzer will emit special token types for punctuation tokens instead
 -- of the generic `punctuation` token type.
 ---@field enable boolean
 
 ---@class _.lspconfig.settings.rust_analyzer.Punctuation
--- Use semantic tokens for punctuations.
+-- Use semantic tokens for punctuation.
 -- 
 -- When disabled, rust-analyzer will emit semantic tokens only for punctuation tokens when
 -- they are tagged with modifiers or have a special role.
@@ -12222,7 +12433,7 @@
 -- default = true
 -- ```
 ---@field enable boolean
--- Indent case clauses in switch statements.
+-- Indent case clauses in switch statements. Requires using TypeScript 5.1+ in the workspace.
 -- 
 -- ```lua
 -- default = true
@@ -12829,7 +13040,17 @@
 
 ---@class _.lspconfig.settings.volar.CodeActions
 -- Enabled code actions.
+-- 
+-- ```lua
+-- default = true
+-- ```
 ---@field enable boolean
+-- Time limit for code actions on save (ms).
+-- 
+-- ```lua
+-- default = 500
+-- ```
+---@field saveTimeLimit number
 
 ---@class _.lspconfig.settings.volar.CodeLens
 -- Enabled code lens.

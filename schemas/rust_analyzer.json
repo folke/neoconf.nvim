@@ -656,7 +656,7 @@
         "`with_id`: `{closure#14352}`, where that id is the unique number of the closure in r-a internals",
         "`hide`: Shows `...` for every closure type"
       ],
-      "markdownDescription": "Closure notation in type and chaining inaly hints.",
+      "markdownDescription": "Closure notation in type and chaining inlay hints.",
       "type": "string"
     },
     "rust-analyzer.inlayHints.discriminantHints.enable": {
@@ -705,8 +705,8 @@
       "enumDescriptions": [
         "Always show adjustment hints as prefix (`*expr`).",
         "Always show adjustment hints as postfix (`expr.*`).",
-        "Show prefix or postfix depending on which uses less parenthesis, prefering prefix.",
-        "Show prefix or postfix depending on which uses less parenthesis, prefering postfix."
+        "Show prefix or postfix depending on which uses less parenthesis, preferring prefix.",
+        "Show prefix or postfix depending on which uses less parenthesis, preferring postfix."
       ],
       "markdownDescription": "Whether to show inlay hints as postfix ops (`.*` instead of `*`, etc).",
       "type": "string"
@@ -1029,7 +1029,7 @@
     },
     "rust-analyzer.semanticHighlighting.punctuation.enable": {
       "default": false,
-      "markdownDescription": "Use semantic tokens for punctuations.\n\nWhen disabled, rust-analyzer will emit semantic tokens only for punctuation tokens when\nthey are tagged with modifiers or have a special role.",
+      "markdownDescription": "Use semantic tokens for punctuation.\n\nWhen disabled, rust-analyzer will emit semantic tokens only for punctuation tokens when\nthey are tagged with modifiers or have a special role.",
       "type": "boolean"
     },
     "rust-analyzer.semanticHighlighting.punctuation.separate.macro.bang": {
@@ -1039,7 +1039,7 @@
     },
     "rust-analyzer.semanticHighlighting.punctuation.specialization.enable": {
       "default": false,
-      "markdownDescription": "Use specialized semantic tokens for punctuations.\n\nWhen enabled, rust-analyzer will emit special token types for punctuation tokens instead\nof the generic `punctuation` token type.",
+      "markdownDescription": "Use specialized semantic tokens for punctuation.\n\nWhen enabled, rust-analyzer will emit special token types for punctuation tokens instead\nof the generic `punctuation` token type.",
       "type": "boolean"
     },
     "rust-analyzer.semanticHighlighting.strings.enable": {
