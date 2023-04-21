@@ -13050,7 +13050,7 @@
 -- ```lua
 -- default = 500
 -- ```
----@field saveTimeLimit number
+---@field savingTimeLimit number
 
 ---@class _.lspconfig.settings.volar.CodeLens
 -- Enabled code lens.
