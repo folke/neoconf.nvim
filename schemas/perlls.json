@@ -14,7 +14,7 @@
     },
     "perl.containerCmd": {
       "default": null,
-      "description": "If set Perl::LanguageServer can run inside a container. Options are: 'docker', 'docker-compose', 'kubectl'",
+      "description": "If set Perl::LanguageServer can run inside a container. Options are: 'docker', 'docker-compose', 'podman', 'kubectl'",
       "type": "string"
     },
     "perl.containerMode": {

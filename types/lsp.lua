@@ -7571,7 +7571,7 @@
 -- default = <userdata 1>
 -- ```
 ---@field containerArgs any[]
--- If set Perl::LanguageServer can run inside a container. Options are: 'docker', 'docker-compose', 'kubectl'
+-- If set Perl::LanguageServer can run inside a container. Options are: 'docker', 'docker-compose', 'podman', 'kubectl'
 -- 
 -- ```lua
 -- default = <userdata 1>
@@ -13048,7 +13048,7 @@
 -- Time limit for code actions on save (ms).
 -- 
 -- ```lua
--- default = 500
+-- default = 1000
 -- ```
 ---@field savingTimeLimit number
 
