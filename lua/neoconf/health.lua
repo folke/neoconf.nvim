@@ -1,22 +1,28 @@
 local M = {}
 
+local health_start = vim.health.start or vim.health.report_start
+local health_ok = vim.health.ok or vim.health.report_ok
+local health_warn = vim.health.warn or vim.health.report_warn
+local health_error = vim.health.error or vim.health.report_error
+local health_info = vim.health.info or vim.health.report_info
+
 function M.check()
-  vim.health.report_start("neoconf.nvim")
+  health_start("neoconf.nvim")
 
   local function info(msg, ...)
-    vim.health.report_info(msg:format(...))
+    health_info(msg:format(...))
   end
 
   local function ok(msg, ...)
-    vim.health.report_ok(msg:format(...))
+    health_ok(msg:format(...))
   end
 
   local function warn(msg, ...)
-    vim.health.report_warn(msg:format(...))
+    health_warn(msg:format(...))
   end
 
   local function error(msg, ...)
-    vim.health.report_error(msg:format(...))
+    health_warn(msg:format(...))
   end
 
   local _, ts = pcall(require, "nvim-treesitter.parsers")
