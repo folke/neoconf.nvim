@@ -76,6 +76,11 @@
       "description": "Show split editor icon in title area of editor.",
       "type": "boolean"
     },
+    "volar.nameCasing.status": {
+      "default": true,
+      "description": "Show name casing in status bar.",
+      "type": "boolean"
+    },
     "volar.splitEditors.layout.left": {
       "default": [
         "script",
