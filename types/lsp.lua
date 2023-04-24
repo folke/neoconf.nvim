@@ -3518,6 +3518,14 @@
 ---@class _.lspconfig.settings.jdtls.Compile
 ---@field nullAnalysis _.lspconfig.settings.jdtls.NullAnalysis
 
+---@class _.lspconfig.settings.jdtls.LazyResolveTextEdit
+-- [Experimental] Enable/disable lazily resolving text edits for code completion.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enabled boolean
+
 ---@class _.lspconfig.settings.jdtls.Postfix
 -- Enable/disable postfix completion support. `#editor.snippetSuggestions#` can be used to customize how postfix snippets are sorted.
 -- 
@@ -3557,6 +3565,7 @@
 -- default = { "#", "java", "javax", "org", "com", "" }
 -- ```
 ---@field importOrder any[]
+---@field lazyResolveTextEdit _.lspconfig.settings.jdtls.LazyResolveTextEdit
 -- Specify whether to match case for code completion.
 -- 
 -- ```lua
