@@ -142,7 +142,9 @@
           "err-nonstandard-symbol",
           "err-then-as-do",
           "exp-in-action",
+          "global-element",
           "global-in-nil-env",
+          "incomplete-signature-doc",
           "index-in-func-name",
           "invisible",
           "jump-local-scope",
@@ -187,6 +189,7 @@
           "miss-sep-in-table",
           "miss-space-between",
           "miss-symbol",
+          "missing-global-doc",
           "missing-parameter",
           "missing-return",
           "missing-return-value",
@@ -302,6 +305,17 @@
           ],
           "type": "string"
         },
+        "conventions": {
+          "default": "Fallback",
+          "description": "* global-element",
+          "enum": [
+            "Any",
+            "Opened",
+            "None",
+            "Fallback"
+          ],
+          "type": "string"
+        },
         "duplicate": {
           "default": "Fallback",
           "description": "* duplicate-index\n* duplicate-set-field",
@@ -326,7 +340,7 @@
         },
         "luadoc": {
           "default": "Fallback",
-          "description": "* circle-doc-class\n* doc-field-no-class\n* duplicate-doc-alias\n* duplicate-doc-field\n* duplicate-doc-param\n* undefined-doc-class\n* undefined-doc-name\n* undefined-doc-param\n* unknown-cast-variable\n* unknown-diag-code\n* unknown-operator",
+          "description": "* circle-doc-class\n* doc-field-no-class\n* duplicate-doc-alias\n* duplicate-doc-field\n* duplicate-doc-param\n* incomplete-signature-doc\n* missing-global-doc\n* undefined-doc-class\n* undefined-doc-name\n* undefined-doc-param\n* unknown-cast-variable\n* unknown-diag-code\n* unknown-operator",
           "enum": [
             "Any",
             "Opened",
@@ -446,6 +460,18 @@
           ],
           "type": "string"
         },
+        "conventions": {
+          "default": "Fallback",
+          "description": "* global-element",
+          "enum": [
+            "Error",
+            "Warning",
+            "Information",
+            "Hint",
+            "Fallback"
+          ],
+          "type": "string"
+        },
         "duplicate": {
           "default": "Fallback",
           "description": "* duplicate-index\n* duplicate-set-field",
@@ -472,7 +498,7 @@
         },
         "luadoc": {
           "default": "Fallback",
-          "description": "* circle-doc-class\n* doc-field-no-class\n* duplicate-doc-alias\n* duplicate-doc-field\n* duplicate-doc-param\n* undefined-doc-class\n* undefined-doc-name\n* undefined-doc-param\n* unknown-cast-variable\n* unknown-diag-code\n* unknown-operator",
+          "description": "* circle-doc-class\n* doc-field-no-class\n* duplicate-doc-alias\n* duplicate-doc-field\n* duplicate-doc-param\n* incomplete-signature-doc\n* missing-global-doc\n* undefined-doc-class\n* undefined-doc-name\n* undefined-doc-param\n* unknown-cast-variable\n* unknown-diag-code\n* unknown-operator",
           "enum": [
             "Error",
             "Warning",
@@ -855,9 +881,35 @@
           ],
           "type": "string"
         },
+        "global-element": {
+          "default": "None",
+          "description": "Enable diagnostics to warn about global elements.",
+          "enum": [
+            "Any",
+            "Opened",
+            "None",
+            "Any!",
+            "Opened!",
+            "None!"
+          ],
+          "type": "string"
+        },
         "global-in-nil-env": {
           "default": "Any",
           "description": "Enable cannot use global variables （ `_ENV` is set to `nil`） diagnostics.",
+          "enum": [
+            "Any",
+            "Opened",
+            "None",
+            "Any!",
+            "Opened!",
+            "None!"
+          ],
+          "type": "string"
+        },
+        "incomplete-signature-doc": {
+          "default": "None",
+          "description": "Incomplete @param or @return annotations for functions.",
           "enum": [
             "Any",
             "Opened",
@@ -884,6 +936,19 @@
         "lowercase-global": {
           "default": "Any",
           "description": "Enable lowercase global variable definition diagnostics.",
+          "enum": [
+            "Any",
+            "Opened",
+            "None",
+            "Any!",
+            "Opened!",
+            "None!"
+          ],
+          "type": "string"
+        },
+        "missing-global-doc": {
+          "default": "None",
+          "description": "Missing annotations for globals! Global functions must have a comment and annotations for all parameters and return values.",
           "enum": [
             "Any",
             "Opened",
@@ -1619,9 +1684,39 @@
           ],
           "type": "string"
         },
+        "global-element": {
+          "default": "Warning",
+          "description": "Enable diagnostics to warn about global elements.",
+          "enum": [
+            "Error",
+            "Warning",
+            "Information",
+            "Hint",
+            "Error!",
+            "Warning!",
+            "Information!",
+            "Hint!"
+          ],
+          "type": "string"
+        },
         "global-in-nil-env": {
           "default": "Warning",
           "description": "Enable cannot use global variables （ `_ENV` is set to `nil`） diagnostics.",
+          "enum": [
+            "Error",
+            "Warning",
+            "Information",
+            "Hint",
+            "Error!",
+            "Warning!",
+            "Information!",
+            "Hint!"
+          ],
+          "type": "string"
+        },
+        "incomplete-signature-doc": {
+          "default": "Warning",
+          "description": "Incomplete @param or @return annotations for functions.",
           "enum": [
             "Error",
             "Warning",
@@ -1652,6 +1747,21 @@
         "lowercase-global": {
           "default": "Information",
           "description": "Enable lowercase global variable definition diagnostics.",
+          "enum": [
+            "Error",
+            "Warning",
+            "Information",
+            "Hint",
+            "Error!",
+            "Warning!",
+            "Information!",
+            "Hint!"
+          ],
+          "type": "string"
+        },
+        "missing-global-doc": {
+          "default": "Warning",
+          "description": "Missing annotations for globals! Global functions must have a comment and annotations for all parameters and return values.",
           "enum": [
             "Error",
             "Warning",

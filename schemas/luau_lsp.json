@@ -32,8 +32,50 @@
       "scope": "resource",
       "type": "boolean"
     },
+    "luau-lsp.completion.imports.enabled": {
+      "default": false,
+      "markdownDescription": "Suggest automatic imports in completion items",
+      "scope": "resource",
+      "type": "boolean"
+    },
+    "luau-lsp.completion.imports.requireStyle": {
+      "default": "auto",
+      "enum": [
+        "auto",
+        "alwaysRelative",
+        "alwaysAbsolute"
+      ],
+      "enumDescriptions": [
+        "Automatically compute the style of require to use based on heuristics",
+        "Always require the module relative to the current file",
+        "Always require the module absolute based on root"
+      ],
+      "markdownDescription": "The style of requires when autocompleted",
+      "scope": "resource",
+      "type": "string"
+    },
+    "luau-lsp.completion.imports.separateGroupsWithLine": {
+      "default": false,
+      "markdownDescription": "Whether services and requires should be separated by an empty line",
+      "scope": "resource",
+      "type": "boolean"
+    },
+    "luau-lsp.completion.imports.suggestRequires": {
+      "default": true,
+      "markdownDescription": "Whether module requires are suggested in autocomplete",
+      "scope": "resource",
+      "type": "boolean"
+    },
+    "luau-lsp.completion.imports.suggestServices": {
+      "default": true,
+      "markdownDescription": "Whether GetService completions are suggested in autocomplete",
+      "scope": "resource",
+      "type": "boolean"
+    },
     "luau-lsp.completion.suggestImports": {
       "default": false,
+      "deprecationMessage": "Deprecated: Please use luau-lsp.completion.imports.enabled instead.",
+      "markdownDeprecationMessage": "**Deprecated**: Please use `#luau-lsp.completion.imports.enabled#` instead.",
       "markdownDescription": "Suggest automatic imports in completion items",
       "scope": "resource",
       "type": "boolean"
@@ -114,6 +156,12 @@
       "markdownDescription": "Diagnostics will not be reported for any file matching these globs unless the file is currently open",
       "scope": "resource",
       "type": "array"
+    },
+    "luau-lsp.index.enabled": {
+      "default": true,
+      "markdownDescription": "Whether all files in a workspace should be indexed into memory. If disabled, only limited support is available for features such as 'Find All References' and 'Rename'",
+      "scope": "window",
+      "type": "boolean"
     },
     "luau-lsp.inlayHints.functionReturnTypes": {
       "default": false,

@@ -5421,6 +5421,12 @@
 -- default = "Fallback"
 -- ```
 ---@field codestyle "Any" | "Opened" | "None" | "Fallback"
+-- * global-element
+-- 
+-- ```lua
+-- default = "Fallback"
+-- ```
+---@field conventions "Any" | "Opened" | "None" | "Fallback"
 -- * duplicate-index
 -- * duplicate-set-field
 -- 
@@ -5442,6 +5448,8 @@
 -- * duplicate-doc-alias
 -- * duplicate-doc-field
 -- * duplicate-doc-param
+-- * incomplete-signature-doc
+-- * missing-global-doc
 -- * undefined-doc-class
 -- * undefined-doc-name
 -- * undefined-doc-param
@@ -5542,6 +5550,12 @@
 -- default = "Fallback"
 -- ```
 ---@field codestyle "Error" | "Warning" | "Information" | "Hint" | "Fallback"
+-- * global-element
+-- 
+-- ```lua
+-- default = "Fallback"
+-- ```
+---@field conventions "Error" | "Warning" | "Information" | "Hint" | "Fallback"
 -- * duplicate-index
 -- * duplicate-set-field
 -- 
@@ -5563,6 +5577,8 @@
 -- * duplicate-doc-alias
 -- * duplicate-doc-field
 -- * duplicate-doc-param
+-- * incomplete-signature-doc
+-- * missing-global-doc
 -- * undefined-doc-class
 -- * undefined-doc-name
 -- * undefined-doc-param
@@ -5761,12 +5777,24 @@
 -- default = "Opened"
 -- ```
 ---@field empty-block "Any" | "Opened" | "None" | "Any!" | "Opened!" | "None!"
+-- Enable diagnostics to warn about global elements.
+-- 
+-- ```lua
+-- default = "None"
+-- ```
+---@field global-element "Any" | "Opened" | "None" | "Any!" | "Opened!" | "None!"
 -- Enable cannot use global variables （ `_ENV` is set to `nil`） diagnostics.
 -- 
 -- ```lua
 -- default = "Any"
 -- ```
 ---@field global-in-nil-env "Any" | "Opened" | "None" | "Any!" | "Opened!" | "None!"
+-- Incomplete @param or @return annotations for functions.
+-- 
+-- ```lua
+-- default = "None"
+-- ```
+---@field incomplete-signature-doc "Any" | "Opened" | "None" | "Any!" | "Opened!" | "None!"
 -- Enable diagnostics for accesses to fields which are invisible.
 -- 
 -- ```lua
@@ -5779,6 +5807,12 @@
 -- default = "Any"
 -- ```
 ---@field lowercase-global "Any" | "Opened" | "None" | "Any!" | "Opened!" | "None!"
+-- Missing annotations for globals! Global functions must have a comment and annotations for all parameters and return values.
+-- 
+-- ```lua
+-- default = "None"
+-- ```
+---@field missing-global-doc "Any" | "Opened" | "None" | "Any!" | "Opened!" | "None!"
 -- Enable diagnostics for function calls where the number of arguments is less than the number of annotated function parameters.
 -- 
 -- ```lua
@@ -6097,12 +6131,24 @@
 -- default = "Hint"
 -- ```
 ---@field empty-block "Error" | "Warning" | "Information" | "Hint" | "Error!" | "Warning!" | "Information!" | "Hint!"
+-- Enable diagnostics to warn about global elements.
+-- 
+-- ```lua
+-- default = "Warning"
+-- ```
+---@field global-element "Error" | "Warning" | "Information" | "Hint" | "Error!" | "Warning!" | "Information!" | "Hint!"
 -- Enable cannot use global variables （ `_ENV` is set to `nil`） diagnostics.
 -- 
 -- ```lua
 -- default = "Warning"
 -- ```
 ---@field global-in-nil-env "Error" | "Warning" | "Information" | "Hint" | "Error!" | "Warning!" | "Information!" | "Hint!"
+-- Incomplete @param or @return annotations for functions.
+-- 
+-- ```lua
+-- default = "Warning"
+-- ```
+---@field incomplete-signature-doc "Error" | "Warning" | "Information" | "Hint" | "Error!" | "Warning!" | "Information!" | "Hint!"
 -- Enable diagnostics for accesses to fields which are invisible.
 -- 
 -- ```lua
@@ -6115,6 +6161,12 @@
 -- default = "Information"
 -- ```
 ---@field lowercase-global "Error" | "Warning" | "Information" | "Hint" | "Error!" | "Warning!" | "Information!" | "Hint!"
+-- Missing annotations for globals! Global functions must have a comment and annotations for all parameters and return values.
+-- 
+-- ```lua
+-- default = "Warning"
+-- ```
+---@field missing-global-doc "Error" | "Warning" | "Information" | "Hint" | "Error!" | "Warning!" | "Information!" | "Hint!"
 -- Enable diagnostics for function calls where the number of arguments is less than the number of annotated function parameters.
 -- 
 -- ```lua
@@ -6902,6 +6954,30 @@
 ---@class _.lspconfig.settings.luau_lsp.Luau
 ---@field trace _.lspconfig.settings.luau_lsp.Trace
 
+---@class _.lspconfig.settings.luau_lsp.Imports
+-- Suggest automatic imports in completion items
+---@field enabled boolean
+-- The style of requires when autocompleted
+-- 
+-- ```lua
+-- default = "auto"
+-- ```
+---@field requireStyle "auto" | "alwaysRelative" | "alwaysAbsolute"
+-- Whether services and requires should be separated by an empty line
+---@field separateGroupsWithLine boolean
+-- Whether module requires are suggested in autocomplete
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field suggestRequires boolean
+-- Whether GetService completions are suggested in autocomplete
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field suggestServices boolean
+
 ---@class _.lspconfig.settings.luau_lsp.Completion
 -- Add parentheses after completing a function call
 -- 
@@ -6927,6 +7003,7 @@
 -- default = true
 -- ```
 ---@field fillCallArguments boolean
+---@field imports _.lspconfig.settings.luau_lsp.Imports
 -- Suggest automatic imports in completion items
 ---@field suggestImports boolean
 
@@ -6976,6 +7053,14 @@
 -- default = true
 -- ```
 ---@field strictDatamodelTypes boolean
+
+---@class _.lspconfig.settings.luau_lsp.Index
+-- Whether all files in a workspace should be indexed into memory. If disabled, only limited support is available for features such as 'Find All References' and 'Rename'
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enabled boolean
 
 ---@class _.lspconfig.settings.luau_lsp.InlayHints
 -- Show inlay hints for function return types
@@ -7089,6 +7174,7 @@
 -- default = { "**/_Index/**" }
 -- ```
 ---@field ignoreGlobs string[]
+---@field index _.lspconfig.settings.luau_lsp.Index
 ---@field inlayHints _.lspconfig.settings.luau_lsp.InlayHints
 ---@field plugin _.lspconfig.settings.luau_lsp.Plugin
 ---@field require _.lspconfig.settings.luau_lsp.Require
@@ -10839,8 +10925,7 @@
 -- default = {}
 -- ```
 ---@field ignored table
--- Internal config, path to proc-macro server executable (typically,
--- this is rust-analyzer itself, but we override this in tests).
+-- Internal config, path to proc-macro server executable.
 -- 
 -- ```lua
 -- default = <userdata 1>
@@ -12907,14 +12992,6 @@
 ---@class _.lspconfig.settings.volar.Typescript
 ---@field tsdk string
 
----@class _.lspconfig.settings.volar.Doctor
--- Show known problems in status bar.
--- 
--- ```lua
--- default = true
--- ```
----@field status boolean
-
 -- Whether to have initial indent.
 -- 
 -- ```lua
@@ -12950,31 +13027,6 @@
 -- ```
 ---@field initialIndent _.lspconfig.settings.volar.InitialIndent
 
----@class _.lspconfig.settings.volar.Icon
--- Show split editor icon in title area of editor.
----@field splitEditors boolean
-
----@class _.lspconfig.settings.volar.NameCasing
--- Show name casing in status bar.
--- 
--- ```lua
--- default = true
--- ```
----@field status boolean
-
----@class _.lspconfig.settings.volar.Layout
--- ```lua
--- default = { "script", "scriptSetup", "styles" }
--- ```
----@field left any[]
--- ```lua
--- default = { "template", "customBlocks" }
--- ```
----@field right any[]
-
----@class _.lspconfig.settings.volar.SplitEditors
----@field layout _.lspconfig.settings.volar.Layout
-
 ---@class _.lspconfig.settings.volar.TakeOverMode
 -- The extension that take over language support for *.ts.
 -- 
@@ -12983,16 +13035,107 @@
 -- ```
 ---@field extension string
 
+---@class _.lspconfig.settings.volar.Volar
+---@field format _.lspconfig.settings.volar.Format
+---@field takeOverMode _.lspconfig.settings.volar.TakeOverMode
+
+---@class _.lspconfig.settings.volar.AutoInsert
+-- Auto add space between double curly brackets: {{|}} -> {{ | }}
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field bracketSpacing boolean
+-- Auto-complete Ref value with `.value`.
+---@field dotValue boolean
+-- Auto-wrap `()` to As Expression in interpolations for fix issue #520.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field parentheses boolean
+
+---@class _.lspconfig.settings.volar.CodeActions
+-- Enabled code actions.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enabled boolean
+-- Time limit for code actions on save (ms).
+-- 
+-- ```lua
+-- default = 1000
+-- ```
+---@field savingTimeLimit number
+
+---@class _.lspconfig.settings.volar.CodeLens
+-- Enabled code lens.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enabled boolean
+
+---@class _.lspconfig.settings.volar.Casing
+-- Preferred attr name case.
+-- 
+-- ```lua
+-- default = "autoKebab"
+-- ```
+---@field props "autoKebab" | "autoCamel" | "kebab" | "camel"
+-- Show name casing in status bar.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field status boolean
+-- Preferred tag name case.
+-- 
+-- ```lua
+-- default = "autoPascal"
+-- ```
+---@field tags "autoKebab" | "autoPascal" | "kebab" | "pascal"
+
+---@class _.lspconfig.settings.volar.Complete
+---@field casing _.lspconfig.settings.volar.Casing
+-- Normalize import name for auto import. ("myCompVue" -> "MyComp")
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field normalizeComponentImportName boolean
+
+---@class _.lspconfig.settings.volar.Doctor
+-- Show known problems in status bar.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field status boolean
+
+---@class _.lspconfig.settings.volar.InlayHints
+-- Show inlay hints for event argument in inline handlers.
+---@field inlineHandlerLeading boolean
+-- Show inlay hints for missing required props.
+---@field missingProps boolean
+-- Show inlay hints for component options wrapper for type support.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field optionsWrapper boolean
+
 ---@class _.lspconfig.settings.volar.Json
 ---@field customBlockSchemaUrls table
 
 ---@class _.lspconfig.settings.volar.PetiteVue
----@field processHtmlFile boolean
+---@field supportHtmlFile boolean
 
 ---@class _.lspconfig.settings.volar.VitePress
----@field processMdFile boolean
+---@field supportMdFile boolean
 
----@class _.lspconfig.settings.volar.Vueserver
+---@class _.lspconfig.settings.volar.Server
 -- List any additional file extensions that should be processed as Vue files (requires restart).
 -- 
 -- ```lua
@@ -13031,93 +13174,35 @@
 ---@field reverseConfigFilePriority boolean
 ---@field vitePress _.lspconfig.settings.volar.VitePress
 
----@class _.lspconfig.settings.volar.Volar
----@field doctor _.lspconfig.settings.volar.Doctor
----@field format _.lspconfig.settings.volar.Format
----@field icon _.lspconfig.settings.volar.Icon
----@field nameCasing _.lspconfig.settings.volar.NameCasing
----@field splitEditors _.lspconfig.settings.volar.SplitEditors
----@field takeOverMode _.lspconfig.settings.volar.TakeOverMode
----@field vueserver _.lspconfig.settings.volar.Vueserver
+---@class _.lspconfig.settings.volar.Layout
+-- ```lua
+-- default = { "script", "scriptSetup", "styles" }
+-- ```
+---@field left any[]
+-- ```lua
+-- default = { "template", "customBlocks" }
+-- ```
+---@field right any[]
 
----@class _.lspconfig.settings.volar.AutoInsert
--- Auto add space between double curly brackets: {{|}} -> {{ | }}
--- 
--- ```lua
--- default = true
--- ```
----@field bracketSpacing boolean
--- Auto-complete Ref value with `.value`.
----@field dotValue boolean
--- Auto-wrap `()` to As Expression in interpolations for fix issue #520.
--- 
--- ```lua
--- default = true
--- ```
----@field parentheses boolean
-
----@class _.lspconfig.settings.volar.CodeActions
--- Enabled code actions.
--- 
--- ```lua
--- default = true
--- ```
----@field enable boolean
--- Time limit for code actions on save (ms).
--- 
--- ```lua
--- default = 1000
--- ```
----@field savingTimeLimit number
-
----@class _.lspconfig.settings.volar.CodeLens
--- Enabled code lens.
--- 
--- ```lua
--- default = true
--- ```
----@field enable boolean
-
----@class _.lspconfig.settings.volar.Complete
--- Normalize import name for auto import. ("myCompVue" -> "MyComp")
--- 
--- ```lua
--- default = true
--- ```
----@field normalizeComponentImportName boolean
--- Preferred attr name case.
--- 
--- ```lua
--- default = "autoKebab"
--- ```
----@field propNameCasing "autoKebab" | "autoCamel" | "kebab" | "camel"
--- Preferred tag name case.
--- 
--- ```lua
--- default = "autoPascal"
--- ```
----@field tagNameCasing "autoKebab" | "autoPascal" | "kebab" | "pascal"
-
----@class _.lspconfig.settings.volar.InlayHints
--- Show inlay hints for event argument in inline handlers.
----@field inlineHandlerLeading boolean
--- Show inlay hints for missing required props.
----@field missingProps boolean
+---@class _.lspconfig.settings.volar.SplitEditors
+-- Show split editor icon in title area of editor.
+---@field icon boolean
+---@field layout _.lspconfig.settings.volar.Layout
 
 ---@class _.lspconfig.settings.volar.UpdateImportsOnFileMove
 -- Enabled update imports on file move.
----@field enable boolean
+---@field enabled boolean
 
----@class _.lspconfig.settings.volar.Features
+---@class _.lspconfig.settings.volar.Vue
 ---@field autoInsert _.lspconfig.settings.volar.AutoInsert
 ---@field codeActions _.lspconfig.settings.volar.CodeActions
 ---@field codeLens _.lspconfig.settings.volar.CodeLens
 ---@field complete _.lspconfig.settings.volar.Complete
+---@field doctor _.lspconfig.settings.volar.Doctor
 ---@field inlayHints _.lspconfig.settings.volar.InlayHints
+---@field server _.lspconfig.settings.volar.Server
+---@field splitEditors _.lspconfig.settings.volar.SplitEditors
 ---@field updateImportsOnFileMove _.lspconfig.settings.volar.UpdateImportsOnFileMove
-
----@class _.lspconfig.settings.volar.Vue
----@field features _.lspconfig.settings.volar.Features
 
 ---@class _.lspconfig.settings.volar.Trace
 -- Traces the communication between VS Code and the language server.

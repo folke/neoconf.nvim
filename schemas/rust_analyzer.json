@@ -919,7 +919,7 @@
     },
     "rust-analyzer.procMacro.server": {
       "default": null,
-      "markdownDescription": "Internal config, path to proc-macro server executable (typically,\nthis is rust-analyzer itself, but we override this in tests).",
+      "markdownDescription": "Internal config, path to proc-macro server executable.",
       "type": [
         "null",
         "string"
