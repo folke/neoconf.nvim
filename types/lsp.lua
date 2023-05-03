@@ -10478,6 +10478,14 @@
 -- ```
 ---@field enable boolean
 
+---@class _.lspconfig.settings.rust_analyzer.ClosureCaptures
+-- Enables highlighting of all captures of a closure while the cursor is on the `|` or move keyword of a closure.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enable boolean
+
 ---@class _.lspconfig.settings.rust_analyzer.ExitPoints
 -- Enables highlighting of all exit points while the cursor is on any `return`, `?`, `fn`, or return type arrow (`->`).
 -- 
@@ -10504,6 +10512,7 @@
 
 ---@class _.lspconfig.settings.rust_analyzer.HighlightRelated
 ---@field breakPoints _.lspconfig.settings.rust_analyzer.BreakPoints
+---@field closureCaptures _.lspconfig.settings.rust_analyzer.ClosureCaptures
 ---@field exitPoints _.lspconfig.settings.rust_analyzer.ExitPoints
 ---@field references _.lspconfig.settings.rust_analyzer.References
 ---@field yieldPoints _.lspconfig.settings.rust_analyzer.YieldPoints

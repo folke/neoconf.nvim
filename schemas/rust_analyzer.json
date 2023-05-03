@@ -494,6 +494,11 @@
       "markdownDescription": "Enables highlighting of related references while the cursor is on `break`, `loop`, `while`, or `for` keywords.",
       "type": "boolean"
     },
+    "rust-analyzer.highlightRelated.closureCaptures.enable": {
+      "default": true,
+      "markdownDescription": "Enables highlighting of all captures of a closure while the cursor is on the `|` or move keyword of a closure.",
+      "type": "boolean"
+    },
     "rust-analyzer.highlightRelated.exitPoints.enable": {
       "default": true,
       "markdownDescription": "Enables highlighting of all exit points while the cursor is on any `return`, `?`, `fn`, or return type arrow (`->`).",
