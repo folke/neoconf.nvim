@@ -7093,6 +7093,12 @@
 ---@field port number
 
 ---@class _.lspconfig.settings.luau_lsp.Require
+-- A mapping of custom require strings to file paths
+-- 
+-- ```lua
+-- default = {}
+-- ```
+---@field map table
 -- How string requires should be interpreted
 -- 
 -- ```lua

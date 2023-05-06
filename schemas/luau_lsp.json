@@ -211,6 +211,15 @@
       "scope": "window",
       "type": "number"
     },
+    "luau-lsp.require.map": {
+      "additionalProperties": {
+        "type": "string"
+      },
+      "default": {},
+      "markdownDescription": "A mapping of custom require strings to file paths",
+      "scope": "resource",
+      "type": "object"
+    },
     "luau-lsp.require.mode": {
       "default": "relativeToWorkspaceRoot",
       "enum": [
