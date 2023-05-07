@@ -18,6 +18,12 @@
       "scope": "resource",
       "type": "boolean"
     },
+    "elixirLS.autoInsertRequiredAlias": {
+      "default": true,
+      "description": "Enable auto-insert required alias. By default, it's true, which means enabled.",
+      "scope": "window",
+      "type": "boolean"
+    },
     "elixirLS.dialyzerEnabled": {
       "default": true,
       "description": "Run ElixirLS's rapid Dialyzer when code is saved",

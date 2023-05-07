@@ -573,6 +573,12 @@
 -- default = true
 -- ```
 ---@field autoBuild boolean
+-- Enable auto-insert required alias. By default, it's true, which means enabled.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field autoInsertRequiredAlias boolean
 -- Run ElixirLS's rapid Dialyzer when code is saved
 -- 
 -- ```lua
