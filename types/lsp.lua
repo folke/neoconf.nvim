@@ -10602,7 +10602,15 @@
 ---@field keywords _.lspconfig.settings.rust_analyzer.Keywords
 
 ---@class _.lspconfig.settings.rust_analyzer.Links
--- Use markdown syntax for links in hover.
+-- Use markdown syntax for links on hover.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enable boolean
+
+---@class _.lspconfig.settings.rust_analyzer.MemoryLayout
+-- Whether to show memory layout data on hover.
 -- 
 -- ```lua
 -- default = true
@@ -10613,6 +10621,7 @@
 ---@field actions _.lspconfig.settings.rust_analyzer.Actions
 ---@field documentation _.lspconfig.settings.rust_analyzer.Documentation
 ---@field links _.lspconfig.settings.rust_analyzer.Links
+---@field memoryLayout _.lspconfig.settings.rust_analyzer.MemoryLayout
 
 ---@class _.lspconfig.settings.rust_analyzer.Granularity
 -- Whether to enforce the import granularity setting for all files. If set to false rust-analyzer will try to keep import styles consistent per file.
