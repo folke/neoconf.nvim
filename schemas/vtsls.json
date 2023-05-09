@@ -232,11 +232,17 @@
         "index",
         "js"
       ],
+      "enumItemLabels": [
+        null,
+        null,
+        null,
+        "%typescript.preferences.importModuleSpecifierEnding.label.js%"
+      ],
       "markdownEnumDescriptions": [
         "Use project settings to select a default.",
         "Shorten `./component/index.js` to `./component`.",
         "Shorten `./component/index.js` to `./component/index`.",
-        "Do not shorten path endings; include the `.js` extension."
+        "Do not shorten path endings; include the `.js` or `.ts` extension."
       ],
       "type": "string"
     },
@@ -457,6 +463,11 @@
     "typescript.format.enable": {
       "default": true,
       "description": "Enable/disable default TypeScript formatter.",
+      "type": "boolean"
+    },
+    "typescript.format.indentSwitchCase": {
+      "default": true,
+      "description": "Indent case clauses in switch statements. Requires using TypeScript 5.1+ in the workspace.",
       "type": "boolean"
     },
     "typescript.format.insertSpaceAfterCommaDelimiter": {
@@ -699,11 +710,17 @@
         "index",
         "js"
       ],
+      "enumItemLabels": [
+        null,
+        null,
+        null,
+        "%typescript.preferences.importModuleSpecifierEnding.label.js%"
+      ],
       "markdownEnumDescriptions": [
         "Use project settings to select a default.",
         "Shorten `./component/index.js` to `./component`.",
         "Shorten `./component/index.js` to `./component/index`.",
-        "Do not shorten path endings; include the `.js` extension."
+        "Do not shorten path endings; include the `.js` or `.ts` extension."
       ],
       "type": "string"
     },

@@ -637,6 +637,11 @@
       "minimum": 0,
       "type": "integer"
     },
+    "rust-analyzer.inlayHints.closureCaptureHints.enable": {
+      "default": false,
+      "markdownDescription": "Whether to show inlay hints for closure captures.",
+      "type": "boolean"
+    },
     "rust-analyzer.inlayHints.closureReturnTypeHints.enable": {
       "default": "never",
       "enum": [

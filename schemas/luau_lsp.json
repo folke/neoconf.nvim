@@ -211,12 +211,12 @@
       "scope": "window",
       "type": "number"
     },
-    "luau-lsp.require.map": {
+    "luau-lsp.require.fileAliases": {
       "additionalProperties": {
         "type": "string"
       },
       "default": {},
-      "markdownDescription": "A mapping of custom require strings to file paths",
+      "markdownDescription": "A mapping of custom require string aliases to file paths",
       "scope": "resource",
       "type": "object"
     },

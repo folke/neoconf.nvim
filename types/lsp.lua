@@ -7099,12 +7099,12 @@
 ---@field port number
 
 ---@class _.lspconfig.settings.luau_lsp.Require
--- A mapping of custom require strings to file paths
+-- A mapping of custom require string aliases to file paths
 -- 
 -- ```lua
 -- default = {}
 -- ```
----@field map table
+---@field fileAliases table
 -- How string requires should be interpreted
 -- 
 -- ```lua
@@ -10695,6 +10695,10 @@
 -- ```
 ---@field minLines integer
 
+---@class _.lspconfig.settings.rust_analyzer.ClosureCaptureHints
+-- Whether to show inlay hints for closure captures.
+---@field enable boolean
+
 ---@class _.lspconfig.settings.rust_analyzer.ClosureReturnTypeHints
 -- Whether to show inlay type hints for return types of closures.
 -- 
@@ -10772,6 +10776,7 @@
 ---@field bindingModeHints _.lspconfig.settings.rust_analyzer.BindingModeHints
 ---@field chainingHints _.lspconfig.settings.rust_analyzer.ChainingHints
 ---@field closingBraceHints _.lspconfig.settings.rust_analyzer.ClosingBraceHints
+---@field closureCaptureHints _.lspconfig.settings.rust_analyzer.ClosureCaptureHints
 ---@field closureReturnTypeHints _.lspconfig.settings.rust_analyzer.ClosureReturnTypeHints
 -- Closure notation in type and chaining inlay hints.
 -- 
@@ -13643,6 +13648,12 @@
 -- default = true
 -- ```
 ---@field enable boolean
+-- Indent case clauses in switch statements. Requires using TypeScript 5.1+ in the workspace.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field indentSwitchCase boolean
 -- Defines space handling after a comma delimiter.
 -- 
 -- ```lua
