@@ -288,6 +288,16 @@
 ---@class lspconfig.settings.bashls
 ---@field bashIde _.lspconfig.settings.bashls.BashIde
 
+---@class _.lspconfig.settings.clangd.InactiveRegions
+-- Opacity of inactive regions (used only if clangd.inactiveRegions.useBackgroundHighlight=false)
+-- 
+-- ```lua
+-- default = 0.55
+-- ```
+---@field opacity number
+-- Use a background highlight rather than opacity to identify inactive preprocessor regions.
+---@field useBackgroundHighlight boolean
+
 ---@class _.lspconfig.settings.clangd.Clangd
 -- Arguments for clangd server.
 -- 
@@ -309,6 +319,7 @@
 -- default = {}
 -- ```
 ---@field fallbackFlags string[]
+---@field inactiveRegions _.lspconfig.settings.clangd.InactiveRegions
 -- What to do when clangd configuration files are changed. Ignored for clangd 12+, which can reload such files itself.
 -- 
 -- ```lua

@@ -28,6 +28,16 @@
       },
       "type": "array"
     },
+    "clangd.inactiveRegions.opacity": {
+      "default": 0.55,
+      "description": "Opacity of inactive regions (used only if clangd.inactiveRegions.useBackgroundHighlight=false)",
+      "type": "number"
+    },
+    "clangd.inactiveRegions.useBackgroundHighlight": {
+      "default": false,
+      "description": "Use a background highlight rather than opacity to identify inactive preprocessor regions.",
+      "type": "boolean"
+    },
     "clangd.onConfigChanged": {
       "default": "prompt",
       "description": "What to do when clangd configuration files are changed. Ignored for clangd 12+, which can reload such files itself.",
