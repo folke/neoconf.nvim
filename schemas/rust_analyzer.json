@@ -1032,6 +1032,11 @@
       "markdownDescription": "Inject additional highlighting into doc comments.\n\nWhen enabled, rust-analyzer will highlight rust source in doc comments as well as intra\ndoc links.",
       "type": "boolean"
     },
+    "rust-analyzer.semanticHighlighting.nonStandardTokens": {
+      "default": true,
+      "markdownDescription": "Whether the server is allowed to emit non-standard tokens and modifiers.",
+      "type": "boolean"
+    },
     "rust-analyzer.semanticHighlighting.operator.enable": {
       "default": true,
       "markdownDescription": "Use semantic tokens for operators.\n\nWhen disabled, rust-analyzer will emit semantic tokens only for operator tokens when\nthey are tagged with modifiers.",

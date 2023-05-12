@@ -11111,6 +11111,12 @@
 
 ---@class _.lspconfig.settings.rust_analyzer.SemanticHighlighting
 ---@field doc _.lspconfig.settings.rust_analyzer.Doc
+-- Whether the server is allowed to emit non-standard tokens and modifiers.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field nonStandardTokens boolean
 ---@field operator _.lspconfig.settings.rust_analyzer.Operator
 ---@field punctuation _.lspconfig.settings.rust_analyzer.Punctuation
 ---@field strings _.lspconfig.settings.rust_analyzer.Strings
