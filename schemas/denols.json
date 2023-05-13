@@ -76,6 +76,17 @@
       "scope": "window",
       "type": "string"
     },
+    "deno.documentPreloadLimit": {
+      "default": 1000,
+      "examples": [
+        0,
+        100,
+        1000
+      ],
+      "markdownDescription": "Maximum number of file system entries to traverse when finding scripts to preload into TypeScript on startup. Set this to 0 to disable document preloading.",
+      "scope": "resource",
+      "type": "number"
+    },
     "deno.enable": {
       "default": false,
       "examples": [

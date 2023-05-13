@@ -496,6 +496,12 @@
 -- default = <userdata 1>
 -- ```
 ---@field config string
+-- Maximum number of file system entries to traverse when finding scripts to preload into TypeScript on startup. Set this to 0 to disable document preloading.
+-- 
+-- ```lua
+-- default = 1000
+-- ```
+---@field documentPreloadLimit number
 -- Controls if the Deno Language Server is enabled. When enabled, the extension will disable the built-in VSCode JavaScript and TypeScript language services, and will use the Deno Language Server instead.
 -- 
 -- If you want to enable only part of your workspace folder, consider using `deno.enablePaths` setting instead.
