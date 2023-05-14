@@ -10050,6 +10050,10 @@
 -- ```
 ---@field rename boolean
 -- Require a Rome configuration file to enable syntax errors, formatting and linting. Requires Rome 12 or newer.
+-- 
+-- ```lua
+-- default = true
+-- ```
 ---@field requireConfiguration boolean
 
 ---@class _.lspconfig.settings.rome.Trace
