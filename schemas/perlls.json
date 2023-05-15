@@ -126,6 +126,11 @@
       "default": null,
       "description": "path of the workspace root on remote system",
       "type": "string"
+    },
+    "perl.useTaintForSyntaxCheck": {
+      "default": false,
+      "description": "Use -T for syntax check.",
+      "type": "boolean"
     }
   }
 }

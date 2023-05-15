@@ -7825,6 +7825,8 @@
 -- default = <userdata 1>
 -- ```
 ---@field sshWorkspaceRoot string
+-- Use -T for syntax check.
+---@field useTaintForSyntaxCheck boolean
 
 ---@class lspconfig.settings.perlls
 ---@field perl _.lspconfig.settings.perlls.Perl
