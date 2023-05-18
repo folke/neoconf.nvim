@@ -490,15 +490,6 @@
       "scope": "window",
       "type": "boolean"
     },
-    "typescript.experimental.tsserver.web.enableProjectWideIntellisense": {
-      "default": false,
-      "description": "Enable/disable project-wide IntelliSense on web. Requires that VS Code is running in a trusted context.",
-      "scope": "window",
-      "tags": [
-        "experimental"
-      ],
-      "type": "boolean"
-    },
     "typescript.format.enable": {
       "default": true,
       "description": "Enable/disable default TypeScript formatter.",
@@ -1075,6 +1066,18 @@
       },
       "scope": "window",
       "type": "object"
+    },
+    "typescript.tsserver.web.projectWideIntellisense.enabled": {
+      "default": true,
+      "description": "Enable/disable project-wide IntelliSense on web. Requires that VS Code is running in a trusted context.",
+      "scope": "window",
+      "type": "boolean"
+    },
+    "typescript.tsserver.web.projectWideIntellisense.suppressSemanticErrors": {
+      "default": true,
+      "description": "Suppresses semantic errors. This is needed when using external packages as these can't be included analyzed on web.",
+      "scope": "window",
+      "type": "boolean"
     },
     "typescript.updateImportsOnFileMove.enabled": {
       "default": "prompt",

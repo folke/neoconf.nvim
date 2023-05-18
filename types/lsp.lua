@@ -11456,6 +11456,10 @@
 -- ```
 ---@field linter "" | "solhint" | "solium"
 -- Enables mono repo support in the current workspace, a project folder will be signaled if a file is found on the current folder or above including: remappings.txt, truffle-config.js, brownie-config.yaml, foundry.toml, hardhat.config.js, dappfile
+-- 
+-- ```lua
+-- default = true
+-- ```
 ---@field monoRepoSupport boolean
 -- The node modules package to find the solcjs compiler
 -- 
@@ -12574,16 +12578,6 @@
 -- ```
 ---@field npmIsInstalled boolean
 
----@class _.lspconfig.settings.tsserver.Web
--- Enable/disable project-wide IntelliSense on web. Requires that VS Code is running in a trusted context.
----@field enableProjectWideIntellisense boolean
-
----@class _.lspconfig.settings.tsserver.Tsserver
----@field web _.lspconfig.settings.tsserver.Web
-
----@class _.lspconfig.settings.tsserver.Experimental
----@field tsserver _.lspconfig.settings.tsserver.Tsserver
-
 ---@class _.lspconfig.settings.tsserver.Format
 -- Enable/disable default TypeScript formatter.
 -- 
@@ -12937,6 +12931,23 @@
 -- ```
 ---@field watchFile "fixedChunkSizePolling" | "fixedPollingInterval" | "priorityPollingInterval" | "dynamicPriorityPolling" | "useFsEvents" | "useFsEventsOnParentDirectory"
 
+---@class _.lspconfig.settings.tsserver.ProjectWideIntellisense
+-- Enable/disable project-wide IntelliSense on web. Requires that VS Code is running in a trusted context.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enabled boolean
+-- Suppresses semantic errors. This is needed when using external packages as these can't be included analyzed on web.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field suppressSemanticErrors boolean
+
+---@class _.lspconfig.settings.tsserver.Web
+---@field projectWideIntellisense _.lspconfig.settings.tsserver.ProjectWideIntellisense
+
 ---@class _.lspconfig.settings.tsserver.Tsserver
 -- Enables tracing TS server performance to a directory. These trace files can be used to diagnose TS Server performance issues. The log may contain file paths, source code, and other potentially sensitive information from your project.
 ---@field enableTracing boolean
@@ -12973,6 +12984,7 @@
 ---@field useSyntaxServer "always" | "never" | "auto"
 -- Configure which watching strategies should be used to keep track of files and directories.
 ---@field watchOptions _.lspconfig.settings.tsserver.WatchOptions
+---@field web _.lspconfig.settings.tsserver.Web
 
 ---@class _.lspconfig.settings.tsserver.UpdateImportsOnFileMove
 -- Enable/disable automatic updating of import paths when you rename or move a file in VS Code.
@@ -13010,7 +13022,6 @@
 ---@field disableAutomaticTypeAcquisition boolean
 -- Enables prompting of users to use the TypeScript version configured in the workspace for Intellisense.
 ---@field enablePromptUseWorkspaceTsdk boolean
----@field experimental _.lspconfig.settings.tsserver.Experimental
 ---@field format _.lspconfig.settings.tsserver.Format
 ---@field implementationsCodeLens _.lspconfig.settings.tsserver.ImplementationsCodeLens
 ---@field inlayHints _.lspconfig.settings.tsserver.InlayHints
