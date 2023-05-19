@@ -69,9 +69,12 @@
       "type": "string"
     },
     "solidity.packageDefaultDependenciesDirectory": {
-      "default": "node_modules",
+      "default": "['node_modules', 'lib']",
       "description": "Default directory for Packages Dependencies, i.e: 'node_modules', 'lib'. This is used to avoid typing imports with that path prefix",
-      "type": "string"
+      "type": [
+        "string",
+        "string[]"
+      ]
     },
     "solidity.remappings": {
       "default": [],

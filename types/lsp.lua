@@ -11476,9 +11476,9 @@
 -- Default directory for Packages Dependencies, i.e: 'node_modules', 'lib'. This is used to avoid typing imports with that path prefix
 -- 
 -- ```lua
--- default = "node_modules"
+-- default = "['node_modules', 'lib']"
 -- ```
----@field packageDefaultDependenciesDirectory string
+---@field packageDefaultDependenciesDirectory string|string[]
 -- Remappings to resolve contracts to local files / directories, i.e: ["@openzeppelin/=lib/openzeppelin-contracts","ds-test/=lib/ds-test/src/"]
 -- 
 -- ```lua
