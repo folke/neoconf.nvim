@@ -190,9 +190,11 @@
           "miss-space-between",
           "miss-symbol",
           "missing-global-doc",
+          "missing-local-export-doc",
           "missing-parameter",
           "missing-return",
           "missing-return-value",
+          "name-style-check",
           "need-check-nil",
           "need-paren",
           "nesting-long-mark",
@@ -296,7 +298,7 @@
         },
         "codestyle": {
           "default": "Fallback",
-          "description": "* codestyle-check\n* spell-check",
+          "description": "* codestyle-check\n* name-style-check\n* spell-check",
           "enum": [
             "Any",
             "Opened",
@@ -340,7 +342,7 @@
         },
         "luadoc": {
           "default": "Fallback",
-          "description": "* circle-doc-class\n* doc-field-no-class\n* duplicate-doc-alias\n* duplicate-doc-field\n* duplicate-doc-param\n* incomplete-signature-doc\n* missing-global-doc\n* undefined-doc-class\n* undefined-doc-name\n* undefined-doc-param\n* unknown-cast-variable\n* unknown-diag-code\n* unknown-operator",
+          "description": "* circle-doc-class\n* doc-field-no-class\n* duplicate-doc-alias\n* duplicate-doc-field\n* duplicate-doc-param\n* incomplete-signature-doc\n* missing-global-doc\n* missing-local-export-doc\n* undefined-doc-class\n* undefined-doc-name\n* undefined-doc-param\n* unknown-cast-variable\n* unknown-diag-code\n* unknown-operator",
           "enum": [
             "Any",
             "Opened",
@@ -450,7 +452,7 @@
         },
         "codestyle": {
           "default": "Fallback",
-          "description": "* codestyle-check\n* spell-check",
+          "description": "* codestyle-check\n* name-style-check\n* spell-check",
           "enum": [
             "Error",
             "Warning",
@@ -498,7 +500,7 @@
         },
         "luadoc": {
           "default": "Fallback",
-          "description": "* circle-doc-class\n* doc-field-no-class\n* duplicate-doc-alias\n* duplicate-doc-field\n* duplicate-doc-param\n* incomplete-signature-doc\n* missing-global-doc\n* undefined-doc-class\n* undefined-doc-name\n* undefined-doc-param\n* unknown-cast-variable\n* unknown-diag-code\n* unknown-operator",
+          "description": "* circle-doc-class\n* doc-field-no-class\n* duplicate-doc-alias\n* duplicate-doc-field\n* duplicate-doc-param\n* incomplete-signature-doc\n* missing-global-doc\n* missing-local-export-doc\n* undefined-doc-class\n* undefined-doc-name\n* undefined-doc-param\n* unknown-cast-variable\n* unknown-diag-code\n* unknown-operator",
           "enum": [
             "Error",
             "Warning",
@@ -959,6 +961,19 @@
           ],
           "type": "string"
         },
+        "missing-local-export-doc": {
+          "default": "None",
+          "description": "Missing annotations for exported locals! Exported local functions must have a comment and annotations for all parameters and return values.",
+          "enum": [
+            "Any",
+            "Opened",
+            "None",
+            "Any!",
+            "Opened!",
+            "None!"
+          ],
+          "type": "string"
+        },
         "missing-parameter": {
           "default": "Any",
           "description": "Enable diagnostics for function calls where the number of arguments is less than the number of annotated function parameters.",
@@ -988,6 +1003,19 @@
         "missing-return-value": {
           "default": "Any",
           "description": "Enable diagnostics for return statements without values although the containing function declares returns.",
+          "enum": [
+            "Any",
+            "Opened",
+            "None",
+            "Any!",
+            "Opened!",
+            "None!"
+          ],
+          "type": "string"
+        },
+        "name-style-check": {
+          "default": "None",
+          "description": "Enable diagnostics for name style.",
           "enum": [
             "Any",
             "Opened",
@@ -1774,6 +1802,21 @@
           ],
           "type": "string"
         },
+        "missing-local-export-doc": {
+          "default": "Warning",
+          "description": "Missing annotations for exported locals! Exported local functions must have a comment and annotations for all parameters and return values.",
+          "enum": [
+            "Error",
+            "Warning",
+            "Information",
+            "Hint",
+            "Error!",
+            "Warning!",
+            "Information!",
+            "Hint!"
+          ],
+          "type": "string"
+        },
         "missing-parameter": {
           "default": "Warning",
           "description": "Enable diagnostics for function calls where the number of arguments is less than the number of annotated function parameters.",
@@ -1807,6 +1850,21 @@
         "missing-return-value": {
           "default": "Warning",
           "description": "Enable diagnostics for return statements without values although the containing function declares returns.",
+          "enum": [
+            "Error",
+            "Warning",
+            "Information",
+            "Hint",
+            "Error!",
+            "Warning!",
+            "Information!",
+            "Hint!"
+          ],
+          "type": "string"
+        },
+        "name-style-check": {
+          "default": "Warning",
+          "description": "Enable diagnostics for name style.",
           "enum": [
             "Error",
             "Warning",
@@ -2472,6 +2530,22 @@
       "scope": "resource",
       "type": "array"
     },
+    "Lua.nameStyle.config": {
+      "additionalProperties": false,
+      "default": {},
+      "markdownDescription": "Set name style config",
+      "patternProperties": {
+        ".*": {
+          "type": [
+            "string",
+            "array"
+          ]
+        }
+      },
+      "scope": "resource",
+      "title": "config",
+      "type": "object"
+    },
     "Lua.runtime.builtin": {
       "additionalProperties": false,
       "markdownDescription": "Adjust the enabled state of the built-in library. You can disable (or redefine) the non-existent library according to the actual runtime environment.\n\n* `default`: Indicates that the library will be enabled or disabled according to the runtime version\n* `enable`: always enable\n* `disable`: always disable\n",
@@ -2557,6 +2631,26 @@
           "type": "string"
         },
         "jit": {
+          "default": "default",
+          "description": "",
+          "enum": [
+            "default",
+            "enable",
+            "disable"
+          ],
+          "type": "string"
+        },
+        "jit.profile": {
+          "default": "default",
+          "description": "",
+          "enum": [
+            "default",
+            "enable",
+            "disable"
+          ],
+          "type": "string"
+        },
+        "jit.util": {
           "default": "default",
           "description": "",
           "enum": [

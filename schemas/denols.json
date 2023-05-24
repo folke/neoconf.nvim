@@ -200,6 +200,12 @@
       "scope": "window",
       "type": "boolean"
     },
+    "deno.maxTsServerMemory": {
+      "default": 3072,
+      "markdownDescription": "Maximum amount of memory the TypeScript isolate can use. Defaults to 3072 (3GB).",
+      "scope": "resource",
+      "type": "number"
+    },
     "deno.path": {
       "default": null,
       "examples": [

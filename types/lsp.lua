@@ -541,6 +541,12 @@
 -- default = true
 -- ```
 ---@field lint boolean
+-- Maximum amount of memory the TypeScript isolate can use. Defaults to 3072 (3GB).
+-- 
+-- ```lua
+-- default = 3072
+-- ```
+---@field maxTsServerMemory number
 -- A path to the `deno` CLI executable. By default, the extension looks for `deno` in the `PATH`, but if set, will use the path specified instead.
 -- 
 -- ```lua
@@ -5438,6 +5444,7 @@
 -- ```
 ---@field await "Any" | "Opened" | "None" | "Fallback"
 -- * codestyle-check
+-- * name-style-check
 -- * spell-check
 -- 
 -- ```lua
@@ -5473,6 +5480,7 @@
 -- * duplicate-doc-param
 -- * incomplete-signature-doc
 -- * missing-global-doc
+-- * missing-local-export-doc
 -- * undefined-doc-class
 -- * undefined-doc-name
 -- * undefined-doc-param
@@ -5567,6 +5575,7 @@
 -- ```
 ---@field await "Error" | "Warning" | "Information" | "Hint" | "Fallback"
 -- * codestyle-check
+-- * name-style-check
 -- * spell-check
 -- 
 -- ```lua
@@ -5602,6 +5611,7 @@
 -- * duplicate-doc-param
 -- * incomplete-signature-doc
 -- * missing-global-doc
+-- * missing-local-export-doc
 -- * undefined-doc-class
 -- * undefined-doc-name
 -- * undefined-doc-param
@@ -5836,6 +5846,12 @@
 -- default = "None"
 -- ```
 ---@field missing-global-doc "Any" | "Opened" | "None" | "Any!" | "Opened!" | "None!"
+-- Missing annotations for exported locals! Exported local functions must have a comment and annotations for all parameters and return values.
+-- 
+-- ```lua
+-- default = "None"
+-- ```
+---@field missing-local-export-doc "Any" | "Opened" | "None" | "Any!" | "Opened!" | "None!"
 -- Enable diagnostics for function calls where the number of arguments is less than the number of annotated function parameters.
 -- 
 -- ```lua
@@ -5854,6 +5870,12 @@
 -- default = "Any"
 -- ```
 ---@field missing-return-value "Any" | "Opened" | "None" | "Any!" | "Opened!" | "None!"
+-- Enable diagnostics for name style.
+-- 
+-- ```lua
+-- default = "None"
+-- ```
+---@field name-style-check "Any" | "Opened" | "None" | "Any!" | "Opened!" | "None!"
 -- Enable diagnostics for variable usages if `nil` or an optional (potentially `nil`) value was assigned to the variable before.
 -- 
 -- ```lua
@@ -6190,6 +6212,12 @@
 -- default = "Warning"
 -- ```
 ---@field missing-global-doc "Error" | "Warning" | "Information" | "Hint" | "Error!" | "Warning!" | "Information!" | "Hint!"
+-- Missing annotations for exported locals! Exported local functions must have a comment and annotations for all parameters and return values.
+-- 
+-- ```lua
+-- default = "Warning"
+-- ```
+---@field missing-local-export-doc "Error" | "Warning" | "Information" | "Hint" | "Error!" | "Warning!" | "Information!" | "Hint!"
 -- Enable diagnostics for function calls where the number of arguments is less than the number of annotated function parameters.
 -- 
 -- ```lua
@@ -6208,6 +6236,12 @@
 -- default = "Warning"
 -- ```
 ---@field missing-return-value "Error" | "Warning" | "Information" | "Hint" | "Error!" | "Warning!" | "Information!" | "Hint!"
+-- Enable diagnostics for name style.
+-- 
+-- ```lua
+-- default = "Warning"
+-- ```
+---@field name-style-check "Error" | "Warning" | "Information" | "Hint" | "Error!" | "Warning!" | "Information!" | "Hint!"
 -- Enable diagnostics for variable usages if `nil` or an optional (potentially `nil`) value was assigned to the variable before.
 -- 
 -- ```lua
@@ -6603,6 +6637,14 @@
 -- ```
 ---@field parameters string[]
 
+---@class _.lspconfig.settings.lua_ls.NameStyle
+-- Set name style config
+-- 
+-- ```lua
+-- default = {}
+-- ```
+---@field config table
+
 -- Adjust the enabled state of the built-in library. You can disable (or redefine) the non-existent library according to the actual runtime environment.
 -- 
 -- * `default`: Indicates that the library will be enabled or disabled according to the runtime version
@@ -6664,6 +6706,18 @@
 -- default = "default"
 -- ```
 ---@field jit "default" | "enable" | "disable"
+-- 
+-- 
+-- ```lua
+-- default = "default"
+-- ```
+---@field jit.profile "default" | "enable" | "disable"
+-- 
+-- 
+-- ```lua
+-- default = "default"
+-- ```
+---@field jit.util "default" | "enable" | "disable"
 -- 
 -- 
 -- ```lua
@@ -6954,6 +7008,7 @@
 ---@field hint _.lspconfig.settings.lua_ls.Hint
 ---@field hover _.lspconfig.settings.lua_ls.Hover
 ---@field misc _.lspconfig.settings.lua_ls.Misc
+---@field nameStyle _.lspconfig.settings.lua_ls.NameStyle
 ---@field runtime _.lspconfig.settings.lua_ls.Runtime
 ---@field semantic _.lspconfig.settings.lua_ls.Semantic
 ---@field signatureHelp _.lspconfig.settings.lua_ls.SignatureHelp
