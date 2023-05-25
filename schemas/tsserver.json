@@ -490,6 +490,12 @@
       "scope": "window",
       "type": "boolean"
     },
+    "typescript.experimental.aiQuickFix": {
+      "default": false,
+      "description": "Enable/disable AI-assisted quick fixes.",
+      "scope": "resource",
+      "type": "boolean"
+    },
     "typescript.format.enable": {
       "default": true,
       "description": "Enable/disable default TypeScript formatter.",

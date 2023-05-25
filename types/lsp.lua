@@ -435,9 +435,7 @@
 -- 
 -- ```lua
 -- default = {
---   ["https://crux.land"] = true,
---   ["https://deno.land"] = true,
---   ["https://x.nest.land"] = true
+--   ["https://deno.land"] = true
 -- }
 -- ```
 ---@field hosts table
@@ -12633,6 +12631,10 @@
 -- ```
 ---@field npmIsInstalled boolean
 
+---@class _.lspconfig.settings.tsserver.Experimental
+-- Enable/disable AI-assisted quick fixes.
+---@field aiQuickFix boolean
+
 ---@class _.lspconfig.settings.tsserver.Format
 -- Enable/disable default TypeScript formatter.
 -- 
@@ -13077,6 +13079,7 @@
 ---@field disableAutomaticTypeAcquisition boolean
 -- Enables prompting of users to use the TypeScript version configured in the workspace for Intellisense.
 ---@field enablePromptUseWorkspaceTsdk boolean
+---@field experimental _.lspconfig.settings.tsserver.Experimental
 ---@field format _.lspconfig.settings.tsserver.Format
 ---@field implementationsCodeLens _.lspconfig.settings.tsserver.ImplementationsCodeLens
 ---@field inlayHints _.lspconfig.settings.tsserver.InlayHints

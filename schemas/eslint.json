@@ -220,6 +220,7 @@
     },
     "eslint.packageManager": {
       "default": "npm",
+      "deprecationMessage": "The setting is deprecated. The Package Manager is automatically detected now.",
       "description": "The package manager you use to install node modules.",
       "enum": [
         "npm",
