@@ -492,7 +492,7 @@
     },
     "typescript.experimental.aiQuickFix": {
       "default": false,
-      "description": "Enable/disable AI-assisted quick fixes.",
+      "description": "Enable/disable AI-assisted quick fixes. Requires an extension providing AI chat functionality.",
       "scope": "resource",
       "type": "boolean"
     },

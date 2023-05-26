@@ -3669,6 +3669,10 @@
 -- Enable/disable download of Maven source artifacts for Eclipse projects.
 ---@field downloadSources boolean
 
+---@class _.lspconfig.settings.jdtls.Edit
+-- Specifies whether to recheck all open Java files for diagnostics when editing a Java file.
+---@field validateAllOpenBuffersOnChanges boolean
+
 ---@class _.lspconfig.settings.jdtls.IncompleteClasspath
 -- Specifies the severity of the message when the classpath is incomplete for a Java file
 -- 
@@ -4167,6 +4171,7 @@
 ---@field configuration _.lspconfig.settings.jdtls.Configuration
 ---@field contentProvider _.lspconfig.settings.jdtls.ContentProvider
 ---@field eclipse _.lspconfig.settings.jdtls.Eclipse
+---@field edit _.lspconfig.settings.jdtls.Edit
 ---@field errors _.lspconfig.settings.jdtls.Errors
 ---@field foldingRange _.lspconfig.settings.jdtls.FoldingRange
 ---@field format _.lspconfig.settings.jdtls.Format
@@ -12632,7 +12637,7 @@
 ---@field npmIsInstalled boolean
 
 ---@class _.lspconfig.settings.tsserver.Experimental
--- Enable/disable AI-assisted quick fixes.
+-- Enable/disable AI-assisted quick fixes. Requires an extension providing AI chat functionality.
 ---@field aiQuickFix boolean
 
 ---@class _.lspconfig.settings.tsserver.Format
