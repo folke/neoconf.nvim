@@ -11342,6 +11342,12 @@
 ---@field rustfmt _.lspconfig.settings.rust_analyzer.Rustfmt
 ---@field semanticHighlighting _.lspconfig.settings.rust_analyzer.SemanticHighlighting
 ---@field server _.lspconfig.settings.rust_analyzer.Server
+-- Whether to show the dependencies view.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field showDependenciesExplorer boolean
 -- Whether to show a notification for unlinked files asking the user to add the corresponding Cargo.toml to the linked projects setting.
 -- 
 -- ```lua

@@ -1090,6 +1090,11 @@
         "string"
       ]
     },
+    "rust-analyzer.showDependenciesExplorer": {
+      "default": true,
+      "markdownDescription": "Whether to show the dependencies view.",
+      "type": "boolean"
+    },
     "rust-analyzer.showUnlinkedFileNotification": {
       "default": true,
       "markdownDescription": "Whether to show a notification for unlinked files asking the user to add the corresponding Cargo.toml to the linked projects setting.",
