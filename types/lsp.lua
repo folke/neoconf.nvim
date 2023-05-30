@@ -3547,10 +3547,6 @@
 
 ---@class _.lspconfig.settings.jdtls.LazyResolveTextEdit
 -- [Experimental] Enable/disable lazily resolving text edits for code completion.
--- 
--- ```lua
--- default = true
--- ```
 ---@field enabled boolean
 
 ---@class _.lspconfig.settings.jdtls.Postfix

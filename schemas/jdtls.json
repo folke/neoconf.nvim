@@ -202,7 +202,7 @@
       "type": "array"
     },
     "java.completion.lazyResolveTextEdit.enabled": {
-      "default": true,
+      "default": false,
       "description": "[Experimental] Enable/disable lazily resolving text edits for code completion.",
       "scope": "window",
       "type": "boolean"
