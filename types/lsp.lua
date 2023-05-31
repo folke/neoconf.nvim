@@ -10214,6 +10214,12 @@
 -- ```
 ---@field autoreload boolean
 ---@field buildScripts _.lspconfig.settings.rust_analyzer.BuildScripts
+-- List of cfg options to enable with the given values.
+-- 
+-- ```lua
+-- default = {}
+-- ```
+---@field cfgs table
 -- Extra arguments that are passed to every cargo invocation.
 -- 
 -- ```lua
@@ -10263,7 +10269,7 @@
 -- default = <userdata 1>
 -- ```
 ---@field target string
--- Unsets `#[cfg(test)]` for the specified crates.
+-- Unsets the implicit `#[cfg(test)]` for the specified crates.
 -- 
 -- ```lua
 -- default = { "core" }
@@ -10687,12 +10693,32 @@
 ---@field enable boolean
 
 ---@class _.lspconfig.settings.rust_analyzer.MemoryLayout
+-- How to render the align information in a memory layout hover.
+-- 
+-- ```lua
+-- default = "hexadecimal"
+-- ```
+---@field alignment any|"both" | "decimal" | "hexadecimal"
 -- Whether to show memory layout data on hover.
 -- 
 -- ```lua
 -- default = true
 -- ```
 ---@field enable boolean
+-- How to render the niche information in a memory layout hover.
+---@field niches boolean
+-- How to render the offset information in a memory layout hover.
+-- 
+-- ```lua
+-- default = "hexadecimal"
+-- ```
+---@field offset any|"both" | "decimal" | "hexadecimal"
+-- How to render the size information in a memory layout hover.
+-- 
+-- ```lua
+-- default = "both"
+-- ```
+---@field size any|"both" | "decimal" | "hexadecimal"
 
 ---@class _.lspconfig.settings.rust_analyzer.Hover
 ---@field actions _.lspconfig.settings.rust_analyzer.Actions

@@ -67,7 +67,6 @@
           "name": "Sorbet (Experimental)"
         }
       ],
-      "description": "Standard Ruby LSP configurations.  If you commit your VSCode settings to source control, you probably want to commit *this* setting, not `sorbet.userLspConfigs`.",
       "items": {
         "properties": {
           "command": {
@@ -104,6 +103,7 @@
         ],
         "type": "object"
       },
+      "markdownDescription": "Standard Ruby LSP configurations.  If you commit your VSCode settings to source control, you probably want to commit *this* setting, not `sorbet.userLspConfigs`.",
       "type": "array"
     },
     "sorbet.revealOutputOnError": {
@@ -112,12 +112,11 @@
       "type": "boolean"
     },
     "sorbet.selectedLspConfigId": {
-      "description": "The default configuration to use from `sorbet.userLspConfigs` or `sorbet.lspConfigs`.  If unset, defaults to the first item in `sorbet.userLspConfigs` or `sorbet.lspConfigs`.",
+      "markdownDescription": "The default configuration to use from `sorbet.userLspConfigs` or `sorbet.lspConfigs`.  If unset, defaults to the first item in `sorbet.userLspConfigs` or `sorbet.lspConfigs`.",
       "type": "string"
     },
     "sorbet.userLspConfigs": {
       "default": [],
-      "description": "Custom user LSP configurations that supplement `sorbet.lspConfigs` (and override configurations with the same id).  If you commit your VSCode settings to source control, you probably want to commit `sorbet.lspConfigs`, not this value.",
       "items": {
         "default": {
           "command": [
@@ -169,6 +168,7 @@
         ],
         "type": "object"
       },
+      "markdownDescription": "Custom user LSP configurations that supplement `sorbet.lspConfigs` (and override configurations with the same id).  If you commit your VSCode settings to source control, you probably want to commit `sorbet.lspConfigs`, not this value.",
       "type": "array"
     }
   }
