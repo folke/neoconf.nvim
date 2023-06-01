@@ -455,9 +455,9 @@
       "description": "Enables prompting of users to use the TypeScript version configured in the workspace for Intellisense.",
       "type": "boolean"
     },
-    "typescript.experimental.tsserver.web.enableProjectWideIntellisense": {
+    "typescript.experimental.aiQuickFix": {
       "default": false,
-      "description": "Enable/disable project-wide IntelliSense on web. Requires that VS Code is running in a trusted context.",
+      "description": "Enable/disable AI-assisted quick fixes. Requires an extension providing AI chat functionality.",
       "type": "boolean"
     },
     "typescript.format.enable": {
@@ -998,6 +998,16 @@
         }
       },
       "type": "object"
+    },
+    "typescript.tsserver.web.projectWideIntellisense.enabled": {
+      "default": true,
+      "description": "Enable/disable project-wide IntelliSense on web. Requires that VS Code is running in a trusted context.",
+      "type": "boolean"
+    },
+    "typescript.tsserver.web.projectWideIntellisense.suppressSemanticErrors": {
+      "default": true,
+      "description": "Suppresses semantic errors. This is needed when using external packages as these can't be included analyzed on web.",
+      "type": "boolean"
     },
     "typescript.updateImportsOnFileMove.enabled": {
       "default": "prompt",

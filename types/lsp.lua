@@ -13762,15 +13762,9 @@
 -- ```
 ---@field npmIsInstalled boolean
 
----@class _.lspconfig.settings.vtsls.Web
--- Enable/disable project-wide IntelliSense on web. Requires that VS Code is running in a trusted context.
----@field enableProjectWideIntellisense boolean
-
----@class _.lspconfig.settings.vtsls.Tsserver
----@field web _.lspconfig.settings.vtsls.Web
-
 ---@class _.lspconfig.settings.vtsls.Experimental
----@field tsserver _.lspconfig.settings.vtsls.Tsserver
+-- Enable/disable AI-assisted quick fixes. Requires an extension providing AI chat functionality.
+---@field aiQuickFix boolean
 
 ---@class _.lspconfig.settings.vtsls.Format
 -- Enable/disable default TypeScript formatter.
@@ -14113,6 +14107,23 @@
 -- ```
 ---@field watchFile "fixedChunkSizePolling" | "fixedPollingInterval" | "priorityPollingInterval" | "dynamicPriorityPolling" | "useFsEvents" | "useFsEventsOnParentDirectory"
 
+---@class _.lspconfig.settings.vtsls.ProjectWideIntellisense
+-- Enable/disable project-wide IntelliSense on web. Requires that VS Code is running in a trusted context.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enabled boolean
+-- Suppresses semantic errors. This is needed when using external packages as these can't be included analyzed on web.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field suppressSemanticErrors boolean
+
+---@class _.lspconfig.settings.vtsls.Web
+---@field projectWideIntellisense _.lspconfig.settings.vtsls.ProjectWideIntellisense
+
 ---@class _.lspconfig.settings.vtsls.Tsserver
 -- Enables tracing TS server performance to a directory. These trace files can be used to diagnose TS Server performance issues. The log may contain file paths, source code, and other potentially sensitive information from your project.
 ---@field enableTracing boolean
@@ -14149,6 +14160,7 @@
 ---@field useSyntaxServer "always" | "never" | "auto"
 -- Configure which watching strategies should be used to keep track of files and directories.
 ---@field watchOptions _.lspconfig.settings.vtsls.WatchOptions
+---@field web _.lspconfig.settings.vtsls.Web
 
 ---@class _.lspconfig.settings.vtsls.UpdateImportsOnFileMove
 -- Enable/disable automatic updating of import paths when you rename or move a file in VS Code.
