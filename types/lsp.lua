@@ -6937,6 +6937,12 @@
 -- default = true
 -- ```
 ---@field enabled boolean
+-- The maximum amount of files that can be indexed. If more files are indexed, more memory is needed
+-- 
+-- ```lua
+-- default = 10000
+-- ```
+---@field maxFiles number
 
 ---@class _.lspconfig.settings.luau_lsp.InlayHints
 -- Show inlay hints for function return types

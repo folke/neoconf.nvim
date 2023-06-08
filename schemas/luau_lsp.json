@@ -163,6 +163,12 @@
       "scope": "window",
       "type": "boolean"
     },
+    "luau-lsp.index.maxFiles": {
+      "default": 10000,
+      "markdownDescription": "The maximum amount of files that can be indexed. If more files are indexed, more memory is needed",
+      "scope": "window",
+      "type": "number"
+    },
     "luau-lsp.inlayHints.functionReturnTypes": {
       "default": false,
       "markdownDescription": "Show inlay hints for function return types",
