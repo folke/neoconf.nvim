@@ -208,14 +208,12 @@
       "type": "boolean"
     },
     "java.completion.matchCase": {
-      "default": "auto",
+      "default": "firstLetter",
       "enum": [
-        "auto",
         "firstLetter",
         "off"
       ],
       "enumDescriptions": [
-        "Only match case for the first letter when using Visual Studio Code - Insiders.",
         "Match case for the first letter when doing completion.",
         "Do not match case when doing completion."
       ],

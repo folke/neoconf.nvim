@@ -3391,9 +3391,9 @@
 -- Specify whether to match case for code completion.
 -- 
 -- ```lua
--- default = "auto"
+-- default = "firstLetter"
 -- ```
----@field matchCase "auto" | "firstLetter" | "off"
+---@field matchCase "firstLetter" | "off"
 -- Maximum number of completion results (not including snippets).
 -- `0` (the default value) disables the limit, all results are returned. In case of performance problems, consider setting a sensible limit.
 -- 
