@@ -48,6 +48,11 @@
       "description": "A custom JAVA_HOME for the language server and debug adapter to use.",
       "type": "string"
     },
+    "kotlin.java.opts": {
+      "default": "",
+      "description": "Custom options using JAVA_OPTS for the language server and debug adapter.",
+      "type": "string"
+    },
     "kotlin.languageServer.debugAttach.autoSuspend": {
       "default": false,
       "description": "[DEBUG] If enabled (together with debugAttach.enabled), the language server will not immediately launch but instead listen on the specified attach port and wait for a debugger. This is ONLY useful if you need to debug the language server ITSELF.",

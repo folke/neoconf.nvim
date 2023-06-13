@@ -4421,6 +4421,12 @@
 -- default = ""
 -- ```
 ---@field home string
+-- Custom options using JAVA_OPTS for the language server and debug adapter.
+-- 
+-- ```lua
+-- default = ""
+-- ```
+---@field opts string
 
 ---@class _.lspconfig.settings.kotlin_language_server.DebugAttach
 -- [DEBUG] If enabled (together with debugAttach.enabled), the language server will not immediately launch but instead listen on the specified attach port and wait for a debugger. This is ONLY useful if you need to debug the language server ITSELF.
