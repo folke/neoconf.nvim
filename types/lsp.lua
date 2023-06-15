@@ -6873,6 +6873,8 @@
 -- default = true
 -- ```
 ---@field addTabstopAfterParentheses boolean
+-- Automatically insert an `end` when opening a block
+---@field autocompleteEnd boolean
 -- Enable autocomplete
 -- 
 -- ```lua
@@ -6981,6 +6983,12 @@
 ---@field port number
 
 ---@class _.lspconfig.settings.luau_lsp.Require
+-- A mapping of custom require string prefixes to directory paths. The aliases should include trailing slashes
+-- 
+-- ```lua
+-- default = {}
+-- ```
+---@field directoryAliases table
 -- A mapping of custom require string aliases to file paths
 -- 
 -- ```lua
@@ -12650,10 +12658,6 @@
 -- Show inlay hints for missing required props.
 ---@field missingProps boolean
 -- Show inlay hints for component options wrapper for type support.
--- 
--- ```lua
--- default = true
--- ```
 ---@field optionsWrapper boolean
 
 ---@class _.lspconfig.settings.volar.Json

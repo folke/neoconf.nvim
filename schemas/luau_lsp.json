@@ -4,6 +4,8 @@
   "properties": {
     "luau-lsp.autocompleteEnd": {
       "default": false,
+      "deprecationMessage": "Deprecated: Please use luau-lsp.completion.autocompleteEnd instead.",
+      "markdownDeprecationMessage": "**Deprecated**: Please use `#luau-lsp.completion.autocompleteEnd#` instead.",
       "markdownDescription": "Automatically insert an `end` when opening a block",
       "scope": "resource",
       "type": "boolean"
@@ -17,6 +19,12 @@
     "luau-lsp.completion.addTabstopAfterParentheses": {
       "default": true,
       "markdownDescription": "If `#luau-lsp.completion.addParentheses#` is enabled, then include a tabstop after the parentheses for the cursor to move to",
+      "scope": "resource",
+      "type": "boolean"
+    },
+    "luau-lsp.completion.autocompleteEnd": {
+      "default": false,
+      "markdownDescription": "Automatically insert an `end` when opening a block",
       "scope": "resource",
       "type": "boolean"
     },
@@ -216,6 +224,15 @@
       "markdownDescription": "Port number to connect to the Studio Plugin",
       "scope": "window",
       "type": "number"
+    },
+    "luau-lsp.require.directoryAliases": {
+      "additionalProperties": {
+        "type": "string"
+      },
+      "default": {},
+      "markdownDescription": "A mapping of custom require string prefixes to directory paths. The aliases should include trailing slashes",
+      "scope": "resource",
+      "type": "object"
     },
     "luau-lsp.require.fileAliases": {
       "additionalProperties": {

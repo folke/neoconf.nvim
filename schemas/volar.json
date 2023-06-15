@@ -183,7 +183,7 @@
       "type": "boolean"
     },
     "vue.inlayHints.optionsWrapper": {
-      "default": true,
+      "default": false,
       "description": "Show inlay hints for component options wrapper for type support.",
       "type": "boolean"
     },
