@@ -3375,12 +3375,12 @@
 -- default = { "java.awt.*", "com.sun.*", "sun.*", "jdk.*", "org.graalvm.*", "io.micrometer.shaded.*" }
 -- ```
 ---@field filteredTypes any[]
--- When set to true, method arguments are guessed when a method is selected from as list of code assist proposals.
+-- Specify how the arguments will be filled during completion.
 -- 
 -- ```lua
--- default = true
+-- default = "auto"
 -- ```
----@field guessMethodArguments boolean
+---@field guessMethodArguments "auto" | "off" | "insertParameterNames" | "insertBestGuessedArguments"
 -- Defines the sorting order of import statements. A package or type name prefix (e.g. 'org.eclipse') is a valid entry. An import is always added to the most specific group. As a result, the empty string (e.g. '') can be used to group all other imports. Static imports are prefixed with a '#'
 -- 
 -- ```lua
