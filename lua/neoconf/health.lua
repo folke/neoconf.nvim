@@ -61,10 +61,10 @@ end
 function M.check_setup()
   local util = require("neoconf.util")
   if vim.fn.has("nvim-0.7.2") == 0 then
-    util.error("**settings.nvim** requires Neovim >= 0.7.2")
+    util.error("**neoconf.nvim** requires Neovim >= 0.7.2")
   end
-  local ok, lsputil = pcall(require, "lspconfig.util")
-  if ok then
+  local lsputil = package.loaded["lspconfig.util"]
+  if lsputil then
     if #lsputil.available_servers() == 0 then
       return true
     else
@@ -73,7 +73,9 @@ function M.check_setup()
       )
     end
   else
-    util.error("**nvim-lspconfig** not installed?")
+    -- lspconfig has not ben loaded yet
+    -- so all is good
+    return true
   end
 end
 
