@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.2.2](https://github.com/folke/neoconf.nvim/compare/v1.2.1...v1.2.2) (2023-06-19)
+
+
+### Bug Fixes
+
+* **init:** only check for available servers if lspconfig is loaded ([cfec478](https://github.com/folke/neoconf.nvim/commit/cfec478a530d4dbda0dbd0f9d3678460d1aae735))
+* **jsonls:** use `vim.filetype.add()` to set the filetype for neoconf.json ([#25](https://github.com/folke/neoconf.nvim/issues/25)) ([ea175a5](https://github.com/folke/neoconf.nvim/commit/ea175a511d9b899a0dc8b19829ae169e11d9b1d4))
+
 ## [1.2.1](https://github.com/folke/neoconf.nvim/compare/v1.2.0...v1.2.1) (2023-03-26)
 
 
