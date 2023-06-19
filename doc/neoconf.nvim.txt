@@ -1,4 +1,4 @@
-*neoconf.nvim.txt*        For Neovim >= 0.8.0       Last change: 2023 April 17
+*neoconf.nvim.txt*        For Neovim >= 0.8.0        Last change: 2023 June 19
 
 ==============================================================================
 Table of Contents                             *neoconf.nvim-table-of-contents*
@@ -23,7 +23,6 @@ settings.
 
 FEATURES                                  *neoconf.nvim-neoconf.nvim-features*
 
-
 - configure Neovim using **JSON** files (can have comments)
     - global settings: `~/.config/nvim/neoconf.json`
     - local settings: `~/projects/foobar/.neoconf.json`
@@ -38,7 +37,6 @@ FEATURES                                  *neoconf.nvim-neoconf.nvim-features*
 
 
 REQUIREMENTS                          *neoconf.nvim-neoconf.nvim-requirements*
-
 
 - Neovim >= 0.7.2
 
@@ -125,7 +123,6 @@ USAGE                                        *neoconf.nvim-neoconf.nvim-usage*
 
 
 THE :NEOCONF COMMAND ~
-
 
 - `:Neoconf`will show a ui to select one of the local/global json config files to edit
 - `:Neoconf local`will show a ui to select one of the local json config files to edit
@@ -236,12 +233,10 @@ API Example ~
 
 ACKNOWLEDGMENT                      *neoconf.nvim-neoconf.nvim-acknowledgment*
 
-
 - json.lua <https://github.com/actboy168/json.lua> a pure-lua JSON library for parsing `jsonc` files
 
 
 SUPPORTED LANGUAGE SERVERS*neoconf.nvim-neoconf.nvim-supported-language-servers*
-
 
 - als <https://github.com/AdaCore/ada_language_server/tree/master/integration/vscode/ada/package.json>
 - astro <https://github.com/withastro/language-tools/tree/main/packages/vscode/package.json>
