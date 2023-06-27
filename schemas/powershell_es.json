@@ -257,6 +257,19 @@
       "markdownDescription": "Starts the Extension Terminal in the background. **If this is enabled, to access the terminal you must run the [Show Extension Terminal command](command:PowerShell.ShowSessionConsole), and once shown it cannot be put back into the background.** This option completely hides the Extension Terminal from the terminals view. You are probably looking for the `#powershell.integratedConsole.showOnStartup#` option instead.",
       "type": "boolean"
     },
+    "powershell.integratedConsole.startLocation": {
+      "default": "Panel",
+      "enum": [
+        "Editor",
+        "Panel"
+      ],
+      "markdownDescription": "Sets the startup location for Extension Terminal.",
+      "markdownEnumDescriptions": [
+        "Creates the Extension Terminal in Editor area",
+        "Creates the Extension Terminal in Panel area"
+      ],
+      "type": "string"
+    },
     "powershell.integratedConsole.suppressStartupBanner": {
       "default": false,
       "markdownDescription": "Do not show the startup banner in the PowerShell Extension Terminal.",

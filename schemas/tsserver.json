@@ -491,7 +491,7 @@
       "type": "boolean"
     },
     "typescript.experimental.aiQuickFix": {
-      "default": false,
+      "default": true,
       "description": "Enable/disable AI-assisted quick fixes. Requires an extension providing AI chat functionality.",
       "scope": "resource",
       "type": "boolean"

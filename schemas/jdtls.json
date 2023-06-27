@@ -148,6 +148,12 @@
       "scope": "window",
       "type": "array"
     },
+    "java.completion.chain.enabled": {
+      "default": false,
+      "markdownDescription": "Enable/disable chain completion support. Chain completions are only available when completions are invoked by the completions shortcut",
+      "scope": "window",
+      "type": "boolean"
+    },
     "java.completion.enabled": {
       "default": true,
       "description": "Enable/disable code completion support",

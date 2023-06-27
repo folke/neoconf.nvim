@@ -3340,6 +3340,10 @@
 ---@class _.lspconfig.settings.jdtls.Compile
 ---@field nullAnalysis _.lspconfig.settings.jdtls.NullAnalysis
 
+---@class _.lspconfig.settings.jdtls.Chain
+-- Enable/disable chain completion support. Chain completions are only available when completions are invoked by the completions shortcut
+---@field enabled boolean
+
 ---@class _.lspconfig.settings.jdtls.LazyResolveTextEdit
 -- [Experimental] Enable/disable lazily resolving text edits for code completion.
 -- 
@@ -3357,6 +3361,7 @@
 ---@field enabled boolean
 
 ---@class _.lspconfig.settings.jdtls.Completion
+---@field chain _.lspconfig.settings.jdtls.Chain
 -- Enable/disable code completion support
 -- 
 -- ```lua
@@ -7670,6 +7675,12 @@
 ---@field showOnStartup boolean
 -- Starts the Extension Terminal in the background. **If this is enabled, to access the terminal you must run the [Show Extension Terminal command](command:PowerShell.ShowSessionConsole), and once shown it cannot be put back into the background.** This option completely hides the Extension Terminal from the terminals view. You are probably looking for the `#powershell.integratedConsole.showOnStartup#` option instead.
 ---@field startInBackground boolean
+-- Sets the startup location for Extension Terminal.
+-- 
+-- ```lua
+-- default = "Panel"
+-- ```
+---@field startLocation "Editor" | "Panel"
 -- Do not show the startup banner in the PowerShell Extension Terminal.
 ---@field suppressStartupBanner boolean
 -- This will disable the use of PSReadLine in the PowerShell Extension Terminal and use a legacy implementation. **This setting is not recommended and likely to be deprecated!**
@@ -12038,6 +12049,10 @@
 
 ---@class _.lspconfig.settings.tsserver.Experimental
 -- Enable/disable AI-assisted quick fixes. Requires an extension providing AI chat functionality.
+-- 
+-- ```lua
+-- default = true
+-- ```
 ---@field aiQuickFix boolean
 
 ---@class _.lspconfig.settings.tsserver.Format
