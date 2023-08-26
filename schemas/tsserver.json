@@ -202,7 +202,7 @@
       "items": {
         "type": "string"
       },
-      "markdownDescription": "Specify glob patterns of files to exclude from auto imports. Requires using TypeScript 4.8 or newer in the workspace.",
+      "markdownDescription": "Specify glob patterns of files to exclude from auto imports. Relative paths are resolved relative to the workspace root. Patterns are evaluated using tsconfig.json [`exclude`](https://www.typescriptlang.org/tsconfig#exclude) semantics. Requires using TypeScript 4.8 or newer in the workspace.",
       "scope": "resource",
       "type": "array"
     },
@@ -491,7 +491,7 @@
       "type": "boolean"
     },
     "typescript.experimental.aiQuickFix": {
-      "default": true,
+      "default": false,
       "description": "Enable/disable AI-assisted quick fixes. Requires an extension providing AI chat functionality.",
       "scope": "resource",
       "type": "boolean"
@@ -718,7 +718,7 @@
       "items": {
         "type": "string"
       },
-      "markdownDescription": "Specify glob patterns of files to exclude from auto imports. Requires using TypeScript 4.8 or newer in the workspace.",
+      "markdownDescription": "Specify glob patterns of files to exclude from auto imports. Relative paths are resolved relative to the workspace root. Patterns are evaluated using tsconfig.json [`exclude`](https://www.typescriptlang.org/tsconfig#exclude) semantics. Requires using TypeScript 4.8 or newer in the workspace.",
       "scope": "resource",
       "type": "array"
     },

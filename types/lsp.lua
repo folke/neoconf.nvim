@@ -272,6 +272,8 @@
 -- default = <userdata 1>
 -- ```
 ---@field cache string
+-- Controls if the extension should cache the active document's dependencies on save.
+---@field cacheOnSave boolean
 -- A list of root certificate stores used to validate TLS certificates when fetching and caching remote resources. This overrides the `DENO_TLS_CA_STORE` environment variable if set.
 -- 
 -- ```lua
@@ -383,19 +385,19 @@
 -- default = {}
 -- ```
 ---@field additionalWatchedExtensions string[]
--- Trigger ElixirLS build when code is saved
+-- Trigger ElixirLS build when code is saved.
 -- 
 -- ```lua
 -- default = true
 -- ```
 ---@field autoBuild boolean
--- Enable auto-insert required alias. By default, it's true, which means enabled.
+-- Enable auto-insert required alias. This is true (enabled) by default.
 -- 
 -- ```lua
 -- default = true
 -- ```
 ---@field autoInsertRequiredAlias boolean
--- Run ElixirLS's rapid Dialyzer when code is saved
+-- Run ElixirLS's rapid Dialyzer when code is saved.
 -- 
 -- ```lua
 -- default = true
@@ -407,19 +409,19 @@
 -- default = "dialyxir_long"
 -- ```
 ---@field dialyzerFormat "dialyzer" | "dialyxir_short" | "dialyxir_long"
--- Dialyzer options to enable or disable warnings. See Dialyzer's documentation for options. Note that the "race_conditions" option is unsupported
+-- Dialyzer options to enable or disable warnings - See Dialyzer's documentation for options. Note that the "race_conditions" option is unsupported
 -- 
 -- ```lua
 -- default = {}
 -- ```
 ---@field dialyzerWarnOpts string[]
--- Show code lenses to run tests in terminal
+-- Show code lenses to run tests in terminal.
 ---@field enableTestLenses boolean
 -- Environment variables to use for compilation
 ---@field envVariables table
--- Automatically fetch project dependencies when compiling
+-- Automatically fetch project dependencies when compiling.
 ---@field fetchDeps boolean
--- Absolute path to alternative ElixirLS release that will override packaged release.
+-- Absolute path to alternative ElixirLS release that will override the packaged release
 ---@field languageServerOverridePath string
 -- Mix environment to use for compilation
 -- 
@@ -435,13 +437,13 @@
 -- default = ""
 -- ```
 ---@field projectDir string
--- Show signature help after confirming autocomplete
+-- Show signature help after confirming autocomplete.
 -- 
 -- ```lua
 -- default = true
 -- ```
 ---@field signatureAfterComplete boolean
--- Suggest @spec annotations inline using Dialyzer's inferred success typings (Requires Dialyzer)
+-- Suggest @spec annotations inline using Dialyzer's inferred success typings (Requires Dialyzer).
 -- 
 -- ```lua
 -- default = true
@@ -878,6 +880,22 @@
 ---@field references _.lspconfig.settings.fsautocomplete.References
 ---@field signature _.lspconfig.settings.fsautocomplete.Signature
 
+---@class _.lspconfig.settings.fsautocomplete.Gc
+-- Configures the garbage collector to [conserve memory](https://learn.microsoft.com/en-us/dotnet/core/runtime-config/garbage-collector#conserve-memory) at the expense of more frequent garbage collections and possibly longer pause times. Acceptable values are 0-9. Any non-zero value will allow the [Large Object Heap](https://learn.microsoft.com/en-us/dotnet/standard/garbage-collection/large-object-heap) to be compacted automatically if it has too much fragmentation. Requires restart.
+---@field conserveMemory integer
+-- Limits the number of [heaps](https://learn.microsoft.com/en-us/dotnet/standard/garbage-collection/fundamentals#the-managed-heap) created by the garbage collector. Applies to server garbage collection only. See [Middle Ground between Server and Workstation GC](https://devblogs.microsoft.com/dotnet/middle-ground-between-server-and-workstation-gc/) for more details. This can allow FSAC to still benefit from Server garbage collection while still limiting the number of heaps. [Only available on .NET 7 or higher](https://github.com/ionide/ionide-vscode-fsharp/issues/1899#issuecomment-1649009462). Requires restart.
+-- 
+-- ```lua
+-- default = 2
+-- ```
+---@field heapCount integer
+-- Configures whether the application uses workstation garbage collection or server garbage collection. See [Workstation vs Server Garbage Collection](https://devblogs.microsoft.com/premier-developer/understanding-different-gc-modes-with-concurrency-visualizer/#workstation-gc-vs-server-gc) for more details. Workstation will use less memory but Server will have more throughput. Requires restart.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field server boolean
+
 ---@class _.lspconfig.settings.fsautocomplete.Fsac
 -- Appends the '--attachdebugger' argument to fsac, this will allow you to attach a debugger.
 ---@field attachDebugger boolean
@@ -895,6 +913,7 @@
 -- default = {}
 -- ```
 ---@field dotnetArgs string[]
+---@field gc _.lspconfig.settings.fsautocomplete.Gc
 -- The path to the 'fsautocomplete.dll', a directory containing TFM-specific versions of fsautocomplete.dll, or a directory containing fsautocomplete.dll. Useful for debugging a self-built FSAC. If a DLL is specified, uses it directly. If a directory is specified and it contains TFM-specific folders (net6.0, net7.0, etc) then that directory will be probed for the best TFM to use for the current runtime. This is useful when working with a local copy of FSAC, you can point directly to the bin/Debug or bin/Release folder and it'll Just Work. Finally, if a directory is specified and there are no TFM paths, then fsautocomplete.dll from that directory is used. Requires restart.
 -- 
 -- ```lua
@@ -909,6 +928,12 @@
 -- default = {}
 -- ```
 ---@field silencedLogs string[]
+-- EXPERIMENTAL. Enables the use of a new source text implementation. This may have better memory characteristics. Requires restart.
+-- 
+-- ```lua
+-- default = "NamedText"
+-- ```
+---@field sourceTextImplementation "NamedText" | "RoslynSourceText"
 
 ---@class _.lspconfig.settings.fsautocomplete.InlayHints
 -- Hides the explanatory tooltip that appears on InlayHints to describe the different configuration toggles.
@@ -967,7 +992,7 @@
 ---@field traceNamespaces string[]
 
 ---@class _.lspconfig.settings.fsautocomplete.OpenTelemetry
--- Enables OpenTelemetry exporter. See https://opentelemetry.io/docs/reference/specification/protocol/exporter/ for environment variables to configure for the exporter. Requires Restart.
+-- Enables OpenTelemetry exporter. See [OpenTelemetry Protocol Exporter](https://opentelemetry.io/docs/reference/specification/protocol/exporter/) for environment variables to configure for the exporter. Requires Restart.
 ---@field enabled boolean
 
 ---@class _.lspconfig.settings.fsautocomplete.PipelineHints
@@ -1177,6 +1202,12 @@
 -- default = true
 -- ```
 ---@field simplifyNameAnalyzer boolean
+-- A set of regex patterns to exclude from the simplify name analyzer
+-- 
+-- ```lua
+-- default = { ".*\\.g\\.fs", ".*\\.cg\\.fs" }
+-- ```
+---@field simplifyNameAnalyzerExclusions string[]
 -- Enables smart indent feature
 ---@field smartIndent boolean
 -- Allow Ionide to prompt whenever internal data files aren't included in your project's .gitignore
@@ -1210,12 +1241,24 @@
 -- default = true
 -- ```
 ---@field unusedDeclarationsAnalyzer boolean
+-- A set of regex patterns to exclude from the unused declarations analyzer
+-- 
+-- ```lua
+-- default = { ".*\\.g\\.fs", ".*\\.cg\\.fs" }
+-- ```
+---@field unusedDeclarationsAnalyzerExclusions string[]
 -- Enables detection of unused opens
 -- 
 -- ```lua
 -- default = true
 -- ```
 ---@field unusedOpensAnalyzer boolean
+-- A set of regex patterns to exclude from the unused opens analyzer
+-- 
+-- ```lua
+-- default = { ".*\\.g\\.fs", ".*\\.cg\\.fs" }
+-- ```
+---@field unusedOpensAnalyzerExclusions string[]
 -- Logs additional information to F# output channel. This is equivalent to passing the `--verbose` flag to FSAC. Requires restart.
 ---@field verboseLogging boolean
 -- The deep level of directory hierarchy when searching for sln/projects
@@ -1227,8 +1270,23 @@
 -- Path to the directory or solution file that should be loaded as a workspace. If set, no workspace probing or discovery is done by Ionide at all.
 ---@field workspacePath string
 
+---@class _.lspconfig.settings.fsautocomplete.Gc
+-- Specifies whether to [affinitize](https://learn.microsoft.com/en-us/dotnet/core/runtime-config/garbage-collector#affinitize) garbage collection threads with processors. To affinitize a GC thread means that it can only run on its specific CPU.. Applies to server garbage collection only. See [GCNoAffinitize](https://learn.microsoft.com/en-us/dotnet/framework/configure-apps/file-schema/runtime/gcnoaffinitize-element#remarks) for more details. [Only available on .NET 7 or higher](https://github.com/ionide/ionide-vscode-fsharp/issues/1899#issuecomment-1649009462). Requires restart.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field noAffinitize boolean
+
+---@class _.lspconfig.settings.fsautocomplete.Fsac
+---@field gc _.lspconfig.settings.fsautocomplete.Gc
+
+---@class _.lspconfig.settings.fsautocomplete.Fsharp
+---@field fsac _.lspconfig.settings.fsautocomplete.Fsac
+
 ---@class lspconfig.settings.fsautocomplete
 ---@field FSharp _.lspconfig.settings.fsautocomplete.FSharp
+---@field Fsharp _.lspconfig.settings.fsautocomplete.Fsharp
 
 ---@class _.lspconfig.settings.grammarly.SuggestionCategories
 -- Flags use of conjunctions such as "but" and "and" at the beginning of sentences.
@@ -2201,6 +2259,12 @@
 ---@field globalOn boolean
 
 ---@class _.lspconfig.settings.hie.Cabal
+-- Enables cabal completions
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field completionOn boolean
 -- Enables cabal plugin
 -- 
 -- ```lua
@@ -3469,9 +3533,22 @@
 -- Enable/disable download of Maven source artifacts for Eclipse projects.
 ---@field downloadSources boolean
 
+---@class _.lspconfig.settings.jdtls.SmartSemicolonDetection
+-- Defines the `smart semicolon` detection. Defaults to `false`.
+---@field enabled boolean
+
 ---@class _.lspconfig.settings.jdtls.Edit
+---@field smartSemicolonDetection _.lspconfig.settings.jdtls.SmartSemicolonDetection
 -- Specifies whether to recheck all open Java files for diagnostics when editing a Java file.
 ---@field validateAllOpenBuffersOnChanges boolean
+
+---@class _.lspconfig.settings.jdtls.Editor
+-- Specifies whether to reload the sources of the open class files when their source jar files are changed.
+-- 
+-- ```lua
+-- default = "ask"
+-- ```
+---@field reloadChangedSources "ask" | "auto" | "manual"
 
 ---@class _.lspconfig.settings.jdtls.IncompleteClasspath
 -- Specifies the severity of the message when the classpath is incomplete for a Java file
@@ -3739,14 +3816,6 @@
 -- Force update of Snapshots/Releases.
 ---@field updateSnapshots boolean
 
----@class _.lspconfig.settings.jdtls.ProgressReports
--- [Experimental] Enable/disable progress reports from background processes on the server.
--- 
--- ```lua
--- default = true
--- ```
----@field enabled boolean
-
 ---@class _.lspconfig.settings.jdtls.Project
 -- Project encoding settings
 -- 
@@ -3972,6 +4041,7 @@
 ---@field contentProvider _.lspconfig.settings.jdtls.ContentProvider
 ---@field eclipse _.lspconfig.settings.jdtls.Eclipse
 ---@field edit _.lspconfig.settings.jdtls.Edit
+---@field editor _.lspconfig.settings.jdtls.Editor
 ---@field errors _.lspconfig.settings.jdtls.Errors
 ---@field foldingRange _.lspconfig.settings.jdtls.FoldingRange
 ---@field format _.lspconfig.settings.jdtls.Format
@@ -3995,7 +4065,6 @@
 -- default = 1
 -- ```
 ---@field maxConcurrentBuilds integer
----@field progressReports _.lspconfig.settings.jdtls.ProgressReports
 ---@field project _.lspconfig.settings.jdtls.Project
 ---@field quickfix _.lspconfig.settings.jdtls.Quickfix
 ---@field recommendations _.lspconfig.settings.jdtls.Recommendations
@@ -4056,6 +4125,10 @@
 -- ```
 ---@field enable boolean
 
+---@class _.lspconfig.settings.jsonls.SortOnSave
+-- Enable/disable default sorting on save
+---@field enable boolean
+
 ---@class _.lspconfig.settings.jsonls.Trace
 -- Traces the communication between VS Code and the JSON language server.
 -- 
@@ -4084,6 +4157,7 @@
 ---@field schemaDownload _.lspconfig.settings.jsonls.SchemaDownload
 -- Associate schemas to JSON files in the current project.
 ---@field schemas object[]
+---@field sortOnSave _.lspconfig.settings.jsonls.SortOnSave
 ---@field trace _.lspconfig.settings.jsonls.Trace
 ---@field validate _.lspconfig.settings.jsonls.Validate
 
@@ -5325,6 +5399,7 @@
 -- * assign-type-mismatch
 -- * cast-local-type
 -- * cast-type-mismatch
+-- * inject-field
 -- * need-check-nil
 -- * param-type-mismatch
 -- * return-type-mismatch
@@ -5334,6 +5409,7 @@
 -- default = "Fallback"
 -- ```
 ---@field type-check "Any" | "Opened" | "None" | "Fallback"
+-- * missing-fields
 -- * missing-parameter
 -- * missing-return
 -- * missing-return-value
@@ -5456,6 +5532,7 @@
 -- * assign-type-mismatch
 -- * cast-local-type
 -- * cast-type-mismatch
+-- * inject-field
 -- * need-check-nil
 -- * param-type-mismatch
 -- * return-type-mismatch
@@ -5465,6 +5542,7 @@
 -- default = "Fallback"
 -- ```
 ---@field type-check "Error" | "Warning" | "Information" | "Hint" | "Fallback"
+-- * missing-fields
 -- * missing-parameter
 -- * missing-return
 -- * missing-return-value
@@ -5637,6 +5715,12 @@
 -- default = "None"
 -- ```
 ---@field incomplete-signature-doc "Any" | "Opened" | "None" | "Any!" | "Opened!" | "None!"
+-- 
+-- 
+-- ```lua
+-- default = "Opened"
+-- ```
+---@field inject-field "Any" | "Opened" | "None" | "Any!" | "Opened!" | "None!"
 -- Enable diagnostics for accesses to fields which are invisible.
 -- 
 -- ```lua
@@ -5649,6 +5733,12 @@
 -- default = "Any"
 -- ```
 ---@field lowercase-global "Any" | "Opened" | "None" | "Any!" | "Opened!" | "None!"
+-- 
+-- 
+-- ```lua
+-- default = "Any"
+-- ```
+---@field missing-fields "Any" | "Opened" | "None" | "Any!" | "Opened!" | "None!"
 -- Missing annotations for globals! Global functions must have a comment and annotations for all parameters and return values.
 -- 
 -- ```lua
@@ -6003,6 +6093,12 @@
 -- default = "Warning"
 -- ```
 ---@field incomplete-signature-doc "Error" | "Warning" | "Information" | "Hint" | "Error!" | "Warning!" | "Information!" | "Hint!"
+-- 
+-- 
+-- ```lua
+-- default = "Warning"
+-- ```
+---@field inject-field "Error" | "Warning" | "Information" | "Hint" | "Error!" | "Warning!" | "Information!" | "Hint!"
 -- Enable diagnostics for accesses to fields which are invisible.
 -- 
 -- ```lua
@@ -6015,6 +6111,12 @@
 -- default = "Information"
 -- ```
 ---@field lowercase-global "Error" | "Warning" | "Information" | "Hint" | "Error!" | "Warning!" | "Information!" | "Hint!"
+-- 
+-- 
+-- ```lua
+-- default = "Warning"
+-- ```
+---@field missing-fields "Error" | "Warning" | "Information" | "Hint" | "Error!" | "Warning!" | "Information!" | "Hint!"
 -- Missing annotations for globals! Global functions must have a comment and annotations for all parameters and return values.
 -- 
 -- ```lua
@@ -6620,7 +6722,7 @@
 ---@field path string[]
 -- When enabled, `runtime.path` will only search the first level of directories, see the description of `runtime.path`.
 ---@field pathStrict boolean
--- Plugin path. Please read [wiki](https://github.com/LuaLS/lua-language-server/wiki/Plugins) to learn more.
+-- Plugin path. Please read [wiki](https://luals.github.io/wiki/plugins) to learn more.
 -- 
 -- ```lua
 -- default = ""
@@ -7093,24 +7195,6 @@
 ---@field luau _.lspconfig.settings.luau_lsp.Luau
 ---@field luau-lsp _.lspconfig.settings.luau_lsp.Luau-lsp
 
----@class _.lspconfig.settings.nickel_ls.Server
--- Logs the communication between VS Code and the language server.
----@field debugLog boolean
--- Path to nickel language server
--- 
--- ```lua
--- default = "nls"
--- ```
----@field path string
--- Enables performance tracing to the given file
----@field trace string
-
----@class _.lspconfig.settings.nickel_ls.Nls
----@field server _.lspconfig.settings.nickel_ls.Server
-
----@class lspconfig.settings.nickel_ls
----@field nls _.lspconfig.settings.nickel_ls.Nls
-
 ---@class lspconfig.settings.omnisharp
 
 ---@class _.lspconfig.settings.perlls.Perl
@@ -7295,6 +7379,12 @@
 -- default = true
 -- ```
 ---@field logging boolean
+-- Pass miscellaneous command line arguments to pass to the perl executable
+-- 
+-- ```lua
+-- default = {}
+-- ```
+---@field perlParams any[]
 -- Full path to the perl executable (no aliases, .bat files or ~/)
 -- 
 -- ```lua
@@ -7757,7 +7847,7 @@
 ---@field buttons _.lspconfig.settings.powershell_es.Buttons
 ---@field codeFolding _.lspconfig.settings.powershell_es.CodeFolding
 ---@field codeFormatting _.lspconfig.settings.powershell_es.CodeFormatting
--- An explicit start path where the Extension Terminal will be launched. Both the PowerShell process's and the shell's location will be set to this directory. **Path must be fully resolved: variables are not supported!**
+-- A path where the Extension Terminal will be launched. Both the PowerShell process's and the shell's location will be set to this directory. Does not support variables, but does support the use of '~' and paths relative to a single workspace. **For multi-root workspaces, use the name of the folder you wish to have as the cwd.**
 -- 
 -- ```lua
 -- default = ""
@@ -7820,6 +7910,8 @@
 -- default = true
 -- ```
 ---@field startAutomatically boolean
+-- Suppresses the warning message when any of `#powershell.powerShellAdditionalExePaths#` is not found.
+---@field suppressAdditionalExeNotFoundWarning boolean
 -- **Deprecated:** Uses the 32-bit language service on 64-bit Windows. This setting has no effect on 32-bit Windows or on the PowerShell extension debugger, which has its own architecture configuration.
 ---@field useX86Host boolean
 
@@ -9694,21 +9786,29 @@
 -- default = <userdata 1>
 -- ```
 ---@field features "all"|string[]|any
+-- List of `cargo check` (or other command specified in `check.command`) diagnostics to ignore.
+-- 
+-- For example for `cargo check`: `dead_code`, `unused_imports`, `unused_variables`,...
+-- 
+-- ```lua
+-- default = {}
+-- ```
+---@field ignore string[]
 -- Specifies the working directory for running checks.
 -- - "workspace": run checks for workspaces in the corresponding workspaces' root directories.
---     This falls back to "root" if `#rust-analyzer.cargo.checkOnSave.invocationStrategy#` is set to `once`.
+--     This falls back to "root" if `#rust-analyzer.cargo.check.invocationStrategy#` is set to `once`.
 -- - "root": run checks in the project's root directory.
--- This config only has an effect when `#rust-analyzer.cargo.buildScripts.overrideCommand#`
+-- This config only has an effect when `#rust-analyzer.cargo.check.overrideCommand#`
 -- is set.
 -- 
 -- ```lua
 -- default = "workspace"
 -- ```
 ---@field invocationLocation "workspace" | "root"
--- Specifies the invocation strategy to use when running the checkOnSave command.
+-- Specifies the invocation strategy to use when running the check command.
 -- If `per_workspace` is set, the command will be executed for each workspace.
 -- If `once` is set, the command will be executed once.
--- This config only has an effect when `#rust-analyzer.cargo.buildScripts.overrideCommand#`
+-- This config only has an effect when `#rust-analyzer.cargo.check.overrideCommand#`
 -- is set.
 -- 
 -- ```lua
@@ -10471,6 +10571,18 @@
 -- default = {}
 -- ```
 ---@field extraArgs string[]
+-- Environment variables passed to the runnable launched using `Test` or `Debug` lens or `rust-analyzer.run` command.
+-- 
+-- ```lua
+-- default = <userdata 1>
+-- ```
+---@field extraEnv any|object[]|table
+-- Problem matchers to use for `rust-analyzer.run` command, eg `["$rustc", "$rust-panic"]`.
+-- 
+-- ```lua
+-- default = { "$rustc" }
+-- ```
+---@field problemMatcher string[]
 
 ---@class _.lspconfig.settings.rust_analyzer.Rustc
 -- Path to the Cargo.toml of the rust compiler workspace, for usage in rustc_private
@@ -10736,12 +10848,6 @@
 ---@field references _.lspconfig.settings.rust_analyzer.References
 -- Whether to restart the server automatically when certain settings that require a restart are changed.
 ---@field restartServerOnConfigChange boolean
--- Environment variables passed to the runnable launched using `Test` or `Debug` lens or `rust-analyzer.run` command.
--- 
--- ```lua
--- default = <userdata 1>
--- ```
----@field runnableEnv any|object[]|table
 ---@field runnables _.lspconfig.settings.rust_analyzer.Runnables
 ---@field rustc _.lspconfig.settings.rust_analyzer.Rustc
 ---@field rustfmt _.lspconfig.settings.rust_analyzer.Rustfmt
@@ -11032,6 +11138,12 @@
 ---@field revealOutputOnError boolean
 -- The default configuration to use from `sorbet.userLspConfigs` or `sorbet.lspConfigs`.  If unset, defaults to the first item in `sorbet.userLspConfigs` or `sorbet.lspConfigs`.
 ---@field selectedLspConfigId string
+-- Displays an auto-complete nudge in `typed: false` files.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field typedFalseCompletionNudges boolean
 -- Custom user LSP configurations that supplement `sorbet.lspConfigs` (and override configurations with the same id).  If you commit your VSCode settings to source control, you probably want to commit `sorbet.lspConfigs`, not this value.
 -- 
 -- ```lua
@@ -11848,7 +11960,7 @@
 ---@field variableTypes _.lspconfig.settings.tsserver.VariableTypes
 
 ---@class _.lspconfig.settings.tsserver.Preferences
--- Specify glob patterns of files to exclude from auto imports. Requires using TypeScript 4.8 or newer in the workspace.
+-- Specify glob patterns of files to exclude from auto imports. Relative paths are resolved relative to the workspace root. Patterns are evaluated using tsconfig.json [`exclude`](https://www.typescriptlang.org/tsconfig#exclude) semantics. Requires using TypeScript 4.8 or newer in the workspace.
 ---@field autoImportFileExcludePatterns string[]
 -- Preferred path style for auto imports.
 -- 
@@ -12049,10 +12161,6 @@
 
 ---@class _.lspconfig.settings.tsserver.Experimental
 -- Enable/disable AI-assisted quick fixes. Requires an extension providing AI chat functionality.
--- 
--- ```lua
--- default = true
--- ```
 ---@field aiQuickFix boolean
 
 ---@class _.lspconfig.settings.tsserver.Format
@@ -12237,7 +12345,7 @@
 ---@field variableTypes _.lspconfig.settings.tsserver.VariableTypes
 
 ---@class _.lspconfig.settings.tsserver.Preferences
--- Specify glob patterns of files to exclude from auto imports. Requires using TypeScript 4.8 or newer in the workspace.
+-- Specify glob patterns of files to exclude from auto imports. Relative paths are resolved relative to the workspace root. Patterns are evaluated using tsconfig.json [`exclude`](https://www.typescriptlang.org/tsconfig#exclude) semantics. Requires using TypeScript 4.8 or newer in the workspace.
 ---@field autoImportFileExcludePatterns string[]
 -- Preferred path style for auto imports.
 -- 
@@ -12675,9 +12783,6 @@
 -- Show inlay hints for component options wrapper for type support.
 ---@field optionsWrapper boolean
 
----@class _.lspconfig.settings.volar.Json
----@field customBlockSchemaUrls table
-
 ---@class _.lspconfig.settings.volar.PetiteVue
 ---@field supportHtmlFile boolean
 
@@ -12705,7 +12810,6 @@
 ---@field diagnosticModel "push" | "pull"
 -- Enable this option if you want to get complete CompletionList in language client. (Disable for better performance)
 ---@field fullCompletionList boolean
----@field json _.lspconfig.settings.volar.Json
 -- Maximum file size for Vue Server to load. (default: 20MB)
 -- 
 -- ```lua
@@ -12946,7 +13050,7 @@
 ---@field variableTypes _.lspconfig.settings.vtsls.VariableTypes
 
 ---@class _.lspconfig.settings.vtsls.Preferences
--- Specify glob patterns of files to exclude from auto imports. Requires using TypeScript 4.8 or newer in the workspace.
+-- Specify glob patterns of files to exclude from auto imports. Relative paths are resolved relative to the workspace root. Patterns are evaluated using tsconfig.json [`exclude`](https://www.typescriptlang.org/tsconfig#exclude) semantics. Requires using TypeScript 4.8 or newer in the workspace.
 ---@field autoImportFileExcludePatterns string[]
 -- Preferred path style for auto imports.
 -- 
@@ -13086,12 +13190,6 @@
 ---@field enable boolean
 
 ---@class _.lspconfig.settings.vtsls.Javascript
--- Enable/disable automatic closing of JSX tags.
--- 
--- ```lua
--- default = true
--- ```
----@field autoClosingTags boolean
 ---@field format _.lspconfig.settings.vtsls.Format
 ---@field implicitProjectConfig _.lspconfig.settings.vtsls.ImplicitProjectConfig
 ---@field inlayHints _.lspconfig.settings.vtsls.InlayHints
@@ -13144,10 +13242,6 @@
 -- default = true
 -- ```
 ---@field npmIsInstalled boolean
-
----@class _.lspconfig.settings.vtsls.Experimental
--- Enable/disable AI-assisted quick fixes. Requires an extension providing AI chat functionality.
----@field aiQuickFix boolean
 
 ---@class _.lspconfig.settings.vtsls.Format
 -- Enable/disable default TypeScript formatter.
@@ -13319,7 +13413,7 @@
 ---@field variableTypes _.lspconfig.settings.vtsls.VariableTypes
 
 ---@class _.lspconfig.settings.vtsls.Preferences
--- Specify glob patterns of files to exclude from auto imports. Requires using TypeScript 4.8 or newer in the workspace.
+-- Specify glob patterns of files to exclude from auto imports. Relative paths are resolved relative to the workspace root. Patterns are evaluated using tsconfig.json [`exclude`](https://www.typescriptlang.org/tsconfig#exclude) semantics. Requires using TypeScript 4.8 or newer in the workspace.
 ---@field autoImportFileExcludePatterns string[]
 -- Preferred path style for auto imports.
 -- 
@@ -13451,22 +13545,6 @@
 -- ```
 ---@field enabled boolean
 
----@class _.lspconfig.settings.vtsls.Surveys
--- Enabled/disable occasional surveys that help us improve VS Code's JavaScript and TypeScript support.
--- 
--- ```lua
--- default = true
--- ```
----@field enabled boolean
-
----@class _.lspconfig.settings.vtsls.Tsc
--- Controls auto detection of tsc tasks.
--- 
--- ```lua
--- default = "on"
--- ```
----@field autoDetect "on" | "off" | "build" | "watch"
-
 ---@class _.lspconfig.settings.vtsls.Experimental
 -- (Experimental) Enables project wide error reporting.
 ---@field enableProjectDiagnostics boolean
@@ -13570,18 +13648,9 @@
 ---@field scope "allOpenProjects" | "currentProject"
 
 ---@class _.lspconfig.settings.vtsls.Typescript
--- Enable/disable automatic closing of JSX tags.
--- 
--- ```lua
--- default = true
--- ```
----@field autoClosingTags boolean
 ---@field check _.lspconfig.settings.vtsls.Check
 -- Disables [automatic type acquisition](https://code.visualstudio.com/docs/nodejs/working-with-javascript#_typings-and-automatic-type-acquisition). Automatic type acquisition fetches `@types` packages from npm to improve IntelliSense for external libraries.
 ---@field disableAutomaticTypeAcquisition boolean
--- Enables prompting of users to use the TypeScript version configured in the workspace for Intellisense.
----@field enablePromptUseWorkspaceTsdk boolean
----@field experimental _.lspconfig.settings.vtsls.Experimental
 ---@field format _.lspconfig.settings.vtsls.Format
 ---@field implementationsCodeLens _.lspconfig.settings.vtsls.ImplementationsCodeLens
 ---@field inlayHints _.lspconfig.settings.vtsls.InlayHints
@@ -13605,8 +13674,6 @@
 ---@field reportStyleChecksAsWarnings boolean
 ---@field suggest _.lspconfig.settings.vtsls.Suggest
 ---@field suggestionActions _.lspconfig.settings.vtsls.SuggestionActions
----@field surveys _.lspconfig.settings.vtsls.Surveys
----@field tsc _.lspconfig.settings.vtsls.Tsc
 -- Specifies the folder path to the tsserver and `lib*.d.ts` files under a TypeScript install to use for IntelliSense, for example: `./node_modules/typescript/lib`.
 -- 
 -- - When specified as a user setting, the TypeScript version from `typescript.tsdk` automatically replaces the built-in TypeScript version.

@@ -45,10 +45,10 @@
         },
         "properties": {
           "fileMatch": {
-            "description": "An array of file patterns to match against when resolving JSON files to schemas. `*` can be used as a wildcard. Exclusion patterns can also be defined and start with '!'. A file matches when there is at least one matching pattern and the last matching pattern is not an exclusion pattern.",
+            "description": "An array of file patterns to match against when resolving JSON files to schemas. `*` and '**' can be used as a wildcard. Exclusion patterns can also be defined and start with '!'. A file matches when there is at least one matching pattern and the last matching pattern is not an exclusion pattern.",
             "items": {
               "default": "MyFile.json",
-              "description": "A file pattern that can contain '*' to match against when resolving JSON files to schemas.",
+              "description": "A file pattern that can contain '*' and '**' to match against when resolving JSON files to schemas. When beginning with '!', it defines an exclusion pattern.",
               "type": "string"
             },
             "minItems": 1,
@@ -60,7 +60,7 @@
           },
           "url": {
             "default": "/user.schema.json",
-            "description": "A URL to a schema or a relative path to a schema in the current directory",
+            "description": "A URL or absolute file path to a schema. Can be a relative path in workspace and workspace folder settings.",
             "type": "string"
           }
         },
@@ -68,6 +68,12 @@
       },
       "scope": "resource",
       "type": "array"
+    },
+    "json.sortOnSave.enable": {
+      "default": false,
+      "description": "Enable/disable default sorting on save",
+      "scope": "window",
+      "type": "boolean"
     },
     "json.trace.server": {
       "default": "off",

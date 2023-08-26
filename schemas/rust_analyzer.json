@@ -219,6 +219,15 @@
       "default": null,
       "markdownDescription": "List of features to activate. Defaults to\n`#rust-analyzer.cargo.features#`.\n\nSet to `\"all\"` to pass `--all-features` to Cargo."
     },
+    "rust-analyzer.check.ignore": {
+      "default": [],
+      "items": {
+        "type": "string"
+      },
+      "markdownDescription": "List of `cargo check` (or other command specified in `check.command`) diagnostics to ignore.\n\nFor example for `cargo check`: `dead_code`, `unused_imports`, `unused_variables`,...",
+      "type": "array",
+      "uniqueItems": true
+    },
     "rust-analyzer.check.invocationLocation": {
       "default": "workspace",
       "enum": [
@@ -229,7 +238,7 @@
         "The command will be executed in the corresponding workspace root.",
         "The command will be executed in the project root."
       ],
-      "markdownDescription": "Specifies the working directory for running checks.\n- \"workspace\": run checks for workspaces in the corresponding workspaces' root directories.\n    This falls back to \"root\" if `#rust-analyzer.cargo.checkOnSave.invocationStrategy#` is set to `once`.\n- \"root\": run checks in the project's root directory.\nThis config only has an effect when `#rust-analyzer.cargo.buildScripts.overrideCommand#`\nis set.",
+      "markdownDescription": "Specifies the working directory for running checks.\n- \"workspace\": run checks for workspaces in the corresponding workspaces' root directories.\n    This falls back to \"root\" if `#rust-analyzer.cargo.check.invocationStrategy#` is set to `once`.\n- \"root\": run checks in the project's root directory.\nThis config only has an effect when `#rust-analyzer.cargo.check.overrideCommand#`\nis set.",
       "type": "string"
     },
     "rust-analyzer.check.invocationStrategy": {
@@ -242,7 +251,7 @@
         "The command will be executed for each workspace.",
         "The command will be executed once."
       ],
-      "markdownDescription": "Specifies the invocation strategy to use when running the checkOnSave command.\nIf `per_workspace` is set, the command will be executed for each workspace.\nIf `once` is set, the command will be executed once.\nThis config only has an effect when `#rust-analyzer.cargo.buildScripts.overrideCommand#`\nis set.",
+      "markdownDescription": "Specifies the invocation strategy to use when running the check command.\nIf `per_workspace` is set, the command will be executed for each workspace.\nIf `once` is set, the command will be executed once.\nThis config only has an effect when `#rust-analyzer.cargo.check.overrideCommand#`\nis set.",
       "type": "string"
     },
     "rust-analyzer.check.noDefaultFeatures": {
@@ -1029,35 +1038,6 @@
       "markdownDescription": "Whether to restart the server automatically when certain settings that require a restart are changed.",
       "type": "boolean"
     },
-    "rust-analyzer.runnableEnv": {
-      "anyOf": [
-        {
-          "type": "null"
-        },
-        {
-          "items": {
-            "properties": {
-              "env": {
-                "description": "Variables in form of { \"key\": \"value\"}",
-                "type": "object"
-              },
-              "mask": {
-                "description": "Runnable name mask",
-                "type": "string"
-              }
-            },
-            "type": "object"
-          },
-          "type": "array"
-        },
-        {
-          "description": "Variables in form of { \"key\": \"value\"}",
-          "type": "object"
-        }
-      ],
-      "default": null,
-      "markdownDescription": "Environment variables passed to the runnable launched using `Test` or `Debug` lens or `rust-analyzer.run` command."
-    },
     "rust-analyzer.runnables.command": {
       "default": null,
       "markdownDescription": "Command to be executed instead of 'cargo' for runnables.",
@@ -1072,6 +1052,54 @@
         "type": "string"
       },
       "markdownDescription": "Additional arguments to be passed to cargo for runnables such as\ntests or binaries. For example, it may be `--release`.",
+      "type": "array"
+    },
+    "rust-analyzer.runnables.extraEnv": {
+      "anyOf": [
+        {
+          "type": "null"
+        },
+        {
+          "items": {
+            "properties": {
+              "env": {
+                "description": "Variables in form of { \"key\": \"value\"}",
+                "type": "object"
+              },
+              "mask": {
+                "description": "Runnable name mask",
+                "type": "string"
+              },
+              "platform": {
+                "default": null,
+                "markdownDescription": "Platform(s) filter like \"win32\" or [\"linux\", \"win32\"]. See [process.platform](https://nodejs.org/api/process.html#processplatform) values.",
+                "type": [
+                  "null",
+                  "string",
+                  "array"
+                ]
+              }
+            },
+            "type": "object"
+          },
+          "type": "array"
+        },
+        {
+          "description": "Variables in form of { \"key\": \"value\"}",
+          "type": "object"
+        }
+      ],
+      "default": null,
+      "markdownDescription": "Environment variables passed to the runnable launched using `Test` or `Debug` lens or `rust-analyzer.run` command."
+    },
+    "rust-analyzer.runnables.problemMatcher": {
+      "default": [
+        "$rustc"
+      ],
+      "items": {
+        "type": "string"
+      },
+      "markdownDescription": "Problem matchers to use for `rust-analyzer.run` command, eg `[\"$rustc\", \"$rust-panic\"]`.",
       "type": "array"
     },
     "rust-analyzer.rustc.source": {

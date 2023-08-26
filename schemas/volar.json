@@ -218,9 +218,6 @@
       "description": "Enable this option if you want to get complete CompletionList in language client. (Disable for better performance)",
       "type": "boolean"
     },
-    "vue.server.json.customBlockSchemaUrls": {
-      "type": "object"
-    },
     "vue.server.maxFileSize": {
       "default": 20971520,
       "description": "Maximum file size for Vue Server to load. (default: 20MB)",

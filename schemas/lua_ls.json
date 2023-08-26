@@ -146,6 +146,7 @@
           "global-in-nil-env",
           "incomplete-signature-doc",
           "index-in-func-name",
+          "inject-field",
           "invisible",
           "jump-local-scope",
           "keyword",
@@ -189,6 +190,7 @@
           "miss-sep-in-table",
           "miss-space-between",
           "miss-symbol",
+          "missing-fields",
           "missing-global-doc",
           "missing-local-export-doc",
           "missing-parameter",
@@ -386,7 +388,7 @@
         },
         "type-check": {
           "default": "Fallback",
-          "description": "* assign-type-mismatch\n* cast-local-type\n* cast-type-mismatch\n* need-check-nil\n* param-type-mismatch\n* return-type-mismatch\n* undefined-field",
+          "description": "* assign-type-mismatch\n* cast-local-type\n* cast-type-mismatch\n* inject-field\n* need-check-nil\n* param-type-mismatch\n* return-type-mismatch\n* undefined-field",
           "enum": [
             "Any",
             "Opened",
@@ -397,7 +399,7 @@
         },
         "unbalanced": {
           "default": "Fallback",
-          "description": "* missing-parameter\n* missing-return\n* missing-return-value\n* redundant-parameter\n* redundant-return-value\n* redundant-value\n* unbalanced-assignments",
+          "description": "* missing-fields\n* missing-parameter\n* missing-return\n* missing-return-value\n* redundant-parameter\n* redundant-return-value\n* redundant-value\n* unbalanced-assignments",
           "enum": [
             "Any",
             "Opened",
@@ -548,7 +550,7 @@
         },
         "type-check": {
           "default": "Fallback",
-          "description": "* assign-type-mismatch\n* cast-local-type\n* cast-type-mismatch\n* need-check-nil\n* param-type-mismatch\n* return-type-mismatch\n* undefined-field",
+          "description": "* assign-type-mismatch\n* cast-local-type\n* cast-type-mismatch\n* inject-field\n* need-check-nil\n* param-type-mismatch\n* return-type-mismatch\n* undefined-field",
           "enum": [
             "Error",
             "Warning",
@@ -560,7 +562,7 @@
         },
         "unbalanced": {
           "default": "Fallback",
-          "description": "* missing-parameter\n* missing-return\n* missing-return-value\n* redundant-parameter\n* redundant-return-value\n* redundant-value\n* unbalanced-assignments",
+          "description": "* missing-fields\n* missing-parameter\n* missing-return\n* missing-return-value\n* redundant-parameter\n* redundant-return-value\n* redundant-value\n* unbalanced-assignments",
           "enum": [
             "Error",
             "Warning",
@@ -922,6 +924,19 @@
           ],
           "type": "string"
         },
+        "inject-field": {
+          "default": "Opened",
+          "description": "",
+          "enum": [
+            "Any",
+            "Opened",
+            "None",
+            "Any!",
+            "Opened!",
+            "None!"
+          ],
+          "type": "string"
+        },
         "invisible": {
           "default": "Any",
           "description": "Enable diagnostics for accesses to fields which are invisible.",
@@ -938,6 +953,19 @@
         "lowercase-global": {
           "default": "Any",
           "description": "Enable lowercase global variable definition diagnostics.",
+          "enum": [
+            "Any",
+            "Opened",
+            "None",
+            "Any!",
+            "Opened!",
+            "None!"
+          ],
+          "type": "string"
+        },
+        "missing-fields": {
+          "default": "Any",
+          "description": "",
           "enum": [
             "Any",
             "Opened",
@@ -1757,6 +1785,21 @@
           ],
           "type": "string"
         },
+        "inject-field": {
+          "default": "Warning",
+          "description": "",
+          "enum": [
+            "Error",
+            "Warning",
+            "Information",
+            "Hint",
+            "Error!",
+            "Warning!",
+            "Information!",
+            "Hint!"
+          ],
+          "type": "string"
+        },
         "invisible": {
           "default": "Warning",
           "description": "Enable diagnostics for accesses to fields which are invisible.",
@@ -1775,6 +1818,21 @@
         "lowercase-global": {
           "default": "Information",
           "description": "Enable lowercase global variable definition diagnostics.",
+          "enum": [
+            "Error",
+            "Warning",
+            "Information",
+            "Hint",
+            "Error!",
+            "Warning!",
+            "Information!",
+            "Hint!"
+          ],
+          "type": "string"
+        },
+        "missing-fields": {
+          "default": "Warning",
+          "description": "",
           "enum": [
             "Error",
             "Warning",
@@ -2829,7 +2887,7 @@
     },
     "Lua.runtime.plugin": {
       "default": "",
-      "markdownDescription": "Plugin path. Please read [wiki](https://github.com/LuaLS/lua-language-server/wiki/Plugins) to learn more.",
+      "markdownDescription": "Plugin path. Please read [wiki](https://luals.github.io/wiki/plugins) to learn more.",
       "scope": "resource",
       "type": "string"
     },

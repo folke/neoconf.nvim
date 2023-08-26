@@ -388,11 +388,33 @@
       "scope": "window",
       "type": "boolean"
     },
+    "java.edit.smartSemicolonDetection.enabled": {
+      "default": false,
+      "markdownDescription": "Defines the `smart semicolon` detection. Defaults to `false`.",
+      "scope": "window",
+      "type": "boolean"
+    },
     "java.edit.validateAllOpenBuffersOnChanges": {
       "default": false,
       "markdownDescription": "Specifies whether to recheck all open Java files for diagnostics when editing a Java file.",
       "scope": "window",
       "type": "boolean"
+    },
+    "java.editor.reloadChangedSources": {
+      "default": "ask",
+      "enum": [
+        "ask",
+        "auto",
+        "manual"
+      ],
+      "enumDescriptions": [
+        "Ask to reload the sources of the open class files",
+        "Automatically reload the sources of the open class files",
+        "Manually reload the sources of the open class files"
+      ],
+      "markdownDescription": "Specifies whether to reload the sources of the open class files when their source jar files are changed.",
+      "scope": "window",
+      "type": "string"
     },
     "java.errors.incompleteClasspath.severity": {
       "default": "warning",
@@ -665,12 +687,6 @@
       "minimum": 1,
       "scope": "window",
       "type": "integer"
-    },
-    "java.progressReports.enabled": {
-      "default": true,
-      "description": "[Experimental] Enable/disable progress reports from background processes on the server.",
-      "scope": "window",
-      "type": "boolean"
     },
     "java.project.encoding": {
       "default": "ignore",

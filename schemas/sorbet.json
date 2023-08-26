@@ -115,6 +115,11 @@
       "markdownDescription": "The default configuration to use from `sorbet.userLspConfigs` or `sorbet.lspConfigs`.  If unset, defaults to the first item in `sorbet.userLspConfigs` or `sorbet.lspConfigs`.",
       "type": "string"
     },
+    "sorbet.typedFalseCompletionNudges": {
+      "default": true,
+      "description": "Displays an auto-complete nudge in `typed: false` files.",
+      "type": "boolean"
+    },
     "sorbet.userLspConfigs": {
       "default": [],
       "items": {

@@ -78,6 +78,12 @@
       "scope": "resource",
       "type": "boolean"
     },
+    "haskell.plugin.cabal.completionOn": {
+      "default": true,
+      "description": "Enables cabal completions",
+      "scope": "resource",
+      "type": "boolean"
+    },
     "haskell.plugin.cabal.globalOn": {
       "default": true,
       "description": "Enables cabal plugin",

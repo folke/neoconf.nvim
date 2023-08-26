@@ -8,6 +8,16 @@
       "scope": "window",
       "type": "string"
     },
+    "deno.cacheOnSave": {
+      "default": false,
+      "examples": [
+        true,
+        false
+      ],
+      "markdownDescription": "Controls if the extension should cache the active document's dependencies on save.",
+      "scope": "resource",
+      "type": "boolean"
+    },
     "deno.certificateStores": {
       "default": null,
       "items": {
