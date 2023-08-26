@@ -38,6 +38,7 @@ function M.index()
 
   packages["lua_ls"] = "https://raw.githubusercontent.com/LuaLS/vscode-lua/master/package.json"
   packages["sumneko_lua"] = nil
+  packages["nickel_ls"] = nil
 
   for server, package_json in pairs(packages) do
     ret[server] = { package_url = package_json }
