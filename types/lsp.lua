@@ -12159,9 +12159,20 @@
 -- ```
 ---@field npmIsInstalled boolean
 
+---@class _.lspconfig.settings.tsserver.TypeAcquisition
+-- Enable/disable package acquisition on the web.
+---@field enabled boolean
+
+---@class _.lspconfig.settings.tsserver.Web
+---@field typeAcquisition _.lspconfig.settings.tsserver.TypeAcquisition
+
+---@class _.lspconfig.settings.tsserver.Tsserver
+---@field web _.lspconfig.settings.tsserver.Web
+
 ---@class _.lspconfig.settings.tsserver.Experimental
 -- Enable/disable AI-assisted quick fixes. Requires an extension providing AI chat functionality.
 ---@field aiQuickFix boolean
+---@field tsserver _.lspconfig.settings.tsserver.Tsserver
 
 ---@class _.lspconfig.settings.tsserver.Format
 -- Enable/disable default TypeScript formatter.

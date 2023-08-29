@@ -496,6 +496,15 @@
       "scope": "resource",
       "type": "boolean"
     },
+    "typescript.experimental.tsserver.web.typeAcquisition.enabled": {
+      "default": false,
+      "description": "Enable/disable package acquisition on the web.",
+      "scope": "window",
+      "tags": [
+        "experimental"
+      ],
+      "type": "boolean"
+    },
     "typescript.format.enable": {
       "default": true,
       "description": "Enable/disable default TypeScript formatter.",
