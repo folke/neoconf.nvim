@@ -299,9 +299,15 @@
 ---@field documentPreloadLimit number
 -- Controls if the Deno Language Server is enabled. When enabled, the extension will disable the built-in VSCode JavaScript and TypeScript language services, and will use the Deno Language Server instead.
 -- 
+-- If omitted, your preference will be inferred as true if there is a `deno.json[c]` at your workspace root and false if not.
+-- 
 -- If you want to enable only part of your workspace folder, consider using `deno.enablePaths` setting instead.
 -- 
 -- **Not recommended to be enabled globally.**
+-- 
+-- ```lua
+-- default = <userdata 1>
+-- ```
 ---@field enable boolean
 -- Enables the Deno Language Server for specific paths, instead of for the whole workspace folder. This will disable the built in TypeScript/JavaScript language server for those paths.
 -- 
@@ -860,6 +866,14 @@
 ---@class lspconfig.settings.flow
 ---@field flow _.lspconfig.settings.flow.Flow
 
+---@class _.lspconfig.settings.fsautocomplete.TestExplorer
+-- Decides if the test explorer will automatically try discover tests when the workspace loads. You can still manually refresh the explorer to discover tests at any time
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field AutoDiscoverTestsOnLoad boolean
+
 ---@class _.lspconfig.settings.fsautocomplete.References
 -- If enabled, code lenses for reference counts for methods and functions will be shown.
 -- 
@@ -1018,6 +1032,7 @@
 ---@field server "off" | "messages" | "verbose"
 
 ---@class _.lspconfig.settings.fsautocomplete.FSharp
+---@field TestExplorer _.lspconfig.settings.fsautocomplete.TestExplorer
 -- Enables a codefix that generates missing members for an abstract class when in an type inheriting from that abstract class.
 -- 
 -- ```lua

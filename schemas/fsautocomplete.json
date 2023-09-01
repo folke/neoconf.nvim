@@ -2,6 +2,11 @@
   "$schema": "http://json-schema.org/draft-07/schema#",
   "description": "F# Language Support, powered by FsAutoComplete",
   "properties": {
+    "FSharp.TestExplorer.AutoDiscoverTestsOnLoad": {
+      "default": true,
+      "description": "Decides if the test explorer will automatically try discover tests when the workspace loads. You can still manually refresh the explorer to discover tests at any time",
+      "type": "boolean"
+    },
     "FSharp.abstractClassStubGeneration": {
       "default": true,
       "description": "Enables a codefix that generates missing members for an abstract class when in an type inheriting from that abstract class.",
