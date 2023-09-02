@@ -69,12 +69,6 @@
       "scope": "resource",
       "type": "array"
     },
-    "json.sortOnSave.enable": {
-      "default": false,
-      "description": "Enable/disable default sorting on save",
-      "scope": "window",
-      "type": "boolean"
-    },
     "json.trace.server": {
       "default": "off",
       "description": "Traces the communication between VS Code and the JSON language server.",

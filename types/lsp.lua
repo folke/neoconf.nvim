@@ -4140,10 +4140,6 @@
 -- ```
 ---@field enable boolean
 
----@class _.lspconfig.settings.jsonls.SortOnSave
--- Enable/disable default sorting on save
----@field enable boolean
-
 ---@class _.lspconfig.settings.jsonls.Trace
 -- Traces the communication between VS Code and the JSON language server.
 -- 
@@ -4172,7 +4168,6 @@
 ---@field schemaDownload _.lspconfig.settings.jsonls.SchemaDownload
 -- Associate schemas to JSON files in the current project.
 ---@field schemas object[]
----@field sortOnSave _.lspconfig.settings.jsonls.SortOnSave
 ---@field trace _.lspconfig.settings.jsonls.Trace
 ---@field validate _.lspconfig.settings.jsonls.Validate
 
