@@ -982,9 +982,14 @@
     },
     "typescript.tsserver.maxTsServerMemory": {
       "default": 3072,
-      "description": "The maximum amount of memory (in MB) to allocate to the TypeScript server process.",
+      "markdownDescription": "The maximum amount of memory (in MB) to allocate to the TypeScript server process. To use a memory limit greater than 4 GB, use `#typescript.tsserver.nodePath#` to run TS Server with a custom Node installation.",
       "scope": "window",
       "type": "number"
+    },
+    "typescript.tsserver.nodePath": {
+      "description": "Run TS Server on a custom Node installation. This can be a path to a Node executable, or 'node' if you want VS Code to detect a Node installation.",
+      "scope": "window",
+      "type": "string"
     },
     "typescript.tsserver.pluginPaths": {
       "default": [],

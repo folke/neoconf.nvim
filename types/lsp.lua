@@ -12564,12 +12564,14 @@
 -- default = "off"
 -- ```
 ---@field log "off" | "terse" | "normal" | "verbose"
--- The maximum amount of memory (in MB) to allocate to the TypeScript server process.
+-- The maximum amount of memory (in MB) to allocate to the TypeScript server process. To use a memory limit greater than 4 GB, use `#typescript.tsserver.nodePath#` to run TS Server with a custom Node installation.
 -- 
 -- ```lua
 -- default = 3072
 -- ```
 ---@field maxTsServerMemory number
+-- Run TS Server on a custom Node installation. This can be a path to a Node executable, or 'node' if you want VS Code to detect a Node installation.
+---@field nodePath string
 -- Additional paths to discover TypeScript Language Service plugins.
 -- 
 -- ```lua
@@ -12831,7 +12833,7 @@
 ---@field diagnosticModel "push" | "pull"
 -- Enable this option if you want to get complete CompletionList in language client. (Disable for better performance)
 ---@field fullCompletionList boolean
--- Maximum file size for Vue Server to load. (default: 20MB)
+-- Maximum file size for Vue Language Server to load. (default: 20MB)
 -- 
 -- ```lua
 -- default = 20971520
@@ -12843,9 +12845,21 @@
 -- default = <userdata 1>
 -- ```
 ---@field maxOldSpaceSize number
+-- Path to node_modules/vue-language-server/bin/vue-language-server.js.
+-- 
+-- ```lua
+-- default = <userdata 1>
+-- ```
+---@field path string
 ---@field petiteVue _.lspconfig.settings.volar.PetiteVue
 -- Reverse priority for tsconfig pickup.
 ---@field reverseConfigFilePriority boolean
+-- Vue Language Server runtime.
+-- 
+-- ```lua
+-- default = "node"
+-- ```
+---@field runtime "node" | "bun"
 ---@field vitePress _.lspconfig.settings.volar.VitePress
 
 ---@class _.lspconfig.settings.volar.Layout
