@@ -98,7 +98,7 @@
       "type": "number"
     },
     "deno.enable": {
-      "default": null,
+      "default": false,
       "examples": [
         true,
         false
@@ -274,12 +274,6 @@
       "markdownDescription": "Arguments to use when running tests via the Test Explorer.  Defaults to `[ \"--allow-all\" ]`.",
       "scope": "window",
       "type": "array"
-    },
-    "deno.testing.enable": {
-      "default": true,
-      "markdownDescription": "Enable the testing API for the language server. When folder is Deno enabled, tests will be available in the Test Explorer view.",
-      "scope": "window",
-      "type": "boolean"
     },
     "deno.tlsCertificate": {
       "default": null,

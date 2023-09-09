@@ -258,12 +258,6 @@
 -- default = { "--allow-all", "--no-check" }
 -- ```
 ---@field args string[]
--- Enable the testing API for the language server. When folder is Deno enabled, tests will be available in the Test Explorer view.
--- 
--- ```lua
--- default = true
--- ```
----@field enable boolean
 
 ---@class _.lspconfig.settings.denols.Deno
 -- A path to the cache directory for Deno. By default, the operating system's cache path plus `deno` is used, or the `DENO_DIR` environment variable, but if set, this path will be used instead.
@@ -304,10 +298,6 @@
 -- If you want to enable only part of your workspace folder, consider using `deno.enablePaths` setting instead.
 -- 
 -- **Not recommended to be enabled globally.**
--- 
--- ```lua
--- default = <userdata 1>
--- ```
 ---@field enable boolean
 -- Enables the Deno Language Server for specific paths, instead of for the whole workspace folder. This will disable the built in TypeScript/JavaScript language server for those paths.
 -- 
@@ -10820,14 +10810,13 @@
 ---@field completion _.lspconfig.settings.rust_analyzer.Completion
 ---@field debug _.lspconfig.settings.rust_analyzer.Debug
 ---@field diagnostics _.lspconfig.settings.rust_analyzer.Diagnostics
--- Sets the command that rust-analyzer uses to generate `rust-project.json` files. This command should only be used
---  if a build system like Buck or Bazel is also in use. The command must accept files as arguments and return 
---  a rust-project.json over stdout.
+-- Sets the extension responsible for determining which extension the rust-analyzer extension uses to generate `rust-project.json` files. This should should only be used
+--  if a build system like Buck or Bazel is also in use.
 -- 
 -- ```lua
 -- default = <userdata 1>
 -- ```
----@field discoverProjectCommand string[]
+---@field discoverProjectRunner string
 ---@field files _.lspconfig.settings.rust_analyzer.Files
 ---@field highlightRelated _.lspconfig.settings.rust_analyzer.HighlightRelated
 ---@field hover _.lspconfig.settings.rust_analyzer.Hover
