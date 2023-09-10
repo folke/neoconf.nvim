@@ -17,6 +17,18 @@ M.defaults = {
   -- set the filetype to jsonc for settings files, so you can use comments
   -- make sure you have the jsonc treesitter parser installed!
   filetype_jsonc = true,
+  --- Returns which root_dir to pick when two are available
+  ---@param a? string First potential root_dir
+  ---@param b? string Second potential root_dir
+  ---@return string?
+  root_dir_picker = function(a, b)
+    if a and b then
+      -- return longest
+      return (#a > #b) and a or b
+    end
+
+    return a or b
+  end,
   plugins = {
     -- configures lsp clients with settings in the following order:
     -- - lua settings passed in lspconfig setup
