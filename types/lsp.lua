@@ -13267,6 +13267,19 @@
 -- ```
 ---@field npmIsInstalled boolean
 
+---@class _.lspconfig.settings.vtsls.TypeAcquisition
+-- Enable/disable package acquisition on the web.
+---@field enabled boolean
+
+---@class _.lspconfig.settings.vtsls.Web
+---@field typeAcquisition _.lspconfig.settings.vtsls.TypeAcquisition
+
+---@class _.lspconfig.settings.vtsls.Tsserver
+---@field web _.lspconfig.settings.vtsls.Web
+
+---@class _.lspconfig.settings.vtsls.Experimental
+---@field tsserver _.lspconfig.settings.vtsls.Tsserver
+
 ---@class _.lspconfig.settings.vtsls.Format
 -- Enable/disable default TypeScript formatter.
 -- 
@@ -13619,12 +13632,14 @@
 -- default = "off"
 -- ```
 ---@field log "off" | "terse" | "normal" | "verbose"
--- The maximum amount of memory (in MB) to allocate to the TypeScript server process.
+-- The maximum amount of memory (in MB) to allocate to the TypeScript server process. To use a memory limit greater than 4 GB, use `#typescript.tsserver.nodePath#` to run TS Server with a custom Node installation.
 -- 
 -- ```lua
 -- default = 3072
 -- ```
 ---@field maxTsServerMemory number
+-- Run TS Server on a custom Node installation. This can be a path to a Node executable, or 'node' if you want VS Code to detect a Node installation.
+---@field nodePath string
 -- Additional paths to discover TypeScript Language Service plugins.
 -- 
 -- ```lua
@@ -13675,6 +13690,7 @@
 ---@field check _.lspconfig.settings.vtsls.Check
 -- Disables [automatic type acquisition](https://code.visualstudio.com/docs/nodejs/working-with-javascript#_typings-and-automatic-type-acquisition). Automatic type acquisition fetches `@types` packages from npm to improve IntelliSense for external libraries.
 ---@field disableAutomaticTypeAcquisition boolean
+---@field experimental _.lspconfig.settings.vtsls.Experimental
 ---@field format _.lspconfig.settings.vtsls.Format
 ---@field implementationsCodeLens _.lspconfig.settings.vtsls.ImplementationsCodeLens
 ---@field inlayHints _.lspconfig.settings.vtsls.InlayHints
