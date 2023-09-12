@@ -16,7 +16,6 @@
     },
     "html.completion.attributeDefaultValue": {
       "default": "doublequotes",
-      "description": "Controls the default value for attributes when completion is accepted.",
       "enum": [
         "doublequotes",
         "singlequotes",
@@ -27,6 +26,7 @@
         "Attribute value is set to ''.",
         "Attribute value is not set."
       ],
+      "markdownDescription": "Controls the default value for attributes when completion is accepted.",
       "scope": "resource",
       "type": "string"
     },
@@ -137,7 +137,7 @@
     },
     "html.format.wrapAttributesIndentSize": {
       "default": null,
-      "markdownDescription": "Indent wrapped attributes to after N characters. Use `null` to use the default indent size. Ignored if `#html.format.wrapAttributes#` is set to 'aligned'.",
+      "markdownDescription": "Indent wrapped attributes to after N characters. Use `null` to use the default indent size. Ignored if `#html.format.wrapAttributes#` is set to `aligned`.",
       "scope": "resource",
       "type": [
         "number",
