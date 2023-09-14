@@ -188,6 +188,11 @@
       "deprecationMessage": "Use \"haxe.configurations\" instead",
       "type": "array"
     },
+    "haxe.displayHost": {
+      "default": "127.0.0.1",
+      "markdownDescription": "IP address to use for display server. Can be used to `--connect` Haxe build commands.",
+      "type": "string"
+    },
     "haxe.displayPort": {
       "default": "auto",
       "markdownDescription": "Integer value for the port to open on the display server, or `\"auto\"`. Can be used to `--connect` Haxe build commands.",

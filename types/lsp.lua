@@ -2043,6 +2043,12 @@
 -- default = {}
 -- ```
 ---@field displayConfigurations any[]
+-- IP address to use for display server. Can be used to `--connect` Haxe build commands.
+-- 
+-- ```lua
+-- default = "127.0.0.1"
+-- ```
+---@field displayHost string
 -- Integer value for the port to open on the display server, or `"auto"`. Can be used to `--connect` Haxe build commands.
 -- 
 -- ```lua
@@ -12600,6 +12606,12 @@
 ---@field enable boolean
 
 ---@class _.lspconfig.settings.tsserver.WorkspaceSymbols
+-- Exclude symbols that come from library files in `Go To Symbol in Workspace` results. Requires using TypeScript 5.3+ in the workspace.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field excludeLibrarySymbols boolean
 -- Controls which files are searched by [Go to Symbol in Workspace](https://code.visualstudio.com/docs/editor/editingevolved#_open-symbol-by-name).
 -- 
 -- ```lua

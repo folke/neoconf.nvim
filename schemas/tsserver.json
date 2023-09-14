@@ -1121,6 +1121,12 @@
       "scope": "window",
       "type": "boolean"
     },
+    "typescript.workspaceSymbols.excludeLibrarySymbols": {
+      "default": true,
+      "markdownDescription": "Exclude symbols that come from library files in `Go To Symbol in Workspace` results. Requires using TypeScript 5.3+ in the workspace.",
+      "scope": "window",
+      "type": "boolean"
+    },
     "typescript.workspaceSymbols.scope": {
       "default": "allOpenProjects",
       "enum": [
