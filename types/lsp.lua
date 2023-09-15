@@ -285,6 +285,14 @@
 -- default = <userdata 1>
 -- ```
 ---@field config string
+-- Disables the Deno Language Server for specific paths. This will leave the built in TypeScript/JavaScript language server enabled for those paths. Takes priority over `deno.enablePaths`.
+-- 
+-- **Not recommended to be enabled in user settings.**
+-- 
+-- ```lua
+-- default = {}
+-- ```
+---@field disablePaths string[]
 -- Maximum number of file system entries to traverse when finding scripts to preload into TypeScript on startup. Set this to 0 to disable document preloading.
 -- 
 -- ```lua
