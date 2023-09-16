@@ -306,6 +306,10 @@
 -- If you want to enable only part of your workspace folder, consider using `deno.enablePaths` setting instead.
 -- 
 -- **Not recommended to be enabled globally.**
+-- 
+-- ```lua
+-- default = <userdata 1>
+-- ```
 ---@field enable boolean
 -- Enables the Deno Language Server for specific paths, instead of for the whole workspace folder. This will disable the built in TypeScript/JavaScript language server for those paths.
 -- 

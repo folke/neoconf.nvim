@@ -112,7 +112,7 @@
       "type": "number"
     },
     "deno.enable": {
-      "default": false,
+      "default": null,
       "examples": [
         true,
         false
