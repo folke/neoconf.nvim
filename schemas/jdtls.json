@@ -262,6 +262,11 @@
       "scope": "window",
       "type": "boolean"
     },
+    "java.configuration.detectJdksAtStart": {
+      "default": true,
+      "markdownDescription": "Automatically detect JDKs installed on local machine at startup. If you have specified the same JDK version in `#java.configuration.runtimes#`, the extension will use that version first.",
+      "type": "boolean"
+    },
     "java.configuration.maven.defaultMojoExecutionAction": {
       "default": "ignore",
       "description": "Specifies default mojo execution action when no associated metadata can be detected.",

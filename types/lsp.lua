@@ -3524,6 +3524,12 @@
 ---@class _.lspconfig.settings.jdtls.Configuration
 -- Controls whether to exclude extension-generated project settings files (.project, .classpath, .factorypath, .settings/) from the file explorer.
 ---@field checkProjectSettingsExclusions boolean
+-- Automatically detect JDKs installed on local machine at startup. If you have specified the same JDK version in `#java.configuration.runtimes#`, the extension will use that version first.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field detectJdksAtStart boolean
 ---@field maven _.lspconfig.settings.jdtls.Maven
 -- Map Java Execution Environments to local JDKs.
 -- 
