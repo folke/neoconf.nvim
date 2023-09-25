@@ -321,6 +321,11 @@
       "markdownDescription": "Whether to add parenthesis and argument snippets when completing function.",
       "type": "string"
     },
+    "rust-analyzer.completion.fullFunctionSignatures.enable": {
+      "default": false,
+      "markdownDescription": "Whether to show full function/method signatures in completion docs.",
+      "type": "boolean"
+    },
     "rust-analyzer.completion.limit": {
       "default": null,
       "markdownDescription": "Maximum number of completions to return. If `None`, the limit is infinite.",

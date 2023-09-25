@@ -9917,6 +9917,10 @@
 -- ```
 ---@field snippets "fill_arguments" | "add_parentheses" | "none"
 
+---@class _.lspconfig.settings.rust_analyzer.FullFunctionSignatures
+-- Whether to show full function/method signatures in completion docs.
+---@field enable boolean
+
 ---@class _.lspconfig.settings.rust_analyzer.Postfix
 -- Whether to show postfix snippets like `dbg`, `if`, `not`, etc.
 -- 
@@ -9981,6 +9985,7 @@
 ---@field autoimport _.lspconfig.settings.rust_analyzer.Autoimport
 ---@field autoself _.lspconfig.settings.rust_analyzer.Autoself
 ---@field callable _.lspconfig.settings.rust_analyzer.Callable
+---@field fullFunctionSignatures _.lspconfig.settings.rust_analyzer.FullFunctionSignatures
 -- Maximum number of completions to return. If `None`, the limit is infinite.
 -- 
 -- ```lua
