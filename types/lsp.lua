@@ -12195,6 +12195,31 @@
 -- ```
 ---@field npmIsInstalled boolean
 
+-- Enable/disable AI-assisted code actions. Requires an extension providing AI chat functionality.
+-- 
+-- ```lua
+-- default = {}
+-- ```
+---@class _.lspconfig.settings.tsserver.AiCodeActions
+-- Enable/disable AI assistance for Add Name to Nameless Parameter quickfix. Requires an extension providing AI chat functionality.
+---@field addNameToNamelessParameter boolean
+-- Enable/disable AI assistance for Class Doesn't Implement Inherited Abstract Member quickfix. Requires an extension providing AI chat functionality.
+---@field classDoesntImplementInheritedAbstractMember boolean
+-- Enable/disable AI assistance for Class Incorrectly Implements Interface quickfix. Requires an extension providing AI chat functionality.
+---@field classIncorrectlyImplementsInterface boolean
+-- Enable/disable AI assistance for Extract Constant refactor. Requires an extension providing AI chat functionality.
+---@field extractConstant boolean
+-- Enable/disable AI assistance for Extract Function refactor. Requires an extension providing AI chat functionality.
+---@field extractFunction boolean
+-- Enable/disable AI assistance for Extract Interface refactor. Requires an extension providing AI chat functionality.
+---@field extractInterface boolean
+-- Enable/disable AI assistance for Extract Type refactor. Requires an extension providing AI chat functionality.
+---@field extractType boolean
+-- Enable/disable AI assistance for Infer and Add Types refactor. Requires an extension providing AI chat functionality.
+---@field inferAndAddTypes boolean
+-- Enable/disable AI assistance for Missing Function Declaration quickfix. Requires an extension providing AI chat functionality.
+---@field missingFunctionDeclaration boolean
+
 ---@class _.lspconfig.settings.tsserver.TypeAcquisition
 -- Enable/disable package acquisition on the web.
 ---@field enabled boolean
@@ -12206,8 +12231,12 @@
 ---@field web _.lspconfig.settings.tsserver.Web
 
 ---@class _.lspconfig.settings.tsserver.Experimental
--- Enable/disable AI-assisted quick fixes. Requires an extension providing AI chat functionality.
----@field aiQuickFix boolean
+-- Enable/disable AI-assisted code actions. Requires an extension providing AI chat functionality.
+-- 
+-- ```lua
+-- default = {}
+-- ```
+---@field aiCodeActions _.lspconfig.settings.tsserver.AiCodeActions
 ---@field tsserver _.lspconfig.settings.tsserver.Tsserver
 
 ---@class _.lspconfig.settings.tsserver.Format
