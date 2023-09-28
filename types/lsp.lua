@@ -944,10 +944,10 @@
 -- default = {}
 -- ```
 ---@field silencedLogs string[]
--- EXPERIMENTAL. Enables the use of a new source text implementation. This may have better memory characteristics. Requires restart.
+-- Enables the use of a new source text implementation. This may have better memory characteristics. Requires restart.
 -- 
 -- ```lua
--- default = "NamedText"
+-- default = "RoslynSourceText"
 -- ```
 ---@field sourceTextImplementation "NamedText" | "RoslynSourceText"
 
@@ -10048,7 +10048,7 @@
 -- default = {}
 -- ```
 ---@field remapPrefix table
--- Whether to use the rustc error code.
+-- Whether to show diagnostics using the original rustc error code. If this is false, all rustc diagnostics will have the code 'rustc(Click for full compiler diagnostics)'
 ---@field useRustcErrorCode boolean
 -- List of warnings that should be displayed with hint severity.
 -- 
