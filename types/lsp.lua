@@ -261,18 +261,10 @@
 
 ---@class _.lspconfig.settings.denols.Deno
 -- A path to the cache directory for Deno. By default, the operating system's cache path plus `deno` is used, or the `DENO_DIR` environment variable, but if set, this path will be used instead.
--- 
--- ```lua
--- default = <userdata 1>
--- ```
 ---@field cache string
 -- Controls if the extension should cache the active document's dependencies on save.
 ---@field cacheOnSave boolean
 -- A list of root certificate stores used to validate TLS certificates when fetching and caching remote resources. This overrides the `DENO_TLS_CA_STORE` environment variable if set.
--- 
--- ```lua
--- default = <userdata 1>
--- ```
 ---@field certificateStores string[]
 ---@field codeLens _.lspconfig.settings.denols.CodeLens
 -- The file path to a configuration file. This is the equivalent to using `--config` on the command line. The path can be either be relative to the workspace, or an absolute path.
@@ -280,10 +272,6 @@
 -- It is recommend you name it `deno.json` or `deno.jsonc`.
 -- 
 -- **Not recommended to be set globally.**
--- 
--- ```lua
--- default = <userdata 1>
--- ```
 ---@field config string
 -- Disables the Deno Language Server for specific paths. This will leave the built in TypeScript/JavaScript language server enabled for those paths. Takes priority over `deno.enablePaths`.
 -- 
@@ -306,10 +294,6 @@
 -- If you want to enable only part of your workspace folder, consider using `deno.enablePaths` setting instead.
 -- 
 -- **Not recommended to be enabled globally.**
--- 
--- ```lua
--- default = <userdata 1>
--- ```
 ---@field enable boolean
 -- Enables the Deno Language Server for specific paths, instead of for the whole workspace folder. This will disable the built in TypeScript/JavaScript language server for those paths.
 -- 
@@ -328,10 +312,6 @@
 -- [Import maps](https://deno.land/manual@v1.6.0/linking_to_external_code/import_maps) provide a way to "relocate" modules based on their specifiers. The path can either be relative to the workspace, or an absolute path.
 -- 
 -- **Not recommended to be set globally.**
--- 
--- ```lua
--- default = <userdata 1>
--- ```
 ---@field importMap string
 ---@field inlayHints _.lspconfig.settings.denols.InlayHints
 -- Determines if the internal debugging information for the Deno language server will be logged to the _Deno Language Server_ console.
@@ -351,24 +331,12 @@
 -- ```
 ---@field maxTsServerMemory number
 -- A path to the `deno` CLI executable. By default, the extension looks for `deno` in the `PATH`, but if set, will use the path specified instead.
--- 
--- ```lua
--- default = <userdata 1>
--- ```
 ---@field path string
 ---@field suggest _.lspconfig.settings.denols.Suggest
 ---@field testing _.lspconfig.settings.denols.Testing
 -- A path to a PEM certificate to use as the certificate authority when validating TLS certificates when fetching and caching remote resources. This is like using `--cert` on the Deno CLI and overrides the `DENO_CERT` environment variable if set.
--- 
--- ```lua
--- default = <userdata 1>
--- ```
 ---@field tlsCertificate string
 -- **DANGER** disables verification of TLS certificates for the hosts provided. There is likely a better way to deal with any errors than use this option. This is like using `--unsafely-ignore-certificate-errors` in the Deno CLI.
--- 
--- ```lua
--- default = <userdata 1>
--- ```
 ---@field unsafelyIgnoreCertificateErrors string[]
 -- Controls if code will be type checked with Deno's unstable APIs. This is the equivalent to using `--unstable` on the command line.
 -- 
@@ -587,10 +555,6 @@
 -- ```
 ---@field mode "all" | "problems"
 -- The rules that should be executed when computing the code actions on save or formatting a file. Defaults to the rules configured via the ESLint configuration
--- 
--- ```lua
--- default = <userdata 1>
--- ```
 ---@field rules string[]|any
 
 ---@class _.lspconfig.settings.eslint.Experimental
@@ -720,10 +684,6 @@
 -- ```
 ---@field enable boolean
 -- Additional exec argv argument passed to the runtime. This can for example be used to control the maximum heap space using --max_old_space_size
--- 
--- ```lua
--- default = <userdata 1>
--- ```
 ---@field execArgv string[]|any
 ---@field experimental _.lspconfig.settings.eslint.Experimental
 ---@field format _.lspconfig.settings.eslint.Format
@@ -732,16 +692,8 @@
 ---@field lintTask _.lspconfig.settings.eslint.LintTask
 ---@field migration _.lspconfig.settings.eslint.Migration
 -- The value of `NODE_ENV` to use when running eslint tasks.
--- 
--- ```lua
--- default = <userdata 1>
--- ```
 ---@field nodeEnv string
 -- A path added to `NODE_PATH` when resolving the eslint module.
--- 
--- ```lua
--- default = <userdata 1>
--- ```
 ---@field nodePath string
 ---@field notebooks _.lspconfig.settings.eslint.Notebooks
 -- Whether ESLint should issue a warning on ignored files.
@@ -781,10 +733,6 @@
 -- ```
 ---@field run "onSave" | "onType"
 -- The location of the node binary to run ESLint under.
--- 
--- ```lua
--- default = <userdata 1>
--- ```
 ---@field runtime string
 ---@field timeBudget _.lspconfig.settings.eslint.TimeBudget
 ---@field trace _.lspconfig.settings.eslint.Trace
@@ -820,10 +768,6 @@
 -- ```
 ---@field enabled boolean
 -- Set value to enable flow lazy mode
--- 
--- ```lua
--- default = <userdata 1>
--- ```
 ---@field lazyMode string
 -- Log level for output panel logs
 -- 
@@ -1489,185 +1433,65 @@
 
 ---@class _.lspconfig.settings.grammarly.Suggestions
 -- Flags use of conjunctions such as 'but' and 'and' at the beginning of sentences.
--- 
--- ```lua
--- default = <userdata 1>
--- ```
----@field ConjunctionAtStartOfSentence true | false | <userdata 1>
+---@field ConjunctionAtStartOfSentence true | false
 -- Suggests ways to sound more natural and fluent.
--- 
--- ```lua
--- default = <userdata 1>
--- ```
----@field Fluency true | false | <userdata 1>
+---@field Fluency true | false
 -- Flags use of personal pronouns such as 'I' and 'you' in academic writing.
--- 
--- ```lua
--- default = <userdata 1>
--- ```
----@field InformalPronounsAcademic true | false | <userdata 1>
+---@field InformalPronounsAcademic true | false
 -- Suggests adding missing spacing after a numeral when writing times.
--- 
--- ```lua
--- default = <userdata 1>
--- ```
----@field MissingSpaces true | false | <userdata 1>
+---@field MissingSpaces true | false
 -- Flags a series of nouns that modify a final noun.
--- 
--- ```lua
--- default = <userdata 1>
--- ```
----@field NounStrings true | false | <userdata 1>
+---@field NounStrings true | false
 -- Suggests spelling out numbers at the beginning of sentences.
--- 
--- ```lua
--- default = <userdata 1>
--- ```
----@field NumbersBeginningSentences true | false | <userdata 1>
+---@field NumbersBeginningSentences true | false
 -- Suggests spelling out numbers zero through ten.
--- 
--- ```lua
--- default = <userdata 1>
--- ```
----@field NumbersZeroThroughTen true | false | <userdata 1>
+---@field NumbersZeroThroughTen true | false
 -- Suggests adding the Oxford comma after the second-to-last item in a list of things.
--- 
--- ```lua
--- default = <userdata 1>
--- ```
----@field OxfordComma true | false | <userdata 1>
+---@field OxfordComma true | false
 -- Flags use of passive voice.
--- 
--- ```lua
--- default = <userdata 1>
--- ```
----@field PassiveVoice true | false | <userdata 1>
+---@field PassiveVoice true | false
 -- Suggests using person-first language to refer respectfully to an individual with a disability.
--- 
--- ```lua
--- default = <userdata 1>
--- ```
----@field PersonFirstLanguage true | false | <userdata 1>
+---@field PersonFirstLanguage true | false
 -- Suggests alternatives to potentially biased language related to older adults.
--- 
--- ```lua
--- default = <userdata 1>
--- ```
----@field PossiblyBiasedLanguageAgeRelated true | false | <userdata 1>
+---@field PossiblyBiasedLanguageAgeRelated true | false
 -- Suggests alternatives to potentially ableist language.
--- 
--- ```lua
--- default = <userdata 1>
--- ```
----@field PossiblyBiasedLanguageDisabilityRelated true | false | <userdata 1>
+---@field PossiblyBiasedLanguageDisabilityRelated true | false
 -- Suggests alternatives to potentially biased language related to parenting and family systems.
--- 
--- ```lua
--- default = <userdata 1>
--- ```
----@field PossiblyBiasedLanguageFamilyRelated true | false | <userdata 1>
+---@field PossiblyBiasedLanguageFamilyRelated true | false
 -- Suggests alternatives to potentially gender-biased and non-inclusive phrasing.
--- 
--- ```lua
--- default = <userdata 1>
--- ```
----@field PossiblyBiasedLanguageGenderRelated true | false | <userdata 1>
+---@field PossiblyBiasedLanguageGenderRelated true | false
 -- Suggests alternatives to language related to human slavery.
--- 
--- ```lua
--- default = <userdata 1>
--- ```
----@field PossiblyBiasedLanguageHumanRights true | false | <userdata 1>
+---@field PossiblyBiasedLanguageHumanRights true | false
 -- Suggests alternatives to terms with origins in the institution of slavery.
--- 
--- ```lua
--- default = <userdata 1>
--- ```
----@field PossiblyBiasedLanguageHumanRightsRelated true | false | <userdata 1>
+---@field PossiblyBiasedLanguageHumanRightsRelated true | false
 -- Flags LGBTQIA+-related terms that may be seen as biased, outdated, or disrespectful in some contexts.
--- 
--- ```lua
--- default = <userdata 1>
--- ```
----@field PossiblyBiasedLanguageLgbtqiaRelated true | false | <userdata 1>
+---@field PossiblyBiasedLanguageLgbtqiaRelated true | false
 -- Suggests alternatives to potentially biased language related to race and ethnicity.
--- 
--- ```lua
--- default = <userdata 1>
--- ```
----@field PossiblyBiasedLanguageRaceEthnicityRelated true | false | <userdata 1>
+---@field PossiblyBiasedLanguageRaceEthnicityRelated true | false
 -- Suggests alternatives to language that may be considered politically incorrect.
--- 
--- ```lua
--- default = <userdata 1>
--- ```
----@field PossiblyPoliticallyIncorrectLanguage true | false | <userdata 1>
+---@field PossiblyPoliticallyIncorrectLanguage true | false
 -- Flags use of prepositions such as 'with' and 'in' at the end of sentences.
--- 
--- ```lua
--- default = <userdata 1>
--- ```
----@field PrepositionAtTheEndOfSentence true | false | <userdata 1>
+---@field PrepositionAtTheEndOfSentence true | false
 -- Suggests placing punctuation before closing quotation marks.
--- 
--- ```lua
--- default = <userdata 1>
--- ```
----@field PunctuationWithQuotation true | false | <userdata 1>
+---@field PunctuationWithQuotation true | false
 -- Flags long, complicated sentences that could potentially confuse your reader.
--- 
--- ```lua
--- default = <userdata 1>
--- ```
----@field ReadabilityFillerwords true | false | <userdata 1>
+---@field ReadabilityFillerwords true | false
 -- Suggests splitting long, complicated sentences that could potentially confuse your reader.
--- 
--- ```lua
--- default = <userdata 1>
--- ```
----@field ReadabilityTransforms true | false | <userdata 1>
+---@field ReadabilityTransforms true | false
 -- Flags series of sentences that follow the same pattern.
--- 
--- ```lua
--- default = <userdata 1>
--- ```
----@field SentenceVariety true | false | <userdata 1>
+---@field SentenceVariety true | false
 -- Suggests removing extra spaces surrounding a slash.
--- 
--- ```lua
--- default = <userdata 1>
--- ```
----@field SpacesSurroundingSlash true | false | <userdata 1>
+---@field SpacesSurroundingSlash true | false
 -- Suggests rewriting split infinitives so that an adverb doesn't come between 'to' and the verb.
--- 
--- ```lua
--- default = <userdata 1>
--- ```
----@field SplitInfinitive true | false | <userdata 1>
+---@field SplitInfinitive true | false
 -- Suggests completing all incomplete sentences, including stylistic sentence fragments that may be intentional.
--- 
--- ```lua
--- default = <userdata 1>
--- ```
----@field StylisticFragments true | false | <userdata 1>
+---@field StylisticFragments true | false
 -- Flags unnecessary use of ellipses (...).
--- 
--- ```lua
--- default = <userdata 1>
--- ```
----@field UnnecessaryEllipses true | false | <userdata 1>
+---@field UnnecessaryEllipses true | false
 -- Suggests alternatives to words that occur frequently in the same paragraph.
--- 
--- ```lua
--- default = <userdata 1>
--- ```
----@field Variety true | false | <userdata 1>
+---@field Variety true | false
 -- Suggests alternatives to bland and overused words such as 'good' and 'nice'.
--- 
--- ```lua
--- default = <userdata 1>
--- ```
----@field Vocabulary true | false | <userdata 1>
+---@field Vocabulary true | false
 
 ---@class _.lspconfig.settings.grammarly.Config
 -- Specific variety of English being written. See [this article](https://support.grammarly.com/hc/en-us/articles/115000089992-Select-between-British-English-American-English-Canadian-English-and-Australian-English) for differences.
@@ -2238,10 +2062,6 @@
 -- ```
 ---@field hhastArgs string[]
 -- Whether to lint the entire project or just the open files
--- 
--- ```lua
--- default = <userdata 1>
--- ```
 ---@field hhastLintMode "whole-project" | "open-files"
 -- Use an alternate `hhast-lint` path. Can be abolute or relative to workspace root.
 -- 
@@ -2264,10 +2084,6 @@
 -- ```
 ---@field useLanguageServer boolean
 -- Absolute path to the workspace root directory. This will be the VS Code workspace root by default, but can be changed if the project is in a subdirectory or mounted in a Docker container.
--- 
--- ```lua
--- default = <userdata 1>
--- ```
 ---@field workspaceRootPath string
 
 ---@class lspconfig.settings.hhvm
@@ -2587,11 +2403,7 @@
 -- ```
 ---@field auto_gas integer
 -- The severity to use when showing hole diagnostics. These are noisy, but some editors don't allow jumping to all severities.
--- 
--- ```lua
--- default = <userdata 1>
--- ```
----@field hole_severity 1 | 2 | 3 | 4 | <userdata 1>
+---@field hole_severity 1 | 2 | 3 | 4
 -- Maximum number of `Use constructor <x>` code actions that can appear
 -- 
 -- ```lua
@@ -2817,10 +2629,6 @@
 -- Indent `<head>` and `<body>` sections.
 ---@field indentInnerHtml boolean
 -- Maximum number of line breaks to be preserved in one chunk. Use `null` for unlimited.
--- 
--- ```lua
--- default = <userdata 1>
--- ```
 ---@field maxPreserveNewLines number
 -- Controls whether existing line breaks before elements should be preserved. Only works before elements, not inside tags or for text.
 -- 
@@ -2849,10 +2657,6 @@
 -- ```
 ---@field wrapAttributes "auto" | "force" | "force-aligned" | "force-expand-multiline" | "aligned-multiple" | "preserve" | "preserve-aligned"
 -- Indent wrapped attributes to after N characters. Use `null` to use the default indent size. Ignored if `#html.format.wrapAttributes#` is set to `aligned`.
--- 
--- ```lua
--- default = <userdata 1>
--- ```
 ---@field wrapAttributesIndentSize number
 -- Maximum amount of characters per line (0 = disable).
 -- 
@@ -3257,10 +3061,6 @@
 
 ---@class _.lspconfig.settings.intelephense.Telemetry
 -- Anonymous usage and crash data will be sent to Azure Application Insights. Inherits from telemetry.enableTelemetry.
--- 
--- ```lua
--- default = <userdata 1>
--- ```
 ---@field enabled boolean
 
 ---@class _.lspconfig.settings.intelephense.Trace
@@ -3503,10 +3303,6 @@
 -- ```
 ---@field defaultMojoExecutionAction "ignore" | "warn" | "error" | "execute"
 -- Path to Maven's global settings.xml
--- 
--- ```lua
--- default = <userdata 1>
--- ```
 ---@field globalSettings string
 -- Specifies severity if the plugin execution is not covered by Maven build lifecycle.
 -- 
@@ -3515,10 +3311,6 @@
 -- ```
 ---@field notCoveredPluginExecutionSeverity "ignore" | "warning" | "error"
 -- Path to Maven's user settings.xml
--- 
--- ```lua
--- default = <userdata 1>
--- ```
 ---@field userSettings string
 
 ---@class _.lspconfig.settings.jdtls.Configuration
@@ -3552,10 +3344,6 @@
 
 ---@class _.lspconfig.settings.jdtls.ContentProvider
 -- Preferred content provider (a 3rd party decompiler id, usually)
--- 
--- ```lua
--- default = <userdata 1>
--- ```
 ---@field preferred string
 
 ---@class _.lspconfig.settings.jdtls.Eclipse
@@ -3616,16 +3404,8 @@
 
 ---@class _.lspconfig.settings.jdtls.Settings
 -- Optional formatter profile name from the Eclipse formatter settings.
--- 
--- ```lua
--- default = <userdata 1>
--- ```
 ---@field profile string
 -- Specifies the url or file path to the [Eclipse formatter xml settings](https://github.com/redhat-developer/vscode-java/wiki/Formatter-settings).
--- 
--- ```lua
--- default = <userdata 1>
--- ```
 ---@field url string
 
 ---@class _.lspconfig.settings.jdtls.Format
@@ -3653,10 +3433,6 @@
 
 ---@class _.lspconfig.settings.jdtls.Java
 -- The location to the JVM used to run the Gradle daemon.
--- 
--- ```lua
--- default = <userdata 1>
--- ```
 ---@field home string
 
 ---@class _.lspconfig.settings.jdtls.Offline
@@ -3665,10 +3441,6 @@
 
 ---@class _.lspconfig.settings.jdtls.User
 -- Setting for GRADLE_USER_HOME.
--- 
--- ```lua
--- default = <userdata 1>
--- ```
 ---@field home string
 
 ---@class _.lspconfig.settings.jdtls.Wrapper
@@ -3682,10 +3454,6 @@
 ---@class _.lspconfig.settings.jdtls.Gradle
 ---@field annotationProcessing _.lspconfig.settings.jdtls.AnnotationProcessing
 -- Arguments to pass to Gradle.
--- 
--- ```lua
--- default = <userdata 1>
--- ```
 ---@field arguments string
 -- Enable/disable the Gradle importer.
 -- 
@@ -3694,25 +3462,13 @@
 -- ```
 ---@field enabled boolean
 -- Use Gradle from the specified local installation directory or GRADLE_HOME if the Gradle wrapper is missing or disabled and no 'java.import.gradle.version' is specified.
--- 
--- ```lua
--- default = <userdata 1>
--- ```
 ---@field home string
 ---@field java _.lspconfig.settings.jdtls.Java
 -- JVM arguments to pass to Gradle.
--- 
--- ```lua
--- default = <userdata 1>
--- ```
 ---@field jvmArguments string
 ---@field offline _.lspconfig.settings.jdtls.Offline
 ---@field user _.lspconfig.settings.jdtls.User
 -- Use Gradle from the specific version if the Gradle wrapper is missing or disabled.
--- 
--- ```lua
--- default = <userdata 1>
--- ```
 ---@field version string
 ---@field wrapper _.lspconfig.settings.jdtls.Wrapper
 
@@ -3800,10 +3556,6 @@
 -- 
 -- On Windows, backslashes must be escaped, i.e.
 -- "java.jdt.ls.java.home":"C:\\Program Files\\Java\\jdk-17.0_3"
--- 
--- ```lua
--- default = <userdata 1>
--- ```
 ---@field home string
 
 ---@class _.lspconfig.settings.jdtls.LombokSupport
@@ -3965,10 +3717,6 @@
 
 ---@class _.lspconfig.settings.jdtls.Settings
 -- Specifies the url or file path to the workspace Java settings. See [Setting Global Preferences](https://github.com/redhat-developer/vscode-java/wiki/Settings-Global-Preferences)
--- 
--- ```lua
--- default = <userdata 1>
--- ```
 ---@field url string
 
 ---@class _.lspconfig.settings.jdtls.SharedIndexes
@@ -4077,10 +3825,6 @@
 -- Specifies the folder path to the JDK (17 or more recent) used to launch the Java Language Server.
 -- On Windows, backslashes must be escaped, i.e.
 -- "java.home":"C:\\Program Files\\Java\\jdk-17.0_3"
--- 
--- ```lua
--- default = <userdata 1>
--- ```
 ---@field home string
 ---@field implementationsCodeLens _.lspconfig.settings.jdtls.ImplementationsCodeLens
 ---@field import _.lspconfig.settings.jdtls.Import
@@ -4115,10 +3859,6 @@
 
 ---@class _.lspconfig.settings.jdtls.Telemetry
 -- Enable usage data and errors to be sent to Red Hat servers. Read our [privacy statement](https://developers.redhat.com/article/tool-data-collection).
--- 
--- ```lua
--- default = <userdata 1>
--- ```
 ---@field enabled boolean
 
 ---@class _.lspconfig.settings.jdtls.Redhat
@@ -4334,10 +4074,6 @@
 
 ---@class _.lspconfig.settings.julials.Julia
 -- Number of threads to use for Julia processes. A value of `auto` works on Julia versions that allow for `--threads=auto`.
--- 
--- ```lua
--- default = <userdata 1>
--- ```
 ---@field NumThreads integer|string
 -- Additional Julia arguments.
 -- 
@@ -4376,22 +4112,10 @@
 -- ```
 ---@field editor string
 -- Enable crash reports to be sent to the julia VS Code extension developers.
--- 
--- ```lua
--- default = <userdata 1>
--- ```
 ---@field enableCrashReporter boolean
 -- Enable usage data and errors to be sent to the julia VS Code extension developers.
--- 
--- ```lua
--- default = <userdata 1>
--- ```
 ---@field enableTelemetry boolean
 -- Path to a julia environment. VS Code needs to be reloaded for changes to take effect.
--- 
--- ```lua
--- default = <userdata 1>
--- ```
 ---@field environmentPath string
 -- Points to the julia executable.
 -- 
@@ -4426,10 +4150,6 @@
 -- ```
 ---@field showRuntimeDiagnostics boolean
 -- Download symbol server cache files from GitHub.
--- 
--- ```lua
--- default = <userdata 1>
--- ```
 ---@field symbolCacheDownload boolean
 -- Symbol server cache download URL.
 -- 
@@ -7161,10 +6881,6 @@
 -- ```
 ---@field includeNonScripts boolean
 -- Path to the Rojo executable. If not provided, attempts to run `rojo` in the workspace directory, so it must be available on the PATH
--- 
--- ```lua
--- default = <userdata 1>
--- ```
 ---@field rojoPath string
 -- The name of the Rojo project file to generate a sourcemap for.
 -- Only applies if `#luau-lsp.sourcemap.autogenerate#` is enabled
@@ -7223,22 +6939,10 @@
 
 ---@class _.lspconfig.settings.perlls.Perl
 -- directory for caching of parsed symbols, if the directory does not exists, it will be created, defaults to ${workspace}/.vscode/perl-lang. This should be one unqiue directory per project and an absolute path.
--- 
--- ```lua
--- default = <userdata 1>
--- ```
 ---@field cacheDir string
 -- arguments for containerCmd. Varies depending on containerCmd.
--- 
--- ```lua
--- default = <userdata 1>
--- ```
 ---@field containerArgs any[]
 -- If set Perl::LanguageServer can run inside a container. Options are: 'docker', 'docker-compose', 'podman', 'kubectl'
--- 
--- ```lua
--- default = <userdata 1>
--- ```
 ---@field containerCmd string
 -- To start a new container, set to 'run', to execute inside an existing container set to 'exec'. Note: kubectl only supports 'exec'
 -- 
@@ -7247,10 +6951,6 @@
 -- ```
 ---@field containerMode string
 -- Image to start or container to exec inside or pod to use
--- 
--- ```lua
--- default = <userdata 1>
--- ```
 ---@field containerName string
 -- port to use for connection between vscode and debug adapter inside Perl::LanguageServer. On a multi user system every user must use a different port.
 -- 
@@ -7267,10 +6967,6 @@
 -- if true, the LanguageServer will not cache the result of parsing source files on disk, so it can be used within readonly directories
 ---@field disableCache boolean
 -- per default enviroment from vscode will be passed to debuggee, syntax check and perltidy. If set to true, no enviroment variables will be passed.
--- 
--- ```lua
--- default = <userdata 1>
--- ```
 ---@field disablePassEnv boolean
 -- enable/disable this extension
 -- 
@@ -7279,28 +6975,12 @@
 -- ```
 ---@field enable boolean
 -- object with environment settings for command that starts the LanguageServer, e.g. can be used to set KUBECONFIG.
--- 
--- ```lua
--- default = <userdata 1>
--- ```
 ---@field env table
 -- array for filtering perl file, defaults to *.pm|*.pl
--- 
--- ```lua
--- default = <userdata 1>
--- ```
 ---@field fileFilter any[]
 -- directories to ignore, defaults to .vscode, .git, .svn
--- 
--- ```lua
--- default = <userdata 1>
--- ```
 ---@field ignoreDirs any[]
 -- If set, log output is written to the given logfile, instead of displaying it in the vscode output pane. Log output is always appended so you are responsible for rotating the file.
--- 
--- ```lua
--- default = <userdata 1>
--- ```
 ---@field logFile string
 -- Log level 0-2
 -- 
@@ -7309,60 +6989,24 @@
 -- ```
 ---@field logLevel integer
 -- mapping of local to remote paths
--- 
--- ```lua
--- default = <userdata 1>
--- ```
 ---@field pathMap any[]
 -- defaults to perl
--- 
--- ```lua
--- default = <userdata 1>
--- ```
 ---@field perlCmd string
 -- array with paths to add to perl library path. This setting is used by the syntax checker and for the debuggee and also for the LanguageServer itself. perl.perlInc should be absolute paths.
--- 
--- ```lua
--- default = <userdata 1>
--- ```
 ---@field perlInc any[]
 -- if true, show also local variables in symbol view
 ---@field showLocalVars boolean
 -- ip address of remote system
--- 
--- ```lua
--- default = <userdata 1>
--- ```
 ---@field sshAddr string
 -- optional arguments for ssh
--- 
--- ```lua
--- default = <userdata 1>
--- ```
 ---@field sshArgs any[]
 -- defaults to ssh on unix and plink on windows
--- 
--- ```lua
--- default = <userdata 1>
--- ```
 ---@field sshCmd string
 -- optional, port for ssh to remote system
--- 
--- ```lua
--- default = <userdata 1>
--- ```
 ---@field sshPort string
 -- user for ssh login
--- 
--- ```lua
--- default = <userdata 1>
--- ```
 ---@field sshUser string
 -- path of the workspace root on remote system
--- 
--- ```lua
--- default = <userdata 1>
--- ```
 ---@field sshWorkspaceRoot string
 -- Use -T for syntax check.
 ---@field useTaintForSyntaxCheck boolean
@@ -8004,16 +7648,8 @@
 -- ```
 ---@field phpExecutableArgs string[]
 -- Optional, defaults to searching for "php". The path to a PHP 7.0+ executable to use to execute the Psalm server. The PHP 7.0+ installation should preferably include and enable the PHP module `pcntl`. (Modifying requires VSCode reload)
--- 
--- ```lua
--- default = <userdata 1>
--- ```
 ---@field phpExecutablePath string
 -- Optional (Advanced). If provided, this overrides the Psalm script to use, e.g. vendor/bin/psalm. (Modifying requires VSCode reload)
--- 
--- ```lua
--- default = <userdata 1>
--- ```
 ---@field psalmClientScriptPath string
 -- Optional (Advanced). Additional arguments to the Psalm language server. (Modifying requires VSCode reload)
 -- 
@@ -8022,16 +7658,8 @@
 -- ```
 ---@field psalmScriptArgs string[]
 -- Optional (Advanced). If provided, this overrides the Psalm script to use, e.g. vendor/bin/psalm-language-server. (Modifying requires VSCode reload)
--- 
--- ```lua
--- default = <userdata 1>
--- ```
 ---@field psalmScriptPath string
 -- Optional (Advanced). If provided, this overrides the Psalm version detection (Modifying requires VSCode reload)
--- 
--- ```lua
--- default = <userdata 1>
--- ```
 ---@field psalmVersion string
 ---@field trace _.lspconfig.settings.psalm.Trace
 -- Enable this to enable unused variable and parameter detection
@@ -8261,10 +7889,6 @@
 -- ```
 ---@field autocompleteGrouped boolean
 -- Maximum number of results to fetch for an autocompletion request. May improve performance on large projects.
--- 
--- ```lua
--- default = <userdata 1>
--- ```
 ---@field autocompleteLimit integer
 -- Build command to use with arguments. Not passed to shell. eg `spago build --purs-args --json-errors`
 -- 
@@ -8281,10 +7905,6 @@
 -- ```
 ---@field censorWarnings string[]
 -- List of codegen targets to pass to the compiler for rebuild. e.g. js, corefn. If not specified (rather than empty array) this will not be passed and the compiler will default to js. Requires 0.12.1+
--- 
--- ```lua
--- default = <userdata 1>
--- ```
 ---@field codegenTargets string[]
 -- Enable declaration codelens to add types to declarations
 -- 
@@ -8359,10 +7979,6 @@
 -- ```
 ---@field preludeModule string
 -- Port to use for purs IDE server (whether an existing server or to start a new one). By default a random port is chosen (or an existing port in .psc-ide-port if present), if this is specified no attempt will be made to select an alternative port on failure.
--- 
--- ```lua
--- default = <userdata 1>
--- ```
 ---@field pscIdePort integer
 -- Log level for purs IDE server
 -- 
@@ -8397,10 +8013,6 @@
 
 ---@class _.lspconfig.settings.pylsp.Flake8
 -- Path to the config file that will be the authoritative config source.
--- 
--- ```lua
--- default = <userdata 1>
--- ```
 ---@field config string
 -- Enable or disable the plugin.
 ---@field enabled boolean
@@ -8417,16 +8029,8 @@
 -- ```
 ---@field executable string
 -- Only check for filenames matching the patterns in this list.
--- 
--- ```lua
--- default = <userdata 1>
--- ```
 ---@field filename string
 -- Hang closing bracket instead of matching indentation of opening bracket's line.
--- 
--- ```lua
--- default = <userdata 1>
--- ```
 ---@field hangClosing boolean
 -- List of errors and warnings to ignore (or skip).
 -- 
@@ -8435,22 +8039,10 @@
 -- ```
 ---@field ignore string[]
 -- Set indentation spaces.
--- 
--- ```lua
--- default = <userdata 1>
--- ```
 ---@field indentSize integer
 -- Maximum allowed complexity threshold.
--- 
--- ```lua
--- default = <userdata 1>
--- ```
 ---@field maxComplexity integer
 -- Maximum allowed line length for the entirety of this run.
--- 
--- ```lua
--- default = <userdata 1>
--- ```
 ---@field maxLineLength integer
 -- A pairing of filenames and violation codes that defines which violations to ignore in a particular file, for example: `["file_path.py:W305,W304"]`).
 -- 
@@ -8459,10 +8051,6 @@
 -- ```
 ---@field perFileIgnores string[]
 -- List of errors and warnings to enable.
--- 
--- ```lua
--- default = <userdata 1>
--- ```
 ---@field select string[]
 
 ---@class _.lspconfig.settings.pylsp.Jedi
@@ -8473,16 +8061,8 @@
 -- ```
 ---@field auto_import_modules string[]
 -- Define environment variables for jedi.Script and Jedi.names.
--- 
--- ```lua
--- default = <userdata 1>
--- ```
 ---@field env_vars table
 -- Define environment for jedi.Script and Jedi.names.
--- 
--- ```lua
--- default = <userdata 1>
--- ```
 ---@field environment string
 -- Define extra paths for jedi.Script.
 -- 
@@ -8643,10 +8223,6 @@
 -- ```
 ---@field filename string[]
 -- Hang closing bracket instead of matching indentation of opening bracket's line.
--- 
--- ```lua
--- default = <userdata 1>
--- ```
 ---@field hangClosing boolean
 -- Ignore errors and warnings
 -- 
@@ -8655,22 +8231,10 @@
 -- ```
 ---@field ignore string[]
 -- Set indentation spaces.
--- 
--- ```lua
--- default = <userdata 1>
--- ```
 ---@field indentSize integer
 -- Set maximum allowed line length.
--- 
--- ```lua
--- default = <userdata 1>
--- ```
 ---@field maxLineLength integer
 -- Select errors and warnings
--- 
--- ```lua
--- default = <userdata 1>
--- ```
 ---@field select string[]
 
 ---@class _.lspconfig.settings.pylsp.Pydocstyle
@@ -8687,11 +8251,7 @@
 -- ```
 ---@field addSelect string[]
 -- Choose the basic list of checked errors by specifying an existing convention.
--- 
--- ```lua
--- default = <userdata 1>
--- ```
----@field convention "pep257" | "numpy" | "google" | <userdata 1>
+---@field convention "pep257" | "numpy" | "google"
 -- Enable or disable the plugin.
 ---@field enabled boolean
 -- Ignore errors and warnings
@@ -8713,10 +8273,6 @@
 -- ```
 ---@field matchDir string
 -- Select errors and warnings
--- 
--- ```lua
--- default = <userdata 1>
--- ```
 ---@field select string[]
 
 ---@class _.lspconfig.settings.pylsp.Pyflakes
@@ -8737,10 +8293,6 @@
 -- Enable or disable the plugin.
 ---@field enabled boolean
 -- Executable to run pylint with. Enabling this will run pylint on unsaved files via stdin. Can slow down workflow. Only works with python3.
--- 
--- ```lua
--- default = <userdata 1>
--- ```
 ---@field executable string
 
 ---@class _.lspconfig.settings.pylsp.Rope.Autoimport
@@ -8785,16 +8337,8 @@
 
 ---@class _.lspconfig.settings.pylsp.Rope
 -- Builtin and c-extension modules that are allowed to be imported and inspected by rope.
--- 
--- ```lua
--- default = <userdata 1>
--- ```
 ---@field extensionModules string
 -- The name of the folder in which rope stores project configurations and data.  Pass `null` for not using such a folder at all.
--- 
--- ```lua
--- default = <userdata 1>
--- ```
 ---@field ropeFolder string[]
 
 ---@class _.lspconfig.settings.pylsp.Pylsp
@@ -9365,19 +8909,11 @@
 -- Automatically start ReScript's code analysis.
 ---@field autoRunCodeAnalysis boolean
 -- Path to the directory where cross-platform ReScript binaries are. You can use it if you haven't or don't want to use the installed ReScript from node_modules in your project.
--- 
--- ```lua
--- default = <userdata 1>
--- ```
 ---@field binaryPath string
 -- Enable (experimental) code lens for function definitions.
 ---@field codeLens boolean
 ---@field inlayHints _.lspconfig.settings.rescriptls.InlayHints
 -- Path to the directory where platform-specific ReScript binaries are. You can use it if you haven't or don't want to use the installed ReScript from node_modules in your project.
--- 
--- ```lua
--- default = <userdata 1>
--- ```
 ---@field platformPath string
 ---@field signatureHelp _.lspconfig.settings.rescriptls.SignatureHelp
 
@@ -9397,24 +8933,12 @@
 -- ```
 ---@field all_targets boolean
 -- Specify to run analysis as if running `cargo check --bin <name>`. Use `null` to auto-detect. (unstable)
--- 
--- ```lua
--- default = <userdata 1>
--- ```
 ---@field build_bin string
 -- EXPERIMENTAL (requires `unstable_features`)
 -- If set, executes a given program responsible for rebuilding save-analysis to be loaded by the RLS. The program given should output a list of resulting .json files on stdout. 
 -- Implies `rust.build_on_save`: true.
--- 
--- ```lua
--- default = <userdata 1>
--- ```
 ---@field build_command string
 -- Specify to run analysis as if running `cargo check --lib`. Use `null` to auto-detect. (unstable)
--- 
--- ```lua
--- default = <userdata 1>
--- ```
 ---@field build_lib boolean
 -- Only index the project when a file is saved and not on change.
 ---@field build_on_save boolean
@@ -9450,18 +8974,10 @@
 -- ```
 ---@field features any[]
 -- Instructs cargo to enable full documentation extraction during save-analysis while building the crate.
--- 
--- ```lua
--- default = <userdata 1>
--- ```
 ---@field full_docs boolean
 -- Whether to surpress the deprecation notification on start up.
 ---@field ignore_deprecation_warning boolean
 -- Number of Cargo jobs to be run in parallel.
--- 
--- ```lua
--- default = <userdata 1>
--- ```
 ---@field jobs number
 -- Do not enable default Cargo features.
 ---@field no_default_features boolean
@@ -9478,16 +8994,8 @@
 -- ```
 ---@field rust-analyzer table
 -- Flags added to RUSTFLAGS.
--- 
--- ```lua
--- default = <userdata 1>
--- ```
 ---@field rustflags string
 -- When specified, RLS will use the Rustfmt pointed at the path instead of the bundled one
--- 
--- ```lua
--- default = <userdata 1>
--- ```
 ---@field rustfmt_path string
 -- Show additional context in hover tooltips when available. This is often the type local variable declaration.
 -- 
@@ -9502,30 +9010,14 @@
 -- ```
 ---@field show_warnings boolean
 -- --sysroot
--- 
--- ```lua
--- default = <userdata 1>
--- ```
 ---@field sysroot string
 -- --target
--- 
--- ```lua
--- default = <userdata 1>
--- ```
 ---@field target string
 -- When specified, it places the generated analysis files at the specified target directory. By default it is placed target/rls directory.
--- 
--- ```lua
--- default = <userdata 1>
--- ```
 ---@field target_dir string
 -- Enable unstable features.
 ---@field unstable_features boolean
 -- Time in milliseconds between receiving a change notification and starting build.
--- 
--- ```lua
--- default = <userdata 1>
--- ```
 ---@field wait_to_build number
 
 ---@class _.lspconfig.settings.rls.Trace
@@ -9552,10 +9044,6 @@
 -- Disable usage of rustup and use rustc/rls/rust-analyzer from PATH.
 ---@field disableRustup boolean
 -- Allow multiple projects in the same folder, along with removing the constraint that the cargo.toml must be located at the root. (Experimental: might not work for certain setups)
--- 
--- ```lua
--- default = <userdata 1>
--- ```
 ---@field enableMultiProjectSetup boolean
 -- The underlying LSP server used to provide IDE support for Rust projects.
 -- 
@@ -9572,10 +9060,6 @@
 -- ```
 ---@field revealOutputChannelOn "info" | "warn" | "error" | "never"
 -- Override RLS path. Only required for RLS developers. If you set this and use rustup, you should also set `rust-client.channel` to ensure your RLS sees the right libraries. If you don't use rustup, make sure to set `rust-client.disableRustup`.
--- 
--- ```lua
--- default = <userdata 1>
--- ```
 ---@field rlsPath string
 -- Path to rustup executable. Ignored if rustup is disabled.
 -- 
@@ -9593,16 +9077,8 @@
 
 ---@class _.lspconfig.settings.rome.Rome
 -- The rome lsp server executable. If the path is relative, the workspace folder will be used as base path
--- 
--- ```lua
--- default = <userdata 1>
--- ```
 ---@field lspBin string
 -- Enable/Disable Rome handling renames in the workspace. (Experimental)
--- 
--- ```lua
--- default = <userdata 1>
--- ```
 ---@field rename boolean
 -- Require a Rome configuration file to enable syntax errors, formatting and linting. Requires Rome 12 or newer.
 -- 
@@ -9697,10 +9173,6 @@
 -- cargo check --quiet --workspace --message-format=json --all-targets
 -- ```
 -- .
--- 
--- ```lua
--- default = <userdata 1>
--- ```
 ---@field overrideCommand string[]
 -- Use `RUSTC_WRAPPER=rust-analyzer` when running build scripts to
 -- avoid checking unnecessary things.
@@ -9763,16 +9235,8 @@
 -- `{cargo.sysroot}/lib/rustlib/src/rust/library`.
 -- 
 -- This option does not take effect until rust-analyzer is restarted.
--- 
--- ```lua
--- default = <userdata 1>
--- ```
 ---@field sysrootSrc string
 -- Compilation target override (target triple).
--- 
--- ```lua
--- default = <userdata 1>
--- ```
 ---@field target string
 -- Unsets the implicit `#[cfg(test)]` for the specified crates.
 -- 
@@ -9811,10 +9275,6 @@
 -- `#rust-analyzer.cargo.features#`.
 -- 
 -- Set to `"all"` to pass `--all-features` to Cargo.
--- 
--- ```lua
--- default = <userdata 1>
--- ```
 ---@field features "all"|string[]|any
 -- List of `cargo check` (or other command specified in `check.command`) diagnostics to ignore.
 -- 
@@ -9847,10 +9307,6 @@
 ---@field invocationStrategy "per_workspace" | "once"
 -- Whether to pass `--no-default-features` to Cargo. Defaults to
 -- `#rust-analyzer.cargo.noDefaultFeatures#`.
--- 
--- ```lua
--- default = <userdata 1>
--- ```
 ---@field noDefaultFeatures boolean
 -- Override the command rust-analyzer uses instead of `cargo check` for
 -- diagnostics on save. The command is required to output json and
@@ -9874,10 +9330,6 @@
 -- cargo check --workspace --message-format=json --all-targets
 -- ```
 -- .
--- 
--- ```lua
--- default = <userdata 1>
--- ```
 ---@field overrideCommand string[]
 -- Check for specific targets. Defaults to `#rust-analyzer.cargo.target#` if empty.
 -- 
@@ -9885,10 +9337,6 @@
 -- `["aarch64-apple-darwin", "x86_64-apple-darwin"]`.
 -- 
 -- Aliased as `"checkOnSave.targets"`.
--- 
--- ```lua
--- default = <userdata 1>
--- ```
 ---@field targets any|string|string[]
 
 ---@class _.lspconfig.settings.rust_analyzer.Autoimport
@@ -9987,10 +9435,6 @@
 ---@field callable _.lspconfig.settings.rust_analyzer.Callable
 ---@field fullFunctionSignatures _.lspconfig.settings.rust_analyzer.FullFunctionSignatures
 -- Maximum number of completions to return. If `None`, the limit is infinite.
--- 
--- ```lua
--- default = <userdata 1>
--- ```
 ---@field limit integer
 ---@field postfix _.lspconfig.settings.rust_analyzer.Postfix
 ---@field privateEditable _.lspconfig.settings.rust_analyzer.PrivateEditable
@@ -10544,10 +9988,6 @@
 
 ---@class _.lspconfig.settings.rust_analyzer.Lru
 -- Number of syntax trees rust-analyzer keeps in memory. Defaults to 128.
--- 
--- ```lua
--- default = <userdata 1>
--- ```
 ---@field capacity integer
 ---@field query _.lspconfig.settings.rust_analyzer.Query
 
@@ -10584,10 +10024,6 @@
 -- ```
 ---@field ignored table
 -- Internal config, path to proc-macro server executable.
--- 
--- ```lua
--- default = <userdata 1>
--- ```
 ---@field server string
 
 ---@class _.lspconfig.settings.rust_analyzer.References
@@ -10596,10 +10032,6 @@
 
 ---@class _.lspconfig.settings.rust_analyzer.Runnables
 -- Command to be executed instead of 'cargo' for runnables.
--- 
--- ```lua
--- default = <userdata 1>
--- ```
 ---@field command string
 -- Additional arguments to be passed to cargo for runnables such as
 -- tests or binaries. For example, it may be `--release`.
@@ -10609,10 +10041,6 @@
 -- ```
 ---@field extraArgs string[]
 -- Environment variables passed to the runnable launched using `Test` or `Debug` lens or `rust-analyzer.run` command.
--- 
--- ```lua
--- default = <userdata 1>
--- ```
 ---@field extraEnv any|object[]|table
 -- Problem matchers to use for `rust-analyzer.run` command, eg `["$rustc", "$rust-panic"]`.
 -- 
@@ -10630,10 +10058,6 @@
 -- crates must set `[package.metadata.rust-analyzer] rustc_private=true` to use it.
 -- 
 -- This option does not take effect until rust-analyzer is restarted.
--- 
--- ```lua
--- default = <userdata 1>
--- ```
 ---@field source string
 
 ---@class _.lspconfig.settings.rust_analyzer.RangeFormatting
@@ -10654,10 +10078,6 @@
 -- not that of `cargo fmt`. The file contents will be passed on the
 -- standard input and the formatted result will be read from the
 -- standard output.
--- 
--- ```lua
--- default = <userdata 1>
--- ```
 ---@field overrideCommand string[]
 ---@field rangeFormatting _.lspconfig.settings.rust_analyzer.RangeFormatting
 
@@ -10747,16 +10167,8 @@
 
 ---@class _.lspconfig.settings.rust_analyzer.Server
 -- Extra environment variables that will be passed to the rust-analyzer executable. Useful for passing e.g. `RA_LOG` for debugging.
--- 
--- ```lua
--- default = <userdata 1>
--- ```
 ---@field extraEnv table
 -- Path to rust-analyzer executable (points to bundled binary by default).
--- 
--- ```lua
--- default = <userdata 1>
--- ```
 ---@field path string
 
 ---@class _.lspconfig.settings.rust_analyzer.Documentation
@@ -10832,10 +10244,6 @@
 ---@field cachePriming _.lspconfig.settings.rust_analyzer.CachePriming
 ---@field cargo _.lspconfig.settings.rust_analyzer.Cargo
 -- Custom cargo runner extension ID.
--- 
--- ```lua
--- default = <userdata 1>
--- ```
 ---@field cargoRunner string
 ---@field check _.lspconfig.settings.rust_analyzer.Check
 -- Run the check command for diagnostics on save.
@@ -10849,10 +10257,6 @@
 ---@field diagnostics _.lspconfig.settings.rust_analyzer.Diagnostics
 -- Sets the extension responsible for determining which extension the rust-analyzer extension uses to generate `rust-project.json` files. This should should only be used
 --  if a build system like Buck or Bazel is also in use.
--- 
--- ```lua
--- default = <userdata 1>
--- ```
 ---@field discoverProjectRunner string
 ---@field files _.lspconfig.settings.rust_analyzer.Files
 ---@field highlightRelated _.lspconfig.settings.rust_analyzer.HighlightRelated
@@ -10875,10 +10279,6 @@
 ---@field lru _.lspconfig.settings.rust_analyzer.Lru
 ---@field notifications _.lspconfig.settings.rust_analyzer.Notifications
 -- How many worker threads in the main loop. The default `null` means to pick automatically.
--- 
--- ```lua
--- default = <userdata 1>
--- ```
 ---@field numThreads integer
 ---@field procMacro _.lspconfig.settings.rust_analyzer.ProcMacro
 ---@field references _.lspconfig.settings.rust_analyzer.References
@@ -11109,10 +10509,6 @@
 -- ```
 ---@field remappingsWindows any[]
 -- Solhint linting validation rules
--- 
--- ```lua
--- default = <userdata 1>
--- ```
 ---@field solhintRules table
 -- Solium linting validation rules
 -- 
@@ -11242,22 +10638,10 @@
 -- Auto-fix and format on save.
 ---@field autoFixOnSave boolean
 -- Stylelint config. If config and configFile are unset, stylelint will automatically look for a config file.
--- 
--- ```lua
--- default = <userdata 1>
--- ```
 ---@field config table
 -- Stylelint config file. If config and configFile are unset, stylelint will automatically look for a config file.
--- 
--- ```lua
--- default = <userdata 1>
--- ```
 ---@field configFile string
 -- Stylelint config overrides. These will be applied on top of the config, configFile, or auto-discovered config file loaded by stylelint.
--- 
--- ```lua
--- default = <userdata 1>
--- ```
 ---@field configOverrides table
 -- Run stylelint on javascript/typescript files.
 ---@field cssInJs boolean
@@ -11689,10 +11073,6 @@
 ---@class _.lspconfig.settings.tailwindcss.Experimental
 ---@field classRegex any[]
 -- Manually specify the Tailwind config file or files that should be read to provide IntelliSense features. Can either be a single string value, or an object where each key is a config file path and each value is a glob or array of globs representing the set of files that the config file applies to.
--- 
--- ```lua
--- default = <userdata 1>
--- ```
 ---@field configFile string|table
 
 ---@class _.lspconfig.settings.tailwindcss.Files
@@ -11784,10 +11164,6 @@
 -- ```
 ---@field includeLanguages table
 -- Enable the Node.js inspector agent for the language server and listen on the specified port.
--- 
--- ```lua
--- default = <userdata 1>
--- ```
 ---@field inspectPort number
 ---@field lint _.lspconfig.settings.tailwindcss.Lint
 -- Root font size in pixels. Used to convert `rem` CSS values to their `px` equivalents. See `#tailwindCSS.showPixelEquivalents#`.
@@ -12901,16 +12277,8 @@
 -- ```
 ---@field maxFileSize number
 -- Set --max-old-space-size option on server process. If you have problem on frequently "Request textDocument/** failed." error, try setting higher memory(MB) on it.
--- 
--- ```lua
--- default = <userdata 1>
--- ```
 ---@field maxOldSpaceSize number
 -- Path to node_modules/vue-language-server/bin/vue-language-server.js.
--- 
--- ```lua
--- default = <userdata 1>
--- ```
 ---@field path string
 ---@field petiteVue _.lspconfig.settings.volar.PetiteVue
 -- Reverse priority for tsconfig pickup.
@@ -13802,10 +13170,6 @@
 -- Execute fuzzy match of completion items on server side. Enable this will help filter out useless completion items from tsserver.
 ---@field enableServerSideFuzzyMatch boolean
 -- Maximum number of completion entries to return. Recommend to also toggle `enableServerSideFuzzyMatch` to preserve items with higher accuracy.
--- 
--- ```lua
--- default = <userdata 1>
--- ```
 ---@field entriesLimit number
 
 ---@class _.lspconfig.settings.vtsls.Experimental
@@ -14298,10 +13662,6 @@
 
 ---@class _.lspconfig.settings.yamlls.Telemetry
 -- Enable usage data and errors to be sent to Red Hat servers. Read our [privacy statement](https://developers.redhat.com/article/tool-data-collection).
--- 
--- ```lua
--- default = <userdata 1>
--- ```
 ---@field enabled boolean
 
 ---@class _.lspconfig.settings.yamlls.Redhat
@@ -14433,16 +13793,8 @@
 
 ---@class _.lspconfig.settings.zls.Zls
 -- Path to the `build_runner.zig` file provided by zls. null is equivalent to `${executable_directory}/build_runner.zig`
--- 
--- ```lua
--- default = <userdata 1>
--- ```
 ---@field build_runner_path string
 -- Path to 'builtin;' useful for debugging, automatically set if let null
--- 
--- ```lua
--- default = <userdata 1>
--- ```
 ---@field builtin_path string
 -- Whether to automatically check for new updates
 -- 
@@ -14473,10 +13825,6 @@
 -- Enables snippet completions when the client also supports them
 ---@field enable_snippets boolean
 -- Path to a directroy that will be used as zig's cache. null is equivalent to `${KnownFloders.Cache}/zls`
--- 
--- ```lua
--- default = <userdata 1>
--- ```
 ---@field global_cache_path string
 -- Whether to highlight global var declarations
 ---@field highlight_global_var_declarations boolean
@@ -14520,16 +13868,8 @@
 -- Enables warnings for style guideline mismatches
 ---@field warn_style boolean
 -- Zig executable path, e.g. `/path/to/zig/zig`, used to run the custom build runner. If `null`, zig is looked up in `PATH`. Will be used to infer the zig standard library path if none is provided
--- 
--- ```lua
--- default = <userdata 1>
--- ```
 ---@field zig_exe_path string
 -- Zig library path, e.g. `/path/to/zig/lib/zig`, used to analyze std library imports
--- 
--- ```lua
--- default = <userdata 1>
--- ```
 ---@field zig_lib_path string
 
 ---@class lspconfig.settings.zls
