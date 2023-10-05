@@ -10188,6 +10188,14 @@
 ---@field detail "full" | "parameters"
 ---@field documentation _.lspconfig.settings.rust_analyzer.Documentation
 
+---@class _.lspconfig.settings.rust_analyzer.StatusBar
+-- Action to run when clicking the extension status bar item.
+-- 
+-- ```lua
+-- default = "openLogs"
+-- ```
+---@field clickAction "stopServer" | "openLogs"
+
 ---@class _.lspconfig.settings.rust_analyzer.Trace
 -- Enable logging of VS Code extensions itself.
 ---@field extension boolean
@@ -10302,6 +10310,7 @@
 -- ```
 ---@field showUnlinkedFileNotification boolean
 ---@field signatureInfo _.lspconfig.settings.rust_analyzer.SignatureInfo
+---@field statusBar _.lspconfig.settings.rust_analyzer.StatusBar
 ---@field trace _.lspconfig.settings.rust_analyzer.Trace
 ---@field typing _.lspconfig.settings.rust_analyzer.Typing
 ---@field workspace _.lspconfig.settings.rust_analyzer.Workspace

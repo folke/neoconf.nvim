@@ -1227,6 +1227,19 @@
       "markdownDescription": "Show documentation.",
       "type": "boolean"
     },
+    "rust-analyzer.statusBar.clickAction": {
+      "default": "openLogs",
+      "enum": [
+        "stopServer",
+        "openLogs"
+      ],
+      "enumDescriptions": [
+        "Stop Server",
+        "Open Logs"
+      ],
+      "markdownDescription": "Action to run when clicking the extension status bar item.",
+      "type": "string"
+    },
     "rust-analyzer.trace.extension": {
       "default": false,
       "description": "Enable logging of VS Code extensions itself.",
