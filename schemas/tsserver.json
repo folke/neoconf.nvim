@@ -188,13 +188,13 @@
     },
     "javascript.inlayHints.variableTypes.suppressWhenTypeMatchesName": {
       "default": true,
-      "markdownDescription": "Suppress type hints on variables whose name is identical to the type name. Requires using TypeScript 4.8+ in the workspace.",
+      "markdownDescription": "Suppress type hints on variables whose name is identical to the type name.",
       "scope": "resource",
       "type": "boolean"
     },
     "javascript.preferGoToSourceDefinition": {
       "default": false,
-      "description": "Makes Go to Definition avoid type declaration files when possible by triggering Go to Source Definition instead. This allows Go to Source Definition to be triggered with the mouse gesture. Requires using TypeScript 4.7+ in the workspace.",
+      "description": "Makes Go to Definition avoid type declaration files when possible by triggering Go to Source Definition instead. This allows Go to Source Definition to be triggered with the mouse gesture.",
       "scope": "window",
       "type": "boolean"
     },
@@ -202,7 +202,7 @@
       "items": {
         "type": "string"
       },
-      "markdownDescription": "Specify glob patterns of files to exclude from auto imports. Relative paths are resolved relative to the workspace root. Patterns are evaluated using tsconfig.json [`exclude`](https://www.typescriptlang.org/tsconfig#exclude) semantics. Requires using TypeScript 4.8 or newer in the workspace.",
+      "markdownDescription": "Specify glob patterns of files to exclude from auto imports. Relative paths are resolved relative to the workspace root. Patterns are evaluated using tsconfig.json [`exclude`](https://www.typescriptlang.org/tsconfig#exclude) semantics.",
       "scope": "resource",
       "type": "array"
     },
@@ -736,7 +736,7 @@
     },
     "typescript.inlayHints.variableTypes.suppressWhenTypeMatchesName": {
       "default": true,
-      "markdownDescription": "Suppress type hints on variables whose name is identical to the type name. Requires using TypeScript 4.8+ in the workspace.",
+      "markdownDescription": "Suppress type hints on variables whose name is identical to the type name.",
       "scope": "resource",
       "type": "boolean"
     },
@@ -766,7 +766,7 @@
     },
     "typescript.preferGoToSourceDefinition": {
       "default": false,
-      "description": "Makes Go to Definition avoid type declaration files when possible by triggering Go to Source Definition instead. This allows Go to Source Definition to be triggered with the mouse gesture. Requires using TypeScript 4.7+ in the workspace.",
+      "description": "Makes Go to Definition avoid type declaration files when possible by triggering Go to Source Definition instead. This allows Go to Source Definition to be triggered with the mouse gesture.",
       "scope": "window",
       "type": "boolean"
     },
@@ -774,7 +774,7 @@
       "items": {
         "type": "string"
       },
-      "markdownDescription": "Specify glob patterns of files to exclude from auto imports. Relative paths are resolved relative to the workspace root. Patterns are evaluated using tsconfig.json [`exclude`](https://www.typescriptlang.org/tsconfig#exclude) semantics. Requires using TypeScript 4.8 or newer in the workspace.",
+      "markdownDescription": "Specify glob patterns of files to exclude from auto imports. Relative paths are resolved relative to the workspace root. Patterns are evaluated using tsconfig.json [`exclude`](https://www.typescriptlang.org/tsconfig#exclude) semantics.",
       "scope": "resource",
       "type": "array"
     },
@@ -955,7 +955,7 @@
     },
     "typescript.suggest.objectLiteralMethodSnippets.enabled": {
       "default": true,
-      "description": "Enable/disable snippet completions for methods in object literals. Requires using TypeScript 4.7+ in the workspace.",
+      "description": "Enable/disable snippet completions for methods in object literals.",
       "scope": "resource",
       "type": "boolean"
     },
@@ -1170,7 +1170,7 @@
     },
     "typescript.workspaceSymbols.excludeLibrarySymbols": {
       "default": true,
-      "markdownDescription": "Exclude symbols that come from library files in `Go To Symbol in Workspace` results. Requires using TypeScript 5.3+ in the workspace.",
+      "markdownDescription": "Exclude symbols that come from library files in Go to Symbol in Workspace results. Requires using TypeScript 5.3+ in the workspace.",
       "scope": "window",
       "type": "boolean"
     },
