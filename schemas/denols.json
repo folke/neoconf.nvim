@@ -86,6 +86,16 @@
       "scope": "window",
       "type": "string"
     },
+    "deno.defaultTaskCommand": {
+      "default": "open",
+      "enum": [
+        "open",
+        "run"
+      ],
+      "markdownDescription": "Controls the default action when clicking on a task in the _Deno Tasks sidebar_.",
+      "scope": "window",
+      "type": "string"
+    },
     "deno.disablePaths": {
       "default": [],
       "examples": [

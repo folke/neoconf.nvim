@@ -273,6 +273,12 @@
 -- 
 -- **Not recommended to be set globally.**
 ---@field config string
+-- Controls the default action when clicking on a task in the _Deno Tasks sidebar_.
+-- 
+-- ```lua
+-- default = "open"
+-- ```
+---@field defaultTaskCommand "open" | "run"
 -- Disables the Deno Language Server for specific paths. This will leave the built in TypeScript/JavaScript language server enabled for those paths. Takes priority over `deno.enablePaths`.
 -- 
 -- **Not recommended to be enabled in user settings.**
@@ -5351,7 +5357,7 @@
 -- default = "Opened"
 -- ```
 ---@field cast-type-mismatch "Any" | "Opened" | "None" | "Any!" | "Opened!" | "None!"
--- 
+-- TODO: Needs documentation
 -- 
 -- ```lua
 -- default = "Any"
@@ -5459,7 +5465,7 @@
 -- default = "None"
 -- ```
 ---@field incomplete-signature-doc "Any" | "Opened" | "None" | "Any!" | "Opened!" | "None!"
--- 
+-- TODO: Needs documentation
 -- 
 -- ```lua
 -- default = "Opened"
@@ -5477,7 +5483,7 @@
 -- default = "Any"
 -- ```
 ---@field lowercase-global "Any" | "Opened" | "None" | "Any!" | "Opened!" | "None!"
--- 
+-- TODO: Needs documentation
 -- 
 -- ```lua
 -- default = "Any"
@@ -5729,7 +5735,7 @@
 -- default = "Warning"
 -- ```
 ---@field cast-type-mismatch "Error" | "Warning" | "Information" | "Hint" | "Error!" | "Warning!" | "Information!" | "Hint!"
--- 
+-- TODO: Needs documentation
 -- 
 -- ```lua
 -- default = "Warning"
@@ -5837,7 +5843,7 @@
 -- default = "Warning"
 -- ```
 ---@field incomplete-signature-doc "Error" | "Warning" | "Information" | "Hint" | "Error!" | "Warning!" | "Information!" | "Hint!"
--- 
+-- TODO: Needs documentation
 -- 
 -- ```lua
 -- default = "Warning"
@@ -5855,7 +5861,7 @@
 -- default = "Information"
 -- ```
 ---@field lowercase-global "Error" | "Warning" | "Information" | "Hint" | "Error!" | "Warning!" | "Information!" | "Hint!"
--- 
+-- TODO: Needs documentation
 -- 
 -- ```lua
 -- default = "Warning"
@@ -6307,121 +6313,121 @@
 -- * `disable`: always disable
 -- 
 ---@class _.lspconfig.settings.lua_ls.Builtin
--- 
+-- TODO: Needs documentation
 -- 
 -- ```lua
 -- default = "default"
 -- ```
 ---@field basic "default" | "enable" | "disable"
--- 
+-- TODO: Needs documentation
 -- 
 -- ```lua
 -- default = "default"
 -- ```
 ---@field bit "default" | "enable" | "disable"
--- 
+-- TODO: Needs documentation
 -- 
 -- ```lua
 -- default = "default"
 -- ```
 ---@field bit32 "default" | "enable" | "disable"
--- 
+-- TODO: Needs documentation
 -- 
 -- ```lua
 -- default = "default"
 -- ```
 ---@field builtin "default" | "enable" | "disable"
--- 
+-- TODO: Needs documentation
 -- 
 -- ```lua
 -- default = "default"
 -- ```
 ---@field coroutine "default" | "enable" | "disable"
--- 
+-- TODO: Needs documentation
 -- 
 -- ```lua
 -- default = "default"
 -- ```
 ---@field debug "default" | "enable" | "disable"
--- 
+-- TODO: Needs documentation
 -- 
 -- ```lua
 -- default = "default"
 -- ```
 ---@field ffi "default" | "enable" | "disable"
--- 
+-- TODO: Needs documentation
 -- 
 -- ```lua
 -- default = "default"
 -- ```
 ---@field io "default" | "enable" | "disable"
--- 
+-- TODO: Needs documentation
 -- 
 -- ```lua
 -- default = "default"
 -- ```
 ---@field jit "default" | "enable" | "disable"
--- 
+-- TODO: Needs documentation
 -- 
 -- ```lua
 -- default = "default"
 -- ```
 ---@field jit.profile "default" | "enable" | "disable"
--- 
+-- TODO: Needs documentation
 -- 
 -- ```lua
 -- default = "default"
 -- ```
 ---@field jit.util "default" | "enable" | "disable"
--- 
+-- TODO: Needs documentation
 -- 
 -- ```lua
 -- default = "default"
 -- ```
 ---@field math "default" | "enable" | "disable"
--- 
+-- TODO: Needs documentation
 -- 
 -- ```lua
 -- default = "default"
 -- ```
 ---@field os "default" | "enable" | "disable"
--- 
+-- TODO: Needs documentation
 -- 
 -- ```lua
 -- default = "default"
 -- ```
 ---@field package "default" | "enable" | "disable"
--- 
+-- TODO: Needs documentation
 -- 
 -- ```lua
 -- default = "default"
 -- ```
 ---@field string "default" | "enable" | "disable"
--- 
+-- TODO: Needs documentation
 -- 
 -- ```lua
 -- default = "default"
 -- ```
 ---@field string.buffer "default" | "enable" | "disable"
--- 
+-- TODO: Needs documentation
 -- 
 -- ```lua
 -- default = "default"
 -- ```
 ---@field table "default" | "enable" | "disable"
--- 
+-- TODO: Needs documentation
 -- 
 -- ```lua
 -- default = "default"
 -- ```
 ---@field table.clear "default" | "enable" | "disable"
--- 
+-- TODO: Needs documentation
 -- 
 -- ```lua
 -- default = "default"
 -- ```
 ---@field table.new "default" | "enable" | "disable"
--- 
+-- TODO: Needs documentation
 -- 
 -- ```lua
 -- default = "default"

@@ -692,7 +692,7 @@
         },
         "circle-doc-class": {
           "default": "Any",
-          "description": "",
+          "description": "TODO: Needs documentation",
           "enum": [
             "Any",
             "Opened",
@@ -926,7 +926,7 @@
         },
         "inject-field": {
           "default": "Opened",
-          "description": "",
+          "description": "TODO: Needs documentation",
           "enum": [
             "Any",
             "Opened",
@@ -965,7 +965,7 @@
         },
         "missing-fields": {
           "default": "Any",
-          "description": "",
+          "description": "TODO: Needs documentation",
           "enum": [
             "Any",
             "Opened",
@@ -1517,7 +1517,7 @@
         },
         "circle-doc-class": {
           "default": "Warning",
-          "description": "",
+          "description": "TODO: Needs documentation",
           "enum": [
             "Error",
             "Warning",
@@ -1787,7 +1787,7 @@
         },
         "inject-field": {
           "default": "Warning",
-          "description": "",
+          "description": "TODO: Needs documentation",
           "enum": [
             "Error",
             "Warning",
@@ -1832,7 +1832,7 @@
         },
         "missing-fields": {
           "default": "Warning",
-          "description": "",
+          "description": "TODO: Needs documentation",
           "enum": [
             "Error",
             "Warning",
@@ -2610,7 +2610,7 @@
       "properties": {
         "basic": {
           "default": "default",
-          "description": "",
+          "description": "TODO: Needs documentation",
           "enum": [
             "default",
             "enable",
@@ -2620,7 +2620,7 @@
         },
         "bit": {
           "default": "default",
-          "description": "",
+          "description": "TODO: Needs documentation",
           "enum": [
             "default",
             "enable",
@@ -2630,7 +2630,7 @@
         },
         "bit32": {
           "default": "default",
-          "description": "",
+          "description": "TODO: Needs documentation",
           "enum": [
             "default",
             "enable",
@@ -2640,7 +2640,7 @@
         },
         "builtin": {
           "default": "default",
-          "description": "",
+          "description": "TODO: Needs documentation",
           "enum": [
             "default",
             "enable",
@@ -2650,7 +2650,7 @@
         },
         "coroutine": {
           "default": "default",
-          "description": "",
+          "description": "TODO: Needs documentation",
           "enum": [
             "default",
             "enable",
@@ -2660,7 +2660,7 @@
         },
         "debug": {
           "default": "default",
-          "description": "",
+          "description": "TODO: Needs documentation",
           "enum": [
             "default",
             "enable",
@@ -2670,7 +2670,7 @@
         },
         "ffi": {
           "default": "default",
-          "description": "",
+          "description": "TODO: Needs documentation",
           "enum": [
             "default",
             "enable",
@@ -2680,7 +2680,7 @@
         },
         "io": {
           "default": "default",
-          "description": "",
+          "description": "TODO: Needs documentation",
           "enum": [
             "default",
             "enable",
@@ -2690,7 +2690,7 @@
         },
         "jit": {
           "default": "default",
-          "description": "",
+          "description": "TODO: Needs documentation",
           "enum": [
             "default",
             "enable",
@@ -2700,7 +2700,7 @@
         },
         "jit.profile": {
           "default": "default",
-          "description": "",
+          "description": "TODO: Needs documentation",
           "enum": [
             "default",
             "enable",
@@ -2710,7 +2710,7 @@
         },
         "jit.util": {
           "default": "default",
-          "description": "",
+          "description": "TODO: Needs documentation",
           "enum": [
             "default",
             "enable",
@@ -2720,7 +2720,7 @@
         },
         "math": {
           "default": "default",
-          "description": "",
+          "description": "TODO: Needs documentation",
           "enum": [
             "default",
             "enable",
@@ -2730,7 +2730,7 @@
         },
         "os": {
           "default": "default",
-          "description": "",
+          "description": "TODO: Needs documentation",
           "enum": [
             "default",
             "enable",
@@ -2740,7 +2740,7 @@
         },
         "package": {
           "default": "default",
-          "description": "",
+          "description": "TODO: Needs documentation",
           "enum": [
             "default",
             "enable",
@@ -2750,7 +2750,7 @@
         },
         "string": {
           "default": "default",
-          "description": "",
+          "description": "TODO: Needs documentation",
           "enum": [
             "default",
             "enable",
@@ -2760,7 +2760,7 @@
         },
         "string.buffer": {
           "default": "default",
-          "description": "",
+          "description": "TODO: Needs documentation",
           "enum": [
             "default",
             "enable",
@@ -2770,7 +2770,7 @@
         },
         "table": {
           "default": "default",
-          "description": "",
+          "description": "TODO: Needs documentation",
           "enum": [
             "default",
             "enable",
@@ -2780,7 +2780,7 @@
         },
         "table.clear": {
           "default": "default",
-          "description": "",
+          "description": "TODO: Needs documentation",
           "enum": [
             "default",
             "enable",
@@ -2790,7 +2790,7 @@
         },
         "table.new": {
           "default": "default",
-          "description": "",
+          "description": "TODO: Needs documentation",
           "enum": [
             "default",
             "enable",
@@ -2800,7 +2800,7 @@
         },
         "utf8": {
           "default": "default",
-          "description": "",
+          "description": "TODO: Needs documentation",
           "enum": [
             "default",
             "enable",
@@ -2823,10 +2823,10 @@
       ],
       "markdownDescription": "File encoding. The `ansi` option is only available under the `Windows` platform.",
       "markdownEnumDescriptions": [
-        "",
-        "",
-        "",
-        ""
+        "TODO: Needs documentation",
+        "TODO: Needs documentation",
+        "TODO: Needs documentation",
+        "TODO: Needs documentation"
       ],
       "scope": "resource",
       "type": "string"
@@ -2946,11 +2946,11 @@
       ],
       "markdownDescription": "Lua runtime version.",
       "markdownEnumDescriptions": [
-        "",
-        "",
-        "",
-        "",
-        ""
+        "TODO: Needs documentation",
+        "TODO: Needs documentation",
+        "TODO: Needs documentation",
+        "TODO: Needs documentation",
+        "TODO: Needs documentation"
       ],
       "scope": "resource",
       "type": "string"
