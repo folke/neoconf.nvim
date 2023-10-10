@@ -10055,6 +10055,15 @@
 -- ```
 ---@field problemMatcher string[]
 
+---@class _.lspconfig.settings.rust_analyzer.Rust
+-- Optional path to a rust-analyzer specific target directory.
+-- This prevents rust-analyzer's `cargo check` from locking the `Cargo.lock`
+-- at the expense of duplicating build artifacts.
+-- 
+-- Set to `true` to use a subdirectory of the existing target directory or
+-- set to a path relative to the workspace to use that path.
+---@field analyzerTargetDir any|boolean|string
+
 ---@class _.lspconfig.settings.rust_analyzer.Rustc
 -- Path to the Cargo.toml of the rust compiler workspace, for usage in rustc_private
 -- projects, or "discover" to try to automatically find it if the `rustc-dev` component
@@ -10299,6 +10308,7 @@
 -- Whether to restart the server automatically when certain settings that require a restart are changed.
 ---@field restartServerOnConfigChange boolean
 ---@field runnables _.lspconfig.settings.rust_analyzer.Runnables
+---@field rust _.lspconfig.settings.rust_analyzer.Rust
 ---@field rustc _.lspconfig.settings.rust_analyzer.Rustc
 ---@field rustfmt _.lspconfig.settings.rust_analyzer.Rustfmt
 ---@field semanticHighlighting _.lspconfig.settings.rust_analyzer.SemanticHighlighting
