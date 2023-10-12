@@ -12208,12 +12208,6 @@
 -- default = true
 -- ```
 ---@field enabled boolean
--- Time limit for code actions on save (ms).
--- 
--- ```lua
--- default = 1000
--- ```
----@field savingTimeLimit number
 
 ---@class _.lspconfig.settings.volar.CodeLens
 -- Enabled code lens.
@@ -12523,7 +12517,7 @@
 --  
 -- ```
 ---@field enabled boolean
--- Suppress type hints on variables whose name is identical to the type name. Requires using TypeScript 4.8+ in the workspace.
+-- Suppress type hints on variables whose name is identical to the type name.
 -- 
 -- ```lua
 -- default = true
@@ -12539,7 +12533,7 @@
 ---@field variableTypes _.lspconfig.settings.vtsls.VariableTypes
 
 ---@class _.lspconfig.settings.vtsls.Preferences
--- Specify glob patterns of files to exclude from auto imports. Relative paths are resolved relative to the workspace root. Patterns are evaluated using tsconfig.json [`exclude`](https://www.typescriptlang.org/tsconfig#exclude) semantics. Requires using TypeScript 4.8 or newer in the workspace.
+-- Specify glob patterns of files to exclude from auto imports. Relative paths are resolved relative to the workspace root. Patterns are evaluated using tsconfig.json [`exclude`](https://www.typescriptlang.org/tsconfig#exclude) semantics.
 ---@field autoImportFileExcludePatterns string[]
 -- Preferred path style for auto imports.
 -- 
@@ -12682,7 +12676,7 @@
 ---@field format _.lspconfig.settings.vtsls.Format
 ---@field implicitProjectConfig _.lspconfig.settings.vtsls.ImplicitProjectConfig
 ---@field inlayHints _.lspconfig.settings.vtsls.InlayHints
--- Makes Go to Definition avoid type declaration files when possible by triggering Go to Source Definition instead. This allows Go to Source Definition to be triggered with the mouse gesture. Requires using TypeScript 4.7+ in the workspace.
+-- Makes Go to Definition avoid type declaration files when possible by triggering Go to Source Definition instead. This allows Go to Source Definition to be triggered with the mouse gesture.
 ---@field preferGoToSourceDefinition boolean
 ---@field preferences _.lspconfig.settings.vtsls.Preferences
 ---@field referencesCodeLens _.lspconfig.settings.vtsls.ReferencesCodeLens
@@ -12899,7 +12893,7 @@
 --  
 -- ```
 ---@field enabled boolean
--- Suppress type hints on variables whose name is identical to the type name. Requires using TypeScript 4.8+ in the workspace.
+-- Suppress type hints on variables whose name is identical to the type name.
 -- 
 -- ```lua
 -- default = true
@@ -12915,7 +12909,7 @@
 ---@field variableTypes _.lspconfig.settings.vtsls.VariableTypes
 
 ---@class _.lspconfig.settings.vtsls.Preferences
--- Specify glob patterns of files to exclude from auto imports. Relative paths are resolved relative to the workspace root. Patterns are evaluated using tsconfig.json [`exclude`](https://www.typescriptlang.org/tsconfig#exclude) semantics. Requires using TypeScript 4.8 or newer in the workspace.
+-- Specify glob patterns of files to exclude from auto imports. Relative paths are resolved relative to the workspace root. Patterns are evaluated using tsconfig.json [`exclude`](https://www.typescriptlang.org/tsconfig#exclude) semantics.
 ---@field autoImportFileExcludePatterns string[]
 -- Preferred path style for auto imports.
 -- 
@@ -12989,7 +12983,7 @@
 ---@field generateReturns boolean
 
 ---@class _.lspconfig.settings.vtsls.ObjectLiteralMethodSnippets
--- Enable/disable snippet completions for methods in object literals. Requires using TypeScript 4.7+ in the workspace.
+-- Enable/disable snippet completions for methods in object literals.
 -- 
 -- ```lua
 -- default = true
@@ -13144,6 +13138,12 @@
 ---@field enable boolean
 
 ---@class _.lspconfig.settings.vtsls.WorkspaceSymbols
+-- Exclude symbols that come from library files in Go to Symbol in Workspace results. Requires using TypeScript 5.3+ in the workspace.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field excludeLibrarySymbols boolean
 -- Controls which files are searched by [Go to Symbol in Workspace](https://code.visualstudio.com/docs/editor/editingevolved#_open-symbol-by-name).
 -- 
 -- ```lua
@@ -13167,7 +13167,7 @@
 ---@field locale "auto" | "de" | "es" | "en" | "fr" | "it" | "ja" | "ko" | "ru" | "zh-CN" | "zh-TW"
 -- Specifies the path to the npm executable used for [Automatic Type Acquisition](https://code.visualstudio.com/docs/nodejs/working-with-javascript#_typings-and-automatic-type-acquisition).
 ---@field npm string
--- Makes Go to Definition avoid type declaration files when possible by triggering Go to Source Definition instead. This allows Go to Source Definition to be triggered with the mouse gesture. Requires using TypeScript 4.7+ in the workspace.
+-- Makes Go to Definition avoid type declaration files when possible by triggering Go to Source Definition instead. This allows Go to Source Definition to be triggered with the mouse gesture.
 ---@field preferGoToSourceDefinition boolean
 ---@field preferences _.lspconfig.settings.vtsls.Preferences
 ---@field referencesCodeLens _.lspconfig.settings.vtsls.ReferencesCodeLens

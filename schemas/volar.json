@@ -113,11 +113,6 @@
       "description": "Enabled code actions.",
       "type": "boolean"
     },
-    "vue.codeActions.savingTimeLimit": {
-      "default": 1000,
-      "description": "Time limit for code actions on save (ms).",
-      "type": "number"
-    },
     "vue.codeLens.enabled": {
       "default": true,
       "description": "Enabled code lens.",
