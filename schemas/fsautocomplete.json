@@ -74,6 +74,7 @@
     "FSharp.enableAdaptiveLspServer": {
       "default": true,
       "description": "Enables Enable LSP Server based on FSharp.Data.Adaptive. This can improve stability. Requires restart.",
+      "markdownDeprecationMessage": "This setting has been deprecated because it is now the only behavior of the LSP Server.",
       "type": "boolean"
     },
     "FSharp.enableAnalyzers": {
@@ -187,7 +188,8 @@
       "enum": [
         "NamedText",
         "RoslynSourceText"
-      ]
+      ],
+      "markdownDeprecationMessage": "This setting is deprecated because the RoslynSourceText SourceText implementation has been adopted as the only implementation in the LSP Server."
     },
     "FSharp.fsiExtraParameters": {
       "default": [],
@@ -245,6 +247,7 @@
     "FSharp.inlayHints.enabled": {
       "default": true,
       "description": "Controls if the inlay hints feature is enabled",
+      "markdownDeprecationMessage": "This can be controlled by `editor.inlayHints.enabled` instead.",
       "type": "boolean"
     },
     "FSharp.inlayHints.parameterNames": {
