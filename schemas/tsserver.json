@@ -755,6 +755,19 @@
         "zh-CN",
         "zh-TW"
       ],
+      "enumDescriptions": [
+        "Use VS Code's configured display language",
+        "Deutsch",
+        "español",
+        "English",
+        "français",
+        "italiano",
+        "日本語",
+        "한국어",
+        "русский",
+        "中文(简体)",
+        "中文(繁體)"
+      ],
       "markdownDescription": "Sets the locale used to report JavaScript and TypeScript errors. Defaults to use VS Code's locale.",
       "scope": "window",
       "type": "string"
