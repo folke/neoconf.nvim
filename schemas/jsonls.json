@@ -60,7 +60,7 @@
           },
           "url": {
             "default": "/user.schema.json",
-            "description": "A URL or absolute file path to a schema. Can be a relative path in workspace and workspace folder settings.",
+            "description": "A URL or absolute file path to a schema. Can be a relative path (starting with './') in workspace and workspace folder settings.",
             "type": "string"
           }
         },
