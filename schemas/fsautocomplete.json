@@ -202,6 +202,11 @@
       "scope": "machine-overridable",
       "type": "string"
     },
+    "FSharp.fullNameExternalAutocomplete": {
+      "default": false,
+      "description": "When selecting an external symbols in autocomplete, insert the full name to the editor rather than open its module/namespace. Also allow filtering suggestions by typing its full name. \n\n Requires `FSharp.externalAutocomplete` enabled.",
+      "type": "boolean"
+    },
     "FSharp.generateBinlog": {
       "default": false,
       "markdownDescription": "Enables generation of `msbuild.binlog` files for project loading. It works only for fresh, non-cached project loading. Run `F#: Clear Project Cache` and `Developer: Reload Window` to force fresh loading of all projects. These files can be loaded and inspected using the [MSBuild Structured Logger](https://github.com/KirillOsenkov/MSBuildStructuredLog)",

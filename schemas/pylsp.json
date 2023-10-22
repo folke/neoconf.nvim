@@ -48,6 +48,14 @@
       "description": "Path to the flake8 executable.",
       "type": "string"
     },
+    "pylsp.plugins.flake8.extendIgnore": {
+      "default": [],
+      "description": "List of errors and warnings to append to ignore list.",
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    },
     "pylsp.plugins.flake8.filename": {
       "default": null,
       "description": "Only check for filenames matching the patterns in this list.",

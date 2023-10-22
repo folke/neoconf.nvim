@@ -1073,6 +1073,10 @@
 -- default = ""
 -- ```
 ---@field fsiSdkFilePath string
+-- When selecting an external symbols in autocomplete, insert the full name to the editor rather than open its module/namespace. Also allow filtering suggestions by typing its full name. 
+-- 
+--  Requires `FSharp.externalAutocomplete` enabled.
+---@field fullNameExternalAutocomplete boolean
 -- Enables generation of `msbuild.binlog` files for project loading. It works only for fresh, non-cached project loading. Run `F#: Clear Project Cache` and `Developer: Reload Window` to force fresh loading of all projects. These files can be loaded and inspected using the [MSBuild Structured Logger](https://github.com/KirillOsenkov/MSBuildStructuredLog)
 ---@field generateBinlog boolean
 -- The number of spaces used for indentation when generating code, e.g. for interface stubs
@@ -8034,6 +8038,12 @@
 -- default = "flake8"
 -- ```
 ---@field executable string
+-- List of errors and warnings to append to ignore list.
+-- 
+-- ```lua
+-- default = {}
+-- ```
+---@field extendIgnore string[]
 -- Only check for filenames matching the patterns in this list.
 ---@field filename string
 -- Hang closing bracket instead of matching indentation of opening bracket's line.
