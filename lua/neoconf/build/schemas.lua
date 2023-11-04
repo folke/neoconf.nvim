@@ -135,8 +135,10 @@ function M.update_schemas()
     print(("Generating schema for %s"):format(name))
 
     if not Util.exists(s.settings_file) then
-      local schema = M.get_schema(s)
-      Util.write_file(s.settings_file, Util.json_format(schema))
+      local ok, schema = pcall(M.get_schema, s)
+      if ok then
+        Util.write_file(s.settings_file, Util.json_format(schema))
+      end
     end
   end
 end
