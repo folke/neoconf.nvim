@@ -26,6 +26,12 @@
 
 Install the plugin with your preferred package manager:
 
+### [lazy.nvim](https://github.com/folke/lazy.nvim)
+
+```lua
+{ "folke/neoconf.nvim", opts = {} }
+```
+
 ### [packer](https://github.com/wbthomason/packer.nvim)
 
 ```lua
