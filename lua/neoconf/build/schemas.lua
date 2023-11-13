@@ -38,6 +38,7 @@ function M.index()
 
   packages["lua_ls"] = "https://raw.githubusercontent.com/LuaLS/vscode-lua/master/package.json"
   packages["sumneko_lua"] = nil
+  packages["nickel_ls"] = nil
 
   for server, package_json in pairs(packages) do
     ret[server] = { package_url = package_json }
@@ -134,8 +135,10 @@ function M.update_schemas()
     print(("Generating schema for %s"):format(name))
 
     if not Util.exists(s.settings_file) then
-      local schema = M.get_schema(s)
-      Util.write_file(s.settings_file, Util.json_format(schema))
+      local ok, schema = pcall(M.get_schema, s)
+      if ok then
+        Util.write_file(s.settings_file, Util.json_format(schema))
+      end
     end
   end
 end

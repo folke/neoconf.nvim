@@ -2,6 +2,11 @@
   "$schema": "http://json-schema.org/draft-07/schema#",
   "description": "F# Language Support, powered by FsAutoComplete",
   "properties": {
+    "FSharp.TestExplorer.AutoDiscoverTestsOnLoad": {
+      "default": true,
+      "description": "Decides if the test explorer will automatically try discover tests when the workspace loads. You can still manually refresh the explorer to discover tests at any time",
+      "type": "boolean"
+    },
     "FSharp.abstractClassStubGeneration": {
       "default": true,
       "description": "Enables a codefix that generates missing members for an abstract class when in an type inheriting from that abstract class.",
@@ -69,6 +74,7 @@
     "FSharp.enableAdaptiveLspServer": {
       "default": true,
       "description": "Enables Enable LSP Server based on FSharp.Data.Adaptive. This can improve stability. Requires restart.",
+      "markdownDeprecationMessage": "This setting has been deprecated because it is now the only behavior of the LSP Server.",
       "type": "boolean"
     },
     "FSharp.enableAnalyzers": {
@@ -126,6 +132,7 @@
     },
     "FSharp.fsac.conserveMemory": {
       "default": false,
+      "deprecationMessage": "This setting is deprecated. Use FSharp.fsac.gc.conserveMemory instead.",
       "description": "Configures FsAutoComplete with settings intended to reduce memory consumption. Requires restart.",
       "type": "boolean"
     },
@@ -136,6 +143,25 @@
         "type": "string"
       },
       "type": "array"
+    },
+    "FSharp.fsac.gc.conserveMemory": {
+      "markdownDescription": "Configures the garbage collector to [conserve memory](https://learn.microsoft.com/en-us/dotnet/core/runtime-config/garbage-collector#conserve-memory) at the expense of more frequent garbage collections and possibly longer pause times. Acceptable values are 0-9. Any non-zero value will allow the [Large Object Heap](https://learn.microsoft.com/en-us/dotnet/standard/garbage-collection/large-object-heap) to be compacted automatically if it has too much fragmentation. Requires restart.",
+      "maximum": 9,
+      "minimum": 0,
+      "type": "integer"
+    },
+    "FSharp.fsac.gc.heapCount": {
+      "default": 2,
+      "markdownDescription": "Limits the number of [heaps](https://learn.microsoft.com/en-us/dotnet/standard/garbage-collection/fundamentals#the-managed-heap) created by the garbage collector. Applies to server garbage collection only. See [Middle Ground between Server and Workstation GC](https://devblogs.microsoft.com/dotnet/middle-ground-between-server-and-workstation-gc/) for more details. This can allow FSAC to still benefit from Server garbage collection while still limiting the number of heaps. [Only available on .NET 7 or higher](https://github.com/ionide/ionide-vscode-fsharp/issues/1899#issuecomment-1649009462). Requires restart.",
+      "required": [
+        "FSharp.fsac.gc.server"
+      ],
+      "type": "integer"
+    },
+    "FSharp.fsac.gc.server": {
+      "default": true,
+      "markdownDescription": "Configures whether the application uses workstation garbage collection or server garbage collection. See [Workstation vs Server Garbage Collection](https://devblogs.microsoft.com/premier-developer/understanding-different-gc-modes-with-concurrency-visualizer/#workstation-gc-vs-server-gc) for more details. Workstation will use less memory but Server will have more throughput. Requires restart.",
+      "type": "boolean"
     },
     "FSharp.fsac.netCoreDllPath": {
       "default": "",
@@ -156,6 +182,15 @@
       },
       "type": "array"
     },
+    "FSharp.fsac.sourceTextImplementation": {
+      "default": "RoslynSourceText",
+      "description": "Enables the use of a new source text implementation. This may have better memory characteristics. Requires restart.",
+      "enum": [
+        "NamedText",
+        "RoslynSourceText"
+      ],
+      "markdownDeprecationMessage": "This setting is deprecated because the RoslynSourceText SourceText implementation has been adopted as the only implementation in the LSP Server."
+    },
     "FSharp.fsiExtraParameters": {
       "default": [],
       "markdownDescription": "An array of additional command line parameters to pass to FSI when it is started. See [the Microsoft documentation](https://docs.microsoft.com/en-us/dotnet/fsharp/language-reference/fsharp-interactive-options) for an exhaustive list.",
@@ -166,6 +201,11 @@
       "description": "The path to the F# Interactive tool used by Ionide-FSharp (When using .NET SDK scripts)",
       "scope": "machine-overridable",
       "type": "string"
+    },
+    "FSharp.fullNameExternalAutocomplete": {
+      "default": false,
+      "description": "When selecting an external symbols in autocomplete, insert the full name to the editor rather than open its module/namespace. Also allow filtering suggestions by typing its full name. \n\n Requires `FSharp.externalAutocomplete` enabled.",
+      "type": "boolean"
     },
     "FSharp.generateBinlog": {
       "default": false,
@@ -212,6 +252,7 @@
     "FSharp.inlayHints.enabled": {
       "default": true,
       "description": "Controls if the inlay hints feature is enabled",
+      "markdownDeprecationMessage": "This can be controlled by `editor.inlayHints.enabled` instead.",
       "type": "boolean"
     },
     "FSharp.inlayHints.parameterNames": {
@@ -300,7 +341,7 @@
     },
     "FSharp.openTelemetry.enabled": {
       "default": false,
-      "description": "Enables OpenTelemetry exporter. See https://opentelemetry.io/docs/reference/specification/protocol/exporter/ for environment variables to configure for the exporter. Requires Restart.",
+      "markdownDescription": "Enables OpenTelemetry exporter. See [OpenTelemetry Protocol Exporter](https://opentelemetry.io/docs/reference/specification/protocol/exporter/) for environment variables to configure for the exporter. Requires Restart.",
       "type": "boolean"
     },
     "FSharp.pipelineHints.enabled": {
@@ -353,6 +394,20 @@
       "description": "Enables detection of cases when names of functions and values can be simplified",
       "type": "boolean"
     },
+    "FSharp.simplifyNameAnalyzerExclusions": {
+      "default": [
+        ".*\\.g\\.fs",
+        ".*\\.cg\\.fs"
+      ],
+      "description": "A set of regex patterns to exclude from the simplify name analyzer",
+      "items": {
+        "type": "string"
+      },
+      "required": [
+        "FSharp.simplifyNameAnalyzer"
+      ],
+      "type": "array"
+    },
     "FSharp.smartIndent": {
       "default": false,
       "description": "Enables smart indent feature",
@@ -394,10 +449,38 @@
       "description": "Enables detection of unused declarations",
       "type": "boolean"
     },
+    "FSharp.unusedDeclarationsAnalyzerExclusions": {
+      "default": [
+        ".*\\.g\\.fs",
+        ".*\\.cg\\.fs"
+      ],
+      "description": "A set of regex patterns to exclude from the unused declarations analyzer",
+      "items": {
+        "type": "string"
+      },
+      "required": [
+        "FSharp.unusedDeclarationsAnalyzer"
+      ],
+      "type": "array"
+    },
     "FSharp.unusedOpensAnalyzer": {
       "default": true,
       "description": "Enables detection of unused opens",
       "type": "boolean"
+    },
+    "FSharp.unusedOpensAnalyzerExclusions": {
+      "default": [
+        ".*\\.g\\.fs",
+        ".*\\.cg\\.fs"
+      ],
+      "description": "A set of regex patterns to exclude from the unused opens analyzer",
+      "items": {
+        "type": "string"
+      },
+      "required": [
+        "FSharp.unusedOpensAnalyzer"
+      ],
+      "type": "array"
     },
     "FSharp.verboseLogging": {
       "default": false,
@@ -413,6 +496,14 @@
       "description": "Path to the directory or solution file that should be loaded as a workspace. If set, no workspace probing or discovery is done by Ionide at all.",
       "scope": "window",
       "type": "string"
+    },
+    "Fsharp.fsac.gc.noAffinitize": {
+      "default": true,
+      "markdownDescription": "Specifies whether to [affinitize](https://learn.microsoft.com/en-us/dotnet/core/runtime-config/garbage-collector#affinitize) garbage collection threads with processors. To affinitize a GC thread means that it can only run on its specific CPU.. Applies to server garbage collection only. See [GCNoAffinitize](https://learn.microsoft.com/en-us/dotnet/framework/configure-apps/file-schema/runtime/gcnoaffinitize-element#remarks) for more details. [Only available on .NET 7 or higher](https://github.com/ionide/ionide-vscode-fsharp/issues/1899#issuecomment-1649009462). Requires restart.",
+      "required": [
+        "FSharp.fsac.gc.server"
+      ],
+      "type": "boolean"
     }
   }
 }

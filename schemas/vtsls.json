@@ -2,11 +2,6 @@
   "$schema": "http://json-schema.org/draft-07/schema#",
   "description": "Configuration for Typescript language service",
   "properties": {
-    "javascript.autoClosingTags": {
-      "default": true,
-      "description": "Enable/disable automatic closing of JSX tags.",
-      "type": "boolean"
-    },
     "javascript.format.enable": {
       "default": true,
       "description": "Enable/disable default JavaScript formatter.",
@@ -191,19 +186,19 @@
     },
     "javascript.inlayHints.variableTypes.suppressWhenTypeMatchesName": {
       "default": true,
-      "markdownDescription": "Suppress type hints on variables whose name is identical to the type name. Requires using TypeScript 4.8+ in the workspace.",
+      "markdownDescription": "Suppress type hints on variables whose name is identical to the type name.",
       "type": "boolean"
     },
     "javascript.preferGoToSourceDefinition": {
       "default": false,
-      "description": "Makes Go to Definition avoid type declaration files when possible by triggering Go to Source Definition instead. This allows Go to Source Definition to be triggered with the mouse gesture. Requires using TypeScript 4.7+ in the workspace.",
+      "description": "Makes Go to Definition avoid type declaration files when possible by triggering Go to Source Definition instead. This allows Go to Source Definition to be triggered with the mouse gesture.",
       "type": "boolean"
     },
     "javascript.preferences.autoImportFileExcludePatterns": {
       "items": {
         "type": "string"
       },
-      "markdownDescription": "Specify glob patterns of files to exclude from auto imports. Requires using TypeScript 4.8 or newer in the workspace.",
+      "markdownDescription": "Specify glob patterns of files to exclude from auto imports. Relative paths are resolved relative to the workspace root. Patterns are evaluated using tsconfig.json [`exclude`](https://www.typescriptlang.org/tsconfig#exclude) semantics.",
       "type": "array"
     },
     "javascript.preferences.importModuleSpecifier": {
@@ -435,11 +430,6 @@
       "markdownDescription": "Set target JavaScript language version for emitted JavaScript and include library declarations. See more: https://www.typescriptlang.org/tsconfig#target.",
       "type": "string"
     },
-    "typescript.autoClosingTags": {
-      "default": true,
-      "description": "Enable/disable automatic closing of JSX tags.",
-      "type": "boolean"
-    },
     "typescript.check.npmIsInstalled": {
       "default": true,
       "markdownDescription": "Check if npm is installed for [Automatic Type Acquisition](https://code.visualstudio.com/docs/nodejs/working-with-javascript#_typings-and-automatic-type-acquisition).",
@@ -450,14 +440,9 @@
       "markdownDescription": "Disables [automatic type acquisition](https://code.visualstudio.com/docs/nodejs/working-with-javascript#_typings-and-automatic-type-acquisition). Automatic type acquisition fetches `@types` packages from npm to improve IntelliSense for external libraries.",
       "type": "boolean"
     },
-    "typescript.enablePromptUseWorkspaceTsdk": {
+    "typescript.experimental.tsserver.web.typeAcquisition.enabled": {
       "default": false,
-      "description": "Enables prompting of users to use the TypeScript version configured in the workspace for Intellisense.",
-      "type": "boolean"
-    },
-    "typescript.experimental.aiQuickFix": {
-      "default": false,
-      "description": "Enable/disable AI-assisted quick fixes. Requires an extension providing AI chat functionality.",
+      "description": "Enable/disable package acquisition on the web.",
       "type": "boolean"
     },
     "typescript.format.enable": {
@@ -647,7 +632,7 @@
     },
     "typescript.inlayHints.variableTypes.suppressWhenTypeMatchesName": {
       "default": true,
-      "markdownDescription": "Suppress type hints on variables whose name is identical to the type name. Requires using TypeScript 4.8+ in the workspace.",
+      "markdownDescription": "Suppress type hints on variables whose name is identical to the type name.",
       "type": "boolean"
     },
     "typescript.locale": {
@@ -674,14 +659,14 @@
     },
     "typescript.preferGoToSourceDefinition": {
       "default": false,
-      "description": "Makes Go to Definition avoid type declaration files when possible by triggering Go to Source Definition instead. This allows Go to Source Definition to be triggered with the mouse gesture. Requires using TypeScript 4.7+ in the workspace.",
+      "description": "Makes Go to Definition avoid type declaration files when possible by triggering Go to Source Definition instead. This allows Go to Source Definition to be triggered with the mouse gesture.",
       "type": "boolean"
     },
     "typescript.preferences.autoImportFileExcludePatterns": {
       "items": {
         "type": "string"
       },
-      "markdownDescription": "Specify glob patterns of files to exclude from auto imports. Requires using TypeScript 4.8 or newer in the workspace.",
+      "markdownDescription": "Specify glob patterns of files to exclude from auto imports. Relative paths are resolved relative to the workspace root. Patterns are evaluated using tsconfig.json [`exclude`](https://www.typescriptlang.org/tsconfig#exclude) semantics.",
       "type": "array"
     },
     "typescript.preferences.importModuleSpecifier": {
@@ -842,7 +827,7 @@
     },
     "typescript.suggest.objectLiteralMethodSnippets.enabled": {
       "default": true,
-      "description": "Enable/disable snippet completions for methods in object literals. Requires using TypeScript 4.7+ in the workspace.",
+      "description": "Enable/disable snippet completions for methods in object literals.",
       "type": "boolean"
     },
     "typescript.suggest.paths": {
@@ -854,28 +839,6 @@
       "default": true,
       "description": "Enable/disable suggestion diagnostics for TypeScript files in the editor.",
       "type": "boolean"
-    },
-    "typescript.surveys.enabled": {
-      "default": true,
-      "description": "Enabled/disable occasional surveys that help us improve VS Code's JavaScript and TypeScript support.",
-      "type": "boolean"
-    },
-    "typescript.tsc.autoDetect": {
-      "default": "on",
-      "description": "Controls auto detection of tsc tasks.",
-      "enum": [
-        "on",
-        "off",
-        "build",
-        "watch"
-      ],
-      "markdownEnumDescriptions": [
-        "Create both build and watch tasks.",
-        "Disable this feature.",
-        "Only create single run compile tasks.",
-        "Only create compile and watch tasks."
-      ],
-      "type": "string"
     },
     "typescript.tsdk": {
       "markdownDescription": "Specifies the folder path to the tsserver and `lib*.d.ts` files under a TypeScript install to use for IntelliSense, for example: `./node_modules/typescript/lib`.\n\n- When specified as a user setting, the TypeScript version from `typescript.tsdk` automatically replaces the built-in TypeScript version.\n- When specified as a workspace setting, `typescript.tsdk` allows you to switch to use that workspace version of TypeScript for IntelliSense with the `TypeScript: Select TypeScript version` command.\n\nSee the [TypeScript documentation](https://code.visualstudio.com/docs/typescript/typescript-compiling#_using-newer-typescript-versions) for more detail about managing TypeScript versions.",
@@ -904,8 +867,12 @@
     },
     "typescript.tsserver.maxTsServerMemory": {
       "default": 3072,
-      "description": "The maximum amount of memory (in MB) to allocate to the TypeScript server process.",
+      "markdownDescription": "The maximum amount of memory (in MB) to allocate to the TypeScript server process. To use a memory limit greater than 4 GB, use `#typescript.tsserver.nodePath#` to run TS Server with a custom Node installation.",
       "type": "number"
+    },
+    "typescript.tsserver.nodePath": {
+      "description": "Run TS Server on a custom Node installation. This can be a path to a Node executable, or 'node' if you want VS Code to detect a Node installation.",
+      "type": "string"
     },
     "typescript.tsserver.pluginPaths": {
       "default": [],
@@ -1027,6 +994,11 @@
     "typescript.validate.enable": {
       "default": true,
       "description": "Enable/disable TypeScript validation.",
+      "type": "boolean"
+    },
+    "typescript.workspaceSymbols.excludeLibrarySymbols": {
+      "default": true,
+      "markdownDescription": "Exclude symbols that come from library files in Go to Symbol in Workspace results. Requires using TypeScript 5.3+ in the workspace.",
       "type": "boolean"
     },
     "typescript.workspaceSymbols.scope": {

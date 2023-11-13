@@ -8,6 +8,16 @@
       "scope": "window",
       "type": "string"
     },
+    "deno.cacheOnSave": {
+      "default": false,
+      "examples": [
+        true,
+        false
+      ],
+      "markdownDescription": "Controls if the extension should cache the active document's dependencies on save.",
+      "scope": "resource",
+      "type": "boolean"
+    },
     "deno.certificateStores": {
       "default": null,
       "items": {
@@ -24,7 +34,7 @@
         false
       ],
       "markdownDescription": "Enables or disables the display of code lens information for implementations of items in the code.",
-      "scope": "window",
+      "scope": "resource",
       "type": "boolean"
     },
     "deno.codeLens.references": {
@@ -34,7 +44,7 @@
         false
       ],
       "markdownDescription": "Enables or disables the display of code lens information for references of items in the code.",
-      "scope": "window",
+      "scope": "resource",
       "type": "boolean"
     },
     "deno.codeLens.referencesAllFunctions": {
@@ -44,7 +54,7 @@
         false
       ],
       "markdownDescription": "Enables or disables the display of code lens information for all functions in the code.",
-      "scope": "window",
+      "scope": "resource",
       "type": "boolean"
     },
     "deno.codeLens.test": {
@@ -73,8 +83,32 @@
         "C:\\path\\to\\deno.jsonc"
       ],
       "markdownDescription": "The file path to a configuration file. This is the equivalent to using `--config` on the command line. The path can be either be relative to the workspace, or an absolute path.\n\nIt is recommend you name it `deno.json` or `deno.jsonc`.\n\n**Not recommended to be set globally.**",
-      "scope": "window",
+      "scope": "resource",
       "type": "string"
+    },
+    "deno.defaultTaskCommand": {
+      "default": "open",
+      "enum": [
+        "open",
+        "run"
+      ],
+      "markdownDescription": "Controls the default action when clicking on a task in the _Deno Tasks sidebar_.",
+      "scope": "resource",
+      "type": "string"
+    },
+    "deno.disablePaths": {
+      "default": [],
+      "examples": [
+        [
+          "./worker"
+        ]
+      ],
+      "items": {
+        "type": "string"
+      },
+      "markdownDescription": "Disables the Deno Language Server for specific paths. This will leave the built in TypeScript/JavaScript language server enabled for those paths. Takes priority over `deno.enablePaths`.\n\n**Not recommended to be enabled in user settings.**",
+      "scope": "resource",
+      "type": "array"
     },
     "deno.documentPreloadLimit": {
       "default": 1000,
@@ -88,12 +122,12 @@
       "type": "number"
     },
     "deno.enable": {
-      "default": false,
+      "default": null,
       "examples": [
         true,
         false
       ],
-      "markdownDescription": "Controls if the Deno Language Server is enabled. When enabled, the extension will disable the built-in VSCode JavaScript and TypeScript language services, and will use the Deno Language Server instead.\n\nIf you want to enable only part of your workspace folder, consider using `deno.enablePaths` setting instead.\n\n**Not recommended to be enabled globally.**",
+      "markdownDescription": "Controls if the Deno Language Server is enabled. When enabled, the extension will disable the built-in VSCode JavaScript and TypeScript language services, and will use the Deno Language Server instead.\n\nIf omitted, your preference will be inferred as true if there is a `deno.json[c]` at your workspace root and false if not.\n\nIf you want to enable only part of your workspace folder, consider using `deno.enablePaths` setting instead.\n\n**Not recommended to be enabled globally.**",
       "scope": "resource",
       "type": "boolean"
     },
@@ -119,23 +153,26 @@
         "C:\\path\\to\\import_map.json"
       ],
       "markdownDescription": "The file path to an import map. This is the equivalent to using `--import-map` on the command line.\n\n[Import maps](https://deno.land/manual@v1.6.0/linking_to_external_code/import_maps) provide a way to \"relocate\" modules based on their specifiers. The path can either be relative to the workspace, or an absolute path.\n\n**Not recommended to be set globally.**",
-      "scope": "window",
+      "scope": "resource",
       "type": "string"
     },
     "deno.inlayHints.enumMemberValues.enabled": {
       "default": false,
+      "deprecationMessage": "Use `typescript.inlayHints.enumMemberValues.enabled` and `javascript.inlayHints.enumMemberValues.enabled`.",
       "markdownDescription": "Enable/disable inlay hints for enum values.",
       "scope": "resource",
       "type": "boolean"
     },
     "deno.inlayHints.functionLikeReturnTypes.enabled": {
       "default": false,
+      "deprecationMessage": "Use `typescript.inlayHints.functionLikeReturnTypes.enabled` and `javascript.inlayHints.functionLikeReturnTypes.enabled`.",
       "markdownDescription": "Enable/disable inlay hints for implicit function return types.",
       "scope": "resource",
       "type": "boolean"
     },
     "deno.inlayHints.parameterNames.enabled": {
       "default": "none",
+      "deprecationMessage": "Use `typescript.inlayHints.parameterNames.enabled` and `javascript.inlayHints.parameterNames.enabled`.",
       "enum": [
         "none",
         "literals",
@@ -152,30 +189,35 @@
     },
     "deno.inlayHints.parameterNames.suppressWhenArgumentMatchesName": {
       "default": true,
+      "deprecationMessage": "Use `typescript.inlayHints.parameterNames.suppressWhenArgumentMatchesName` and `javascript.inlayHints.parameterNames.suppressWhenArgumentMatchesName`.",
       "markdownDescription": "Do not display an inlay hint when the argument name matches the parameter.",
       "scope": "resource",
       "type": "boolean"
     },
     "deno.inlayHints.parameterTypes.enabled": {
       "default": false,
+      "deprecationMessage": "Use `typescript.inlayHints.parameterTypes.enabled` and `javascript.inlayHints.parameterTypes.enabled`.",
       "markdownDescription": "Enable/disable inlay hints for implicit parameter types.",
       "scope": "resource",
       "type": "boolean"
     },
     "deno.inlayHints.propertyDeclarationTypes.enabled": {
       "default": false,
+      "deprecationMessage": "Use `typescript.inlayHints.propertyDeclarationTypes.enabled` and `javascript.inlayHints.propertyDeclarationTypes.enabled`.",
       "markdownDescription": "Enable/disable inlay hints for implicit property declarations.",
       "scope": "resource",
       "type": "boolean"
     },
     "deno.inlayHints.variableTypes.enabled": {
       "default": false,
+      "deprecationMessage": "Use `typescript.inlayHints.variableTypes.enabled` and `javascript.inlayHints.variableTypes.enabled`.",
       "markdownDescription": "Enable/disable inlay hints for implicit variable types.",
       "scope": "resource",
       "type": "boolean"
     },
     "deno.inlayHints.variableTypes.suppressWhenTypeMatchesName": {
       "default": true,
+      "deprecationMessage": "Use `typescript.inlayHints.variableTypes.suppressWhenTypeMatchesName` and `javascript.inlayHints.variableTypes.suppressWhenTypeMatchesName`.",
       "markdownDescription": "Suppress type hints where the variable name matches the implicit type.",
       "scope": "resource",
       "type": "boolean"
@@ -197,7 +239,7 @@
         false
       ],
       "markdownDescription": "Controls if linting information will be provided by the Deno Language Server.\n\n**Not recommended to be enabled globally.**",
-      "scope": "window",
+      "scope": "resource",
       "type": "boolean"
     },
     "deno.maxTsServerMemory": {
@@ -218,18 +260,20 @@
     },
     "deno.suggest.autoImports": {
       "default": true,
-      "scope": "window",
+      "deprecationMessage": "Use `typescript.suggest.autoImports` and `javascript.suggest.autoImports`.",
+      "scope": "resource",
       "type": "boolean"
     },
     "deno.suggest.completeFunctionCalls": {
       "default": false,
-      "scope": "window",
+      "deprecationMessage": "Use `typescript.suggest.completeFunctionCalls` and `javascript.suggest.completeFunctionCalls`.",
+      "scope": "resource",
       "type": "boolean"
     },
     "deno.suggest.imports.autoDiscover": {
       "default": true,
       "markdownDescription": "If enabled, when new hosts/origins are encountered that support import suggestions, you will be prompted to enable or disable it.  Defaults to `true`.",
-      "scope": "window",
+      "scope": "resource",
       "type": "boolean"
     },
     "deno.suggest.imports.hosts": {
@@ -240,17 +284,19 @@
         "https://deno.land": true
       },
       "markdownDescription": "Controls which hosts are enabled for import suggestions.",
-      "scope": "window",
+      "scope": "resource",
       "type": "object"
     },
     "deno.suggest.names": {
       "default": true,
-      "scope": "window",
+      "deprecationMessage": "Use `typescript.suggest.names` and `javascript.suggest.names`.",
+      "scope": "resource",
       "type": "boolean"
     },
     "deno.suggest.paths": {
       "default": true,
-      "scope": "window",
+      "deprecationMessage": "Use `typescript.suggest.paths` and `javascript.suggest.paths`.",
+      "scope": "resource",
       "type": "boolean"
     },
     "deno.testing.args": {
@@ -262,14 +308,8 @@
         "type": "string"
       },
       "markdownDescription": "Arguments to use when running tests via the Test Explorer.  Defaults to `[ \"--allow-all\" ]`.",
-      "scope": "window",
+      "scope": "resource",
       "type": "array"
-    },
-    "deno.testing.enable": {
-      "default": true,
-      "markdownDescription": "Enable the testing API for the language server. When folder is Deno enabled, tests will be available in the Test Explorer view.",
-      "scope": "window",
-      "type": "boolean"
     },
     "deno.tlsCertificate": {
       "default": null,
@@ -293,7 +333,7 @@
         false
       ],
       "markdownDescription": "Controls if code will be type checked with Deno's unstable APIs. This is the equivalent to using `--unstable` on the command line.\n\n**Not recommended to be enabled globally.**",
-      "scope": "window",
+      "scope": "resource",
       "type": "boolean"
     }
   }

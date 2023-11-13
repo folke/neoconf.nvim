@@ -1,6 +1,6 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "description": "Elixir support with debugger, autocomplete, and more. Powered by ElixirLS.",
+  "description": "Elixir support with debugger, autocomplete, and more - Powered by ElixirLS.",
   "properties": {
     "elixirLS.additionalWatchedExtensions": {
       "default": [],
@@ -14,19 +14,19 @@
     },
     "elixirLS.autoBuild": {
       "default": true,
-      "description": "Trigger ElixirLS build when code is saved",
+      "description": "Trigger ElixirLS build when code is saved.",
       "scope": "resource",
       "type": "boolean"
     },
     "elixirLS.autoInsertRequiredAlias": {
       "default": true,
-      "description": "Enable auto-insert required alias. By default, it's true, which means enabled.",
+      "description": "Enable auto-insert required alias. This is true (enabled) by default.",
       "scope": "window",
       "type": "boolean"
     },
     "elixirLS.dialyzerEnabled": {
       "default": true,
-      "description": "Run ElixirLS's rapid Dialyzer when code is saved",
+      "description": "Run ElixirLS's rapid Dialyzer when code is saved.",
       "scope": "resource",
       "type": "boolean"
     },
@@ -48,7 +48,7 @@
     },
     "elixirLS.dialyzerWarnOpts": {
       "default": [],
-      "description": "Dialyzer options to enable or disable warnings. See Dialyzer's documentation for options. Note that the \"race_conditions\" option is unsupported",
+      "description": "Dialyzer options to enable or disable warnings - See Dialyzer's documentation for options. Note that the \"race_conditions\" option is unsupported",
       "items": {
         "enum": [
           "error_handling",
@@ -82,7 +82,7 @@
     },
     "elixirLS.enableTestLenses": {
       "default": false,
-      "description": "Show code lenses to run tests in terminal",
+      "description": "Show code lenses to run tests in terminal.",
       "scope": "resource",
       "type": "boolean"
     },
@@ -94,12 +94,12 @@
     },
     "elixirLS.fetchDeps": {
       "default": false,
-      "description": "Automatically fetch project dependencies when compiling",
+      "description": "Automatically fetch project dependencies when compiling.",
       "scope": "resource",
       "type": "boolean"
     },
     "elixirLS.languageServerOverridePath": {
-      "description": "Absolute path to alternative ElixirLS release that will override packaged release.",
+      "description": "Absolute path to alternative ElixirLS release that will override the packaged release",
       "minLength": 0,
       "scope": "resource",
       "type": "string"
@@ -126,13 +126,13 @@
     },
     "elixirLS.signatureAfterComplete": {
       "default": true,
-      "description": "Show signature help after confirming autocomplete",
+      "description": "Show signature help after confirming autocomplete.",
       "scope": "resource",
       "type": "boolean"
     },
     "elixirLS.suggestSpecs": {
       "default": true,
-      "description": "Suggest @spec annotations inline using Dialyzer's inferred success typings (Requires Dialyzer)",
+      "description": "Suggest @spec annotations inline using Dialyzer's inferred success typings (Requires Dialyzer).",
       "scope": "resource",
       "type": "boolean"
     },

@@ -233,14 +233,6 @@ lspconfig.luau_lsp = {
   setup = function(options) end,
 }
 
----@class lspconfig.options.nickel_ls: _.lspconfig.options
----@field settings lspconfig.settings.nickel_ls
-
-lspconfig.nickel_ls = {
-  ---@param options lspconfig.options.nickel_ls
-  setup = function(options) end,
-}
-
 ---@class lspconfig.options.omnisharp: _.lspconfig.options
 ---@field settings lspconfig.settings.omnisharp
 
@@ -533,7 +525,6 @@ lspconfig.zls = {
 ---@field ltex lspconfig.options.ltex
 ---@field lua_ls lspconfig.options.lua_ls
 ---@field luau_lsp lspconfig.options.luau_lsp
----@field nickel_ls lspconfig.options.nickel_ls
 ---@field omnisharp lspconfig.options.omnisharp
 ---@field perlls lspconfig.options.perlls
 ---@field perlnavigator lspconfig.options.perlnavigator
@@ -596,7 +587,6 @@ lspconfig.zls = {
 ---@field ltex lspconfig.settings.ltex
 ---@field lua_ls lspconfig.settings.lua_ls
 ---@field luau_lsp lspconfig.settings.luau_lsp
----@field nickel_ls lspconfig.settings.nickel_ls
 ---@field omnisharp lspconfig.settings.omnisharp
 ---@field perlls lspconfig.settings.perlls
 ---@field perlnavigator lspconfig.settings.perlnavigator

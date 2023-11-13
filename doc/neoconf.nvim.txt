@@ -1,4 +1,4 @@
-*neoconf.nvim.txt*        For Neovim >= 0.8.0        Last change: 2023 June 19
+*neoconf.nvim.txt*      For Neovim >= 0.8.0      Last change: 2023 November 04
 
 ==============================================================================
 Table of Contents                             *neoconf.nvim-table-of-contents*
@@ -265,7 +265,6 @@ SUPPORTED LANGUAGE SERVERS*neoconf.nvim-neoconf.nvim-supported-language-servers*
 - ltex <https://github.com/valentjn/vscode-ltex/tree/develop/package.json>
 - lua_ls <https://github.com/LuaLS/vscode-lua/tree/master/package.json>
 - luau_lsp <https://github.com/JohnnyMorganz/luau-lsp/tree/main/editors/code/package.json>
-- nickel_ls <https://github.com/tweag/nickel/tree/master/lsp/client-extension/package.json>
 - omnisharp <https://github.com/OmniSharp/omnisharp-vscode/tree/master/package.json>
 - perlls <https://github.com/richterger/Perl-LanguageServer/tree/master/clients/vscode/perl/package.json>
 - perlnavigator <https://github.com/bscan/PerlNavigator/tree/main/package.json>

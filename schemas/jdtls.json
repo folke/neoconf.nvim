@@ -262,6 +262,11 @@
       "scope": "window",
       "type": "boolean"
     },
+    "java.configuration.detectJdksAtStart": {
+      "default": true,
+      "markdownDescription": "Automatically detect JDKs installed on local machine at startup. If you have specified the same JDK version in `#java.configuration.runtimes#`, the extension will use that version first.",
+      "type": "boolean"
+    },
     "java.configuration.maven.defaultMojoExecutionAction": {
       "default": "ignore",
       "description": "Specifies default mojo execution action when no associated metadata can be detected.",
@@ -388,11 +393,33 @@
       "scope": "window",
       "type": "boolean"
     },
+    "java.edit.smartSemicolonDetection.enabled": {
+      "default": false,
+      "markdownDescription": "Defines the `smart semicolon` detection. Defaults to `false`.",
+      "scope": "window",
+      "type": "boolean"
+    },
     "java.edit.validateAllOpenBuffersOnChanges": {
       "default": false,
       "markdownDescription": "Specifies whether to recheck all open Java files for diagnostics when editing a Java file.",
       "scope": "window",
       "type": "boolean"
+    },
+    "java.editor.reloadChangedSources": {
+      "default": "ask",
+      "enum": [
+        "ask",
+        "auto",
+        "manual"
+      ],
+      "enumDescriptions": [
+        "Ask to reload the sources of the open class files",
+        "Automatically reload the sources of the open class files",
+        "Manually reload the sources of the open class files"
+      ],
+      "markdownDescription": "Specifies whether to reload the sources of the open class files when their source jar files are changed.",
+      "scope": "window",
+      "type": "string"
     },
     "java.errors.incompleteClasspath.severity": {
       "default": "warning",
@@ -666,12 +693,6 @@
       "scope": "window",
       "type": "integer"
     },
-    "java.progressReports.enabled": {
-      "default": true,
-      "description": "[Experimental] Enable/disable progress reports from background processes on the server.",
-      "scope": "window",
-      "type": "boolean"
-    },
     "java.project.encoding": {
       "default": "ignore",
       "enum": [
@@ -744,7 +765,11 @@
         "node_modules",
         "\\.git"
       ],
-      "description": "Excludes files and folders from being refreshed by the Java Language Server, which can improve the overall performance. For example, [\"node_modules\",\"\\.git\"] will exclude all files and folders named 'node_modules' or '.git'. Pattern expressions must be compatible with `java.util.regex.Pattern`. Defaults to [\"node_modules\",\"\\.git\"].",
+      "items": {
+        "pattern": "^(?!\\*).*",
+        "type": "string"
+      },
+      "markdownDescription": "Excludes files and folders from being refreshed by the Java Language Server, which can improve the overall performance. For example, [\"node_modules\",\"\\.git\"] will exclude all files and folders named `node_modules` or `.git`. Pattern expressions must be compatible with `java.util.regex.Pattern`. Defaults to [\"node_modules\",\"\\.git\"].",
       "scope": "window",
       "type": "array"
     },

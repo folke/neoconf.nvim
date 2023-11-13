@@ -188,13 +188,13 @@
     },
     "javascript.inlayHints.variableTypes.suppressWhenTypeMatchesName": {
       "default": true,
-      "markdownDescription": "Suppress type hints on variables whose name is identical to the type name. Requires using TypeScript 4.8+ in the workspace.",
+      "markdownDescription": "Suppress type hints on variables whose name is identical to the type name.",
       "scope": "resource",
       "type": "boolean"
     },
     "javascript.preferGoToSourceDefinition": {
       "default": false,
-      "description": "Makes Go to Definition avoid type declaration files when possible by triggering Go to Source Definition instead. This allows Go to Source Definition to be triggered with the mouse gesture. Requires using TypeScript 4.7+ in the workspace.",
+      "description": "Makes Go to Definition avoid type declaration files when possible by triggering Go to Source Definition instead. This allows Go to Source Definition to be triggered with the mouse gesture.",
       "scope": "window",
       "type": "boolean"
     },
@@ -202,7 +202,7 @@
       "items": {
         "type": "string"
       },
-      "markdownDescription": "Specify glob patterns of files to exclude from auto imports. Requires using TypeScript 4.8 or newer in the workspace.",
+      "markdownDescription": "Specify glob patterns of files to exclude from auto imports. Relative paths are resolved relative to the workspace root. Patterns are evaluated using tsconfig.json [`exclude`](https://www.typescriptlang.org/tsconfig#exclude) semantics.",
       "scope": "resource",
       "type": "array"
     },
@@ -490,10 +490,66 @@
       "scope": "window",
       "type": "boolean"
     },
-    "typescript.experimental.aiQuickFix": {
-      "default": true,
-      "description": "Enable/disable AI-assisted quick fixes. Requires an extension providing AI chat functionality.",
+    "typescript.experimental.aiCodeActions": {
+      "default": {},
+      "description": "Enable/disable AI-assisted code actions. Requires an extension providing AI chat functionality.",
+      "properties": {
+        "addNameToNamelessParameter": {
+          "default": false,
+          "description": "Enable/disable AI assistance for Add Name to Nameless Parameter quickfix. Requires an extension providing AI chat functionality.",
+          "type": "boolean"
+        },
+        "classDoesntImplementInheritedAbstractMember": {
+          "default": false,
+          "description": "Enable/disable AI assistance for Class Doesn't Implement Inherited Abstract Member quickfix. Requires an extension providing AI chat functionality.",
+          "type": "boolean"
+        },
+        "classIncorrectlyImplementsInterface": {
+          "default": false,
+          "description": "Enable/disable AI assistance for Class Incorrectly Implements Interface quickfix. Requires an extension providing AI chat functionality.",
+          "type": "boolean"
+        },
+        "extractConstant": {
+          "default": false,
+          "description": "Enable/disable AI assistance for Extract Constant refactor. Requires an extension providing AI chat functionality.",
+          "type": "boolean"
+        },
+        "extractFunction": {
+          "default": false,
+          "description": "Enable/disable AI assistance for Extract Function refactor. Requires an extension providing AI chat functionality.",
+          "type": "boolean"
+        },
+        "extractInterface": {
+          "default": false,
+          "description": "Enable/disable AI assistance for Extract Interface refactor. Requires an extension providing AI chat functionality.",
+          "type": "boolean"
+        },
+        "extractType": {
+          "default": false,
+          "description": "Enable/disable AI assistance for Extract Type refactor. Requires an extension providing AI chat functionality.",
+          "type": "boolean"
+        },
+        "inferAndAddTypes": {
+          "default": false,
+          "description": "Enable/disable AI assistance for Infer and Add Types refactor. Requires an extension providing AI chat functionality.",
+          "type": "boolean"
+        },
+        "missingFunctionDeclaration": {
+          "default": false,
+          "description": "Enable/disable AI assistance for Missing Function Declaration quickfix. Requires an extension providing AI chat functionality.",
+          "type": "boolean"
+        }
+      },
       "scope": "resource",
+      "type": "object"
+    },
+    "typescript.experimental.tsserver.web.typeAcquisition.enabled": {
+      "default": false,
+      "description": "Enable/disable package acquisition on the web.",
+      "scope": "window",
+      "tags": [
+        "experimental"
+      ],
       "type": "boolean"
     },
     "typescript.format.enable": {
@@ -680,7 +736,7 @@
     },
     "typescript.inlayHints.variableTypes.suppressWhenTypeMatchesName": {
       "default": true,
-      "markdownDescription": "Suppress type hints on variables whose name is identical to the type name. Requires using TypeScript 4.8+ in the workspace.",
+      "markdownDescription": "Suppress type hints on variables whose name is identical to the type name.",
       "scope": "resource",
       "type": "boolean"
     },
@@ -699,6 +755,19 @@
         "zh-CN",
         "zh-TW"
       ],
+      "enumDescriptions": [
+        "Use VS Code's configured display language",
+        "Deutsch",
+        "español",
+        "English",
+        "français",
+        "italiano",
+        "日本語",
+        "한국어",
+        "русский",
+        "中文(简体)",
+        "中文(繁體)"
+      ],
       "markdownDescription": "Sets the locale used to report JavaScript and TypeScript errors. Defaults to use VS Code's locale.",
       "scope": "window",
       "type": "string"
@@ -710,7 +779,7 @@
     },
     "typescript.preferGoToSourceDefinition": {
       "default": false,
-      "description": "Makes Go to Definition avoid type declaration files when possible by triggering Go to Source Definition instead. This allows Go to Source Definition to be triggered with the mouse gesture. Requires using TypeScript 4.7+ in the workspace.",
+      "description": "Makes Go to Definition avoid type declaration files when possible by triggering Go to Source Definition instead. This allows Go to Source Definition to be triggered with the mouse gesture.",
       "scope": "window",
       "type": "boolean"
     },
@@ -718,7 +787,7 @@
       "items": {
         "type": "string"
       },
-      "markdownDescription": "Specify glob patterns of files to exclude from auto imports. Requires using TypeScript 4.8 or newer in the workspace.",
+      "markdownDescription": "Specify glob patterns of files to exclude from auto imports. Relative paths are resolved relative to the workspace root. Patterns are evaluated using tsconfig.json [`exclude`](https://www.typescriptlang.org/tsconfig#exclude) semantics.",
       "scope": "resource",
       "type": "array"
     },
@@ -899,7 +968,7 @@
     },
     "typescript.suggest.objectLiteralMethodSnippets.enabled": {
       "default": true,
-      "description": "Enable/disable snippet completions for methods in object literals. Requires using TypeScript 4.7+ in the workspace.",
+      "description": "Enable/disable snippet completions for methods in object literals.",
       "scope": "resource",
       "type": "boolean"
     },
@@ -973,9 +1042,14 @@
     },
     "typescript.tsserver.maxTsServerMemory": {
       "default": 3072,
-      "description": "The maximum amount of memory (in MB) to allocate to the TypeScript server process.",
+      "markdownDescription": "The maximum amount of memory (in MB) to allocate to the TypeScript server process. To use a memory limit greater than 4 GB, use `#typescript.tsserver.nodePath#` to run TS Server with a custom Node installation.",
       "scope": "window",
       "type": "number"
+    },
+    "typescript.tsserver.nodePath": {
+      "description": "Run TS Server on a custom Node installation. This can be a path to a Node executable, or 'node' if you want VS Code to detect a Node installation.",
+      "scope": "window",
+      "type": "string"
     },
     "typescript.tsserver.pluginPaths": {
       "default": [],
@@ -1104,6 +1178,12 @@
     "typescript.validate.enable": {
       "default": true,
       "description": "Enable/disable TypeScript validation.",
+      "scope": "window",
+      "type": "boolean"
+    },
+    "typescript.workspaceSymbols.excludeLibrarySymbols": {
+      "default": true,
+      "markdownDescription": "Exclude symbols that come from library files in Go to Symbol in Workspace results. Requires using TypeScript 5.3+ in the workspace.",
       "scope": "window",
       "type": "boolean"
     },

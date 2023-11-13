@@ -62,12 +62,7 @@ function json.isObject(t)
   return next(t) ~= nil or getmetatable(t) == objectMt
 end
 
-if debug and debug.upvalueid then
-  -- Generate a lightuserdata
-  json.null = debug.upvalueid(json.createEmptyObject, 1)
-else
-  json.null = function() end
-end
+json.null = nil
 
 -- json.encode --
 local statusVisited
