@@ -1,5 +1,15 @@
 # Changelog
 
+## [1.2.3](https://github.com/folke/neoconf.nvim/compare/v1.2.2...v1.2.3) (2024-01-19)
+
+
+### Bug Fixes
+
+* **health:** remove deprecated API warnings ([#28](https://github.com/folke/neoconf.nvim/issues/28)) ([9625a17](https://github.com/folke/neoconf.nvim/commit/9625a1710a9be427a662f9ba0a383164588a41a8))
+* **json:** set `null` values to `nil` ([2f131d0](https://github.com/folke/neoconf.nvim/commit/2f131d0e7d15cd2d84345d3f8c0333f4f6843728))
+* **lspconfig:** dont deepcopy the full config. Do settings only ([37a7205](https://github.com/folke/neoconf.nvim/commit/37a7205282ced297bb1906d36d55e47c526fdc4c))
+* remove nickel_ls ([ca5246f](https://github.com/folke/neoconf.nvim/commit/ca5246f6d8dd6f71b9ef4fe060189da157e1451e))
+
 ## [1.2.2](https://github.com/folke/neoconf.nvim/compare/v1.2.1...v1.2.2) (2023-06-19)
 
 
