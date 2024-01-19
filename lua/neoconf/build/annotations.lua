@@ -204,7 +204,10 @@ function M.build()
   local index = vim.tbl_keys(require("neoconf.build.schemas").index())
   table.sort(index)
   for _, name in ipairs(index) do
-    M.build_annotations(name)
+    local ok, err = pcall(M.build_annotations, name)
+    if not ok then
+      print("error building " .. name .. ": " .. err)
+    end
   end
 
   local lines = vim.tbl_filter(function(v)

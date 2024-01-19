@@ -131,7 +131,11 @@ function M.update_index()
 end
 
 function M.update_schemas()
-  for name, s in pairs(require("neoconf.build.schemas").index()) do
+  local index = require("neoconf.build.schemas").index()
+  local names = vim.tbl_keys(index)
+  table.sort(names)
+  for _, name in ipairs(names) do
+    s = index[name]
     print(("Generating schema for %s"):format(name))
 
     if not Util.exists(s.settings_file) then
