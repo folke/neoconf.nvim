@@ -555,6 +555,11 @@
       "description": "Enable/disable implementations CodeLens. This CodeLens shows the implementers of an interface.",
       "type": "boolean"
     },
+    "typescript.implementationsCodeLens.showOnInterfaceMethods": {
+      "default": false,
+      "description": "Enable/disable implementations CodeLens on interface methods.",
+      "type": "boolean"
+    },
     "typescript.inlayHints.enumMemberValues.enabled": {
       "default": false,
       "markdownDescription": {
@@ -650,6 +655,19 @@
         "zh-CN",
         "zh-TW"
       ],
+      "enumDescriptions": [
+        "Use VS Code's configured display language",
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
       "markdownDescription": "Sets the locale used to report JavaScript and TypeScript errors. Defaults to use VS Code's locale.",
       "type": "string"
     },
@@ -738,6 +756,11 @@
         "Only insert attribute names."
       ],
       "type": "string"
+    },
+    "typescript.preferences.preferTypeOnlyAutoImports": {
+      "default": false,
+      "markdownDescription": "Include the `type` keyword in auto-imports whenever possible. Requires using TypeScript 5.3+ in the workspace.",
+      "type": "boolean"
     },
     "typescript.preferences.quoteStyle": {
       "default": "auto",
@@ -1013,6 +1036,11 @@
       ],
       "markdownDescription": "Controls which files are searched by [Go to Symbol in Workspace](https://code.visualstudio.com/docs/editor/editingevolved#_open-symbol-by-name).",
       "type": "string"
+    },
+    "vtsls.enableMoveToFileCodeAction": {
+      "default": false,
+      "description": "Enable 'Move to file' code action. This action enables user to move code to existing file, but requires corresponding handling on the client side.",
+      "type": "boolean"
     },
     "vtsls.experimental.completion.enableServerSideFuzzyMatch": {
       "default": false,

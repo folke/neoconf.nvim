@@ -24,8 +24,9 @@
       "default": "0.11",
       "description": "Which version of naga to use for its diagnostics",
       "enum": [
-        "0.10",
-        "0.11",
+        "0.12",
+        "0.13",
+        "0.14",
         "main"
       ],
       "type": "string"

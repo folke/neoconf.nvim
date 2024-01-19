@@ -28,6 +28,27 @@
       "description": "Optionally a custom path to the debug adapter executable.",
       "type": "string"
     },
+    "kotlin.diagnostics.debounceTime": {
+      "default": 250,
+      "description": "[DEBUG] Specifies the debounce time limit. Lower to increase responsiveness at the cost of possible stability issues.",
+      "type": "integer"
+    },
+    "kotlin.diagnostics.enabled": {
+      "default": true,
+      "description": "Whether diagnostics (e.g. errors or warnings from the Kotlin compiler) should be emitted.",
+      "type": "boolean"
+    },
+    "kotlin.diagnostics.level": {
+      "default": "hint",
+      "description": "The minimum severity of diagnostics to emit.",
+      "enum": [
+        "error",
+        "warning",
+        "information",
+        "hint"
+      ],
+      "type": "string"
+    },
     "kotlin.externalSources.autoConvertToKotlin": {
       "default": false,
       "description": "Specifies whether decompiled/external classes should be auto-converted to Kotlin.",
@@ -41,6 +62,21 @@
     "kotlin.indexing.enabled": {
       "default": true,
       "description": "Whether global symbols in the project should be indexed automatically in the background. This enables e.g. code completion for unimported classes and functions.",
+      "type": "boolean"
+    },
+    "kotlin.inlayHints.chainedHints": {
+      "default": false,
+      "description": "Whether to provide inlay hints on chained function calls or not.",
+      "type": "boolean"
+    },
+    "kotlin.inlayHints.parameterHints": {
+      "default": false,
+      "description": "Whether to provide inlay hints for parameters on call sites or not.",
+      "type": "boolean"
+    },
+    "kotlin.inlayHints.typeHints": {
+      "default": false,
+      "description": "Whether to provide inlay hints for types on declaration sites or not.",
       "type": "boolean"
     },
     "kotlin.java.home": {
@@ -94,8 +130,19 @@
     },
     "kotlin.linting.debounceTime": {
       "default": 250,
+      "deprecationMessage": "The option has been renamed to `kotlin.diagnostics.debounceTime`",
       "description": "[DEBUG] Specifies the debounce time limit. Lower to increase responsiveness at the cost of possible stability issues.",
       "type": "integer"
+    },
+    "kotlin.scripts.buildScriptsEnabled": {
+      "default": false,
+      "description": "Whether language features are provided for .gradle.kts scripts. Experimental and may not work properly.",
+      "type": "boolean"
+    },
+    "kotlin.scripts.enabled": {
+      "default": false,
+      "description": "Whether language features are provided for .kts scripts. Experimental and may not work properly.",
+      "type": "boolean"
     },
     "kotlin.snippetsEnabled": {
       "default": true,

@@ -132,7 +132,7 @@
       "type": "boolean"
     },
     "deno.enablePaths": {
-      "default": [],
+      "default": null,
       "examples": [
         [
           "./worker"
@@ -232,6 +232,20 @@
       "scope": "window",
       "type": "boolean"
     },
+    "deno.internalInspect": {
+      "default": false,
+      "examples": [
+        true,
+        false,
+        "127.0.0.1:9222"
+      ],
+      "markdownDescription": "Enables the inspector server for the JS runtime used by the Deno Language Server to host its TS server. Optionally provide an address for the inspector listener e.g. \"127.0.0.1:9222\" (default).",
+      "scope": "window",
+      "type": [
+        "boolean",
+        "string"
+      ]
+    },
     "deno.lint": {
       "default": true,
       "examples": [
@@ -240,6 +254,16 @@
       ],
       "markdownDescription": "Controls if linting information will be provided by the Deno Language Server.\n\n**Not recommended to be enabled globally.**",
       "scope": "resource",
+      "type": "boolean"
+    },
+    "deno.logFile": {
+      "default": false,
+      "examples": [
+        true,
+        false
+      ],
+      "markdownDescription": "Write logs to a file in a project-local directory.",
+      "scope": "window",
       "type": "boolean"
     },
     "deno.maxTsServerMemory": {

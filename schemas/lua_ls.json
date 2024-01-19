@@ -3049,10 +3049,12 @@
       "type": "boolean"
     },
     "Lua.workspace.checkThirdParty": {
-      "default": true,
       "markdownDescription": "Automatic detection and adaptation of third-party libraries, currently supported libraries are:\n\n* OpenResty\n* Cocos4.0\n* LÖVE\n* LÖVR\n* skynet\n* Jass\n",
       "scope": "resource",
-      "type": "boolean"
+      "type": [
+        "string",
+        "boolean"
+      ]
     },
     "Lua.workspace.ignoreDir": {
       "default": [

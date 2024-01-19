@@ -27,7 +27,7 @@
       "type": "string"
     },
     "perl.perltidyrc": {
-      "deprecationMessage": "Deprecated: Please use pls.perltidy.perltidyrc iarknstead.",
+      "deprecationMessage": "Deprecated: Please use pls.perltidy.perltidyrc instead.",
       "description": "Path to .perltidyrc",
       "markdownDeprecationMessage": "**Deprecated**: Please use `pls.perltidy.perltidyrc` instead.",
       "type": "string"

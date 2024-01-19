@@ -81,6 +81,11 @@
         "array"
       ]
     },
+    "rust-analyzer.cargo.buildScripts.rebuildOnSave": {
+      "default": false,
+      "markdownDescription": "Rerun proc-macros building/build-scripts running when proc-macro\nor build-script sources change and are saved.",
+      "type": "boolean"
+    },
     "rust-analyzer.cargo.buildScripts.useRustcWrapper": {
       "default": true,
       "markdownDescription": "Use `RUSTC_WRAPPER=rust-analyzer` when running build scripts to\navoid checking unnecessary things.",
@@ -137,6 +142,11 @@
         "null",
         "string"
       ]
+    },
+    "rust-analyzer.cargo.sysrootQueryMetadata": {
+      "default": false,
+      "markdownDescription": "Whether to run cargo metadata on the sysroot library allowing rust-analyzer to analyze\nthird-party dependencies of the standard libraries.\n\nThis will cause `cargo` to create a lockfile in your sysroot directory. rust-analyzer\nwill attempt to clean up afterwards, but nevertheless requires the location to be\nwritable to.",
+      "type": "boolean"
     },
     "rust-analyzer.cargo.sysrootSrc": {
       "default": null,
@@ -238,7 +248,7 @@
         "The command will be executed in the corresponding workspace root.",
         "The command will be executed in the project root."
       ],
-      "markdownDescription": "Specifies the working directory for running checks.\n- \"workspace\": run checks for workspaces in the corresponding workspaces' root directories.\n    This falls back to \"root\" if `#rust-analyzer.cargo.check.invocationStrategy#` is set to `once`.\n- \"root\": run checks in the project's root directory.\nThis config only has an effect when `#rust-analyzer.cargo.check.overrideCommand#`\nis set.",
+      "markdownDescription": "Specifies the working directory for running checks.\n- \"workspace\": run checks for workspaces in the corresponding workspaces' root directories.\n    This falls back to \"root\" if `#rust-analyzer.check.invocationStrategy#` is set to `once`.\n- \"root\": run checks in the project's root directory.\nThis config only has an effect when `#rust-analyzer.check.overrideCommand#`\nis set.",
       "type": "string"
     },
     "rust-analyzer.check.invocationStrategy": {
@@ -251,7 +261,7 @@
         "The command will be executed for each workspace.",
         "The command will be executed once."
       ],
-      "markdownDescription": "Specifies the invocation strategy to use when running the check command.\nIf `per_workspace` is set, the command will be executed for each workspace.\nIf `once` is set, the command will be executed once.\nThis config only has an effect when `#rust-analyzer.cargo.check.overrideCommand#`\nis set.",
+      "markdownDescription": "Specifies the invocation strategy to use when running the check command.\nIf `per_workspace` is set, the command will be executed for each workspace.\nIf `once` is set, the command will be executed once.\nThis config only has an effect when `#rust-analyzer.check.overrideCommand#`\nis set.",
       "type": "string"
     },
     "rust-analyzer.check.noDefaultFeatures": {
@@ -267,7 +277,7 @@
       "items": {
         "type": "string"
       },
-      "markdownDescription": "Override the command rust-analyzer uses instead of `cargo check` for\ndiagnostics on save. The command is required to output json and\nshould therefore include `--message-format=json` or a similar option\n(if your client supports the `colorDiagnosticOutput` experimental\ncapability, you can use `--message-format=json-diagnostic-rendered-ansi`).\n\nIf you're changing this because you're using some tool wrapping\nCargo, you might also want to change\n`#rust-analyzer.cargo.buildScripts.overrideCommand#`.\n\nIf there are multiple linked projects/workspaces, this command is invoked for\neach of them, with the working directory being the workspace root\n(i.e., the folder containing the `Cargo.toml`). This can be overwritten\nby changing `#rust-analyzer.cargo.check.invocationStrategy#` and\n`#rust-analyzer.cargo.check.invocationLocation#`.\n\nAn example command would be:\n\n```bash\ncargo check --workspace --message-format=json --all-targets\n```\n.",
+      "markdownDescription": "Override the command rust-analyzer uses instead of `cargo check` for\ndiagnostics on save. The command is required to output json and\nshould therefore include `--message-format=json` or a similar option\n(if your client supports the `colorDiagnosticOutput` experimental\ncapability, you can use `--message-format=json-diagnostic-rendered-ansi`).\n\nIf you're changing this because you're using some tool wrapping\nCargo, you might also want to change\n`#rust-analyzer.cargo.buildScripts.overrideCommand#`.\n\nIf there are multiple linked projects/workspaces, this command is invoked for\neach of them, with the working directory being the workspace root\n(i.e., the folder containing the `Cargo.toml`). This can be overwritten\nby changing `#rust-analyzer.check.invocationStrategy#` and\n`#rust-analyzer.check.invocationLocation#`.\n\nAn example command would be:\n\n```bash\ncargo check --workspace --message-format=json --all-targets\n```\n.",
       "type": [
         "null",
         "array"
@@ -665,13 +675,15 @@
         "preserve",
         "crate",
         "module",
-        "item"
+        "item",
+        "one"
       ],
       "enumDescriptions": [
         "Do not change the granularity of any imports and preserve the original structure written by the developer.",
         "Merge imports from the same crate into a single use statement. Conversely, imports from different crates are split into separate statements.",
         "Merge imports from the same module into a single use statement. Conversely, imports from different modules are split into separate statements.",
-        "Flatten imports so that each has its own use statement."
+        "Flatten imports so that each has its own use statement.",
+        "Merge all imports into a single use statement as long as they have the same visibility and attributes."
       ],
       "markdownDescription": "How imports should be grouped into use statements.",
       "type": "string"
@@ -686,9 +698,14 @@
       "markdownDescription": "Whether to allow import insertion to merge new imports into single path glob imports like `use std::fmt::*;`.",
       "type": "boolean"
     },
-    "rust-analyzer.imports.prefer.no.std": {
+    "rust-analyzer.imports.preferNoStd": {
       "default": false,
       "markdownDescription": "Prefer to unconditionally use imports of the core and alloc crate, over the std crate.",
+      "type": "boolean"
+    },
+    "rust-analyzer.imports.preferPrelude": {
+      "default": false,
+      "markdownDescription": "Whether to prefer import paths containing a `prelude` module.",
       "type": "boolean"
     },
     "rust-analyzer.imports.prefix": {
@@ -816,6 +833,11 @@
       "markdownDescription": "Whether to show inlay hints as postfix ops (`.*` instead of `*`, etc).",
       "type": "string"
     },
+    "rust-analyzer.inlayHints.implicitDrops.enable": {
+      "default": false,
+      "markdownDescription": "Whether to show implicit drop hints.",
+      "type": "boolean"
+    },
     "rust-analyzer.inlayHints.lifetimeElisionHints.enable": {
       "default": "never",
       "enum": [
@@ -848,6 +870,11 @@
     "rust-analyzer.inlayHints.parameterHints.enable": {
       "default": true,
       "markdownDescription": "Whether to show function parameter name inlay hints at the call\nsite.",
+      "type": "boolean"
+    },
+    "rust-analyzer.inlayHints.rangeExclusiveHints.enable": {
+      "default": false,
+      "markdownDescription": "Whether to show exclusive range inlay hints.",
       "type": "boolean"
     },
     "rust-analyzer.inlayHints.reborrowHints.enable": {
@@ -1035,6 +1062,11 @@
       "markdownDescription": "Exclude imports from find-all-references.",
       "type": "boolean"
     },
+    "rust-analyzer.rename.allowExternalItems": {
+      "default": false,
+      "markdownDescription": "Allow renaming of items not belonging to the loaded workspaces.",
+      "type": "boolean"
+    },
     "rust-analyzer.restartServerOnConfigChange": {
       "default": false,
       "markdownDescription": "Whether to restart the server automatically when certain settings that require a restart are changed.",
@@ -1217,6 +1249,11 @@
     "rust-analyzer.showDependenciesExplorer": {
       "default": true,
       "markdownDescription": "Whether to show the dependencies view.",
+      "type": "boolean"
+    },
+    "rust-analyzer.showRequestFailedErrorNotification": {
+      "default": true,
+      "markdownDescription": "Whether to show error notifications for failing requests.",
       "type": "boolean"
     },
     "rust-analyzer.showUnlinkedFileNotification": {

@@ -10,6 +10,32 @@
       "scope": "resource",
       "type": "boolean"
     },
+    "luau-lsp.bytecode.debugLevel": {
+      "default": 1,
+      "markdownDescription": "The `debugLevel` to use when compiling bytecode",
+      "maximum": 2,
+      "minimum": 0,
+      "scope": "resource",
+      "type": "number"
+    },
+    "luau-lsp.bytecode.vectorCtor": {
+      "default": "new",
+      "markdownDescription": "The `vectorCtor` to use when compiling bytecode",
+      "scope": "resource",
+      "type": "string"
+    },
+    "luau-lsp.bytecode.vectorLib": {
+      "default": "Vector3",
+      "markdownDescription": "The `vectorLib` to use when compiling bytecode",
+      "scope": "resource",
+      "type": "string"
+    },
+    "luau-lsp.bytecode.vectorType": {
+      "default": "Vector3",
+      "markdownDescription": "The `vectorType` to use when compiling bytecode",
+      "scope": "resource",
+      "type": "string"
+    },
     "luau-lsp.completion.addParentheses": {
       "default": true,
       "markdownDescription": "Add parentheses after completing a function call",
@@ -133,6 +159,12 @@
     "luau-lsp.hover.enabled": {
       "default": true,
       "markdownDescription": "Enable hover",
+      "scope": "resource",
+      "type": "boolean"
+    },
+    "luau-lsp.hover.includeStringLength": {
+      "default": true,
+      "markdownDescription": "Show string length when hovering over a string literal",
       "scope": "resource",
       "type": "boolean"
     },
@@ -318,6 +350,18 @@
         "usesOnlineServices"
       ],
       "type": "boolean"
+    },
+    "luau-lsp.types.robloxSecurityLevel": {
+      "default": "PluginSecurity",
+      "enum": [
+        "None",
+        "LocalUserSecurity",
+        "PluginSecurity",
+        "RobloxScriptSecurity"
+      ],
+      "markdownDescription": "Security Level to use in the Roblox API definitions",
+      "scope": "window",
+      "type": "string"
     },
     "luau.trace.server": {
       "default": "off",

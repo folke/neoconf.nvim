@@ -1,5 +1,5 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "description": "A Language Server providing Ada and SPARK support in Visual Studio Code",
+  "description": "Ada & SPARK IntelliSense, code browsing, debugging and more.",
   "properties": []
 }

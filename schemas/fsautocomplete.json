@@ -104,6 +104,12 @@
       "description": "Enables the solution explorer view of the current workspace, which shows the workspace as MSBuild sees it",
       "type": "boolean"
     },
+    "FSharp.excludeAnalyzers": {
+      "default": [],
+      "description": "The names of custom analyzers that should not be executed.",
+      "scope": "machine-overridable",
+      "type": "array"
+    },
     "FSharp.excludeProjectDirectories": {
       "default": [
         ".git",
@@ -211,6 +217,12 @@
       "default": false,
       "markdownDescription": "Enables generation of `msbuild.binlog` files for project loading. It works only for fresh, non-cached project loading. Run `F#: Clear Project Cache` and `Developer: Reload Window` to force fresh loading of all projects. These files can be loaded and inspected using the [MSBuild Structured Logger](https://github.com/KirillOsenkov/MSBuildStructuredLog)",
       "type": "boolean"
+    },
+    "FSharp.includeAnalyzers": {
+      "default": [],
+      "description": "The names of custom analyzers that should exclusively be executed, others should be ignored.",
+      "scope": "machine-overridable",
+      "type": "array"
     },
     "FSharp.indentationSize": {
       "default": 4,

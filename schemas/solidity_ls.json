@@ -33,6 +33,26 @@
       "description": "Enables as you type compilation of the document and error highlighting",
       "type": "boolean"
     },
+    "solidity.explorer_bscscan_apikey": {
+      "default": "YourApiKey",
+      "description": "Api key for downloading Binance smart chain smart contracts from api.bscscan.com",
+      "type": "string"
+    },
+    "solidity.explorer_etherscan_apikey": {
+      "default": "YourApiKey",
+      "description": "Api key for downloading ethereum smart contracts from etherscan.io",
+      "type": "string"
+    },
+    "solidity.explorer_etherscan_optimism_apikey": {
+      "default": "YourApiKey",
+      "description": "Api key for downloading optimism smart contracts from api-optimistic.etherscan.io",
+      "type": "string"
+    },
+    "solidity.explorer_polygonscan_apikey": {
+      "default": "YourApiKey",
+      "description": "Api key for downloading polygon smart contracts from api.polygonscan.com",
+      "type": "string"
+    },
     "solidity.formatter": {
       "default": "prettier",
       "description": "Enables / disables the solidity formatter prettier (default) or forge (note it needs to be installed)",

@@ -14,6 +14,12 @@
       "scope": "resource",
       "type": "boolean"
     },
+    "pyright.disableTaggedHints": {
+      "default": false,
+      "description": "Disable hint diagnostics with special hints for grayed-out or strike-through text.",
+      "scope": "resource",
+      "type": "boolean"
+    },
     "python.analysis.autoImportCompletions": {
       "default": true,
       "description": "Offer auto-import completions.",
@@ -40,7 +46,7 @@
       "type": "string"
     },
     "python.analysis.diagnosticSeverityOverrides": {
-      "description": "Allows a user to override the severity levels for individual diagnostics.",
+      "description": "Allows a user to override the severity levels for individual diagnostics. Use the rule name as a key and one of \"error\", \"warning\", \"information\", \"none\", `true` (alias for \"error\") or `false` (alias for \"none\") as value. The default value shown for each diagnostic is the default when \"python.analysis.typeCheckingMode\" is set to \"standard\". See [here](https://github.com/microsoft/pyright/blob/main/docs/configuration.md#diagnostic-rule-defaults) for defaults for each type checking mode (\"off\", \"basic\", \"standard\", and \"strict\").",
       "properties": {
         "reportAssertAlwaysTrue": {
           "default": "warning",
@@ -49,9 +55,14 @@
             "none",
             "information",
             "warning",
-            "error"
+            "error",
+            true,
+            false
           ],
-          "type": "string"
+          "type": [
+            "string",
+            "boolean"
+          ]
         },
         "reportCallInDefaultInitializer": {
           "default": "none",
@@ -60,9 +71,14 @@
             "none",
             "information",
             "warning",
-            "error"
+            "error",
+            true,
+            false
           ],
-          "type": "string"
+          "type": [
+            "string",
+            "boolean"
+          ]
         },
         "reportConstantRedefinition": {
           "default": "none",
@@ -71,9 +87,14 @@
             "none",
             "information",
             "warning",
-            "error"
+            "error",
+            true,
+            false
           ],
-          "type": "string"
+          "type": [
+            "string",
+            "boolean"
+          ]
         },
         "reportDeprecated": {
           "default": "none",
@@ -82,9 +103,14 @@
             "none",
             "information",
             "warning",
-            "error"
+            "error",
+            true,
+            false
           ],
-          "type": "string"
+          "type": [
+            "string",
+            "boolean"
+          ]
         },
         "reportDuplicateImport": {
           "default": "none",
@@ -93,20 +119,30 @@
             "none",
             "information",
             "warning",
-            "error"
+            "error",
+            true,
+            false
           ],
-          "type": "string"
+          "type": [
+            "string",
+            "boolean"
+          ]
         },
         "reportFunctionMemberAccess": {
-          "default": "none",
+          "default": "error",
           "description": "Diagnostics for member accesses on functions.",
           "enum": [
             "none",
             "information",
             "warning",
-            "error"
+            "error",
+            true,
+            false
           ],
-          "type": "string"
+          "type": [
+            "string",
+            "boolean"
+          ]
         },
         "reportGeneralTypeIssues": {
           "default": "error",
@@ -115,9 +151,14 @@
             "none",
             "information",
             "warning",
-            "error"
+            "error",
+            true,
+            false
           ],
-          "type": "string"
+          "type": [
+            "string",
+            "boolean"
+          ]
         },
         "reportImplicitOverride": {
           "default": "none",
@@ -126,9 +167,14 @@
             "none",
             "information",
             "warning",
-            "error"
+            "error",
+            true,
+            false
           ],
-          "type": "string"
+          "type": [
+            "string",
+            "boolean"
+          ]
         },
         "reportImplicitStringConcatenation": {
           "default": "none",
@@ -137,9 +183,14 @@
             "none",
             "information",
             "warning",
-            "error"
+            "error",
+            true,
+            false
           ],
-          "type": "string"
+          "type": [
+            "string",
+            "boolean"
+          ]
         },
         "reportImportCycles": {
           "default": "none",
@@ -148,31 +199,46 @@
             "none",
             "information",
             "warning",
-            "error"
+            "error",
+            true,
+            false
           ],
-          "type": "string"
+          "type": [
+            "string",
+            "boolean"
+          ]
         },
         "reportIncompatibleMethodOverride": {
-          "default": "none",
+          "default": "error",
           "description": "Diagnostics for methods that override a method of the same name in a base class in an incompatible manner (wrong number of parameters, incompatible parameter types, or incompatible return type).",
           "enum": [
             "none",
             "information",
             "warning",
-            "error"
+            "error",
+            true,
+            false
           ],
-          "type": "string"
+          "type": [
+            "string",
+            "boolean"
+          ]
         },
         "reportIncompatibleVariableOverride": {
-          "default": "none",
+          "default": "error",
           "description": "Diagnostics for overrides in subclasses that redefine a variable in an incompatible way.",
           "enum": [
             "none",
             "information",
             "warning",
-            "error"
+            "error",
+            true,
+            false
           ],
-          "type": "string"
+          "type": [
+            "string",
+            "boolean"
+          ]
         },
         "reportIncompleteStub": {
           "default": "none",
@@ -181,9 +247,14 @@
             "none",
             "information",
             "warning",
-            "error"
+            "error",
+            true,
+            false
           ],
-          "type": "string"
+          "type": [
+            "string",
+            "boolean"
+          ]
         },
         "reportInconsistentConstructor": {
           "default": "none",
@@ -192,9 +263,14 @@
             "none",
             "information",
             "warning",
-            "error"
+            "error",
+            true,
+            false
           ],
-          "type": "string"
+          "type": [
+            "string",
+            "boolean"
+          ]
         },
         "reportInvalidStringEscapeSequence": {
           "default": "warning",
@@ -203,9 +279,14 @@
             "none",
             "information",
             "warning",
-            "error"
+            "error",
+            true,
+            false
           ],
-          "type": "string"
+          "type": [
+            "string",
+            "boolean"
+          ]
         },
         "reportInvalidStubStatement": {
           "default": "none",
@@ -214,9 +295,14 @@
             "none",
             "information",
             "warning",
-            "error"
+            "error",
+            true,
+            false
           ],
-          "type": "string"
+          "type": [
+            "string",
+            "boolean"
+          ]
         },
         "reportInvalidTypeVarUse": {
           "default": "warning",
@@ -225,9 +311,14 @@
             "none",
             "information",
             "warning",
-            "error"
+            "error",
+            true,
+            false
           ],
-          "type": "string"
+          "type": [
+            "string",
+            "boolean"
+          ]
         },
         "reportMatchNotExhaustive": {
           "default": "none",
@@ -236,9 +327,14 @@
             "none",
             "information",
             "warning",
-            "error"
+            "error",
+            true,
+            false
           ],
-          "type": "string"
+          "type": [
+            "string",
+            "boolean"
+          ]
         },
         "reportMissingImports": {
           "default": "error",
@@ -247,9 +343,14 @@
             "none",
             "information",
             "warning",
-            "error"
+            "error",
+            true,
+            false
           ],
-          "type": "string"
+          "type": [
+            "string",
+            "boolean"
+          ]
         },
         "reportMissingModuleSource": {
           "default": "warning",
@@ -258,9 +359,14 @@
             "none",
             "information",
             "warning",
-            "error"
+            "error",
+            true,
+            false
           ],
-          "type": "string"
+          "type": [
+            "string",
+            "boolean"
+          ]
         },
         "reportMissingParameterType": {
           "default": "none",
@@ -269,9 +375,14 @@
             "none",
             "information",
             "warning",
-            "error"
+            "error",
+            true,
+            false
           ],
-          "type": "string"
+          "type": [
+            "string",
+            "boolean"
+          ]
         },
         "reportMissingSuperCall": {
           "default": "none",
@@ -280,9 +391,14 @@
             "none",
             "information",
             "warning",
-            "error"
+            "error",
+            true,
+            false
           ],
-          "type": "string"
+          "type": [
+            "string",
+            "boolean"
+          ]
         },
         "reportMissingTypeArgument": {
           "default": "none",
@@ -291,9 +407,14 @@
             "none",
             "information",
             "warning",
-            "error"
+            "error",
+            true,
+            false
           ],
-          "type": "string"
+          "type": [
+            "string",
+            "boolean"
+          ]
         },
         "reportMissingTypeStubs": {
           "default": "none",
@@ -302,9 +423,14 @@
             "none",
             "information",
             "warning",
-            "error"
+            "error",
+            true,
+            false
           ],
-          "type": "string"
+          "type": [
+            "string",
+            "boolean"
+          ]
         },
         "reportOptionalCall": {
           "default": "error",
@@ -313,9 +439,14 @@
             "none",
             "information",
             "warning",
-            "error"
+            "error",
+            true,
+            false
           ],
-          "type": "string"
+          "type": [
+            "string",
+            "boolean"
+          ]
         },
         "reportOptionalContextManager": {
           "default": "error",
@@ -324,9 +455,14 @@
             "none",
             "information",
             "warning",
-            "error"
+            "error",
+            true,
+            false
           ],
-          "type": "string"
+          "type": [
+            "string",
+            "boolean"
+          ]
         },
         "reportOptionalIterable": {
           "default": "error",
@@ -335,9 +471,14 @@
             "none",
             "information",
             "warning",
-            "error"
+            "error",
+            true,
+            false
           ],
-          "type": "string"
+          "type": [
+            "string",
+            "boolean"
+          ]
         },
         "reportOptionalMemberAccess": {
           "default": "error",
@@ -346,9 +487,14 @@
             "none",
             "information",
             "warning",
-            "error"
+            "error",
+            true,
+            false
           ],
-          "type": "string"
+          "type": [
+            "string",
+            "boolean"
+          ]
         },
         "reportOptionalOperand": {
           "default": "error",
@@ -357,9 +503,14 @@
             "none",
             "information",
             "warning",
-            "error"
+            "error",
+            true,
+            false
           ],
-          "type": "string"
+          "type": [
+            "string",
+            "boolean"
+          ]
         },
         "reportOptionalSubscript": {
           "default": "error",
@@ -368,20 +519,30 @@
             "none",
             "information",
             "warning",
-            "error"
+            "error",
+            true,
+            false
           ],
-          "type": "string"
+          "type": [
+            "string",
+            "boolean"
+          ]
         },
         "reportOverlappingOverload": {
-          "default": "none",
+          "default": "error",
           "description": "Diagnostics for function overloads that overlap in signature and obscure each other or have incompatible return types.",
           "enum": [
             "none",
             "information",
             "warning",
-            "error"
+            "error",
+            true,
+            false
           ],
-          "type": "string"
+          "type": [
+            "string",
+            "boolean"
+          ]
         },
         "reportPrivateImportUsage": {
           "default": "error",
@@ -390,9 +551,14 @@
             "none",
             "information",
             "warning",
-            "error"
+            "error",
+            true,
+            false
           ],
-          "type": "string"
+          "type": [
+            "string",
+            "boolean"
+          ]
         },
         "reportPrivateUsage": {
           "default": "none",
@@ -401,9 +567,14 @@
             "none",
             "information",
             "warning",
-            "error"
+            "error",
+            true,
+            false
           ],
-          "type": "string"
+          "type": [
+            "string",
+            "boolean"
+          ]
         },
         "reportPropertyTypeMismatch": {
           "default": "none",
@@ -412,9 +583,14 @@
             "none",
             "information",
             "warning",
-            "error"
+            "error",
+            true,
+            false
           ],
-          "type": "string"
+          "type": [
+            "string",
+            "boolean"
+          ]
         },
         "reportSelfClsParameterName": {
           "default": "warning",
@@ -423,9 +599,14 @@
             "none",
             "information",
             "warning",
-            "error"
+            "error",
+            true,
+            false
           ],
-          "type": "string"
+          "type": [
+            "string",
+            "boolean"
+          ]
         },
         "reportShadowedImports": {
           "default": "none",
@@ -434,9 +615,14 @@
             "none",
             "information",
             "warning",
-            "error"
+            "error",
+            true,
+            false
           ],
-          "type": "string"
+          "type": [
+            "string",
+            "boolean"
+          ]
         },
         "reportTypeCommentUsage": {
           "default": "none",
@@ -445,9 +631,14 @@
             "none",
             "information",
             "warning",
-            "error"
+            "error",
+            true,
+            false
           ],
-          "type": "string"
+          "type": [
+            "string",
+            "boolean"
+          ]
         },
         "reportTypedDictNotRequiredAccess": {
           "default": "error",
@@ -456,9 +647,14 @@
             "none",
             "information",
             "warning",
-            "error"
+            "error",
+            true,
+            false
           ],
-          "type": "string"
+          "type": [
+            "string",
+            "boolean"
+          ]
         },
         "reportUnboundVariable": {
           "default": "error",
@@ -467,9 +663,14 @@
             "none",
             "information",
             "warning",
-            "error"
+            "error",
+            true,
+            false
           ],
-          "type": "string"
+          "type": [
+            "string",
+            "boolean"
+          ]
         },
         "reportUndefinedVariable": {
           "default": "error",
@@ -478,9 +679,14 @@
             "none",
             "information",
             "warning",
-            "error"
+            "error",
+            true,
+            false
           ],
-          "type": "string"
+          "type": [
+            "string",
+            "boolean"
+          ]
         },
         "reportUninitializedInstanceVariable": {
           "default": "none",
@@ -489,9 +695,14 @@
             "none",
             "information",
             "warning",
-            "error"
+            "error",
+            true,
+            false
           ],
-          "type": "string"
+          "type": [
+            "string",
+            "boolean"
+          ]
         },
         "reportUnknownArgumentType": {
           "default": "none",
@@ -500,9 +711,14 @@
             "none",
             "information",
             "warning",
-            "error"
+            "error",
+            true,
+            false
           ],
-          "type": "string"
+          "type": [
+            "string",
+            "boolean"
+          ]
         },
         "reportUnknownLambdaType": {
           "default": "none",
@@ -511,9 +727,14 @@
             "none",
             "information",
             "warning",
-            "error"
+            "error",
+            true,
+            false
           ],
-          "type": "string"
+          "type": [
+            "string",
+            "boolean"
+          ]
         },
         "reportUnknownMemberType": {
           "default": "none",
@@ -522,9 +743,14 @@
             "none",
             "information",
             "warning",
-            "error"
+            "error",
+            true,
+            false
           ],
-          "type": "string"
+          "type": [
+            "string",
+            "boolean"
+          ]
         },
         "reportUnknownParameterType": {
           "default": "none",
@@ -533,9 +759,14 @@
             "none",
             "information",
             "warning",
-            "error"
+            "error",
+            true,
+            false
           ],
-          "type": "string"
+          "type": [
+            "string",
+            "boolean"
+          ]
         },
         "reportUnknownVariableType": {
           "default": "none",
@@ -544,9 +775,14 @@
             "none",
             "information",
             "warning",
-            "error"
+            "error",
+            true,
+            false
           ],
-          "type": "string"
+          "type": [
+            "string",
+            "boolean"
+          ]
         },
         "reportUnnecessaryCast": {
           "default": "none",
@@ -555,9 +791,14 @@
             "none",
             "information",
             "warning",
-            "error"
+            "error",
+            true,
+            false
           ],
-          "type": "string"
+          "type": [
+            "string",
+            "boolean"
+          ]
         },
         "reportUnnecessaryComparison": {
           "default": "none",
@@ -566,9 +807,14 @@
             "none",
             "information",
             "warning",
-            "error"
+            "error",
+            true,
+            false
           ],
-          "type": "string"
+          "type": [
+            "string",
+            "boolean"
+          ]
         },
         "reportUnnecessaryContains": {
           "default": "none",
@@ -577,9 +823,14 @@
             "none",
             "information",
             "warning",
-            "error"
+            "error",
+            true,
+            false
           ],
-          "type": "string"
+          "type": [
+            "string",
+            "boolean"
+          ]
         },
         "reportUnnecessaryIsInstance": {
           "default": "none",
@@ -588,9 +839,14 @@
             "none",
             "information",
             "warning",
-            "error"
+            "error",
+            true,
+            false
           ],
-          "type": "string"
+          "type": [
+            "string",
+            "boolean"
+          ]
         },
         "reportUnnecessaryTypeIgnoreComment": {
           "default": "none",
@@ -599,9 +855,14 @@
             "none",
             "information",
             "warning",
-            "error"
+            "error",
+            true,
+            false
           ],
-          "type": "string"
+          "type": [
+            "string",
+            "boolean"
+          ]
         },
         "reportUnsupportedDunderAll": {
           "default": "warning",
@@ -610,9 +871,14 @@
             "none",
             "information",
             "warning",
-            "error"
+            "error",
+            true,
+            false
           ],
-          "type": "string"
+          "type": [
+            "string",
+            "boolean"
+          ]
         },
         "reportUntypedBaseClass": {
           "default": "none",
@@ -621,9 +887,14 @@
             "none",
             "information",
             "warning",
-            "error"
+            "error",
+            true,
+            false
           ],
-          "type": "string"
+          "type": [
+            "string",
+            "boolean"
+          ]
         },
         "reportUntypedClassDecorator": {
           "default": "none",
@@ -632,9 +903,14 @@
             "none",
             "information",
             "warning",
-            "error"
+            "error",
+            true,
+            false
           ],
-          "type": "string"
+          "type": [
+            "string",
+            "boolean"
+          ]
         },
         "reportUntypedFunctionDecorator": {
           "default": "none",
@@ -643,9 +919,14 @@
             "none",
             "information",
             "warning",
-            "error"
+            "error",
+            true,
+            false
           ],
-          "type": "string"
+          "type": [
+            "string",
+            "boolean"
+          ]
         },
         "reportUntypedNamedTuple": {
           "default": "none",
@@ -654,9 +935,14 @@
             "none",
             "information",
             "warning",
-            "error"
+            "error",
+            true,
+            false
           ],
-          "type": "string"
+          "type": [
+            "string",
+            "boolean"
+          ]
         },
         "reportUnusedCallResult": {
           "default": "none",
@@ -665,9 +951,14 @@
             "none",
             "information",
             "warning",
-            "error"
+            "error",
+            true,
+            false
           ],
-          "type": "string"
+          "type": [
+            "string",
+            "boolean"
+          ]
         },
         "reportUnusedClass": {
           "default": "none",
@@ -676,9 +967,14 @@
             "none",
             "information",
             "warning",
-            "error"
+            "error",
+            true,
+            false
           ],
-          "type": "string"
+          "type": [
+            "string",
+            "boolean"
+          ]
         },
         "reportUnusedCoroutine": {
           "default": "error",
@@ -687,9 +983,14 @@
             "none",
             "information",
             "warning",
-            "error"
+            "error",
+            true,
+            false
           ],
-          "type": "string"
+          "type": [
+            "string",
+            "boolean"
+          ]
         },
         "reportUnusedExpression": {
           "default": "warning",
@@ -698,9 +999,14 @@
             "none",
             "information",
             "warning",
-            "error"
+            "error",
+            true,
+            false
           ],
-          "type": "string"
+          "type": [
+            "string",
+            "boolean"
+          ]
         },
         "reportUnusedFunction": {
           "default": "none",
@@ -709,9 +1015,14 @@
             "none",
             "information",
             "warning",
-            "error"
+            "error",
+            true,
+            false
           ],
-          "type": "string"
+          "type": [
+            "string",
+            "boolean"
+          ]
         },
         "reportUnusedImport": {
           "default": "none",
@@ -720,9 +1031,14 @@
             "none",
             "information",
             "warning",
-            "error"
+            "error",
+            true,
+            false
           ],
-          "type": "string"
+          "type": [
+            "string",
+            "boolean"
+          ]
         },
         "reportUnusedVariable": {
           "default": "none",
@@ -731,9 +1047,14 @@
             "none",
             "information",
             "warning",
-            "error"
+            "error",
+            true,
+            false
           ],
-          "type": "string"
+          "type": [
+            "string",
+            "boolean"
+          ]
         },
         "reportWildcardImportFromLibrary": {
           "default": "warning",
@@ -742,17 +1063,49 @@
             "none",
             "information",
             "warning",
-            "error"
+            "error",
+            true,
+            false
           ],
-          "type": "string"
+          "type": [
+            "string",
+            "boolean"
+          ]
         }
       },
       "scope": "resource",
       "type": "object"
     },
+    "python.analysis.exclude": {
+      "default": [],
+      "description": "Paths of directories or files that should not be included. These override the include directories, allowing specific subdirectories to be excluded. Note that files in the exclude paths may still be included in the analysis if they are referenced (imported) by source files that are not excluded. Paths may contain wildcard characters ** (a directory or multiple levels of directories), * (a sequence of zero or more characters), or ? (a single character). If no exclude paths are specified, pyright automatically excludes the following: `**/node_modules`, `**/__pycache__`, `.git` and any virtual environment directories.",
+      "items": {
+        "type": "string"
+      },
+      "scope": "resource",
+      "type": "array"
+    },
     "python.analysis.extraPaths": {
       "default": [],
       "description": "Additional import search resolution paths",
+      "items": {
+        "type": "string"
+      },
+      "scope": "resource",
+      "type": "array"
+    },
+    "python.analysis.ignore": {
+      "default": [],
+      "description": "Paths of directories or files whose diagnostic output (errors and warnings) should be suppressed even if they are an included file or within the transitive closure of an included file. Paths may contain wildcard characters ** (a directory or multiple levels of directories), * (a sequence of zero or more characters), or ? (a single character). If no value is provided, the value of python.linting.ignorePatterns (if set) will be used.",
+      "items": {
+        "type": "string"
+      },
+      "scope": "resource",
+      "type": "array"
+    },
+    "python.analysis.include": {
+      "default": [],
+      "description": "Paths of directories or files that should be included. If no paths are specified, pyright defaults to the workspace root directory. Paths may contain wildcard characters ** (a directory or multiple levels of directories), * (a sequence of zero or more characters), or ? (a single character).",
       "items": {
         "type": "string"
       },
@@ -777,11 +1130,12 @@
       "type": "string"
     },
     "python.analysis.typeCheckingMode": {
-      "default": "basic",
+      "default": "standard",
       "description": "Defines the default rule set for type checking.",
       "enum": [
         "off",
         "basic",
+        "standard",
         "strict"
       ],
       "scope": "resource",

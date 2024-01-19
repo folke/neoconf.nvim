@@ -19,9 +19,13 @@
       "type": "boolean"
     },
     "sorbet.highlightUntyped": {
-      "default": false,
+      "default": "nowhere",
       "description": "Shows warning for untyped values.",
-      "type": "boolean"
+      "enum": [
+        "nowhere",
+        "everywhere-but-tests",
+        "everywhere"
+      ]
     },
     "sorbet.lspConfigs": {
       "default": [

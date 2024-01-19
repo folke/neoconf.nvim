@@ -35,6 +35,11 @@
       "title": "Language Server Runtime",
       "type": "string"
     },
+    "svelte.language-server.runtime-args": {
+      "description": "You normally don't set this. Additional arguments to pass to the node executable when spawning the language server. This is useful when you use something like Yarn PnP and need its loader arguments `[\"--loader\", \".pnp.loader.mjs\"]`.",
+      "title": "Language Server Runtime Args",
+      "type": "array"
+    },
     "svelte.plugin.css.colorPresentations.enable": {
       "default": true,
       "description": "Enable color picker for CSS",

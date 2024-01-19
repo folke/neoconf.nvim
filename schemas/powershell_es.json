@@ -207,6 +207,11 @@
       "markdownDescription": "An array of strings that enable experimental features in the PowerShell extension. **No flags are currently available!**",
       "type": "array"
     },
+    "powershell.developer.setExecutionPolicy": {
+      "default": true,
+      "markdownDescription": "On Windows we launch the PowerShell executable with `-ExecutionPolicy Bypass` so that the LSP server (PowerShell Editor Services module) will launch without issue. Some anti-virus programs disallow this command-line argument and this flag can be used to remove it. **Using this setting may require trusting the script manually in order for it to launch!**",
+      "type": "boolean"
+    },
     "powershell.developer.waitForSessionFileTimeoutSeconds": {
       "default": 240,
       "markdownDescription": "Specifies how many seconds the extension will wait for the LSP server, PowerShell Editor Services, to connect. The default is four minutes; try increasing this value if your computer is particularly slow (often caused by overactive anti-malware programs).",
