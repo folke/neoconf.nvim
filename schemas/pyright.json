@@ -48,6 +48,38 @@
     "python.analysis.diagnosticSeverityOverrides": {
       "description": "Allows a user to override the severity levels for individual diagnostics. Use the rule name as a key and one of \"error\", \"warning\", \"information\", \"none\", `true` (alias for \"error\") or `false` (alias for \"none\") as value. The default value shown for each diagnostic is the default when \"python.analysis.typeCheckingMode\" is set to \"standard\". See [here](https://github.com/microsoft/pyright/blob/main/docs/configuration.md#diagnostic-rule-defaults) for defaults for each type checking mode (\"off\", \"basic\", \"standard\", and \"strict\").",
       "properties": {
+        "reportAbstractUsage": {
+          "default": "error",
+          "description": "Diagnostics for an attempt to instantiate an abstract or protocol class or use an abstract method.",
+          "enum": [
+            "none",
+            "information",
+            "warning",
+            "error",
+            true,
+            false
+          ],
+          "type": [
+            "string",
+            "boolean"
+          ]
+        },
+        "reportArgumentType": {
+          "default": "error",
+          "description": "Diagnostics for a type incompatibility for an argument to a call.",
+          "enum": [
+            "none",
+            "information",
+            "warning",
+            "error",
+            true,
+            false
+          ],
+          "type": [
+            "string",
+            "boolean"
+          ]
+        },
         "reportAssertAlwaysTrue": {
           "default": "warning",
           "description": "Diagnostics for 'assert' statement that will provably always assert. This can be indicative of a programming error.",
@@ -64,9 +96,73 @@
             "boolean"
           ]
         },
+        "reportAssertTypeFailure": {
+          "default": "error",
+          "description": "Diagnostics for a type incompatibility detected by a typing.assert_type call.",
+          "enum": [
+            "none",
+            "information",
+            "warning",
+            "error",
+            true,
+            false
+          ],
+          "type": [
+            "string",
+            "boolean"
+          ]
+        },
+        "reportAssignmentType": {
+          "default": "error",
+          "description": "Diagnostics for type incompatibilities for assignments.",
+          "enum": [
+            "none",
+            "information",
+            "warning",
+            "error",
+            true,
+            false
+          ],
+          "type": [
+            "string",
+            "boolean"
+          ]
+        },
+        "reportAttributeAccessIssue": {
+          "default": "error",
+          "description": "Diagnostics for issues involving attribute accesses.",
+          "enum": [
+            "none",
+            "information",
+            "warning",
+            "error",
+            true,
+            false
+          ],
+          "type": [
+            "string",
+            "boolean"
+          ]
+        },
         "reportCallInDefaultInitializer": {
           "default": "none",
           "description": "Diagnostics for function calls within a default value initialization expression. Such calls can mask expensive operations that are performed at module initialization time.",
+          "enum": [
+            "none",
+            "information",
+            "warning",
+            "error",
+            true,
+            false
+          ],
+          "type": [
+            "string",
+            "boolean"
+          ]
+        },
+        "reportCallIssue": {
+          "default": "error",
+          "description": "Diagnostics for issues involving call expressions and arguments.",
           "enum": [
             "none",
             "information",
@@ -272,6 +368,38 @@
             "boolean"
           ]
         },
+        "reportInconsistentOverload": {
+          "default": "error",
+          "description": "Diagnostics for inconsistencies between function overload signatures and implementation.",
+          "enum": [
+            "none",
+            "information",
+            "warning",
+            "error",
+            true,
+            false
+          ],
+          "type": [
+            "string",
+            "boolean"
+          ]
+        },
+        "reportIndexIssue": {
+          "default": "error",
+          "description": "Diagnostics related to index operations and expressions.",
+          "enum": [
+            "none",
+            "information",
+            "warning",
+            "error",
+            true,
+            false
+          ],
+          "type": [
+            "string",
+            "boolean"
+          ]
+        },
         "reportInvalidStringEscapeSequence": {
           "default": "warning",
           "description": "Diagnostics for invalid escape sequences used within string literals. The Python specification indicates that such sequences will generate a syntax error in future versions.",
@@ -291,6 +419,38 @@
         "reportInvalidStubStatement": {
           "default": "none",
           "description": "Diagnostics for type stub statements that do not conform to PEP 484.",
+          "enum": [
+            "none",
+            "information",
+            "warning",
+            "error",
+            true,
+            false
+          ],
+          "type": [
+            "string",
+            "boolean"
+          ]
+        },
+        "reportInvalidTypeArguments": {
+          "default": "error",
+          "description": "Diagnostics for invalid type argument usage.",
+          "enum": [
+            "none",
+            "information",
+            "warning",
+            "error",
+            true,
+            false
+          ],
+          "type": [
+            "string",
+            "boolean"
+          ]
+        },
+        "reportInvalidTypeForm": {
+          "default": "error",
+          "description": "Diagnostics for type expression that uses an invalid form.",
           "enum": [
             "none",
             "information",
@@ -432,6 +592,38 @@
             "boolean"
           ]
         },
+        "reportNoOverloadImplementation": {
+          "default": "error",
+          "description": "Diagnostics for an overloaded function or method with a missing implementation.",
+          "enum": [
+            "none",
+            "information",
+            "warning",
+            "error",
+            true,
+            false
+          ],
+          "type": [
+            "string",
+            "boolean"
+          ]
+        },
+        "reportOperatorIssue": {
+          "default": "error",
+          "description": "Diagnostics for related to unary or binary operators.",
+          "enum": [
+            "none",
+            "information",
+            "warning",
+            "error",
+            true,
+            false
+          ],
+          "type": [
+            "string",
+            "boolean"
+          ]
+        },
         "reportOptionalCall": {
           "default": "error",
           "description": "Diagnostics for an attempt to call a variable with an Optional type.",
@@ -544,6 +736,22 @@
             "boolean"
           ]
         },
+        "reportPossiblyUnboundVariable": {
+          "default": "error",
+          "description": "Diagnostics for the use of variables that may be unbound on some code paths.",
+          "enum": [
+            "none",
+            "information",
+            "warning",
+            "error",
+            true,
+            false
+          ],
+          "type": [
+            "string",
+            "boolean"
+          ]
+        },
         "reportPrivateImportUsage": {
           "default": "error",
           "description": "Diagnostics for incorrect usage of symbol imported from a \"py.typed\" module that is not re-exported from that module.",
@@ -579,6 +787,38 @@
         "reportPropertyTypeMismatch": {
           "default": "none",
           "description": "Diagnostics for property whose setter and getter have mismatched types.",
+          "enum": [
+            "none",
+            "information",
+            "warning",
+            "error",
+            true,
+            false
+          ],
+          "type": [
+            "string",
+            "boolean"
+          ]
+        },
+        "reportRedeclaration": {
+          "default": "error",
+          "description": "Diagnostics for an attempt to declare the type of a symbol multiple times.",
+          "enum": [
+            "none",
+            "information",
+            "warning",
+            "error",
+            true,
+            false
+          ],
+          "type": [
+            "string",
+            "boolean"
+          ]
+        },
+        "reportReturnType": {
+          "default": "error",
+          "description": "Diagnostics related to function return type compatibility.",
           "enum": [
             "none",
             "information",
@@ -658,7 +898,7 @@
         },
         "reportUnboundVariable": {
           "default": "error",
-          "description": "Diagnostics for unbound and possibly unbound variables.",
+          "description": "Diagnostics for the use of unbound variables.",
           "enum": [
             "none",
             "information",
@@ -979,6 +1219,22 @@
         "reportUnusedCoroutine": {
           "default": "error",
           "description": "Diagnostics for call expressions that return a Coroutine and whose results are not consumed.",
+          "enum": [
+            "none",
+            "information",
+            "warning",
+            "error",
+            true,
+            false
+          ],
+          "type": [
+            "string",
+            "boolean"
+          ]
+        },
+        "reportUnusedExcept": {
+          "default": "error",
+          "description": "Diagnostics for unreachable except clause.",
           "enum": [
             "none",
             "information",

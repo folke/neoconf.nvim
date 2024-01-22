@@ -7791,18 +7791,54 @@
 
 -- Allows a user to override the severity levels for individual diagnostics. Use the rule name as a key and one of "error", "warning", "information", "none", `true` (alias for "error") or `false` (alias for "none") as value. The default value shown for each diagnostic is the default when "python.analysis.typeCheckingMode" is set to "standard". See [here](https://github.com/microsoft/pyright/blob/main/docs/configuration.md#diagnostic-rule-defaults) for defaults for each type checking mode ("off", "basic", "standard", and "strict").
 ---@class _.lspconfig.settings.pyright.DiagnosticSeverityOverrides
+-- Diagnostics for an attempt to instantiate an abstract or protocol class or use an abstract method.
+-- 
+-- ```lua
+-- default = "error"
+-- ```
+---@field reportAbstractUsage "none" | "information" | "warning" | "error" | true | false
+-- Diagnostics for a type incompatibility for an argument to a call.
+-- 
+-- ```lua
+-- default = "error"
+-- ```
+---@field reportArgumentType "none" | "information" | "warning" | "error" | true | false
 -- Diagnostics for 'assert' statement that will provably always assert. This can be indicative of a programming error.
 -- 
 -- ```lua
 -- default = "warning"
 -- ```
 ---@field reportAssertAlwaysTrue "none" | "information" | "warning" | "error" | true | false
+-- Diagnostics for a type incompatibility detected by a typing.assert_type call.
+-- 
+-- ```lua
+-- default = "error"
+-- ```
+---@field reportAssertTypeFailure "none" | "information" | "warning" | "error" | true | false
+-- Diagnostics for type incompatibilities for assignments.
+-- 
+-- ```lua
+-- default = "error"
+-- ```
+---@field reportAssignmentType "none" | "information" | "warning" | "error" | true | false
+-- Diagnostics for issues involving attribute accesses.
+-- 
+-- ```lua
+-- default = "error"
+-- ```
+---@field reportAttributeAccessIssue "none" | "information" | "warning" | "error" | true | false
 -- Diagnostics for function calls within a default value initialization expression. Such calls can mask expensive operations that are performed at module initialization time.
 -- 
 -- ```lua
 -- default = "none"
 -- ```
 ---@field reportCallInDefaultInitializer "none" | "information" | "warning" | "error" | true | false
+-- Diagnostics for issues involving call expressions and arguments.
+-- 
+-- ```lua
+-- default = "error"
+-- ```
+---@field reportCallIssue "none" | "information" | "warning" | "error" | true | false
 -- Diagnostics for attempts to redefine variables whose names are all-caps with underscores and numerals.
 -- 
 -- ```lua
@@ -7875,6 +7911,18 @@
 -- default = "none"
 -- ```
 ---@field reportInconsistentConstructor "none" | "information" | "warning" | "error" | true | false
+-- Diagnostics for inconsistencies between function overload signatures and implementation.
+-- 
+-- ```lua
+-- default = "error"
+-- ```
+---@field reportInconsistentOverload "none" | "information" | "warning" | "error" | true | false
+-- Diagnostics related to index operations and expressions.
+-- 
+-- ```lua
+-- default = "error"
+-- ```
+---@field reportIndexIssue "none" | "information" | "warning" | "error" | true | false
 -- Diagnostics for invalid escape sequences used within string literals. The Python specification indicates that such sequences will generate a syntax error in future versions.
 -- 
 -- ```lua
@@ -7887,6 +7935,18 @@
 -- default = "none"
 -- ```
 ---@field reportInvalidStubStatement "none" | "information" | "warning" | "error" | true | false
+-- Diagnostics for invalid type argument usage.
+-- 
+-- ```lua
+-- default = "error"
+-- ```
+---@field reportInvalidTypeArguments "none" | "information" | "warning" | "error" | true | false
+-- Diagnostics for type expression that uses an invalid form.
+-- 
+-- ```lua
+-- default = "error"
+-- ```
+---@field reportInvalidTypeForm "none" | "information" | "warning" | "error" | true | false
 -- Diagnostics for improper use of type variables in a function signature.
 -- 
 -- ```lua
@@ -7935,6 +7995,18 @@
 -- default = "none"
 -- ```
 ---@field reportMissingTypeStubs "none" | "information" | "warning" | "error" | true | false
+-- Diagnostics for an overloaded function or method with a missing implementation.
+-- 
+-- ```lua
+-- default = "error"
+-- ```
+---@field reportNoOverloadImplementation "none" | "information" | "warning" | "error" | true | false
+-- Diagnostics for related to unary or binary operators.
+-- 
+-- ```lua
+-- default = "error"
+-- ```
+---@field reportOperatorIssue "none" | "information" | "warning" | "error" | true | false
 -- Diagnostics for an attempt to call a variable with an Optional type.
 -- 
 -- ```lua
@@ -7977,6 +8049,12 @@
 -- default = "error"
 -- ```
 ---@field reportOverlappingOverload "none" | "information" | "warning" | "error" | true | false
+-- Diagnostics for the use of variables that may be unbound on some code paths.
+-- 
+-- ```lua
+-- default = "error"
+-- ```
+---@field reportPossiblyUnboundVariable "none" | "information" | "warning" | "error" | true | false
 -- Diagnostics for incorrect usage of symbol imported from a "py.typed" module that is not re-exported from that module.
 -- 
 -- ```lua
@@ -7995,6 +8073,18 @@
 -- default = "none"
 -- ```
 ---@field reportPropertyTypeMismatch "none" | "information" | "warning" | "error" | true | false
+-- Diagnostics for an attempt to declare the type of a symbol multiple times.
+-- 
+-- ```lua
+-- default = "error"
+-- ```
+---@field reportRedeclaration "none" | "information" | "warning" | "error" | true | false
+-- Diagnostics related to function return type compatibility.
+-- 
+-- ```lua
+-- default = "error"
+-- ```
+---@field reportReturnType "none" | "information" | "warning" | "error" | true | false
 -- Diagnostics for a missing or misnamed “self” parameter in instance methods and “cls” parameter in class methods. Instance methods in metaclasses (classes that derive from “type”) are allowed to use “cls” for instance methods.
 -- 
 -- ```lua
@@ -8019,7 +8109,7 @@
 -- default = "error"
 -- ```
 ---@field reportTypedDictNotRequiredAccess "none" | "information" | "warning" | "error" | true | false
--- Diagnostics for unbound and possibly unbound variables.
+-- Diagnostics for the use of unbound variables.
 -- 
 -- ```lua
 -- default = "error"
@@ -8145,6 +8235,12 @@
 -- default = "error"
 -- ```
 ---@field reportUnusedCoroutine "none" | "information" | "warning" | "error" | true | false
+-- Diagnostics for unreachable except clause.
+-- 
+-- ```lua
+-- default = "error"
+-- ```
+---@field reportUnusedExcept "none" | "information" | "warning" | "error" | true | false
 -- Diagnostics for simple expressions whose value is not used in any way.
 -- 
 -- ```lua
