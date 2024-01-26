@@ -6911,6 +6911,14 @@
 -- ```
 ---@field osx boolean
 
+---@class _.lspconfig.settings.powershell_es.Trace
+-- Traces the communication between VS Code and the PowerShell Editor Services language server. **This setting is only meant for extension developers!**
+-- 
+-- ```lua
+-- default = "off"
+-- ```
+---@field server "off" | "messages" | "verbose"
+
 ---@class _.lspconfig.settings.powershell_es.Powershell
 -- Specifies to search for references only within open documents instead of all workspace files. An alternative to `#powershell.enableReferencesCodeLens#` that allows large workspaces to support some references without the performance impact.
 ---@field analyzeOpenDocumentsOnly boolean
@@ -6983,6 +6991,7 @@
 ---@field startAutomatically boolean
 -- Suppresses the warning message when any of `#powershell.powerShellAdditionalExePaths#` is not found.
 ---@field suppressAdditionalExeNotFoundWarning boolean
+---@field trace _.lspconfig.settings.powershell_es.Trace
 -- **Deprecated:** Uses the 32-bit language service on 64-bit Windows. This setting has no effect on 32-bit Windows or on the PowerShell extension debugger, which has its own architecture configuration.
 ---@field useX86Host boolean
 
@@ -12595,6 +12604,8 @@
 ---@field format _.lspconfig.settings.vtsls.Format
 
 ---@class _.lspconfig.settings.vtsls.Vtsls
+-- Automatically use workspace version of TypeScript lib on startup. By default, the bundled version is used for intelliSense.
+---@field autoUseWorkspaceTsdk boolean
 -- Enable 'Move to file' code action. This action enables user to move code to existing file, but requires corresponding handling on the client side.
 ---@field enableMoveToFileCodeAction boolean
 ---@field experimental _.lspconfig.settings.vtsls.Experimental

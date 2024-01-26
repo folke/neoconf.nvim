@@ -1037,6 +1037,11 @@
       "markdownDescription": "Controls which files are searched by [Go to Symbol in Workspace](https://code.visualstudio.com/docs/editor/editingevolved#_open-symbol-by-name).",
       "type": "string"
     },
+    "vtsls.autoUseWorkspaceTsdk": {
+      "default": false,
+      "description": "Automatically use workspace version of TypeScript lib on startup. By default, the bundled version is used for intelliSense.",
+      "type": "boolean"
+    },
     "vtsls.enableMoveToFileCodeAction": {
       "default": false,
       "description": "Enable 'Move to file' code action. This action enables user to move code to existing file, but requires corresponding handling on the client side.",

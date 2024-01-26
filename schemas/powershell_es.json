@@ -394,6 +394,16 @@
       "markdownDescription": "Suppresses the warning message when any of `#powershell.powerShellAdditionalExePaths#` is not found.",
       "type": "boolean"
     },
+    "powershell.trace.server": {
+      "default": "off",
+      "description": "Traces the communication between VS Code and the PowerShell Editor Services language server. **This setting is only meant for extension developers!**",
+      "enum": [
+        "off",
+        "messages",
+        "verbose"
+      ],
+      "type": "string"
+    },
     "powershell.useX86Host": {
       "default": false,
       "markdownDeprecationMessage": "**Deprecated:** This setting was removed when the PowerShell installation searcher was added. Please use the `#powershell.powerShellAdditionalExePaths#` setting instead.",
