@@ -490,59 +490,6 @@
       "scope": "window",
       "type": "boolean"
     },
-    "typescript.experimental.aiCodeActions": {
-      "default": {},
-      "description": "Enable/disable AI-assisted code actions. Requires an extension providing AI chat functionality.",
-      "properties": {
-        "addNameToNamelessParameter": {
-          "default": false,
-          "description": "Enable/disable AI assistance for Add Name to Nameless Parameter quickfix. Requires an extension providing AI chat functionality.",
-          "type": "boolean"
-        },
-        "classDoesntImplementInheritedAbstractMember": {
-          "default": false,
-          "description": "Enable/disable AI assistance for Class Doesn't Implement Inherited Abstract Member quickfix. Requires an extension providing AI chat functionality.",
-          "type": "boolean"
-        },
-        "classIncorrectlyImplementsInterface": {
-          "default": false,
-          "description": "Enable/disable AI assistance for Class Incorrectly Implements Interface quickfix. Requires an extension providing AI chat functionality.",
-          "type": "boolean"
-        },
-        "extractConstant": {
-          "default": false,
-          "description": "Enable/disable AI assistance for Extract Constant refactor. Requires an extension providing AI chat functionality.",
-          "type": "boolean"
-        },
-        "extractFunction": {
-          "default": false,
-          "description": "Enable/disable AI assistance for Extract Function refactor. Requires an extension providing AI chat functionality.",
-          "type": "boolean"
-        },
-        "extractInterface": {
-          "default": false,
-          "description": "Enable/disable AI assistance for Extract Interface refactor. Requires an extension providing AI chat functionality.",
-          "type": "boolean"
-        },
-        "extractType": {
-          "default": false,
-          "description": "Enable/disable AI assistance for Extract Type refactor. Requires an extension providing AI chat functionality.",
-          "type": "boolean"
-        },
-        "inferAndAddTypes": {
-          "default": false,
-          "description": "Enable/disable AI assistance for Infer and Add Types refactor. Requires an extension providing AI chat functionality.",
-          "type": "boolean"
-        },
-        "missingFunctionDeclaration": {
-          "default": false,
-          "description": "Enable/disable AI assistance for Missing Function Declaration quickfix. Requires an extension providing AI chat functionality.",
-          "type": "boolean"
-        }
-      },
-      "scope": "resource",
-      "type": "object"
-    },
     "typescript.experimental.tsserver.web.typeAcquisition.enabled": {
       "default": false,
       "description": "Enable/disable package acquisition on the web.",
