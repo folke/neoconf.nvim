@@ -106,6 +106,12 @@
       "scope": "resource",
       "type": "boolean"
     },
+    "luau-lsp.completion.showPropertiesOnMethodCall": {
+      "default": false,
+      "markdownDescription": "Whether to show non-function properties when performing a method call with a colon (e.g., `foo:bar`)",
+      "scope": "resource",
+      "type": "boolean"
+    },
     "luau-lsp.completion.suggestImports": {
       "default": false,
       "deprecationMessage": "Deprecated: Please use luau-lsp.completion.imports.enabled instead.",

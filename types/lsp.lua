@@ -6123,6 +6123,8 @@
 -- ```
 ---@field fillCallArguments boolean
 ---@field imports _.lspconfig.settings.luau_lsp.Imports
+-- Whether to show non-function properties when performing a method call with a colon (e.g., `foo:bar`)
+---@field showPropertiesOnMethodCall boolean
 -- Suggest automatic imports in completion items
 ---@field suggestImports boolean
 
