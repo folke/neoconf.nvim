@@ -26,6 +26,12 @@
       "scope": "resource",
       "type": "boolean"
     },
+    "perlnavigator.perlCompileEnabled": {
+      "default": true,
+      "description": "Enable running perl -c on your code",
+      "scope": "resource",
+      "type": "boolean"
+    },
     "perlnavigator.perlParams": {
       "default": [],
       "description": "Pass miscellaneous command line arguments to pass to the perl executable",

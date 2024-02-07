@@ -6446,6 +6446,12 @@
 -- default = true
 -- ```
 ---@field logging boolean
+-- Enable running perl -c on your code
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field perlCompileEnabled boolean
 -- Pass miscellaneous command line arguments to pass to the perl executable
 -- 
 -- ```lua
