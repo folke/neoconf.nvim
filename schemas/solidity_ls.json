@@ -33,6 +33,11 @@
       "description": "Enables as you type compilation of the document and error highlighting",
       "type": "boolean"
     },
+    "solidity.evmVersion": {
+      "default": "",
+      "description": "Evm version, ie london, istanbul, petersburg, constantinople, byzantium, tangerineWhistle, spuriousDragon, homestead, frontier, or leave it blank for the default evm version",
+      "type": "string"
+    },
     "solidity.explorer_bscscan_apikey": {
       "default": "YourApiKey",
       "description": "Api key for downloading Binance smart chain smart contracts from api.bscscan.com",
@@ -75,7 +80,7 @@
     },
     "solidity.monoRepoSupport": {
       "default": true,
-      "description": "Enables mono repo support in the current workspace, a project folder will be signaled if a file is found on the current folder or above including: remappings.txt, truffle-config.js, brownie-config.yaml, foundry.toml, hardhat.config.js, dappfile",
+      "description": "Enables mono repo support in the current workspace, a project folder will be signaled if a file is found on the current folder or above including: remappings.txt, truffle-config.js, brownie-config.yaml, foundry.toml, hardhat.config.js, hardhat.config.ts, dappfile",
       "type": "boolean"
     },
     "solidity.nodemodulespackage": {

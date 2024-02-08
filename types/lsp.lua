@@ -10062,6 +10062,12 @@
 -- default = true
 -- ```
 ---@field enabledAsYouTypeCompilationErrorCheck boolean
+-- Evm version, ie london, istanbul, petersburg, constantinople, byzantium, tangerineWhistle, spuriousDragon, homestead, frontier, or leave it blank for the default evm version
+-- 
+-- ```lua
+-- default = ""
+-- ```
+---@field evmVersion string
 -- Api key for downloading Binance smart chain smart contracts from api.bscscan.com
 -- 
 -- ```lua
@@ -10098,7 +10104,7 @@
 -- default = "solhint"
 -- ```
 ---@field linter "" | "solhint" | "solium"
--- Enables mono repo support in the current workspace, a project folder will be signaled if a file is found on the current folder or above including: remappings.txt, truffle-config.js, brownie-config.yaml, foundry.toml, hardhat.config.js, dappfile
+-- Enables mono repo support in the current workspace, a project folder will be signaled if a file is found on the current folder or above including: remappings.txt, truffle-config.js, brownie-config.yaml, foundry.toml, hardhat.config.js, hardhat.config.ts, dappfile
 -- 
 -- ```lua
 -- default = true
