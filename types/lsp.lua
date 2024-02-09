@@ -8908,6 +8908,13 @@
 -- 
 -- Aliased as `"checkOnSave.targets"`.
 ---@field targets any|string|string[]
+-- Whether `--workspace` should be passed to `cargo check`.
+-- If false, `-p <package>` will be passed instead.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field workspace boolean
 
 ---@class _.lspconfig.settings.rust_analyzer.Autoimport
 -- Toggles the additional completions that automatically add imports when completed.
@@ -9574,6 +9581,8 @@
 -- default = true
 -- ```
 ---@field cargoTomlNotFound boolean
+-- Whether to send an UnindexedProject notification to the client.
+---@field unindexedProject boolean
 
 ---@class _.lspconfig.settings.rust_analyzer.Attributes
 -- Expand attribute macros. Requires `#rust-analyzer.procMacro.enable#` to be set.
