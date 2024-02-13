@@ -8894,6 +8894,11 @@
 -- by changing `#rust-analyzer.check.invocationStrategy#` and
 -- `#rust-analyzer.check.invocationLocation#`.
 -- 
+-- If `$saved_file` is part of the command, rust-analyzer will pass
+-- the absolute path of the saved file to the provided command. This is
+-- intended to be used with non-Cargo build systems.
+-- Note that `$saved_file` is experimental and may be removed in the futureg.
+-- 
 -- An example command would be:
 -- 
 -- ```bash
@@ -9006,6 +9011,10 @@
 -- ```
 ---@field custom table
 
+---@class _.lspconfig.settings.rust_analyzer.TermSearch
+-- Whether to enable term search based snippets like `Some(foo.bar().baz())`.
+---@field enable boolean
+
 ---@class _.lspconfig.settings.rust_analyzer.Completion
 ---@field autoimport _.lspconfig.settings.rust_analyzer.Autoimport
 ---@field autoself _.lspconfig.settings.rust_analyzer.Autoself
@@ -9016,6 +9025,7 @@
 ---@field postfix _.lspconfig.settings.rust_analyzer.Postfix
 ---@field privateEditable _.lspconfig.settings.rust_analyzer.PrivateEditable
 ---@field snippets _.lspconfig.settings.rust_analyzer.Snippets
+---@field termSearch _.lspconfig.settings.rust_analyzer.TermSearch
 
 ---@class _.lspconfig.settings.rust_analyzer.Debug
 -- Preferred debug engine.
