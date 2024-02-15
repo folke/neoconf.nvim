@@ -82,7 +82,7 @@
       ]
     },
     "rust-analyzer.cargo.buildScripts.rebuildOnSave": {
-      "default": false,
+      "default": true,
       "markdownDescription": "Rerun proc-macros building/build-scripts running when proc-macro\nor build-script sources change and are saved.",
       "type": "boolean"
     },

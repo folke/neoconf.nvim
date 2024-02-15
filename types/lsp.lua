@@ -8736,6 +8736,10 @@
 ---@field overrideCommand string[]
 -- Rerun proc-macros building/build-scripts running when proc-macro
 -- or build-script sources change and are saved.
+-- 
+-- ```lua
+-- default = true
+-- ```
 ---@field rebuildOnSave boolean
 -- Use `RUSTC_WRAPPER=rust-analyzer` when running build scripts to
 -- avoid checking unnecessary things.
