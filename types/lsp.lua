@@ -9631,10 +9631,6 @@
 -- Exclude tests from find-all-references.
 ---@field excludeTests boolean
 
----@class _.lspconfig.settings.rust_analyzer.Rename
--- Allow renaming of items not belonging to the loaded workspaces.
----@field allowExternalItems boolean
-
 ---@class _.lspconfig.settings.rust_analyzer.Runnables
 -- Command to be executed instead of 'cargo' for runnables.
 ---@field command string
@@ -9904,7 +9900,6 @@
 ---@field numThreads integer
 ---@field procMacro _.lspconfig.settings.rust_analyzer.ProcMacro
 ---@field references _.lspconfig.settings.rust_analyzer.References
----@field rename _.lspconfig.settings.rust_analyzer.Rename
 -- Whether to restart the server automatically when certain settings that require a restart are changed.
 ---@field restartServerOnConfigChange boolean
 ---@field runnables _.lspconfig.settings.rust_analyzer.Runnables

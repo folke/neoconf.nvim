@@ -1082,11 +1082,6 @@
       "markdownDescription": "Exclude tests from find-all-references.",
       "type": "boolean"
     },
-    "rust-analyzer.rename.allowExternalItems": {
-      "default": false,
-      "markdownDescription": "Allow renaming of items not belonging to the loaded workspaces.",
-      "type": "boolean"
-    },
     "rust-analyzer.restartServerOnConfigChange": {
       "default": false,
       "markdownDescription": "Whether to restart the server automatically when certain settings that require a restart are changed.",
