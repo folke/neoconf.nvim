@@ -44,9 +44,9 @@ function M.check()
     warn("**neodev.nvim** is not installed. You won't get any proper completion for your Neovim config.")
   end
 
-  local _, lspconfig = pcall(require, "lspconfig.util")
+  local has_lspconfig, lspconfig = pcall(require, "lspconfig.util")
 
-  if lspconfig then
+  if has_lspconfig then
     ok("**lspconfig** is installed")
     local available = lspconfig.available_servers()
     if vim.tbl_contains(available, "jsonls") then
@@ -60,7 +60,7 @@ function M.check()
       warn("**lspconfig lua_ls** is not installed? You won't get any auto completion in your lua settings files")
     end
   else
-    error("**lspconfig** not installed?")
+    warn("**lspconfig** not installed?")
   end
 end
 
