@@ -10137,9 +10137,9 @@
 -- Default directory where the Package Dependency store its contracts, i.e: 'src', 'contracts', or just a blank string '', this is used to avoid typing imports with subfolder paths
 -- 
 -- ```lua
--- default = ""
+-- default = { "src", "contracts", "" }
 -- ```
----@field packageDefaultDependenciesContractsDirectory string
+---@field packageDefaultDependenciesContractsDirectory string|string[]
 -- Default directory for Packages Dependencies, i.e: 'node_modules', 'lib'. This is used to avoid typing imports with that path prefix, multiple dependency paths can be set as an array: ['node_modules', 'lib'] 
 -- 
 -- ```lua

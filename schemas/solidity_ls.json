@@ -89,9 +89,16 @@
       "type": "string"
     },
     "solidity.packageDefaultDependenciesContractsDirectory": {
-      "default": "",
+      "default": [
+        "src",
+        "contracts",
+        ""
+      ],
       "description": "Default directory where the Package Dependency store its contracts, i.e: 'src', 'contracts', or just a blank string '', this is used to avoid typing imports with subfolder paths",
-      "type": "string"
+      "type": [
+        "string",
+        "string[]"
+      ]
     },
     "solidity.packageDefaultDependenciesDirectory": {
       "default": [
