@@ -723,7 +723,7 @@
 -- An array of language ids for which the extension should probe if support is installed.
 -- 
 -- ```lua
--- default = { "javascript", "javascriptreact", "typescript", "typescriptreact", "html", "vue", "markdown" }
+-- default = { "astro", "javascript", "javascriptreact", "typescript", "typescriptreact", "html", "mdx", "vue", "markdown" }
 -- ```
 ---@field probe string[]
 ---@field problems _.lspconfig.settings.eslint.Problems
