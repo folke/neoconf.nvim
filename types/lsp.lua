@@ -6903,10 +6903,6 @@
 -- ```
 ---@field CommandExplorerExcludeFilter string[]
 -- Specifies the visibility of the Command Explorer in the side bar.
--- 
--- ```lua
--- default = true
--- ```
 ---@field CommandExplorerVisibility boolean
 
 ---@class _.lspconfig.settings.powershell_es.StartAsLoginShell
