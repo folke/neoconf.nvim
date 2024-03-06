@@ -8435,6 +8435,14 @@
 ---@class lspconfig.settings.r_language_server
 ---@field r _.lspconfig.settings.r_language_server.R
 
+---@class _.lspconfig.settings.rescriptls.IncrementalTypechecking
+-- (beta/experimental) Enable incremental type checking across files, so that unsaved file A gets access to unsaved file B.
+---@field acrossFiles boolean
+-- (debug) Enable debug logging (ends up in the extension output).
+---@field debugLogging boolean
+-- (beta/experimental) Enable incremental type checking.
+---@field enabled boolean
+
 ---@class _.lspconfig.settings.rescriptls.InlayHints
 -- Enable (experimental) inlay hints.
 ---@field enable boolean
@@ -8468,6 +8476,7 @@
 ---@field binaryPath string
 -- Enable (experimental) code lens for function definitions.
 ---@field codeLens boolean
+---@field incrementalTypechecking _.lspconfig.settings.rescriptls.IncrementalTypechecking
 ---@field inlayHints _.lspconfig.settings.rescriptls.InlayHints
 -- Path to the directory where platform-specific ReScript binaries are. You can use it if you haven't or don't want to use the installed ReScript from node_modules in your project.
 ---@field platformPath string
@@ -9063,6 +9072,10 @@
 -- have more false positives than usual.
 ---@field enable boolean
 
+---@class _.lspconfig.settings.rust_analyzer.StyleLints
+-- Whether to run additional style lints.
+---@field enable boolean
+
 ---@class _.lspconfig.settings.rust_analyzer.Diagnostics
 -- List of rust-analyzer diagnostics to disable.
 -- 
@@ -9086,6 +9099,7 @@
 -- default = {}
 -- ```
 ---@field remapPrefix table
+---@field styleLints _.lspconfig.settings.rust_analyzer.StyleLints
 -- Whether to show diagnostics using the original rustc error code. If this is false, all rustc diagnostics will have the code 'rustc(Click for full compiler diagnostics)'
 ---@field useRustcErrorCode boolean
 -- List of warnings that should be displayed with hint severity.
@@ -9278,11 +9292,16 @@
 -- ```
 ---@field size any|"both" | "decimal" | "hexadecimal"
 
+---@class _.lspconfig.settings.rust_analyzer.Show
+-- How many associated items of a trait to display when hovering a trait.
+---@field traitAssocItems integer
+
 ---@class _.lspconfig.settings.rust_analyzer.Hover
 ---@field actions _.lspconfig.settings.rust_analyzer.Actions
 ---@field documentation _.lspconfig.settings.rust_analyzer.Documentation
 ---@field links _.lspconfig.settings.rust_analyzer.Links
 ---@field memoryLayout _.lspconfig.settings.rust_analyzer.MemoryLayout
+---@field show _.lspconfig.settings.rust_analyzer.Show
 
 ---@class _.lspconfig.settings.rust_analyzer.Granularity
 -- Whether to enforce the import granularity setting for all files. If set to false rust-analyzer will try to keep import styles consistent per file.

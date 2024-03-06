@@ -32,6 +32,21 @@
       "description": "Enable (experimental) code lens for function definitions.",
       "type": "boolean"
     },
+    "rescript.settings.incrementalTypechecking.acrossFiles": {
+      "default": false,
+      "description": "(beta/experimental) Enable incremental type checking across files, so that unsaved file A gets access to unsaved file B.",
+      "type": "boolean"
+    },
+    "rescript.settings.incrementalTypechecking.debugLogging": {
+      "default": false,
+      "description": "(debug) Enable debug logging (ends up in the extension output).",
+      "type": "boolean"
+    },
+    "rescript.settings.incrementalTypechecking.enabled": {
+      "default": false,
+      "description": "(beta/experimental) Enable incremental type checking.",
+      "type": "boolean"
+    },
     "rescript.settings.inlayHints.enable": {
       "default": false,
       "description": "Enable (experimental) inlay hints.",

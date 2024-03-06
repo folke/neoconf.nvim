@@ -490,6 +490,11 @@
       "markdownDescription": "Map of prefixes to be substituted when parsing diagnostic file paths.\nThis should be the reverse mapping of what is passed to `rustc` as `--remap-path-prefix`.",
       "type": "object"
     },
+    "rust-analyzer.diagnostics.styleLints.enable": {
+      "default": false,
+      "markdownDescription": "Whether to run additional style lints.",
+      "type": "boolean"
+    },
     "rust-analyzer.diagnostics.useRustcErrorCode": {
       "default": false,
       "markdownDescription": "Whether to show diagnostics using the original rustc error code. If this is false, all rustc diagnostics will have the code 'rustc(Click for full compiler diagnostics)'",
@@ -688,6 +693,15 @@
       ],
       "default": "both",
       "markdownDescription": "How to render the size information in a memory layout hover."
+    },
+    "rust-analyzer.hover.show.traitAssocItems": {
+      "default": null,
+      "markdownDescription": "How many associated items of a trait to display when hovering a trait.",
+      "minimum": 0,
+      "type": [
+        "null",
+        "integer"
+      ]
     },
     "rust-analyzer.imports.granularity.enforce": {
       "default": false,
