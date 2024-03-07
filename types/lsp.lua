@@ -564,7 +564,7 @@
 ---@field rules string[]|any
 
 ---@class _.lspconfig.settings.eslint.Experimental
--- Enables support of experimental Flat Config (aka eslint.config.js, supported by ESLint version 8.21 or later).
+-- Enables support of experimental Flat Config (aka eslint.config.js). Requires ESLint version >= 8.21 < 8.57.0).
 ---@field useFlatConfig boolean
 
 ---@class _.lspconfig.settings.eslint.Format
@@ -744,6 +744,8 @@
 ---@field trace _.lspconfig.settings.eslint.Trace
 -- Since version 7 ESLint offers a new API call ESLint. Use it even if the old CLIEngine is available. From version 8 on forward on ESLint class is available.
 ---@field useESLintClass boolean
+-- Controls whether flat config should be used or not. This setting requires ESLint version 8.57 or later and is interpreted according to the [ESLint Flat Config rollout plan](https://eslint.org/blog/2023/10/flat-config-rollout-plans/).
+---@field useFlatConfig boolean
 -- An array of language ids which should be validated by ESLint. If not installed ESLint will show an error.
 ---@field validate any[]
 -- Specifies how the working directories ESLint is using are computed. ESLint resolves configuration files (e.g. `eslintrc`, `.eslintignore`) relative to a working directory so it is important to configure this correctly.
@@ -9940,6 +9942,8 @@
 ---@field showUnlinkedFileNotification boolean
 ---@field signatureInfo _.lspconfig.settings.rust_analyzer.SignatureInfo
 ---@field statusBar _.lspconfig.settings.rust_analyzer.StatusBar
+-- Whether to show the test explorer.
+---@field testExplorer boolean
 ---@field trace _.lspconfig.settings.rust_analyzer.Trace
 ---@field typing _.lspconfig.settings.rust_analyzer.Typing
 ---@field workspace _.lspconfig.settings.rust_analyzer.Workspace

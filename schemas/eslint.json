@@ -121,7 +121,8 @@
     },
     "eslint.experimental.useFlatConfig": {
       "default": false,
-      "description": "Enables support of experimental Flat Config (aka eslint.config.js, supported by ESLint version 8.21 or later).",
+      "deprecationMessage": "Use ESLint version 8.57 or later and `eslint.useFlatConfig` instead.",
+      "description": "Enables support of experimental Flat Config (aka eslint.config.js). Requires ESLint version >= 8.21 < 8.57.0).",
       "scope": "resource",
       "type": "boolean"
     },
@@ -399,6 +400,12 @@
     "eslint.useESLintClass": {
       "default": false,
       "description": "Since version 7 ESLint offers a new API call ESLint. Use it even if the old CLIEngine is available. From version 8 on forward on ESLint class is available.",
+      "scope": "resource",
+      "type": "boolean"
+    },
+    "eslint.useFlatConfig": {
+      "default": null,
+      "markdownDescription": "Controls whether flat config should be used or not. This setting requires ESLint version 8.57 or later and is interpreted according to the [ESLint Flat Config rollout plan](https://eslint.org/blog/2023/10/flat-config-rollout-plans/).",
       "scope": "resource",
       "type": "boolean"
     },

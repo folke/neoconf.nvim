@@ -1321,6 +1321,11 @@
       "markdownDescription": "Action to run when clicking the extension status bar item.",
       "type": "string"
     },
+    "rust-analyzer.testExplorer": {
+      "default": false,
+      "markdownDescription": "Whether to show the test explorer.",
+      "type": "boolean"
+    },
     "rust-analyzer.trace.extension": {
       "default": false,
       "description": "Enable logging of VS Code extensions itself.",
