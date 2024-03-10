@@ -8462,6 +8462,12 @@
 -- default = true
 -- ```
 ---@field enabled boolean
+-- Enable signature help for variant constructor payloads.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field forConstructorPayloads boolean
 
 ---@class _.lspconfig.settings.rescriptls.Settings
 -- Whether you want to allow the extension to format your code using its built in formatter when it cannot find a ReScript compiler version in your current project to use for formatting.
