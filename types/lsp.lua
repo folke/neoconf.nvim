@@ -2209,6 +2209,12 @@
 ---@class _.lspconfig.settings.hie.Config
 -- Call out to an external "fourmolu" executable, rather than using the bundled library
 ---@field external boolean
+-- Set path to executable (for "external" mode)
+-- 
+-- ```lua
+-- default = "fourmolu"
+-- ```
+---@field path string
 
 ---@class _.lspconfig.settings.hie.Fourmolu
 ---@field config _.lspconfig.settings.hie.Config
