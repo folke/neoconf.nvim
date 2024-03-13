@@ -928,6 +928,22 @@
             "boolean"
           ]
         },
+        "reportUnhashable": {
+          "default": "error",
+          "description": "Diagnostics for the use of an unhashable object in a container that requires hashability.",
+          "enum": [
+            "none",
+            "information",
+            "warning",
+            "error",
+            true,
+            false
+          ],
+          "type": [
+            "string",
+            "boolean"
+          ]
+        },
         "reportUninitializedInstanceVariable": {
           "default": "none",
           "description": "Diagnostics for instance variables that are not declared or initialized within class body or `__init__` method.",

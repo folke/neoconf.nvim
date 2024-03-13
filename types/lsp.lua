@@ -8142,6 +8142,12 @@
 -- default = "error"
 -- ```
 ---@field reportUndefinedVariable "none" | "information" | "warning" | "error" | true | false
+-- Diagnostics for the use of an unhashable object in a container that requires hashability.
+-- 
+-- ```lua
+-- default = "error"
+-- ```
+---@field reportUnhashable "none" | "information" | "warning" | "error" | true | false
 -- Diagnostics for instance variables that are not declared or initialized within class body or `__init__` method.
 -- 
 -- ```lua
