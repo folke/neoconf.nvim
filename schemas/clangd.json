@@ -20,6 +20,11 @@
       "description": "Warn about conflicting extensions and suggest disabling them.",
       "type": "boolean"
     },
+    "clangd.enableCodeCompletion": {
+      "default": true,
+      "description": "Enable code completion provided by the language server",
+      "type": "boolean"
+    },
     "clangd.fallbackFlags": {
       "default": [],
       "description": "Extra clang flags used to parse files when no compilation database is found.",
