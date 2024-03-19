@@ -1103,6 +1103,9 @@
     },
     "vtsls.typescript.format.trimTrailingWhitespace": {
       "type": "boolean"
+    },
+    "vtsls.typescript.globalTsdk": {
+      "type": "string"
     }
   }
 }

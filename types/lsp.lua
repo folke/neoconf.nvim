@@ -12645,6 +12645,7 @@
 
 ---@class _.lspconfig.settings.vtsls.Typescript
 ---@field format _.lspconfig.settings.vtsls.Format
+---@field globalTsdk string
 
 ---@class _.lspconfig.settings.vtsls.Vtsls
 -- Automatically use workspace version of TypeScript lib on startup. By default, the bundled version is used for intelliSense.
