@@ -139,6 +139,9 @@
           ],
           "cwd": "${workspaceFolder}",
           "description": "A longer description of this Sorbet Configuration for use in hover text",
+          "env": {
+            "MY_ENV_VAR": "my-value"
+          },
           "id": "my-custom-configuration",
           "name": "My Custom Sorbet Configuration"
         },
@@ -160,6 +163,15 @@
           "description": {
             "description": "Long-form human-readable description of configuration",
             "type": "string"
+          },
+          "env": {
+            "additionalProperties": {
+              "type": "string"
+            },
+            "default": {},
+            "description": "Environment variables to set when launching sorbet",
+            "minItems": 1,
+            "type": "object"
           },
           "id": {
             "description": "See `sorbet.selectedLspConfigId`",
