@@ -48,7 +48,7 @@ function M.on_config(opts)
         end, "Failed to run client.before_init" .. (opts.name and (" for " .. opts.name) or ""))
       )
     end
-    if opts.root_dir then
+    if opts.root_dir and initial_config.root_dir then
       local root_dir = initial_config.root_dir
       initial_config.root_dir = function(...)
         local b = root_dir(...)
