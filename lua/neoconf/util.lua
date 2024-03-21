@@ -57,11 +57,7 @@ function M.on_config(opts)
         end
         local a = opts.root_dir(...)
 
-        if a and b then
-          -- return longest
-          return #a > #b and a or b
-        end
-        return a or b
+        return Config.options.root_dir_picker(a, b)
       end
     end
   end)
