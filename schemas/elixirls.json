@@ -14,7 +14,7 @@
     },
     "elixirLS.autoBuild": {
       "default": true,
-      "description": "Trigger ElixirLS build when code is saved.",
+      "description": "Trigger ElixirLS build when code is saved",
       "scope": "resource",
       "type": "boolean"
     },
@@ -26,7 +26,7 @@
     },
     "elixirLS.dialyzerEnabled": {
       "default": true,
-      "description": "Run ElixirLS's rapid Dialyzer when code is saved.",
+      "description": "Run ElixirLS's rapid Dialyzer when code is saved",
       "scope": "resource",
       "type": "boolean"
     },
@@ -95,6 +95,12 @@
     "elixirLS.fetchDeps": {
       "default": false,
       "description": "Automatically fetch project dependencies when compiling.",
+      "scope": "resource",
+      "type": "boolean"
+    },
+    "elixirLS.incrementalDialyzer": {
+      "default": true,
+      "description": "Use OTP incremental dialyzer (available on OTP 26+)",
       "scope": "resource",
       "type": "boolean"
     },

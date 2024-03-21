@@ -9,7 +9,7 @@
       "type": "string"
     },
     "deno.cacheOnSave": {
-      "default": false,
+      "default": true,
       "examples": [
         true,
         false

@@ -269,6 +269,10 @@
 -- A path to the cache directory for Deno. By default, the operating system's cache path plus `deno` is used, or the `DENO_DIR` environment variable, but if set, this path will be used instead.
 ---@field cache string
 -- Controls if the extension should cache the active document's dependencies on save.
+-- 
+-- ```lua
+-- default = true
+-- ```
 ---@field cacheOnSave boolean
 -- A list of root certificate stores used to validate TLS certificates when fetching and caching remote resources. This overrides the `DENO_TLS_CA_STORE` environment variable if set.
 ---@field certificateStores string[]
@@ -373,7 +377,7 @@
 -- default = {}
 -- ```
 ---@field additionalWatchedExtensions string[]
--- Trigger ElixirLS build when code is saved.
+-- Trigger ElixirLS build when code is saved
 -- 
 -- ```lua
 -- default = true
@@ -385,7 +389,7 @@
 -- default = true
 -- ```
 ---@field autoInsertRequiredAlias boolean
--- Run ElixirLS's rapid Dialyzer when code is saved.
+-- Run ElixirLS's rapid Dialyzer when code is saved
 -- 
 -- ```lua
 -- default = true
@@ -409,6 +413,12 @@
 ---@field envVariables table
 -- Automatically fetch project dependencies when compiling.
 ---@field fetchDeps boolean
+-- Use OTP incremental dialyzer (available on OTP 26+)
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field incrementalDialyzer boolean
 -- Absolute path to alternative ElixirLS release that will override the packaged release
 ---@field languageServerOverridePath string
 -- Mix environment to use for compilation
