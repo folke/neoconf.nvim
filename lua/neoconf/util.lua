@@ -23,20 +23,35 @@ function M.merge(...)
 end
 
 function M.root_pattern(...)
-  return require("lspconfig.util").root_pattern(...)
+  local has_lspconfig, lsputil = pcall(require, "lspconfig.util")
+  if has_lspconfig then
+    return lsputil.root_pattern(...)
+  end
+  local patterns = vim.tbl_flatten({ ... })
+  return function(startpath)
+    local results = vim.fs.find(patterns, { upward = true, path = startpath })
+    return not vim.tbl_isempty(results) and vim.fs.dirname(results[1])
+  end
 end
 
 function M.find_git_ancestor(...)
-  return require("lspconfig.util").find_git_ancestor(...)
+  local has_lspconfig, lsputil = pcall(require, "lspconfig.util")
+  if has_lspconfig then
+    return lsputil.find_git_ancestor(...)
+  end
 end
 
 function M.has_lspconfig(server)
-  return vim.tbl_contains(require("lspconfig.util").available_servers(), server)
+  local has_lspconfig, lsputil = pcall(require, "lspconfig.util")
+  return has_lspconfig and vim.tbl_contains(lsputil.available_servers(), server)
 end
 
 ---@param opts { on_config: fun(config, root_dir:string, original_config), root_dir: fun(), name: string }
 function M.on_config(opts)
-  local lsputil = require("lspconfig.util")
+  local has_lspconfig, lsputil = pcall(require, "lspconfig.util")
+  if not has_lspconfig then
+    return
+  end
   local hook = lsputil.add_hook_after
 
   lsputil.on_setup = hook(lsputil.on_setup, function(initial_config)
