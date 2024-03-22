@@ -88,7 +88,7 @@ require("lspconfig").lua_ls.setup(...)
     lua_ls = {
       -- by default, lua_ls annotations are only enabled in your neovim config directory
       enabled_for_neovim_config = true,
-      -- explicitely enable adding annotations. Mostly relevant to put in your local .nvim.settings.json file
+      -- explicitly enable adding annotations. Mostly relevant to put in your local .nvim.settings.json file
       enabled = false,
     },
   },
@@ -200,7 +200,7 @@ require("neoconf.plugins").register({
     schema:import("myplugin", defaults)
     -- Optionally update some of the json schema
     schema:set("myplugin.array", {
-        description = "Special array containg booleans or numbers",
+        description = "Special array containing booleans or numbers",
         anyOf = {
         { type = "boolean" },
         { type = "integer" },
