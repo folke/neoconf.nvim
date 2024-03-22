@@ -6,7 +6,8 @@
       "default": [
         "class",
         "className",
-        "ngClass"
+        "ngClass",
+        "class:list"
       ],
       "items": {
         "type": "string"

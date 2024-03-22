@@ -10843,7 +10843,7 @@
 -- The HTML attributes for which to provide class completions, hover previews, linting etc.
 -- 
 -- ```lua
--- default = { "class", "className", "ngClass" }
+-- default = { "class", "className", "ngClass", "class:list" }
 -- ```
 ---@field classAttributes string[]
 -- Enable code actions.
