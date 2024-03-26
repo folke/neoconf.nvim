@@ -93,7 +93,7 @@ function M.file_patterns(opts)
     end
   end
 
-  return ret
+  return vim.tbl_map(vim.fs.normalize, ret)
 end
 
 ---@return { pattern: table<string, string>, filename: table<string, string> }
