@@ -694,6 +694,15 @@
       "default": "both",
       "markdownDescription": "How to render the size information in a memory layout hover."
     },
+    "rust-analyzer.hover.show.structFields": {
+      "default": null,
+      "markdownDescription": "How many fields of a struct to display when hovering a struct.",
+      "minimum": 0,
+      "type": [
+        "null",
+        "integer"
+      ]
+    },
     "rust-analyzer.hover.show.traitAssocItems": {
       "default": null,
       "markdownDescription": "How many associated items of a trait to display when hovering a trait.",

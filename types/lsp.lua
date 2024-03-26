@@ -9329,6 +9329,8 @@
 ---@field size any|"both" | "decimal" | "hexadecimal"
 
 ---@class _.lspconfig.settings.rust_analyzer.Show
+-- How many fields of a struct to display when hovering a struct.
+---@field structFields integer
 -- How many associated items of a trait to display when hovering a trait.
 ---@field traitAssocItems integer
 
