@@ -34,6 +34,11 @@
       "minimum": 0,
       "type": "number"
     },
+    "rust-analyzer.cargo.allTargets": {
+      "default": true,
+      "markdownDescription": "Pass `--all-targets` to cargo invocation.",
+      "type": "boolean"
+    },
     "rust-analyzer.cargo.autoreload": {
       "default": true,
       "markdownDescription": "Automatically refresh project info via `cargo metadata` on\n`Cargo.toml` or `.cargo/config.toml` changes.",
@@ -198,9 +203,12 @@
       ]
     },
     "rust-analyzer.check.allTargets": {
-      "default": true,
-      "markdownDescription": "Check all targets and tests (`--all-targets`).",
-      "type": "boolean"
+      "default": null,
+      "markdownDescription": "Check all targets and tests (`--all-targets`). Defaults to\n`#rust-analyzer.cargo.allTargets#`.",
+      "type": [
+        "null",
+        "boolean"
+      ]
     },
     "rust-analyzer.check.command": {
       "default": "check",

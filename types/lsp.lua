@@ -8791,6 +8791,12 @@
 ---@field useRustcWrapper boolean
 
 ---@class _.lspconfig.settings.rust_analyzer.Cargo
+-- Pass `--all-targets` to cargo invocation.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field allTargets boolean
 -- Automatically refresh project info via `cargo metadata` on
 -- `Cargo.toml` or `.cargo/config.toml` changes.
 -- 
@@ -8868,11 +8874,8 @@
 ---@field unsetTest string[]
 
 ---@class _.lspconfig.settings.rust_analyzer.Check
--- Check all targets and tests (`--all-targets`).
--- 
--- ```lua
--- default = true
--- ```
+-- Check all targets and tests (`--all-targets`). Defaults to
+-- `#rust-analyzer.cargo.allTargets#`.
 ---@field allTargets boolean
 -- Cargo command to use for `cargo check`.
 -- 
