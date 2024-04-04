@@ -319,6 +319,8 @@
 -- 
 -- **Not recommended to be enabled in user settings.**
 ---@field enablePaths string[]
+-- Enable breaking features likely to be shipped in Deno 2.0.
+---@field future boolean
 -- The file path to an import map. This is the equivalent to using `--import-map` on the command line.
 -- 
 -- [Import maps](https://deno.land/manual@v1.6.0/linking_to_external_code/import_maps) provide a way to "relocate" modules based on their specifiers. The path can either be relative to the workspace, or an absolute path.

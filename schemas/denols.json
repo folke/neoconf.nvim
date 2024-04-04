@@ -148,6 +148,16 @@
       "scope": "resource",
       "type": "array"
     },
+    "deno.future": {
+      "default": false,
+      "examples": [
+        true,
+        false
+      ],
+      "markdownDescription": "Enable breaking features likely to be shipped in Deno 2.0.",
+      "scope": "window",
+      "type": "boolean"
+    },
     "deno.importMap": {
       "default": null,
       "examples": [
