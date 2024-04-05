@@ -356,7 +356,7 @@
 ---@field tlsCertificate string
 -- **DANGER** disables verification of TLS certificates for the hosts provided. There is likely a better way to deal with any errors than use this option. This is like using `--unsafely-ignore-certificate-errors` in the Deno CLI.
 ---@field unsafelyIgnoreCertificateErrors string[]
--- Controls if code will be type checked with Deno's unstable APIs. This is the equivalent to using `--unstable` on the command line.
+-- Controls if tests will be run with the the `--unstable` flag when running tests via the explorer.
 -- 
 -- **Not recommended to be enabled globally.**
 ---@field unstable boolean
