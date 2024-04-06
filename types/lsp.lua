@@ -6478,6 +6478,18 @@
 -- default = true
 -- ```
 ---@field perlCompileEnabled boolean
+-- Pass environment variables to the perl executable. Skipped if undefined.
+-- 
+-- ```lua
+-- default = {}
+-- ```
+---@field perlEnv table
+-- Add environment variables to current environment, or totally replace (perlEnv related).
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field perlEnvAdd boolean
 -- Pass miscellaneous command line arguments to pass to the perl executable
 -- 
 -- ```lua
