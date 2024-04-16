@@ -741,7 +741,7 @@
 -- An array of language ids for which the extension should probe if support is installed.
 -- 
 -- ```lua
--- default = { "astro", "javascript", "javascriptreact", "typescript", "typescriptreact", "html", "mdx", "vue", "markdown" }
+-- default = { "astro", "javascript", "javascriptreact", "typescript", "typescriptreact", "html", "mdx", "vue", "markdown", "json", "jsonc" }
 -- ```
 ---@field probe string[]
 ---@field problems _.lspconfig.settings.eslint.Problems
@@ -12664,6 +12664,14 @@
 ---@class _.lspconfig.settings.vtsls.Javascript
 ---@field format _.lspconfig.settings.vtsls.Format
 
+---@class _.lspconfig.settings.vtsls.Tsserver
+-- TypeScript plugins that are not locally avaiable in the workspace. Usually the plugin configuration can be found in the `contributes.typescriptServerPlugins` field of `package.json` of the corresponding VSCode extension.
+-- 
+-- ```lua
+-- default = {}
+-- ```
+---@field globalPlugins object[]
+
 ---@class _.lspconfig.settings.vtsls.Format
 ---@field baseIndentSize number
 ---@field convertTabsToSpaces boolean
@@ -12685,6 +12693,7 @@
 ---@field enableMoveToFileCodeAction boolean
 ---@field experimental _.lspconfig.settings.vtsls.Experimental
 ---@field javascript _.lspconfig.settings.vtsls.Javascript
+---@field tsserver _.lspconfig.settings.vtsls.Tsserver
 ---@field typescript _.lspconfig.settings.vtsls.Typescript
 
 ---@class lspconfig.settings.vtsls

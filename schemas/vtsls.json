@@ -1082,6 +1082,37 @@
     "vtsls.javascript.format.trimTrailingWhitespace": {
       "type": "boolean"
     },
+    "vtsls.tsserver.globalPlugins": {
+      "default": [],
+      "description": "TypeScript plugins that are not locally avaiable in the workspace. Usually the plugin configuration can be found in the `contributes.typescriptServerPlugins` field of `package.json` of the corresponding VSCode extension.",
+      "items": {
+        "properties": {
+          "configNamespace": {
+            "type": "string"
+          },
+          "enableForWorkspaceTypeScriptVersions": {
+            "description": "By default, global plugins won't be enabled when workspace version of tsdk is used. Set to `true` to switch this behavior.",
+            "type": "boolean"
+          },
+          "languages": {
+            "description": "Additional languages except for JS/TS suppported by the plugin.",
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "location": {
+            "description": "Location where to resolve the path of plugin. If not provided, the plugin will be resolved from the place of running `tsserver.js` and `typescript.tsserver.pluginPaths`.",
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "type": "array"
+    },
     "vtsls.typescript.format.baseIndentSize": {
       "type": "number"
     },
