@@ -8880,12 +8880,6 @@
 -- Set to `true` to use a subdirectory of the existing target directory or
 -- set to a path relative to the workspace to use that path.
 ---@field targetDir any|boolean|string
--- Unsets the implicit `#[cfg(test)]` for the specified crates.
--- 
--- ```lua
--- default = { "core" }
--- ```
----@field unsetTest string[]
 
 ---@class _.lspconfig.settings.rust_analyzer.Check
 -- Check all targets and tests (`--all-targets`). Defaults to
@@ -9720,6 +9714,18 @@
 ---@field extraArgs string[]
 -- Environment variables passed to the runnable launched using `Test` or `Debug` lens or `rust-analyzer.run` command.
 ---@field extraEnv any|object[]|table
+-- Additional arguments to be passed through Cargo to launched tests, benchmarks, or
+-- doc-tests.
+-- 
+-- Unless the launched target uses a
+-- [custom test harness](https://doc.rust-lang.org/cargo/reference/cargo-targets.html#the-harness-field),
+-- they will end up being interpreted as options to
+-- [`rustc`’s built-in test harness (“libtest”)](https://doc.rust-lang.org/rustc/tests/index.html#cli-arguments).
+-- 
+-- ```lua
+-- default = { "--show-output" }
+-- ```
+---@field extraTestBinaryArgs string[]
 -- Problem matchers to use for `rust-analyzer.run` command, eg `["$rustc", "$rust-panic"]`.
 -- 
 -- ```lua
