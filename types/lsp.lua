@@ -9962,7 +9962,8 @@
 -- of projects.
 -- 
 -- Elements must be paths pointing to `Cargo.toml`,
--- `rust-project.json`, or JSON objects in `rust-project.json` format.
+-- `rust-project.json`, `.rs` files (which will be treated as standalone files) or JSON
+-- objects in `rust-project.json` format.
 -- 
 -- ```lua
 -- default = {}
