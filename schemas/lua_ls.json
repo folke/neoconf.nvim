@@ -2886,19 +2886,20 @@
       "type": "boolean"
     },
     "Lua.runtime.plugin": {
-      "default": "",
       "markdownDescription": "Plugin path. Please read [wiki](https://luals.github.io/wiki/plugins) to learn more.",
       "scope": "resource",
-      "type": "string"
+      "type": [
+        "string",
+        "array"
+      ]
     },
     "Lua.runtime.pluginArgs": {
-      "default": [],
-      "items": {
-        "type": "string"
-      },
       "markdownDescription": "Additional arguments for the plugin.",
       "scope": "resource",
-      "type": "array"
+      "type": [
+        "array",
+        "object"
+      ]
     },
     "Lua.runtime.special": {
       "additionalProperties": false,
@@ -2997,6 +2998,12 @@
     "Lua.type.castNumberToInteger": {
       "default": true,
       "markdownDescription": "Allowed to assign the `number` type to the `integer` type.",
+      "scope": "resource",
+      "type": "boolean"
+    },
+    "Lua.type.inferParamType": {
+      "default": false,
+      "markdownDescription": "When a parameter type is not annotated, it is inferred from the function's call sites.\n\nWhen this setting is `false`, the type of the parameter is `any` when it is not annotated.\n",
       "scope": "resource",
       "type": "boolean"
     },

@@ -5855,17 +5855,9 @@
 -- When enabled, `runtime.path` will only search the first level of directories, see the description of `runtime.path`.
 ---@field pathStrict boolean
 -- Plugin path. Please read [wiki](https://luals.github.io/wiki/plugins) to learn more.
--- 
--- ```lua
--- default = ""
--- ```
----@field plugin string
+---@field plugin string|any[]
 -- Additional arguments for the plugin.
--- 
--- ```lua
--- default = {}
--- ```
----@field pluginArgs string[]
+---@field pluginArgs any[]|table
 -- The custom global variables are regarded as some special built-in variables, and the language server will provide special support
 -- The following example shows that 'include' is treated as' require '.
 -- ```json
@@ -5933,6 +5925,11 @@
 -- default = true
 -- ```
 ---@field castNumberToInteger boolean
+-- When a parameter type is not annotated, it is inferred from the function's call sites.
+-- 
+-- When this setting is `false`, the type of the parameter is `any` when it is not annotated.
+-- 
+---@field inferParamType boolean
 -- When checking the type of union type, ignore the `nil` in it.
 -- 
 -- When this setting is `false`, the `number|nil` type cannot be assigned to the `number` type. It can be with `true`.
