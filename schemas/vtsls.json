@@ -877,6 +877,11 @@
       "description": "(Experimental) Enables project wide error reporting.",
       "type": "boolean"
     },
+    "typescript.tsserver.experimental.useVsCodeWatcher": {
+      "default": false,
+      "description": "Use VS Code's file watchers instead of TypeScript's. Requires using TypeScript 5.4+ in the workspace.",
+      "type": "boolean"
+    },
     "typescript.tsserver.log": {
       "default": "off",
       "description": "Enables logging of the TS server to a file. This log can be used to diagnose TS Server issues. The log may contain file paths, source code, and other potentially sensitive information from your project.",
