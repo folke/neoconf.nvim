@@ -695,9 +695,18 @@
       "default": "both",
       "markdownDescription": "How to render the size information in a memory layout hover."
     },
-    "rust-analyzer.hover.show.structFields": {
-      "default": null,
-      "markdownDescription": "How many fields of a struct to display when hovering a struct.",
+    "rust-analyzer.hover.show.enumVariants": {
+      "default": 5,
+      "markdownDescription": "How many variants of an enum to display when hovering on. Show none if empty.",
+      "minimum": 0,
+      "type": [
+        "null",
+        "integer"
+      ]
+    },
+    "rust-analyzer.hover.show.fields": {
+      "default": 5,
+      "markdownDescription": "How many fields of a struct, variant or union to display when hovering on. Show none if empty.",
       "minimum": 0,
       "type": [
         "null",

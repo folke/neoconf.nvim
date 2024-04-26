@@ -899,6 +899,12 @@
 -- default = {}
 -- ```
 ---@field dotnetArgs string[]
+-- additional CLI arguments to be provided to FSAC itself. Useful for flags that aren't exposed in the settings or CLI arguments that only exist in custom built versions of FSAC. Requires restart.
+-- 
+-- ```lua
+-- default = {}
+-- ```
+---@field fsacArgs string[]
 ---@field gc _.lspconfig.settings.fsautocomplete.Gc
 -- The path to the 'fsautocomplete.dll', a directory containing TFM-specific versions of fsautocomplete.dll, or a directory containing fsautocomplete.dll. Useful for debugging a self-built FSAC. If a DLL is specified, uses it directly. If a directory is specified and it contains TFM-specific folders (net6.0, net7.0, etc) then that directory will be probed for the best TFM to use for the current runtime. This is useful when working with a local copy of FSAC, you can point directly to the bin/Debug or bin/Release folder and it'll Just Work. Finally, if a directory is specified and there are no TFM paths, then fsautocomplete.dll from that directory is used. Requires restart.
 -- 
@@ -1238,6 +1244,8 @@
 -- default = 'failwith "Not Implemented"'
 -- ```
 ---@field unionCaseStubGenerationBody string
+-- Enables detection of unnecessary parentheses
+---@field unnecessaryParenthesesAnalyzer boolean
 -- Enables detection of unused declarations
 -- 
 -- ```lua
@@ -9337,8 +9345,18 @@
 ---@field size any|"both" | "decimal" | "hexadecimal"
 
 ---@class _.lspconfig.settings.rust_analyzer.Show
--- How many fields of a struct to display when hovering a struct.
----@field structFields integer
+-- How many variants of an enum to display when hovering on. Show none if empty.
+-- 
+-- ```lua
+-- default = 5
+-- ```
+---@field enumVariants integer
+-- How many fields of a struct, variant or union to display when hovering on. Show none if empty.
+-- 
+-- ```lua
+-- default = 5
+-- ```
+---@field fields integer
 -- How many associated items of a trait to display when hovering a trait.
 ---@field traitAssocItems integer
 

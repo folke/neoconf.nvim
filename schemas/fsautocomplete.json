@@ -150,6 +150,14 @@
       },
       "type": "array"
     },
+    "FSharp.fsac.fsacArgs": {
+      "default": [],
+      "description": "additional CLI arguments to be provided to FSAC itself. Useful for flags that aren't exposed in the settings or CLI arguments that only exist in custom built versions of FSAC. Requires restart.",
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    },
     "FSharp.fsac.gc.conserveMemory": {
       "markdownDescription": "Configures the garbage collector to [conserve memory](https://learn.microsoft.com/en-us/dotnet/core/runtime-config/garbage-collector#conserve-memory) at the expense of more frequent garbage collections and possibly longer pause times. Acceptable values are 0-9. Any non-zero value will allow the [Large Object Heap](https://learn.microsoft.com/en-us/dotnet/standard/garbage-collection/large-object-heap) to be compacted automatically if it has too much fragmentation. Requires restart.",
       "maximum": 9,
@@ -455,6 +463,11 @@
       "default": "failwith \"Not Implemented\"",
       "description": "The expression to fill in the right-hand side of match cases when generating missing cases for a match on a discriminated union",
       "type": "string"
+    },
+    "FSharp.unnecessaryParenthesesAnalyzer": {
+      "default": false,
+      "description": "Enables detection of unnecessary parentheses",
+      "type": "boolean"
     },
     "FSharp.unusedDeclarationsAnalyzer": {
       "default": true,
