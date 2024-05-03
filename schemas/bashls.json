@@ -48,6 +48,31 @@
       "default": "shellcheck",
       "description": "Controls the executable used for ShellCheck linting information. An empty string will disable linting.",
       "type": "string"
+    },
+    "bashIde.shfmt.binaryNextLine": {
+      "default": false,
+      "description": "Allow boolean operators (like && and ||) to start a line.",
+      "type": "boolean"
+    },
+    "bashIde.shfmt.caseIndent": {
+      "default": false,
+      "description": "Indent patterns in case statements.",
+      "type": "boolean"
+    },
+    "bashIde.shfmt.funcNextLine": {
+      "default": false,
+      "description": "Place function opening braces on a separate line.",
+      "type": "boolean"
+    },
+    "bashIde.shfmt.path": {
+      "default": "shfmt",
+      "description": "Controls the executable used for Shfmt formatting. An empty string will disable formatting.",
+      "type": "string"
+    },
+    "bashIde.shfmt.spaceRedirects": {
+      "default": false,
+      "description": "Follow redirection operators with a space.",
+      "type": "boolean"
     }
   }
 }

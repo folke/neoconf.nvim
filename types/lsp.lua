@@ -38,6 +38,22 @@
 ---@class lspconfig.settings.awkls
 ---@field awk-ide-vscode _.lspconfig.settings.awkls.Awk-ide-vscode
 
+---@class _.lspconfig.settings.bashls.Shfmt
+-- Allow boolean operators (like && and ||) to start a line.
+---@field binaryNextLine boolean
+-- Indent patterns in case statements.
+---@field caseIndent boolean
+-- Place function opening braces on a separate line.
+---@field funcNextLine boolean
+-- Controls the executable used for Shfmt formatting. An empty string will disable formatting.
+-- 
+-- ```lua
+-- default = "shfmt"
+-- ```
+---@field path string
+-- Follow redirection operators with a space.
+---@field spaceRedirects boolean
+
 ---@class _.lspconfig.settings.bashls.BashIde
 -- Maximum number of files to analyze in the background. Set to 0 to disable background analysis.
 -- 
@@ -79,6 +95,7 @@
 -- default = "shellcheck"
 -- ```
 ---@field shellcheckPath string
+---@field shfmt _.lspconfig.settings.bashls.Shfmt
 
 ---@class lspconfig.settings.bashls
 ---@field bashIde _.lspconfig.settings.bashls.BashIde
