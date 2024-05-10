@@ -490,15 +490,6 @@
       "scope": "window",
       "type": "boolean"
     },
-    "typescript.experimental.tsserver.web.typeAcquisition.enabled": {
-      "default": false,
-      "description": "Enable/disable package acquisition on the web.",
-      "scope": "window",
-      "tags": [
-        "experimental"
-      ],
-      "type": "boolean"
-    },
     "typescript.format.enable": {
       "default": true,
       "description": "Enable/disable default TypeScript formatter.",
@@ -1121,8 +1112,14 @@
       "type": "boolean"
     },
     "typescript.tsserver.web.projectWideIntellisense.suppressSemanticErrors": {
+      "default": false,
+      "description": "Suppresses semantic errors on web even when project wide IntelliSense is enabled. This is always on when project wide IntelliSense is not enabled or available. See `#typescript.tsserver.web.projectWideIntellisense.enabled#`",
+      "scope": "window",
+      "type": "boolean"
+    },
+    "typescript.tsserver.web.typeAcquisition.enabled": {
       "default": true,
-      "description": "Suppresses semantic errors. This is needed when using external packages as these can't be included analyzed on web.",
+      "description": "Enable/disable package acquisition on the web. This enables IntelliSense for imported packages. Requires `#typescript.tsserver.web.projectWideIntellisense.enabled#`.",
       "scope": "window",
       "type": "boolean"
     },

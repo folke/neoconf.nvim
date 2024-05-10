@@ -1004,6 +1004,20 @@
       "scope": "resource",
       "type": "string"
     },
+    "haskell.sessionLoading": {
+      "default": "singleComponent",
+      "description": "Preferred approach for loading package components. Setting this to 'multiple components' (EXPERIMENTAL) allows the build tool (such as `cabal` or `stack`) to [load multiple components at once](https://github.com/haskell/cabal/pull/8726), which is a significant improvement.",
+      "enum": [
+        "singleComponent",
+        "multipleComponents"
+      ],
+      "enumDescriptions": [
+        "Always load only a single component at a time. This is the most reliable option if you encountered any issues with the other options.",
+        "Prefer a multiple component session, if the build tool supports it. At the moment, only `cabal` supports multiple components session loading. If the `cabal` version does not support loading multiple components at once, we gracefully fall back to \"singleComponent\" mode."
+      ],
+      "scope": "resource",
+      "type": "string"
+    },
     "haskell.toolchain": {
       "default": {},
       "description": "When manageHLS is set to GHCup, this can overwrite the automatic toolchain configuration with a more specific one. When a tool is omitted, the extension will manage the version (for 'ghc' we try to figure out the version the project requires). The format is '{\"tool\": \"version\", ...}'. 'version' accepts all identifiers that 'ghcup' accepts.",

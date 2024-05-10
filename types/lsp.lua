@@ -2693,6 +2693,12 @@
 -- default = ""
 -- ```
 ---@field serverExtraArgs string
+-- Preferred approach for loading package components. Setting this to 'multiple components' (EXPERIMENTAL) allows the build tool (such as `cabal` or `stack`) to [load multiple components at once](https://github.com/haskell/cabal/pull/8726), which is a significant improvement.
+-- 
+-- ```lua
+-- default = "singleComponent"
+-- ```
+---@field sessionLoading "singleComponent" | "multipleComponents"
 -- When manageHLS is set to GHCup, this can overwrite the automatic toolchain configuration with a more specific one. When a tool is omitted, the extension will manage the version (for 'ghc' we try to figure out the version the project requires). The format is '{"tool": "version", ...}'. 'version' accepts all identifiers that 'ghcup' accepts.
 -- 
 -- ```lua
@@ -11341,19 +11347,6 @@
 -- ```
 ---@field npmIsInstalled boolean
 
----@class _.lspconfig.settings.tsserver.TypeAcquisition
--- Enable/disable package acquisition on the web.
----@field enabled boolean
-
----@class _.lspconfig.settings.tsserver.Web
----@field typeAcquisition _.lspconfig.settings.tsserver.TypeAcquisition
-
----@class _.lspconfig.settings.tsserver.Tsserver
----@field web _.lspconfig.settings.tsserver.Web
-
----@class _.lspconfig.settings.tsserver.Experimental
----@field tsserver _.lspconfig.settings.tsserver.Tsserver
-
 ---@class _.lspconfig.settings.tsserver.Format
 -- Enable/disable default TypeScript formatter.
 -- 
@@ -11720,15 +11713,20 @@
 -- default = true
 -- ```
 ---@field enabled boolean
--- Suppresses semantic errors. This is needed when using external packages as these can't be included analyzed on web.
+-- Suppresses semantic errors on web even when project wide IntelliSense is enabled. This is always on when project wide IntelliSense is not enabled or available. See `#typescript.tsserver.web.projectWideIntellisense.enabled#`
+---@field suppressSemanticErrors boolean
+
+---@class _.lspconfig.settings.tsserver.TypeAcquisition
+-- Enable/disable package acquisition on the web. This enables IntelliSense for imported packages. Requires `#typescript.tsserver.web.projectWideIntellisense.enabled#`.
 -- 
 -- ```lua
 -- default = true
 -- ```
----@field suppressSemanticErrors boolean
+---@field enabled boolean
 
 ---@class _.lspconfig.settings.tsserver.Web
 ---@field projectWideIntellisense _.lspconfig.settings.tsserver.ProjectWideIntellisense
+---@field typeAcquisition _.lspconfig.settings.tsserver.TypeAcquisition
 
 ---@class _.lspconfig.settings.tsserver.Tsserver
 -- Enables tracing TS server performance to a directory. These trace files can be used to diagnose TS Server performance issues. The log may contain file paths, source code, and other potentially sensitive information from your project.
@@ -11812,7 +11810,6 @@
 ---@field disableAutomaticTypeAcquisition boolean
 -- Enables prompting of users to use the TypeScript version configured in the workspace for Intellisense.
 ---@field enablePromptUseWorkspaceTsdk boolean
----@field experimental _.lspconfig.settings.tsserver.Experimental
 ---@field format _.lspconfig.settings.tsserver.Format
 ---@field implementationsCodeLens _.lspconfig.settings.tsserver.ImplementationsCodeLens
 ---@field inlayHints _.lspconfig.settings.tsserver.InlayHints
