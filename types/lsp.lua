@@ -2184,6 +2184,28 @@
 -- ```
 ---@field diagnosticsOn boolean
 
+---@class _.lspconfig.settings.hie.Config
+-- Set path to 'cabal-fmt' executable
+-- 
+-- ```lua
+-- default = "cabal-fmt"
+-- ```
+---@field path string
+
+---@class _.lspconfig.settings.hie.Cabal-fmt
+---@field config _.lspconfig.settings.hie.Config
+
+---@class _.lspconfig.settings.hie.Config
+-- Set path to 'cabal-gild' executable
+-- 
+-- ```lua
+-- default = "cabal-gild"
+-- ```
+---@field path string
+
+---@class _.lspconfig.settings.hie.Cabal-gild
+---@field config _.lspconfig.settings.hie.Config
+
 ---@class _.lspconfig.settings.hie.CallHierarchy
 -- Enables callHierarchy plugin
 -- 
@@ -2250,9 +2272,9 @@
 ---@field globalOn boolean
 
 ---@class _.lspconfig.settings.hie.Config
--- Call out to an external "fourmolu" executable, rather than using the bundled library
+-- Call out to an external "fourmolu" executable, rather than using the bundled library.
 ---@field external boolean
--- Set path to executable (for "external" mode)
+-- Set path to executable (for "external" mode).
 -- 
 -- ```lua
 -- default = "fourmolu"
@@ -2494,6 +2516,18 @@
 -- default = "function"
 -- ```
 ---@field functionToken "namespace" | "type" | "class" | "enum" | "interface" | "struct" | "typeParameter" | "parameter" | "variable" | "property" | "enumMember" | "event" | "function" | "method" | "macro" | "keyword" | "modifier" | "comment" | "string" | "number" | "regexp" | "operator" | "decorator"
+-- LSP semantic token type to use for modules
+-- 
+-- ```lua
+-- default = "namespace"
+-- ```
+---@field moduleToken "namespace" | "type" | "class" | "enum" | "interface" | "struct" | "typeParameter" | "parameter" | "variable" | "property" | "enumMember" | "event" | "function" | "method" | "macro" | "keyword" | "modifier" | "comment" | "string" | "number" | "regexp" | "operator" | "decorator"
+-- LSP semantic token type to use for operators
+-- 
+-- ```lua
+-- default = "operator"
+-- ```
+---@field operatorToken "namespace" | "type" | "class" | "enum" | "interface" | "struct" | "typeParameter" | "parameter" | "variable" | "property" | "enumMember" | "event" | "function" | "method" | "macro" | "keyword" | "modifier" | "comment" | "string" | "number" | "regexp" | "operator" | "decorator"
 -- LSP semantic token type to use for pattern synonyms
 -- 
 -- ```lua
@@ -2557,6 +2591,8 @@
 ---@class _.lspconfig.settings.hie.Plugin
 ---@field alternateNumberFormat _.lspconfig.settings.hie.AlternateNumberFormat
 ---@field cabal _.lspconfig.settings.hie.Cabal
+---@field cabal-fmt _.lspconfig.settings.hie.Cabal-fmt
+---@field cabal-gild _.lspconfig.settings.hie.Cabal-gild
 ---@field callHierarchy _.lspconfig.settings.hie.CallHierarchy
 ---@field changeTypeSignature _.lspconfig.settings.hie.ChangeTypeSignature
 ---@field class _.lspconfig.settings.hie.Class
