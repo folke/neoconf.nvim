@@ -18,6 +18,14 @@
       "scope": "resource",
       "type": "number"
     },
+    "luau-lsp.bytecode.typeInfoLevel": {
+      "default": 1,
+      "markdownDescription": "The `typeInfoLevel` to use when compiling bytecode",
+      "maximum": 1,
+      "minimum": 0,
+      "scope": "resource",
+      "type": "number"
+    },
     "luau-lsp.bytecode.vectorCtor": {
       "default": "new",
       "markdownDescription": "The `vectorCtor` to use when compiling bytecode",

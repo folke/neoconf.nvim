@@ -5552,6 +5552,12 @@
 -- default = {}
 -- ```
 ---@field globals string[]
+-- Find defined global variables using regex.
+-- 
+-- ```lua
+-- default = {}
+-- ```
+---@field globalsRegex string[]
 -- Modify the diagnostic needed file status in a group.
 -- 
 -- * Opened:  only diagnose opened files
@@ -6142,6 +6148,12 @@
 -- default = 1
 -- ```
 ---@field debugLevel number
+-- The `typeInfoLevel` to use when compiling bytecode
+-- 
+-- ```lua
+-- default = 1
+-- ```
+---@field typeInfoLevel number
 -- The `vectorCtor` to use when compiling bytecode
 -- 
 -- ```lua

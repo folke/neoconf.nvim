@@ -272,6 +272,15 @@
       "scope": "resource",
       "type": "array"
     },
+    "Lua.diagnostics.globalsRegex": {
+      "default": [],
+      "items": {
+        "type": "string"
+      },
+      "markdownDescription": "Find defined global variables using regex.",
+      "scope": "resource",
+      "type": "array"
+    },
     "Lua.diagnostics.groupFileStatus": {
       "additionalProperties": false,
       "markdownDescription": "Modify the diagnostic needed file status in a group.\n\n* Opened:  only diagnose opened files\n* Any:     diagnose all files\n* None:    disable this diagnostic\n\n`Fallback` means that diagnostics in this group are controlled by `diagnostics.neededFileStatus` separately.\nOther settings will override individual settings without end of `!`.\n",
