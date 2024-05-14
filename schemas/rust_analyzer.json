@@ -22,6 +22,12 @@
       "markdownDescription": "Placeholder expression to use for missing expressions in assists.",
       "type": "string"
     },
+    "rust-analyzer.assist.termSearch.fuel": {
+      "default": 400,
+      "markdownDescription": "Term search fuel in \"units of work\" for assists (Defaults to 400).",
+      "minimum": 0,
+      "type": "integer"
+    },
     "rust-analyzer.cachePriming.enable": {
       "default": true,
       "markdownDescription": "Warm up caches on project load.",
@@ -425,6 +431,12 @@
       "default": false,
       "markdownDescription": "Whether to enable term search based snippets like `Some(foo.bar().baz())`.",
       "type": "boolean"
+    },
+    "rust-analyzer.completion.termSearch.fuel": {
+      "default": 200,
+      "markdownDescription": "Term search fuel in \"units of work\" for autocompletion (Defaults to 200).",
+      "minimum": 0,
+      "type": "integer"
     },
     "rust-analyzer.debug.engine": {
       "default": "auto",

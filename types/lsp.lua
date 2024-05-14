@@ -8793,6 +8793,14 @@
 ---@field rome _.lspconfig.settings.rome.Rome
 ---@field rome_lsp _.lspconfig.settings.rome.Rome.Lsp
 
+---@class _.lspconfig.settings.rust_analyzer.TermSearch
+-- Term search fuel in "units of work" for assists (Defaults to 400).
+-- 
+-- ```lua
+-- default = 400
+-- ```
+---@field fuel integer
+
 ---@class _.lspconfig.settings.rust_analyzer.Assist
 -- Whether to insert #[must_use] when generating `as_` methods
 -- for enum variants.
@@ -8803,6 +8811,7 @@
 -- default = "todo"
 -- ```
 ---@field expressionFillDefault "todo" | "default"
+---@field termSearch _.lspconfig.settings.rust_analyzer.TermSearch
 
 ---@class _.lspconfig.settings.rust_analyzer.CachePriming
 -- Warm up caches on project load.
@@ -9153,6 +9162,12 @@
 ---@class _.lspconfig.settings.rust_analyzer.TermSearch
 -- Whether to enable term search based snippets like `Some(foo.bar().baz())`.
 ---@field enable boolean
+-- Term search fuel in "units of work" for autocompletion (Defaults to 200).
+-- 
+-- ```lua
+-- default = 200
+-- ```
+---@field fuel integer
 
 ---@class _.lspconfig.settings.rust_analyzer.Completion
 ---@field autoimport _.lspconfig.settings.rust_analyzer.Autoimport
