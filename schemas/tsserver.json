@@ -1119,7 +1119,7 @@
     },
     "typescript.tsserver.web.typeAcquisition.enabled": {
       "default": true,
-      "description": "Enable/disable package acquisition on the web. This enables IntelliSense for imported packages. Requires `#typescript.tsserver.web.projectWideIntellisense.enabled#`.",
+      "description": "Enable/disable package acquisition on the web. This enables IntelliSense for imported packages. Requires `#typescript.tsserver.web.projectWideIntellisense.enabled#`. Currently not supported for Safari.",
       "scope": "window",
       "type": "boolean"
     },

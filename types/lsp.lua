@@ -11780,7 +11780,7 @@
 ---@field suppressSemanticErrors boolean
 
 ---@class _.lspconfig.settings.tsserver.TypeAcquisition
--- Enable/disable package acquisition on the web. This enables IntelliSense for imported packages. Requires `#typescript.tsserver.web.projectWideIntellisense.enabled#`.
+-- Enable/disable package acquisition on the web. This enables IntelliSense for imported packages. Requires `#typescript.tsserver.web.projectWideIntellisense.enabled#`. Currently not supported for Safari.
 -- 
 -- ```lua
 -- default = true
