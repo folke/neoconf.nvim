@@ -883,6 +883,13 @@
 ---@field references _.lspconfig.settings.fsautocomplete.References
 ---@field signature _.lspconfig.settings.fsautocomplete.Signature
 
+---@class _.lspconfig.settings.fsautocomplete.TransparentCompiler
+-- EXPERIMENTAL: Enables the FSharp Compiler Service's [transparent compiler](https://github.com/dotnet/fsharp/pull/15179) feature. Requires restart.
+---@field enabled boolean
+
+---@class _.lspconfig.settings.fsautocomplete.Fcs
+---@field transparentCompiler _.lspconfig.settings.fsautocomplete.TransparentCompiler
+
 ---@class _.lspconfig.settings.fsautocomplete.Gc
 -- Configures the garbage collector to [conserve memory](https://learn.microsoft.com/en-us/dotnet/core/runtime-config/garbage-collector#conserve-memory) at the expense of more frequent garbage collections and possibly longer pause times. Acceptable values are 0-9. Any non-zero value will allow the [Large Object Heap](https://learn.microsoft.com/en-us/dotnet/standard/garbage-collection/large-object-heap) to be compacted automatically if it has too much fragmentation. Requires restart.
 ---@field conserveMemory integer
@@ -900,7 +907,7 @@
 ---@field server boolean
 
 ---@class _.lspconfig.settings.fsautocomplete.Fsac
--- Appends the '--attachdebugger' argument to fsac, this will allow you to attach a debugger.
+-- Appends the `--attachdebugger` argument to fsac, this will allow you to attach a debugger.
 ---@field attachDebugger boolean
 -- The MemoryCacheOptions.SizeLimit for caching typechecks.
 -- 
@@ -1109,6 +1116,7 @@
 ---@field excludeProjectDirectories any[]
 -- Includes external (from unopened modules and namespaces) symbols in autocomplete
 ---@field externalAutocomplete boolean
+---@field fcs _.lspconfig.settings.fsautocomplete.Fcs
 ---@field fsac _.lspconfig.settings.fsautocomplete.Fsac
 -- An array of additional command line parameters to pass to FSI when it is started. See [the Microsoft documentation](https://docs.microsoft.com/en-us/dotnet/fsharp/language-reference/fsharp-interactive-options) for an exhaustive list.
 -- 

@@ -126,9 +126,14 @@
       "description": "Includes external (from unopened modules and namespaces) symbols in autocomplete",
       "type": "boolean"
     },
+    "FSharp.fcs.transparentCompiler.enabled": {
+      "default": false,
+      "markdownDescription": "EXPERIMENTAL: Enables the FSharp Compiler Service's [transparent compiler](https://github.com/dotnet/fsharp/pull/15179) feature. Requires restart.",
+      "type": "boolean"
+    },
     "FSharp.fsac.attachDebugger": {
       "default": false,
-      "description": "Appends the '--attachdebugger' argument to fsac, this will allow you to attach a debugger.",
+      "markdownDescription": "Appends the `--attachdebugger` argument to fsac, this will allow you to attach a debugger.",
       "type": "boolean"
     },
     "FSharp.fsac.cachedTypeCheckCount": {
