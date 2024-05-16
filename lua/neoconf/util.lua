@@ -2,9 +2,11 @@ local Config = require("neoconf.config")
 
 local M = {}
 
+M.islist = vim.islist or vim.tbl_islist
+
 function M.merge(...)
   local function can_merge(v)
-    return type(v) == "table" and (vim.tbl_isempty(v) or not vim.tbl_islist(v))
+    return type(v) == "table" and (vim.tbl_isempty(v) or not M.islist(v))
   end
 
   local values = { ... }

@@ -96,7 +96,7 @@ function M.get_schema(schema)
 
   local properties = {}
 
-  if vim.tbl_islist(config) then
+  if Util.islist(config) then
     for _, c in pairs(config) do
       vim.list_extend(properties, c.properties)
     end

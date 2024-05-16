@@ -1,4 +1,5 @@
 local Settings = require("neoconf.settings")
+local Util = require("neoconf.util")
 
 local M = {}
 
@@ -57,7 +58,7 @@ function M.to_schema(value)
     return { type = "number", default = value, description = "number" }
   end
 
-  if vim.tbl_islist(value) then
+  if Util.islist(value) then
     return { type = "array", default = value, description = "array" }
   end
 
