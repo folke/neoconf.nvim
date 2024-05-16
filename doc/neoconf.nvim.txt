@@ -1,4 +1,4 @@
-*neoconf.nvim.txt*       For Neovim >= 0.8.0      Last change: 2024 January 19
+*neoconf.nvim.txt*         For Neovim >= 0.8.0        Last change: 2024 May 16
 
 ==============================================================================
 Table of Contents                             *neoconf.nvim-table-of-contents*
@@ -13,6 +13,7 @@ Table of Contents                             *neoconf.nvim-table-of-contents*
   - API                                        |neoconf.nvim-neoconf.nvim-api|
   - Acknowledgment                  |neoconf.nvim-neoconf.nvim-acknowledgment|
   - Supported Language Servers|neoconf.nvim-neoconf.nvim-supported-language-servers|
+2. Links                                                  |neoconf.nvim-links|
 
 ==============================================================================
 1. neoconf.nvim                                    *neoconf.nvim-neoconf.nvim*
