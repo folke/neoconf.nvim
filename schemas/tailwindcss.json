@@ -178,6 +178,17 @@
       "markdownDescription": "Enable linting. Rules can be configured individually using the `tailwindcss.lint.*` settings",
       "scope": "language-overridable",
       "type": "boolean"
+    },
+    "tailwindcss-intellisense.trace.server": {
+      "default": "off",
+      "description": "Traces the communication between VS Code and the Tailwind CSS Language Server.",
+      "enum": [
+        "off",
+        "messages",
+        "verbose"
+      ],
+      "scope": "window",
+      "type": "string"
     }
   }
 }

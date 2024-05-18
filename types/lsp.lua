@@ -11038,8 +11038,20 @@
 -- ```
 ---@field validate boolean
 
+---@class _.lspconfig.settings.tailwindcss.Trace
+-- Traces the communication between VS Code and the Tailwind CSS Language Server.
+-- 
+-- ```lua
+-- default = "off"
+-- ```
+---@field server "off" | "messages" | "verbose"
+
+---@class _.lspconfig.settings.tailwindcss.Tailwindcss-intellisense
+---@field trace _.lspconfig.settings.tailwindcss.Trace
+
 ---@class lspconfig.settings.tailwindcss
 ---@field tailwindCSS _.lspconfig.settings.tailwindcss.TailwindCSS
+---@field tailwindcss-intellisense _.lspconfig.settings.tailwindcss.Tailwindcss-intellisense
 
 ---@class lspconfig.settings.terraformls
 
