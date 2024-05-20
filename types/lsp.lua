@@ -6308,6 +6308,12 @@
 ---@class _.lspconfig.settings.luau_lsp.InlayHints
 -- Show inlay hints for function return types
 ---@field functionReturnTypes boolean
+-- Whether type annotation inlay hints can be made insertable by clicking
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field makeInsertable boolean
 -- Show inlay hints for function parameter names
 -- 
 -- ```lua
@@ -6324,6 +6330,14 @@
 ---@field typeHintMaxLength number
 -- Show inlay hints for variable types
 ---@field variableTypes boolean
+
+---@class _.lspconfig.settings.luau_lsp.Platform
+-- Platform-specific support features
+-- 
+-- ```lua
+-- default = "roblox"
+-- ```
+---@field type "standard" | "roblox"
 
 ---@class _.lspconfig.settings.luau_lsp.Plugin
 -- Use Roblox Studio Plugin to provide DataModel information
@@ -6434,6 +6448,7 @@
 ---@field ignoreGlobs string[]
 ---@field index _.lspconfig.settings.luau_lsp.Index
 ---@field inlayHints _.lspconfig.settings.luau_lsp.InlayHints
+---@field platform _.lspconfig.settings.luau_lsp.Platform
 ---@field plugin _.lspconfig.settings.luau_lsp.Plugin
 ---@field require _.lspconfig.settings.luau_lsp.Require
 ---@field signatureHelp _.lspconfig.settings.luau_lsp.SignatureHelp
