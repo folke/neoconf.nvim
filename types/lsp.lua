@@ -6342,6 +6342,12 @@
 ---@class _.lspconfig.settings.luau_lsp.Plugin
 -- Use Roblox Studio Plugin to provide DataModel information
 ---@field enabled boolean
+-- The maximum request body size accepted from the plugin, in a string representation parse-able by the [bytes](https://www.npmjs.com/package/bytes) library
+-- 
+-- ```lua
+-- default = "3mb"
+-- ```
+---@field maximumRequestBodySize string
 -- Port number to connect to the Studio Plugin
 -- 
 -- ```lua

@@ -396,12 +396,12 @@
     },
     "powershell.trace.server": {
       "default": "off",
-      "description": "Traces the communication between VS Code and the PowerShell Editor Services language server. **This setting is only meant for extension developers!**",
       "enum": [
         "off",
         "messages",
         "verbose"
       ],
+      "markdownDescription": "Traces the communication between VS Code and the PowerShell Editor Services language server. **This setting is only meant for extension developers!**",
       "type": "string"
     },
     "powershell.useX86Host": {

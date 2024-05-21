@@ -281,6 +281,12 @@
       "scope": "window",
       "type": "boolean"
     },
+    "luau-lsp.plugin.maximumRequestBodySize": {
+      "default": "3mb",
+      "markdownDescription": "The maximum request body size accepted from the plugin, in a string representation parse-able by the [bytes](https://www.npmjs.com/package/bytes) library",
+      "scope": "window",
+      "type": "string"
+    },
     "luau-lsp.plugin.port": {
       "default": 3667,
       "markdownDescription": "Port number to connect to the Studio Plugin",
