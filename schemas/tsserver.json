@@ -8,6 +8,15 @@
       "scope": "language-overridable",
       "type": "boolean"
     },
+    "javascript.experimental.updateImportsOnPaste": {
+      "default": false,
+      "description": "Automatically update imports when pasting code. Requires TypeScript 5.5+.",
+      "scope": "resource",
+      "tags": [
+        "experimental"
+      ],
+      "type": "boolean"
+    },
     "javascript.format.enable": {
       "default": true,
       "description": "Enable/disable default JavaScript formatter.",
@@ -488,6 +497,15 @@
       "default": false,
       "description": "Enables prompting of users to use the TypeScript version configured in the workspace for Intellisense.",
       "scope": "window",
+      "type": "boolean"
+    },
+    "typescript.experimental.updateImportsOnPaste": {
+      "default": false,
+      "description": "Automatically update imports when pasting code. Requires TypeScript 5.5+.",
+      "scope": "resource",
+      "tags": [
+        "experimental"
+      ],
       "type": "boolean"
     },
     "typescript.format.enable": {
@@ -1112,13 +1130,13 @@
       "type": "boolean"
     },
     "typescript.tsserver.web.projectWideIntellisense.suppressSemanticErrors": {
-      "default": false,
+      "default": true,
       "description": "Suppresses semantic errors on web even when project wide IntelliSense is enabled. This is always on when project wide IntelliSense is not enabled or available. See `#typescript.tsserver.web.projectWideIntellisense.enabled#`",
       "scope": "window",
       "type": "boolean"
     },
     "typescript.tsserver.web.typeAcquisition.enabled": {
-      "default": true,
+      "default": false,
       "description": "Enable/disable package acquisition on the web. This enables IntelliSense for imported packages. Requires `#typescript.tsserver.web.projectWideIntellisense.enabled#`. Currently not supported for Safari.",
       "scope": "window",
       "type": "boolean"

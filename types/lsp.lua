@@ -11076,6 +11076,10 @@
 
 ---@class lspconfig.settings.terraformls
 
+---@class _.lspconfig.settings.tsserver.Experimental
+-- Automatically update imports when pasting code. Requires TypeScript 5.5+.
+---@field updateImportsOnPaste boolean
+
 ---@class _.lspconfig.settings.tsserver.Format
 -- Enable/disable default JavaScript formatter.
 -- 
@@ -11398,6 +11402,7 @@
 -- default = true
 -- ```
 ---@field autoClosingTags boolean
+---@field experimental _.lspconfig.settings.tsserver.Experimental
 ---@field format _.lspconfig.settings.tsserver.Format
 ---@field implicitProjectConfig _.lspconfig.settings.tsserver.ImplicitProjectConfig
 ---@field inlayHints _.lspconfig.settings.tsserver.InlayHints
@@ -11450,6 +11455,10 @@
 -- default = true
 -- ```
 ---@field npmIsInstalled boolean
+
+---@class _.lspconfig.settings.tsserver.Experimental
+-- Automatically update imports when pasting code. Requires TypeScript 5.5+.
+---@field updateImportsOnPaste boolean
 
 ---@class _.lspconfig.settings.tsserver.Format
 -- Enable/disable default TypeScript formatter.
@@ -11818,14 +11827,14 @@
 -- ```
 ---@field enabled boolean
 -- Suppresses semantic errors on web even when project wide IntelliSense is enabled. This is always on when project wide IntelliSense is not enabled or available. See `#typescript.tsserver.web.projectWideIntellisense.enabled#`
----@field suppressSemanticErrors boolean
-
----@class _.lspconfig.settings.tsserver.TypeAcquisition
--- Enable/disable package acquisition on the web. This enables IntelliSense for imported packages. Requires `#typescript.tsserver.web.projectWideIntellisense.enabled#`. Currently not supported for Safari.
 -- 
 -- ```lua
 -- default = true
 -- ```
+---@field suppressSemanticErrors boolean
+
+---@class _.lspconfig.settings.tsserver.TypeAcquisition
+-- Enable/disable package acquisition on the web. This enables IntelliSense for imported packages. Requires `#typescript.tsserver.web.projectWideIntellisense.enabled#`. Currently not supported for Safari.
 ---@field enabled boolean
 
 ---@class _.lspconfig.settings.tsserver.Web
@@ -11914,6 +11923,7 @@
 ---@field disableAutomaticTypeAcquisition boolean
 -- Enables prompting of users to use the TypeScript version configured in the workspace for Intellisense.
 ---@field enablePromptUseWorkspaceTsdk boolean
+---@field experimental _.lspconfig.settings.tsserver.Experimental
 ---@field format _.lspconfig.settings.tsserver.Format
 ---@field implementationsCodeLens _.lspconfig.settings.tsserver.ImplementationsCodeLens
 ---@field inlayHints _.lspconfig.settings.tsserver.InlayHints
