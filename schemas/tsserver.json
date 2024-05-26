@@ -997,11 +997,8 @@
       "type": "boolean"
     },
     "typescript.tsserver.experimental.useVsCodeWatcher": {
-      "default": false,
+      "default": true,
       "description": "Use VS Code's file watchers instead of TypeScript's. Requires using TypeScript 5.4+ in the workspace.",
-      "tags": [
-        "experimental"
-      ],
       "type": "boolean"
     },
     "typescript.tsserver.log": {

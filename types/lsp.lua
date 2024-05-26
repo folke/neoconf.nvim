@@ -11798,6 +11798,10 @@
 -- (Experimental) Enables project wide error reporting.
 ---@field enableProjectDiagnostics boolean
 -- Use VS Code's file watchers instead of TypeScript's. Requires using TypeScript 5.4+ in the workspace.
+-- 
+-- ```lua
+-- default = true
+-- ```
 ---@field useVsCodeWatcher boolean
 
 -- Configure which watching strategies should be used to keep track of files and directories.
