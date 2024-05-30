@@ -8625,8 +8625,6 @@
 -- default = true
 -- ```
 ---@field askToStartBuild boolean
--- Automatically start ReScript's code analysis.
----@field autoRunCodeAnalysis boolean
 -- Path to the directory where cross-platform ReScript binaries are. You can use it if you haven't or don't want to use the installed ReScript from node_modules in your project.
 ---@field binaryPath string
 -- Enable (experimental) code lens for function definitions.
