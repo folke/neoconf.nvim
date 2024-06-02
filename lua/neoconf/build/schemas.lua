@@ -59,7 +59,7 @@ function M.translate(props, nls_url)
     desc = nls[desc:gsub("%%", "")] or desc
     if type(desc) == "table" then
       local lines = vim.tbl_values(desc)
-      lines = vim.tbl_flatten(lines)
+      lines = vim.iter(lines):flatten():totable()
       table.sort(lines)
       desc = table.concat(lines, "\n\n")
     end
@@ -120,7 +120,7 @@ end
 function M.clean()
   ---@diagnostic disable-next-line: param-type-mismatch
   for _, f in pairs(vim.fn.expand("schemas/*.json", false, true)) do
-    vim.loop.fs_unlink(f)
+    vim.uv.fs_unlink(f)
   end
 end
 
