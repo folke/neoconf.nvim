@@ -45,12 +45,16 @@
 ---@field caseIndent boolean
 -- Place function opening braces on a separate line.
 ---@field funcNextLine boolean
+-- **([Deprecated](https://github.com/mvdan/sh/issues/658))** Keep column alignment padding.
+---@field keepPadding boolean
 -- Controls the executable used for Shfmt formatting. An empty string will disable formatting.
 -- 
 -- ```lua
 -- default = "shfmt"
 -- ```
 ---@field path string
+-- Simplify code before formatting.
+---@field simplifyCode boolean
 -- Follow redirection operators with a space.
 ---@field spaceRedirects boolean
 

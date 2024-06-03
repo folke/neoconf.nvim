@@ -64,10 +64,21 @@
       "description": "Place function opening braces on a separate line.",
       "type": "boolean"
     },
+    "bashIde.shfmt.keepPadding": {
+      "default": false,
+      "description": "(Deprecated) Keep column alignment padding.",
+      "markdownDescription": "**([Deprecated](https://github.com/mvdan/sh/issues/658))** Keep column alignment padding.",
+      "type": "boolean"
+    },
     "bashIde.shfmt.path": {
       "default": "shfmt",
       "description": "Controls the executable used for Shfmt formatting. An empty string will disable formatting.",
       "type": "string"
+    },
+    "bashIde.shfmt.simplifyCode": {
+      "default": false,
+      "description": "Simplify code before formatting.",
+      "type": "boolean"
     },
     "bashIde.shfmt.spaceRedirects": {
       "default": false,
