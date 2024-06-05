@@ -8588,6 +8588,13 @@
 ---@class lspconfig.settings.r_language_server
 ---@field r _.lspconfig.settings.r_language_server.R
 
+---@class _.lspconfig.settings.rescriptls.ProjectConfig
+-- (beta/experimental) Enable project config caching. Can speed up latency dramatically.
+---@field enabled boolean
+
+---@class _.lspconfig.settings.rescriptls.Cache
+---@field projectConfig _.lspconfig.settings.rescriptls.ProjectConfig
+
 ---@class _.lspconfig.settings.rescriptls.IncrementalTypechecking
 -- (beta/experimental) Enable incremental type checking across files, so that unsaved file A gets access to unsaved file B.
 ---@field acrossFiles boolean
@@ -8631,6 +8638,7 @@
 ---@field askToStartBuild boolean
 -- Path to the directory where cross-platform ReScript binaries are. You can use it if you haven't or don't want to use the installed ReScript from node_modules in your project.
 ---@field binaryPath string
+---@field cache _.lspconfig.settings.rescriptls.Cache
 -- Enable (experimental) code lens for function definitions.
 ---@field codeLens boolean
 ---@field incrementalTypechecking _.lspconfig.settings.rescriptls.IncrementalTypechecking
