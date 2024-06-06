@@ -3105,9 +3105,9 @@
 -- Controls formatting style of braces
 -- 
 -- ```lua
--- default = "psr12"
+-- default = "per"
 -- ```
----@field braces "psr12" | "allman" | "k&r"
+---@field braces "per" | "allman" | "k&r"
 -- Enables formatting.
 -- 
 -- ```lua
