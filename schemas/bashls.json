@@ -64,11 +64,28 @@
       "description": "Place function opening braces on a separate line.",
       "type": "boolean"
     },
+    "bashIde.shfmt.ignoreEditorconfig": {
+      "default": false,
+      "description": "Ignore shfmt config options in .editorconfig (always use language server config)",
+      "type": "boolean"
+    },
     "bashIde.shfmt.keepPadding": {
       "default": false,
       "description": "(Deprecated) Keep column alignment padding.",
       "markdownDescription": "**([Deprecated](https://github.com/mvdan/sh/issues/658))** Keep column alignment padding.",
       "type": "boolean"
+    },
+    "bashIde.shfmt.languageDialect": {
+      "default": "auto",
+      "description": "Language dialect to use when parsing (bash/posix/mksh/bats).",
+      "enum": [
+        "auto",
+        "bash",
+        "posix",
+        "mksh",
+        "bats"
+      ],
+      "type": "string"
     },
     "bashIde.shfmt.path": {
       "default": "shfmt",

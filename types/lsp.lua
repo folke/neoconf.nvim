@@ -45,8 +45,16 @@
 ---@field caseIndent boolean
 -- Place function opening braces on a separate line.
 ---@field funcNextLine boolean
+-- Ignore shfmt config options in .editorconfig (always use language server config)
+---@field ignoreEditorconfig boolean
 -- **([Deprecated](https://github.com/mvdan/sh/issues/658))** Keep column alignment padding.
 ---@field keepPadding boolean
+-- Language dialect to use when parsing (bash/posix/mksh/bats).
+-- 
+-- ```lua
+-- default = "auto"
+-- ```
+---@field languageDialect "auto" | "bash" | "posix" | "mksh" | "bats"
 -- Controls the executable used for Shfmt formatting. An empty string will disable formatting.
 -- 
 -- ```lua
