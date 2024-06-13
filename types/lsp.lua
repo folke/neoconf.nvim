@@ -2932,6 +2932,8 @@
 -- default = true
 -- ```
 ---@field correctForBaseClassStaticUnionTypes boolean
+-- Prefer `@psalm-` and `@phpstan-` prefixed `@return`, `@var`, `@param` tags when determining symbol types.
+---@field preferPsalmPhpstanPrefixedAnnotations boolean
 
 ---@class _.lspconfig.settings.intelephense.Completion
 -- Global namespace constants and functions will be fully qualified (prefixed with a backslash).
@@ -9774,7 +9776,7 @@
 ---@class lspconfig.settings.terraformls
 
 ---@class _.lspconfig.settings.tsserver.Experimental
--- Automatically update imports when pasting code. Requires TypeScript 5.5+.
+-- Automatically update imports when pasting code. Requires TypeScript 5.6+.
 ---@field updateImportsOnPaste boolean
 
 ---@class _.lspconfig.settings.tsserver.Format
@@ -10154,7 +10156,7 @@
 ---@field npmIsInstalled boolean
 
 ---@class _.lspconfig.settings.tsserver.Experimental
--- Automatically update imports when pasting code. Requires TypeScript 5.5+.
+-- Automatically update imports when pasting code. Requires TypeScript 5.6+.
 ---@field updateImportsOnPaste boolean
 
 ---@class _.lspconfig.settings.tsserver.Format

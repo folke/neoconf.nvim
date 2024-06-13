@@ -14,6 +14,12 @@
       "scope": "window",
       "type": "boolean"
     },
+    "intelephense.compatibility.preferPsalmPhpstanPrefixedAnnotations": {
+      "default": false,
+      "description": "Prefer `@psalm-` and `@phpstan-` prefixed `@return`, `@var`, `@param` tags when determining symbol types.",
+      "scope": "window",
+      "type": "boolean"
+    },
     "intelephense.completion.fullyQualifyGlobalConstantsAndFunctions": {
       "default": false,
       "description": "Global namespace constants and functions will be fully qualified (prefixed with a backslash).",
