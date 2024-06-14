@@ -2,6 +2,17 @@
   "$schema": "http://json-schema.org/draft-07/schema#",
   "description": "Haskell language support powered by the Haskell Language Server",
   "properties": {
+    "haskell.cabalFormattingProvider": {
+      "default": "cabal-gild",
+      "description": "The formatter to use when formatting a document or range of a cabal formatter. Ensure the plugin is enabled.",
+      "enum": [
+        "cabal-gild",
+        "cabal-fmt",
+        "none"
+      ],
+      "scope": "resource",
+      "type": "string"
+    },
     "haskell.checkProject": {
       "default": true,
       "description": "Whether to typecheck the entire project on load. It could drive to bad performance in large projects.",

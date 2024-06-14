@@ -1,5 +1,109 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
   "description": "Syntax highlighting and autocompletion for Terraform",
-  "properties": []
+  "properties": {
+    "terraform.codelens.referenceCount": {
+      "default": false,
+      "description": "Display reference counts above top level blocks and attributes.",
+      "scope": "window",
+      "type": "boolean"
+    },
+    "terraform.experimentalFeatures.prefillRequiredFields": {
+      "default": false,
+      "markdownDescription": "Enable autocompletion for required fields when completing Terraform blocks. Combine with `#editor.suggest.preview#` and the editor will provide inline snippet suggestions for blocks of code",
+      "scope": "window",
+      "type": "boolean"
+    },
+    "terraform.experimentalFeatures.validateOnSave": {
+      "default": false,
+      "description": "Enable validating the currently open file on save",
+      "scope": "window",
+      "type": "boolean"
+    },
+    "terraform.languageServer.args": {
+      "default": [
+        "serve"
+      ],
+      "description": "Arguments to pass to language server binary",
+      "items": {
+        "type": "string"
+      },
+      "order": "2",
+      "scope": "machine",
+      "type": "array"
+    },
+    "terraform.languageServer.enable": {
+      "default": true,
+      "description": "Enable Terraform Language Server",
+      "order": "0",
+      "scope": "window",
+      "type": "boolean"
+    },
+    "terraform.languageServer.ignoreSingleFileWarning": {
+      "default": false,
+      "description": "Enable warning when opening a single Terraform file instead of a Terraform folder. Enabling this will prevent the message being sent",
+      "order": "3",
+      "scope": "window",
+      "type": "boolean"
+    },
+    "terraform.languageServer.indexing.ignoreDirectoryNames": {
+      "default": [],
+      "description": "Per-workspace list of directory names for the language server to ignore when indexing files",
+      "items": {
+        "type": "string"
+      },
+      "scope": "machine",
+      "type": "array"
+    },
+    "terraform.languageServer.indexing.ignorePaths": {
+      "default": [],
+      "description": "Per-workspace list of paths for the language server to ignore when indexing files",
+      "items": {
+        "type": "string"
+      },
+      "scope": "machine",
+      "type": "array"
+    },
+    "terraform.languageServer.path": {
+      "default": "",
+      "description": "Path to the Terraform Language Server binary (optional)",
+      "order": "1",
+      "scope": "machine",
+      "type": "string"
+    },
+    "terraform.languageServer.tcp.port": {
+      "default": null,
+      "markdownDescription": "Language server TCP port to connect to. This is not compatible with `#terraform.languageServer.path#`. This is used when you want the extension to connect via TCP to an already running language server process.",
+      "order": 4,
+      "scope": "machine",
+      "type": [
+        "number",
+        null
+      ]
+    },
+    "terraform.languageServer.terraform.logFilePath": {
+      "markdownDescription": "Path to a file (`TF_LOG_PATH`) for Terraform executions to be logged used by the the Terraform Language Server. Support for variables (e.g. timestamp, pid, ppid) via Go template syntax `{{varName}}`",
+      "order": 2,
+      "scope": "machine",
+      "type": "string"
+    },
+    "terraform.languageServer.terraform.path": {
+      "description": "Path to the Terraform binary used by the Terraform Language Server",
+      "order": 0,
+      "scope": "machine",
+      "type": "string"
+    },
+    "terraform.languageServer.terraform.timeout": {
+      "description": "Overrides Terraform execution timeout (e.g. 30s) used by the Terraform Language Server",
+      "order": 1,
+      "scope": "machine",
+      "type": "string"
+    },
+    "terraform.validation.enableEnhancedValidation": {
+      "default": true,
+      "description": "Enable enhanced validation of Terraform files and modules",
+      "scope": "window",
+      "type": "boolean"
+    }
+  }
 }

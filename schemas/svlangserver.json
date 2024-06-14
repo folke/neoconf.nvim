@@ -1,5 +1,119 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
   "description": "Language support for Verilog and SystemVerilog.",
-  "properties": []
+  "properties": {
+    "systemverilog.antlrVerification": {
+      "default": false,
+      "description": "Use ANTLR parser to verify text documents when edited.",
+      "type": "boolean"
+    },
+    "systemverilog.compileOnOpen": {
+      "default": false,
+      "description": "Compile all files when opened.",
+      "type": "boolean"
+    },
+    "systemverilog.compileOnSave": {
+      "default": false,
+      "description": "Compile SystemVerilog/Verilog files when saved.",
+      "type": "boolean"
+    },
+    "systemverilog.compilerType": {
+      "default": "Verilator",
+      "description": "Select the compiler type from the drop down list.",
+      "enum": [
+        "Verilator",
+        "VCS",
+        "Verible"
+      ],
+      "type": "string"
+    },
+    "systemverilog.disableIndexing": {
+      "default": false,
+      "description": "Disable automatic indexing when opening a folder or workspace.",
+      "type": "boolean"
+    },
+    "systemverilog.documentSymbolsPrecision": {
+      "default": "full",
+      "description": "The level of detail the parser should use when looking for symbols:\n  - 'full': detect blocks, ports, parameters, classes, methods, typedefs, defines, labels, instantiations, assertions, and references\n  - 'full_no_references': detect blocks, ports, parameters, classes, methods, typedefs, defines, labels, instantiations, and assertions\n  - 'declarations': detect blocks, ports, parameters, classes, methods, typedefs, and defines\n  - 'fast': detect only common blocks (module, class, interface, package, program) without hierarchy",
+      "enum": [
+        "full",
+        "full_no_references",
+        "declaration",
+        "fast"
+      ],
+      "type": "string"
+    },
+    "systemverilog.enableIncrementalIndexing": {
+      "default": true,
+      "description": "Enable incremental indexation as you open files.",
+      "type": "boolean"
+    },
+    "systemverilog.excludeCompiling": {
+      "default": "",
+      "description": "Files excluded from compiling (glob pattern).",
+      "type": "string"
+    },
+    "systemverilog.excludeIndexing": {
+      "default": "",
+      "description": "Files excluded from indexing (glob pattern).",
+      "type": "string"
+    },
+    "systemverilog.forceFastIndexing": {
+      "default": false,
+      "description": "Force indexing to use fast regular expression parsing.",
+      "type": "boolean"
+    },
+    "systemverilog.formatCommand": {
+      "default": "verible-verilog-format",
+      "description": "Launch command for running the formatter.",
+      "type": "string"
+    },
+    "systemverilog.includeIndexing": {
+      "default": [
+        "**/*.{sv,v,svh,vh}"
+      ],
+      "description": "Files included for indexing (glob pattern). Examples: \n  - Include files within the workspace's rtl folder ('*' at front of pattern denotes that path is relative to workspace root): **/rtl/**/*.{sv,v,svh,vh}\n  - Add all files with a '.svp' extension: **/*.svp\n  - Add files only when in a specific workspace: /abs/path/to/workspace/rtl/**/*.{sv,v,svh,vh}",
+      "type": "array"
+    },
+    "systemverilog.launchConfigurationVCS": {
+      "default": "vcs",
+      "description": "Launch command for running VCS as the compiler.",
+      "type": "string"
+    },
+    "systemverilog.launchConfigurationVerible": {
+      "default": "verible-verilog-lint",
+      "description": "Launch command for running Verible as the compiler.",
+      "type": "string"
+    },
+    "systemverilog.launchConfigurationVerilator": {
+      "default": "verilator --sv --lint-only --language 1800-2012 --Wall",
+      "description": "Launch command for running Verilator as the compiler.",
+      "type": "string"
+    },
+    "systemverilog.maxLineCountIndexing": {
+      "default": 2000,
+      "description": "When indexing a file, if the line count is larger than this number, fast indexing will be used to improve symbol lookup performance.",
+      "type": "integer"
+    },
+    "systemverilog.parallelProcessing": {
+      "default": 10,
+      "description": "The number of files the extension should attempt to process in parallel. Processing consist of opening found files and perform matching to find symbols.",
+      "type": "integer"
+    },
+    "systemverilog.trace.server": {
+      "default": "off",
+      "description": "Traces the communication between VS Code and the SystemVerilog language server.",
+      "enum": [
+        "off",
+        "messages",
+        "verbose"
+      ],
+      "type": "string"
+    },
+    "systemverilog.verifyOnOpen": {
+      "default": false,
+      "description": "Run ANTLR verification on all files when opened.",
+      "type": "boolean"
+    }
+  }
 }
