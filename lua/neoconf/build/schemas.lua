@@ -94,11 +94,15 @@ function M.get_schema(schema)
   local json = vim.json.decode(Util.fetch(schema.package_url)) or {}
   local config = json.contributes and json.contributes.configuration or json.properties and json
 
-  local properties = {}
+  local properties = vim.empty_dict()
 
   if Util.islist(config) then
     for _, c in pairs(config) do
-      vim.list_extend(properties, c.properties)
+      if c.properties then
+        for k, v in pairs(c.properties) do
+          properties[k] = v
+        end
+      end
     end
   elseif config.properties then
     properties = config.properties
