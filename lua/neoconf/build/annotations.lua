@@ -1,5 +1,4 @@
 local util = require("neoconf.util")
-local Schema = require("neoconf.schema")
 
 local M = {}
 
@@ -168,7 +167,7 @@ local lspconfig
 
 ]]
 
-  local index = vim.tbl_keys(require("neoconf.build.schemas").index())
+  local index = vim.tbl_keys(require("neoconf.build.schemas").get_schemas())
   table.sort(index)
 
   for _, name in ipairs(index) do
@@ -201,7 +200,7 @@ end
 
 function M.build()
   M.lines = { "---@meta\n" }
-  local index = vim.tbl_keys(require("neoconf.build.schemas").index())
+  local index = vim.tbl_keys(require("neoconf.build.schemas").get_schemas())
   table.sort(index)
   for _, name in ipairs(index) do
     local ok, err = pcall(M.build_annotations, name)
