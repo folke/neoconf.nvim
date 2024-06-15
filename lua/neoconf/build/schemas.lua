@@ -36,6 +36,7 @@ function M.index()
   local ret = {}
   local packages = vim.json.decode(Util.read_file(Util.path("schemas/index.json")))
 
+  packages["volar"] = "https://raw.githubusercontent.com/vuejs/language-tools/master/extensions/vscode/package.json"
   packages["lua_ls"] = "https://raw.githubusercontent.com/LuaLS/vscode-lua/master/package.json"
   packages["sumneko_lua"] = nil
   packages["nickel_ls"] = nil
