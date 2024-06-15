@@ -2658,6 +2658,12 @@
 ---@field server "off" | "messages" | "verbose"
 
 ---@class _.lspconfig.settings.hie.Haskell
+-- The formatter to use when formatting a document or range of a cabal formatter. Ensure the plugin is enabled.
+-- 
+-- ```lua
+-- default = "cabal-gild"
+-- ```
+---@field cabalFormattingProvider "cabal-gild" | "cabal-fmt" | "none"
 -- Whether to typecheck the entire project on load. It could drive to bad performance in large projects.
 -- 
 -- ```lua
