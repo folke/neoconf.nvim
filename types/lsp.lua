@@ -1046,6 +1046,10 @@
 ---@field server "off" | "messages" | "verbose"
 
 ---@class _.lspconfig.settings.fsautocomplete.FSharp
+-- An array of additional command line parameters to pass to FSI when it is launched. See [the Microsoft documentation](https://docs.microsoft.com/en-us/dotnet/fsharp/language-reference/fsharp-interactive-options) for an exhaustive list.  If both this and `#FSharp.fsiExtraParameters#` are used, both sets of arguments will be passed to the launched FSI.
+---@field FSIExtraInteractiveParameters any[]
+-- An array of additional command line parameters to pass to the compiler to use when checking FSI scripts. See [the Microsoft documentation](https://docs.microsoft.com/en-us/dotnet/fsharp/language-reference/fsharp-interactive-options) for an exhaustive list. If both this and `#FSharp.fsiExtraParameters#` are used, only `#FSharp.fsiExtraParameters#` will be used.
+---@field FSIExtraSharedParameters any[]
 ---@field TestExplorer _.lspconfig.settings.fsautocomplete.TestExplorer
 -- Enables a codefix that generates missing members for an abstract class when in an type inheriting from that abstract class.
 -- 
@@ -1131,10 +1135,6 @@
 ---@field fcs _.lspconfig.settings.fsautocomplete.Fcs
 ---@field fsac _.lspconfig.settings.fsautocomplete.Fsac
 -- An array of additional command line parameters to pass to FSI when it is started. See [the Microsoft documentation](https://docs.microsoft.com/en-us/dotnet/fsharp/language-reference/fsharp-interactive-options) for an exhaustive list.
--- 
--- ```lua
--- default = {}
--- ```
 ---@field fsiExtraParameters any[]
 -- The path to the F# Interactive tool used by Ionide-FSharp (When using .NET SDK scripts)
 -- 
