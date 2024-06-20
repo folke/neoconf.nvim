@@ -25,17 +25,10 @@ function M.check()
     health_warn(msg:format(...))
   end
 
-  local _, ts = pcall(require, "nvim-treesitter.parsers")
-
-  if ts then
-    ok("**treesitter-nvim** is installed")
-    if ts.has_parser("jsonc") then
-      ok("**TreeSitter jsonc** parser is installed")
-    else
-      warn("**TreeSitter jsonc** parser is not installed. Highlighting of jsonc files might be broken")
-    end
+  if pcall(vim.treesitter.get_string_parser, "", "jsonc") then
+    ok("**jsonc** parser for tree-sitter is installed")
   else
-    warn("**treesitter-nvim** not installed. Highlighting of jsonc files might be broken")
+    warn("**jsonc** parser for tree-sitter is not installed. Jsonc highlighting might be broken")
   end
 
   if pcall(require, "neodev") then
