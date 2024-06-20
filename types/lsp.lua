@@ -791,7 +791,11 @@
 ---@field trace _.lspconfig.settings.eslint.Trace
 -- Since version 7 ESLint offers a new API call ESLint. Use it even if the old CLIEngine is available. From version 8 on forward on ESLint class is available.
 ---@field useESLintClass boolean
--- Controls whether flat config should be used or not. This setting requires ESLint version 8.57 or later and is interpreted according to the [ESLint Flat Config rollout plan](https://eslint.org/blog/2023/10/flat-config-rollout-plans/).
+-- Controls whether flat config should be used or not. This setting requires ESLint version 8.57 or later and is interpreted according to the [ESLint Flat Config rollout plan](https://eslint.org/blog/2023/10/flat-config-rollout-plans/). This means:
+-- 
+--  - *8.57.0 <= ESLint version < 9.x*: setting is honored and defaults to false
+-- - *9.0.0 <= ESLint version < 10.x*: settings is honored and defaults to true
+-- - *10.0.0 <= ESLint version*: setting is ignored. Flat configs are the default and can't be turned off.
 ---@field useFlatConfig boolean
 -- An array of language ids which should be validated by ESLint. If not installed ESLint will show an error.
 ---@field validate any[]
@@ -10551,6 +10555,12 @@
 ---@field typeAcquisition _.lspconfig.settings.tsserver.TypeAcquisition
 
 ---@class _.lspconfig.settings.tsserver.Tsserver
+-- Enables region-based diagnostics in TypeScript. Requires using TypeScript 5.6+ in the workspace.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enableRegionDiagnostics boolean
 -- Enables tracing TS server performance to a directory. These trace files can be used to diagnose TS Server performance issues. The log may contain file paths, source code, and other potentially sensitive information from your project.
 ---@field enableTracing boolean
 ---@field experimental _.lspconfig.settings.tsserver.Experimental
