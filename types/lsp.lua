@@ -11042,19 +11042,6 @@
 -- ```
 ---@field npmIsInstalled boolean
 
----@class _.lspconfig.settings.vtsls.TypeAcquisition
--- Enable/disable package acquisition on the web.
----@field enabled boolean
-
----@class _.lspconfig.settings.vtsls.Web
----@field typeAcquisition _.lspconfig.settings.vtsls.TypeAcquisition
-
----@class _.lspconfig.settings.vtsls.Tsserver
----@field web _.lspconfig.settings.vtsls.Web
-
----@class _.lspconfig.settings.vtsls.Experimental
----@field tsserver _.lspconfig.settings.vtsls.Tsserver
-
 ---@class _.lspconfig.settings.vtsls.Format
 -- Enable/disable default TypeScript formatter.
 -- 
@@ -11364,8 +11351,6 @@
 ---@class _.lspconfig.settings.vtsls.Experimental
 -- (Experimental) Enables project wide error reporting.
 ---@field enableProjectDiagnostics boolean
--- Use VS Code's file watchers instead of TypeScript's. Requires using TypeScript 5.4+ in the workspace.
----@field useVsCodeWatcher boolean
 
 -- Configure which watching strategies should be used to keep track of files and directories.
 ---@class _.lspconfig.settings.vtsls.WatchOptions
@@ -11393,15 +11378,20 @@
 -- default = true
 -- ```
 ---@field enabled boolean
--- Suppresses semantic errors. This is needed when using external packages as these can't be included analyzed on web.
+-- Suppresses semantic errors on web even when project wide IntelliSense is enabled. This is always on when project wide IntelliSense is not enabled or available. See `#typescript.tsserver.web.projectWideIntellisense.enabled#`
 -- 
 -- ```lua
 -- default = true
 -- ```
 ---@field suppressSemanticErrors boolean
 
+---@class _.lspconfig.settings.vtsls.TypeAcquisition
+-- Enable/disable package acquisition on the web. This enables IntelliSense for imported packages. Requires `#typescript.tsserver.web.projectWideIntellisense.enabled#`. Currently not supported for Safari.
+---@field enabled boolean
+
 ---@class _.lspconfig.settings.vtsls.Web
 ---@field projectWideIntellisense _.lspconfig.settings.vtsls.ProjectWideIntellisense
+---@field typeAcquisition _.lspconfig.settings.vtsls.TypeAcquisition
 
 ---@class _.lspconfig.settings.vtsls.Tsserver
 -- Enables tracing TS server performance to a directory. These trace files can be used to diagnose TS Server performance issues. The log may contain file paths, source code, and other potentially sensitive information from your project.
@@ -11477,7 +11467,6 @@
 ---@field check _.lspconfig.settings.vtsls.Check
 -- Disables [automatic type acquisition](https://code.visualstudio.com/docs/nodejs/working-with-javascript#_typings-and-automatic-type-acquisition). Automatic type acquisition fetches `@types` packages from npm to improve IntelliSense for external libraries.
 ---@field disableAutomaticTypeAcquisition boolean
----@field experimental _.lspconfig.settings.vtsls.Experimental
 ---@field format _.lspconfig.settings.vtsls.Format
 ---@field implementationsCodeLens _.lspconfig.settings.vtsls.ImplementationsCodeLens
 ---@field inlayHints _.lspconfig.settings.vtsls.InlayHints
