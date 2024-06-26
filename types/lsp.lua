@@ -2929,6 +2929,14 @@
 ---@class lspconfig.settings.html
 ---@field html _.lspconfig.settings.html.Html
 
+---@class _.lspconfig.settings.intelephense.Completion
+-- PHP permits the calling of static methods using the object operator eg `$obj->myStaticMethod();`. If you would prefer not to have static methods suggested in this context then set this value to `false`. Defaults to `true`.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field suggestObjectOperatorStaticMethods boolean
+
 ---@class _.lspconfig.settings.intelephense.Compatibility
 -- Resolves `ArrayAccess` and `Traversable` implementations that are unioned with a typed array to generic syntax. eg `ArrayAccessOrTraversable|ElementType[]` => `ArrayAccessOrTraversable<mixed, ElementType>`.
 -- 
@@ -3010,6 +3018,18 @@
 -- default = true
 -- ```
 ---@field languageConstraints boolean
+-- This setting turns off type checking for the `mixed` type. This is useful for projects that may have incomplete or innacurate typings. Set to `false` to make type checking more thorough by not allowing `mixed` to satisy any type constraint. This setting has no effect when `relaxedTypeCheck` is `true`.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field noMixedTypeCheck boolean
+-- This setting makes type checking less thorough by allowing contravariant (wider) types to also satisfy a type constraint. This is useful for projects that may have incomplete or innacurate typings. Set to `false` for more thorough type checks. When this setting is `true`, the `noMixedTypeCheck` setting is ignored.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field relaxedTypeCheck boolean
 -- Controls when diagnostics are run.
 -- 
 -- ```lua
@@ -3284,6 +3304,7 @@
 ---@field trace _.lspconfig.settings.intelephense.Trace
 
 ---@class lspconfig.settings.intelephense
+---@field completion _.lspconfig.settings.intelephense.Completion
 ---@field intelephense _.lspconfig.settings.intelephense.Intelephense
 
 ---@class _.lspconfig.settings.java_language_server.Trace
@@ -11510,6 +11531,8 @@
 
 ---@class _.lspconfig.settings.vtsls.Experimental
 ---@field completion _.lspconfig.settings.vtsls.Completion
+-- Maximum length of single inlay hint. Note that hint is simply truncated if the limit is exceeded. Do not set this if your client already handles overly long hints gracefully.
+---@field maxInlayHintLength number
 
 ---@class _.lspconfig.settings.vtsls.Format
 ---@field baseIndentSize number
