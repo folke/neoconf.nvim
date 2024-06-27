@@ -20,7 +20,7 @@ function M.find_root(opts)
 
   -- fallback to lsp root_dir detection if in options
   if not root_dir and opts.lsp then
-    for _, client in ipairs(vim.lsp.get_active_clients({ bufnr = buf })) do
+    for _, client in ipairs(vim.lsp.get_clients({ bufnr = buf })) do
       root_dir = client.config.root_dir
       break
     end

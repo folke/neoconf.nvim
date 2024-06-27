@@ -2,11 +2,9 @@ local Config = require("neoconf.config")
 
 local M = {}
 
-M.islist = vim.islist or vim.tbl_islist
-
 function M.merge(...)
   local function can_merge(v)
-    return type(v) == "table" and (vim.tbl_isempty(v) or not M.islist(v))
+    return type(v) == "table" and (vim.tbl_isempty(v) or not vim.islist(v))
   end
 
   local values = { ... }
@@ -151,7 +149,7 @@ end
 
 function M.fqn(fname)
   fname = vim.fn.fnamemodify(fname, ":p")
-  return vim.loop.fs_realpath(fname) or fname
+  return vim.uv.fs_realpath(fname) or fname
 end
 
 ---@param root_dir string
@@ -187,7 +185,7 @@ function M.try(fn, msg)
 end
 
 function M.config_path()
-  return vim.loop.fs_realpath(vim.fn.stdpath("config"))
+  return vim.uv.fs_realpath(vim.fn.stdpath("config"))
 end
 
 function M.is_nvim_config(path)
@@ -263,12 +261,12 @@ function M.json_format(obj)
 end
 
 function M.mtime(fname)
-  local stat = vim.loop.fs_stat(fname)
+  local stat = vim.uv.fs_stat(fname)
   return (stat and stat.type) and stat.mtime.sec or 0
 end
 
 function M.exists(fname)
-  local stat = vim.loop.fs_stat(fname)
+  local stat = vim.uv.fs_stat(fname)
   return (stat and stat.type) or false
 end
 
@@ -276,10 +274,13 @@ function M.notify(msg, level)
   vim.notify(msg, level, {
     title = "settings.nvim",
     on_open = function(win)
-      vim.api.nvim_win_set_option(win, "conceallevel", 3)
+      vim.api.nvim_set_option_value("conceallevel", 3, {
+        win = win,
+        scope = "local",
+      })
       local buf = vim.api.nvim_win_get_buf(win)
-      vim.api.nvim_buf_set_option(buf, "filetype", "markdown")
-      vim.api.nvim_win_set_option(win, "spell", false)
+      vim.api.nvim_set_option_value("filetype", "markdown", { buf = buf, scope = "local" })
+      vim.api.nvim_set_option_value("spell", false, { buf = buf, scope = "local" })
     end,
   })
 end

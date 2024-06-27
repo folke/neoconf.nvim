@@ -65,7 +65,10 @@ function M.setup()
         pattern = Util.file_patterns({ autocmd = true }),
         group = group,
         callback = function(event)
-          vim.api.nvim_buf_set_option(event.buf, "filetype", "jsonc")
+          vim.api.nvim_set_option_value("filetype", "jsonc", {
+            buf = event.buf,
+            scope = "local",
+          })
         end,
       })
     else

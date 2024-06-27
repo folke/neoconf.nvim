@@ -99,7 +99,7 @@ function M.get_type(prop)
   if vim.tbl_isempty(types) then
     types = { "any" }
   end
-  return table.concat(vim.tbl_flatten(types), "|")
+  return vim.iter(types):flatten():join("|")
 end
 
 function M.process_object(name, prop)
