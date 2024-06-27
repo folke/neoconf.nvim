@@ -415,6 +415,7 @@
       ]
     },
     "eslint.validate": {
+      "default": null,
       "description": "An array of language ids which should be validated by ESLint. If not installed ESLint will show an error.",
       "items": {
         "anyOf": [
@@ -438,7 +439,10 @@
         ]
       },
       "scope": "resource",
-      "type": "array"
+      "type": [
+        "array",
+        "null"
+      ]
     },
     "eslint.workingDirectories": {
       "items": {
