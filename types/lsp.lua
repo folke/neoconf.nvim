@@ -2929,14 +2929,6 @@
 ---@class lspconfig.settings.html
 ---@field html _.lspconfig.settings.html.Html
 
----@class _.lspconfig.settings.intelephense.Completion
--- PHP permits the calling of static methods using the object operator eg `$obj->myStaticMethod();`. If you would prefer not to have static methods suggested in this context then set this value to `false`. Defaults to `true`.
--- 
--- ```lua
--- default = true
--- ```
----@field suggestObjectOperatorStaticMethods boolean
-
 ---@class _.lspconfig.settings.intelephense.Compatibility
 -- Resolves `ArrayAccess` and `Traversable` implementations that are unioned with a typed array to generic syntax. eg `ArrayAccessOrTraversable|ElementType[]` => `ArrayAccessOrTraversable<mixed, ElementType>`.
 -- 
@@ -2968,6 +2960,12 @@
 -- default = 100
 -- ```
 ---@field maxItems number
+-- PHP permits the calling of static methods using the object operator eg `$obj->myStaticMethod();`. If you would prefer not to have static methods suggested in this context then set this value to `false`. Defaults to `true`.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field suggestObjectOperatorStaticMethods boolean
 -- Method and function completions will include parentheses and trigger parameter hints.
 -- 
 -- ```lua
@@ -3304,7 +3302,6 @@
 ---@field trace _.lspconfig.settings.intelephense.Trace
 
 ---@class lspconfig.settings.intelephense
----@field completion _.lspconfig.settings.intelephense.Completion
 ---@field intelephense _.lspconfig.settings.intelephense.Intelephense
 
 ---@class _.lspconfig.settings.java_language_server.Trace
