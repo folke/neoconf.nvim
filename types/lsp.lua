@@ -348,6 +348,14 @@
 -- 
 -- **Not recommended to be enabled in user settings.**
 ---@field enablePaths string[]
+-- Additional environment variables to pass to Deno processes. Overrides the user's env and `deno.envFile`. These will be overridden by more specific settings such as `deno.future` for `DENO_FUTURE`, and invariables like `NO_COLOR=1`.
+-- 
+-- ```lua
+-- default = {}
+-- ```
+---@field env table
+-- Env file containing additional environment variables to pass to Deno processes. Overrides the user's env. These will be overridden by `deno.env`, more specific settings such as `deno.future` for `DENO_FUTURE`, and invariables like `NO_COLOR=1`.
+---@field envFile string
 -- Enable breaking features likely to be shipped in Deno 2.0.
 ---@field future boolean
 -- The file path to an import map. This is the equivalent to using `--import-map` on the command line.
@@ -1960,6 +1968,12 @@
 -- default = {}
 -- ```
 ---@field configurations any[]
+-- When using Haxe >= 4.3.5, diagnostics will run for all open Haxe files instead of current file unless this option is set to false
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field diagnosticsForAllOpenFiles boolean
 -- A regex that paths of source files have to match to be included in diagnostics. Defaults to `"${workspaceRoot}"` so only files within your workspace are included. You can use `"${haxelibPath}/<library-name>"` to only show results for a specific haxelib. Use `".*?"` to see all results, including haxelibs.
 -- 
 -- ```lua

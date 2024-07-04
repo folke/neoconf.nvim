@@ -178,6 +178,11 @@
       "markdownDescription": "Array of switchable configurations for the Haxe completion server. Each configuration is an array of command-line arguments, see item documentation for more details.",
       "type": "array"
     },
+    "haxe.diagnosticsForAllOpenFiles": {
+      "default": true,
+      "markdownDescription": "When using Haxe >= 4.3.5, diagnostics will run for all open Haxe files instead of current file unless this option is set to false",
+      "type": "boolean"
+    },
     "haxe.diagnosticsPathFilter": {
       "default": "${workspaceRoot}",
       "markdownDescription": "A regex that paths of source files have to match to be included in diagnostics. Defaults to `\"${workspaceRoot}\"` so only files within your workspace are included. You can use `\"${haxelibPath}/<library-name>\"` to only show results for a specific haxelib. Use `\".*?\"` to see all results, including haxelibs.",
