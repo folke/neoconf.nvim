@@ -1,5 +1,5 @@
-local Util = require("neoconf.util")
 local Config = require("neoconf.config")
+local Util = require("neoconf.util")
 
 local M = {}
 

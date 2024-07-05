@@ -1,6 +1,6 @@
-local Util = require("neoconf.util")
 local Config = require("neoconf.config")
 local Settings = require("neoconf.settings")
+local Util = require("neoconf.util")
 
 ---@type SettingsPlugin
 local M = {}
