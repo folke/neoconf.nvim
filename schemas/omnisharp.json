@@ -1,5 +1,995 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
   "description": "Base language support for C#",
-  "properties": []
+  "properties": {
+    "csharp.debug.console": {
+      "default": "internalConsole",
+      "enum": [
+        "internalConsole",
+        "integratedTerminal",
+        "externalTerminal"
+      ],
+      "enumDescriptions": [
+        "%generateOptionsSchema.console.internalConsole.enumDescription%",
+        "%generateOptionsSchema.console.integratedTerminal.enumDescription%",
+        "%generateOptionsSchema.console.externalTerminal.enumDescription%"
+      ],
+      "markdownDescription": "%generateOptionsSchema.console.settingsDescription%",
+      "type": "string"
+    },
+    "csharp.debug.enableStepFiltering": {
+      "default": true,
+      "markdownDescription": "%generateOptionsSchema.enableStepFiltering.markdownDescription%",
+      "type": "boolean"
+    },
+    "csharp.debug.expressionEvaluationOptions.allowFastEvaluate": {
+      "default": true,
+      "description": "%generateOptionsSchema.expressionEvaluationOptions.allowFastEvaluate.description%",
+      "type": "boolean"
+    },
+    "csharp.debug.expressionEvaluationOptions.allowImplicitFuncEval": {
+      "default": true,
+      "description": "%generateOptionsSchema.expressionEvaluationOptions.allowImplicitFuncEval.description%",
+      "type": "boolean"
+    },
+    "csharp.debug.expressionEvaluationOptions.allowToString": {
+      "default": true,
+      "markdownDescription": "%generateOptionsSchema.expressionEvaluationOptions.allowToString.markdownDescription%",
+      "type": "boolean"
+    },
+    "csharp.debug.expressionEvaluationOptions.showRawValues": {
+      "default": false,
+      "description": "%generateOptionsSchema.expressionEvaluationOptions.showRawValues.description%",
+      "type": "boolean"
+    },
+    "csharp.debug.justMyCode": {
+      "default": true,
+      "markdownDescription": "%generateOptionsSchema.justMyCode.markdownDescription%",
+      "type": "boolean"
+    },
+    "csharp.debug.logging.browserStdOut": {
+      "default": true,
+      "markdownDescription": "%generateOptionsSchema.logging.browserStdOut.markdownDescription%",
+      "type": "boolean"
+    },
+    "csharp.debug.logging.consoleUsageMessage": {
+      "default": true,
+      "description": "%generateOptionsSchema.logging.consoleUsageMessage.description%",
+      "type": "boolean"
+    },
+    "csharp.debug.logging.diagnosticsLog.debugEngineAPITracing": {
+      "default": "none",
+      "enum": [
+        "none",
+        "error",
+        "all"
+      ],
+      "enumDescriptions": [
+        "%generateOptionsSchema.logging.diagnosticsLog.debugEngineAPITracing.none.enumDescription%",
+        "%generateOptionsSchema.logging.diagnosticsLog.debugEngineAPITracing.error.enumDescription%",
+        "%generateOptionsSchema.logging.diagnosticsLog.debugEngineAPITracing.all.enumDescription%"
+      ],
+      "markdownDescription": "%generateOptionsSchema.logging.diagnosticsLog.debugEngineAPITracing.markdownDescription%",
+      "type": "string"
+    },
+    "csharp.debug.logging.diagnosticsLog.debugRuntimeEventTracing": {
+      "default": false,
+      "markdownDescription": "%generateOptionsSchema.logging.diagnosticsLog.debugRuntimeEventTracing.markdownDescription%",
+      "type": "boolean"
+    },
+    "csharp.debug.logging.diagnosticsLog.dispatcherMessages": {
+      "default": "none",
+      "enum": [
+        "none",
+        "error",
+        "important",
+        "normal"
+      ],
+      "enumDescriptions": [
+        "%generateOptionsSchema.logging.diagnosticsLog.dispatcherMessages.none.enumDescription%",
+        "%generateOptionsSchema.logging.diagnosticsLog.dispatcherMessages.error.enumDescription%",
+        "%generateOptionsSchema.logging.diagnosticsLog.dispatcherMessages.important.enumDescription%",
+        "%generateOptionsSchema.logging.diagnosticsLog.dispatcherMessages.normal.enumDescription%"
+      ],
+      "markdownDescription": "%generateOptionsSchema.logging.diagnosticsLog.dispatcherMessages.markdownDescription%",
+      "type": "string"
+    },
+    "csharp.debug.logging.diagnosticsLog.expressionEvaluationTracing": {
+      "default": false,
+      "markdownDescription": "%generateOptionsSchema.logging.diagnosticsLog.expressionEvaluationTracing.markdownDescription%",
+      "type": "boolean"
+    },
+    "csharp.debug.logging.diagnosticsLog.protocolMessages": {
+      "default": false,
+      "markdownDescription": "%generateOptionsSchema.logging.diagnosticsLog.protocolMessages.markdownDescription%",
+      "type": "boolean"
+    },
+    "csharp.debug.logging.diagnosticsLog.startDebuggingTracing": {
+      "default": false,
+      "markdownDescription": "%generateOptionsSchema.logging.diagnosticsLog.startDebuggingTracing.markdownDescription%",
+      "type": "boolean"
+    },
+    "csharp.debug.logging.elapsedTiming": {
+      "default": false,
+      "markdownDescription": "%generateOptionsSchema.logging.elapsedTiming.markdownDescription%",
+      "type": "boolean"
+    },
+    "csharp.debug.logging.engineLogging": {
+      "default": false,
+      "deprecationMessage": "%generateOptionsSchema.logging.engineLogging.deprecationMessage%",
+      "type": "boolean"
+    },
+    "csharp.debug.logging.exceptions": {
+      "default": true,
+      "markdownDescription": "%generateOptionsSchema.logging.exceptions.markdownDescription%",
+      "type": "boolean"
+    },
+    "csharp.debug.logging.moduleLoad": {
+      "default": true,
+      "markdownDescription": "%generateOptionsSchema.logging.moduleLoad.markdownDescription%",
+      "type": "boolean"
+    },
+    "csharp.debug.logging.processExit": {
+      "default": true,
+      "markdownDescription": "%generateOptionsSchema.logging.processExit.markdownDescription%",
+      "type": "boolean"
+    },
+    "csharp.debug.logging.programOutput": {
+      "default": true,
+      "markdownDescription": "%generateOptionsSchema.logging.programOutput.markdownDescription%",
+      "type": "boolean"
+    },
+    "csharp.debug.logging.threadExit": {
+      "default": false,
+      "markdownDescription": "%generateOptionsSchema.logging.threadExit.markdownDescription%",
+      "type": "boolean"
+    },
+    "csharp.debug.requireExactSource": {
+      "default": true,
+      "markdownDescription": "%generateOptionsSchema.requireExactSource.markdownDescription%",
+      "type": "boolean"
+    },
+    "csharp.debug.sourceFileMap": {
+      "additionalProperties": {
+        "type": "string"
+      },
+      "default": {},
+      "markdownDescription": "%generateOptionsSchema.sourceFileMap.markdownDescription%",
+      "type": "object"
+    },
+    "csharp.debug.stopAtEntry": {
+      "default": false,
+      "markdownDescription": "%generateOptionsSchema.stopAtEntry.markdownDescription%",
+      "type": "boolean"
+    },
+    "csharp.debug.suppressJITOptimizations": {
+      "default": false,
+      "markdownDescription": "%generateOptionsSchema.suppressJITOptimizations.markdownDescription%",
+      "type": "boolean"
+    },
+    "csharp.debug.symbolOptions.cachePath": {
+      "default": "",
+      "description": "%generateOptionsSchema.symbolOptions.cachePath.description%",
+      "type": "string"
+    },
+    "csharp.debug.symbolOptions.moduleFilter.excludedModules": {
+      "default": [],
+      "description": "%generateOptionsSchema.symbolOptions.moduleFilter.excludedModules.description%",
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "csharp.debug.symbolOptions.moduleFilter.includeSymbolsNextToModules": {
+      "default": true,
+      "description": "%generateOptionsSchema.symbolOptions.moduleFilter.includeSymbolsNextToModules.description%",
+      "type": "boolean"
+    },
+    "csharp.debug.symbolOptions.moduleFilter.includeSymbolsOnDemand": {
+      "default": true,
+      "description": "%generateOptionsSchema.symbolOptions.moduleFilter.includeSymbolsOnDemand.description%",
+      "type": "boolean"
+    },
+    "csharp.debug.symbolOptions.moduleFilter.includedModules": {
+      "default": [],
+      "description": "%generateOptionsSchema.symbolOptions.moduleFilter.includedModules.description%",
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "csharp.debug.symbolOptions.moduleFilter.mode": {
+      "default": "loadAllButExcluded",
+      "description": "%generateOptionsSchema.symbolOptions.moduleFilter.mode.description%",
+      "enum": [
+        "loadAllButExcluded",
+        "loadOnlyIncluded"
+      ],
+      "enumDescriptions": [
+        "%generateOptionsSchema.symbolOptions.moduleFilter.mode.loadAllButExcluded.enumDescription%",
+        "%generateOptionsSchema.symbolOptions.moduleFilter.mode.loadOnlyIncluded.enumDescription%"
+      ],
+      "type": "string"
+    },
+    "csharp.debug.symbolOptions.searchMicrosoftSymbolServer": {
+      "default": false,
+      "description": "%generateOptionsSchema.symbolOptions.searchMicrosoftSymbolServer.description%",
+      "type": "boolean"
+    },
+    "csharp.debug.symbolOptions.searchNuGetOrgSymbolServer": {
+      "default": false,
+      "description": "%generateOptionsSchema.symbolOptions.searchNuGetOrgSymbolServer.description%",
+      "type": "boolean"
+    },
+    "csharp.debug.symbolOptions.searchPaths": {
+      "default": [],
+      "description": "%generateOptionsSchema.symbolOptions.searchPaths.description%",
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "csharp.format.enable": {
+      "default": true,
+      "description": "%configuration.omnisharp.csharp.format.enable%",
+      "type": "boolean"
+    },
+    "csharp.inlayHints.enableInlayHintsForImplicitObjectCreation": {
+      "default": false,
+      "description": "%configuration.csharp.inlayHints.enableInlayHintsForImplicitObjectCreation%",
+      "order": 50,
+      "type": "boolean"
+    },
+    "csharp.inlayHints.enableInlayHintsForImplicitVariableTypes": {
+      "default": false,
+      "description": "%configuration.csharp.inlayHints.enableInlayHintsForImplicitVariableTypes%",
+      "order": 50,
+      "type": "boolean"
+    },
+    "csharp.inlayHints.enableInlayHintsForLambdaParameterTypes": {
+      "default": false,
+      "description": "%configuration.csharp.inlayHints.enableInlayHintsForLambdaParameterTypes%",
+      "order": 50,
+      "type": "boolean"
+    },
+    "csharp.inlayHints.enableInlayHintsForTypes": {
+      "default": false,
+      "description": "%configuration.csharp.inlayHints.enableInlayHintsForTypes%",
+      "order": 50,
+      "type": "boolean"
+    },
+    "csharp.maxProjectFileCountForDiagnosticAnalysis": {
+      "default": 1000,
+      "description": "%configuration.omnisharp.csharp.maxProjectFileCountForDiagnosticAnalysis%",
+      "type": "number"
+    },
+    "csharp.referencesCodeLens.filteredSymbols": {
+      "default": [],
+      "description": "%configuration.omnisharp.csharp.referencesCodeLens.filteredSymbols%",
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "csharp.semanticHighlighting.enabled": {
+      "default": true,
+      "description": "%configuration.omnisharp.csharp.semanticHighlighting.enabled%",
+      "scope": "window",
+      "type": "boolean"
+    },
+    "csharp.showOmnisharpLogOnError": {
+      "default": true,
+      "description": "%configuration.omnisharp.csharp.showOmnisharpLogOnError%",
+      "type": "boolean"
+    },
+    "csharp.suppressBuildAssetsNotification": {
+      "default": false,
+      "description": "%configuration.omnisharp.csharp.suppressBuildAssetsNotification%",
+      "type": "boolean"
+    },
+    "csharp.suppressDotnetInstallWarning": {
+      "default": false,
+      "description": "%configuration.omnisharp.csharp.suppressDotnetInstallWarning%",
+      "type": "boolean"
+    },
+    "csharp.suppressDotnetRestoreNotification": {
+      "default": false,
+      "description": "%configuration.omnisharp.csharp.suppressDotnetRestoreNotification%",
+      "type": "boolean"
+    },
+    "csharp.suppressHiddenDiagnostics": {
+      "default": true,
+      "description": "%configuration.omnisharp.csharp.suppressHiddenDiagnostics%",
+      "type": "boolean"
+    },
+    "csharp.suppressProjectJsonWarning": {
+      "default": false,
+      "description": "%configuration.omnisharp.csharp.suppressProjectJsonWarning%",
+      "type": "boolean"
+    },
+    "dotnet.backgroundAnalysis.analyzerDiagnosticsScope": {
+      "default": "openFiles",
+      "description": "%configuration.dotnet.backgroundAnalysis.analyzerDiagnosticsScope%",
+      "enum": [
+        "openFiles",
+        "fullSolution",
+        "none"
+      ],
+      "enumDescriptions": [
+        "%configuration.dotnet.backgroundAnalysis.analyzerDiagnosticsScope.openFiles%",
+        "%configuration.dotnet.backgroundAnalysis.analyzerDiagnosticsScope.fullSolution%",
+        "%configuration.dotnet.backgroundAnalysis.analyzerDiagnosticsScope.none%"
+      ],
+      "order": 30,
+      "type": "string"
+    },
+    "dotnet.backgroundAnalysis.compilerDiagnosticsScope": {
+      "default": "openFiles",
+      "description": "%configuration.dotnet.backgroundAnalysis.compilerDiagnosticsScope%",
+      "enum": [
+        "openFiles",
+        "fullSolution",
+        "none"
+      ],
+      "enumDescriptions": [
+        "%configuration.dotnet.backgroundAnalysis.compilerDiagnosticsScope.openFiles%",
+        "%configuration.dotnet.backgroundAnalysis.compilerDiagnosticsScope.fullSolution%",
+        "%configuration.dotnet.backgroundAnalysis.compilerDiagnosticsScope.none%"
+      ],
+      "order": 30,
+      "type": "string"
+    },
+    "dotnet.codeLens.enableReferencesCodeLens": {
+      "default": true,
+      "description": "%configuration.dotnet.codeLens.enableReferencesCodeLens%",
+      "type": "boolean"
+    },
+    "dotnet.codeLens.enableTestsCodeLens": {
+      "default": true,
+      "description": "%configuration.dotnet.codeLens.enableTestsCodeLens%",
+      "type": "boolean"
+    },
+    "dotnet.completion.provideRegexCompletions": {
+      "default": "true",
+      "description": "%configuration.dotnet.completion.provideRegexCompletions%",
+      "order": 20,
+      "type": "boolean"
+    },
+    "dotnet.completion.showCompletionItemsFromUnimportedNamespaces": {
+      "default": true,
+      "description": "%configuration.dotnet.completion.showCompletionItemsFromUnimportedNamespaces%",
+      "order": 20,
+      "type": "boolean"
+    },
+    "dotnet.completion.showNameCompletionSuggestions": {
+      "default": "true",
+      "description": "%configuration.dotnet.completion.showNameCompletionSuggestions%",
+      "order": 20,
+      "type": "boolean"
+    },
+    "dotnet.defaultSolution": {
+      "description": "%configuration.dotnet.defaultSolution.description%",
+      "order": 0,
+      "type": "string"
+    },
+    "dotnet.dotnetPath": {
+      "description": "%configuration.dotnet.dotnetPath%",
+      "scope": "machine-overridable",
+      "type": "string"
+    },
+    "dotnet.enableXamlTools": {
+      "default": true,
+      "description": "%configuration.dotnet.enableXamlTools%",
+      "scope": "machine-overridable",
+      "type": "boolean"
+    },
+    "dotnet.highlighting.highlightRelatedJsonComponents": {
+      "default": "true",
+      "description": "%configuration.dotnet.highlighting.highlightRelatedJsonComponents%",
+      "order": 40,
+      "type": "boolean"
+    },
+    "dotnet.highlighting.highlightRelatedRegexComponents": {
+      "default": "true",
+      "description": "%configuration.dotnet.highlighting.highlightRelatedRegexComponents%",
+      "order": 40,
+      "type": "boolean"
+    },
+    "dotnet.implementType.insertionBehavior": {
+      "default": "withOtherMembersOfTheSameKind",
+      "description": "%configuration.dotnet.implementType.insertionBehavior%",
+      "enum": [
+        "withOtherMembersOfTheSameKind",
+        "atTheEnd"
+      ],
+      "enumDescriptions": [
+        "%configuration.dotnet.implementType.insertionBehavior.withOtherMembersOfTheSameKind%",
+        "%configuration.dotnet.implementType.insertionBehavior.atTheEnd%"
+      ],
+      "order": 10,
+      "type": "string"
+    },
+    "dotnet.implementType.propertyGenerationBehavior": {
+      "default": "preferThrowingProperties",
+      "description": "%configuration.dotnet.implementType.propertyGenerationBehavior%",
+      "enum": [
+        "preferThrowingProperties",
+        "preferAutoProperties"
+      ],
+      "enumDescriptions": [
+        "%configuration.dotnet.implementType.propertyGenerationBehavior.preferThrowingProperties%",
+        "%configuration.dotnet.implementType.propertyGenerationBehavior.preferAutoProperties%"
+      ],
+      "order": 10,
+      "type": "string"
+    },
+    "dotnet.inlayHints.enableInlayHintsForIndexerParameters": {
+      "default": false,
+      "description": "%configuration.csharp.inlayHints.enableInlayHintsForIndexerParameters%",
+      "order": 50,
+      "type": "boolean"
+    },
+    "dotnet.inlayHints.enableInlayHintsForLiteralParameters": {
+      "default": false,
+      "description": "%configuration.dotnet.inlayHints.enableInlayHintsForLiteralParameters%",
+      "order": 50,
+      "type": "boolean"
+    },
+    "dotnet.inlayHints.enableInlayHintsForObjectCreationParameters": {
+      "default": false,
+      "description": "%configuration.dotnet.inlayHints.enableInlayHintsForObjectCreationParameters%",
+      "order": 50,
+      "type": "boolean"
+    },
+    "dotnet.inlayHints.enableInlayHintsForOtherParameters": {
+      "default": false,
+      "description": "%configuration.dotnet.inlayHints.enableInlayHintsForOtherParameters%",
+      "order": 50,
+      "type": "boolean"
+    },
+    "dotnet.inlayHints.enableInlayHintsForParameters": {
+      "default": false,
+      "description": "%configuration.dotnet.inlayHints.enableInlayHintsForParameters%",
+      "order": 50,
+      "type": "boolean"
+    },
+    "dotnet.inlayHints.suppressInlayHintsForParametersThatDifferOnlyBySuffix": {
+      "default": false,
+      "description": "%configuration.dotnet.inlayHints.suppressInlayHintsForParametersThatDifferOnlyBySuffix%",
+      "order": 50,
+      "type": "boolean"
+    },
+    "dotnet.inlayHints.suppressInlayHintsForParametersThatMatchArgumentName": {
+      "default": false,
+      "description": "%configuration.dotnet.inlayHints.suppressInlayHintsForParametersThatMatchArgumentName%",
+      "order": 50,
+      "type": "boolean"
+    },
+    "dotnet.inlayHints.suppressInlayHintsForParametersThatMatchMethodIntent": {
+      "default": false,
+      "description": "%configuration.dotnet.inlayHints.suppressInlayHintsForParametersThatMatchMethodIntent%",
+      "order": 50,
+      "type": "boolean"
+    },
+    "dotnet.navigation.navigateToDecompiledSources": {
+      "default": "true",
+      "description": "%configuration.dotnet.navigation.navigateToDecompiledSources%",
+      "order": 60,
+      "type": "boolean"
+    },
+    "dotnet.preferCSharpExtension": {
+      "default": false,
+      "description": "%configuration.dotnet.preferCSharpExtension%",
+      "scope": "resource",
+      "type": "boolean"
+    },
+    "dotnet.projects.binaryLogPath": {
+      "default": null,
+      "description": "%configuration.dotnet.projects.binaryLogPath%",
+      "scope": "machine-overridable",
+      "type": "string"
+    },
+    "dotnet.projects.enableAutomaticRestore": {
+      "default": true,
+      "description": "%configuration.dotnet.projects.enableAutomaticRestore%",
+      "type": "boolean"
+    },
+    "dotnet.quickInfo.showRemarksInQuickInfo": {
+      "default": "true",
+      "description": "%configuration.dotnet.quickInfo.showRemarksInQuickInfo%",
+      "order": 70,
+      "type": "boolean"
+    },
+    "dotnet.server.componentPaths": {
+      "default": {},
+      "description": "%configuration.dotnet.server.componentPaths%",
+      "properties": {
+        "roslynDevKit": {
+          "description": "%configuration.dotnet.server.componentPaths.roslynDevKit%",
+          "type": "string"
+        },
+        "xamlTools": {
+          "description": "%configuration.dotnet.server.componentPaths.xamlTools%",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "dotnet.server.crashDumpPath": {
+      "default": null,
+      "description": "%configuration.dotnet.server.crashDumpPath%",
+      "scope": "machine-overridable",
+      "type": "string"
+    },
+    "dotnet.server.extensionPaths": {
+      "default": null,
+      "description": "%configuration.dotnet.server.extensionPaths%",
+      "items": {
+        "type": "string"
+      },
+      "scope": "machine-overridable",
+      "type": [
+        "array",
+        null
+      ]
+    },
+    "dotnet.server.path": {
+      "description": "%configuration.dotnet.server.path%",
+      "scope": "machine-overridable",
+      "type": "string"
+    },
+    "dotnet.server.startTimeout": {
+      "default": 30000,
+      "description": "%configuration.dotnet.server.startTimeout%",
+      "scope": "machine-overridable",
+      "type": "number"
+    },
+    "dotnet.server.suppressLspErrorToasts": {
+      "default": false,
+      "description": "%configuration.dotnet.server.suppressLspErrorToasts%",
+      "type": "boolean"
+    },
+    "dotnet.server.trace": {
+      "default": "Information",
+      "description": "%configuration.dotnet.server.trace%",
+      "enum": [
+        "Trace",
+        "Debug",
+        "Information",
+        "Warning",
+        "Error",
+        "Critical",
+        "None"
+      ],
+      "scope": "window",
+      "type": "string"
+    },
+    "dotnet.server.useOmnisharp": {
+      "default": false,
+      "description": "%configuration.omnisharp.dotnet.server.useOmnisharp%",
+      "order": 0,
+      "type": "boolean"
+    },
+    "dotnet.server.waitForDebugger": {
+      "default": false,
+      "description": "%configuration.dotnet.server.waitForDebugger%",
+      "scope": "machine-overridable",
+      "type": "boolean"
+    },
+    "dotnet.symbolSearch.searchReferenceAssemblies": {
+      "default": true,
+      "description": "%configuration.dotnet.symbolSearch.searchReferenceAssemblies%",
+      "order": 80,
+      "type": "boolean"
+    },
+    "dotnet.unitTestDebuggingOptions": {
+      "default": {},
+      "description": "%configuration.dotnet.unitTestDebuggingOptions%",
+      "properties": {
+        "debugServer": {
+          "default": 4711,
+          "description": "%generateOptionsSchema.debugServer.description%",
+          "type": "number"
+        },
+        "enableStepFiltering": {
+          "default": true,
+          "markdownDescription": "%generateOptionsSchema.enableStepFiltering.markdownDescription%",
+          "type": "boolean"
+        },
+        "expressionEvaluationOptions": {
+          "default": {},
+          "description": "%generateOptionsSchema.expressionEvaluationOptions.description%",
+          "properties": {
+            "allowFastEvaluate": {
+              "default": true,
+              "description": "%generateOptionsSchema.expressionEvaluationOptions.allowFastEvaluate.description%",
+              "type": "boolean"
+            },
+            "allowImplicitFuncEval": {
+              "default": true,
+              "description": "%generateOptionsSchema.expressionEvaluationOptions.allowImplicitFuncEval.description%",
+              "type": "boolean"
+            },
+            "allowToString": {
+              "default": true,
+              "markdownDescription": "%generateOptionsSchema.expressionEvaluationOptions.allowToString.markdownDescription%",
+              "type": "boolean"
+            },
+            "showRawValues": {
+              "default": false,
+              "description": "%generateOptionsSchema.expressionEvaluationOptions.showRawValues.description%",
+              "type": "boolean"
+            }
+          },
+          "type": "object"
+        },
+        "justMyCode": {
+          "default": true,
+          "markdownDescription": "%generateOptionsSchema.justMyCode.markdownDescription%",
+          "type": "boolean"
+        },
+        "logging": {
+          "default": {},
+          "description": "%generateOptionsSchema.logging.description%",
+          "properties": {
+            "exceptions": {
+              "default": true,
+              "markdownDescription": "%generateOptionsSchema.logging.exceptions.markdownDescription%",
+              "type": "boolean"
+            },
+            "moduleLoad": {
+              "default": true,
+              "markdownDescription": "%generateOptionsSchema.logging.moduleLoad.markdownDescription%",
+              "type": "boolean"
+            },
+            "processExit": {
+              "default": true,
+              "markdownDescription": "%generateOptionsSchema.logging.processExit.markdownDescription%",
+              "type": "boolean"
+            },
+            "programOutput": {
+              "default": true,
+              "markdownDescription": "%generateOptionsSchema.logging.programOutput.markdownDescription%",
+              "type": "boolean"
+            },
+            "threadExit": {
+              "default": false,
+              "markdownDescription": "%generateOptionsSchema.logging.threadExit.markdownDescription%",
+              "type": "boolean"
+            }
+          },
+          "required": [],
+          "type": "object"
+        },
+        "requireExactSource": {
+          "default": true,
+          "markdownDescription": "%generateOptionsSchema.requireExactSource.markdownDescription%",
+          "type": "boolean"
+        },
+        "sourceFileMap": {
+          "additionalProperties": {
+            "type": "string"
+          },
+          "markdownDescription": "%generateOptionsSchema.sourceFileMap.markdownDescription%",
+          "type": "object"
+        },
+        "sourceLinkOptions": {
+          "additionalItems": {
+            "properties": {
+              "enabled": {
+                "default": true,
+                "markdownDescription": "%generateOptionsSchema.sourceLinkOptions.additionalItems.enabled.markdownDescription%",
+                "title": "boolean"
+              }
+            },
+            "type": "object"
+          },
+          "default": {
+            "*": {
+              "enabled": true
+            }
+          },
+          "markdownDescription": "%generateOptionsSchema.sourceLinkOptions.markdownDescription%",
+          "type": "object"
+        },
+        "suppressJITOptimizations": {
+          "default": false,
+          "markdownDescription": "%generateOptionsSchema.suppressJITOptimizations.markdownDescription%",
+          "type": "boolean"
+        },
+        "symbolOptions": {
+          "default": {
+            "searchMicrosoftSymbolServer": false,
+            "searchNuGetOrgSymbolServer": false,
+            "searchPaths": []
+          },
+          "description": "%generateOptionsSchema.symbolOptions.description%",
+          "properties": {
+            "cachePath": {
+              "default": "",
+              "description": "%generateOptionsSchema.symbolOptions.cachePath.description%",
+              "type": "string"
+            },
+            "moduleFilter": {
+              "default": {
+                "excludedModules": [],
+                "mode": "loadAllButExcluded"
+              },
+              "description": "%generateOptionsSchema.symbolOptions.moduleFilter.description%",
+              "properties": {
+                "excludedModules": {
+                  "default": [],
+                  "description": "%generateOptionsSchema.symbolOptions.moduleFilter.excludedModules.description%",
+                  "items": {
+                    "type": "string"
+                  },
+                  "type": "array"
+                },
+                "includeSymbolsNextToModules": {
+                  "default": true,
+                  "description": "%generateOptionsSchema.symbolOptions.moduleFilter.includeSymbolsNextToModules.description%",
+                  "type": "boolean"
+                },
+                "includeSymbolsOnDemand": {
+                  "default": true,
+                  "description": "%generateOptionsSchema.symbolOptions.moduleFilter.includeSymbolsOnDemand.description%",
+                  "type": "boolean"
+                },
+                "includedModules": {
+                  "default": [],
+                  "description": "%generateOptionsSchema.symbolOptions.moduleFilter.includedModules.description%",
+                  "items": {
+                    "type": "string"
+                  },
+                  "type": "array"
+                },
+                "mode": {
+                  "default": "loadAllButExcluded",
+                  "description": "%generateOptionsSchema.symbolOptions.moduleFilter.mode.description%",
+                  "enum": [
+                    "loadAllButExcluded",
+                    "loadOnlyIncluded"
+                  ],
+                  "enumDescriptions": [
+                    "%generateOptionsSchema.symbolOptions.moduleFilter.mode.loadAllButExcluded.enumDescription%",
+                    "%generateOptionsSchema.symbolOptions.moduleFilter.mode.loadOnlyIncluded.enumDescription%"
+                  ],
+                  "type": "string"
+                }
+              },
+              "required": [
+                "mode"
+              ],
+              "type": "object"
+            },
+            "searchMicrosoftSymbolServer": {
+              "default": false,
+              "description": "%generateOptionsSchema.symbolOptions.searchMicrosoftSymbolServer.description%",
+              "type": "boolean"
+            },
+            "searchNuGetOrgSymbolServer": {
+              "default": false,
+              "description": "%generateOptionsSchema.symbolOptions.searchNuGetOrgSymbolServer.description%",
+              "type": "boolean"
+            },
+            "searchPaths": {
+              "default": [],
+              "description": "%generateOptionsSchema.symbolOptions.searchPaths.description%",
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
+            }
+          },
+          "type": "object"
+        },
+        "targetArchitecture": {
+          "enum": [
+            "x86_64",
+            "arm64"
+          ],
+          "markdownDescription": "%generateOptionsSchema.targetArchitecture.markdownDescription%",
+          "type": "string"
+        },
+        "type": {
+          "default": "coreclr",
+          "enum": [
+            "coreclr",
+            "clr"
+          ],
+          "markdownDescription": "%generateOptionsSchema.type.markdownDescription%",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "dotnet.unitTests.runSettingsPath": {
+      "markdownDescription": "%configuration.dotnet.unitTests.runSettingsPath.markdownDescription%",
+      "type": "string"
+    },
+    "omnisharp.autoStart": {
+      "default": true,
+      "description": "%configuration.omnisharp.autoStart%",
+      "type": "boolean"
+    },
+    "omnisharp.disableMSBuildDiagnosticWarning": {
+      "default": false,
+      "description": "%configuration.omnisharp.disableMSBuildDiagnosticWarning%",
+      "type": "boolean"
+    },
+    "omnisharp.dotNetCliPaths": {
+      "description": "%configuration.omnisharp.dotNetCliPaths%",
+      "items": {
+        "type": "string"
+      },
+      "type": "array",
+      "uniqueItems": true
+    },
+    "omnisharp.enableAsyncCompletion": {
+      "default": false,
+      "description": "%configuration.omnisharp.enableAsyncCompletion%",
+      "type": "boolean"
+    },
+    "omnisharp.enableDecompilationSupport": {
+      "default": false,
+      "description": "%configuration.omnisharp.enableDecompilationSupport%",
+      "scope": "machine",
+      "type": "boolean"
+    },
+    "omnisharp.enableEditorConfigSupport": {
+      "default": true,
+      "description": "%configuration.omnisharp.enableEditorConfigSupport%",
+      "type": "boolean"
+    },
+    "omnisharp.enableLspDriver": {
+      "default": false,
+      "description": "%configuration.omnisharp.enableLspDriver%",
+      "type": "boolean"
+    },
+    "omnisharp.enableMsBuildLoadProjectsOnDemand": {
+      "default": false,
+      "description": "%configuration.omnisharp.enableMsBuildLoadProjectsOnDemand%",
+      "type": "boolean"
+    },
+    "omnisharp.loggingLevel": {
+      "default": "information",
+      "description": "%configuration.omnisharp.loggingLevel%",
+      "enum": [
+        "trace",
+        "debug",
+        "information",
+        "warning",
+        "error",
+        "critical"
+      ],
+      "type": "string"
+    },
+    "omnisharp.maxFindSymbolsItems": {
+      "default": 1000,
+      "description": "%configuration.omnisharp.maxFindSymbolsItems%",
+      "type": "number"
+    },
+    "omnisharp.maxProjectResults": {
+      "default": 250,
+      "description": "%configuration.omnisharp.maxProjectResults%",
+      "type": "number"
+    },
+    "omnisharp.minFindSymbolsFilterLength": {
+      "default": 0,
+      "description": "%configuration.omnisharp.minFindSymbolsFilterLength%",
+      "type": "number"
+    },
+    "omnisharp.monoPath": {
+      "description": "%configuration.omnisharp.monoPath%",
+      "scope": "machine",
+      "type": "string"
+    },
+    "omnisharp.organizeImportsOnFormat": {
+      "default": false,
+      "description": "%configuration.omnisharp.organizeImportsOnFormat%",
+      "type": "boolean"
+    },
+    "omnisharp.projectFilesExcludePattern": {
+      "default": "**/node_modules/**,**/.git/**,**/bower_components/**",
+      "description": "%configuration.omnisharp.projectFilesExcludePattern%",
+      "type": "string"
+    },
+    "omnisharp.projectLoadTimeout": {
+      "default": 60,
+      "description": "%configuration.omnisharp.projectLoadTimeout%",
+      "type": "number"
+    },
+    "omnisharp.sdkIncludePrereleases": {
+      "default": true,
+      "description": "%configuration.omnisharp.sdkIncludePrereleases%",
+      "scope": "window",
+      "type": "boolean"
+    },
+    "omnisharp.sdkPath": {
+      "description": "%configuration.omnisharp.sdkPath%",
+      "scope": "window",
+      "type": "string"
+    },
+    "omnisharp.sdkVersion": {
+      "description": "%configuration.omnisharp.sdkVersion%",
+      "scope": "window",
+      "type": "string"
+    },
+    "omnisharp.useEditorFormattingSettings": {
+      "default": true,
+      "description": "%configuration.omnisharp.useEditorFormattingSettings%",
+      "type": "boolean"
+    },
+    "omnisharp.useModernNet": {
+      "default": true,
+      "description": "%configuration.omnisharp.useModernNet.description%",
+      "scope": "window",
+      "title": "%configuration.omnisharp.useModernNet.title%",
+      "type": "boolean"
+    },
+    "razor.completion.commitElementsWithSpace": {
+      "default": false,
+      "description": "%configuration.omnisharp.razor.completion.commitElementsWithSpace%",
+      "scope": "window",
+      "type": "boolean"
+    },
+    "razor.devmode": {
+      "default": false,
+      "description": "%configuration.omnisharp.razor.devmode%",
+      "type": "boolean"
+    },
+    "razor.format.codeBlockBraceOnNextLine": {
+      "default": false,
+      "description": "%configuration.omnisharp.razor.format.codeBlockBraceOnNextLine%",
+      "scope": "window",
+      "type": "boolean"
+    },
+    "razor.format.enable": {
+      "default": true,
+      "description": "%configuration.omnisharp.razor.format.enable%",
+      "scope": "window",
+      "type": "boolean"
+    },
+    "razor.languageServer.debug": {
+      "default": false,
+      "description": "%configuration.razor.languageServer.debug%",
+      "order": 90,
+      "scope": "machine-overridable",
+      "type": "boolean"
+    },
+    "razor.languageServer.directory": {
+      "description": "%configuration.razor.languageServer.directory%",
+      "order": 90,
+      "scope": "machine-overridable",
+      "type": "string"
+    },
+    "razor.languageServer.forceRuntimeCodeGeneration": {
+      "default": false,
+      "description": "%configuration.razor.languageServer.forceRuntimeCodeGeneration%",
+      "order": 90,
+      "scope": "machine-overridable",
+      "type": "boolean"
+    },
+    "razor.plugin.path": {
+      "description": "%configuration.omnisharp.razor.plugin.path%",
+      "scope": "machine",
+      "type": "string"
+    },
+    "razor.server.trace": {
+      "default": "Information",
+      "description": "%configuration.razor.server.trace%",
+      "enum": [
+        "Trace",
+        "Debug",
+        "Information",
+        "Warning",
+        "Error",
+        "Critical",
+        "None"
+      ],
+      "order": 90,
+      "scope": "window",
+      "type": "string"
+    }
+  }
 }
