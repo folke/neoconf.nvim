@@ -47,13 +47,10 @@ INSTALLATION                          *neoconf.nvim-neoconf.nvim-installation*
 Install the plugin with your preferred package manager:
 
 
-PACKER ~
+LAZY.NVIM ~
 
 >lua
-    -- Lua
-    use({
-      "folke/neoconf.nvim",
-    })
+    { "folke/neoconf.nvim" }
 <
 
 
