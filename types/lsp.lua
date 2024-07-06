@@ -10717,6 +10717,155 @@
 ---@field js/ts _.lspconfig.settings.tsserver.Js/ts
 ---@field typescript _.lspconfig.settings.tsserver.Typescript
 
+---@class _.lspconfig.settings.volar.AutoInsert
+-- Auto add space between double curly brackets: {{|}} -> {{ | }}
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field bracketSpacing boolean
+-- Auto-complete Ref value with `.value`.
+---@field dotValue boolean
+
+---@class _.lspconfig.settings.volar.CodeActions
+-- Ask for new component name when extract component.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field askNewComponentName boolean
+-- Enabled code actions.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enabled boolean
+
+---@class _.lspconfig.settings.volar.CodeLens
+-- Enabled code lens.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enabled boolean
+
+---@class _.lspconfig.settings.volar.Casing
+-- Preferred attr name case.
+-- 
+-- ```lua
+-- default = "autoKebab"
+-- ```
+---@field props "autoKebab" | "autoCamel" | "kebab" | "camel"
+-- Preferred tag name case.
+-- 
+-- ```lua
+-- default = "autoPascal"
+-- ```
+---@field tags "autoKebab" | "autoPascal" | "kebab" | "pascal"
+
+---@class _.lspconfig.settings.volar.Complete
+---@field casing _.lspconfig.settings.volar.Casing
+
+---@class _.lspconfig.settings.volar.Doctor
+-- Show known problems in status bar.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field status boolean
+
+---@class _.lspconfig.settings.volar.Script
+---@field initialIndent boolean
+
+---@class _.lspconfig.settings.volar.Style
+---@field initialIndent boolean
+
+---@class _.lspconfig.settings.volar.Template
+-- ```lua
+-- default = true
+-- ```
+---@field initialIndent boolean
+
+---@class _.lspconfig.settings.volar.Format
+---@field script _.lspconfig.settings.volar.Script
+---@field style _.lspconfig.settings.volar.Style
+---@field template _.lspconfig.settings.volar.Template
+-- ```lua
+-- default = "auto"
+-- ```
+---@field wrapAttributes "auto" | "force" | "force-aligned" | "force-expand-multiline" | "aligned-multiple" | "preserve" | "preserve-aligned"
+
+---@class _.lspconfig.settings.volar.InlayHints
+-- Show inlay hints for event argument in inline handlers.
+---@field inlineHandlerLeading boolean
+-- Show inlay hints for missing required props.
+---@field missingProps boolean
+-- Show inlay hints for component options wrapper for type support.
+---@field optionsWrapper boolean
+-- Show inlay hints for v-bind shorthand.
+---@field vBindShorthand boolean
+
+---@class _.lspconfig.settings.volar.Server
+-- Vue language server only handles CSS and HTML language support, and tsserver takes over TS language support via TS plugin.
+-- 
+-- ```lua
+-- default = "auto"
+-- ```
+---@field hybridMode "auto" | "typeScriptPluginOnly" | true | false
+-- ```lua
+-- default = { "vue" }
+-- ```
+---@field includeLanguages string[]
+-- Set --max-old-space-size option on server process. If you have problem on frequently "Request textDocument/** failed." error, try setting higher memory(MB) on it.
+---@field maxOldSpaceSize number
+
+---@class _.lspconfig.settings.volar.Layout
+-- ```lua
+-- default = { "script", "scriptSetup", "styles" }
+-- ```
+---@field left string[]
+-- ```lua
+-- default = { "template", "customBlocks" }
+-- ```
+---@field right string[]
+
+---@class _.lspconfig.settings.volar.SplitEditors
+-- Show split editor icon in title area of editor.
+---@field icon boolean
+---@field layout _.lspconfig.settings.volar.Layout
+
+---@class _.lspconfig.settings.volar.Trace
+-- Traces the communication between VS Code and the language server.
+-- 
+-- ```lua
+-- default = "off"
+-- ```
+---@field server "off" | "messages" | "verbose"
+
+---@class _.lspconfig.settings.volar.UpdateImportsOnFileMove
+-- Enabled update imports on file move.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enabled boolean
+
+---@class _.lspconfig.settings.volar.Vue
+---@field autoInsert _.lspconfig.settings.volar.AutoInsert
+---@field codeActions _.lspconfig.settings.volar.CodeActions
+---@field codeLens _.lspconfig.settings.volar.CodeLens
+---@field complete _.lspconfig.settings.volar.Complete
+---@field doctor _.lspconfig.settings.volar.Doctor
+---@field format _.lspconfig.settings.volar.Format
+---@field inlayHints _.lspconfig.settings.volar.InlayHints
+---@field server _.lspconfig.settings.volar.Server
+---@field splitEditors _.lspconfig.settings.volar.SplitEditors
+---@field trace _.lspconfig.settings.volar.Trace
+---@field updateImportsOnFileMove _.lspconfig.settings.volar.UpdateImportsOnFileMove
+
+---@class lspconfig.settings.volar
+---@field vue _.lspconfig.settings.volar.Vue
+
 ---@class _.lspconfig.settings.vtsls.Format
 -- Enable/disable default JavaScript formatter.
 -- 
