@@ -4,6 +4,7 @@ local M = {}
 
 -- modified from https://gist.githubusercontent.com/williamboman/a01c3ce1884d4b57cc93422e7eae7702/raw/lsp-packages.json
 M.index = {
+  -- nickel_ls = "https://raw.githubusercontent.com/tweag/nickel/master/lsp/client-extension/package.json",
   als = "https://raw.githubusercontent.com/AdaCore/ada_language_server/master/integration/vscode/ada/package.json",
   astro = "https://raw.githubusercontent.com/withastro/language-tools/main/packages/vscode/package.json",
   awkls = "https://raw.githubusercontent.com/Beaglefoot/awk-language-server/master/client/package.json",
@@ -31,7 +32,6 @@ M.index = {
   ltex = "https://raw.githubusercontent.com/valentjn/vscode-ltex/develop/package.json",
   lua_ls = "https://raw.githubusercontent.com/LuaLS/vscode-lua/master/package.json",
   luau_lsp = "https://raw.githubusercontent.com/JohnnyMorganz/luau-lsp/main/editors/code/package.json",
-  -- nickel_ls = "https://raw.githubusercontent.com/tweag/nickel/master/lsp/client-extension/package.json",
   omnisharp = "https://raw.githubusercontent.com/OmniSharp/omnisharp-vscode/master/package.json",
   perlls = "https://raw.githubusercontent.com/richterger/Perl-LanguageServer/master/clients/vscode/perl/package.json",
   perlnavigator = "https://raw.githubusercontent.com/bscan/PerlNavigator/main/package.json",
@@ -46,6 +46,7 @@ M.index = {
   rescriptls = "https://raw.githubusercontent.com/rescript-lang/rescript-vscode/master/package.json",
   rls = "https://raw.githubusercontent.com/rust-lang/vscode-rust/master/package.json",
   rome = "https://raw.githubusercontent.com/rome/tools/main/editors/vscode/package.json",
+  ruff_lsp = "https://raw.githubusercontent.com/astral-sh/ruff-vscode/main/package.json",
   rust_analyzer = "https://raw.githubusercontent.com/rust-analyzer/rust-analyzer/master/editors/code/package.json",
   solargraph = "https://raw.githubusercontent.com/castwide/vscode-solargraph/master/package.json",
   solidity_ls = "https://raw.githubusercontent.com/juanfranblanco/vscode-solidity/master/package.json",
