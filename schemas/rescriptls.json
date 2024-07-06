@@ -22,6 +22,11 @@
         "null"
       ]
     },
+    "rescript.settings.cache.projectConfig.enabled": {
+      "default": false,
+      "description": "(beta/experimental) Enable project config caching. Can speed up latency dramatically.",
+      "type": "boolean"
+    },
     "rescript.settings.codeLens": {
       "default": false,
       "description": "Enable (experimental) code lens for function definitions.",

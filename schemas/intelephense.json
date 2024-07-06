@@ -14,6 +14,12 @@
       "scope": "window",
       "type": "boolean"
     },
+    "intelephense.compatibility.preferPsalmPhpstanPrefixedAnnotations": {
+      "default": false,
+      "description": "Prefer `@psalm-` and `@phpstan-` prefixed `@return`, `@var`, `@param` tags when determining symbol types.",
+      "scope": "window",
+      "type": "boolean"
+    },
     "intelephense.completion.fullyQualifyGlobalConstantsAndFunctions": {
       "default": false,
       "description": "Global namespace constants and functions will be fully qualified (prefixed with a backslash).",
@@ -31,6 +37,12 @@
       "description": "The maximum number of completion items returned per request.",
       "scope": "window",
       "type": "number"
+    },
+    "intelephense.completion.suggestObjectOperatorStaticMethods": {
+      "default": true,
+      "description": "PHP permits the calling of static methods using the object operator eg `$obj->myStaticMethod();`. If you would prefer not to have static methods suggested in this context then set this value to `false`. Defaults to `true`.",
+      "scope": "window",
+      "type": "boolean"
     },
     "intelephense.completion.triggerParameterHints": {
       "default": true,
@@ -77,6 +89,18 @@
     "intelephense.diagnostics.languageConstraints": {
       "default": true,
       "description": "Enables reporting of various language constraint errors.",
+      "scope": "window",
+      "type": "boolean"
+    },
+    "intelephense.diagnostics.noMixedTypeCheck": {
+      "default": true,
+      "description": "This setting turns off type checking for the `mixed` type. This is useful for projects that may have incomplete or innacurate typings. Set to `false` to make type checking more thorough by not allowing `mixed` to satisy any type constraint. This setting has no effect when `relaxedTypeCheck` is `true`.",
+      "scope": "window",
+      "type": "boolean"
+    },
+    "intelephense.diagnostics.relaxedTypeCheck": {
+      "default": true,
+      "description": "This setting makes type checking less thorough by allowing contravariant (wider) types to also satisfy a type constraint. This is useful for projects that may have incomplete or innacurate typings. Set to `false` for more thorough type checks. When this setting is `true`, the `noMixedTypeCheck` setting is ignored.",
       "scope": "window",
       "type": "boolean"
     },
@@ -221,15 +245,15 @@
       "type": "number"
     },
     "intelephense.format.braces": {
-      "default": "psr12",
+      "default": "per",
       "description": "Controls formatting style of braces",
       "enum": [
-        "psr12",
+        "per",
         "allman",
         "k&r"
       ],
       "enumDescriptions": [
-        "PHP-FIG PSR-2 and PSR-12 style. A mix of Allman and K&R",
+        "PHP-FIG PER-CS style. A mix of Allman and K&R. https://www.php-fig.org/per/coding-style/",
         "Allman. Opening brace on the next line.",
         "K&R (1TBS). Opening brace on the same line."
       ],

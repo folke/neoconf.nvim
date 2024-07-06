@@ -148,6 +148,31 @@
       "scope": "resource",
       "type": "array"
     },
+    "deno.env": {
+      "default": {},
+      "examples": [
+        {
+          "HTTP_PROXY": "http://localhost:8080"
+        }
+      ],
+      "markdownDescription": "Additional environment variables to pass to Deno processes. Overrides the user's env and `deno.envFile`. These will be overridden by more specific settings such as `deno.future` for `DENO_FUTURE`, and invariables like `NO_COLOR=1`.",
+      "patternProperties": {
+        ".+": {
+          "type": "string"
+        }
+      },
+      "scope": "window",
+      "type": "object"
+    },
+    "deno.envFile": {
+      "default": null,
+      "examples": [
+        ".env"
+      ],
+      "markdownDescription": "Env file containing additional environment variables to pass to Deno processes. Overrides the user's env. These will be overridden by `deno.env`, more specific settings such as `deno.future` for `DENO_FUTURE`, and invariables like `NO_COLOR=1`.",
+      "scope": "window",
+      "type": "string"
+    },
     "deno.future": {
       "default": false,
       "examples": [

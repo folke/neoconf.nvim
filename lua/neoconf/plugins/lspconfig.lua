@@ -1,6 +1,6 @@
-local Util = require("neoconf.util")
 local Config = require("neoconf.config")
 local Settings = require("neoconf.settings")
+local Util = require("neoconf.util")
 
 ---@type SettingsPlugin
 local M = {}
@@ -10,7 +10,7 @@ function M.on_schema(schema)
     description = "lsp server settings for lspconfig",
   })
 
-  for name, s in pairs(require("neoconf.build.schemas").index()) do
+  for name, s in pairs(require("neoconf.build.schemas").get_schemas()) do
     if Config.options.plugins.jsonls.configured_servers_only == false or Util.has_lspconfig(name) then
       schema:set("lspconfig." .. name, {
         anyOf = {

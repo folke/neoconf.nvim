@@ -2,8 +2,6 @@
   "$schema": "http://json-schema.org/draft-07/schema#",
   "description": "Rust language support for Visual Studio Code",
   "properties": {
-    "$generated-end": {},
-    "$generated-start": {},
     "rust-analyzer.assist.emitMustUse": {
       "default": false,
       "markdownDescription": "Whether to insert #[must_use] when generating `as_` methods\nfor enum variants.",
@@ -22,9 +20,14 @@
       "markdownDescription": "Placeholder expression to use for missing expressions in assists.",
       "type": "string"
     },
+    "rust-analyzer.assist.termSearch.borrowcheck": {
+      "default": true,
+      "markdownDescription": "Enable borrow checking for term search code assists. If set to false, also there will be more suggestions, but some of them may not borrow-check.",
+      "type": "boolean"
+    },
     "rust-analyzer.assist.termSearch.fuel": {
-      "default": 400,
-      "markdownDescription": "Term search fuel in \"units of work\" for assists (Defaults to 400).",
+      "default": 1800,
+      "markdownDescription": "Term search fuel in \"units of work\" for assists (Defaults to 1800).",
       "minimum": 0,
       "type": "integer"
     },
@@ -34,11 +37,26 @@
       "type": "boolean"
     },
     "rust-analyzer.cachePriming.numThreads": {
-      "default": 0,
-      "markdownDescription": "How many worker threads to handle priming caches. The default `0` means to pick automatically.",
-      "maximum": 255,
-      "minimum": 0,
-      "type": "number"
+      "anyOf": [
+        {
+          "maximum": 255,
+          "minimum": 0,
+          "type": "number"
+        },
+        {
+          "enum": [
+            "physical",
+            "logical"
+          ],
+          "enumDescriptions": [
+            "Use the number of physical cores",
+            "Use the number of logical cores"
+          ],
+          "type": "string"
+        }
+      ],
+      "default": "physical",
+      "markdownDescription": "How many worker threads to handle priming caches. The default `0` means to pick automatically."
     },
     "rust-analyzer.cargo.allTargets": {
       "default": true,
@@ -192,14 +210,6 @@
       ],
       "default": null,
       "markdownDescription": "Optional path to a rust-analyzer specific target directory.\nThis prevents rust-analyzer's `cargo check` and initial build-script and proc-macro\nbuilding from locking the `Cargo.lock` at the expense of duplicating build artifacts.\n\nSet to `true` to use a subdirectory of the existing target directory or\nset to a path relative to the workspace to use that path."
-    },
-    "rust-analyzer.cargoRunner": {
-      "default": null,
-      "description": "Custom cargo runner extension ID.",
-      "type": [
-        "null",
-        "string"
-      ]
     },
     "rust-analyzer.check.allTargets": {
       "default": null,
@@ -433,8 +443,8 @@
       "type": "boolean"
     },
     "rust-analyzer.completion.termSearch.fuel": {
-      "default": 200,
-      "markdownDescription": "Term search fuel in \"units of work\" for autocompletion (Defaults to 200).",
+      "default": 1000,
+      "markdownDescription": "Term search fuel in \"units of work\" for autocompletion (Defaults to 1000).",
       "minimum": 0,
       "type": "integer"
     },
@@ -1101,13 +1111,29 @@
       "type": "boolean"
     },
     "rust-analyzer.numThreads": {
+      "anyOf": [
+        {
+          "type": "null"
+        },
+        {
+          "maximum": 255,
+          "minimum": 0,
+          "type": "number"
+        },
+        {
+          "enum": [
+            "physical",
+            "logical"
+          ],
+          "enumDescriptions": [
+            "Use the number of physical cores",
+            "Use the number of logical cores"
+          ],
+          "type": "string"
+        }
+      ],
       "default": null,
-      "markdownDescription": "How many worker threads in the main loop. The default `null` means to pick automatically.",
-      "minimum": 0,
-      "type": [
-        "null",
-        "integer"
-      ]
+      "markdownDescription": "How many worker threads in the main loop. The default `null` means to pick automatically."
     },
     "rust-analyzer.procMacro.attributes.enable": {
       "default": true,

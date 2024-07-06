@@ -1,5 +1,352 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
   "description": "Swift Language Support for Visual Studio Code.",
-  "properties": []
+  "properties": {
+    "sourcekit-lsp.disable": {
+      "default": false,
+      "description": "Disable the running of SourceKit-LSP.",
+      "markdownDeprecationMessage": "**Deprecated**: Please use `#swift.sourcekit-lsp.disable#` instead.",
+      "order": 7,
+      "type": "boolean"
+    },
+    "sourcekit-lsp.inlayHints.enabled": {
+      "default": true,
+      "description": "Render inlay type annotations in the editor. Inlay hints require Swift 5.6.",
+      "markdownDeprecationMessage": "**Deprecated**: Please use `#editor.inlayHints.enabled#` instead.",
+      "order": 3,
+      "type": "boolean"
+    },
+    "sourcekit-lsp.serverArguments": {
+      "default": [],
+      "description": "Arguments to pass to SourceKit-LSP. Argument keys and values should be provided as separate entries in the array e.g. ['--log-level', 'debug']",
+      "items": {
+        "type": "string"
+      },
+      "markdownDeprecationMessage": "**Deprecated**: Please use `#swift.sourcekit-lsp.serverArguments#` instead.",
+      "order": 2,
+      "type": "array"
+    },
+    "sourcekit-lsp.serverPath": {
+      "markdownDeprecationMessage": "**Deprecated**: Please use `#swift.sourcekit-lsp.serverPath#` instead.",
+      "markdownDescription": "The path of the `sourcekit-lsp` executable. The default is to look in the path where `swift` is found.",
+      "order": 1,
+      "type": "string"
+    },
+    "sourcekit-lsp.support-c-cpp": {
+      "default": "cpptools-inactive",
+      "description": "Add LSP functionality for C/C++ files. By default this is set to disable when the C/C++ extension is active.",
+      "enum": [
+        "enable",
+        "disable",
+        "cpptools-inactive"
+      ],
+      "enumDescriptions": [
+        "Always enable",
+        "Always disable",
+        "Disable when C/C++ extension is active"
+      ],
+      "markdownDeprecationMessage": "**Deprecated**: Please use `#swift.sourcekit-lsp.supported-languages#` instead.",
+      "order": 5,
+      "type": "string"
+    },
+    "sourcekit-lsp.trace.server": {
+      "default": "off",
+      "description": "Traces the communication between VS Code and the SourceKit-LSP language server.",
+      "enum": [
+        "off",
+        "messages",
+        "verbose"
+      ],
+      "markdownDeprecationMessage": "**Deprecated**: Please use `#swift.sourcekit-lsp.trace.server#` instead.",
+      "order": 6,
+      "type": "string"
+    },
+    "swift.SDK": {
+      "default": "",
+      "description": "The path of the SDK to compile against (`--sdk` parameter). The default SDK is determined by the environment on macOS and Windows.",
+      "order": 3,
+      "type": "string"
+    },
+    "swift.actionAfterBuildError": {
+      "default": "Focus Terminal",
+      "enum": [
+        "Focus Problems",
+        "Focus Terminal",
+        "Do Nothing"
+      ],
+      "enumDescriptions": [
+        "Focus on Problems View",
+        "Focus on Build Task Terminal"
+      ],
+      "markdownDescription": "Action after a Build task generates errors.",
+      "order": 11,
+      "type": "string"
+    },
+    "swift.autoGenerateLaunchConfigurations": {
+      "default": true,
+      "markdownDescription": "When loading a `Package.swift`, auto-generate `launch.json` configurations for running any executables.",
+      "order": 6,
+      "scope": "machine-overridable",
+      "type": "boolean"
+    },
+    "swift.backgroundCompilation": {
+      "default": false,
+      "markdownDescription": "**Experimental**: Run `swift build` in the background whenever a file is saved.",
+      "order": 10,
+      "type": "boolean"
+    },
+    "swift.buildArguments": {
+      "default": [],
+      "items": {
+        "type": "string"
+      },
+      "markdownDescription": "Arguments to pass to `swift build`. Keys and values should be provided as separate entries. If you have created a copy of the build task in `tasks.json` then these build arguments will not be propogated to that task.",
+      "order": 2,
+      "type": "array"
+    },
+    "swift.buildPath": {
+      "default": "",
+      "markdownDescription": "Path to the build directory passed to all swift package manager commands.",
+      "order": 12,
+      "type": "string"
+    },
+    "swift.debugger.path": {
+      "default": "",
+      "description": "Path to lldb debug adapter.",
+      "order": 2,
+      "type": "string"
+    },
+    "swift.debugger.useDebugAdapterFromToolchain": {
+      "default": false,
+      "description": "Use lldb debug adapter packaged with Swift toolchain as your debug adapter. This is currently only available on Windows platforms or macOS Swift 6",
+      "order": 1,
+      "type": "boolean"
+    },
+    "swift.diagnostics": {
+      "default": false,
+      "description": "Output additional diagnostics to the Swift Output View.",
+      "order": 100,
+      "type": "boolean"
+    },
+    "swift.diagnosticsCollection": {
+      "default": "keepSourceKit",
+      "description": "Controls how diagnostics from the various providers are merged into the `swift` diagnostics collection.",
+      "enum": [
+        "onlySwiftc",
+        "onlySourceKit",
+        "keepSwiftc",
+        "keepSourceKit",
+        "keepAll"
+      ],
+      "enumDescriptions": [
+        "Only provide diagnostics from `swiftc`.",
+        "Only provide diagnostics from `SourceKit`.",
+        "When merging diagnostics, give precedence to diagnostics from `swiftc`.",
+        "When merging diagnostics, give precedence to diagnostics from `SourceKit`.",
+        "Keep diagnostics from all providers."
+      ],
+      "order": 8,
+      "type": "string"
+    },
+    "swift.diagnosticsStyle": {
+      "default": "llvm",
+      "description": "Controls which -diagnostic-style option to pass to `swiftc` when running `swift` tasks.",
+      "enum": [
+        "default",
+        "llvm",
+        "swift"
+      ],
+      "enumDescriptions": [
+        "Use whichever diagnostics style `swiftc` produces by default.",
+        "Use the \"llvm\" diagnostic style. This allows the parsing of \"notes\".",
+        "Use the \"swift\" diagnostic style. This means that \"notes\" will not be parsed. This option will not work for Swift versions prior to 5.10."
+      ],
+      "order": 9,
+      "type": "string"
+    },
+    "swift.disableAutoResolve": {
+      "default": false,
+      "markdownDescription": "Disable automatic running of `swift package resolve`. This will also disable searching for command plugins and the initial test discovery process as both of these can kick of a resolve.",
+      "order": 7,
+      "scope": "machine-overridable",
+      "type": "boolean"
+    },
+    "swift.disableSwiftPackageManagerIntegration": {
+      "default": false,
+      "markdownDescription": "Disables automated Build Tasks, Package Dependency view, Launch configuration generation and TestExplorer.",
+      "order": 13,
+      "type": "boolean"
+    },
+    "swift.enableTerminalEnvironment": {
+      "default": true,
+      "description": "Controls whether or not the extension will contribute Swift environment variables to the integrated terminal.",
+      "order": 15,
+      "type": "boolean"
+    },
+    "swift.excludePathsFromPackageDependencies": {
+      "default": [
+        ".git",
+        ".github"
+      ],
+      "description": "A list of paths to exclude from the Package Dependencies view.",
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "swift.openAfterCreateNewProject": {
+      "default": "prompt",
+      "description": "Controls whether to open a swift project automatically after creating it.",
+      "enum": [
+        "always",
+        "alwaysNewWindow",
+        "whenNoFolderOpen",
+        "prompt"
+      ],
+      "enumDescriptions": [
+        "Always open in current window.",
+        "Always open in a new window.",
+        "Only open in current window when no folder is opened.",
+        "Always prompt for action."
+      ],
+      "type": "string"
+    },
+    "swift.path": {
+      "default": "",
+      "markdownDescription": "The path of the folder containing the Swift executables. The default is to look in the PATH environment variable.",
+      "order": 1,
+      "type": "string"
+    },
+    "swift.runtimePath": {
+      "default": "",
+      "description": "The path of the folder containing the Swift runtime libraries.",
+      "order": 2,
+      "type": "string"
+    },
+    "swift.sanitizer": {
+      "default": "off",
+      "description": "Runtime sanitizer instrumentation.",
+      "enum": [
+        "off",
+        "thread",
+        "address"
+      ],
+      "order": 4,
+      "scope": "machine-overridable",
+      "type": "string"
+    },
+    "swift.searchSubfoldersForPackages": {
+      "default": false,
+      "markdownDescription": "Search sub-folders of workspace folder for Swift Packages at start up.",
+      "order": 5,
+      "scope": "machine-overridable",
+      "type": "boolean"
+    },
+    "swift.showBuildStatus": {
+      "default": "swiftStatus",
+      "description": "Controls where to show the Swift build progress when running a `swift` build task.",
+      "enum": [
+        "never",
+        "swiftStatus",
+        "progress",
+        "notification"
+      ],
+      "enumDescriptions": [
+        "Never show the Swift build status.",
+        "Show the Swift build status in a status bar item provided by the Swift extension.",
+        "Show the Swift build status in the \"Progress Message\" status bar item provided by VS Code.",
+        "Show the Swift build status as a progress notification."
+      ],
+      "type": "string"
+    },
+    "swift.showCreateSwiftProjectInWelcomePage": {
+      "default": true,
+      "description": "Controls whether or not the create new swift project button appears in the welcome page.",
+      "type": "boolean"
+    },
+    "swift.sourcekit-lsp.disable": {
+      "default": false,
+      "description": "Disable the running of SourceKit-LSP.",
+      "order": 6,
+      "type": "boolean"
+    },
+    "swift.sourcekit-lsp.serverArguments": {
+      "default": [],
+      "description": "Arguments to pass to SourceKit-LSP. Argument keys and values should be provided as separate entries in the array e.g. ['--log-level', 'debug']",
+      "items": {
+        "type": "string"
+      },
+      "order": 2,
+      "type": "array"
+    },
+    "swift.sourcekit-lsp.serverPath": {
+      "markdownDeprecationMessage": "**Deprecated**: The sourcekit-lsp executable relies on outputs from tools in your current toolchain. If your sourcekit-lsp version does not match your toolchain you may experience unexpected behaviour.",
+      "markdownDescription": "The path of the `sourcekit-lsp` executable. The default is to look in the path where `swift` is found.",
+      "order": 1,
+      "type": "string"
+    },
+    "swift.sourcekit-lsp.supported-languages": {
+      "default": [
+        "swift",
+        "objective-c",
+        "objective-cpp",
+        "c",
+        "cpp"
+      ],
+      "description": "List of languages supported by SourceKit-LSP. This is used to determine whether SourceKit-LSP should provide language features for a particular file type.",
+      "items": {
+        "enum": [
+          "swift",
+          "objective-c",
+          "objective-cpp",
+          "c",
+          "cpp"
+        ],
+        "type": "string"
+      },
+      "order": 4,
+      "type": "array"
+    },
+    "swift.sourcekit-lsp.trace.server": {
+      "default": "off",
+      "description": "Traces the communication between VS Code and the SourceKit-LSP language server.",
+      "enum": [
+        "off",
+        "messages",
+        "verbose"
+      ],
+      "order": 5,
+      "type": "string"
+    },
+    "swift.swiftEnvironmentVariables": {
+      "default": {},
+      "markdownDescription": "Additional environment variables to pass to swift operations.",
+      "order": 1,
+      "patternProperties": {
+        ".*": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "swift.testEnvironmentVariables": {
+      "default": {},
+      "markdownDescription": "Environment variables to set when running tests. To set environment variables when debugging an application you should edit the relevant `launch.json` configuration",
+      "order": 3,
+      "patternProperties": {
+        ".*": {
+          "type": "string"
+        }
+      },
+      "scope": "machine-overridable",
+      "type": "object"
+    },
+    "swift.warnAboutSymlinkCreation": {
+      "default": true,
+      "description": "Controls whether or not the extension will warn about being unable to create symlinks. (Windows only)",
+      "order": 14,
+      "scope": "application",
+      "type": "boolean"
+    }
+  }
 }
