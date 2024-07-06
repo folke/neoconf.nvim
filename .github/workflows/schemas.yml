@@ -12,8 +12,7 @@ jobs:
       - uses: folke/github/neovim@main
       - uses: actions/checkout@v4
       - name: Build
-        run: |
-          nvim --cmd "set rtp^=." -l "lua/neoconf/build/init.lua"
+        run: ./scripts/build
       - name: Push changes
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
