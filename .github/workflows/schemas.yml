@@ -24,7 +24,7 @@ jobs:
         run: |
           nvim -u NONE -E -R --headless --cmd "set rtp^=." --cmd "packloadall" --cmd "luafile lua/neoconf/build/init.lua" --cmd q
       - name: Push changes
-        uses: stefanzweifel/git-auto-commit-action@v4
+        uses: stefanzweifel/git-auto-commit-action@v5
         with:
           commit_message: "chore(build): auto-generate vimdoc, schemas and annotations"
           commit_user_name: "github-actions[bot]"
