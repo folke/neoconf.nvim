@@ -277,6 +277,7 @@ SUPPORTED LANGUAGE SERVERS*neoconf.nvim-neoconf.nvim-supported-language-servers*
 - rescriptls <https://github.com/rescript-lang/rescript-vscode/tree/master/package.json>
 - rls <https://github.com/rust-lang/vscode-rust/tree/master/package.json>
 - rome <https://github.com/rome/tools/tree/main/editors/vscode/package.json>
+- ruff_lsp <https://github.com/astral-sh/ruff-vscode/tree/main/package.json>
 - rust_analyzer <https://github.com/rust-analyzer/rust-analyzer/tree/master/editors/code/package.json>
 - solargraph <https://github.com/castwide/vscode-solargraph/tree/master/package.json>
 - solidity_ls <https://github.com/juanfranblanco/vscode-solidity/tree/master/package.json>
