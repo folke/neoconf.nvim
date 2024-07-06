@@ -67,7 +67,7 @@ end
 function M.on_update(fname)
   local is_global = Util.is_global(fname)
 
-  local clients = vim.lsp.get_active_clients()
+  local clients = vim.lsp.get_clients()
 
   for _, client in ipairs(clients) do
     local settings_root = require("neoconf.workspace").find_root({ file = client.config.root_dir })
