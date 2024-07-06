@@ -1,10 +1,12 @@
 local Config = require("neoconf.config")
 
 local M = {}
+local uv = vim.uv or vim.loop
+M.islist = vim.islist or vim.tbl_islist
 
 function M.merge(...)
   local function can_merge(v)
-    return type(v) == "table" and (vim.tbl_isempty(v) or not vim.islist(v))
+    return type(v) == "table" and (vim.tbl_isempty(v) or not M.islist(v))
   end
 
   local values = { ... }
@@ -149,7 +151,7 @@ end
 
 function M.fqn(fname)
   fname = vim.fn.fnamemodify(fname, ":p")
-  return vim.uv.fs_realpath(fname) or fname
+  return uv.fs_realpath(fname) or fname
 end
 
 ---@param root_dir string
@@ -185,7 +187,7 @@ function M.try(fn, msg)
 end
 
 function M.config_path()
-  return vim.uv.fs_realpath(vim.fn.stdpath("config"))
+  return uv.fs_realpath(vim.fn.stdpath("config"))
 end
 
 function M.is_nvim_config(path)
@@ -261,12 +263,12 @@ function M.json_format(obj)
 end
 
 function M.mtime(fname)
-  local stat = vim.uv.fs_stat(fname)
+  local stat = uv.fs_stat(fname)
   return (stat and stat.type) and stat.mtime.sec or 0
 end
 
 function M.exists(fname)
-  local stat = vim.uv.fs_stat(fname)
+  local stat = uv.fs_stat(fname)
   return (stat and stat.type) or false
 end
 
