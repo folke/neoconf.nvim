@@ -1,10 +1,9 @@
 local util = require("neoconf.util")
-local Schema = require("neoconf.schema")
 
 local M = {}
 
 function M.docs()
-  local schemas = require("neoconf.build.schemas").index()
+  local schemas = require("neoconf.build.schemas").get_schemas()
   local keys = vim.tbl_keys(schemas)
   table.sort(keys)
   local lines = {}
