@@ -10411,6 +10411,191 @@
 ---@field rome _.lspconfig.settings.rome.Rome
 ---@field rome_lsp _.lspconfig.settings.rome.Rome.Lsp
 
+-- Whether to display Quick Fix actions to disable rules via `noqa` suppression comments.
+-- 
+-- ```lua
+-- default = {
+--   enable = true
+-- }
+-- ```
+---@class _.lspconfig.settings.ruff_lsp.DisableRuleComment
+-- Enable the Quick Fix.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enable boolean
+
+-- Whether to display Quick Fix actions to autofix violations.
+-- 
+-- ```lua
+-- default = {
+--   enable = true
+-- }
+-- ```
+---@class _.lspconfig.settings.ruff_lsp.FixViolation
+-- Enable the Quick Fix.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enable boolean
+
+---@class _.lspconfig.settings.ruff_lsp.CodeAction
+-- Whether to display Quick Fix actions to disable rules via `noqa` suppression comments.
+-- 
+-- ```lua
+-- default = {
+--   enable = true
+-- }
+-- ```
+---@field disableRuleComment _.lspconfig.settings.ruff_lsp.DisableRuleComment
+-- Whether to display Quick Fix actions to autofix violations.
+-- 
+-- ```lua
+-- default = {
+--   enable = true
+-- }
+-- ```
+---@field fixViolation _.lspconfig.settings.ruff_lsp.FixViolation
+
+---@class _.lspconfig.settings.ruff_lsp.Format
+-- Additional command-line arguments to pass to `ruff format`, e.g., `"args": ["--config=/path/to/pyproject.toml"]`. Supports a subset of Ruff's command-line arguments, ignoring those that are required to operate the LSP, like `--force-exclude` and `--verbose`. This setting is not supported by the native server.
+-- 
+-- ```lua
+-- default = {}
+-- ```
+---@field args string[]
+-- Enable [preview mode](https://docs.astral.sh/ruff/settings/#format_preview) for the formatter; enables unstable formatting. This setting is used only by the native server.
+---@field preview boolean
+
+---@class _.lspconfig.settings.ruff_lsp.Lint
+-- Additional command-line arguments to pass to `ruff check`, e.g., `"args": ["--config=/path/to/pyproject.toml"]`. Supports a subset of Ruff's command-line arguments, ignoring those that are required to operate the LSP, like `--force-exclude` and `--verbose`. This setting is not supported by the native server.
+-- 
+-- ```lua
+-- default = {}
+-- ```
+---@field args string[]
+-- Whether to enable linting. Set to `false` to use Ruff exclusively as a formatter.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enable boolean
+-- Enable additional rule codes on top of existing configuration, instead of overriding it. Use `ALL` to enable all rules. This setting is used only by the native server.
+---@field extendSelect string[]
+-- Set rule codes to disable. See [the documentation](https://docs.astral.sh/ruff/settings/#lint_ignore) for more details. This setting is used only by the native server.
+---@field ignore string[]
+-- Enable [preview mode](https://docs.astral.sh/ruff/settings/#lint_preview) for the linter; enables unstable rules and fixes. This setting is used only by the native server.
+---@field preview boolean
+-- Run Ruff on every keystroke (`onType`) or on save (`onSave`). This setting is not supported by the native server.
+-- 
+-- ```lua
+-- default = "onType"
+-- ```
+---@field run "onType" | "onSave"
+-- Set rule codes to enable. Use `ALL` to enable all rules. See [the documentation](https://docs.astral.sh/ruff/settings/#lint_select) for more details. This setting is used only by the native server.
+---@field select string[]
+
+---@class _.lspconfig.settings.ruff_lsp.Trace
+-- Traces the communication between VSCode and the ruff-lsp.
+-- 
+-- ```lua
+-- default = "off"
+-- ```
+---@field server "off" | "messages" | "verbose"
+
+---@class _.lspconfig.settings.ruff_lsp.Ruff
+-- Additional command-line arguments to pass to `ruff check`, e.g., `"args": ["--config=/path/to/pyproject.toml"]`. Supports a subset of Ruff's command-line arguments, ignoring those that are required to operate the LSP, like `--force-exclude` and `--verbose`. This setting is not supported by the native server.
+-- 
+-- ```lua
+-- default = {}
+-- ```
+---@field args string[]
+---@field codeAction _.lspconfig.settings.ruff_lsp.CodeAction
+-- Path to a `ruff.toml` or `pyproject.toml` file to use for configuration. By default, Ruff will discover configuration for each project from the filesystem, mirroring the behavior of the Ruff CLI. This setting is used only by the native server.
+---@field configuration string
+-- The preferred method of resolving configuration in the editor with local configuration froml `.toml` files. This setting is used only by the native server.
+-- 
+-- ```lua
+-- default = "editorFirst"
+-- ```
+---@field configurationPreference "editorFirst" | "filesystemFirst" | "editorOnly"
+-- Whether to enable the Ruff extension.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enable boolean
+-- Controls whether Ruff registers as capable of code formatting.
+---@field enableExperimentalFormatter boolean
+-- Set paths for the linter and formatter to ignore. See [the documentation](https://docs.astral.sh/ruff/settings/#lint_exclude) for more details. This setting is used only by the native server.
+---@field exclude string[]
+-- Whether to register Ruff as capable of handling `source.fixAll` actions.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field fixAll boolean
+---@field format _.lspconfig.settings.ruff_lsp.Format
+-- Whether to ignore files that are inferred to be part of the Python standard library.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field ignoreStandardLibrary boolean
+-- Strategy for loading the `ruff` executable. `fromEnvironment` picks up Ruff from the environment, falling back to the bundled version if needed. `useBundled` uses the version bundled with the extension.
+-- 
+-- ```lua
+-- default = "fromEnvironment"
+-- ```
+---@field importStrategy "fromEnvironment" | "useBundled"
+-- Path to a Python interpreter to use to run the LSP server.
+-- 
+-- ```lua
+-- default = {}
+-- ```
+---@field interpreter string[]
+-- Set the [line length](https://docs.astral.sh/ruff/settings/#line-length) used by the formatter and linter. Must be greater than 0 and less than or equal to 320. This setting is used only by the native server.
+---@field lineLength integer
+---@field lint _.lspconfig.settings.ruff_lsp.Lint
+-- Use the integrated Rust-based language server, available now in Beta.
+---@field nativeServer boolean
+-- Whether to register Ruff as capable of handling `source.organizeImports` actions.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field organizeImports boolean
+-- Path to a custom `ruff` executable, e.g., `["/path/to/ruff"]`.
+-- 
+-- ```lua
+-- default = {}
+-- ```
+---@field path string[]
+-- Run Ruff on every keystroke (`onType`) or on save (`onSave`). This setting is not supported by the native server.
+-- 
+-- ```lua
+-- default = "onType"
+-- ```
+---@field run "onType" | "onSave"
+-- Controls when notifications are shown by this extension.
+-- 
+-- ```lua
+-- default = "off"
+-- ```
+---@field showNotifications "off" | "onError" | "onWarning" | "always"
+-- Whether to show syntax error diagnostics.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field showSyntaxErrors boolean
+---@field trace _.lspconfig.settings.ruff_lsp.Trace
+
+---@class lspconfig.settings.ruff_lsp
+---@field ruff _.lspconfig.settings.ruff_lsp.Ruff
+
 ---@class _.lspconfig.settings.rust_analyzer.TermSearch
 -- Enable borrow checking for term search code assists. If set to false, also there will be more suggestions, but some of them may not borrow-check.
 -- 

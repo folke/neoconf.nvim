@@ -345,6 +345,14 @@ lspconfig.rome = {
   setup = function(options) end,
 }
 
+---@class lspconfig.options.ruff_lsp: _.lspconfig.options
+---@field settings lspconfig.settings.ruff_lsp
+
+lspconfig.ruff_lsp = {
+  ---@param options lspconfig.options.ruff_lsp
+  setup = function(options) end,
+}
+
 ---@class lspconfig.options.rust_analyzer: _.lspconfig.options
 ---@field settings lspconfig.settings.rust_analyzer
 
@@ -539,6 +547,7 @@ lspconfig.zls = {
 ---@field rescriptls lspconfig.options.rescriptls
 ---@field rls lspconfig.options.rls
 ---@field rome lspconfig.options.rome
+---@field ruff_lsp lspconfig.options.ruff_lsp
 ---@field rust_analyzer lspconfig.options.rust_analyzer
 ---@field solargraph lspconfig.options.solargraph
 ---@field solidity_ls lspconfig.options.solidity_ls
@@ -601,6 +610,7 @@ lspconfig.zls = {
 ---@field rescriptls lspconfig.settings.rescriptls
 ---@field rls lspconfig.settings.rls
 ---@field rome lspconfig.settings.rome
+---@field ruff_lsp lspconfig.settings.ruff_lsp
 ---@field rust_analyzer lspconfig.settings.rust_analyzer
 ---@field solargraph lspconfig.settings.solargraph
 ---@field solidity_ls lspconfig.settings.solidity_ls
