@@ -3,26 +3,17 @@ on:
   workflow_call:
   workflow_dispatch:
   schedule:
-    # Run this every hour
-    - cron: "0 1 * * *"
+    - cron: "0 1 * * *" # every day at 1AM
 
 jobs:
   schemas:
     runs-on: ubuntu-latest
     steps:
-      - name: Install Neovim
-        shell: bash
-        run: |
-          mkdir -p /tmp/nvim
-          wget -q https://github.com/neovim/neovim/releases/download/nightly/nvim.appimage -O /tmp/nvim/nvim.appimage
-          cd /tmp/nvim
-          chmod a+x ./nvim.appimage
-          ./nvim.appimage --appimage-extract
-          echo "/tmp/nvim/squashfs-root/usr/bin/" >> $GITHUB_PATH
+      - uses: folke/github/neovim@main
       - uses: actions/checkout@v4
       - name: Build
         run: |
-          nvim -u NONE -E -R --headless --cmd "set rtp^=." --cmd "packloadall" --cmd "luafile lua/neoconf/build/init.lua" --cmd q
+          nvim --cmd "set rtp^=." -l "lua/neoconf/build/init.lua"
       - name: Push changes
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
