@@ -35,7 +35,7 @@ M.defaults = {
     lua_ls = {
       -- by default, lua_ls annotations are only enabled in your neovim config directory
       enabled_for_neovim_config = true,
-      -- explicitely enable adding annotations. Mostly relevant to put in your local .nvim.settings.json file
+      -- explicitly enable adding annotations. Mostly relevant to put in your local .nvim.settings.json file
       enabled = false,
     },
   },
