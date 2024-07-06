@@ -19,7 +19,7 @@ function M.setup()
       M.edit({ ["local"] = false })
     end,
     checkhealth = function()
-      vim.cmd([[checkhealth settings]])
+      vim.cmd([[checkhealth neoconf]])
     end,
   }
 
