@@ -70,6 +70,20 @@ function M.on_config(opts)
   end)
 end
 
+---@param t table
+---@param ret? table
+function M.flatten(t, ret)
+  ret = ret or {}
+  for _, v in pairs(t) do
+    if type(v) == "table" then
+      M.flatten(v, ret)
+    else
+      ret[#ret + 1] = v
+    end
+  end
+  return ret
+end
+
 ---@param opts? { local: boolean, global: boolean, autocmd: boolean }
 ---@return string[]
 function M.file_patterns(opts)
