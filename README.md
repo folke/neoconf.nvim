@@ -32,15 +32,6 @@ Install the plugin with your preferred package manager:
 { "folke/neoconf.nvim" }
 ```
 
-### [packer](https://github.com/wbthomason/packer.nvim)
-
-```lua
--- Lua
-use({
-  "folke/neoconf.nvim",
-})
-```
-
 ## 🚀 Setup
 
 It's important that you set up `neoconf.nvim` **BEFORE** `nvim-lspconfig`.
@@ -227,6 +218,7 @@ local my_settings = Neoconf.get("neodev", defaults)
 ## 💻 Supported Language Servers
 
 <!-- GENERATED -->
+
 - [x] [als](https://github.com/AdaCore/ada_language_server/tree/master/integration/vscode/ada/package.json)
 - [x] [astro](https://github.com/withastro/language-tools/tree/main/packages/vscode/package.json)
 - [x] [awkls](https://github.com/Beaglefoot/awk-language-server/tree/master/client/package.json)
