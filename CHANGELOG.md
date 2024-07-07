@@ -1,5 +1,31 @@
 # Changelog
 
+## [1.3.0](https://github.com/folke/neoconf.nvim/compare/v1.2.2...v1.3.0) (2024-07-07)
+
+
+### Features
+
+* added support for ruff_lsp. Fixes [#45](https://github.com/folke/neoconf.nvim/issues/45) ([a198a8c](https://github.com/folke/neoconf.nvim/commit/a198a8c92ea8d1651ba2c8323a9f1c62cb8d0a44))
+* **util:** util.pick_root_dir ([197c17a](https://github.com/folke/neoconf.nvim/commit/197c17af5716075c0dd44f66aab80e20e9689c0a))
+
+
+### Bug Fixes
+
+* **build:** fix schema generation issues ([#63](https://github.com/folke/neoconf.nvim/issues/63)) ([45484f5](https://github.com/folke/neoconf.nvim/commit/45484f5b97996874c2baaaeeae8a14978b0e89df)), closes [#52](https://github.com/folke/neoconf.nvim/issues/52) [#60](https://github.com/folke/neoconf.nvim/issues/60)
+* **commands:** checkhealth. Fixes [#29](https://github.com/folke/neoconf.nvim/issues/29) ([245bb87](https://github.com/folke/neoconf.nvim/commit/245bb871b2b1582286a65c3ea7eac05e7047c59a))
+* deprecation warnings on 0.11 ([c6e2d96](https://github.com/folke/neoconf.nvim/commit/c6e2d969b89084a80bb1f91e3a5d48d49ef79619))
+* **deprecation:** remove use of deprecated API functions ([#59](https://github.com/folke/neoconf.nvim/issues/59)) ([983a93b](https://github.com/folke/neoconf.nvim/commit/983a93b2b61ae363c7ec63728779d3fb064d779f))
+* flatten ([cdbd1f2](https://github.com/folke/neoconf.nvim/commit/cdbd1f2da89cf4c260d32e42a0150f4370f901e0))
+* **health:** remove deprecated API warnings ([#28](https://github.com/folke/neoconf.nvim/issues/28)) ([9625a17](https://github.com/folke/neoconf.nvim/commit/9625a1710a9be427a662f9ba0a383164588a41a8))
+* **health:** remove nvim-treesitter dependency ([#44](https://github.com/folke/neoconf.nvim/issues/44)) ([3374276](https://github.com/folke/neoconf.nvim/commit/3374276df2a9f1dde2cf384035c55dd2c744ffc7))
+* **json:** set `null` values to `nil` ([2f131d0](https://github.com/folke/neoconf.nvim/commit/2f131d0e7d15cd2d84345d3f8c0333f4f6843728))
+* **lspconfig:** dont deepcopy the full config. Do settings only ([37a7205](https://github.com/folke/neoconf.nvim/commit/37a7205282ced297bb1906d36d55e47c526fdc4c))
+* normalize paths. Fixes [#33](https://github.com/folke/neoconf.nvim/issues/33) ([e0835bd](https://github.com/folke/neoconf.nvim/commit/e0835bdc1ad43e8cdd08d3f5c7184896bff8442b))
+* remove nickel_ls ([ca5246f](https://github.com/folke/neoconf.nvim/commit/ca5246f6d8dd6f71b9ef4fe060189da157e1451e))
+* **util:** check that root_dir exists. Fixes [#56](https://github.com/folke/neoconf.nvim/issues/56). Closes [#51](https://github.com/folke/neoconf.nvim/issues/51) ([f9dcd17](https://github.com/folke/neoconf.nvim/commit/f9dcd17b958d384811674c7f7ec8ffdfc1139de4))
+* **util:** normalize paths returned by `Util.file_patterns` ([#35](https://github.com/folke/neoconf.nvim/issues/35)) ([7c34c86](https://github.com/folke/neoconf.nvim/commit/7c34c869e680b86f533e46779e9bdd440739bc71))
+* **volar:** volar schema ([#64](https://github.com/folke/neoconf.nvim/issues/64)) ([4274159](https://github.com/folke/neoconf.nvim/commit/42741597dd95da8462f1deb85e7e0eba203944b4))
+
 ## [1.2.2](https://github.com/folke/neoconf.nvim/compare/v1.2.1...v1.2.2) (2023-06-19)
 
 
