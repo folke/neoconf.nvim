@@ -61,13 +61,17 @@ function M.on_config(opts)
         end
 
         if a and b then
-          -- return longest
-          return #a > #b and a or b
+          return M.pick_root_dir(a, b)
         end
         return a or b
       end
     end
   end)
+end
+
+function M.pick_root_dir(a, b)
+  -- prefer the longest path
+  return #a > #b and a or b
 end
 
 ---@param t table
