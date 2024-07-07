@@ -1,4 +1,4 @@
-*neoconf.nvim.txt*             For Neovim            Last change: 2024 July 06
+*neoconf.nvim.txt*             For Neovim            Last change: 2024 July 07
 
 ==============================================================================
 Table of Contents                             *neoconf.nvim-table-of-contents*
