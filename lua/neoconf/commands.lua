@@ -100,6 +100,7 @@ function M.get_files(opts)
   -- return files that exist or the default files.
   -- never return imported file patterms that don't exist
   return vim.tbl_filter(function(item)
+    item.file = vim.fs.normalize(item.file)
     if Util.exists(item.file) then
       return true
     end
