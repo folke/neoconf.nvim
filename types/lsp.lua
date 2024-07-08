@@ -12725,6 +12725,8 @@
 -- default = "plain"
 -- ```
 ---@field prefix "plain" | "self" | "crate"
+-- Whether to prefix external (including std, core) crate imports with `::`. e.g. "use ::std::io::Read;".
+---@field prefixExternPrelude boolean
 
 ---@class _.lspconfig.settings.rust_analyzer.BindingModeHints
 -- Whether to show inlay type hints for binding modes.
