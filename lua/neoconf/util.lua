@@ -53,12 +53,12 @@ function M.on_config(opts)
     if opts.root_dir then
       local root_dir = initial_config.root_dir
       initial_config.root_dir = function(...)
-        local a = opts.root_dir(...)
-
         local b = root_dir and root_dir(...)
         if not b then
-          return a
+          return
         end
+
+        local a = opts.root_dir(...)
 
         if a and b then
           return M.pick_root_dir(a, b)
