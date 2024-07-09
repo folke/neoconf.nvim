@@ -1006,9 +1006,9 @@
 ---@field analyzerAdditionalArgs string[]
 -- The port number to be used for the Dart analyzer diagnostic server. This setting is can be useful for troubleshooting issues with the Dart Analysis Server.
 ---@field analyzerDiagnosticsPort number
--- The path to a log file for very detailed logging in the Dart Analysis Server that may be useful when trying to diagnose Analysis Server issues.
+-- The path to a log file for very detailed logging in the Dart Analysis Server that may be useful when trying to diagnose Analysis Server issues. Use `${workspaceName}` to insert the name of the current workspace in the file path.
 ---@field analyzerInstrumentationLogFile string
--- The path to a log file for communication between Dart Code and the Analysis Server.
+-- The path to a log file for communication between Dart Code and the Analysis Server. Use `${workspaceName}` to insert the name of the current workspace in the file path.
 ---@field analyzerLogFile string
 -- The path to a custom Dart Analysis Server. This setting is intended for use by Dart Analysis Server developers.
 ---@field analyzerPath string
@@ -1087,9 +1087,9 @@
 ---@field customFlutterDapPath string
 -- EXPERIMENTAL: The port where flutter daemon can be accessed if daemon is run remotely. This setting is intended for use by Google developers.
 ---@field daemonPort number
--- The path to a log file for communication with the DAP debug adapters. This is useful when trying to diagnose issues with debugging such as missed breakpoints.
+-- The path to a log file for communication with the DAP debug adapters. This is useful when trying to diagnose issues with debugging such as missed breakpoints. Use `${workspaceName}` to insert the name of the current workspace in the file path.
 ---@field dapLogFile string
--- The path to a log file for Dart test runs. This is useful when trying to diagnose issues with unit test executions. Use `${name}` in the log file name to prevent concurrent debug sessions overwriting each others logs.
+-- The path to a log file for Dart test runs. This is useful when trying to diagnose issues with unit test executions. Use `${name}` in the log file name to insert the Debug Session name to prevent concurrent debug sessions overwriting each others logs. Use `${workspaceName}` to insert the name of the current workspace in the file path.
 ---@field dartTestLogFile string
 -- The protocol to use for the Dart Debug Extension backend service and injected client. Using WebSockets can improve performance but may fail when connecting through some proxy servers.
 -- 
@@ -1219,7 +1219,7 @@
 -- default = {}
 -- ```
 ---@field flutterCustomEmulators object[]
--- The path to a log file for the `flutter daemon` service, which provides information about connected devices to show in the status bar.
+-- The path to a log file for the `flutter daemon` service, which provides information about connected devices accessible from the status bar. Use `${workspaceName}` to insert the name of the current workspace in the file path.
 ---@field flutterDaemonLogFile string
 -- Whether to automatically run the Generate Localizations command for Flutter apps when saving .arb files.
 -- 
@@ -1257,7 +1257,7 @@
 -- default = {}
 -- ```
 ---@field flutterRunAdditionalArgs string[]
--- The path to a log file for `flutter run`, which is used to launch Flutter apps from VS Code. This is useful when trying to diagnose issues with apps launching (or failing to) on simulators and devices. Use `${name}` in the log file name to prevent concurrent debug sessions overwriting each others logs.
+-- The path to a log file for `flutter run`, which is used to launch Flutter apps from VS Code. This is useful when trying to diagnose issues with apps launching (or failing to) on simulators and devices. Use `${name}` in the log file name to insert the Debug Session name to prevent concurrent debug sessions overwriting each others logs. Use `${workspaceName}` to insert the name of the current workspace in the file path.
 ---@field flutterRunLogFile string
 -- The path to a directory to save Flutter screenshots.
 ---@field flutterScreenshotPath string
@@ -1293,7 +1293,7 @@
 -- default = {}
 -- ```
 ---@field flutterTestAdditionalArgs string[]
--- The path to a log file for `flutter test`, which is used to run unit tests from VS Code. This is useful when trying to diagnose issues with unit test executions. Use `${name}` in the log file name to prevent concurrent debug sessions overwriting each others logs.
+-- The path to a log file for `flutter test`, which is used to run unit tests from VS Code. This is useful when trying to diagnose issues with unit test executions. Use `${name}` in the log file name to insert the Debug Session name to prevent concurrent debug sessions overwriting each others logs. Use `${workspaceName}` to insert the name of the current workspace in the file path.
 ---@field flutterTestLogFile string
 -- **LEGACY SETTING: Disabling this may break functionality on modern SDKs.**
 -- 
@@ -1533,7 +1533,7 @@
 -- default = "name"
 -- ```
 ---@field testInvocationMode "name" | "line"
--- The path to a log file for the `dart tooling-daemon` service, which coordinates between various Dart and Flutter tools and extensions.
+-- The path to a log file for the `dart tooling-daemon` service, which coordinates between various Dart and Flutter tools and extensions. Use `${workspaceName}` to insert the name of the current workspace in the file path.
 ---@field toolingDaemonLogFile string
 -- **LEGACY SETTING: Only applies to Dart SDKs before v2.15 since DevTools now ships in the SDK.**
 -- 
@@ -1567,7 +1567,7 @@
 -- default = {}
 -- ```
 ---@field vmAdditionalArgs string[]
--- The path to a log file for communication between Dart Code and the VM service. This is useful when trying to diagnose issues with debugging such as missed breakpoints. Use `${name}` in the log file name to prevent concurrent debug sessions overwriting each others logs.
+-- The path to a log file for communication between Dart Code and the VM service. This is useful when trying to diagnose issues with debugging such as missed breakpoints. Use `${name}` in the log file name to insert the Debug Session name to prevent concurrent debug sessions overwriting each others logs. Use `${workspaceName}` to insert the name of the current workspace in the file path.
 ---@field vmServiceLogFile string
 -- Whether to show a warning when modifying files in the [system package cache](https://dart.dev/tools/pub/glossary#system-cache) directory.
 -- 
@@ -1581,7 +1581,7 @@
 -- default = true
 -- ```
 ---@field warnWhenEditingFilesOutsideWorkspace boolean
--- The path to a log file for communication between Dart Code and the webdev daemon. This is useful when trying to diagnose issues with launching web apps. Use `${name`} in the log file name to prevent concurrent debug sessions overwriting each others logs.
+-- The path to a log file for communication between Dart Code and the webdev daemon. This is useful when trying to diagnose issues with launching web apps. Use `${name`} in the log file name to prevent concurrent debug sessions overwriting each others logs. Use `${workspaceName}` to insert the name of the current workspace in the file path.
 ---@field webDaemonLogFile string
 
 ---@class lspconfig.settings.dartls
@@ -11982,8 +11982,12 @@
 -- Set the [line length](https://docs.astral.sh/ruff/settings/#line-length) used by the formatter and linter. Must be greater than 0 and less than or equal to 320. This setting is used only by the native server.
 ---@field lineLength integer
 ---@field lint _.lspconfig.settings.ruff_lsp.Lint
--- Use the integrated Rust-based language server, available now in Beta.
----@field nativeServer boolean
+-- Whether to use the native language server, [`ruff-lsp`](https://github.com/astral-sh/ruff-lsp) or automatically decide between the two based on the Ruff version and extension settings.
+-- 
+-- ```lua
+-- default = "auto"
+-- ```
+---@field nativeServer "on" | "off" | "auto" | true | false
 -- Whether to register Ruff as capable of handling `source.organizeImports` actions.
 -- 
 -- ```lua
