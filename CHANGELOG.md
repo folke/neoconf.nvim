@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.3.1](https://github.com/folke/neoconf.nvim/compare/v1.3.0...v1.3.1) (2024-07-09)
+
+
+### Bug Fixes
+
+* **util:** if lcponfig doesnt return a root dir, then also dont use the fallback. Fixes [#74](https://github.com/folke/neoconf.nvim/issues/74) ([7137fde](https://github.com/folke/neoconf.nvim/commit/7137fde498021f351aa3aa67e0c08e08eb7fbe38))
+
 ## [1.3.0](https://github.com/folke/neoconf.nvim/compare/v1.2.2...v1.3.0) (2024-07-07)
 
 
