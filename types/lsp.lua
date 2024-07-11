@@ -927,6 +927,12 @@
 
 -- Custom settings for launching DevTools. This setting is intended for use by Dart DevTools developers.
 ---@class _.lspconfig.settings.dartls.CustomDevTools
+-- Extra arguments to pass when running the `devtools_tool serve` command.
+-- 
+-- ```lua
+-- default = {}
+-- ```
+---@field args string[]
 -- Any environment variables to set when spawning the command. 'LOCAL_DART_SDK' should usually be set to your Dart SDK checkout and 'FLUTTER_ROOT' to the version of Flutter that DevTools is pinned to.
 -- 
 -- ```lua
@@ -12795,6 +12801,27 @@
 -- ```
 ---@field mode "prefix" | "postfix" | "prefer_prefix" | "prefer_postfix"
 
+---@class _.lspconfig.settings.rust_analyzer.Const
+-- Whether to show const generic parameter name inlay hints.
+---@field enable boolean
+
+---@class _.lspconfig.settings.rust_analyzer.Lifetime
+-- Whether to show generic lifetime parameter name inlay hints.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enable boolean
+
+---@class _.lspconfig.settings.rust_analyzer.Type
+-- Whether to show generic type parameter name inlay hints.
+---@field enable boolean
+
+---@class _.lspconfig.settings.rust_analyzer.GenericParameterHints
+---@field const _.lspconfig.settings.rust_analyzer.Const
+---@field lifetime _.lspconfig.settings.rust_analyzer.Lifetime
+---@field type _.lspconfig.settings.rust_analyzer.Type
+
 ---@class _.lspconfig.settings.rust_analyzer.ImplicitDrops
 -- Whether to show implicit drop hints.
 ---@field enable boolean
@@ -12858,6 +12885,7 @@
 ---@field closureStyle "impl_fn" | "rust_analyzer" | "with_id" | "hide"
 ---@field discriminantHints _.lspconfig.settings.rust_analyzer.DiscriminantHints
 ---@field expressionAdjustmentHints _.lspconfig.settings.rust_analyzer.ExpressionAdjustmentHints
+---@field genericParameterHints _.lspconfig.settings.rust_analyzer.GenericParameterHints
 ---@field implicitDrops _.lspconfig.settings.rust_analyzer.ImplicitDrops
 ---@field lifetimeElisionHints _.lspconfig.settings.rust_analyzer.LifetimeElisionHints
 -- Maximum length for inlay hints. Set to null to have an unlimited length.

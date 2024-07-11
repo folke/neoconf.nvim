@@ -215,6 +215,14 @@
     "dart.customDevTools": {
       "description": "Custom settings for launching DevTools. This setting is intended for use by Dart DevTools developers.",
       "properties": {
+        "args": {
+          "default": [],
+          "description": "Extra arguments to pass when running the `devtools_tool serve` command.",
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
         "env": {
           "default": {
             "FLUTTER_ROOT": "/path/to/devtools/tool/flutter-sdk",
