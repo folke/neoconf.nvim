@@ -80,6 +80,17 @@
       "scope": "resource",
       "type": "boolean"
     },
+    "luau-lsp.completion.imports.ignoreGlobs": {
+      "default": [
+        "**/_Index/**"
+      ],
+      "items": {
+        "type": "string"
+      },
+      "markdownDescription": "Files that match these globs will not be shown during auto-import",
+      "scope": "resource",
+      "type": "array"
+    },
     "luau-lsp.completion.imports.requireStyle": {
       "default": "auto",
       "enum": [

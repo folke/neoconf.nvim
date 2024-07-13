@@ -8398,6 +8398,12 @@
 ---@class _.lspconfig.settings.luau_lsp.Imports
 -- Suggest automatic imports in completion items
 ---@field enabled boolean
+-- Files that match these globs will not be shown during auto-import
+-- 
+-- ```lua
+-- default = { "**/_Index/**" }
+-- ```
+---@field ignoreGlobs string[]
 -- The style of requires when autocompleted
 -- 
 -- ```lua
