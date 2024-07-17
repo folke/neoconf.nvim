@@ -1093,8 +1093,10 @@
 ---@field customFlutterDapPath string
 -- EXPERIMENTAL: The port where flutter daemon can be accessed if daemon is run remotely. This setting is intended for use by Google developers.
 ---@field daemonPort number
--- The path to a log file for communication with the DAP debug adapters. This is useful when trying to diagnose issues with debugging such as missed breakpoints. Use `${workspaceName}` to insert the name of the current workspace in the file path.
+-- The path to a log file for communication with the DAP debug adapters. This is useful when trying to diagnose issues with debugging such as missed breakpoints. Use `${name}` in the log file name to insert the Debug Session name to prevent concurrent debug sessions overwriting each others logs. Use `${workspaceName}` to insert the name of the current workspace in the file path. Use `${kind}` to insert a description of the kind of debug session ('dart', 'dart_test', 'flutter' etc.).
 ---@field dapLogFile string
+-- **LEGACY SETTING: Only applies when using the legacy debug adapters.**
+-- 
 -- The path to a log file for Dart test runs. This is useful when trying to diagnose issues with unit test executions. Use `${name}` in the log file name to insert the Debug Session name to prevent concurrent debug sessions overwriting each others logs. Use `${workspaceName}` to insert the name of the current workspace in the file path.
 ---@field dartTestLogFile string
 -- The protocol to use for the Dart Debug Extension backend service and injected client. Using WebSockets can improve performance but may fail when connecting through some proxy servers.
@@ -1121,7 +1123,7 @@
 -- }
 -- ```
 ---@field devToolsLocation _.lspconfig.settings.dartls.DevToolsLocation
--- The path to a low-traffic log file for the Dart DevTools service.
+-- The path to a low-traffic log file for the Dart DevTools service. Use `${workspaceName}` to insert the name of the current workspace in the file path.
 ---@field devToolsLogFile string
 -- The port number to be used for the Dart DevTools (requires restart).
 ---@field devToolsPort number
@@ -1187,7 +1189,7 @@
 ---@field evaluateToStringInDebugViews boolean
 -- Whether to enable experimental (possibly unfinished or unstable) refactors on the lightbulb menu. This setting is intended for use by Dart Analysis Server developers or users that want to try out and provide feedback on in-progress refactors.
 ---@field experimentalRefactors boolean
--- The path to a low-traffic log file for basic extension and editor issues.
+-- The path to a low-traffic log file for basic extension and editor issues. Use `${workspaceName}` to insert the name of the current workspace in the file path.
 ---@field extensionLogFile string
 -- Whether to automatically run `adb connect 100.115.92.2:5555` when spawning the Flutter daemon when running on Chrome OS.
 ---@field flutterAdbConnectOnChromeOs boolean
@@ -1263,6 +1265,8 @@
 -- default = {}
 -- ```
 ---@field flutterRunAdditionalArgs string[]
+-- **LEGACY SETTING: Only applies when using the legacy debug adapters.**
+-- 
 -- The path to a log file for `flutter run`, which is used to launch Flutter apps from VS Code. This is useful when trying to diagnose issues with apps launching (or failing to) on simulators and devices. Use `${name}` in the log file name to insert the Debug Session name to prevent concurrent debug sessions overwriting each others logs. Use `${workspaceName}` to insert the name of the current workspace in the file path.
 ---@field flutterRunLogFile string
 -- The path to a directory to save Flutter screenshots.
@@ -1299,6 +1303,8 @@
 -- default = {}
 -- ```
 ---@field flutterTestAdditionalArgs string[]
+-- **LEGACY SETTING: Only applies when using the legacy debug adapters.**
+-- 
 -- The path to a log file for `flutter test`, which is used to run unit tests from VS Code. This is useful when trying to diagnose issues with unit test executions. Use `${name}` in the log file name to insert the Debug Session name to prevent concurrent debug sessions overwriting each others logs. Use `${workspaceName}` to insert the name of the current workspace in the file path.
 ---@field flutterTestLogFile string
 -- **LEGACY SETTING: Disabling this may break functionality on modern SDKs.**
@@ -1573,6 +1579,8 @@
 -- default = {}
 -- ```
 ---@field vmAdditionalArgs string[]
+-- **LEGACY SETTING: Only applies when using the legacy debug adapters.**
+-- 
 -- The path to a log file for communication between Dart Code and the VM service. This is useful when trying to diagnose issues with debugging such as missed breakpoints. Use `${name}` in the log file name to insert the Debug Session name to prevent concurrent debug sessions overwriting each others logs. Use `${workspaceName}` to insert the name of the current workspace in the file path.
 ---@field vmServiceLogFile string
 -- Whether to show a warning when modifying files in the [system package cache](https://dart.dev/tools/pub/glossary#system-cache) directory.
@@ -1587,7 +1595,9 @@
 -- default = true
 -- ```
 ---@field warnWhenEditingFilesOutsideWorkspace boolean
--- The path to a log file for communication between Dart Code and the webdev daemon. This is useful when trying to diagnose issues with launching web apps. Use `${name`} in the log file name to prevent concurrent debug sessions overwriting each others logs. Use `${workspaceName}` to insert the name of the current workspace in the file path.
+-- **LEGACY SETTING: Only applies when using the legacy debug adapters.**
+-- 
+-- The path to a log file for communication between Dart Code and the webdev daemon. This is useful when trying to diagnose issues with launching web apps. Use `${name}` in the log file name to insert the Debug Session name to prevent concurrent debug sessions overwriting each others logs. Use `${workspaceName}` to insert the name of the current workspace in the file path.
 ---@field webDaemonLogFile string
 
 ---@class lspconfig.settings.dartls
@@ -11895,17 +11905,23 @@
 ---@field fixViolation _.lspconfig.settings.ruff_lsp.FixViolation
 
 ---@class _.lspconfig.settings.ruff_lsp.Format
--- Additional command-line arguments to pass to `ruff format`, e.g., `"args": ["--config=/path/to/pyproject.toml"]`. Supports a subset of Ruff's command-line arguments, ignoring those that are required to operate the LSP, like `--force-exclude` and `--verbose`. This setting is not supported by the native server.
+-- Additional command-line arguments to pass to `ruff format`, e.g., `"args": ["--config=/path/to/pyproject.toml"]`. Supports a subset of Ruff's command-line arguments, ignoring those that are required to operate the LSP, like `--force-exclude` and `--verbose`.
+-- 
+-- **This setting is not supported by the native server.**
 -- 
 -- ```lua
 -- default = {}
 -- ```
 ---@field args string[]
--- Enable [preview mode](https://docs.astral.sh/ruff/settings/#format_preview) for the formatter; enables unstable formatting. This setting is used only by the native server.
+-- Enable [preview mode](https://docs.astral.sh/ruff/settings/#format_preview) for the formatter; enables unstable formatting.
+-- 
+-- **This setting is used only by the native server.**
 ---@field preview boolean
 
 ---@class _.lspconfig.settings.ruff_lsp.Lint
--- Additional command-line arguments to pass to `ruff check`, e.g., `"args": ["--config=/path/to/pyproject.toml"]`. Supports a subset of Ruff's command-line arguments, ignoring those that are required to operate the LSP, like `--force-exclude` and `--verbose`. This setting is not supported by the native server.
+-- Additional command-line arguments to pass to `ruff check`, e.g., `"args": ["--config=/path/to/pyproject.toml"]`. Supports a subset of Ruff's command-line arguments, ignoring those that are required to operate the LSP, like `--force-exclude` and `--verbose`.
+-- 
+-- **This setting is not supported by the native server.**
 -- 
 -- ```lua
 -- default = {}
@@ -11917,19 +11933,29 @@
 -- default = true
 -- ```
 ---@field enable boolean
--- Enable additional rule codes on top of existing configuration, instead of overriding it. Use `ALL` to enable all rules. This setting is used only by the native server.
+-- Enable additional rule codes on top of existing configuration, instead of overriding it. Use `ALL` to enable all rules.
+-- 
+-- **This setting is used only by the native server.**
 ---@field extendSelect string[]
--- Set rule codes to disable. See [the documentation](https://docs.astral.sh/ruff/settings/#lint_ignore) for more details. This setting is used only by the native server.
+-- Set rule codes to disable. See [the documentation](https://docs.astral.sh/ruff/settings/#lint_ignore) for more details.
+-- 
+-- **This setting is used only by the native server.**
 ---@field ignore string[]
--- Enable [preview mode](https://docs.astral.sh/ruff/settings/#lint_preview) for the linter; enables unstable rules and fixes. This setting is used only by the native server.
+-- Enable [preview mode](https://docs.astral.sh/ruff/settings/#lint_preview) for the linter; enables unstable rules and fixes.
+-- 
+-- **This setting is used only by the native server.**
 ---@field preview boolean
--- Run Ruff on every keystroke (`onType`) or on save (`onSave`). This setting is not supported by the native server.
+-- Run Ruff on every keystroke (`onType`) or on save (`onSave`).
+-- 
+-- **This setting is not supported by the native server.**
 -- 
 -- ```lua
 -- default = "onType"
 -- ```
 ---@field run "onType" | "onSave"
--- Set rule codes to enable. Use `ALL` to enable all rules. See [the documentation](https://docs.astral.sh/ruff/settings/#lint_select) for more details. This setting is used only by the native server.
+-- Set rule codes to enable. Use `ALL` to enable all rules. See [the documentation](https://docs.astral.sh/ruff/settings/#lint_select) for more details.
+-- 
+-- **This setting is used only by the native server.**
 ---@field select string[]
 
 ---@class _.lspconfig.settings.ruff_lsp.Trace
@@ -11941,16 +11967,22 @@
 ---@field server "off" | "messages" | "verbose"
 
 ---@class _.lspconfig.settings.ruff_lsp.Ruff
--- Additional command-line arguments to pass to `ruff check`, e.g., `"args": ["--config=/path/to/pyproject.toml"]`. Supports a subset of Ruff's command-line arguments, ignoring those that are required to operate the LSP, like `--force-exclude` and `--verbose`. This setting is not supported by the native server.
+-- Additional command-line arguments to pass to `ruff check`, e.g., `"args": ["--config=/path/to/pyproject.toml"]`. Supports a subset of Ruff's command-line arguments, ignoring those that are required to operate the LSP, like `--force-exclude` and `--verbose`.
+-- 
+-- **This setting is not supported by the native server.**
 -- 
 -- ```lua
 -- default = {}
 -- ```
 ---@field args string[]
 ---@field codeAction _.lspconfig.settings.ruff_lsp.CodeAction
--- Path to a `ruff.toml` or `pyproject.toml` file to use for configuration. By default, Ruff will discover configuration for each project from the filesystem, mirroring the behavior of the Ruff CLI. This setting is used only by the native server.
+-- Path to a `ruff.toml` or `pyproject.toml` file to use for configuration. By default, Ruff will discover configuration for each project from the filesystem, mirroring the behavior of the Ruff CLI.
+-- 
+-- **This setting is used only by the native server.**
 ---@field configuration string
--- The preferred method of resolving configuration in the editor with local configuration froml `.toml` files. This setting is used only by the native server.
+-- The preferred method of resolving configuration in the editor with local configuration froml `.toml` files.
+-- 
+-- **This setting is used only by the native server.**
 -- 
 -- ```lua
 -- default = "editorFirst"
@@ -11964,7 +11996,9 @@
 ---@field enable boolean
 -- Controls whether Ruff registers as capable of code formatting.
 ---@field enableExperimentalFormatter boolean
--- Set paths for the linter and formatter to ignore. See [the documentation](https://docs.astral.sh/ruff/settings/#lint_exclude) for more details. This setting is used only by the native server.
+-- Set paths for the linter and formatter to ignore. See [the documentation](https://docs.astral.sh/ruff/settings/#lint_exclude) for more details.
+-- 
+-- **This setting is used only by the native server.**
 ---@field exclude string[]
 -- Whether to register Ruff as capable of handling `source.fixAll` actions.
 -- 
@@ -11991,9 +12025,19 @@
 -- default = {}
 -- ```
 ---@field interpreter string[]
--- Set the [line length](https://docs.astral.sh/ruff/settings/#line-length) used by the formatter and linter. Must be greater than 0 and less than or equal to 320. This setting is used only by the native server.
+-- Set the [line length](https://docs.astral.sh/ruff/settings/#line-length) used by the formatter and linter. Must be greater than 0 and less than or equal to 320.
+-- 
+-- **This setting is used only by the native server.**
 ---@field lineLength integer
 ---@field lint _.lspconfig.settings.ruff_lsp.Lint
+-- Path to the log file for the language server.
+-- 
+-- **This setting is used only by the native server.**
+---@field logFile string
+-- Controls the log level of the language server.
+-- 
+-- **This setting is used only by the native server.**
+---@field logLevel "error" | "warning" | "info" | "debug" | "trace"
 -- Whether to use the native language server, [`ruff-lsp`](https://github.com/astral-sh/ruff-lsp) or automatically decide between the two based on the Ruff version and extension settings.
 -- 
 -- ```lua
@@ -12012,7 +12056,9 @@
 -- default = {}
 -- ```
 ---@field path string[]
--- Run Ruff on every keystroke (`onType`) or on save (`onSave`). This setting is not supported by the native server.
+-- Run Ruff on every keystroke (`onType`) or on save (`onSave`).
+-- 
+-- **This setting is not supported by the native server.**
 -- 
 -- ```lua
 -- default = "onType"

@@ -260,7 +260,7 @@
     },
     "dart.dapLogFile": {
       "default": null,
-      "markdownDescription": "The path to a log file for communication with the DAP debug adapters. This is useful when trying to diagnose issues with debugging such as missed breakpoints. Use `${workspaceName}` to insert the name of the current workspace in the file path.",
+      "markdownDescription": "The path to a log file for communication with the DAP debug adapters. This is useful when trying to diagnose issues with debugging such as missed breakpoints. Use `${name}` in the log file name to insert the Debug Session name to prevent concurrent debug sessions overwriting each others logs. Use `${workspaceName}` to insert the name of the current workspace in the file path. Use `${kind}` to insert a description of the kind of debug session ('dart', 'dart_test', 'flutter' etc.).",
       "scope": "machine-overridable",
       "type": [
         "null",
@@ -269,7 +269,7 @@
     },
     "dart.dartTestLogFile": {
       "default": null,
-      "markdownDescription": "The path to a log file for Dart test runs. This is useful when trying to diagnose issues with unit test executions. Use `${name}` in the log file name to insert the Debug Session name to prevent concurrent debug sessions overwriting each others logs. Use `${workspaceName}` to insert the name of the current workspace in the file path.",
+      "markdownDescription": "**LEGACY SETTING: Only applies when using the legacy debug adapters.**\n\nThe path to a log file for Dart test runs. This is useful when trying to diagnose issues with unit test executions. Use `${name}` in the log file name to insert the Debug Session name to prevent concurrent debug sessions overwriting each others logs. Use `${workspaceName}` to insert the name of the current workspace in the file path.",
       "scope": "machine-overridable",
       "type": [
         "null",
@@ -422,7 +422,7 @@
     },
     "dart.devToolsLogFile": {
       "default": null,
-      "description": "The path to a low-traffic log file for the Dart DevTools service.",
+      "description": "The path to a low-traffic log file for the Dart DevTools service. Use `${workspaceName}` to insert the name of the current workspace in the file path.",
       "scope": "machine-overridable",
       "type": [
         "null",
@@ -530,7 +530,7 @@
     },
     "dart.extensionLogFile": {
       "default": null,
-      "description": "The path to a low-traffic log file for basic extension and editor issues.",
+      "description": "The path to a low-traffic log file for basic extension and editor issues. Use `${workspaceName}` to insert the name of the current workspace in the file path.",
       "scope": "machine-overridable",
       "type": [
         "null",
@@ -700,7 +700,7 @@
     },
     "dart.flutterRunLogFile": {
       "default": null,
-      "markdownDescription": "The path to a log file for `flutter run`, which is used to launch Flutter apps from VS Code. This is useful when trying to diagnose issues with apps launching (or failing to) on simulators and devices. Use `${name}` in the log file name to insert the Debug Session name to prevent concurrent debug sessions overwriting each others logs. Use `${workspaceName}` to insert the name of the current workspace in the file path.",
+      "markdownDescription": "**LEGACY SETTING: Only applies when using the legacy debug adapters.**\n\nThe path to a log file for `flutter run`, which is used to launch Flutter apps from VS Code. This is useful when trying to diagnose issues with apps launching (or failing to) on simulators and devices. Use `${name}` in the log file name to insert the Debug Session name to prevent concurrent debug sessions overwriting each others logs. Use `${workspaceName}` to insert the name of the current workspace in the file path.",
       "scope": "machine-overridable",
       "type": [
         "null",
@@ -779,7 +779,7 @@
     },
     "dart.flutterTestLogFile": {
       "default": null,
-      "markdownDescription": "The path to a log file for `flutter test`, which is used to run unit tests from VS Code. This is useful when trying to diagnose issues with unit test executions. Use `${name}` in the log file name to insert the Debug Session name to prevent concurrent debug sessions overwriting each others logs. Use `${workspaceName}` to insert the name of the current workspace in the file path.",
+      "markdownDescription": "**LEGACY SETTING: Only applies when using the legacy debug adapters.**\n\nThe path to a log file for `flutter test`, which is used to run unit tests from VS Code. This is useful when trying to diagnose issues with unit test executions. Use `${name}` in the log file name to insert the Debug Session name to prevent concurrent debug sessions overwriting each others logs. Use `${workspaceName}` to insert the name of the current workspace in the file path.",
       "scope": "machine-overridable",
       "type": [
         "null",
@@ -1223,7 +1223,7 @@
     },
     "dart.vmServiceLogFile": {
       "default": null,
-      "markdownDescription": "The path to a log file for communication between Dart Code and the VM service. This is useful when trying to diagnose issues with debugging such as missed breakpoints. Use `${name}` in the log file name to insert the Debug Session name to prevent concurrent debug sessions overwriting each others logs. Use `${workspaceName}` to insert the name of the current workspace in the file path.",
+      "markdownDescription": "**LEGACY SETTING: Only applies when using the legacy debug adapters.**\n\nThe path to a log file for communication between Dart Code and the VM service. This is useful when trying to diagnose issues with debugging such as missed breakpoints. Use `${name}` in the log file name to insert the Debug Session name to prevent concurrent debug sessions overwriting each others logs. Use `${workspaceName}` to insert the name of the current workspace in the file path.",
       "scope": "machine-overridable",
       "type": [
         "null",
@@ -1244,7 +1244,7 @@
     },
     "dart.webDaemonLogFile": {
       "default": null,
-      "markdownDescription": "The path to a log file for communication between Dart Code and the webdev daemon. This is useful when trying to diagnose issues with launching web apps. Use `${name`} in the log file name to prevent concurrent debug sessions overwriting each others logs. Use `${workspaceName}` to insert the name of the current workspace in the file path.",
+      "markdownDescription": "**LEGACY SETTING: Only applies when using the legacy debug adapters.**\n\nThe path to a log file for communication between Dart Code and the webdev daemon. This is useful when trying to diagnose issues with launching web apps. Use `${name}` in the log file name to insert the Debug Session name to prevent concurrent debug sessions overwriting each others logs. Use `${workspaceName}` to insert the name of the current workspace in the file path.",
       "scope": "machine-overridable",
       "type": [
         "null",

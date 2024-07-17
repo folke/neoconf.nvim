@@ -9,7 +9,7 @@
         "type": "string"
       },
       "markdownDeprecationMessage": "**Deprecated**: Please use `#ruff.lint.args` instead.",
-      "markdownDescription": "Additional command-line arguments to pass to `ruff check`, e.g., `\"args\": [\"--config=/path/to/pyproject.toml\"]`. Supports a subset of Ruff's command-line arguments, ignoring those that are required to operate the LSP, like `--force-exclude` and `--verbose`. This setting is not supported by the native server.",
+      "markdownDescription": "Additional command-line arguments to pass to `ruff check`, e.g., `\"args\": [\"--config=/path/to/pyproject.toml\"]`. Supports a subset of Ruff's command-line arguments, ignoring those that are required to operate the LSP, like `--force-exclude` and `--verbose`.\n\n**This setting is not supported by the native server.**",
       "scope": "resource",
       "type": "array"
     },
@@ -47,7 +47,7 @@
     },
     "ruff.configuration": {
       "default": null,
-      "markdownDescription": "Path to a `ruff.toml` or `pyproject.toml` file to use for configuration. By default, Ruff will discover configuration for each project from the filesystem, mirroring the behavior of the Ruff CLI. This setting is used only by the native server.",
+      "markdownDescription": "Path to a `ruff.toml` or `pyproject.toml` file to use for configuration. By default, Ruff will discover configuration for each project from the filesystem, mirroring the behavior of the Ruff CLI.\n\n**This setting is used only by the native server.**",
       "scope": "window",
       "type": "string"
     },
@@ -63,7 +63,7 @@
         "An alternative strategy - configuration set in `.toml` files takes priority over configuration set in the editor.",
         "An alternative strategy - configuration set in `.toml` files is ignored entirely."
       ],
-      "markdownDescription": "The preferred method of resolving configuration in the editor with local configuration froml `.toml` files. This setting is used only by the native server.",
+      "markdownDescription": "The preferred method of resolving configuration in the editor with local configuration froml `.toml` files.\n\n**This setting is used only by the native server.**",
       "scope": "resource",
       "type": "string"
     },
@@ -86,7 +86,7 @@
       "items": {
         "type": "string"
       },
-      "markdownDescription": "Set paths for the linter and formatter to ignore. See [the documentation](https://docs.astral.sh/ruff/settings/#lint_exclude) for more details. This setting is used only by the native server.",
+      "markdownDescription": "Set paths for the linter and formatter to ignore. See [the documentation](https://docs.astral.sh/ruff/settings/#lint_exclude) for more details.\n\n**This setting is used only by the native server.**",
       "scope": "resource",
       "type": "array"
     },
@@ -101,13 +101,13 @@
       "items": {
         "type": "string"
       },
-      "markdownDescription": "Additional command-line arguments to pass to `ruff format`, e.g., `\"args\": [\"--config=/path/to/pyproject.toml\"]`. Supports a subset of Ruff's command-line arguments, ignoring those that are required to operate the LSP, like `--force-exclude` and `--verbose`. This setting is not supported by the native server.",
+      "markdownDescription": "Additional command-line arguments to pass to `ruff format`, e.g., `\"args\": [\"--config=/path/to/pyproject.toml\"]`. Supports a subset of Ruff's command-line arguments, ignoring those that are required to operate the LSP, like `--force-exclude` and `--verbose`.\n\n**This setting is not supported by the native server.**",
       "scope": "resource",
       "type": "array"
     },
     "ruff.format.preview": {
       "default": null,
-      "markdownDescription": "Enable [preview mode](https://docs.astral.sh/ruff/settings/#format_preview) for the formatter; enables unstable formatting. This setting is used only by the native server.",
+      "markdownDescription": "Enable [preview mode](https://docs.astral.sh/ruff/settings/#format_preview) for the formatter; enables unstable formatting.\n\n**This setting is used only by the native server.**",
       "scope": "resource",
       "type": "boolean"
     },
@@ -142,7 +142,7 @@
     },
     "ruff.lineLength": {
       "default": null,
-      "markdownDescription": "Set the [line length](https://docs.astral.sh/ruff/settings/#line-length) used by the formatter and linter. Must be greater than 0 and less than or equal to 320. This setting is used only by the native server.",
+      "markdownDescription": "Set the [line length](https://docs.astral.sh/ruff/settings/#line-length) used by the formatter and linter. Must be greater than 0 and less than or equal to 320.\n\n**This setting is used only by the native server.**",
       "maximum": 320,
       "minimum": 1,
       "scope": "resource",
@@ -156,7 +156,7 @@
       "items": {
         "type": "string"
       },
-      "markdownDescription": "Additional command-line arguments to pass to `ruff check`, e.g., `\"args\": [\"--config=/path/to/pyproject.toml\"]`. Supports a subset of Ruff's command-line arguments, ignoring those that are required to operate the LSP, like `--force-exclude` and `--verbose`. This setting is not supported by the native server.",
+      "markdownDescription": "Additional command-line arguments to pass to `ruff check`, e.g., `\"args\": [\"--config=/path/to/pyproject.toml\"]`. Supports a subset of Ruff's command-line arguments, ignoring those that are required to operate the LSP, like `--force-exclude` and `--verbose`.\n\n**This setting is not supported by the native server.**",
       "scope": "resource",
       "type": "array"
     },
@@ -171,7 +171,7 @@
       "items": {
         "type": "string"
       },
-      "markdownDescription": "Enable additional rule codes on top of existing configuration, instead of overriding it. Use `ALL` to enable all rules. This setting is used only by the native server.",
+      "markdownDescription": "Enable additional rule codes on top of existing configuration, instead of overriding it. Use `ALL` to enable all rules.\n\n**This setting is used only by the native server.**",
       "scope": "resource",
       "type": "array"
     },
@@ -180,13 +180,13 @@
       "items": {
         "type": "string"
       },
-      "markdownDescription": "Set rule codes to disable. See [the documentation](https://docs.astral.sh/ruff/settings/#lint_ignore) for more details. This setting is used only by the native server.",
+      "markdownDescription": "Set rule codes to disable. See [the documentation](https://docs.astral.sh/ruff/settings/#lint_ignore) for more details.\n\n**This setting is used only by the native server.**",
       "scope": "resource",
       "type": "array"
     },
     "ruff.lint.preview": {
       "default": null,
-      "markdownDescription": "Enable [preview mode](https://docs.astral.sh/ruff/settings/#lint_preview) for the linter; enables unstable rules and fixes. This setting is used only by the native server.",
+      "markdownDescription": "Enable [preview mode](https://docs.astral.sh/ruff/settings/#lint_preview) for the linter; enables unstable rules and fixes.\n\n**This setting is used only by the native server.**",
       "scope": "resource",
       "type": "boolean"
     },
@@ -200,7 +200,7 @@
         "Run Ruff on every keystroke.",
         "Run Ruff on save."
       ],
-      "markdownDescription": "Run Ruff on every keystroke (`onType`) or on save (`onSave`). This setting is not supported by the native server.",
+      "markdownDescription": "Run Ruff on every keystroke (`onType`) or on save (`onSave`).\n\n**This setting is not supported by the native server.**",
       "scope": "window",
       "type": "string"
     },
@@ -217,9 +217,28 @@
       "items": {
         "type": "string"
       },
-      "markdownDescription": "Set rule codes to enable. Use `ALL` to enable all rules. See [the documentation](https://docs.astral.sh/ruff/settings/#lint_select) for more details. This setting is used only by the native server.",
+      "markdownDescription": "Set rule codes to enable. Use `ALL` to enable all rules. See [the documentation](https://docs.astral.sh/ruff/settings/#lint_select) for more details.\n\n**This setting is used only by the native server.**",
       "scope": "resource",
       "type": "array"
+    },
+    "ruff.logFile": {
+      "default": null,
+      "markdownDescription": "Path to the log file for the language server.\n\n**This setting is used only by the native server.**",
+      "scope": "window",
+      "type": "string"
+    },
+    "ruff.logLevel": {
+      "default": null,
+      "enum": [
+        "error",
+        "warning",
+        "info",
+        "debug",
+        "trace"
+      ],
+      "markdownDescription": "Controls the log level of the language server.\n\n**This setting is used only by the native server.**",
+      "scope": "window",
+      "type": "string"
     },
     "ruff.nativeServer": {
       "default": "auto",
@@ -271,7 +290,7 @@
         "Run Ruff on save."
       ],
       "markdownDeprecationMessage": "**Deprecated**: Please use `#ruff.lint.run` instead.",
-      "markdownDescription": "Run Ruff on every keystroke (`onType`) or on save (`onSave`). This setting is not supported by the native server.",
+      "markdownDescription": "Run Ruff on every keystroke (`onType`) or on save (`onSave`).\n\n**This setting is not supported by the native server.**",
       "scope": "window",
       "type": "string"
     },
