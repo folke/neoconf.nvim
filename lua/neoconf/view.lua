@@ -28,13 +28,13 @@ function M.show(str)
 
   local win = vim.api.nvim_open_win(buf, true, opts)
 
-  local buf_scope = { buf = buf, scope = "local" }
+  local buf_scope = { buf = buf }
   vim.api.nvim_set_option_value("filetype", "markdown", buf_scope)
   vim.api.nvim_set_option_value("buftype", "nofile", buf_scope)
   vim.api.nvim_set_option_value("bufhidden", "wipe", buf_scope)
   vim.api.nvim_set_option_value("modifiable", false, buf_scope)
 
-  local win_scope = { win = win, scope = "local" }
+  local win_scope = { win = win }
   vim.api.nvim_set_option_value("conceallevel", 3, win_scope)
   vim.api.nvim_set_option_value("spell", false, win_scope)
   vim.api.nvim_set_option_value("wrap", true, win_scope)
