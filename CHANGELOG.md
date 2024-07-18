@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.3.2](https://github.com/folke/neoconf.nvim/compare/v1.3.1...v1.3.2) (2024-07-18)
+
+
+### Bug Fixes
+
+* local options. Fixes [#81](https://github.com/folke/neoconf.nvim/issues/81) ([4e8a86d](https://github.com/folke/neoconf.nvim/commit/4e8a86dc36c27461cbf46031bb20cee2d3546a18))
+
 ## [1.3.1](https://github.com/folke/neoconf.nvim/compare/v1.3.0...v1.3.1) (2024-07-09)
 
 
