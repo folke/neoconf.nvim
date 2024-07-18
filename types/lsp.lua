@@ -9002,20 +9002,6 @@
 -- ```
 ---@field highlightRelatedRegexComponents boolean
 
----@class _.lspconfig.settings.omnisharp.ImplementType
--- %configuration.dotnet.implementType.insertionBehavior%
--- 
--- ```lua
--- default = "withOtherMembersOfTheSameKind"
--- ```
----@field insertionBehavior "withOtherMembersOfTheSameKind" | "atTheEnd"
--- %configuration.dotnet.implementType.propertyGenerationBehavior%
--- 
--- ```lua
--- default = "preferThrowingProperties"
--- ```
----@field propertyGenerationBehavior "preferThrowingProperties" | "preferAutoProperties"
-
 ---@class _.lspconfig.settings.omnisharp.InlayHints
 -- %configuration.csharp.inlayHints.enableInlayHintsForIndexerParameters%
 ---@field enableInlayHintsForIndexerParameters boolean
@@ -9110,6 +9096,20 @@
 -- default = true
 -- ```
 ---@field searchReferenceAssemblies boolean
+
+---@class _.lspconfig.settings.omnisharp.TypeMembers
+-- %configuration.dotnet.typeMembers.memberInsertionLocation%
+-- 
+-- ```lua
+-- default = "withOtherMembersOfTheSameKind"
+-- ```
+---@field memberInsertionLocation "withOtherMembersOfTheSameKind" | "atTheEnd"
+-- %configuration.dotnet.typeMembers.propertyGenerationBehavior%
+-- 
+-- ```lua
+-- default = "preferThrowingProperties"
+-- ```
+---@field propertyGenerationBehavior "preferThrowingProperties" | "preferAutoProperties"
 
 -- %generateOptionsSchema.expressionEvaluationOptions.description%
 -- 
@@ -9341,7 +9341,6 @@
 -- ```
 ---@field enableXamlTools boolean
 ---@field highlighting _.lspconfig.settings.omnisharp.Highlighting
----@field implementType _.lspconfig.settings.omnisharp.ImplementType
 ---@field inlayHints _.lspconfig.settings.omnisharp.InlayHints
 ---@field navigation _.lspconfig.settings.omnisharp.Navigation
 -- %configuration.dotnet.preferCSharpExtension%
@@ -9350,6 +9349,7 @@
 ---@field quickInfo _.lspconfig.settings.omnisharp.QuickInfo
 ---@field server _.lspconfig.settings.omnisharp.Server
 ---@field symbolSearch _.lspconfig.settings.omnisharp.SymbolSearch
+---@field typeMembers _.lspconfig.settings.omnisharp.TypeMembers
 -- %configuration.dotnet.unitTestDebuggingOptions%
 -- 
 -- ```lua
@@ -12164,7 +12164,7 @@
 -- targets and features, with the following base command line:
 -- 
 -- ```bash
--- cargo check --quiet --workspace --message-format=json --all-targets
+-- cargo check --quiet --workspace --message-format=json --all-targets --keep-going
 -- ```
 -- .
 ---@field overrideCommand string[]
@@ -12855,14 +12855,14 @@
 
 ---@class _.lspconfig.settings.rust_analyzer.Const
 -- Whether to show const generic parameter name inlay hints.
----@field enable boolean
-
----@class _.lspconfig.settings.rust_analyzer.Lifetime
--- Whether to show generic lifetime parameter name inlay hints.
 -- 
 -- ```lua
 -- default = true
 -- ```
+---@field enable boolean
+
+---@class _.lspconfig.settings.rust_analyzer.Lifetime
+-- Whether to show generic lifetime parameter name inlay hints.
 ---@field enable boolean
 
 ---@class _.lspconfig.settings.rust_analyzer.Type

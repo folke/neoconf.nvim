@@ -395,34 +395,6 @@
       "order": 40,
       "type": "boolean"
     },
-    "dotnet.implementType.insertionBehavior": {
-      "default": "withOtherMembersOfTheSameKind",
-      "description": "%configuration.dotnet.implementType.insertionBehavior%",
-      "enum": [
-        "withOtherMembersOfTheSameKind",
-        "atTheEnd"
-      ],
-      "enumDescriptions": [
-        "%configuration.dotnet.implementType.insertionBehavior.withOtherMembersOfTheSameKind%",
-        "%configuration.dotnet.implementType.insertionBehavior.atTheEnd%"
-      ],
-      "order": 10,
-      "type": "string"
-    },
-    "dotnet.implementType.propertyGenerationBehavior": {
-      "default": "preferThrowingProperties",
-      "description": "%configuration.dotnet.implementType.propertyGenerationBehavior%",
-      "enum": [
-        "preferThrowingProperties",
-        "preferAutoProperties"
-      ],
-      "enumDescriptions": [
-        "%configuration.dotnet.implementType.propertyGenerationBehavior.preferThrowingProperties%",
-        "%configuration.dotnet.implementType.propertyGenerationBehavior.preferAutoProperties%"
-      ],
-      "order": 10,
-      "type": "string"
-    },
     "dotnet.inlayHints.enableInlayHintsForIndexerParameters": {
       "default": false,
       "description": "%configuration.csharp.inlayHints.enableInlayHintsForIndexerParameters%",
@@ -581,6 +553,34 @@
       "description": "%configuration.dotnet.symbolSearch.searchReferenceAssemblies%",
       "order": 80,
       "type": "boolean"
+    },
+    "dotnet.typeMembers.memberInsertionLocation": {
+      "default": "withOtherMembersOfTheSameKind",
+      "description": "%configuration.dotnet.typeMembers.memberInsertionLocation%",
+      "enum": [
+        "withOtherMembersOfTheSameKind",
+        "atTheEnd"
+      ],
+      "enumDescriptions": [
+        "%configuration.dotnet.typeMembers.memberInsertionLocation.withOtherMembersOfTheSameKind%",
+        "%configuration.dotnet.typeMembers.memberInsertionLocation.atTheEnd%"
+      ],
+      "order": 10,
+      "type": "string"
+    },
+    "dotnet.typeMembers.propertyGenerationBehavior": {
+      "default": "preferThrowingProperties",
+      "description": "%configuration.dotnet.typeMembers.propertyGenerationBehavior%",
+      "enum": [
+        "preferThrowingProperties",
+        "preferAutoProperties"
+      ],
+      "enumDescriptions": [
+        "%configuration.dotnet.typeMembers.propertyGenerationBehavior.preferThrowingProperties%",
+        "%configuration.dotnet.typeMembers.propertyGenerationBehavior.preferAutoProperties%"
+      ],
+      "order": 10,
+      "type": "string"
     },
     "dotnet.unitTestDebuggingOptions": {
       "default": {},
