@@ -9086,6 +9086,12 @@
 ---@field trace "Trace" | "Debug" | "Information" | "Warning" | "Error" | "Critical" | "None"
 -- %configuration.omnisharp.dotnet.server.useOmnisharp%
 ---@field useOmnisharp boolean
+-- %configuration.dotnet.server.useServerGC%
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field useServerGC boolean
 -- %configuration.dotnet.server.waitForDebugger%
 ---@field waitForDebugger boolean
 
@@ -13348,6 +13354,101 @@
 ---@field search _.lspconfig.settings.rust_analyzer.Search
 
 ---@class _.lspconfig.settings.rust_analyzer.Workspace
+-- Enables automatic discovery of projects using [`DiscoverWorkspaceConfig::command`].
+-- 
+-- [`DiscoverWorkspaceConfig`] also requires setting `progress_label` and `files_to_watch`.
+-- `progress_label` is used for the title in progress indicators, whereas `files_to_watch`
+-- is used to determine which build system-specific files should be watched in order to
+-- reload rust-analyzer.
+-- 
+-- Below is an example of a valid configuration:
+-- ```json
+-- "rust-analyzer.workspace.discoverConfig": {
+--         "command": [
+--                 "rust-project",
+--                 "develop-json",
+--                 {arg}
+--         ],
+--         "progressLabel": "rust-analyzer",
+--         "filesToWatch": [
+--                 "BUCK",
+--         ],
+-- }
+-- ```
+-- 
+-- ## On `DiscoverWorkspaceConfig::command`
+-- 
+-- **Warning**: This format is provisional and subject to change.
+-- 
+-- [`DiscoverWorkspaceConfig::command`] *must* return a JSON object
+-- corresponding to `DiscoverProjectData::Finished`:
+-- 
+-- ```norun
+-- #[derive(Debug, Clone, Deserialize, Serialize)]
+-- #[serde(tag = "kind")]
+-- #[serde(rename_all = "snake_case")]
+-- enum DiscoverProjectData {
+--         Finished { buildfile: Utf8PathBuf, project: ProjectJsonData },
+--         Error { error: String, source: Option<String> },
+--         Progress { message: String },
+-- }
+-- ```
+-- 
+-- As JSON, `DiscoverProjectData::Finished` is:
+-- 
+-- ```json
+-- {
+--         // the internally-tagged representation of the enum.
+--         "kind": "finished",
+--         // the file used by a non-Cargo build system to define
+--         // a package or target.
+--         "buildfile": "rust-analyzer/BUILD",
+--         // the contents of a rust-project.json, elided for brevity
+--         "project": {
+--                 "sysroot": "foo",
+--                 "crates": []
+--         }
+-- }
+-- ```
+-- 
+-- It is encouraged, but not required, to use the other variants on
+-- `DiscoverProjectData` to provide a more polished end-user experience.
+-- 
+-- `DiscoverWorkspaceConfig::command` may *optionally* include an `{arg}`,
+-- which will be substituted with the JSON-serialized form of the following
+-- enum:
+-- 
+-- ```norun
+-- #[derive(PartialEq, Clone, Debug, Serialize)]
+-- #[serde(rename_all = "camelCase")]
+-- pub enum DiscoverArgument {
+--      Path(AbsPathBuf),
+--      Buildfile(AbsPathBuf),
+-- }
+-- ```
+-- 
+-- The JSON representation of `DiscoverArgument::Path` is:
+-- 
+-- ```json
+-- {
+--         "path": "src/main.rs"
+-- }
+-- ```
+-- 
+-- Similarly, the JSON representation of `DiscoverArgument::Buildfile` is:
+-- 
+-- ```
+-- {
+--         "buildfile": "BUILD"
+-- }
+-- ```
+-- 
+-- `DiscoverArgument::Path` is used to find and generate a `rust-project.json`,
+-- and therefore, a workspace, whereas `DiscoverArgument::buildfile` is used to
+-- to update an existing workspace. As a reference for implementors,
+-- buck2's `rust-project` will likely be useful:
+-- https://github.com/facebook/buck2/tree/main/integrations/rust-project.
+---@field discoverConfig any|table
 ---@field symbol _.lspconfig.settings.rust_analyzer.Symbol
 
 ---@class _.lspconfig.settings.rust_analyzer.Rust-analyzer

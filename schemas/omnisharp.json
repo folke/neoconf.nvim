@@ -542,6 +542,11 @@
       "order": 0,
       "type": "boolean"
     },
+    "dotnet.server.useServerGC": {
+      "default": true,
+      "description": "%configuration.dotnet.server.useServerGC%",
+      "type": "boolean"
+    },
     "dotnet.server.waitForDebugger": {
       "default": false,
       "description": "%configuration.dotnet.server.waitForDebugger%",
