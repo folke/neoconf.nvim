@@ -5592,6 +5592,46 @@
 -- Save file before execution
 ---@field saveOnEval boolean
 
+---@class _.lspconfig.settings.julials.Runtime
+-- Enable display of runtime inlay hints. These hints are provided by packages that overload a `show` method for the `application/vnd.julia-vscode.inlayHints` MIME type.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enabled boolean
+
+---@class _.lspconfig.settings.julials.ParameterNames
+-- Enable name hints for function parameters:
+-- ```julia
+-- foo(#= bar: =# 42)
+-- ```
+-- 
+-- ```lua
+-- default = "literals"
+-- ```
+---@field enabled "none" | "literals" | "all"
+
+---@class _.lspconfig.settings.julials.VariableTypes
+-- Enable type hints for variable definitions:
+-- ```julia
+-- foo #=::Int64=# = 42
+-- ```
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enabled boolean
+
+---@class _.lspconfig.settings.julials.Static
+-- Enable display of static inlay hints.
+---@field enabled boolean
+---@field parameterNames _.lspconfig.settings.julials.ParameterNames
+---@field variableTypes _.lspconfig.settings.julials.VariableTypes
+
+---@class _.lspconfig.settings.julials.InlayHints
+---@field runtime _.lspconfig.settings.julials.Runtime
+---@field static _.lspconfig.settings.julials.Static
+
 ---@class _.lspconfig.settings.julials.Lint
 -- This compares  call signatures against all known methods for the called function. Calls with too many or too few arguments, or unknown keyword parameters are highlighted.
 -- 
@@ -5675,7 +5715,13 @@
 ---@class _.lspconfig.settings.julials.PersistentSession
 -- Always copy the command for connecting to an external REPL to the clipboard.
 ---@field alwaysCopy boolean
--- Experimental: Starts the interactive Julia session in a persistent `tmux` session. Note that `tmux` must be available in the shell defined below. If present the string `$[workspace]` will be replaced with the current file's workspace when the REPL is first opened.
+-- Behaviour when stopping a persistent session.
+-- 
+-- ```lua
+-- default = "ask"
+-- ```
+---@field closeStrategy "ask" | "close" | "disconnect"
+-- Experimental: Starts the interactive Julia session in a persistent `tmux` session. Note that `tmux` must be available in the shell defined with `#julia.persistentSession.shell#`.
 ---@field enabled boolean
 -- Shell used to start the persistent session.
 -- 
@@ -5683,27 +5729,21 @@
 -- default = "/bin/sh"
 -- ```
 ---@field shell string
--- Argument to execute code in the configured shell, e.g. `-c` for sh-likes or `/c` for `cmd`.
+-- Argument to execute code in the configured shell, e.g. `-c` for sh-likes or `/c` for `cmd`. Can contain multiple arguments separated by spaces.
 -- 
 -- ```lua
 -- default = "-c"
 -- ```
 ---@field shellExecutionArgument string
--- Name of the `tmux` session.
+-- Name of the `tmux` session. Explicitly supports substitution for the `${userHome}`, `${workspaceFolder}`, `${workspaceFolderBasename}`, `${workspaceFolder:<FOLDER_NAME>}`, `${pathSeparator}`, `${env:<ENVIRONMENT_VARIABLE>}`, `${config:<CONFIG_VARIABLE>} tokens.
 -- 
 -- ```lua
 -- default = "julia_vscode"
 -- ```
 ---@field tmuxSessionName string
--- Warn when stopping a persistent session.
--- 
--- ```lua
--- default = true
--- ```
----@field warnOnKill boolean
 
 ---@class _.lspconfig.settings.julials.Plots
--- The output directory to save plots to
+-- Default directory for saving plots. Can either be relative to the current workspace or absolute.
 ---@field path string
 
 ---@class _.lspconfig.settings.julials.Trace
@@ -5746,7 +5786,7 @@
 -- Functions or modules that are set to compiled mode when setting the defaults.
 -- 
 -- ```lua
--- default = { "Base.", "-Base.!", "-Base.all", "-Base.all!", "-Base.any", "-Base.any!", "-Base.cd", "-Base.iterate", "-Base.collect", "-Base.collect_similar", "-Base._collect", "-Base.collect_to!", "-Base.collect_to_with_first!", "-Base.filter", "-Base.filter!", "-Base.foreach", "-Base.findall", "-Base.findfirst", "-Base.findlast", "-Base.findnext", "-Base.findprev", "-Base.Generator", "-Base.map", "-Base.map!", "-Base.maximum!", "-Base.minimum!", "-Base.mktemp", "-Base.mktempdir", "-Base.open", "-Base.prod!", "-Base.redirect_stderr", "-Base.redirect_stdin", "-Base.redirect_stdout", "-Base.reenable_sigint", "-Base.setindex!", "-Base.setprecision", "-Base.setrounding", "-Base.show", "-Base.sprint", "-Base.sum", "-Base.sum!", "-Base.task_local_storage", "-Base.timedwait", "-Base.withenv", "-Base.Broadcast", "Core", "Core.Compiler.", "Core.IR", "Core.Intrinsics", "DelimitedFiles", "Distributed", "LinearAlgebra.", "Serialization", "Statistics", "-Statistics.mean", "SparseArrays", "Mmap" }
+-- default = { "Base.", "-Base.!", "-Base.|>", "-Base.all", "-Base.all!", "-Base.any", "-Base.any!", "-Base.cd", "-Base.iterate", "-Base.collect", "-Base.collect_similar", "-Base._collect", "-Base.collect_to!", "-Base.collect_to_with_first!", "-Base.filter", "-Base.filter!", "-Base.foreach", "-Base.findall", "-Base.findfirst", "-Base.findlast", "-Base.findnext", "-Base.findprev", "-Base.Generator", "-Base.map", "-Base.map!", "-Base.maximum!", "-Base.minimum!", "-Base.mktemp", "-Base.mktempdir", "-Base.open", "-Base.prod!", "-Base.redirect_stderr", "-Base.redirect_stdin", "-Base.redirect_stdout", "-Base.reenable_sigint", "-Base.setindex!", "-Base.setprecision", "-Base.setrounding", "-Base.show", "-Base.sprint", "-Base.sum", "-Base.sum!", "-Base.task_local_storage", "-Base.timedwait", "-Base.withenv", "-Base.Broadcast", "Core", "Core.Compiler.", "Core.IR", "Core.Intrinsics", "DelimitedFiles", "Distributed", "LinearAlgebra.", "Serialization", "Statistics", "-Statistics.mean", "SparseArrays", "Mmap" }
 -- ```
 ---@field debuggerDefaultCompiled any[]
 -- Delete Julia .cov files when running tests with coverage, leaving only a .lcov file behind.
@@ -5765,7 +5805,7 @@
 ---@field enableCrashReporter boolean
 -- Enable usage data and errors to be sent to the julia VS Code extension developers.
 ---@field enableTelemetry boolean
--- Path to a julia environment. VS Code needs to be reloaded for changes to take effect.
+-- Path to a julia environment. VS Code needs to be reloaded for changes to take effect. Explicitly supports substitution for the `${userHome}`, `${workspaceFolder}`, `${workspaceFolderBasename}`, `${workspaceFolder:<FOLDER_NAME>}`, `${pathSeparator}`, `${env:<ENVIRONMENT_VARIABLE>}`, `${config:<CONFIG_VARIABLE>} tokens.
 ---@field environmentPath string
 -- Points to the julia executable.
 -- 
@@ -5776,6 +5816,7 @@
 ---@field execution _.lspconfig.settings.julials.Execution
 -- Whether to automatically show the plot navigator when plotting.
 ---@field focusPlotNavigator boolean
+---@field inlayHints _.lspconfig.settings.julials.InlayHints
 ---@field lint _.lspconfig.settings.julials.Lint
 -- A workspace relative path to a Julia file that contains the tests that should be run for live testing.
 -- 
@@ -5783,6 +5824,12 @@
 -- default = "test/runtests.jl"
 -- ```
 ---@field liveTestFile string
+-- Number of processes to use for testing.
+-- 
+-- ```lua
+-- default = 1
+-- ```
+---@field numTestProcesses integer
 -- Julia package server. Sets the `JULIA_PKG_SERVER` environment variable *before* starting a Julia process. Leave this empty to use the systemwide default. Requires a restart of the Julia process.
 -- 
 -- ```lua
@@ -11986,7 +12033,7 @@
 -- 
 -- **This setting is used only by the native server.**
 ---@field configuration string
--- The preferred method of resolving configuration in the editor with local configuration froml `.toml` files.
+-- The preferred method of resolving configuration in the editor with local configuration from `.toml` files.
 -- 
 -- **This setting is used only by the native server.**
 -- 

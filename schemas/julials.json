@@ -46,6 +46,7 @@
       "default": [
         "Base.",
         "-Base.!",
+        "-Base.|>",
         "-Base.all",
         "-Base.all!",
         "-Base.any",
@@ -137,7 +138,7 @@
     },
     "julia.environmentPath": {
       "default": null,
-      "description": "Path to a julia environment. VS Code needs to be reloaded for changes to take effect.",
+      "markdownDescription": "Path to a julia environment. VS Code needs to be reloaded for changes to take effect. Explicitly supports substitution for the `${userHome}`, `${workspaceFolder}`, `${workspaceFolderBasename}`, `${workspaceFolder:<FOLDER_NAME>}`, `${pathSeparator}`, `${env:<ENVIRONMENT_VARIABLE>}`, `${config:<CONFIG_VARIABLE>} tokens.",
       "scope": "window",
       "type": [
         "string",
@@ -187,6 +188,31 @@
     "julia.focusPlotNavigator": {
       "default": false,
       "description": "Whether to automatically show the plot navigator when plotting.",
+      "type": "boolean"
+    },
+    "julia.inlayHints.runtime.enabled": {
+      "default": true,
+      "markdownDescription": "Enable display of runtime inlay hints. These hints are provided by packages that overload a `show` method for the `application/vnd.julia-vscode.inlayHints` MIME type.",
+      "type": "boolean"
+    },
+    "julia.inlayHints.static.enabled": {
+      "default": false,
+      "markdownDescription": "Enable display of static inlay hints.",
+      "type": "boolean"
+    },
+    "julia.inlayHints.static.parameterNames.enabled": {
+      "default": "literals",
+      "enum": [
+        "none",
+        "literals",
+        "all"
+      ],
+      "markdownDescription": "Enable name hints for function parameters:\n```julia\nfoo(#= bar: =# 42)\n```",
+      "type": "string"
+    },
+    "julia.inlayHints.static.variableTypes.enabled": {
+      "default": true,
+      "markdownDescription": "Enable type hints for variable definitions:\n```julia\nfoo #=::Int64=# = 42\n```",
       "type": "boolean"
     },
     "julia.lint.call": {
@@ -268,6 +294,12 @@
       "scope": "window",
       "type": "string"
     },
+    "julia.numTestProcesses": {
+      "default": 1,
+      "markdownDescription": "Number of processes to use for testing.",
+      "scope": "machine-overridable",
+      "type": "integer"
+    },
     "julia.packageServer": {
       "default": "",
       "markdownDescription": "Julia package server. Sets the `JULIA_PKG_SERVER` environment variable *before* starting a Julia process. Leave this empty to use the systemwide default. Requires a restart of the Julia process.",
@@ -280,9 +312,25 @@
       "scope": "application",
       "type": "boolean"
     },
+    "julia.persistentSession.closeStrategy": {
+      "default": "ask",
+      "description": "Behaviour when stopping a persistent session.",
+      "enum": [
+        "ask",
+        "close",
+        "disconnect"
+      ],
+      "enumDescriptions": [
+        "Always ask",
+        "Close the tmux session",
+        "Disconnect, but keep the tmux session"
+      ],
+      "scope": "machine-overridable",
+      "type": "string"
+    },
     "julia.persistentSession.enabled": {
       "default": false,
-      "markdownDescription": "Experimental: Starts the interactive Julia session in a persistent `tmux` session. Note that `tmux` must be available in the shell defined below. If present the string `$[workspace]` will be replaced with the current file's workspace when the REPL is first opened.",
+      "markdownDescription": "Experimental: Starts the interactive Julia session in a persistent `tmux` session. Note that `tmux` must be available in the shell defined with `#julia.persistentSession.shell#`.",
       "scope": "machine-overridable",
       "type": "boolean"
     },
@@ -294,24 +342,18 @@
     },
     "julia.persistentSession.shellExecutionArgument": {
       "default": "-c",
-      "markdownDescription": "Argument to execute code in the configured shell, e.g. `-c` for sh-likes or `/c` for `cmd`.",
+      "markdownDescription": "Argument to execute code in the configured shell, e.g. `-c` for sh-likes or `/c` for `cmd`. Can contain multiple arguments separated by spaces.",
       "scope": "machine",
       "type": "string"
     },
     "julia.persistentSession.tmuxSessionName": {
       "default": "julia_vscode",
-      "markdownDescription": "Name of the `tmux` session.",
+      "markdownDescription": "Name of the `tmux` session. Explicitly supports substitution for the `${userHome}`, `${workspaceFolder}`, `${workspaceFolderBasename}`, `${workspaceFolder:<FOLDER_NAME>}`, `${pathSeparator}`, `${env:<ENVIRONMENT_VARIABLE>}`, `${config:<CONFIG_VARIABLE>} tokens.",
       "scope": "machine-overridable",
       "type": "string"
     },
-    "julia.persistentSession.warnOnKill": {
-      "default": true,
-      "description": "Warn when stopping a persistent session.",
-      "scope": "application",
-      "type": "boolean"
-    },
     "julia.plots.path": {
-      "description": "The output directory to save plots to",
+      "description": "Default directory for saving plots. Can either be relative to the current workspace or absolute.",
       "scope": "window",
       "type": "string"
     },
