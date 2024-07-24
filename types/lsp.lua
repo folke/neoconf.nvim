@@ -13101,13 +13101,6 @@
 -- default = true
 -- ```
 ---@field enable boolean
--- Internal config: use custom client-side commands even when the
--- client doesn't set the corresponding capability.
--- 
--- ```lua
--- default = true
--- ```
----@field forceCustomCommands boolean
 ---@field implementations _.lspconfig.settings.rust_analyzer.Implementations
 -- Where to render annotations.
 -- 
@@ -13138,8 +13131,6 @@
 -- default = true
 -- ```
 ---@field cargoTomlNotFound boolean
--- Whether to send an UnindexedProject notification to the client.
----@field unindexedProject boolean
 
 ---@class _.lspconfig.settings.rust_analyzer.Attributes
 -- Expand attribute macros. Requires `#rust-analyzer.procMacro.enable#` to be set.

@@ -1047,11 +1047,6 @@
       "markdownDescription": "Whether to show CodeLens in Rust files.",
       "type": "boolean"
     },
-    "rust-analyzer.lens.forceCustomCommands": {
-      "default": true,
-      "markdownDescription": "Internal config: use custom client-side commands even when the\nclient doesn't set the corresponding capability.",
-      "type": "boolean"
-    },
     "rust-analyzer.lens.implementations.enable": {
       "default": true,
       "markdownDescription": "Whether to show `Implementations` lens. Only applies when\n`#rust-analyzer.lens.enable#` is set.",
@@ -1124,11 +1119,6 @@
     "rust-analyzer.notifications.cargoTomlNotFound": {
       "default": true,
       "markdownDescription": "Whether to show `can't find Cargo.toml` error message.",
-      "type": "boolean"
-    },
-    "rust-analyzer.notifications.unindexedProject": {
-      "default": false,
-      "markdownDescription": "Whether to send an UnindexedProject notification to the client.",
       "type": "boolean"
     },
     "rust-analyzer.numThreads": {
