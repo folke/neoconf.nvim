@@ -10674,6 +10674,12 @@
 -- default = {}
 -- ```
 ---@field extendIgnore string[]
+-- List of errors and warnings to append to select list.
+-- 
+-- ```lua
+-- default = {}
+-- ```
+---@field extendSelect string[]
 -- Only check for filenames matching the patterns in this list.
 ---@field filename string
 -- Hang closing bracket instead of matching indentation of opening bracket's line.

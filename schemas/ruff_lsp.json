@@ -137,7 +137,7 @@
         "type": "string"
       },
       "markdownDescription": "Path to a Python interpreter to use to run the LSP server.",
-      "scope": "window",
+      "scope": "resource",
       "type": "array"
     },
     "ruff.lineLength": {
