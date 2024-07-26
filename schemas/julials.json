@@ -394,12 +394,6 @@
       "scope": "window",
       "type": "string"
     },
-    "julia.useCustomSysimage": {
-      "default": false,
-      "description": "Use an existing custom sysimage when starting the REPL",
-      "scope": "application",
-      "type": "boolean"
-    },
     "julia.usePlotPane": {
       "default": true,
       "description": "Display plots within VS Code. Might require a restart of the Julia process.",

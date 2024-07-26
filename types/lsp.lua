@@ -5855,8 +5855,6 @@
 -- ```
 ---@field symbolserverUpstream string
 ---@field trace _.lspconfig.settings.julials.Trace
--- Use an existing custom sysimage when starting the REPL
----@field useCustomSysimage boolean
 -- Display plots within VS Code. Might require a restart of the Julia process.
 -- 
 -- ```lua
