@@ -4998,6 +4998,14 @@
 -- Preferred content provider (a 3rd party decompiler id, usually)
 ---@field preferred string
 
+---@class _.lspconfig.settings.jdtls.Diagnostic
+-- Specifies a list of file patterns for which matching documents should not have their diagnostics reported (eg. '**/Foo.java').
+-- 
+-- ```lua
+-- default = {}
+-- ```
+---@field filter string[]
+
 ---@class _.lspconfig.settings.jdtls.Eclipse
 -- Enable/disable download of Maven source artifacts for Eclipse projects.
 ---@field downloadSources boolean
@@ -5467,6 +5475,7 @@
 ---@field completion _.lspconfig.settings.jdtls.Completion
 ---@field configuration _.lspconfig.settings.jdtls.Configuration
 ---@field contentProvider _.lspconfig.settings.jdtls.ContentProvider
+---@field diagnostic _.lspconfig.settings.jdtls.Diagnostic
 ---@field eclipse _.lspconfig.settings.jdtls.Eclipse
 ---@field edit _.lspconfig.settings.jdtls.Edit
 ---@field editor _.lspconfig.settings.jdtls.Editor

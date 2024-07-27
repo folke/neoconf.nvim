@@ -473,6 +473,15 @@
       "scope": "window",
       "type": "string"
     },
+    "java.diagnostic.filter": {
+      "default": [],
+      "description": "Specifies a list of file patterns for which matching documents should not have their diagnostics reported (eg. '**/Foo.java').",
+      "items": {
+        "type": "string"
+      },
+      "scope": "window",
+      "type": "array"
+    },
     "java.eclipse.downloadSources": {
       "default": false,
       "description": "Enable/disable download of Maven source artifacts for Eclipse projects.",
