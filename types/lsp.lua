@@ -5887,6 +5887,10 @@
 ---@class lspconfig.settings.julials
 ---@field julia _.lspconfig.settings.julials.Julia
 
+---@class _.lspconfig.settings.kotlin_language_server.Codegen
+-- Whether to enable code generation to a temporary build output directory for Java interoperability (via the non-standard kotlin/buildOutputLocation LSP method). Experimental.
+---@field enabled boolean
+
 ---@class _.lspconfig.settings.kotlin_language_server.Jvm
 -- Specifies the JVM target, e.g. "1.6" or "1.8"
 -- 
@@ -6021,6 +6025,12 @@
 -- default = "stdio"
 -- ```
 ---@field transport "stdio" | "tcp"
+-- Specifies glob patterns of files, which would be watched by LSP client. The LSP client doesn't support watching files outside a workspace folder.
+-- 
+-- ```lua
+-- default = { "**/*.kt", "**/*.kts", "**/*.java", "**/pom.xml", "**/build.gradle", "**/settings.gradle" }
+-- ```
+---@field watchFiles any[]
 
 ---@class _.lspconfig.settings.kotlin_language_server.Linting
 -- [DEBUG] Specifies the debounce time limit. Lower to increase responsiveness at the cost of possible stability issues.
@@ -6045,6 +6055,7 @@
 ---@field server "off" | "messages" | "verbose"
 
 ---@class _.lspconfig.settings.kotlin_language_server.Kotlin
+---@field codegen _.lspconfig.settings.kotlin_language_server.Codegen
 ---@field compiler _.lspconfig.settings.kotlin_language_server.Compiler
 ---@field completion _.lspconfig.settings.kotlin_language_server.Completion
 -- [DEPRECATED] Specifies the debounce time limit. Lower to increase responsiveness at the cost of possible stability issues.

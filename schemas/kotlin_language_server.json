@@ -1,7 +1,12 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "description": "Smart code completion, debugging, linting, syntax highlighting and more for Kotlin",
+  "description": "Code completion, debugging, linting and more",
   "properties": {
+    "kotlin.codegen.enabled": {
+      "default": false,
+      "description": "Whether to enable code generation to a temporary build output directory for Java interoperability (via the non-standard kotlin/buildOutputLocation LSP method). Experimental.",
+      "type": "boolean"
+    },
     "kotlin.compiler.jvm.target": {
       "default": "default",
       "description": "Specifies the JVM target, e.g. \"1.6\" or \"1.8\"",
@@ -127,6 +132,18 @@
         "tcp"
       ],
       "type": "string"
+    },
+    "kotlin.languageServer.watchFiles": {
+      "default": [
+        "**/*.kt",
+        "**/*.kts",
+        "**/*.java",
+        "**/pom.xml",
+        "**/build.gradle",
+        "**/settings.gradle"
+      ],
+      "description": "Specifies glob patterns of files, which would be watched by LSP client. The LSP client doesn't support watching files outside a workspace folder.",
+      "type": "array"
     },
     "kotlin.linting.debounceTime": {
       "default": 250,
