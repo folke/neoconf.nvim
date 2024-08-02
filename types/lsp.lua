@@ -7938,6 +7938,12 @@
 -- default = {}
 -- ```
 ---@field protectedName string[]
+-- TODO: Needs documentation
+-- 
+-- ```lua
+-- default = "glob"
+-- ```
+---@field regengine "glob" | "lua"
 
 ---@class _.lspconfig.settings.lua_ls.Format
 -- The default format configuration. Has a lower priority than `.editorconfig` file in the workspace.
@@ -13428,13 +13434,12 @@
 -- "rust-analyzer.workspace.discoverConfig": {
 --         "command": [
 --                 "rust-project",
---                 "develop-json",
---                 {arg}
+--                 "develop-json"
 --         ],
 --         "progressLabel": "rust-analyzer",
 --         "filesToWatch": [
---                 "BUCK",
---         ],
+--                 "BUCK"
+--         ]
 -- }
 -- ```
 -- 
