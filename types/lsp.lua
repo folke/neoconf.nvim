@@ -1900,6 +1900,8 @@
 -- ```
 ---@field suggestSpecs boolean
 ---@field trace _.lspconfig.settings.elixirls.Trace
+-- Don't try to look for mix.exs in parent directories
+---@field useCurrentRootFolderAsProjectDir boolean
 
 ---@class lspconfig.settings.elixirls
 ---@field elixirLS _.lspconfig.settings.elixirls.ElixirLS

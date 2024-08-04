@@ -154,6 +154,12 @@
       ],
       "scope": "window",
       "type": "string"
+    },
+    "elixirLS.useCurrentRootFolderAsProjectDir": {
+      "default": false,
+      "description": "Don't try to look for mix.exs in parent directories",
+      "scope": "resource",
+      "type": "boolean"
     }
   }
 }
