@@ -3525,6 +3525,8 @@
 ---@field taskPresentation _.lspconfig.settings.haxe_language_server.TaskPresentation
 -- Whether to revert to a Haxe 3 style completion where only toplevel packages and imported types are shown (effectively making it incompatible with auto-imports). *Note:* this setting has no effect with Haxe versions earlier than 4.0.0-rc.4.
 ---@field useLegacyCompletion boolean
+-- Haxe 4.3.5 introduces new Json RPC based diagnostics. in order to be able to opt out of them set option to true. *Note:* will stop working on nightlies once #11413 gets merged
+---@field useLegacyDiagnostics boolean
 
 ---@class _.lspconfig.settings.haxe_language_server.Haxelib
 -- Path to the Haxelib executable
