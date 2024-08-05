@@ -2,6 +2,8 @@ local M = {}
 
 ---@class Config
 M.defaults = {
+  -- on_write callback
+  on_write = function() end,
   -- name of the local settings files
   local_settings = ".neoconf.json",
   -- name of the global settings file in your Neovim config directory
