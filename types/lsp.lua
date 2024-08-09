@@ -4360,6 +4360,33 @@
 ---@class lspconfig.settings.html
 ---@field html _.lspconfig.settings.html.Html
 
+---@class _.lspconfig.settings.intelephense.Implementations
+-- Enable a code lens that shows an abstract and interface implementations count and command to peek locations.
+---@field enable boolean
+
+---@class _.lspconfig.settings.intelephense.Overrides
+-- Enable a code lens that shows method override count and command to peek locations.
+---@field enable boolean
+
+---@class _.lspconfig.settings.intelephense.Parent
+-- Enable a code lens that indicates if a method has a parent implementation and command to peek location.
+---@field enable boolean
+
+---@class _.lspconfig.settings.intelephense.References
+-- Enable a code lens that shows a reference count and command to peek locations.
+---@field enable boolean
+
+---@class _.lspconfig.settings.intelephense.Usages
+-- Enable a code lens that shows a trait usages count and command to peek locations.
+---@field enable boolean
+
+---@class _.lspconfig.settings.intelephense.CodeLens
+---@field implementations _.lspconfig.settings.intelephense.Implementations
+---@field overrides _.lspconfig.settings.intelephense.Overrides
+---@field parent _.lspconfig.settings.intelephense.Parent
+---@field references _.lspconfig.settings.intelephense.References
+---@field usages _.lspconfig.settings.intelephense.Usages
+
 ---@class _.lspconfig.settings.intelephense.Compatibility
 -- Resolves `ArrayAccess` and `Traversable` implementations that are unioned with a typed array to generic syntax. eg `ArrayAccessOrTraversable|ElementType[]` => `ArrayAccessOrTraversable<mixed, ElementType>`.
 -- 
@@ -4708,6 +4735,7 @@
 ---@field server "off" | "messages" | "verbose"
 
 ---@class _.lspconfig.settings.intelephense.Intelephense
+---@field codeLens _.lspconfig.settings.intelephense.CodeLens
 ---@field compatibility _.lspconfig.settings.intelephense.Compatibility
 ---@field completion _.lspconfig.settings.intelephense.Completion
 ---@field diagnostics _.lspconfig.settings.intelephense.Diagnostics

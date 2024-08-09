@@ -2,6 +2,36 @@
   "$schema": "http://json-schema.org/draft-07/schema#",
   "description": "PHP code intelligence for Visual Studio Code",
   "properties": {
+    "intelephense.codeLens.implementations.enable": {
+      "default": false,
+      "description": "Enable a code lens that shows an abstract and interface implementations count and command to peek locations.",
+      "scope": "window",
+      "type": "boolean"
+    },
+    "intelephense.codeLens.overrides.enable": {
+      "default": false,
+      "description": "Enable a code lens that shows method override count and command to peek locations.",
+      "scope": "window",
+      "type": "boolean"
+    },
+    "intelephense.codeLens.parent.enable": {
+      "default": false,
+      "description": "Enable a code lens that indicates if a method has a parent implementation and command to peek location.",
+      "scope": "window",
+      "type": "boolean"
+    },
+    "intelephense.codeLens.references.enable": {
+      "default": false,
+      "description": "Enable a code lens that shows a reference count and command to peek locations.",
+      "scope": "window",
+      "type": "boolean"
+    },
+    "intelephense.codeLens.usages.enable": {
+      "default": false,
+      "description": "Enable a code lens that shows a trait usages count and command to peek locations.",
+      "scope": "window",
+      "type": "boolean"
+    },
     "intelephense.compatibility.correctForArrayAccessArrayAndTraversableArrayUnionTypes": {
       "default": true,
       "description": "Resolves `ArrayAccess` and `Traversable` implementations that are unioned with a typed array to generic syntax. eg `ArrayAccessOrTraversable|ElementType[]` => `ArrayAccessOrTraversable<mixed, ElementType>`.",
