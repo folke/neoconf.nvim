@@ -91,6 +91,11 @@
       ],
       "type": "string"
     },
+    "vue.inlayHints.destructuredProps": {
+      "default": false,
+      "description": "Show inlay hints for destructured prop.",
+      "type": "boolean"
+    },
     "vue.inlayHints.inlineHandlerLeading": {
       "default": false,
       "description": "Show inlay hints for event argument in inline handlers.",

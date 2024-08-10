@@ -13985,6 +13985,8 @@
 ---@field server "off" | "messages" | "verbose"
 
 ---@class _.lspconfig.settings.sourcekit.Sourcekit-lsp
+-- **Experimental**: Enable or disable background indexing. This option has no effect in Swift versions prior to 6.0.
+---@field backgroundIndexing boolean
 -- Disable SourceKit-LSP
 ---@field disable boolean
 -- Arguments to pass to SourceKit-LSP. Keys and values should be provided as individual entries in the list. e.g. `['--log-level', 'debug']`
@@ -15917,6 +15919,8 @@
 ---@field wrapAttributes "auto" | "force" | "force-aligned" | "force-expand-multiline" | "aligned-multiple" | "preserve" | "preserve-aligned"
 
 ---@class _.lspconfig.settings.volar.InlayHints
+-- Show inlay hints for destructured prop.
+---@field destructuredProps boolean
 -- Show inlay hints for event argument in inline handlers.
 ---@field inlineHandlerLeading boolean
 -- Show inlay hints for missing required props.
