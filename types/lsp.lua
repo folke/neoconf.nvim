@@ -139,6 +139,8 @@
 ---@field server "off" | "messages" | "verbose"
 
 ---@class _.lspconfig.settings.astro.Astro
+-- Enable experimental support for content collection intellisense inside Markdown, MDX and Markdoc. Note that this require also enabling the feature in your Astro config (experimental.contentCollectionIntellisense) (Astro 4.14+)
+---@field content-intellisense boolean
 ---@field language-server _.lspconfig.settings.astro.Language-server
 ---@field trace _.lspconfig.settings.astro.Trace
 
