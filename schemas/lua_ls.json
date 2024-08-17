@@ -3024,6 +3024,12 @@
       "scope": "resource",
       "type": "boolean"
     },
+    "Lua.type.checkTableShape": {
+      "default": false,
+      "markdownDescription": "Strictly check the shape of the table.\n",
+      "scope": "resource",
+      "type": "boolean"
+    },
     "Lua.type.inferParamType": {
       "default": false,
       "markdownDescription": "When a parameter type is not annotated, it is inferred from the function's call sites.\n\nWhen this setting is `false`, the type of the parameter is `any` when it is not annotated.\n",

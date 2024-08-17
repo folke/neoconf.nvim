@@ -8335,6 +8335,9 @@
 -- default = true
 -- ```
 ---@field castNumberToInteger boolean
+-- Strictly check the shape of the table.
+-- 
+---@field checkTableShape boolean
 -- When a parameter type is not annotated, it is inferred from the function's call sites.
 -- 
 -- When this setting is `false`, the type of the parameter is `any` when it is not annotated.
@@ -13559,9 +13562,6 @@
 ---@field completion _.lspconfig.settings.rust_analyzer.Completion
 ---@field debug _.lspconfig.settings.rust_analyzer.Debug
 ---@field diagnostics _.lspconfig.settings.rust_analyzer.Diagnostics
--- Sets the extension responsible for determining which extension the rust-analyzer extension uses to generate `rust-project.json` files. This should should only be used
---  if a build system like Buck or Bazel is also in use.
----@field discoverProjectRunner string
 ---@field files _.lspconfig.settings.rust_analyzer.Files
 ---@field highlightRelated _.lspconfig.settings.rust_analyzer.HighlightRelated
 ---@field hover _.lspconfig.settings.rust_analyzer.Hover
@@ -15121,6 +15121,39 @@
 ---@field propertyDeclarationTypes _.lspconfig.settings.tsserver.PropertyDeclarationTypes
 ---@field variableTypes _.lspconfig.settings.tsserver.VariableTypes
 
+-- Advanced preferences that control how imports are ordered. Presets are available in `#typescript.preferences.organizeImports.presets#`
+---@class _.lspconfig.settings.tsserver.OrganizeImports
+-- Compare characters with diacritical marks as unequal to base character
+---@field accentCollation boolean
+-- Indicates whether upper-case comes before lower-case. Only applies to `organizeImportsCollation: 'unicode'`
+-- 
+-- ```lua
+-- default = "default"
+-- ```
+---@field caseFirst "default" | "upper" | "lower"
+-- ```lua
+-- default = "auto"
+-- ```
+---@field caseSensitivity "auto" | "caseInsensitive" | "caseSensitive"
+-- Overrides the locale used for collation. Specify `auto` to use the UI locale. Only applies to `organizeImportsCollation: 'unicode'`
+---@field locale string
+-- Sort numeric strings by integer value
+---@field numericCollation boolean
+-- %typescript.preferences.organizeImports.presets%
+-- 
+-- ```lua
+-- default = "auto"
+-- ```
+---@field presets "auto" | "eslint sort-imports" | "eslint plugin-simple-import-sort" | "dprint"
+-- ```lua
+-- default = "auto"
+-- ```
+---@field typeOrder "auto" | "last" | "inline" | "first"
+-- ```lua
+-- default = "ordinal"
+-- ```
+---@field unicodeCollation "ordinal" | "unicode"
+
 ---@class _.lspconfig.settings.tsserver.Preferences
 -- Specify glob patterns of files to exclude from auto imports. Relative paths are resolved relative to the workspace root. Patterns are evaluated using tsconfig.json [`exclude`](https://www.typescriptlang.org/tsconfig#exclude) semantics.
 ---@field autoImportFileExcludePatterns string[]
@@ -15142,6 +15175,8 @@
 -- default = "auto"
 -- ```
 ---@field jsxAttributeCompletionStyle "auto" | "braces" | "none"
+-- Advanced preferences that control how imports are ordered. Presets are available in `#typescript.preferences.organizeImports.presets#`
+---@field organizeImports _.lspconfig.settings.tsserver.OrganizeImports
 -- Preferred quote style to use for Quick Fixes.
 -- 
 -- ```lua
@@ -15509,6 +15544,39 @@
 ---@field propertyDeclarationTypes _.lspconfig.settings.tsserver.PropertyDeclarationTypes
 ---@field variableTypes _.lspconfig.settings.tsserver.VariableTypes
 
+-- Advanced preferences that control how imports are ordered. Presets are available in `#typescript.preferences.organizeImports.presets#`
+---@class _.lspconfig.settings.tsserver.OrganizeImports
+-- Compare characters with diacritical marks as unequal to base character
+---@field accentCollation boolean
+-- Indicates whether upper-case comes before lower-case. Only applies to `organizeImportsCollation: 'unicode'`
+-- 
+-- ```lua
+-- default = "default"
+-- ```
+---@field caseFirst "default" | "upper" | "lower"
+-- ```lua
+-- default = "auto"
+-- ```
+---@field caseSensitivity "auto" | "caseInsensitive" | "caseSensitive"
+-- Overrides the locale used for collation. Specify `auto` to use the UI locale. Only applies to `organizeImportsCollation: 'unicode'`
+---@field locale string
+-- Sort numeric strings by integer value
+---@field numericCollation boolean
+-- %typescript.preferences.organizeImports.presets%
+-- 
+-- ```lua
+-- default = "auto"
+-- ```
+---@field presets "auto" | "eslint sort-imports" | "eslint plugin-simple-import-sort" | "dprint"
+-- ```lua
+-- default = "auto"
+-- ```
+---@field typeOrder "auto" | "last" | "inline" | "first"
+-- ```lua
+-- default = "ordinal"
+-- ```
+---@field unicodeCollation "ordinal" | "unicode"
+
 ---@class _.lspconfig.settings.tsserver.Preferences
 -- Specify glob patterns of files to exclude from auto imports. Relative paths are resolved relative to the workspace root. Patterns are evaluated using tsconfig.json [`exclude`](https://www.typescriptlang.org/tsconfig#exclude) semantics.
 ---@field autoImportFileExcludePatterns string[]
@@ -15536,6 +15604,8 @@
 -- default = "auto"
 -- ```
 ---@field jsxAttributeCompletionStyle "auto" | "braces" | "none"
+-- Advanced preferences that control how imports are ordered. Presets are available in `#typescript.preferences.organizeImports.presets#`
+---@field organizeImports _.lspconfig.settings.tsserver.OrganizeImports
 -- Include the `type` keyword in auto-imports whenever possible. Requires using TypeScript 5.3+ in the workspace.
 ---@field preferTypeOnlyAutoImports boolean
 -- Preferred quote style to use for Quick Fixes.
