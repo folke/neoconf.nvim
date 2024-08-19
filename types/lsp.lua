@@ -4524,7 +4524,7 @@
 -- default = true
 -- ```
 ---@field undefinedMethods boolean
--- Enables undefined static property diagnostics.
+-- Enables undefined property diagnostics.
 -- 
 -- ```lua
 -- default = true

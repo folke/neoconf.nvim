@@ -180,7 +180,7 @@
     },
     "intelephense.diagnostics.undefinedProperties": {
       "default": true,
-      "description": "Enables undefined static property diagnostics.",
+      "description": "Enables undefined property diagnostics.",
       "scope": "window",
       "type": "boolean"
     },

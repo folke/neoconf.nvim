@@ -131,7 +131,10 @@
         "Enable TypeScript Plugin/Hybrid Mode.",
         "Disable TypeScript Plugin/Hybrid Mode."
       ],
-      "type": "boolean"
+      "type": [
+        "boolean",
+        "string"
+      ]
     },
     "vue.server.includeLanguages": {
       "default": [
