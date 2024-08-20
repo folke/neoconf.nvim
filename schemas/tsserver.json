@@ -273,6 +273,87 @@
       "scope": "language-overridable",
       "type": "string"
     },
+    "javascript.preferences.organizeImports": {
+      "markdownDescription": "Advanced preferences that control how imports are ordered. Presets are available in `#typescript.preferences.organizeImports.presets#`",
+      "properties": {
+        "accentCollation": {
+          "markdownDescription": "Compare characters with diacritical marks as unequal to base character",
+          "type": "boolean"
+        },
+        "caseFirst": {
+          "default": "default",
+          "enum": [
+            "default",
+            "upper",
+            "lower"
+          ],
+          "markdownDescription": "Indicates whether upper-case comes before lower-case. Only applies to `organizeImportsCollation: 'unicode'`",
+          "type": "string"
+        },
+        "caseSensitivity": {
+          "default": "auto",
+          "enum": [
+            "auto",
+            "caseInsensitive",
+            "caseSensitive"
+          ],
+          "markdownEnumDescriptions": [
+            "Detect case-sensitivity for import sorting",
+            "Sort imports case-insensitively",
+            "Sort imports case-sensitively"
+          ],
+          "type": "string"
+        },
+        "locale": {
+          "markdownDescription": "Overrides the locale used for collation. Specify `auto` to use the UI locale. Only applies to `organizeImportsCollation: 'unicode'`",
+          "type": "string"
+        },
+        "numericCollation": {
+          "markdownDescription": "Sort numeric strings by integer value",
+          "type": "boolean"
+        },
+        "presets": {
+          "default": "auto",
+          "enum": [
+            "auto",
+            "eslint sort-imports",
+            "eslint plugin-simple-import-sort",
+            "dprint"
+          ],
+          "markdownDescription": "%typescript.preferences.organizeImports.presets%",
+          "markdownEnumDescriptions": [
+            "%typescript.preferences.organizeImports.presets.auto%",
+            "%typescript.preferences.organizeImports.presets.eslintSortImports%",
+            "%typescript.preferences.organizeImports.presets.eslintPluginSimpleImportSort%",
+            "%typescript.preferences.organizeImports.presets.dprint%"
+          ],
+          "type": "string"
+        },
+        "typeOrder": {
+          "default": "auto",
+          "enum": [
+            "auto",
+            "last",
+            "inline",
+            "first"
+          ],
+          "type": "string"
+        },
+        "unicodeCollation": {
+          "default": "ordinal",
+          "enum": [
+            "ordinal",
+            "unicode"
+          ],
+          "markdownEnumDescriptions": [
+            "Sort imports using the numeric value of each code point",
+            "Sort imports using the Unicode code collation"
+          ],
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
     "javascript.preferences.quoteStyle": {
       "default": "auto",
       "enum": [
@@ -826,6 +907,87 @@
       ],
       "scope": "language-overridable",
       "type": "string"
+    },
+    "typescript.preferences.organizeImports": {
+      "markdownDescription": "Advanced preferences that control how imports are ordered. Presets are available in `#typescript.preferences.organizeImports.presets#`",
+      "properties": {
+        "accentCollation": {
+          "markdownDescription": "Compare characters with diacritical marks as unequal to base character",
+          "type": "boolean"
+        },
+        "caseFirst": {
+          "default": "default",
+          "enum": [
+            "default",
+            "upper",
+            "lower"
+          ],
+          "markdownDescription": "Indicates whether upper-case comes before lower-case. Only applies to `organizeImportsCollation: 'unicode'`",
+          "type": "string"
+        },
+        "caseSensitivity": {
+          "default": "auto",
+          "enum": [
+            "auto",
+            "caseInsensitive",
+            "caseSensitive"
+          ],
+          "markdownEnumDescriptions": [
+            "Detect case-sensitivity for import sorting",
+            "Sort imports case-insensitively",
+            "Sort imports case-sensitively"
+          ],
+          "type": "string"
+        },
+        "locale": {
+          "markdownDescription": "Overrides the locale used for collation. Specify `auto` to use the UI locale. Only applies to `organizeImportsCollation: 'unicode'`",
+          "type": "string"
+        },
+        "numericCollation": {
+          "markdownDescription": "Sort numeric strings by integer value",
+          "type": "boolean"
+        },
+        "presets": {
+          "default": "auto",
+          "enum": [
+            "auto",
+            "eslint sort-imports",
+            "eslint plugin-simple-import-sort",
+            "dprint"
+          ],
+          "markdownDescription": "%typescript.preferences.organizeImports.presets%",
+          "markdownEnumDescriptions": [
+            "%typescript.preferences.organizeImports.presets.auto%",
+            "%typescript.preferences.organizeImports.presets.eslintSortImports%",
+            "%typescript.preferences.organizeImports.presets.eslintPluginSimpleImportSort%",
+            "%typescript.preferences.organizeImports.presets.dprint%"
+          ],
+          "type": "string"
+        },
+        "typeOrder": {
+          "default": "auto",
+          "enum": [
+            "auto",
+            "last",
+            "inline",
+            "first"
+          ],
+          "type": "string"
+        },
+        "unicodeCollation": {
+          "default": "ordinal",
+          "enum": [
+            "ordinal",
+            "unicode"
+          ],
+          "markdownEnumDescriptions": [
+            "Sort imports using the numeric value of each code point",
+            "Sort imports using the Unicode code collation"
+          ],
+          "type": "string"
+        }
+      },
+      "type": "object"
     },
     "typescript.preferences.preferTypeOnlyAutoImports": {
       "default": false,

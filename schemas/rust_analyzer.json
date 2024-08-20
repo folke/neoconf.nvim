@@ -73,19 +73,6 @@
       "markdownDescription": "Run build scripts (`build.rs`) for more precise code analysis.",
       "type": "boolean"
     },
-    "rust-analyzer.cargo.buildScripts.invocationLocation": {
-      "default": "workspace",
-      "enum": [
-        "workspace",
-        "root"
-      ],
-      "enumDescriptions": [
-        "The command will be executed in the corresponding workspace root.",
-        "The command will be executed in the project root."
-      ],
-      "markdownDescription": "Specifies the working directory for running build scripts.\n- \"workspace\": run build scripts for a workspace in the workspace's root directory.\n    This is incompatible with `#rust-analyzer.cargo.buildScripts.invocationStrategy#` set to `once`.\n- \"root\": run build scripts in the project's root directory.\nThis config only has an effect when `#rust-analyzer.cargo.buildScripts.overrideCommand#`\nis set.",
-      "type": "string"
-    },
     "rust-analyzer.cargo.buildScripts.invocationStrategy": {
       "default": "per_workspace",
       "enum": [
@@ -93,10 +80,10 @@
         "once"
       ],
       "enumDescriptions": [
-        "The command will be executed for each workspace.",
-        "The command will be executed once."
+        "The command will be executed for each Rust workspace with the workspace as the working directory.",
+        "The command will be executed once with the opened project as the working directory."
       ],
-      "markdownDescription": "Specifies the invocation strategy to use when running the build scripts command.\nIf `per_workspace` is set, the command will be executed for each workspace.\nIf `once` is set, the command will be executed once.\nThis config only has an effect when `#rust-analyzer.cargo.buildScripts.overrideCommand#`\nis set.",
+      "markdownDescription": "Specifies the invocation strategy to use when running the build scripts command.\nIf `per_workspace` is set, the command will be executed for each Rust workspace with the\nworkspace as the working directory.\nIf `once` is set, the command will be executed once with the opened project as the\nworking directory.\nThis config only has an effect when `#rust-analyzer.cargo.buildScripts.overrideCommand#`\nis set.",
       "type": "string"
     },
     "rust-analyzer.cargo.buildScripts.overrideCommand": {
@@ -104,7 +91,7 @@
       "items": {
         "type": "string"
       },
-      "markdownDescription": "Override the command rust-analyzer uses to run build scripts and\nbuild procedural macros. The command is required to output json\nand should therefore include `--message-format=json` or a similar\noption.\n\nIf there are multiple linked projects/workspaces, this command is invoked for\neach of them, with the working directory being the workspace root\n(i.e., the folder containing the `Cargo.toml`). This can be overwritten\nby changing `#rust-analyzer.cargo.buildScripts.invocationStrategy#` and\n`#rust-analyzer.cargo.buildScripts.invocationLocation#`.\n\nBy default, a cargo invocation will be constructed for the configured\ntargets and features, with the following base command line:\n\n```bash\ncargo check --quiet --workspace --message-format=json --all-targets --keep-going\n```\n.",
+      "markdownDescription": "Override the command rust-analyzer uses to run build scripts and\nbuild procedural macros. The command is required to output json\nand should therefore include `--message-format=json` or a similar\noption.\n\nIf there are multiple linked projects/workspaces, this command is invoked for\neach of them, with the working directory being the workspace root\n(i.e., the folder containing the `Cargo.toml`). This can be overwritten\nby changing `#rust-analyzer.cargo.buildScripts.invocationStrategy#`.\n\nBy default, a cargo invocation will be constructed for the configured\ntargets and features, with the following base command line:\n\n```bash\ncargo check --quiet --workspace --message-format=json --all-targets --keep-going\n```\n.",
       "type": [
         "null",
         "array"
@@ -265,19 +252,6 @@
       "type": "array",
       "uniqueItems": true
     },
-    "rust-analyzer.check.invocationLocation": {
-      "default": "workspace",
-      "enum": [
-        "workspace",
-        "root"
-      ],
-      "enumDescriptions": [
-        "The command will be executed in the corresponding workspace root.",
-        "The command will be executed in the project root."
-      ],
-      "markdownDescription": "Specifies the working directory for running checks.\n- \"workspace\": run checks for workspaces in the corresponding workspaces' root directories.\n    This falls back to \"root\" if `#rust-analyzer.check.invocationStrategy#` is set to `once`.\n- \"root\": run checks in the project's root directory.\nThis config only has an effect when `#rust-analyzer.check.overrideCommand#`\nis set.",
-      "type": "string"
-    },
     "rust-analyzer.check.invocationStrategy": {
       "default": "per_workspace",
       "enum": [
@@ -285,8 +259,8 @@
         "once"
       ],
       "enumDescriptions": [
-        "The command will be executed for each workspace.",
-        "The command will be executed once."
+        "The command will be executed for each Rust workspace with the workspace as the working directory.",
+        "The command will be executed once with the opened project as the working directory."
       ],
       "markdownDescription": "Specifies the invocation strategy to use when running the check command.\nIf `per_workspace` is set, the command will be executed for each workspace.\nIf `once` is set, the command will be executed once.\nThis config only has an effect when `#rust-analyzer.check.overrideCommand#`\nis set.",
       "type": "string"
@@ -304,7 +278,7 @@
       "items": {
         "type": "string"
       },
-      "markdownDescription": "Override the command rust-analyzer uses instead of `cargo check` for\ndiagnostics on save. The command is required to output json and\nshould therefore include `--message-format=json` or a similar option\n(if your client supports the `colorDiagnosticOutput` experimental\ncapability, you can use `--message-format=json-diagnostic-rendered-ansi`).\n\nIf you're changing this because you're using some tool wrapping\nCargo, you might also want to change\n`#rust-analyzer.cargo.buildScripts.overrideCommand#`.\n\nIf there are multiple linked projects/workspaces, this command is invoked for\neach of them, with the working directory being the workspace root\n(i.e., the folder containing the `Cargo.toml`). This can be overwritten\nby changing `#rust-analyzer.check.invocationStrategy#` and\n`#rust-analyzer.check.invocationLocation#`.\n\nIf `$saved_file` is part of the command, rust-analyzer will pass\nthe absolute path of the saved file to the provided command. This is\nintended to be used with non-Cargo build systems.\nNote that `$saved_file` is experimental and may be removed in the future.\n\nAn example command would be:\n\n```bash\ncargo check --workspace --message-format=json --all-targets\n```\n.",
+      "markdownDescription": "Override the command rust-analyzer uses instead of `cargo check` for\ndiagnostics on save. The command is required to output json and\nshould therefore include `--message-format=json` or a similar option\n(if your client supports the `colorDiagnosticOutput` experimental\ncapability, you can use `--message-format=json-diagnostic-rendered-ansi`).\n\nIf you're changing this because you're using some tool wrapping\nCargo, you might also want to change\n`#rust-analyzer.cargo.buildScripts.overrideCommand#`.\n\nIf there are multiple linked projects/workspaces, this command is invoked for\neach of them, with the working directory being the workspace root\n(i.e., the folder containing the `Cargo.toml`). This can be overwritten\nby changing `#rust-analyzer.check.invocationStrategy#`.\n\nIf `$saved_file` is part of the command, rust-analyzer will pass\nthe absolute path of the saved file to the provided command. This is\nintended to be used with non-Cargo build systems.\nNote that `$saved_file` is experimental and may be removed in the future.\n\nAn example command would be:\n\n```bash\ncargo check --workspace --message-format=json --all-targets\n```\n.",
       "type": [
         "null",
         "array"
@@ -533,14 +507,6 @@
       },
       "markdownDescription": "List of warnings that should be displayed with info severity.\n\nThe warnings will be indicated by a blue squiggly underline in code\nand a blue icon in the `Problems Panel`.",
       "type": "array"
-    },
-    "rust-analyzer.discoverProjectRunner": {
-      "default": null,
-      "markdownDescription": "Sets the extension responsible for determining which extension the rust-analyzer extension uses to generate `rust-project.json` files. This should should only be used\n if a build system like Buck or Bazel is also in use.",
-      "type": [
-        "null",
-        "string"
-      ]
     },
     "rust-analyzer.files.excludeDirs": {
       "default": [],

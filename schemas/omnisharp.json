@@ -367,6 +367,12 @@
       "order": 20,
       "type": "boolean"
     },
+    "dotnet.completion.triggerCompletionInArgumentLists": {
+      "default": "true",
+      "description": "%configuration.dotnet.completion.triggerCompletionInArgumentLists%",
+      "order": 20,
+      "type": "boolean"
+    },
     "dotnet.defaultSolution": {
       "description": "%configuration.dotnet.defaultSolution.description%",
       "order": 0,

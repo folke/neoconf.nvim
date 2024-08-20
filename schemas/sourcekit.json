@@ -6,14 +6,12 @@
       "default": false,
       "markdownDeprecationMessage": "**Deprecated**: Please use `#swift.sourcekit-lsp.disable#` instead.",
       "markdownDescription": "Disable the running of SourceKit-LSP.",
-      "order": 7,
       "type": "boolean"
     },
     "sourcekit-lsp.inlayHints.enabled": {
       "default": true,
       "markdownDeprecationMessage": "**Deprecated**: Please use `#editor.inlayHints.enabled#` instead.",
       "markdownDescription": "Display Inlay Hints. Inlay Hints are variable annotations indicating their inferred type. They are only available if you are using Swift 5.6 or later.",
-      "order": 3,
       "type": "boolean"
     },
     "sourcekit-lsp.serverArguments": {
@@ -23,13 +21,11 @@
       },
       "markdownDeprecationMessage": "**Deprecated**: Please use `#swift.sourcekit-lsp.serverArguments#` instead.",
       "markdownDescription": "Arguments to pass to SourceKit-LSP. Keys and values should be provided as individual entries in the list. e.g. `['--log-level', 'debug']`",
-      "order": 2,
       "type": "array"
     },
     "sourcekit-lsp.serverPath": {
       "markdownDeprecationMessage": "**Deprecated**: Please use `#swift.sourcekit-lsp.serverPath#` instead.",
       "markdownDescription": "The path of the `sourcekit-lsp` executable. The default is to look in the path where `swift` is found.",
-      "order": 1,
       "type": "string"
     },
     "sourcekit-lsp.support-c-cpp": {
@@ -46,7 +42,6 @@
       ],
       "markdownDeprecationMessage": "**Deprecated**: Please use `#swift.sourcekit-lsp.supported-languages#` instead.",
       "markdownDescription": "Add LSP functionality for C/C++ files. By default this is set to disable when the C/C++ extension is active.",
-      "order": 5,
       "type": "string"
     },
     "sourcekit-lsp.trace.server": {
@@ -58,7 +53,6 @@
       ],
       "markdownDeprecationMessage": "**Deprecated**: Please use `#swift.sourcekit-lsp.trace.server#` instead.",
       "markdownDescription": "Traces the communication between VS Code and the SourceKit-LSP language server.",
-      "order": 6,
       "type": "string"
     },
     "swift.SDK": {
@@ -159,7 +153,7 @@
       "markdownEnumDescriptions": [
         "Use whichever diagnostics style `swiftc` produces by default.",
         "Use the `llvm` diagnostic style. This allows the parsing of \"notes\".",
-        "Use the `swift` diagnostic style. This means that \"notes\" will not be parsed. This option will not work for Swift versions prior to 5.10."
+        "Use the `swift` diagnostic style. This means that \"notes\" will not be parsed. This option has no effect in Swift versions prior to 5.10."
       ],
       "order": 9,
       "type": "string"
@@ -272,6 +266,12 @@
       "markdownDescription": "Controls whether or not the create new swift project button appears in the welcome page.",
       "type": "boolean"
     },
+    "swift.sourcekit-lsp.backgroundIndexing": {
+      "default": false,
+      "markdownDescription": "**Experimental**: Enable or disable background indexing. This option has no effect in Swift versions prior to 6.0.",
+      "order": 4,
+      "type": "boolean"
+    },
     "swift.sourcekit-lsp.disable": {
       "default": false,
       "markdownDescription": "Disable SourceKit-LSP",
@@ -312,7 +312,7 @@
         "type": "string"
       },
       "markdownDescription": "List of languages supported by SourceKit-LSP. This is used to determine whether SourceKit-LSP should provide language features for a particular file type. If you want a different extension to provide support for a language, remove it from the list.",
-      "order": 4,
+      "order": 3,
       "type": "array"
     },
     "swift.sourcekit-lsp.trace.server": {

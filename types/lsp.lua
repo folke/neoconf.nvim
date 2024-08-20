@@ -139,6 +139,8 @@
 ---@field server "off" | "messages" | "verbose"
 
 ---@class _.lspconfig.settings.astro.Astro
+-- Enable experimental support for content collection intellisense inside Markdown, MDX and Markdoc. Note that this require also enabling the feature in your Astro config (experimental.contentCollectionIntellisense) (Astro 4.14+)
+---@field content-intellisense boolean
 ---@field language-server _.lspconfig.settings.astro.Language-server
 ---@field trace _.lspconfig.settings.astro.Trace
 
@@ -4360,6 +4362,33 @@
 ---@class lspconfig.settings.html
 ---@field html _.lspconfig.settings.html.Html
 
+---@class _.lspconfig.settings.intelephense.Implementations
+-- Enable a code lens that shows an abstract and interface implementations count and command to peek locations.
+---@field enable boolean
+
+---@class _.lspconfig.settings.intelephense.Overrides
+-- Enable a code lens that shows method override count and command to peek locations.
+---@field enable boolean
+
+---@class _.lspconfig.settings.intelephense.Parent
+-- Enable a code lens that indicates if a method has a parent implementation and command to peek location.
+---@field enable boolean
+
+---@class _.lspconfig.settings.intelephense.References
+-- Enable a code lens that shows a reference count and command to peek locations.
+---@field enable boolean
+
+---@class _.lspconfig.settings.intelephense.Usages
+-- Enable a code lens that shows a trait usages count and command to peek locations.
+---@field enable boolean
+
+---@class _.lspconfig.settings.intelephense.CodeLens
+---@field implementations _.lspconfig.settings.intelephense.Implementations
+---@field overrides _.lspconfig.settings.intelephense.Overrides
+---@field parent _.lspconfig.settings.intelephense.Parent
+---@field references _.lspconfig.settings.intelephense.References
+---@field usages _.lspconfig.settings.intelephense.Usages
+
 ---@class _.lspconfig.settings.intelephense.Compatibility
 -- Resolves `ArrayAccess` and `Traversable` implementations that are unioned with a typed array to generic syntax. eg `ArrayAccessOrTraversable|ElementType[]` => `ArrayAccessOrTraversable<mixed, ElementType>`.
 -- 
@@ -4495,7 +4524,7 @@
 -- default = true
 -- ```
 ---@field undefinedMethods boolean
--- Enables undefined static property diagnostics.
+-- Enables undefined property diagnostics.
 -- 
 -- ```lua
 -- default = true
@@ -4708,6 +4737,7 @@
 ---@field server "off" | "messages" | "verbose"
 
 ---@class _.lspconfig.settings.intelephense.Intelephense
+---@field codeLens _.lspconfig.settings.intelephense.CodeLens
 ---@field compatibility _.lspconfig.settings.intelephense.Compatibility
 ---@field completion _.lspconfig.settings.intelephense.Completion
 ---@field diagnostics _.lspconfig.settings.intelephense.Diagnostics
@@ -8305,6 +8335,9 @@
 -- default = true
 -- ```
 ---@field castNumberToInteger boolean
+-- Strictly check the shape of the table.
+-- 
+---@field checkTableShape boolean
 -- When a parameter type is not annotated, it is inferred from the function's call sites.
 -- 
 -- When this setting is `false`, the type of the parameter is `any` when it is not annotated.
@@ -9062,6 +9095,12 @@
 -- default = "true"
 -- ```
 ---@field showNameCompletionSuggestions boolean
+-- %configuration.dotnet.completion.triggerCompletionInArgumentLists%
+-- 
+-- ```lua
+-- default = "true"
+-- ```
+---@field triggerCompletionInArgumentLists boolean
 
 ---@class _.lspconfig.settings.omnisharp.Highlighting
 -- %configuration.dotnet.highlighting.highlightRelatedJsonComponents%
@@ -12215,20 +12254,11 @@
 -- default = true
 -- ```
 ---@field enable boolean
--- Specifies the working directory for running build scripts.
--- - "workspace": run build scripts for a workspace in the workspace's root directory.
---     This is incompatible with `#rust-analyzer.cargo.buildScripts.invocationStrategy#` set to `once`.
--- - "root": run build scripts in the project's root directory.
--- This config only has an effect when `#rust-analyzer.cargo.buildScripts.overrideCommand#`
--- is set.
--- 
--- ```lua
--- default = "workspace"
--- ```
----@field invocationLocation "workspace" | "root"
 -- Specifies the invocation strategy to use when running the build scripts command.
--- If `per_workspace` is set, the command will be executed for each workspace.
--- If `once` is set, the command will be executed once.
+-- If `per_workspace` is set, the command will be executed for each Rust workspace with the
+-- workspace as the working directory.
+-- If `once` is set, the command will be executed once with the opened project as the
+-- working directory.
 -- This config only has an effect when `#rust-analyzer.cargo.buildScripts.overrideCommand#`
 -- is set.
 -- 
@@ -12244,8 +12274,7 @@
 -- If there are multiple linked projects/workspaces, this command is invoked for
 -- each of them, with the working directory being the workspace root
 -- (i.e., the folder containing the `Cargo.toml`). This can be overwritten
--- by changing `#rust-analyzer.cargo.buildScripts.invocationStrategy#` and
--- `#rust-analyzer.cargo.buildScripts.invocationLocation#`.
+-- by changing `#rust-analyzer.cargo.buildScripts.invocationStrategy#`.
 -- 
 -- By default, a cargo invocation will be constructed for the configured
 -- targets and features, with the following base command line:
@@ -12376,17 +12405,6 @@
 -- default = {}
 -- ```
 ---@field ignore string[]
--- Specifies the working directory for running checks.
--- - "workspace": run checks for workspaces in the corresponding workspaces' root directories.
---     This falls back to "root" if `#rust-analyzer.check.invocationStrategy#` is set to `once`.
--- - "root": run checks in the project's root directory.
--- This config only has an effect when `#rust-analyzer.check.overrideCommand#`
--- is set.
--- 
--- ```lua
--- default = "workspace"
--- ```
----@field invocationLocation "workspace" | "root"
 -- Specifies the invocation strategy to use when running the check command.
 -- If `per_workspace` is set, the command will be executed for each workspace.
 -- If `once` is set, the command will be executed once.
@@ -12413,8 +12431,7 @@
 -- If there are multiple linked projects/workspaces, this command is invoked for
 -- each of them, with the working directory being the workspace root
 -- (i.e., the folder containing the `Cargo.toml`). This can be overwritten
--- by changing `#rust-analyzer.check.invocationStrategy#` and
--- `#rust-analyzer.check.invocationLocation#`.
+-- by changing `#rust-analyzer.check.invocationStrategy#`.
 -- 
 -- If `$saved_file` is part of the command, rust-analyzer will pass
 -- the absolute path of the saved file to the provided command. This is
@@ -13529,9 +13546,6 @@
 ---@field completion _.lspconfig.settings.rust_analyzer.Completion
 ---@field debug _.lspconfig.settings.rust_analyzer.Debug
 ---@field diagnostics _.lspconfig.settings.rust_analyzer.Diagnostics
--- Sets the extension responsible for determining which extension the rust-analyzer extension uses to generate `rust-project.json` files. This should should only be used
---  if a build system like Buck or Bazel is also in use.
----@field discoverProjectRunner string
 ---@field files _.lspconfig.settings.rust_analyzer.Files
 ---@field highlightRelated _.lspconfig.settings.rust_analyzer.HighlightRelated
 ---@field hover _.lspconfig.settings.rust_analyzer.Hover
@@ -13957,6 +13971,8 @@
 ---@field server "off" | "messages" | "verbose"
 
 ---@class _.lspconfig.settings.sourcekit.Sourcekit-lsp
+-- **Experimental**: Enable or disable background indexing. This option has no effect in Swift versions prior to 6.0.
+---@field backgroundIndexing boolean
 -- Disable SourceKit-LSP
 ---@field disable boolean
 -- Arguments to pass to SourceKit-LSP. Keys and values should be provided as individual entries in the list. e.g. `['--log-level', 'debug']`
@@ -15089,6 +15105,39 @@
 ---@field propertyDeclarationTypes _.lspconfig.settings.tsserver.PropertyDeclarationTypes
 ---@field variableTypes _.lspconfig.settings.tsserver.VariableTypes
 
+-- Advanced preferences that control how imports are ordered. Presets are available in `#typescript.preferences.organizeImports.presets#`
+---@class _.lspconfig.settings.tsserver.OrganizeImports
+-- Compare characters with diacritical marks as unequal to base character
+---@field accentCollation boolean
+-- Indicates whether upper-case comes before lower-case. Only applies to `organizeImportsCollation: 'unicode'`
+-- 
+-- ```lua
+-- default = "default"
+-- ```
+---@field caseFirst "default" | "upper" | "lower"
+-- ```lua
+-- default = "auto"
+-- ```
+---@field caseSensitivity "auto" | "caseInsensitive" | "caseSensitive"
+-- Overrides the locale used for collation. Specify `auto` to use the UI locale. Only applies to `organizeImportsCollation: 'unicode'`
+---@field locale string
+-- Sort numeric strings by integer value
+---@field numericCollation boolean
+-- %typescript.preferences.organizeImports.presets%
+-- 
+-- ```lua
+-- default = "auto"
+-- ```
+---@field presets "auto" | "eslint sort-imports" | "eslint plugin-simple-import-sort" | "dprint"
+-- ```lua
+-- default = "auto"
+-- ```
+---@field typeOrder "auto" | "last" | "inline" | "first"
+-- ```lua
+-- default = "ordinal"
+-- ```
+---@field unicodeCollation "ordinal" | "unicode"
+
 ---@class _.lspconfig.settings.tsserver.Preferences
 -- Specify glob patterns of files to exclude from auto imports. Relative paths are resolved relative to the workspace root. Patterns are evaluated using tsconfig.json [`exclude`](https://www.typescriptlang.org/tsconfig#exclude) semantics.
 ---@field autoImportFileExcludePatterns string[]
@@ -15110,6 +15159,8 @@
 -- default = "auto"
 -- ```
 ---@field jsxAttributeCompletionStyle "auto" | "braces" | "none"
+-- Advanced preferences that control how imports are ordered. Presets are available in `#typescript.preferences.organizeImports.presets#`
+---@field organizeImports _.lspconfig.settings.tsserver.OrganizeImports
 -- Preferred quote style to use for Quick Fixes.
 -- 
 -- ```lua
@@ -15477,6 +15528,39 @@
 ---@field propertyDeclarationTypes _.lspconfig.settings.tsserver.PropertyDeclarationTypes
 ---@field variableTypes _.lspconfig.settings.tsserver.VariableTypes
 
+-- Advanced preferences that control how imports are ordered. Presets are available in `#typescript.preferences.organizeImports.presets#`
+---@class _.lspconfig.settings.tsserver.OrganizeImports
+-- Compare characters with diacritical marks as unequal to base character
+---@field accentCollation boolean
+-- Indicates whether upper-case comes before lower-case. Only applies to `organizeImportsCollation: 'unicode'`
+-- 
+-- ```lua
+-- default = "default"
+-- ```
+---@field caseFirst "default" | "upper" | "lower"
+-- ```lua
+-- default = "auto"
+-- ```
+---@field caseSensitivity "auto" | "caseInsensitive" | "caseSensitive"
+-- Overrides the locale used for collation. Specify `auto` to use the UI locale. Only applies to `organizeImportsCollation: 'unicode'`
+---@field locale string
+-- Sort numeric strings by integer value
+---@field numericCollation boolean
+-- %typescript.preferences.organizeImports.presets%
+-- 
+-- ```lua
+-- default = "auto"
+-- ```
+---@field presets "auto" | "eslint sort-imports" | "eslint plugin-simple-import-sort" | "dprint"
+-- ```lua
+-- default = "auto"
+-- ```
+---@field typeOrder "auto" | "last" | "inline" | "first"
+-- ```lua
+-- default = "ordinal"
+-- ```
+---@field unicodeCollation "ordinal" | "unicode"
+
 ---@class _.lspconfig.settings.tsserver.Preferences
 -- Specify glob patterns of files to exclude from auto imports. Relative paths are resolved relative to the workspace root. Patterns are evaluated using tsconfig.json [`exclude`](https://www.typescriptlang.org/tsconfig#exclude) semantics.
 ---@field autoImportFileExcludePatterns string[]
@@ -15504,6 +15588,8 @@
 -- default = "auto"
 -- ```
 ---@field jsxAttributeCompletionStyle "auto" | "braces" | "none"
+-- Advanced preferences that control how imports are ordered. Presets are available in `#typescript.preferences.organizeImports.presets#`
+---@field organizeImports _.lspconfig.settings.tsserver.OrganizeImports
 -- Include the `type` keyword in auto-imports whenever possible. Requires using TypeScript 5.3+ in the workspace.
 ---@field preferTypeOnlyAutoImports boolean
 -- Preferred quote style to use for Quick Fixes.
@@ -15889,6 +15975,8 @@
 ---@field wrapAttributes "auto" | "force" | "force-aligned" | "force-expand-multiline" | "aligned-multiple" | "preserve" | "preserve-aligned"
 
 ---@class _.lspconfig.settings.volar.InlayHints
+-- Show inlay hints for destructured prop.
+---@field destructuredProps boolean
 -- Show inlay hints for event argument in inline handlers.
 ---@field inlineHandlerLeading boolean
 -- Show inlay hints for missing required props.
