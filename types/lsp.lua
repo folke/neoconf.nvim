@@ -1153,6 +1153,12 @@
 ---@field documentation "full" | "summary" | "none"
 -- Whether to automatically commit the selected completion item when pressing certain keys such as . , ( and \[. This setting does not currently apply to LSP, see `#dart.previewCommitCharacters#`.
 ---@field enableCompletionCommitCharacters boolean
+-- Whether to enable functionality for using Pub. Turning this setting off will prevent the extension from ever running pub and hide all commands relating to this. Use this if you are using an alternative package manager.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enablePub boolean
 -- Whether to enable the [dart_style](https://pub.dev/packages/dart_style) formatter for Dart code.
 -- 
 -- ```lua
@@ -15123,12 +15129,6 @@
 ---@field locale string
 -- Sort numeric strings by integer value
 ---@field numericCollation boolean
--- %typescript.preferences.organizeImports.presets%
--- 
--- ```lua
--- default = "auto"
--- ```
----@field presets "auto" | "eslint sort-imports" | "eslint plugin-simple-import-sort" | "dprint"
 -- ```lua
 -- default = "auto"
 -- ```
@@ -15546,12 +15546,6 @@
 ---@field locale string
 -- Sort numeric strings by integer value
 ---@field numericCollation boolean
--- %typescript.preferences.organizeImports.presets%
--- 
--- ```lua
--- default = "auto"
--- ```
----@field presets "auto" | "eslint sort-imports" | "eslint plugin-simple-import-sort" | "dprint"
 -- ```lua
 -- default = "auto"
 -- ```

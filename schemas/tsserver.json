@@ -312,23 +312,6 @@
           "markdownDescription": "Sort numeric strings by integer value",
           "type": "boolean"
         },
-        "presets": {
-          "default": "auto",
-          "enum": [
-            "auto",
-            "eslint sort-imports",
-            "eslint plugin-simple-import-sort",
-            "dprint"
-          ],
-          "markdownDescription": "%typescript.preferences.organizeImports.presets%",
-          "markdownEnumDescriptions": [
-            "%typescript.preferences.organizeImports.presets.auto%",
-            "%typescript.preferences.organizeImports.presets.eslintSortImports%",
-            "%typescript.preferences.organizeImports.presets.eslintPluginSimpleImportSort%",
-            "%typescript.preferences.organizeImports.presets.dprint%"
-          ],
-          "type": "string"
-        },
         "typeOrder": {
           "default": "auto",
           "enum": [
@@ -946,23 +929,6 @@
         "numericCollation": {
           "markdownDescription": "Sort numeric strings by integer value",
           "type": "boolean"
-        },
-        "presets": {
-          "default": "auto",
-          "enum": [
-            "auto",
-            "eslint sort-imports",
-            "eslint plugin-simple-import-sort",
-            "dprint"
-          ],
-          "markdownDescription": "%typescript.preferences.organizeImports.presets%",
-          "markdownEnumDescriptions": [
-            "%typescript.preferences.organizeImports.presets.auto%",
-            "%typescript.preferences.organizeImports.presets.eslintSortImports%",
-            "%typescript.preferences.organizeImports.presets.eslintPluginSimpleImportSort%",
-            "%typescript.preferences.organizeImports.presets.dprint%"
-          ],
-          "type": "string"
         },
         "typeOrder": {
           "default": "auto",
