@@ -10795,6 +10795,8 @@
 -- default = {}
 -- ```
 ---@field extra_paths string[]
+-- Whether to place extra_paths at the beginning (true) or end (false) of `sys.path`
+---@field prioritize_extra_paths boolean
 
 ---@class _.lspconfig.settings.pylsp.Jedi.Completion
 -- Modules for which labels and snippets should be cached.
