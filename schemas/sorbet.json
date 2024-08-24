@@ -5,7 +5,6 @@
     "sorbet.configFilePatterns": {
       "default": [
         "**/sorbet/config",
-        "**/Gemfile",
         "**/Gemfile.lock"
       ],
       "description": "List of workspace file patterns that contribute to Sorbet's configuration.  Changes to any of those files should trigger a restart of any actively running Sorbet language server.",

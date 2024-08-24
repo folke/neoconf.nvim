@@ -13869,7 +13869,7 @@
 -- List of workspace file patterns that contribute to Sorbet's configuration.  Changes to any of those files should trigger a restart of any actively running Sorbet language server.
 -- 
 -- ```lua
--- default = { "**/sorbet/config", "**/Gemfile", "**/Gemfile.lock" }
+-- default = { "**/sorbet/config", "**/Gemfile.lock" }
 -- ```
 ---@field configFilePatterns string[]
 -- Enable Sorbet Ruby IDE features
@@ -15143,6 +15143,13 @@
 ---@class _.lspconfig.settings.tsserver.Preferences
 -- Specify glob patterns of files to exclude from auto imports. Relative paths are resolved relative to the workspace root. Patterns are evaluated using tsconfig.json [`exclude`](https://www.typescriptlang.org/tsconfig#exclude) semantics.
 ---@field autoImportFileExcludePatterns string[]
+-- Specify regular expressions to exclude auto imports with matching import specifiers. Examples:
+-- 
+-- - `^node:`
+-- - `lib/internal` (slashes don't need to be escaped...)
+-- - `/lib\/internal/i` (...unless including surrounding slashes for `i` or `u` flags)
+-- - `^lodash$` (only allow subpath imports from lodash)
+---@field autoImportSpecifierExcludeRegexes string[]
 -- Preferred path style for auto imports.
 -- 
 -- ```lua
@@ -15560,6 +15567,13 @@
 ---@class _.lspconfig.settings.tsserver.Preferences
 -- Specify glob patterns of files to exclude from auto imports. Relative paths are resolved relative to the workspace root. Patterns are evaluated using tsconfig.json [`exclude`](https://www.typescriptlang.org/tsconfig#exclude) semantics.
 ---@field autoImportFileExcludePatterns string[]
+-- Specify regular expressions to exclude auto imports with matching import specifiers. Examples:
+-- 
+-- - `^node:`
+-- - `lib/internal` (slashes don't need to be escaped...)
+-- - `/lib\/internal/i` (...unless including surrounding slashes for `i` or `u` flags)
+-- - `^lodash$` (only allow subpath imports from lodash)
+---@field autoImportSpecifierExcludeRegexes string[]
 -- Preferred path style for auto imports.
 -- 
 -- ```lua
@@ -15747,14 +15761,14 @@
 -- ```
 ---@field enabled boolean
 -- Suppresses semantic errors on web even when project wide IntelliSense is enabled. This is always on when project wide IntelliSense is not enabled or available. See `#typescript.tsserver.web.projectWideIntellisense.enabled#`
--- 
--- ```lua
--- default = true
--- ```
 ---@field suppressSemanticErrors boolean
 
 ---@class _.lspconfig.settings.tsserver.TypeAcquisition
 -- Enable/disable package acquisition on the web. This enables IntelliSense for imported packages. Requires `#typescript.tsserver.web.projectWideIntellisense.enabled#`. Currently not supported for Safari.
+-- 
+-- ```lua
+-- default = true
+-- ```
 ---@field enabled boolean
 
 ---@class _.lspconfig.settings.tsserver.Web
