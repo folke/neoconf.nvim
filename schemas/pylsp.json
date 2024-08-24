@@ -165,6 +165,11 @@
       },
       "type": "array"
     },
+    "pylsp.plugins.jedi.prioritize_extra_paths": {
+      "default": false,
+      "description": "Whether to place extra_paths at the beginning (true) or end (false) of `sys.path`",
+      "type": "boolean"
+    },
     "pylsp.plugins.jedi_completion.cache_for": {
       "default": [
         "pandas",

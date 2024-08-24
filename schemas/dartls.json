@@ -486,6 +486,12 @@
       "scope": "resource",
       "type": "boolean"
     },
+    "dart.enablePub": {
+      "default": true,
+      "description": "Whether to enable functionality for using Pub. Turning this setting off will prevent the extension from ever running pub and hide all commands relating to this. Use this if you are using an alternative package manager.",
+      "scope": "window",
+      "type": "boolean"
+    },
     "dart.enableSdkFormatter": {
       "default": true,
       "markdownDescription": "Whether to enable the [dart_style](https://pub.dev/packages/dart_style) formatter for Dart code.",

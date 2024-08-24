@@ -1153,6 +1153,12 @@
 ---@field documentation "full" | "summary" | "none"
 -- Whether to automatically commit the selected completion item when pressing certain keys such as . , ( and \[. This setting does not currently apply to LSP, see `#dart.previewCommitCharacters#`.
 ---@field enableCompletionCommitCharacters boolean
+-- Whether to enable functionality for using Pub. Turning this setting off will prevent the extension from ever running pub and hide all commands relating to this. Use this if you are using an alternative package manager.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enablePub boolean
 -- Whether to enable the [dart_style](https://pub.dev/packages/dart_style) formatter for Dart code.
 -- 
 -- ```lua
@@ -10789,6 +10795,8 @@
 -- default = {}
 -- ```
 ---@field extra_paths string[]
+-- Whether to place extra_paths at the beginning (true) or end (false) of `sys.path`
+---@field prioritize_extra_paths boolean
 
 ---@class _.lspconfig.settings.pylsp.Jedi.Completion
 -- Modules for which labels and snippets should be cached.
@@ -13861,7 +13869,7 @@
 -- List of workspace file patterns that contribute to Sorbet's configuration.  Changes to any of those files should trigger a restart of any actively running Sorbet language server.
 -- 
 -- ```lua
--- default = { "**/sorbet/config", "**/Gemfile", "**/Gemfile.lock" }
+-- default = { "**/sorbet/config", "**/Gemfile.lock" }
 -- ```
 ---@field configFilePatterns string[]
 -- Enable Sorbet Ruby IDE features
@@ -15123,12 +15131,6 @@
 ---@field locale string
 -- Sort numeric strings by integer value
 ---@field numericCollation boolean
--- %typescript.preferences.organizeImports.presets%
--- 
--- ```lua
--- default = "auto"
--- ```
----@field presets "auto" | "eslint sort-imports" | "eslint plugin-simple-import-sort" | "dprint"
 -- ```lua
 -- default = "auto"
 -- ```
@@ -15141,6 +15143,13 @@
 ---@class _.lspconfig.settings.tsserver.Preferences
 -- Specify glob patterns of files to exclude from auto imports. Relative paths are resolved relative to the workspace root. Patterns are evaluated using tsconfig.json [`exclude`](https://www.typescriptlang.org/tsconfig#exclude) semantics.
 ---@field autoImportFileExcludePatterns string[]
+-- Specify regular expressions to exclude auto imports with matching import specifiers. Examples:
+-- 
+-- - `^node:`
+-- - `lib/internal` (slashes don't need to be escaped...)
+-- - `/lib\/internal/i` (...unless including surrounding slashes for `i` or `u` flags)
+-- - `^lodash$` (only allow subpath imports from lodash)
+---@field autoImportSpecifierExcludeRegexes string[]
 -- Preferred path style for auto imports.
 -- 
 -- ```lua
@@ -15546,12 +15555,6 @@
 ---@field locale string
 -- Sort numeric strings by integer value
 ---@field numericCollation boolean
--- %typescript.preferences.organizeImports.presets%
--- 
--- ```lua
--- default = "auto"
--- ```
----@field presets "auto" | "eslint sort-imports" | "eslint plugin-simple-import-sort" | "dprint"
 -- ```lua
 -- default = "auto"
 -- ```
@@ -15564,6 +15567,13 @@
 ---@class _.lspconfig.settings.tsserver.Preferences
 -- Specify glob patterns of files to exclude from auto imports. Relative paths are resolved relative to the workspace root. Patterns are evaluated using tsconfig.json [`exclude`](https://www.typescriptlang.org/tsconfig#exclude) semantics.
 ---@field autoImportFileExcludePatterns string[]
+-- Specify regular expressions to exclude auto imports with matching import specifiers. Examples:
+-- 
+-- - `^node:`
+-- - `lib/internal` (slashes don't need to be escaped...)
+-- - `/lib\/internal/i` (...unless including surrounding slashes for `i` or `u` flags)
+-- - `^lodash$` (only allow subpath imports from lodash)
+---@field autoImportSpecifierExcludeRegexes string[]
 -- Preferred path style for auto imports.
 -- 
 -- ```lua
@@ -15751,14 +15761,14 @@
 -- ```
 ---@field enabled boolean
 -- Suppresses semantic errors on web even when project wide IntelliSense is enabled. This is always on when project wide IntelliSense is not enabled or available. See `#typescript.tsserver.web.projectWideIntellisense.enabled#`
--- 
--- ```lua
--- default = true
--- ```
 ---@field suppressSemanticErrors boolean
 
 ---@class _.lspconfig.settings.tsserver.TypeAcquisition
 -- Enable/disable package acquisition on the web. This enables IntelliSense for imported packages. Requires `#typescript.tsserver.web.projectWideIntellisense.enabled#`. Currently not supported for Safari.
+-- 
+-- ```lua
+-- default = true
+-- ```
 ---@field enabled boolean
 
 ---@class _.lspconfig.settings.tsserver.Web

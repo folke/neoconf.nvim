@@ -215,6 +215,14 @@
       "scope": "resource",
       "type": "array"
     },
+    "javascript.preferences.autoImportSpecifierExcludeRegexes": {
+      "items": {
+        "type": "string"
+      },
+      "markdownDescription": "Specify regular expressions to exclude auto imports with matching import specifiers. Examples:\n\n- `^node:`\n- `lib/internal` (slashes don't need to be escaped...)\n- `/lib\\/internal/i` (...unless including surrounding slashes for `i` or `u` flags)\n- `^lodash$` (only allow subpath imports from lodash)",
+      "scope": "resource",
+      "type": "array"
+    },
     "javascript.preferences.importModuleSpecifier": {
       "default": "shortest",
       "description": "Preferred path style for auto imports.",
@@ -311,23 +319,6 @@
         "numericCollation": {
           "markdownDescription": "Sort numeric strings by integer value",
           "type": "boolean"
-        },
-        "presets": {
-          "default": "auto",
-          "enum": [
-            "auto",
-            "eslint sort-imports",
-            "eslint plugin-simple-import-sort",
-            "dprint"
-          ],
-          "markdownDescription": "%typescript.preferences.organizeImports.presets%",
-          "markdownEnumDescriptions": [
-            "%typescript.preferences.organizeImports.presets.auto%",
-            "%typescript.preferences.organizeImports.presets.eslintSortImports%",
-            "%typescript.preferences.organizeImports.presets.eslintPluginSimpleImportSort%",
-            "%typescript.preferences.organizeImports.presets.dprint%"
-          ],
-          "type": "string"
         },
         "typeOrder": {
           "default": "auto",
@@ -834,6 +825,14 @@
       "scope": "resource",
       "type": "array"
     },
+    "typescript.preferences.autoImportSpecifierExcludeRegexes": {
+      "items": {
+        "type": "string"
+      },
+      "markdownDescription": "Specify regular expressions to exclude auto imports with matching import specifiers. Examples:\n\n- `^node:`\n- `lib/internal` (slashes don't need to be escaped...)\n- `/lib\\/internal/i` (...unless including surrounding slashes for `i` or `u` flags)\n- `^lodash$` (only allow subpath imports from lodash)",
+      "scope": "resource",
+      "type": "array"
+    },
     "typescript.preferences.importModuleSpecifier": {
       "default": "shortest",
       "description": "Preferred path style for auto imports.",
@@ -946,23 +945,6 @@
         "numericCollation": {
           "markdownDescription": "Sort numeric strings by integer value",
           "type": "boolean"
-        },
-        "presets": {
-          "default": "auto",
-          "enum": [
-            "auto",
-            "eslint sort-imports",
-            "eslint plugin-simple-import-sort",
-            "dprint"
-          ],
-          "markdownDescription": "%typescript.preferences.organizeImports.presets%",
-          "markdownEnumDescriptions": [
-            "%typescript.preferences.organizeImports.presets.auto%",
-            "%typescript.preferences.organizeImports.presets.eslintSortImports%",
-            "%typescript.preferences.organizeImports.presets.eslintPluginSimpleImportSort%",
-            "%typescript.preferences.organizeImports.presets.dprint%"
-          ],
-          "type": "string"
         },
         "typeOrder": {
           "default": "auto",
@@ -1295,13 +1277,13 @@
       "type": "boolean"
     },
     "typescript.tsserver.web.projectWideIntellisense.suppressSemanticErrors": {
-      "default": true,
+      "default": false,
       "description": "Suppresses semantic errors on web even when project wide IntelliSense is enabled. This is always on when project wide IntelliSense is not enabled or available. See `#typescript.tsserver.web.projectWideIntellisense.enabled#`",
       "scope": "window",
       "type": "boolean"
     },
     "typescript.tsserver.web.typeAcquisition.enabled": {
-      "default": false,
+      "default": true,
       "description": "Enable/disable package acquisition on the web. This enables IntelliSense for imported packages. Requires `#typescript.tsserver.web.projectWideIntellisense.enabled#`. Currently not supported for Safari.",
       "scope": "window",
       "type": "boolean"
