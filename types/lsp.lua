@@ -14012,6 +14012,12 @@
 -- default = "Focus Terminal"
 -- ```
 ---@field actionAfterBuildError "Focus Problems" | "Focus Terminal" | "Do Nothing"
+-- Additional arguments to pass to the `swift test` or `swift build` commands used when building and running tests from within VS Code.
+-- 
+-- ```lua
+-- default = {}
+-- ```
+---@field additionalTestArguments string[]
 -- When loading a `Package.swift`, auto-generate `launch.json` configurations for running any executables.
 -- 
 -- ```lua
@@ -14020,7 +14026,7 @@
 ---@field autoGenerateLaunchConfigurations boolean
 -- **Experimental**: Run `swift build` in the background whenever a file is saved. It is possible the background compilation will already be running when you attempt a compile yourself, so this is disabled by default.
 ---@field backgroundCompilation boolean
--- Additional arguments to pass to `swift build`. Keys and values should be provided as individual entries in the list. If you have created a copy of the build task in `tasks.json` then these build arguments will not be propogated to that task.
+-- Additional arguments to pass to `swift` commands such as `swift build`, `swift package`, `swift test`, etc... Keys and values should be provided as individual entries in the list. If you have created a copy of the build task in `tasks.json` then these build arguments will not be propogated to that task.
 -- 
 -- ```lua
 -- default = {}
