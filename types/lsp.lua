@@ -15119,11 +15119,11 @@
 ---@field propertyDeclarationTypes _.lspconfig.settings.tsserver.PropertyDeclarationTypes
 ---@field variableTypes _.lspconfig.settings.tsserver.VariableTypes
 
--- Advanced preferences that control how imports are ordered. Presets are available in `#typescript.preferences.organizeImports.presets#`
+-- Advanced preferences that control how imports are ordered.
 ---@class _.lspconfig.settings.tsserver.OrganizeImports
--- Compare characters with diacritical marks as unequal to base character
+-- Compare characters with diacritical marks as unequal to base character.
 ---@field accentCollation boolean
--- Indicates whether upper-case comes before lower-case. Only applies to `organizeImportsCollation: 'unicode'`
+-- Indicates whether upper-case comes before lower-case. Only applies to `organizeImportsCollation: 'unicode'`.
 -- 
 -- ```lua
 -- default = "default"
@@ -15133,9 +15133,9 @@
 -- default = "auto"
 -- ```
 ---@field caseSensitivity "auto" | "caseInsensitive" | "caseSensitive"
--- Overrides the locale used for collation. Specify `auto` to use the UI locale. Only applies to `organizeImportsCollation: 'unicode'`
+-- Overrides the locale used for collation. Specify `auto` to use the UI locale. Only applies to `organizeImportsCollation: 'unicode'`.
 ---@field locale string
--- Sort numeric strings by integer value
+-- Sort numeric strings by integer value.
 ---@field numericCollation boolean
 -- ```lua
 -- default = "auto"
@@ -15174,7 +15174,7 @@
 -- default = "auto"
 -- ```
 ---@field jsxAttributeCompletionStyle "auto" | "braces" | "none"
--- Advanced preferences that control how imports are ordered. Presets are available in `#typescript.preferences.organizeImports.presets#`
+-- Advanced preferences that control how imports are ordered.
 ---@field organizeImports _.lspconfig.settings.tsserver.OrganizeImports
 -- Preferred quote style to use for Quick Fixes.
 -- 
@@ -15543,11 +15543,11 @@
 ---@field propertyDeclarationTypes _.lspconfig.settings.tsserver.PropertyDeclarationTypes
 ---@field variableTypes _.lspconfig.settings.tsserver.VariableTypes
 
--- Advanced preferences that control how imports are ordered. Presets are available in `#typescript.preferences.organizeImports.presets#`
+-- Advanced preferences that control how imports are ordered.
 ---@class _.lspconfig.settings.tsserver.OrganizeImports
--- Compare characters with diacritical marks as unequal to base character
+-- Compare characters with diacritical marks as unequal to base character.
 ---@field accentCollation boolean
--- Indicates whether upper-case comes before lower-case. Only applies to `organizeImportsCollation: 'unicode'`
+-- Indicates whether upper-case comes before lower-case. Only applies to `organizeImportsCollation: 'unicode'`.
 -- 
 -- ```lua
 -- default = "default"
@@ -15557,9 +15557,9 @@
 -- default = "auto"
 -- ```
 ---@field caseSensitivity "auto" | "caseInsensitive" | "caseSensitive"
--- Overrides the locale used for collation. Specify `auto` to use the UI locale. Only applies to `organizeImportsCollation: 'unicode'`
+-- Overrides the locale used for collation. Specify `auto` to use the UI locale. Only applies to `organizeImportsCollation: 'unicode'`.
 ---@field locale string
--- Sort numeric strings by integer value
+-- Sort numeric strings by integer value.
 ---@field numericCollation boolean
 -- ```lua
 -- default = "auto"
@@ -15604,7 +15604,7 @@
 -- default = "auto"
 -- ```
 ---@field jsxAttributeCompletionStyle "auto" | "braces" | "none"
--- Advanced preferences that control how imports are ordered. Presets are available in `#typescript.preferences.organizeImports.presets#`
+-- Advanced preferences that control how imports are ordered.
 ---@field organizeImports _.lspconfig.settings.tsserver.OrganizeImports
 -- Include the `type` keyword in auto-imports whenever possible. Requires using TypeScript 5.3+ in the workspace.
 ---@field preferTypeOnlyAutoImports boolean
