@@ -815,7 +815,7 @@
       "type": "object"
     },
     "dotnet.unitTests.runSettingsPath": {
-      "markdownDescription": "%configuration.dotnet.unitTests.runSettingsPath.markdownDescription%",
+      "markdownDescription": "%configuration.dotnet.unitTests.runSettingsPath%",
       "type": "string"
     },
     "omnisharp.autoStart": {

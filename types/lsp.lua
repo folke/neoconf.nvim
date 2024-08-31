@@ -9449,7 +9449,7 @@
 ---@field type "coreclr" | "clr"
 
 ---@class _.lspconfig.settings.omnisharp.UnitTests
--- %configuration.dotnet.unitTests.runSettingsPath.markdownDescription%
+-- %configuration.dotnet.unitTests.runSettingsPath%
 ---@field runSettingsPath string
 
 ---@class _.lspconfig.settings.omnisharp.Dotnet
