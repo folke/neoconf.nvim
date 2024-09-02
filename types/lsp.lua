@@ -12573,6 +12573,8 @@
 ---@field autoself _.lspconfig.settings.rust_analyzer.Autoself
 ---@field callable _.lspconfig.settings.rust_analyzer.Callable
 ---@field fullFunctionSignatures _.lspconfig.settings.rust_analyzer.FullFunctionSignatures
+-- Whether to omit deprecated items from autocompletion. By default they are marked as deprecated but not hidden.
+---@field hideDeprecated boolean
 -- Maximum number of completions to return. If `None`, the limit is infinite.
 ---@field limit integer
 ---@field postfix _.lspconfig.settings.rust_analyzer.Postfix

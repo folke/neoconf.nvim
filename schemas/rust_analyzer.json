@@ -342,6 +342,11 @@
       "markdownDescription": "Whether to show full function/method signatures in completion docs.",
       "type": "boolean"
     },
+    "rust-analyzer.completion.hideDeprecated": {
+      "default": false,
+      "markdownDescription": "Whether to omit deprecated items from autocompletion. By default they are marked as deprecated but not hidden.",
+      "type": "boolean"
+    },
     "rust-analyzer.completion.limit": {
       "default": null,
       "markdownDescription": "Maximum number of completions to return. If `None`, the limit is infinite.",
