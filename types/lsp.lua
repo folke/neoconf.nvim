@@ -13863,6 +13863,8 @@
 -- default = 1500
 -- ```
 ---@field validationDelay number
+-- Compile using the intermediate representation (IR) instead of the AST
+---@field viaIR boolean
 
 ---@class lspconfig.settings.solidity_ls
 ---@field solidity _.lspconfig.settings.solidity_ls.Solidity
