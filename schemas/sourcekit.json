@@ -284,7 +284,7 @@
       "type": "array"
     },
     "swift.sourcekit-lsp.serverPath": {
-      "markdownDeprecationMessage": "**Deprecated**: The sourcekit-lsp executable relies on outputs from tools in your current toolchain. If your sourcekit-lsp version does not match your toolchain you may experience unexpected behaviour.",
+      "markdownDeprecationMessage": "**Deprecated**: The sourcekit-lsp executable relies on outputs from tools in your current toolchain. If your sourcekit-lsp version does not match your toolchain you may experience unexpected behaviour. Only modify this setting when developing sourcekit-lsp.",
       "markdownDescription": "The path of the `sourcekit-lsp` executable. The default is to look in the path where `swift` is found.",
       "order": 1,
       "type": "string"

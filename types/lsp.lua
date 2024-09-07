@@ -15995,7 +15995,7 @@
 ---@field wrapAttributes "auto" | "force" | "force-aligned" | "force-expand-multiline" | "aligned-multiple" | "preserve" | "preserve-aligned"
 
 ---@class _.lspconfig.settings.volar.InlayHints
--- Show inlay hints for destructured prop.
+-- Show inlay hints for destructured props.
 ---@field destructuredProps boolean
 -- Show inlay hints for event argument in inline handlers.
 ---@field inlineHandlerLeading boolean
