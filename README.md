@@ -128,7 +128,7 @@ You can additionally use the exported types in other places.
     clangd = {},
     cssls = {},
     dockerls = {},
-    tsserver = {},
+    ts_ls = {},
     svelte = {},
     eslint = {},
     html = {},
@@ -271,7 +271,7 @@ local my_settings = Neoconf.get("neodev", defaults)
 - [x] [svlangserver](https://github.com/eirikpre/VSCode-SystemVerilog/tree/master/package.json)
 - [x] [tailwindcss](https://github.com/tailwindlabs/tailwindcss-intellisense/tree/master/packages/vscode-tailwindcss/package.json)
 - [x] [terraformls](https://github.com/hashicorp/vscode-terraform/tree/master/package.json)
-- [x] [tsserver](https://github.com/microsoft/vscode/tree/main/extensions/typescript-language-features/package.json)
+- [x] [ts_ls](https://github.com/microsoft/vscode/tree/main/extensions/typescript-language-features/package.json)
 - [x] [volar](https://github.com/vuejs/language-tools/tree/master/extensions/vscode/package.json)
 - [x] [vtsls](https://github.com/yioneko/vtsls/tree/main/packages/service/configuration.schema.json)
 - [x] [vuels](https://github.com/vuejs/vetur/tree/master/package.json)

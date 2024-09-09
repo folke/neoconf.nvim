@@ -58,7 +58,7 @@ M.index = {
   svlangserver = "https://raw.githubusercontent.com/eirikpre/VSCode-SystemVerilog/master/package.json",
   tailwindcss = "https://raw.githubusercontent.com/tailwindlabs/tailwindcss-intellisense/master/packages/vscode-tailwindcss/package.json",
   terraformls = "https://raw.githubusercontent.com/hashicorp/vscode-terraform/master/package.json",
-  tsserver = "https://raw.githubusercontent.com/microsoft/vscode/main/extensions/typescript-language-features/package.json",
+  ts_ls = "https://raw.githubusercontent.com/microsoft/vscode/main/extensions/typescript-language-features/package.json",
   volar = "https://raw.githubusercontent.com/vuejs/language-tools/master/extensions/vscode/package.json",
   vtsls = "https://raw.githubusercontent.com/yioneko/vtsls/main/packages/service/configuration.schema.json",
   vuels = "https://raw.githubusercontent.com/vuejs/vetur/master/package.json",
@@ -81,7 +81,7 @@ M.overrides = {
   jsonls = {
     translate = true,
   },
-  tsserver = {
+  ts_ls = {
     translate = true,
   },
   ltex = {
