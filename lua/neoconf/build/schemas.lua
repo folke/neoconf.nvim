@@ -8,6 +8,7 @@ M.index = {
   als = "https://raw.githubusercontent.com/AdaCore/ada_language_server/master/integration/vscode/ada/package.json",
   astro = "https://raw.githubusercontent.com/withastro/language-tools/main/packages/vscode/package.json",
   awkls = "https://raw.githubusercontent.com/Beaglefoot/awk-language-server/master/client/package.json",
+  basedpyright = "https://raw.githubusercontent.com/DetachHead/basedpyright/main/packages/vscode-pyright/package.json",
   bashls = "https://raw.githubusercontent.com/bash-lsp/bash-language-server/master/vscode-client/package.json",
   clangd = "https://raw.githubusercontent.com/clangd/vscode-clangd/master/package.json",
   cssls = "https://raw.githubusercontent.com/microsoft/vscode/main/extensions/css-language-features/package.json",
