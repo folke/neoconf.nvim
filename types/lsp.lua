@@ -1143,7 +1143,7 @@
 ---@field devToolsTheme "dark" | "light"
 -- **LEGACY SETTING: Only applies to legacy analysis server protocol.**
 -- 
--- An array of glob patterns that should be excluded for formatting. The pattern is matched against the absolute path of the file. Use `**/test/**` to skip formatting for all test directories.
+-- An array of glob patterns that should be excluded for formatting. The pattern is matched against the absolute path of the file. Use `**/test/**` to skip formatting for all test directories. Must always use forward slashes (even on Windows) as backslashes are used for escaping.
 -- 
 -- ```lua
 -- default = {}
@@ -1335,7 +1335,7 @@
 -- default = "never"
 -- ```
 ---@field hotReloadOnSave "never" | "manual" | "manualIfDirty" | "all" | "allIfDirty"
--- An array of glob patterns that should trigger Hot Reload when saved. The pattern is matched against the absolute path of the file. Use `**/assets/**` to trigger reloading for everything in the assets directory.
+-- An array of glob patterns that should trigger Hot Reload when saved. The pattern is matched against the absolute path of the file. Use `**/assets/**` to trigger reloading for everything in the assets directory. Must always start with "**/" and use forward slashes (even on Windows) as backslashes are used for escaping.
 -- 
 -- ```lua
 -- default = {}
