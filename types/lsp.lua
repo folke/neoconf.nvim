@@ -1814,10 +1814,14 @@
 ---@field tlsCertificate string
 -- **DANGER** disables verification of TLS certificates for the hosts provided. There is likely a better way to deal with any errors than use this option. This is like using `--unsafely-ignore-certificate-errors` in the Deno CLI.
 ---@field unsafelyIgnoreCertificateErrors string[]
--- Controls if tests will be run with the the `--unstable` flag when running tests via the explorer.
+-- Controls which `--unstable-*` features tests will be run with when running them via the explorer.
 -- 
 -- **Not recommended to be enabled globally.**
----@field unstable boolean
+-- 
+-- ```lua
+-- default = {}
+-- ```
+---@field unstable string[]
 
 ---@class lspconfig.settings.denols
 ---@field deno _.lspconfig.settings.denols.Deno
@@ -8459,6 +8463,12 @@
 ---@field completion _.lspconfig.settings.lua_ls.Completion
 ---@field diagnostics _.lspconfig.settings.lua_ls.Diagnostics
 ---@field doc _.lspconfig.settings.lua_ls.Doc
+-- TODO: Needs documentation
+-- 
+-- ```lua
+-- default = ""
+-- ```
+---@field docScriptPath string
 ---@field format _.lspconfig.settings.lua_ls.Format
 ---@field hint _.lspconfig.settings.lua_ls.Hint
 ---@field hover _.lspconfig.settings.lua_ls.Hover
