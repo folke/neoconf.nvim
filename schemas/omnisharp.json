@@ -455,6 +455,12 @@
       "order": 60,
       "type": "boolean"
     },
+    "dotnet.navigation.navigateToSourceLinkAndEmbeddedSources": {
+      "default": "true",
+      "description": "%configuration.dotnet.navigation.navigateToSourceLinkAndEmbeddedSources%",
+      "order": 60,
+      "type": "boolean"
+    },
     "dotnet.preferCSharpExtension": {
       "default": false,
       "description": "%configuration.dotnet.preferCSharpExtension%",

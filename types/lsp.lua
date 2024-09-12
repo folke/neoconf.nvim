@@ -9157,6 +9157,12 @@
 -- default = "true"
 -- ```
 ---@field navigateToDecompiledSources boolean
+-- %configuration.dotnet.navigation.navigateToSourceLinkAndEmbeddedSources%
+-- 
+-- ```lua
+-- default = "true"
+-- ```
+---@field navigateToSourceLinkAndEmbeddedSources boolean
 
 ---@class _.lspconfig.settings.omnisharp.Projects
 -- %configuration.dotnet.projects.binaryLogPath%
@@ -12579,6 +12585,14 @@
 ---@field fuel integer
 
 ---@class _.lspconfig.settings.rust_analyzer.Completion
+-- Whether to automatically add a semicolon when completing unit-returning functions.
+-- 
+-- In `match` arms it completes a comma instead.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field addSemicolonToUnit boolean
 ---@field autoimport _.lspconfig.settings.rust_analyzer.Autoimport
 ---@field autoself _.lspconfig.settings.rust_analyzer.Autoself
 ---@field callable _.lspconfig.settings.rust_analyzer.Callable
