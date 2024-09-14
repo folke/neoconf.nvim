@@ -197,6 +197,26 @@
       "scope": "window",
       "type": "boolean"
     },
+    "dart.closingLabelsPrefix": {
+      "default": " // ",
+      "description": "The prefix to use in closing labels.",
+      "scope": "window",
+      "type": "string"
+    },
+    "dart.closingLabelsTextStyle": {
+      "default": "normal",
+      "enum": [
+        "normal",
+        "italic"
+      ],
+      "enumItemLabels": [
+        "Normal",
+        "Italic"
+      ],
+      "markdownDescription": "The text style to use in closing labels. Using _Italic_ requires a font that supports italic text.",
+      "scope": "window",
+      "type": "string"
+    },
     "dart.completeFunctionCalls": {
       "default": true,
       "markdownDescription": "Whether to insert parentheses and placeholders for positional and required arguments during code completions when using LSP. This feature is automatically disabled if commit characters are enabled.",

@@ -27,7 +27,8 @@
           "lambdaExpression",
           "switchExpression",
           "tryWithResource",
-          "renameFileToType"
+          "renameFileToType",
+          "organizeImports"
         ],
         "type": "string"
       },

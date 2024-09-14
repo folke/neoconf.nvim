@@ -1081,6 +1081,18 @@
 -- default = true
 -- ```
 ---@field closingLabels boolean
+-- The prefix to use in closing labels.
+-- 
+-- ```lua
+-- default = " // "
+-- ```
+---@field closingLabelsPrefix string
+-- The text style to use in closing labels. Using _Italic_ requires a font that supports italic text.
+-- 
+-- ```lua
+-- default = "normal"
+-- ```
+---@field closingLabelsTextStyle "normal" | "italic"
 -- Whether to insert parentheses and placeholders for positional and required arguments during code completions when using LSP. This feature is automatically disabled if commit characters are enabled.
 -- 
 -- ```lua
@@ -13995,7 +14007,7 @@
 -- default = ""
 -- ```
 ---@field path string
--- Use lldb debug adapter packaged with Swift toolchain as your debug adapter. This is currently only available on Windows or platforms using Swift 6
+-- Use the LLDB debug adapter packaged with the Swift toolchain as your debug adapter. Note: this is only available starting with Swift 6. The CodeLLDB extension will be used if your Swift toolchain does not contain lldb-dap.
 ---@field useDebugAdapterFromToolchain boolean
 
 ---@class _.lspconfig.settings.sourcekit.Trace
