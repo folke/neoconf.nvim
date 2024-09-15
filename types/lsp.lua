@@ -11527,7 +11527,7 @@
 -- default = "none"
 -- ```
 ---@field reportUnnecessaryContains "none" | "information" | "warning" | "error" | true | false
--- Diagnostics for 'isinstance' or 'issubclass' calls where the result is statically determined to be always true. Such calls are often indicative of a programming error.
+-- Diagnostics for 'isinstance' or 'issubclass' calls where the result is statically determined to be always (or never) true. Such calls are often indicative of a programming error.
 -- 
 -- ```lua
 -- default = "none"
