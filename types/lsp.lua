@@ -16910,9 +16910,43 @@
 ---@field propertyDeclarationTypes _.lspconfig.settings.vtsls.PropertyDeclarationTypes
 ---@field variableTypes _.lspconfig.settings.vtsls.VariableTypes
 
+-- Advanced preferences that control how imports are ordered.
+---@class _.lspconfig.settings.vtsls.OrganizeImports
+-- Compare characters with diacritical marks as unequal to base character.
+---@field accentCollation boolean
+-- Indicates whether upper-case comes before lower-case. Only applies to `organizeImportsCollation: 'unicode'`.
+-- 
+-- ```lua
+-- default = "default"
+-- ```
+---@field caseFirst "default" | "upper" | "lower"
+-- ```lua
+-- default = "auto"
+-- ```
+---@field caseSensitivity "auto" | "caseInsensitive" | "caseSensitive"
+-- Overrides the locale used for collation. Specify `auto` to use the UI locale. Only applies to `organizeImportsCollation: 'unicode'`.
+---@field locale string
+-- Sort numeric strings by integer value.
+---@field numericCollation boolean
+-- ```lua
+-- default = "auto"
+-- ```
+---@field typeOrder "auto" | "last" | "inline" | "first"
+-- ```lua
+-- default = "ordinal"
+-- ```
+---@field unicodeCollation "ordinal" | "unicode"
+
 ---@class _.lspconfig.settings.vtsls.Preferences
 -- Specify glob patterns of files to exclude from auto imports. Relative paths are resolved relative to the workspace root. Patterns are evaluated using tsconfig.json [`exclude`](https://www.typescriptlang.org/tsconfig#exclude) semantics.
 ---@field autoImportFileExcludePatterns string[]
+-- Specify regular expressions to exclude auto imports with matching import specifiers. Examples:
+-- 
+-- - `^node:`
+-- - `lib/internal` (slashes don't need to be escaped...)
+-- - `/lib\/internal/i` (...unless including surrounding slashes for `i` or `u` flags)
+-- - `^lodash$` (only allow subpath imports from lodash)
+---@field autoImportSpecifierExcludeRegexes string[]
 -- Preferred path style for auto imports.
 -- 
 -- ```lua
@@ -16931,6 +16965,8 @@
 -- default = "auto"
 -- ```
 ---@field jsxAttributeCompletionStyle "auto" | "braces" | "none"
+-- Advanced preferences that control how imports are ordered.
+---@field organizeImports _.lspconfig.settings.vtsls.OrganizeImports
 -- Preferred quote style to use for Quick Fixes.
 -- 
 -- ```lua
@@ -17089,9 +17125,9 @@
 -- Set target JavaScript language version for emitted JavaScript and include library declarations. See more: https://www.typescriptlang.org/tsconfig#target.
 -- 
 -- ```lua
--- default = "ES2020"
+-- default = "ES2022"
 -- ```
----@field target "ES3" | "ES5" | "ES6" | "ES2015" | "ES2016" | "ES2017" | "ES2018" | "ES2019" | "ES2020" | "ES2021" | "ES2022" | "ESNext"
+---@field target "ES3" | "ES5" | "ES6" | "ES2015" | "ES2016" | "ES2017" | "ES2018" | "ES2019" | "ES2020" | "ES2021" | "ES2022" | "ES2023" | "ES2024" | "ESNext"
 
 ---@class _.lspconfig.settings.vtsls.Js/ts
 ---@field implicitProjectConfig _.lspconfig.settings.vtsls.ImplicitProjectConfig
@@ -17275,9 +17311,43 @@
 ---@field propertyDeclarationTypes _.lspconfig.settings.vtsls.PropertyDeclarationTypes
 ---@field variableTypes _.lspconfig.settings.vtsls.VariableTypes
 
+-- Advanced preferences that control how imports are ordered.
+---@class _.lspconfig.settings.vtsls.OrganizeImports
+-- Compare characters with diacritical marks as unequal to base character.
+---@field accentCollation boolean
+-- Indicates whether upper-case comes before lower-case. Only applies to `organizeImportsCollation: 'unicode'`.
+-- 
+-- ```lua
+-- default = "default"
+-- ```
+---@field caseFirst "default" | "upper" | "lower"
+-- ```lua
+-- default = "auto"
+-- ```
+---@field caseSensitivity "auto" | "caseInsensitive" | "caseSensitive"
+-- Overrides the locale used for collation. Specify `auto` to use the UI locale. Only applies to `organizeImportsCollation: 'unicode'`.
+---@field locale string
+-- Sort numeric strings by integer value.
+---@field numericCollation boolean
+-- ```lua
+-- default = "auto"
+-- ```
+---@field typeOrder "auto" | "last" | "inline" | "first"
+-- ```lua
+-- default = "ordinal"
+-- ```
+---@field unicodeCollation "ordinal" | "unicode"
+
 ---@class _.lspconfig.settings.vtsls.Preferences
 -- Specify glob patterns of files to exclude from auto imports. Relative paths are resolved relative to the workspace root. Patterns are evaluated using tsconfig.json [`exclude`](https://www.typescriptlang.org/tsconfig#exclude) semantics.
 ---@field autoImportFileExcludePatterns string[]
+-- Specify regular expressions to exclude auto imports with matching import specifiers. Examples:
+-- 
+-- - `^node:`
+-- - `lib/internal` (slashes don't need to be escaped...)
+-- - `/lib\/internal/i` (...unless including surrounding slashes for `i` or `u` flags)
+-- - `^lodash$` (only allow subpath imports from lodash)
+---@field autoImportSpecifierExcludeRegexes string[]
 -- Preferred path style for auto imports.
 -- 
 -- ```lua
@@ -17302,6 +17372,8 @@
 -- default = "auto"
 -- ```
 ---@field jsxAttributeCompletionStyle "auto" | "braces" | "none"
+-- Advanced preferences that control how imports are ordered.
+---@field organizeImports _.lspconfig.settings.vtsls.OrganizeImports
 -- Include the `type` keyword in auto-imports whenever possible. Requires using TypeScript 5.3+ in the workspace.
 ---@field preferTypeOnlyAutoImports boolean
 -- Preferred quote style to use for Quick Fixes.
@@ -17441,14 +17513,14 @@
 -- ```
 ---@field enabled boolean
 -- Suppresses semantic errors on web even when project wide IntelliSense is enabled. This is always on when project wide IntelliSense is not enabled or available. See `#typescript.tsserver.web.projectWideIntellisense.enabled#`
--- 
--- ```lua
--- default = true
--- ```
 ---@field suppressSemanticErrors boolean
 
 ---@class _.lspconfig.settings.vtsls.TypeAcquisition
 -- Enable/disable package acquisition on the web. This enables IntelliSense for imported packages. Requires `#typescript.tsserver.web.projectWideIntellisense.enabled#`. Currently not supported for Safari.
+-- 
+-- ```lua
+-- default = true
+-- ```
 ---@field enabled boolean
 
 ---@class _.lspconfig.settings.vtsls.Web
