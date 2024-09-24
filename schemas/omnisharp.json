@@ -455,6 +455,12 @@
       "order": 60,
       "type": "boolean"
     },
+    "dotnet.navigation.navigateToSourceLinkAndEmbeddedSources": {
+      "default": "true",
+      "description": "%configuration.dotnet.navigation.navigateToSourceLinkAndEmbeddedSources%",
+      "order": 60,
+      "type": "boolean"
+    },
     "dotnet.preferCSharpExtension": {
       "default": false,
       "description": "%configuration.dotnet.preferCSharpExtension%",
@@ -815,7 +821,7 @@
       "type": "object"
     },
     "dotnet.unitTests.runSettingsPath": {
-      "markdownDescription": "%configuration.dotnet.unitTests.runSettingsPath.markdownDescription%",
+      "markdownDescription": "%configuration.dotnet.unitTests.runSettingsPath%",
       "type": "string"
     },
     "omnisharp.autoStart": {

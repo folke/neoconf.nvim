@@ -282,10 +282,10 @@
       "type": "string"
     },
     "javascript.preferences.organizeImports": {
-      "markdownDescription": "Advanced preferences that control how imports are ordered. Presets are available in `#typescript.preferences.organizeImports.presets#`",
+      "markdownDescription": "Advanced preferences that control how imports are ordered.",
       "properties": {
         "accentCollation": {
-          "markdownDescription": "Compare characters with diacritical marks as unequal to base character",
+          "markdownDescription": "Compare characters with diacritical marks as unequal to base character.",
           "type": "boolean"
         },
         "caseFirst": {
@@ -295,7 +295,7 @@
             "upper",
             "lower"
           ],
-          "markdownDescription": "Indicates whether upper-case comes before lower-case. Only applies to `organizeImportsCollation: 'unicode'`",
+          "markdownDescription": "Indicates whether upper-case comes before lower-case. Only applies to `organizeImportsCollation: 'unicode'`.",
           "type": "string"
         },
         "caseSensitivity": {
@@ -306,18 +306,18 @@
             "caseSensitive"
           ],
           "markdownEnumDescriptions": [
-            "Detect case-sensitivity for import sorting",
-            "Sort imports case-insensitively",
-            "Sort imports case-sensitively"
+            "Detect case-sensitivity for import sorting.",
+            "Sort imports case-insensitively.",
+            "Sort imports case-sensitively."
           ],
           "type": "string"
         },
         "locale": {
-          "markdownDescription": "Overrides the locale used for collation. Specify `auto` to use the UI locale. Only applies to `organizeImportsCollation: 'unicode'`",
+          "markdownDescription": "Overrides the locale used for collation. Specify `auto` to use the UI locale. Only applies to `organizeImportsCollation: 'unicode'`.",
           "type": "string"
         },
         "numericCollation": {
-          "markdownDescription": "Sort numeric strings by integer value",
+          "markdownDescription": "Sort numeric strings by integer value.",
           "type": "boolean"
         },
         "typeOrder": {
@@ -328,6 +328,12 @@
             "inline",
             "first"
           ],
+          "markdownEnumDescriptions": [
+            "Detect where type-only named imports should be sorted.",
+            "Type only named imports are sorted to the end of the import list.",
+            "Named imports are sorted by name only.",
+            "Type only named imports are sorted to the end of the import list."
+          ],
           "type": "string"
         },
         "unicodeCollation": {
@@ -337,8 +343,8 @@
             "unicode"
           ],
           "markdownEnumDescriptions": [
-            "Sort imports using the numeric value of each code point",
-            "Sort imports using the Unicode code collation"
+            "Sort imports using the numeric value of each code point.",
+            "Sort imports using the Unicode code collation."
           ],
           "type": "string"
         }
@@ -525,7 +531,7 @@
       "type": "boolean"
     },
     "js/ts.implicitProjectConfig.target": {
-      "default": "ES2020",
+      "default": "ES2022",
       "enum": [
         "ES3",
         "ES5",
@@ -538,6 +544,8 @@
         "ES2020",
         "ES2021",
         "ES2022",
+        "ES2023",
+        "ES2024",
         "ESNext"
       ],
       "markdownDescription": "Set target JavaScript language version for emitted JavaScript and include library declarations. See more: https://www.typescriptlang.org/tsconfig#target.",
@@ -908,10 +916,10 @@
       "type": "string"
     },
     "typescript.preferences.organizeImports": {
-      "markdownDescription": "Advanced preferences that control how imports are ordered. Presets are available in `#typescript.preferences.organizeImports.presets#`",
+      "markdownDescription": "Advanced preferences that control how imports are ordered.",
       "properties": {
         "accentCollation": {
-          "markdownDescription": "Compare characters with diacritical marks as unequal to base character",
+          "markdownDescription": "Compare characters with diacritical marks as unequal to base character.",
           "type": "boolean"
         },
         "caseFirst": {
@@ -921,7 +929,7 @@
             "upper",
             "lower"
           ],
-          "markdownDescription": "Indicates whether upper-case comes before lower-case. Only applies to `organizeImportsCollation: 'unicode'`",
+          "markdownDescription": "Indicates whether upper-case comes before lower-case. Only applies to `organizeImportsCollation: 'unicode'`.",
           "type": "string"
         },
         "caseSensitivity": {
@@ -932,18 +940,18 @@
             "caseSensitive"
           ],
           "markdownEnumDescriptions": [
-            "Detect case-sensitivity for import sorting",
-            "Sort imports case-insensitively",
-            "Sort imports case-sensitively"
+            "Detect case-sensitivity for import sorting.",
+            "Sort imports case-insensitively.",
+            "Sort imports case-sensitively."
           ],
           "type": "string"
         },
         "locale": {
-          "markdownDescription": "Overrides the locale used for collation. Specify `auto` to use the UI locale. Only applies to `organizeImportsCollation: 'unicode'`",
+          "markdownDescription": "Overrides the locale used for collation. Specify `auto` to use the UI locale. Only applies to `organizeImportsCollation: 'unicode'`.",
           "type": "string"
         },
         "numericCollation": {
-          "markdownDescription": "Sort numeric strings by integer value",
+          "markdownDescription": "Sort numeric strings by integer value.",
           "type": "boolean"
         },
         "typeOrder": {
@@ -954,6 +962,12 @@
             "inline",
             "first"
           ],
+          "markdownEnumDescriptions": [
+            "Detect where type-only named imports should be sorted.",
+            "Type only named imports are sorted to the end of the import list.",
+            "Named imports are sorted by name only.",
+            "Type only named imports are sorted to the end of the import list."
+          ],
           "type": "string"
         },
         "unicodeCollation": {
@@ -963,8 +977,8 @@
             "unicode"
           ],
           "markdownEnumDescriptions": [
-            "Sort imports using the numeric value of each code point",
-            "Sort imports using the Unicode code collation"
+            "Sort imports using the numeric value of each code point.",
+            "Sort imports using the Unicode code collation."
           ],
           "type": "string"
         }

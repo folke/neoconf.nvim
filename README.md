@@ -128,7 +128,7 @@ You can additionally use the exported types in other places.
     clangd = {},
     cssls = {},
     dockerls = {},
-    tsserver = {},
+    ts_ls = {},
     svelte = {},
     eslint = {},
     html = {},
@@ -221,6 +221,7 @@ local my_settings = Neoconf.get("neodev", defaults)
 - [x] [als](https://github.com/AdaCore/ada_language_server/tree/master/integration/vscode/ada/package.json)
 - [x] [astro](https://github.com/withastro/language-tools/tree/main/packages/vscode/package.json)
 - [x] [awkls](https://github.com/Beaglefoot/awk-language-server/tree/master/client/package.json)
+- [x] [basedpyright](https://github.com/DetachHead/basedpyright/tree/main/packages/vscode-pyright/package.json)
 - [x] [bashls](https://github.com/bash-lsp/bash-language-server/tree/master/vscode-client/package.json)
 - [x] [clangd](https://github.com/clangd/vscode-clangd/tree/master/package.json)
 - [x] [cssls](https://github.com/microsoft/vscode/tree/main/extensions/css-language-features/package.json)
@@ -271,7 +272,7 @@ local my_settings = Neoconf.get("neodev", defaults)
 - [x] [svlangserver](https://github.com/eirikpre/VSCode-SystemVerilog/tree/master/package.json)
 - [x] [tailwindcss](https://github.com/tailwindlabs/tailwindcss-intellisense/tree/master/packages/vscode-tailwindcss/package.json)
 - [x] [terraformls](https://github.com/hashicorp/vscode-terraform/tree/master/package.json)
-- [x] [tsserver](https://github.com/microsoft/vscode/tree/main/extensions/typescript-language-features/package.json)
+- [x] [ts_ls](https://github.com/microsoft/vscode/tree/main/extensions/typescript-language-features/package.json)
 - [x] [volar](https://github.com/vuejs/language-tools/tree/master/extensions/vscode/package.json)
 - [x] [vtsls](https://github.com/yioneko/vtsls/tree/main/packages/service/configuration.schema.json)
 - [x] [vuels](https://github.com/vuejs/vetur/tree/master/package.json)

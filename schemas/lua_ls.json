@@ -2462,6 +2462,12 @@
       "scope": "resource",
       "type": "string"
     },
+    "Lua.docScriptPath": {
+      "default": "",
+      "markdownDescription": "TODO: Needs documentation",
+      "scope": "resource",
+      "type": "string"
+    },
     "Lua.format.defaultConfig": {
       "additionalProperties": false,
       "default": {},

@@ -93,7 +93,7 @@
     },
     "vue.inlayHints.destructuredProps": {
       "default": false,
-      "description": "Show inlay hints for destructured prop.",
+      "description": "Show inlay hints for destructured props.",
       "type": "boolean"
     },
     "vue.inlayHints.inlineHandlerLeading": {
