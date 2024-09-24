@@ -41,6 +41,14 @@ lspconfig.awkls = {
   setup = function(options) end,
 }
 
+---@class lspconfig.options.basedpyright: _.lspconfig.options
+---@field settings lspconfig.settings.basedpyright
+
+lspconfig.basedpyright = {
+  ---@param options lspconfig.options.basedpyright
+  setup = function(options) end,
+}
+
 ---@class lspconfig.options.bashls: _.lspconfig.options
 ---@field settings lspconfig.settings.bashls
 
@@ -441,11 +449,11 @@ lspconfig.terraformls = {
   setup = function(options) end,
 }
 
----@class lspconfig.options.tsserver: _.lspconfig.options
----@field settings lspconfig.settings.tsserver
+---@class lspconfig.options.ts_ls: _.lspconfig.options
+---@field settings lspconfig.settings.ts_ls
 
-lspconfig.tsserver = {
-  ---@param options lspconfig.options.tsserver
+lspconfig.ts_ls = {
+  ---@param options lspconfig.options.ts_ls
   setup = function(options) end,
 }
 
@@ -509,6 +517,7 @@ lspconfig.zls = {
 ---@field als lspconfig.options.als
 ---@field astro lspconfig.options.astro
 ---@field awkls lspconfig.options.awkls
+---@field basedpyright lspconfig.options.basedpyright
 ---@field bashls lspconfig.options.bashls
 ---@field clangd lspconfig.options.clangd
 ---@field cssls lspconfig.options.cssls
@@ -559,7 +568,7 @@ lspconfig.zls = {
 ---@field svlangserver lspconfig.options.svlangserver
 ---@field tailwindcss lspconfig.options.tailwindcss
 ---@field terraformls lspconfig.options.terraformls
----@field tsserver lspconfig.options.tsserver
+---@field ts_ls lspconfig.options.ts_ls
 ---@field volar lspconfig.options.volar
 ---@field vtsls lspconfig.options.vtsls
 ---@field vuels lspconfig.options.vuels
@@ -572,6 +581,7 @@ lspconfig.zls = {
 ---@field als lspconfig.settings.als
 ---@field astro lspconfig.settings.astro
 ---@field awkls lspconfig.settings.awkls
+---@field basedpyright lspconfig.settings.basedpyright
 ---@field bashls lspconfig.settings.bashls
 ---@field clangd lspconfig.settings.clangd
 ---@field cssls lspconfig.settings.cssls
@@ -622,7 +632,7 @@ lspconfig.zls = {
 ---@field svlangserver lspconfig.settings.svlangserver
 ---@field tailwindcss lspconfig.settings.tailwindcss
 ---@field terraformls lspconfig.settings.terraformls
----@field tsserver lspconfig.settings.tsserver
+---@field ts_ls lspconfig.settings.ts_ls
 ---@field volar lspconfig.settings.volar
 ---@field vtsls lspconfig.settings.vtsls
 ---@field vuels lspconfig.settings.vuels

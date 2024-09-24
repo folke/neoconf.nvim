@@ -155,6 +155,11 @@
       "default": 1500,
       "description": "Delay to trigger the validation of the changes of the current document (compilation, solium)",
       "type": "number"
+    },
+    "solidity.viaIR": {
+      "default": false,
+      "description": "Compile using the intermediate representation (IR) instead of the AST",
+      "type": "boolean"
     }
   }
 }

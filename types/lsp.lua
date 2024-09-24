@@ -161,6 +161,650 @@
 ---@class lspconfig.settings.awkls
 ---@field awk-ide-vscode _.lspconfig.settings.awkls.Awk-ide-vscode
 
+-- Allows a user to override the severity levels for individual diagnostics. Use the rule name as a key and one of "error", "warning", "information", "none", `true` (alias for "error") or `false` (alias for "none") as value. The default value shown for each diagnostic is the default when "basedpyright.analysis.typeCheckingMode" is set to "standard". See [here](https://github.com/detachhead/basedpyright/blob/main/docs/configuration.md#diagnostic-rule-defaults) for defaults for each type checking mode ("off", "basic", "standard", "strict", and "all").
+---@class _.lspconfig.settings.basedpyright.DiagnosticSeverityOverrides
+-- Diagnostics for an attempt to instantiate an abstract or protocol class or use an abstract method.
+-- 
+-- ```lua
+-- default = "error"
+-- ```
+---@field reportAbstractUsage "none" | "information" | "warning" | "error" | true | false
+-- Diagnostics for anything with the `Any` type
+-- 
+-- ```lua
+-- default = "none"
+-- ```
+---@field reportAny "none" | "information" | "warning" | "error" | true | false
+-- Diagnostics for a type incompatibility for an argument to a call.
+-- 
+-- ```lua
+-- default = "error"
+-- ```
+---@field reportArgumentType "none" | "information" | "warning" | "error" | true | false
+-- Diagnostics for 'assert' statement that will provably always assert. This can be indicative of a programming error.
+-- 
+-- ```lua
+-- default = "warning"
+-- ```
+---@field reportAssertAlwaysTrue "none" | "information" | "warning" | "error" | true | false
+-- Diagnostics for a type incompatibility detected by a typing.assert_type call.
+-- 
+-- ```lua
+-- default = "error"
+-- ```
+---@field reportAssertTypeFailure "none" | "information" | "warning" | "error" | true | false
+-- Diagnostics for type incompatibilities for assignments.
+-- 
+-- ```lua
+-- default = "error"
+-- ```
+---@field reportAssignmentType "none" | "information" | "warning" | "error" | true | false
+-- Diagnostics for issues involving attribute accesses.
+-- 
+-- ```lua
+-- default = "error"
+-- ```
+---@field reportAttributeAccessIssue "none" | "information" | "warning" | "error" | true | false
+-- Diagnostics for function calls within a default value initialization expression. Such calls can mask expensive operations that are performed at module initialization time.
+-- 
+-- ```lua
+-- default = "none"
+-- ```
+---@field reportCallInDefaultInitializer "none" | "information" | "warning" | "error" | true | false
+-- Diagnostics for issues involving call expressions and arguments.
+-- 
+-- ```lua
+-- default = "error"
+-- ```
+---@field reportCallIssue "none" | "information" | "warning" | "error" | true | false
+-- Diagnostics for attempts to redefine variables whose names are all-caps with underscores and numerals.
+-- 
+-- ```lua
+-- default = "none"
+-- ```
+---@field reportConstantRedefinition "none" | "information" | "warning" | "error" | true | false
+-- Diagnostics for use of deprecated classes or functions.
+-- 
+-- ```lua
+-- default = "none"
+-- ```
+---@field reportDeprecated "none" | "deprecated" | "information" | "warning" | "error" | true | false
+-- Diagnostics for an imported symbol or module that is imported more than once.
+-- 
+-- ```lua
+-- default = "none"
+-- ```
+---@field reportDuplicateImport "none" | "information" | "warning" | "error" | true | false
+-- Diagnostics for member accesses on functions.
+-- 
+-- ```lua
+-- default = "error"
+-- ```
+---@field reportFunctionMemberAccess "none" | "information" | "warning" | "error" | true | false
+-- Diagnostics for general type inconsistencies, unsupported operations, argument/parameter mismatches, etc. Covers all of the basic type-checking rules not covered by other rules. Does not include syntax errors.
+-- 
+-- ```lua
+-- default = "error"
+-- ```
+---@field reportGeneralTypeIssues "none" | "information" | "warning" | "error" | true | false
+-- Diagnostics for `# type: ignore` and `# pyright: ignore` comments without specifying a rule
+-- 
+-- ```lua
+-- default = "none"
+-- ```
+---@field reportIgnoreCommentWithoutRule "none" | "information" | "warning" | "error" | true | false
+-- Diagnostics for overridden methods that do not include an `@override` decorator.
+-- 
+-- ```lua
+-- default = "none"
+-- ```
+---@field reportImplicitOverride "none" | "information" | "warning" | "error" | true | false
+-- Diagnostics for non-relative imports that do not specify the full path to the module
+-- 
+-- ```lua
+-- default = "none"
+-- ```
+---@field reportImplicitRelativeImport "none" | "information" | "warning" | "error" | true | false
+-- Diagnostics for two or more string literals that follow each other, indicating an implicit concatenation. This is considered a bad practice and often masks bugs such as missing commas.
+-- 
+-- ```lua
+-- default = "none"
+-- ```
+---@field reportImplicitStringConcatenation "none" | "information" | "warning" | "error" | true | false
+-- Diagnostics for cyclical import chains. These are not errors in Python, but they do slow down type analysis and often hint at architectural layering issues. Generally, they should be avoided.
+-- 
+-- ```lua
+-- default = "none"
+-- ```
+---@field reportImportCycles "none" | "information" | "warning" | "error" | true | false
+-- Diagnostics for methods that override a method of the same name in a base class in an incompatible manner (wrong number of parameters, incompatible parameter types, or incompatible return type).
+-- 
+-- ```lua
+-- default = "error"
+-- ```
+---@field reportIncompatibleMethodOverride "none" | "information" | "warning" | "error" | true | false
+-- Diagnostics for overrides in subclasses that redefine a variable in an incompatible way.
+-- 
+-- ```lua
+-- default = "error"
+-- ```
+---@field reportIncompatibleVariableOverride "none" | "information" | "warning" | "error" | true | false
+-- Diagnostics for the use of a module-level “__getattr__” function, indicating that the stub is incomplete.
+-- 
+-- ```lua
+-- default = "none"
+-- ```
+---@field reportIncompleteStub "none" | "information" | "warning" | "error" | true | false
+-- Diagnostics for __init__ and __new__ methods whose signatures are inconsistent.
+-- 
+-- ```lua
+-- default = "none"
+-- ```
+---@field reportInconsistentConstructor "none" | "information" | "warning" | "error" | true | false
+-- Diagnostics for inconsistencies between function overload signatures and implementation.
+-- 
+-- ```lua
+-- default = "error"
+-- ```
+---@field reportInconsistentOverload "none" | "information" | "warning" | "error" | true | false
+-- Diagnostics related to index operations and expressions.
+-- 
+-- ```lua
+-- default = "error"
+-- ```
+---@field reportIndexIssue "none" | "information" | "warning" | "error" | true | false
+-- Diagnostics for `cast`s to non-overlapping types
+-- 
+-- ```lua
+-- default = "none"
+-- ```
+---@field reportInvalidCast "none" | "information" | "warning" | "error" | true | false
+-- Diagnostics for invalid escape sequences used within string literals. The Python specification indicates that such sequences will generate a syntax error in future versions.
+-- 
+-- ```lua
+-- default = "warning"
+-- ```
+---@field reportInvalidStringEscapeSequence "none" | "information" | "warning" | "error" | true | false
+-- Diagnostics for type stub statements that do not conform to PEP 484.
+-- 
+-- ```lua
+-- default = "none"
+-- ```
+---@field reportInvalidStubStatement "none" | "information" | "warning" | "error" | true | false
+-- Diagnostics for invalid type argument usage.
+-- 
+-- ```lua
+-- default = "error"
+-- ```
+---@field reportInvalidTypeArguments "none" | "information" | "warning" | "error" | true | false
+-- Diagnostics for type expression that uses an invalid form.
+-- 
+-- ```lua
+-- default = "error"
+-- ```
+---@field reportInvalidTypeForm "none" | "information" | "warning" | "error" | true | false
+-- Diagnostics for improper use of type variables in a function signature.
+-- 
+-- ```lua
+-- default = "warning"
+-- ```
+---@field reportInvalidTypeVarUse "none" | "information" | "warning" | "error" | true | false
+-- Diagnostics for 'match' statements that do not exhaustively match all possible values.
+-- 
+-- ```lua
+-- default = "none"
+-- ```
+---@field reportMatchNotExhaustive "none" | "information" | "warning" | "error" | true | false
+-- Diagnostics for imports that have no corresponding imported python file or type stub file.
+-- 
+-- ```lua
+-- default = "error"
+-- ```
+---@field reportMissingImports "none" | "information" | "warning" | "error" | true | false
+-- Diagnostics for imports that have no corresponding source file. This happens when a type stub is found, but the module source file was not found, indicating that the code may fail at runtime when using this execution environment. Type checking will be done using the type stub.
+-- 
+-- ```lua
+-- default = "warning"
+-- ```
+---@field reportMissingModuleSource "none" | "information" | "warning" | "error" | true | false
+-- Diagnostics for parameters that are missing a type annotation.
+-- 
+-- ```lua
+-- default = "none"
+-- ```
+---@field reportMissingParameterType "none" | "information" | "warning" | "error" | true | false
+-- Diagnostics for missing call to parent class for inherited `__init__` methods.
+-- 
+-- ```lua
+-- default = "none"
+-- ```
+---@field reportMissingSuperCall "none" | "information" | "warning" | "error" | true | false
+-- Diagnostics for generic class reference with missing type arguments.
+-- 
+-- ```lua
+-- default = "none"
+-- ```
+---@field reportMissingTypeArgument "none" | "information" | "warning" | "error" | true | false
+-- Diagnostics for imports that have no corresponding type stub file (either a typeshed file or a custom type stub). The type checker requires type stubs to do its best job at analysis.
+-- 
+-- ```lua
+-- default = "none"
+-- ```
+---@field reportMissingTypeStubs "none" | "information" | "warning" | "error" | true | false
+-- Diagnostics for an overloaded function or method with a missing implementation.
+-- 
+-- ```lua
+-- default = "error"
+-- ```
+---@field reportNoOverloadImplementation "none" | "information" | "warning" | "error" | true | false
+-- Diagnostics for related to unary or binary operators.
+-- 
+-- ```lua
+-- default = "error"
+-- ```
+---@field reportOperatorIssue "none" | "information" | "warning" | "error" | true | false
+-- Diagnostics for an attempt to call a variable with an Optional type.
+-- 
+-- ```lua
+-- default = "error"
+-- ```
+---@field reportOptionalCall "none" | "information" | "warning" | "error" | true | false
+-- Diagnostics for an attempt to use an Optional type as a context manager (as a parameter to a with statement).
+-- 
+-- ```lua
+-- default = "error"
+-- ```
+---@field reportOptionalContextManager "none" | "information" | "warning" | "error" | true | false
+-- Diagnostics for an attempt to use an Optional type as an iterable value (e.g. within a for statement).
+-- 
+-- ```lua
+-- default = "error"
+-- ```
+---@field reportOptionalIterable "none" | "information" | "warning" | "error" | true | false
+-- Diagnostics for an attempt to access a member of a variable with an Optional type.
+-- 
+-- ```lua
+-- default = "error"
+-- ```
+---@field reportOptionalMemberAccess "none" | "information" | "warning" | "error" | true | false
+-- Diagnostics for an attempt to use an Optional type as an operand to a binary or unary operator (like '+', '==', 'or', 'not').
+-- 
+-- ```lua
+-- default = "error"
+-- ```
+---@field reportOptionalOperand "none" | "information" | "warning" | "error" | true | false
+-- Diagnostics for an attempt to subscript (index) a variable with an Optional type.
+-- 
+-- ```lua
+-- default = "error"
+-- ```
+---@field reportOptionalSubscript "none" | "information" | "warning" | "error" | true | false
+-- Diagnostics for function overloads that overlap in signature and obscure each other or have incompatible return types.
+-- 
+-- ```lua
+-- default = "error"
+-- ```
+---@field reportOverlappingOverload "none" | "information" | "warning" | "error" | true | false
+-- Diagnostics for the use of variables that may be unbound on some code paths.
+-- 
+-- ```lua
+-- default = "error"
+-- ```
+---@field reportPossiblyUnboundVariable "none" | "information" | "warning" | "error" | true | false
+-- Diagnostics for incorrect usage of symbol imported from a "py.typed" module that is not re-exported from that module.
+-- 
+-- ```lua
+-- default = "error"
+-- ```
+---@field reportPrivateImportUsage "none" | "information" | "warning" | "error" | true | false
+-- Diagnostics for incorrect usage of symbol imported from a non-"py.typed" module that is not re-exported from that module. Should be used along with `reportNonPrivateImportUsage`
+-- 
+-- ```lua
+-- default = "none"
+-- ```
+---@field reportPrivateLocalImportUsage "none" | "information" | "warning" | "error" | true | false
+-- Diagnostics for incorrect usage of private or protected variables or functions. Protected class members begin with a single underscore _ and can be accessed only by subclasses. Private class members begin with a double underscore but do not end in a double underscore and can be accessed only within the declaring class. Variables and functions declared outside of a class are considered private if their names start with either a single or double underscore, and they cannot be accessed outside of the declaring module.
+-- 
+-- ```lua
+-- default = "none"
+-- ```
+---@field reportPrivateUsage "none" | "information" | "warning" | "error" | true | false
+-- Diagnostics for property whose setter and getter have mismatched types.
+-- 
+-- ```lua
+-- default = "none"
+-- ```
+---@field reportPropertyTypeMismatch "none" | "information" | "warning" | "error" | true | false
+-- Diagnostics for an attempt to declare the type of a symbol multiple times.
+-- 
+-- ```lua
+-- default = "error"
+-- ```
+---@field reportRedeclaration "none" | "information" | "warning" | "error" | true | false
+-- Diagnostics related to function return type compatibility.
+-- 
+-- ```lua
+-- default = "error"
+-- ```
+---@field reportReturnType "none" | "information" | "warning" | "error" | true | false
+-- Diagnostics for a missing or misnamed “self” parameter in instance methods and “cls” parameter in class methods. Instance methods in metaclasses (classes that derive from “type”) are allowed to use “cls” for instance methods.
+-- 
+-- ```lua
+-- default = "warning"
+-- ```
+---@field reportSelfClsParameterName "none" | "information" | "warning" | "error" | true | false
+-- Diagnostics for files that are overriding a module in the stdlib.
+-- 
+-- ```lua
+-- default = "none"
+-- ```
+---@field reportShadowedImports "none" | "information" | "warning" | "error" | true | false
+-- Diagnostics for usage of deprecated type comments.
+-- 
+-- ```lua
+-- default = "none"
+-- ```
+---@field reportTypeCommentUsage "none" | "deprecated" | "information" | "warning" | "error" | true | false
+-- Diagnostics for an attempt to access a non-required key within a TypedDict without a check for its presence.
+-- 
+-- ```lua
+-- default = "error"
+-- ```
+---@field reportTypedDictNotRequiredAccess "none" | "information" | "warning" | "error" | true | false
+-- Diagnostics for the use of unbound variables.
+-- 
+-- ```lua
+-- default = "error"
+-- ```
+---@field reportUnboundVariable "none" | "information" | "warning" | "error" | true | false
+-- Diagnostics for undefined variables.
+-- 
+-- ```lua
+-- default = "error"
+-- ```
+---@field reportUndefinedVariable "none" | "information" | "warning" | "error" | true | false
+-- Diagnostics for the use of an unhashable object in a container that requires hashability.
+-- 
+-- ```lua
+-- default = "error"
+-- ```
+---@field reportUnhashable "none" | "information" | "warning" | "error" | true | false
+-- Diagnostics for instance variables that are not declared or initialized within class body or `__init__` method.
+-- 
+-- ```lua
+-- default = "none"
+-- ```
+---@field reportUninitializedInstanceVariable "none" | "information" | "warning" | "error" | true | false
+-- Diagnostics for call arguments for functions or methods that have an unknown type.
+-- 
+-- ```lua
+-- default = "none"
+-- ```
+---@field reportUnknownArgumentType "none" | "information" | "warning" | "error" | true | false
+-- Diagnostics for input or return parameters for lambdas that have an unknown type.
+-- 
+-- ```lua
+-- default = "none"
+-- ```
+---@field reportUnknownLambdaType "none" | "information" | "warning" | "error" | true | false
+-- Diagnostics for class or instance variables that have an unknown type.
+-- 
+-- ```lua
+-- default = "none"
+-- ```
+---@field reportUnknownMemberType "none" | "information" | "warning" | "error" | true | false
+-- Diagnostics for input or return parameters for functions or methods that have an unknown type.
+-- 
+-- ```lua
+-- default = "none"
+-- ```
+---@field reportUnknownParameterType "none" | "information" | "warning" | "error" | true | false
+-- Diagnostics for variables that have an unknown type..
+-- 
+-- ```lua
+-- default = "none"
+-- ```
+---@field reportUnknownVariableType "none" | "information" | "warning" | "error" | true | false
+-- Diagnostics for 'cast' calls that are statically determined to be unnecessary. Such calls are sometimes indicative of a programming error.
+-- 
+-- ```lua
+-- default = "none"
+-- ```
+---@field reportUnnecessaryCast "none" | "information" | "warning" | "error" | true | false
+-- Diagnostics for '==' and '!=' comparisons that are statically determined to be unnecessary. Such calls are sometimes indicative of a programming error.
+-- 
+-- ```lua
+-- default = "none"
+-- ```
+---@field reportUnnecessaryComparison "none" | "information" | "warning" | "error" | true | false
+-- Diagnostics for 'in' operation that is statically determined to be unnecessary. Such operations are sometimes indicative of a programming error.
+-- 
+-- ```lua
+-- default = "none"
+-- ```
+---@field reportUnnecessaryContains "none" | "information" | "warning" | "error" | true | false
+-- Diagnostics for 'isinstance' or 'issubclass' calls where the result is statically determined to be always (or never) true. Such calls are often indicative of a programming error.
+-- 
+-- ```lua
+-- default = "none"
+-- ```
+---@field reportUnnecessaryIsInstance "none" | "information" | "warning" | "error" | true | false
+-- Diagnostics for '# type: ignore' comments that have no effect.
+-- 
+-- ```lua
+-- default = "none"
+-- ```
+---@field reportUnnecessaryTypeIgnoreComment "none" | "information" | "warning" | "error" | true | false
+-- Diagnostics for unreachable code.
+-- 
+-- ```lua
+-- default = "none"
+-- ```
+---@field reportUnreachable "none" | "unreachable" | "information" | "warning" | "error" | true | false
+-- Diagnostics for multiple inheritance where a base class's constructor may not get called
+-- 
+-- ```lua
+-- default = "none"
+-- ```
+---@field reportUnsafeMultipleInheritance "none" | "information" | "warning" | "error" | true | false
+-- Diagnostics for unsupported operations performed on __all__.
+-- 
+-- ```lua
+-- default = "warning"
+-- ```
+---@field reportUnsupportedDunderAll "none" | "information" | "warning" | "error" | true | false
+-- Diagnostics for base classes whose type cannot be determined statically. These obscure the class type, defeating many type analysis features.
+-- 
+-- ```lua
+-- default = "none"
+-- ```
+---@field reportUntypedBaseClass "none" | "information" | "warning" | "error" | true | false
+-- Diagnostics for class decorators that have no type annotations. These obscure the class type, defeating many type analysis features.
+-- 
+-- ```lua
+-- default = "none"
+-- ```
+---@field reportUntypedClassDecorator "none" | "information" | "warning" | "error" | true | false
+-- Diagnostics for function decorators that have no type annotations. These obscure the function type, defeating many type analysis features.
+-- 
+-- ```lua
+-- default = "none"
+-- ```
+---@field reportUntypedFunctionDecorator "none" | "information" | "warning" | "error" | true | false
+-- Diagnostics when “namedtuple” is used rather than “NamedTuple”. The former contains no type information, whereas the latter does.
+-- 
+-- ```lua
+-- default = "none"
+-- ```
+---@field reportUntypedNamedTuple "none" | "information" | "warning" | "error" | true | false
+-- Diagnostics for call expressions whose results are not consumed and are not None.
+-- 
+-- ```lua
+-- default = "none"
+-- ```
+---@field reportUnusedCallResult "none" | "information" | "warning" | "error" | true | false
+-- Diagnostics for a class with a private name (starting with an underscore) that is not accessed.
+-- 
+-- ```lua
+-- default = "none"
+-- ```
+---@field reportUnusedClass "none" | "unused" | "information" | "warning" | "error" | true | false
+-- Diagnostics for call expressions that return a Coroutine and whose results are not consumed.
+-- 
+-- ```lua
+-- default = "error"
+-- ```
+---@field reportUnusedCoroutine "none" | "information" | "warning" | "error" | true | false
+-- Diagnostics for unreachable except clause.
+-- 
+-- ```lua
+-- default = "error"
+-- ```
+---@field reportUnusedExcept "none" | "unreachable" | "information" | "warning" | "error" | true | false
+-- Diagnostics for simple expressions whose value is not used in any way.
+-- 
+-- ```lua
+-- default = "warning"
+-- ```
+---@field reportUnusedExpression "none" | "information" | "warning" | "error" | true | false
+-- Diagnostics for a function or method with a private name (starting with an underscore) that is not accessed.
+-- 
+-- ```lua
+-- default = "none"
+-- ```
+---@field reportUnusedFunction "none" | "unused" | "information" | "warning" | "error" | true | false
+-- Diagnostics for an imported symbol that is not referenced within that file.
+-- 
+-- ```lua
+-- default = "none"
+-- ```
+---@field reportUnusedImport "none" | "unused" | "information" | "warning" | "error" | true | false
+-- Diagnostics for unused function parameters
+-- 
+-- ```lua
+-- default = "unused"
+-- ```
+---@field reportUnusedParameter "none" | "unused" | "information" | "warning" | "error" | true | false
+-- Diagnostics for a variable that is not accessed.
+-- 
+-- ```lua
+-- default = "none"
+-- ```
+---@field reportUnusedVariable "none" | "unused" | "information" | "warning" | "error" | true | false
+-- Diagnostics for an wildcard import from an external library.
+-- 
+-- ```lua
+-- default = "warning"
+-- ```
+---@field reportWildcardImportFromLibrary "none" | "information" | "warning" | "error" | true | false
+
+---@class _.lspconfig.settings.basedpyright.Analysis
+-- Offer auto-import completions.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field autoImportCompletions boolean
+-- Automatically add common search paths like 'src'?
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field autoSearchPaths boolean
+-- ```lua
+-- default = "openFilesOnly"
+-- ```
+---@field diagnosticMode "openFilesOnly" | "workspace"
+-- Allows a user to override the severity levels for individual diagnostics. Use the rule name as a key and one of "error", "warning", "information", "none", `true` (alias for "error") or `false` (alias for "none") as value. The default value shown for each diagnostic is the default when "basedpyright.analysis.typeCheckingMode" is set to "standard". See [here](https://github.com/detachhead/basedpyright/blob/main/docs/configuration.md#diagnostic-rule-defaults) for defaults for each type checking mode ("off", "basic", "standard", "strict", and "all").
+---@field diagnosticSeverityOverrides _.lspconfig.settings.basedpyright.DiagnosticSeverityOverrides
+-- Paths of directories or files that should not be included. These override the include directories, allowing specific subdirectories to be excluded. Note that files in the exclude paths may still be included in the analysis if they are referenced (imported) by source files that are not excluded. Paths may contain wildcard characters ** (a directory or multiple levels of directories), * (a sequence of zero or more characters), or ? (a single character). If no exclude paths are specified, pyright automatically excludes the following: `**/node_modules`, `**/__pycache__`, `.git` and any virtual environment directories.
+-- 
+-- ```lua
+-- default = {}
+-- ```
+---@field exclude string[]
+-- Additional import search resolution paths
+-- 
+-- ```lua
+-- default = {}
+-- ```
+---@field extraPaths string[]
+-- Paths of directories or files whose diagnostic output (errors and warnings) should be suppressed even if they are an included file or within the transitive closure of an included file. Paths may contain wildcard characters ** (a directory or multiple levels of directories), * (a sequence of zero or more characters), or ? (a single character). If no value is provided, the value of python.linting.ignorePatterns (if set) will be used.
+-- 
+-- ```lua
+-- default = {}
+-- ```
+---@field ignore string[]
+-- Paths of directories or files that should be included. If no paths are specified, pyright defaults to the workspace root directory. Paths may contain wildcard characters ** (a directory or multiple levels of directories), * (a sequence of zero or more characters), or ? (a single character).
+-- 
+-- ```lua
+-- default = {}
+-- ```
+---@field include string[]
+-- Specifies the level of logging for the Output panel
+-- 
+-- ```lua
+-- default = "Information"
+-- ```
+---@field logLevel "Error" | "Warning" | "Information" | "Trace"
+-- Path to directory containing custom type stub files.
+-- 
+-- ```lua
+-- default = "typings"
+-- ```
+---@field stubPath string
+-- Defines the default rule set for type checking.
+-- 
+-- ```lua
+-- default = "all"
+-- ```
+---@field typeCheckingMode "off" | "basic" | "standard" | "strict" | "all"
+-- Paths to look for typeshed modules.
+-- 
+-- ```lua
+-- default = {}
+-- ```
+---@field typeshedPaths string[]
+-- Use library implementations to extract type information when type stub is not present.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field useLibraryCodeForTypes boolean
+
+---@class _.lspconfig.settings.basedpyright.Basedpyright
+---@field analysis _.lspconfig.settings.basedpyright.Analysis
+-- Disables type completion, definitions, and references.
+---@field disableLanguageServices boolean
+-- Disables the “Organize Imports” command.
+---@field disableOrganizeImports boolean
+-- Disable hint diagnostics with special hints for grayed-out or strike-through text.
+---@field disableTaggedHints boolean
+-- Whether to use the version of pyright installed in the project (recommended) or the one bundled with the extension (not recommended).
+-- 
+-- ```lua
+-- default = "fromEnvironment"
+-- ```
+---@field importStrategy "fromEnvironment" | "useBundled"
+
+---@class _.lspconfig.settings.basedpyright.Python
+-- Path to Python, you can use a custom version of Python.
+-- 
+-- ```lua
+-- default = "python"
+-- ```
+---@field pythonPath string
+-- Path to folder with a list of Virtual Environments.
+-- 
+-- ```lua
+-- default = ""
+-- ```
+---@field venvPath string
+
+---@class lspconfig.settings.basedpyright
+---@field basedpyright _.lspconfig.settings.basedpyright.Basedpyright
+---@field python _.lspconfig.settings.basedpyright.Python
+
 ---@class _.lspconfig.settings.bashls.Shfmt
 -- Allow boolean operators (like && and ||) to start a line.
 ---@field binaryNextLine boolean
@@ -1081,6 +1725,18 @@
 -- default = true
 -- ```
 ---@field closingLabels boolean
+-- The prefix to use in closing labels.
+-- 
+-- ```lua
+-- default = " // "
+-- ```
+---@field closingLabelsPrefix string
+-- The text style to use in closing labels. Using _Italic_ requires a font that supports italic text.
+-- 
+-- ```lua
+-- default = "normal"
+-- ```
+---@field closingLabelsTextStyle "normal" | "italic"
 -- Whether to insert parentheses and placeholders for positional and required arguments during code completions when using LSP. This feature is automatically disabled if commit characters are enabled.
 -- 
 -- ```lua
@@ -1143,7 +1799,7 @@
 ---@field devToolsTheme "dark" | "light"
 -- **LEGACY SETTING: Only applies to legacy analysis server protocol.**
 -- 
--- An array of glob patterns that should be excluded for formatting. The pattern is matched against the absolute path of the file. Use `**/test/**` to skip formatting for all test directories.
+-- An array of glob patterns that should be excluded for formatting. The pattern is matched against the absolute path of the file. Use `**/test/**` to skip formatting for all test directories. Must always use forward slashes (even on Windows) as backslashes are used for escaping.
 -- 
 -- ```lua
 -- default = {}
@@ -1335,7 +1991,7 @@
 -- default = "never"
 -- ```
 ---@field hotReloadOnSave "never" | "manual" | "manualIfDirty" | "all" | "allIfDirty"
--- An array of glob patterns that should trigger Hot Reload when saved. The pattern is matched against the absolute path of the file. Use `**/assets/**` to trigger reloading for everything in the assets directory.
+-- An array of glob patterns that should trigger Hot Reload when saved. The pattern is matched against the absolute path of the file. Use `**/assets/**` to trigger reloading for everything in the assets directory. Must always start with "**/" and use forward slashes (even on Windows) as backslashes are used for escaping.
 -- 
 -- ```lua
 -- default = {}
@@ -1814,10 +2470,14 @@
 ---@field tlsCertificate string
 -- **DANGER** disables verification of TLS certificates for the hosts provided. There is likely a better way to deal with any errors than use this option. This is like using `--unsafely-ignore-certificate-errors` in the Deno CLI.
 ---@field unsafelyIgnoreCertificateErrors string[]
--- Controls if tests will be run with the the `--unstable` flag when running tests via the explorer.
+-- Controls which `--unstable-*` features tests will be run with when running them via the explorer.
 -- 
 -- **Not recommended to be enabled globally.**
----@field unstable boolean
+-- 
+-- ```lua
+-- default = {}
+-- ```
+---@field unstable string[]
 
 ---@class lspconfig.settings.denols
 ---@field deno _.lspconfig.settings.denols.Deno
@@ -8459,6 +9119,12 @@
 ---@field completion _.lspconfig.settings.lua_ls.Completion
 ---@field diagnostics _.lspconfig.settings.lua_ls.Diagnostics
 ---@field doc _.lspconfig.settings.lua_ls.Doc
+-- TODO: Needs documentation
+-- 
+-- ```lua
+-- default = ""
+-- ```
+---@field docScriptPath string
 ---@field format _.lspconfig.settings.lua_ls.Format
 ---@field hint _.lspconfig.settings.lua_ls.Hint
 ---@field hover _.lspconfig.settings.lua_ls.Hover
@@ -9147,6 +9813,12 @@
 -- default = "true"
 -- ```
 ---@field navigateToDecompiledSources boolean
+-- %configuration.dotnet.navigation.navigateToSourceLinkAndEmbeddedSources%
+-- 
+-- ```lua
+-- default = "true"
+-- ```
+---@field navigateToSourceLinkAndEmbeddedSources boolean
 
 ---@class _.lspconfig.settings.omnisharp.Projects
 -- %configuration.dotnet.projects.binaryLogPath%
@@ -9449,7 +10121,7 @@
 ---@field type "coreclr" | "clr"
 
 ---@class _.lspconfig.settings.omnisharp.UnitTests
--- %configuration.dotnet.unitTests.runSettingsPath.markdownDescription%
+-- %configuration.dotnet.unitTests.runSettingsPath%
 ---@field runSettingsPath string
 
 ---@class _.lspconfig.settings.omnisharp.Dotnet
@@ -11499,7 +12171,7 @@
 -- default = "none"
 -- ```
 ---@field reportUnnecessaryContains "none" | "information" | "warning" | "error" | true | false
--- Diagnostics for 'isinstance' or 'issubclass' calls where the result is statically determined to be always true. Such calls are often indicative of a programming error.
+-- Diagnostics for 'isinstance' or 'issubclass' calls where the result is statically determined to be always (or never) true. Such calls are often indicative of a programming error.
 -- 
 -- ```lua
 -- default = "none"
@@ -12569,10 +13241,20 @@
 ---@field fuel integer
 
 ---@class _.lspconfig.settings.rust_analyzer.Completion
+-- Whether to automatically add a semicolon when completing unit-returning functions.
+-- 
+-- In `match` arms it completes a comma instead.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field addSemicolonToUnit boolean
 ---@field autoimport _.lspconfig.settings.rust_analyzer.Autoimport
 ---@field autoself _.lspconfig.settings.rust_analyzer.Autoself
 ---@field callable _.lspconfig.settings.rust_analyzer.Callable
 ---@field fullFunctionSignatures _.lspconfig.settings.rust_analyzer.FullFunctionSignatures
+-- Whether to omit deprecated items from autocompletion. By default they are marked as deprecated but not hidden.
+---@field hideDeprecated boolean
 -- Maximum number of completions to return. If `None`, the limit is infinite.
 ---@field limit integer
 ---@field postfix _.lspconfig.settings.rust_analyzer.Postfix
@@ -13861,6 +14543,8 @@
 -- default = 1500
 -- ```
 ---@field validationDelay number
+-- Compile using the intermediate representation (IR) instead of the AST
+---@field viaIR boolean
 
 ---@class lspconfig.settings.solidity_ls
 ---@field solidity _.lspconfig.settings.solidity_ls.Solidity
@@ -13967,7 +14651,7 @@
 -- default = ""
 -- ```
 ---@field path string
--- Use lldb debug adapter packaged with Swift toolchain as your debug adapter. This is currently only available on Windows or platforms using Swift 6
+-- Use the LLDB debug adapter packaged with the Swift toolchain as your debug adapter. Note: this is only available starting with Swift 6. The CodeLLDB extension will be used if your Swift toolchain does not contain lldb-dap.
 ---@field useDebugAdapterFromToolchain boolean
 
 ---@class _.lspconfig.settings.sourcekit.Trace
@@ -14012,6 +14696,12 @@
 -- default = "Focus Terminal"
 -- ```
 ---@field actionAfterBuildError "Focus Problems" | "Focus Terminal" | "Do Nothing"
+-- Additional arguments to pass to the `swift test` or `swift build` commands used when building and running tests from within VS Code.
+-- 
+-- ```lua
+-- default = {}
+-- ```
+---@field additionalTestArguments string[]
 -- When loading a `Package.swift`, auto-generate `launch.json` configurations for running any executables.
 -- 
 -- ```lua
@@ -14020,7 +14710,7 @@
 ---@field autoGenerateLaunchConfigurations boolean
 -- **Experimental**: Run `swift build` in the background whenever a file is saved. It is possible the background compilation will already be running when you attempt a compile yourself, so this is disabled by default.
 ---@field backgroundCompilation boolean
--- Additional arguments to pass to `swift build`. Keys and values should be provided as individual entries in the list. If you have created a copy of the build task in `tasks.json` then these build arguments will not be propogated to that task.
+-- Additional arguments to pass to `swift` commands such as `swift build`, `swift package`, `swift test`, etc... Keys and values should be provided as individual entries in the list. If you have created a copy of the build task in `tasks.json` then these build arguments will not be propogated to that task.
 -- 
 -- ```lua
 -- default = {}
@@ -14934,11 +15624,11 @@
 ---@class lspconfig.settings.terraformls
 ---@field terraform _.lspconfig.settings.terraformls.Terraform
 
----@class _.lspconfig.settings.tsserver.Experimental
+---@class _.lspconfig.settings.ts_ls.Experimental
 -- Automatically update imports when pasting code. Requires TypeScript 5.6+.
 ---@field updateImportsOnPaste boolean
 
----@class _.lspconfig.settings.tsserver.Format
+---@class _.lspconfig.settings.ts_ls.Format
 -- Enable/disable default JavaScript formatter.
 -- 
 -- ```lua
@@ -15010,13 +15700,13 @@
 -- ```
 ---@field semicolons "ignore" | "insert" | "remove"
 
----@class _.lspconfig.settings.tsserver.ImplicitProjectConfig
+---@class _.lspconfig.settings.ts_ls.ImplicitProjectConfig
 -- Enable/disable semantic checking of JavaScript files. Existing `jsconfig.json` or `tsconfig.json` files override this setting.
 ---@field checkJs boolean
 -- Enable/disable `experimentalDecorators` in JavaScript files that are not part of a project. Existing `jsconfig.json` or `tsconfig.json` files override this setting.
 ---@field experimentalDecorators boolean
 
----@class _.lspconfig.settings.tsserver.EnumMemberValues
+---@class _.lspconfig.settings.ts_ls.EnumMemberValues
 -- Enable/disable inlay hints for member values in enum declarations:
 -- ```typescript
 -- 
@@ -15030,7 +15720,7 @@
 -- The text inside the ``` block is code and should not be localized.
 ---@field enabled boolean
 
----@class _.lspconfig.settings.tsserver.FunctionLikeReturnTypes
+---@class _.lspconfig.settings.ts_ls.FunctionLikeReturnTypes
 -- Enable/disable inlay hints for implicit return types on function signatures:
 -- ```typescript
 -- 
@@ -15043,7 +15733,7 @@
 -- The text inside the ``` block is code and should not be localized.
 ---@field enabled boolean
 
----@class _.lspconfig.settings.tsserver.ParameterNames
+---@class _.lspconfig.settings.ts_ls.ParameterNames
 -- Enable/disable inlay hints for parameter names:
 -- ```typescript
 -- 
@@ -15064,7 +15754,7 @@
 -- ```
 ---@field suppressWhenArgumentMatchesName boolean
 
----@class _.lspconfig.settings.tsserver.ParameterTypes
+---@class _.lspconfig.settings.ts_ls.ParameterTypes
 -- Enable/disable inlay hints for implicit parameter types:
 -- ```typescript
 -- 
@@ -15075,7 +15765,7 @@
 -- The text inside the ``` block is code and should not be localized.
 ---@field enabled boolean
 
----@class _.lspconfig.settings.tsserver.PropertyDeclarationTypes
+---@class _.lspconfig.settings.ts_ls.PropertyDeclarationTypes
 -- Enable/disable inlay hints for implicit types on property declarations:
 -- ```typescript
 -- 
@@ -15088,7 +15778,7 @@
 -- The text inside the ``` block is code and should not be localized.
 ---@field enabled boolean
 
----@class _.lspconfig.settings.tsserver.VariableTypes
+---@class _.lspconfig.settings.ts_ls.VariableTypes
 -- Enable/disable inlay hints for implicit variable types:
 -- ```typescript
 -- 
@@ -15105,19 +15795,19 @@
 -- ```
 ---@field suppressWhenTypeMatchesName boolean
 
----@class _.lspconfig.settings.tsserver.InlayHints
----@field enumMemberValues _.lspconfig.settings.tsserver.EnumMemberValues
----@field functionLikeReturnTypes _.lspconfig.settings.tsserver.FunctionLikeReturnTypes
----@field parameterNames _.lspconfig.settings.tsserver.ParameterNames
----@field parameterTypes _.lspconfig.settings.tsserver.ParameterTypes
----@field propertyDeclarationTypes _.lspconfig.settings.tsserver.PropertyDeclarationTypes
----@field variableTypes _.lspconfig.settings.tsserver.VariableTypes
+---@class _.lspconfig.settings.ts_ls.InlayHints
+---@field enumMemberValues _.lspconfig.settings.ts_ls.EnumMemberValues
+---@field functionLikeReturnTypes _.lspconfig.settings.ts_ls.FunctionLikeReturnTypes
+---@field parameterNames _.lspconfig.settings.ts_ls.ParameterNames
+---@field parameterTypes _.lspconfig.settings.ts_ls.ParameterTypes
+---@field propertyDeclarationTypes _.lspconfig.settings.ts_ls.PropertyDeclarationTypes
+---@field variableTypes _.lspconfig.settings.ts_ls.VariableTypes
 
--- Advanced preferences that control how imports are ordered. Presets are available in `#typescript.preferences.organizeImports.presets#`
----@class _.lspconfig.settings.tsserver.OrganizeImports
--- Compare characters with diacritical marks as unequal to base character
+-- Advanced preferences that control how imports are ordered.
+---@class _.lspconfig.settings.ts_ls.OrganizeImports
+-- Compare characters with diacritical marks as unequal to base character.
 ---@field accentCollation boolean
--- Indicates whether upper-case comes before lower-case. Only applies to `organizeImportsCollation: 'unicode'`
+-- Indicates whether upper-case comes before lower-case. Only applies to `organizeImportsCollation: 'unicode'`.
 -- 
 -- ```lua
 -- default = "default"
@@ -15127,9 +15817,9 @@
 -- default = "auto"
 -- ```
 ---@field caseSensitivity "auto" | "caseInsensitive" | "caseSensitive"
--- Overrides the locale used for collation. Specify `auto` to use the UI locale. Only applies to `organizeImportsCollation: 'unicode'`
+-- Overrides the locale used for collation. Specify `auto` to use the UI locale. Only applies to `organizeImportsCollation: 'unicode'`.
 ---@field locale string
--- Sort numeric strings by integer value
+-- Sort numeric strings by integer value.
 ---@field numericCollation boolean
 -- ```lua
 -- default = "auto"
@@ -15140,7 +15830,7 @@
 -- ```
 ---@field unicodeCollation "ordinal" | "unicode"
 
----@class _.lspconfig.settings.tsserver.Preferences
+---@class _.lspconfig.settings.ts_ls.Preferences
 -- Specify glob patterns of files to exclude from auto imports. Relative paths are resolved relative to the workspace root. Patterns are evaluated using tsconfig.json [`exclude`](https://www.typescriptlang.org/tsconfig#exclude) semantics.
 ---@field autoImportFileExcludePatterns string[]
 -- Specify regular expressions to exclude auto imports with matching import specifiers. Examples:
@@ -15168,8 +15858,8 @@
 -- default = "auto"
 -- ```
 ---@field jsxAttributeCompletionStyle "auto" | "braces" | "none"
--- Advanced preferences that control how imports are ordered. Presets are available in `#typescript.preferences.organizeImports.presets#`
----@field organizeImports _.lspconfig.settings.tsserver.OrganizeImports
+-- Advanced preferences that control how imports are ordered.
+---@field organizeImports _.lspconfig.settings.ts_ls.OrganizeImports
 -- Preferred quote style to use for Quick Fixes.
 -- 
 -- ```lua
@@ -15195,13 +15885,13 @@
 -- ```
 ---@field useAliasesForRenames boolean
 
----@class _.lspconfig.settings.tsserver.ReferencesCodeLens
+---@class _.lspconfig.settings.ts_ls.ReferencesCodeLens
 -- Enable/disable references CodeLens in JavaScript files.
 ---@field enabled boolean
 -- Enable/disable references CodeLens on all functions in JavaScript files.
 ---@field showOnAllFunctions boolean
 
----@class _.lspconfig.settings.tsserver.ClassMemberSnippets
+---@class _.lspconfig.settings.ts_ls.ClassMemberSnippets
 -- Enable/disable snippet completions for class members.
 -- 
 -- ```lua
@@ -15209,7 +15899,7 @@
 -- ```
 ---@field enabled boolean
 
----@class _.lspconfig.settings.tsserver.Jsdoc
+---@class _.lspconfig.settings.ts_ls.Jsdoc
 -- Enable/disable generating `@returns` annotations for JSDoc templates.
 -- 
 -- ```lua
@@ -15217,14 +15907,14 @@
 -- ```
 ---@field generateReturns boolean
 
----@class _.lspconfig.settings.tsserver.Suggest
+---@class _.lspconfig.settings.ts_ls.Suggest
 -- Enable/disable auto import suggestions.
 -- 
 -- ```lua
 -- default = true
 -- ```
 ---@field autoImports boolean
----@field classMemberSnippets _.lspconfig.settings.tsserver.ClassMemberSnippets
+---@field classMemberSnippets _.lspconfig.settings.ts_ls.ClassMemberSnippets
 -- Complete functions with their parameter signature.
 ---@field completeFunctionCalls boolean
 -- Enable/disable suggestion to complete JSDoc comments.
@@ -15251,7 +15941,7 @@
 -- default = true
 -- ```
 ---@field includeCompletionsForImportStatements boolean
----@field jsdoc _.lspconfig.settings.tsserver.Jsdoc
+---@field jsdoc _.lspconfig.settings.ts_ls.Jsdoc
 -- Enable/disable including unique names from the file in JavaScript suggestions. Note that name suggestions are always disabled in JavaScript code that is semantically checked using `@ts-check` or `checkJs`.
 -- 
 -- ```lua
@@ -15265,7 +15955,7 @@
 -- ```
 ---@field paths boolean
 
----@class _.lspconfig.settings.tsserver.SuggestionActions
+---@class _.lspconfig.settings.ts_ls.SuggestionActions
 -- Enable/disable suggestion diagnostics for JavaScript files in the editor.
 -- 
 -- ```lua
@@ -15273,7 +15963,7 @@
 -- ```
 ---@field enabled boolean
 
----@class _.lspconfig.settings.tsserver.UpdateImportsOnFileMove
+---@class _.lspconfig.settings.ts_ls.UpdateImportsOnFileMove
 -- Enable/disable automatic updating of import paths when you rename or move a file in VS Code.
 -- 
 -- ```lua
@@ -15281,7 +15971,7 @@
 -- ```
 ---@field enabled "prompt" | "always" | "never"
 
----@class _.lspconfig.settings.tsserver.Validate
+---@class _.lspconfig.settings.ts_ls.Validate
 -- Enable/disable JavaScript validation.
 -- 
 -- ```lua
@@ -15289,27 +15979,27 @@
 -- ```
 ---@field enable boolean
 
----@class _.lspconfig.settings.tsserver.Javascript
+---@class _.lspconfig.settings.ts_ls.Javascript
 -- Enable/disable automatic closing of JSX tags.
 -- 
 -- ```lua
 -- default = true
 -- ```
 ---@field autoClosingTags boolean
----@field experimental _.lspconfig.settings.tsserver.Experimental
----@field format _.lspconfig.settings.tsserver.Format
----@field implicitProjectConfig _.lspconfig.settings.tsserver.ImplicitProjectConfig
----@field inlayHints _.lspconfig.settings.tsserver.InlayHints
+---@field experimental _.lspconfig.settings.ts_ls.Experimental
+---@field format _.lspconfig.settings.ts_ls.Format
+---@field implicitProjectConfig _.lspconfig.settings.ts_ls.ImplicitProjectConfig
+---@field inlayHints _.lspconfig.settings.ts_ls.InlayHints
 -- Makes Go to Definition avoid type declaration files when possible by triggering Go to Source Definition instead. This allows Go to Source Definition to be triggered with the mouse gesture.
 ---@field preferGoToSourceDefinition boolean
----@field preferences _.lspconfig.settings.tsserver.Preferences
----@field referencesCodeLens _.lspconfig.settings.tsserver.ReferencesCodeLens
----@field suggest _.lspconfig.settings.tsserver.Suggest
----@field suggestionActions _.lspconfig.settings.tsserver.SuggestionActions
----@field updateImportsOnFileMove _.lspconfig.settings.tsserver.UpdateImportsOnFileMove
----@field validate _.lspconfig.settings.tsserver.Validate
+---@field preferences _.lspconfig.settings.ts_ls.Preferences
+---@field referencesCodeLens _.lspconfig.settings.ts_ls.ReferencesCodeLens
+---@field suggest _.lspconfig.settings.ts_ls.Suggest
+---@field suggestionActions _.lspconfig.settings.ts_ls.SuggestionActions
+---@field updateImportsOnFileMove _.lspconfig.settings.ts_ls.UpdateImportsOnFileMove
+---@field validate _.lspconfig.settings.ts_ls.Validate
 
----@class _.lspconfig.settings.tsserver.ImplicitProjectConfig
+---@class _.lspconfig.settings.ts_ls.ImplicitProjectConfig
 -- Enable/disable semantic checking of JavaScript files. Existing `jsconfig.json` or `tsconfig.json` files override this setting.
 ---@field checkJs boolean
 -- Enable/disable `experimentalDecorators` in JavaScript files that are not part of a project. Existing `jsconfig.json` or `tsconfig.json` files override this setting.
@@ -15335,14 +16025,14 @@
 -- Set target JavaScript language version for emitted JavaScript and include library declarations. See more: https://www.typescriptlang.org/tsconfig#target.
 -- 
 -- ```lua
--- default = "ES2020"
+-- default = "ES2022"
 -- ```
----@field target "ES3" | "ES5" | "ES6" | "ES2015" | "ES2016" | "ES2017" | "ES2018" | "ES2019" | "ES2020" | "ES2021" | "ES2022" | "ESNext"
+---@field target "ES3" | "ES5" | "ES6" | "ES2015" | "ES2016" | "ES2017" | "ES2018" | "ES2019" | "ES2020" | "ES2021" | "ES2022" | "ES2023" | "ES2024" | "ESNext"
 
----@class _.lspconfig.settings.tsserver.Js/ts
----@field implicitProjectConfig _.lspconfig.settings.tsserver.ImplicitProjectConfig
+---@class _.lspconfig.settings.ts_ls.Js/ts
+---@field implicitProjectConfig _.lspconfig.settings.ts_ls.ImplicitProjectConfig
 
----@class _.lspconfig.settings.tsserver.Check
+---@class _.lspconfig.settings.ts_ls.Check
 -- Check if npm is installed for [Automatic Type Acquisition](https://code.visualstudio.com/docs/nodejs/working-with-javascript#_typings-and-automatic-type-acquisition).
 -- 
 -- ```lua
@@ -15350,11 +16040,11 @@
 -- ```
 ---@field npmIsInstalled boolean
 
----@class _.lspconfig.settings.tsserver.Experimental
+---@class _.lspconfig.settings.ts_ls.Experimental
 -- Automatically update imports when pasting code. Requires TypeScript 5.6+.
 ---@field updateImportsOnPaste boolean
 
----@class _.lspconfig.settings.tsserver.Format
+---@class _.lspconfig.settings.ts_ls.Format
 -- Enable/disable default TypeScript formatter.
 -- 
 -- ```lua
@@ -15434,13 +16124,13 @@
 -- ```
 ---@field semicolons "ignore" | "insert" | "remove"
 
----@class _.lspconfig.settings.tsserver.ImplementationsCodeLens
+---@class _.lspconfig.settings.ts_ls.ImplementationsCodeLens
 -- Enable/disable implementations CodeLens. This CodeLens shows the implementers of an interface.
 ---@field enabled boolean
 -- Enable/disable implementations CodeLens on interface methods.
 ---@field showOnInterfaceMethods boolean
 
----@class _.lspconfig.settings.tsserver.EnumMemberValues
+---@class _.lspconfig.settings.ts_ls.EnumMemberValues
 -- Enable/disable inlay hints for member values in enum declarations:
 -- ```typescript
 -- 
@@ -15454,7 +16144,7 @@
 -- The text inside the ``` block is code and should not be localized.
 ---@field enabled boolean
 
----@class _.lspconfig.settings.tsserver.FunctionLikeReturnTypes
+---@class _.lspconfig.settings.ts_ls.FunctionLikeReturnTypes
 -- Enable/disable inlay hints for implicit return types on function signatures:
 -- ```typescript
 -- 
@@ -15467,7 +16157,7 @@
 -- The text inside the ``` block is code and should not be localized.
 ---@field enabled boolean
 
----@class _.lspconfig.settings.tsserver.ParameterNames
+---@class _.lspconfig.settings.ts_ls.ParameterNames
 -- Enable/disable inlay hints for parameter names:
 -- ```typescript
 -- 
@@ -15488,7 +16178,7 @@
 -- ```
 ---@field suppressWhenArgumentMatchesName boolean
 
----@class _.lspconfig.settings.tsserver.ParameterTypes
+---@class _.lspconfig.settings.ts_ls.ParameterTypes
 -- Enable/disable inlay hints for implicit parameter types:
 -- ```typescript
 -- 
@@ -15499,7 +16189,7 @@
 -- The text inside the ``` block is code and should not be localized.
 ---@field enabled boolean
 
----@class _.lspconfig.settings.tsserver.PropertyDeclarationTypes
+---@class _.lspconfig.settings.ts_ls.PropertyDeclarationTypes
 -- Enable/disable inlay hints for implicit types on property declarations:
 -- ```typescript
 -- 
@@ -15512,7 +16202,7 @@
 -- The text inside the ``` block is code and should not be localized.
 ---@field enabled boolean
 
----@class _.lspconfig.settings.tsserver.VariableTypes
+---@class _.lspconfig.settings.ts_ls.VariableTypes
 -- Enable/disable inlay hints for implicit variable types:
 -- ```typescript
 -- 
@@ -15529,19 +16219,19 @@
 -- ```
 ---@field suppressWhenTypeMatchesName boolean
 
----@class _.lspconfig.settings.tsserver.InlayHints
----@field enumMemberValues _.lspconfig.settings.tsserver.EnumMemberValues
----@field functionLikeReturnTypes _.lspconfig.settings.tsserver.FunctionLikeReturnTypes
----@field parameterNames _.lspconfig.settings.tsserver.ParameterNames
----@field parameterTypes _.lspconfig.settings.tsserver.ParameterTypes
----@field propertyDeclarationTypes _.lspconfig.settings.tsserver.PropertyDeclarationTypes
----@field variableTypes _.lspconfig.settings.tsserver.VariableTypes
+---@class _.lspconfig.settings.ts_ls.InlayHints
+---@field enumMemberValues _.lspconfig.settings.ts_ls.EnumMemberValues
+---@field functionLikeReturnTypes _.lspconfig.settings.ts_ls.FunctionLikeReturnTypes
+---@field parameterNames _.lspconfig.settings.ts_ls.ParameterNames
+---@field parameterTypes _.lspconfig.settings.ts_ls.ParameterTypes
+---@field propertyDeclarationTypes _.lspconfig.settings.ts_ls.PropertyDeclarationTypes
+---@field variableTypes _.lspconfig.settings.ts_ls.VariableTypes
 
--- Advanced preferences that control how imports are ordered. Presets are available in `#typescript.preferences.organizeImports.presets#`
----@class _.lspconfig.settings.tsserver.OrganizeImports
--- Compare characters with diacritical marks as unequal to base character
+-- Advanced preferences that control how imports are ordered.
+---@class _.lspconfig.settings.ts_ls.OrganizeImports
+-- Compare characters with diacritical marks as unequal to base character.
 ---@field accentCollation boolean
--- Indicates whether upper-case comes before lower-case. Only applies to `organizeImportsCollation: 'unicode'`
+-- Indicates whether upper-case comes before lower-case. Only applies to `organizeImportsCollation: 'unicode'`.
 -- 
 -- ```lua
 -- default = "default"
@@ -15551,9 +16241,9 @@
 -- default = "auto"
 -- ```
 ---@field caseSensitivity "auto" | "caseInsensitive" | "caseSensitive"
--- Overrides the locale used for collation. Specify `auto` to use the UI locale. Only applies to `organizeImportsCollation: 'unicode'`
+-- Overrides the locale used for collation. Specify `auto` to use the UI locale. Only applies to `organizeImportsCollation: 'unicode'`.
 ---@field locale string
--- Sort numeric strings by integer value
+-- Sort numeric strings by integer value.
 ---@field numericCollation boolean
 -- ```lua
 -- default = "auto"
@@ -15564,7 +16254,7 @@
 -- ```
 ---@field unicodeCollation "ordinal" | "unicode"
 
----@class _.lspconfig.settings.tsserver.Preferences
+---@class _.lspconfig.settings.ts_ls.Preferences
 -- Specify glob patterns of files to exclude from auto imports. Relative paths are resolved relative to the workspace root. Patterns are evaluated using tsconfig.json [`exclude`](https://www.typescriptlang.org/tsconfig#exclude) semantics.
 ---@field autoImportFileExcludePatterns string[]
 -- Specify regular expressions to exclude auto imports with matching import specifiers. Examples:
@@ -15598,8 +16288,8 @@
 -- default = "auto"
 -- ```
 ---@field jsxAttributeCompletionStyle "auto" | "braces" | "none"
--- Advanced preferences that control how imports are ordered. Presets are available in `#typescript.preferences.organizeImports.presets#`
----@field organizeImports _.lspconfig.settings.tsserver.OrganizeImports
+-- Advanced preferences that control how imports are ordered.
+---@field organizeImports _.lspconfig.settings.ts_ls.OrganizeImports
 -- Include the `type` keyword in auto-imports whenever possible. Requires using TypeScript 5.3+ in the workspace.
 ---@field preferTypeOnlyAutoImports boolean
 -- Preferred quote style to use for Quick Fixes.
@@ -15627,13 +16317,13 @@
 -- ```
 ---@field useAliasesForRenames boolean
 
----@class _.lspconfig.settings.tsserver.ReferencesCodeLens
+---@class _.lspconfig.settings.ts_ls.ReferencesCodeLens
 -- Enable/disable references CodeLens in TypeScript files.
 ---@field enabled boolean
 -- Enable/disable references CodeLens on all functions in TypeScript files.
 ---@field showOnAllFunctions boolean
 
----@class _.lspconfig.settings.tsserver.ClassMemberSnippets
+---@class _.lspconfig.settings.ts_ls.ClassMemberSnippets
 -- Enable/disable snippet completions for class members.
 -- 
 -- ```lua
@@ -15641,7 +16331,7 @@
 -- ```
 ---@field enabled boolean
 
----@class _.lspconfig.settings.tsserver.Jsdoc
+---@class _.lspconfig.settings.ts_ls.Jsdoc
 -- Enable/disable generating `@returns` annotations for JSDoc templates.
 -- 
 -- ```lua
@@ -15649,7 +16339,7 @@
 -- ```
 ---@field generateReturns boolean
 
----@class _.lspconfig.settings.tsserver.ObjectLiteralMethodSnippets
+---@class _.lspconfig.settings.ts_ls.ObjectLiteralMethodSnippets
 -- Enable/disable snippet completions for methods in object literals.
 -- 
 -- ```lua
@@ -15657,14 +16347,14 @@
 -- ```
 ---@field enabled boolean
 
----@class _.lspconfig.settings.tsserver.Suggest
+---@class _.lspconfig.settings.ts_ls.Suggest
 -- Enable/disable auto import suggestions.
 -- 
 -- ```lua
 -- default = true
 -- ```
 ---@field autoImports boolean
----@field classMemberSnippets _.lspconfig.settings.tsserver.ClassMemberSnippets
+---@field classMemberSnippets _.lspconfig.settings.ts_ls.ClassMemberSnippets
 -- Complete functions with their parameter signature.
 ---@field completeFunctionCalls boolean
 -- Enable/disable suggestion to complete JSDoc comments.
@@ -15691,8 +16381,8 @@
 -- default = true
 -- ```
 ---@field includeCompletionsForImportStatements boolean
----@field jsdoc _.lspconfig.settings.tsserver.Jsdoc
----@field objectLiteralMethodSnippets _.lspconfig.settings.tsserver.ObjectLiteralMethodSnippets
+---@field jsdoc _.lspconfig.settings.ts_ls.Jsdoc
+---@field objectLiteralMethodSnippets _.lspconfig.settings.ts_ls.ObjectLiteralMethodSnippets
 -- Enable/disable suggestions for paths in import statements and require calls.
 -- 
 -- ```lua
@@ -15700,7 +16390,7 @@
 -- ```
 ---@field paths boolean
 
----@class _.lspconfig.settings.tsserver.SuggestionActions
+---@class _.lspconfig.settings.ts_ls.SuggestionActions
 -- Enable/disable suggestion diagnostics for TypeScript files in the editor.
 -- 
 -- ```lua
@@ -15708,7 +16398,7 @@
 -- ```
 ---@field enabled boolean
 
----@class _.lspconfig.settings.tsserver.Surveys
+---@class _.lspconfig.settings.ts_ls.Surveys
 -- Enabled/disable occasional surveys that help us improve VS Code's JavaScript and TypeScript support.
 -- 
 -- ```lua
@@ -15716,7 +16406,7 @@
 -- ```
 ---@field enabled boolean
 
----@class _.lspconfig.settings.tsserver.Tsc
+---@class _.lspconfig.settings.ts_ls.Tsc
 -- Controls auto detection of tsc tasks.
 -- 
 -- ```lua
@@ -15724,7 +16414,7 @@
 -- ```
 ---@field autoDetect "on" | "off" | "build" | "watch"
 
----@class _.lspconfig.settings.tsserver.Experimental
+---@class _.lspconfig.settings.ts_ls.Experimental
 -- (Experimental) Enables project wide error reporting.
 ---@field enableProjectDiagnostics boolean
 -- Use VS Code's file watchers instead of TypeScript's. Requires using TypeScript 5.4+ in the workspace.
@@ -15735,7 +16425,7 @@
 ---@field useVsCodeWatcher boolean
 
 -- Configure which watching strategies should be used to keep track of files and directories.
----@class _.lspconfig.settings.tsserver.WatchOptions
+---@class _.lspconfig.settings.ts_ls.WatchOptions
 -- When using file system events, this option specifies the polling strategy that gets used when the system runs out of native file watchers and/or doesn't support native file watchers.
 ---@field fallbackPolling "fixedPollingInterval" | "priorityPollingInterval" | "dynamicPriorityPolling"
 -- Disable deferred watching on directories. Deferred watching is useful when lots of file changes might occur at once (e.g. a change in node_modules from running npm install), but you might want to disable it with this flag for some less-common setups.
@@ -15753,7 +16443,7 @@
 -- ```
 ---@field watchFile "fixedChunkSizePolling" | "fixedPollingInterval" | "priorityPollingInterval" | "dynamicPriorityPolling" | "useFsEvents" | "useFsEventsOnParentDirectory"
 
----@class _.lspconfig.settings.tsserver.ProjectWideIntellisense
+---@class _.lspconfig.settings.ts_ls.ProjectWideIntellisense
 -- Enable/disable project-wide IntelliSense on web. Requires that VS Code is running in a trusted context.
 -- 
 -- ```lua
@@ -15763,7 +16453,7 @@
 -- Suppresses semantic errors on web even when project wide IntelliSense is enabled. This is always on when project wide IntelliSense is not enabled or available. See `#typescript.tsserver.web.projectWideIntellisense.enabled#`
 ---@field suppressSemanticErrors boolean
 
----@class _.lspconfig.settings.tsserver.TypeAcquisition
+---@class _.lspconfig.settings.ts_ls.TypeAcquisition
 -- Enable/disable package acquisition on the web. This enables IntelliSense for imported packages. Requires `#typescript.tsserver.web.projectWideIntellisense.enabled#`. Currently not supported for Safari.
 -- 
 -- ```lua
@@ -15771,11 +16461,11 @@
 -- ```
 ---@field enabled boolean
 
----@class _.lspconfig.settings.tsserver.Web
----@field projectWideIntellisense _.lspconfig.settings.tsserver.ProjectWideIntellisense
----@field typeAcquisition _.lspconfig.settings.tsserver.TypeAcquisition
+---@class _.lspconfig.settings.ts_ls.Web
+---@field projectWideIntellisense _.lspconfig.settings.ts_ls.ProjectWideIntellisense
+---@field typeAcquisition _.lspconfig.settings.ts_ls.TypeAcquisition
 
----@class _.lspconfig.settings.tsserver.Tsserver
+---@class _.lspconfig.settings.ts_ls.Tsserver
 -- Enables region-based diagnostics in TypeScript. Requires using TypeScript 5.6+ in the workspace.
 -- 
 -- ```lua
@@ -15784,7 +16474,7 @@
 ---@field enableRegionDiagnostics boolean
 -- Enables tracing TS server performance to a directory. These trace files can be used to diagnose TS Server performance issues. The log may contain file paths, source code, and other potentially sensitive information from your project.
 ---@field enableTracing boolean
----@field experimental _.lspconfig.settings.tsserver.Experimental
+---@field experimental _.lspconfig.settings.ts_ls.Experimental
 -- Enables logging of the TS server to a file. This log can be used to diagnose TS Server issues. The log may contain file paths, source code, and other potentially sensitive information from your project.
 -- 
 -- ```lua
@@ -15818,10 +16508,10 @@
 -- ```
 ---@field useSyntaxServer "always" | "never" | "auto"
 -- Configure which watching strategies should be used to keep track of files and directories.
----@field watchOptions _.lspconfig.settings.tsserver.WatchOptions
----@field web _.lspconfig.settings.tsserver.Web
+---@field watchOptions _.lspconfig.settings.ts_ls.WatchOptions
+---@field web _.lspconfig.settings.ts_ls.Web
 
----@class _.lspconfig.settings.tsserver.UpdateImportsOnFileMove
+---@class _.lspconfig.settings.ts_ls.UpdateImportsOnFileMove
 -- Enable/disable automatic updating of import paths when you rename or move a file in VS Code.
 -- 
 -- ```lua
@@ -15829,7 +16519,7 @@
 -- ```
 ---@field enabled "prompt" | "always" | "never"
 
----@class _.lspconfig.settings.tsserver.Validate
+---@class _.lspconfig.settings.ts_ls.Validate
 -- Enable/disable TypeScript validation.
 -- 
 -- ```lua
@@ -15837,7 +16527,7 @@
 -- ```
 ---@field enable boolean
 
----@class _.lspconfig.settings.tsserver.WorkspaceSymbols
+---@class _.lspconfig.settings.ts_ls.WorkspaceSymbols
 -- Exclude symbols that come from library files in Go to Symbol in Workspace results. Requires using TypeScript 5.3+ in the workspace.
 -- 
 -- ```lua
@@ -15851,22 +16541,22 @@
 -- ```
 ---@field scope "allOpenProjects" | "currentProject"
 
----@class _.lspconfig.settings.tsserver.Typescript
+---@class _.lspconfig.settings.ts_ls.Typescript
 -- Enable/disable automatic closing of JSX tags.
 -- 
 -- ```lua
 -- default = true
 -- ```
 ---@field autoClosingTags boolean
----@field check _.lspconfig.settings.tsserver.Check
+---@field check _.lspconfig.settings.ts_ls.Check
 -- Disables [automatic type acquisition](https://code.visualstudio.com/docs/nodejs/working-with-javascript#_typings-and-automatic-type-acquisition). Automatic type acquisition fetches `@types` packages from npm to improve IntelliSense for external libraries.
 ---@field disableAutomaticTypeAcquisition boolean
 -- Enables prompting of users to use the TypeScript version configured in the workspace for Intellisense.
 ---@field enablePromptUseWorkspaceTsdk boolean
----@field experimental _.lspconfig.settings.tsserver.Experimental
----@field format _.lspconfig.settings.tsserver.Format
----@field implementationsCodeLens _.lspconfig.settings.tsserver.ImplementationsCodeLens
----@field inlayHints _.lspconfig.settings.tsserver.InlayHints
+---@field experimental _.lspconfig.settings.ts_ls.Experimental
+---@field format _.lspconfig.settings.ts_ls.Format
+---@field implementationsCodeLens _.lspconfig.settings.ts_ls.ImplementationsCodeLens
+---@field inlayHints _.lspconfig.settings.ts_ls.InlayHints
 -- Sets the locale used to report JavaScript and TypeScript errors. Defaults to use VS Code's locale.
 -- 
 -- ```lua
@@ -15877,18 +16567,18 @@
 ---@field npm string
 -- Makes Go to Definition avoid type declaration files when possible by triggering Go to Source Definition instead. This allows Go to Source Definition to be triggered with the mouse gesture.
 ---@field preferGoToSourceDefinition boolean
----@field preferences _.lspconfig.settings.tsserver.Preferences
----@field referencesCodeLens _.lspconfig.settings.tsserver.ReferencesCodeLens
+---@field preferences _.lspconfig.settings.ts_ls.Preferences
+---@field referencesCodeLens _.lspconfig.settings.ts_ls.ReferencesCodeLens
 -- Report style checks as warnings.
 -- 
 -- ```lua
 -- default = true
 -- ```
 ---@field reportStyleChecksAsWarnings boolean
----@field suggest _.lspconfig.settings.tsserver.Suggest
----@field suggestionActions _.lspconfig.settings.tsserver.SuggestionActions
----@field surveys _.lspconfig.settings.tsserver.Surveys
----@field tsc _.lspconfig.settings.tsserver.Tsc
+---@field suggest _.lspconfig.settings.ts_ls.Suggest
+---@field suggestionActions _.lspconfig.settings.ts_ls.SuggestionActions
+---@field surveys _.lspconfig.settings.ts_ls.Surveys
+---@field tsc _.lspconfig.settings.ts_ls.Tsc
 -- Specifies the folder path to the tsserver and `lib*.d.ts` files under a TypeScript install to use for IntelliSense, for example: `./node_modules/typescript/lib`.
 -- 
 -- - When specified as a user setting, the TypeScript version from `typescript.tsdk` automatically replaces the built-in TypeScript version.
@@ -15896,15 +16586,15 @@
 -- 
 -- See the [TypeScript documentation](https://code.visualstudio.com/docs/typescript/typescript-compiling#_using-newer-typescript-versions) for more detail about managing TypeScript versions.
 ---@field tsdk string
----@field tsserver _.lspconfig.settings.tsserver.Tsserver
----@field updateImportsOnFileMove _.lspconfig.settings.tsserver.UpdateImportsOnFileMove
----@field validate _.lspconfig.settings.tsserver.Validate
----@field workspaceSymbols _.lspconfig.settings.tsserver.WorkspaceSymbols
+---@field tsserver _.lspconfig.settings.ts_ls.Tsserver
+---@field updateImportsOnFileMove _.lspconfig.settings.ts_ls.UpdateImportsOnFileMove
+---@field validate _.lspconfig.settings.ts_ls.Validate
+---@field workspaceSymbols _.lspconfig.settings.ts_ls.WorkspaceSymbols
 
----@class lspconfig.settings.tsserver
----@field javascript _.lspconfig.settings.tsserver.Javascript
----@field js/ts _.lspconfig.settings.tsserver.Js/ts
----@field typescript _.lspconfig.settings.tsserver.Typescript
+---@class lspconfig.settings.ts_ls
+---@field javascript _.lspconfig.settings.ts_ls.Javascript
+---@field js/ts _.lspconfig.settings.ts_ls.Js/ts
+---@field typescript _.lspconfig.settings.ts_ls.Typescript
 
 ---@class _.lspconfig.settings.volar.AutoInsert
 -- Auto add space between double curly brackets: {{|}} -> {{ | }}
@@ -15985,7 +16675,7 @@
 ---@field wrapAttributes "auto" | "force" | "force-aligned" | "force-expand-multiline" | "aligned-multiple" | "preserve" | "preserve-aligned"
 
 ---@class _.lspconfig.settings.volar.InlayHints
--- Show inlay hints for destructured prop.
+-- Show inlay hints for destructured props.
 ---@field destructuredProps boolean
 -- Show inlay hints for event argument in inline handlers.
 ---@field inlineHandlerLeading boolean
@@ -16220,9 +16910,43 @@
 ---@field propertyDeclarationTypes _.lspconfig.settings.vtsls.PropertyDeclarationTypes
 ---@field variableTypes _.lspconfig.settings.vtsls.VariableTypes
 
+-- Advanced preferences that control how imports are ordered.
+---@class _.lspconfig.settings.vtsls.OrganizeImports
+-- Compare characters with diacritical marks as unequal to base character.
+---@field accentCollation boolean
+-- Indicates whether upper-case comes before lower-case. Only applies to `organizeImportsCollation: 'unicode'`.
+-- 
+-- ```lua
+-- default = "default"
+-- ```
+---@field caseFirst "default" | "upper" | "lower"
+-- ```lua
+-- default = "auto"
+-- ```
+---@field caseSensitivity "auto" | "caseInsensitive" | "caseSensitive"
+-- Overrides the locale used for collation. Specify `auto` to use the UI locale. Only applies to `organizeImportsCollation: 'unicode'`.
+---@field locale string
+-- Sort numeric strings by integer value.
+---@field numericCollation boolean
+-- ```lua
+-- default = "auto"
+-- ```
+---@field typeOrder "auto" | "last" | "inline" | "first"
+-- ```lua
+-- default = "ordinal"
+-- ```
+---@field unicodeCollation "ordinal" | "unicode"
+
 ---@class _.lspconfig.settings.vtsls.Preferences
 -- Specify glob patterns of files to exclude from auto imports. Relative paths are resolved relative to the workspace root. Patterns are evaluated using tsconfig.json [`exclude`](https://www.typescriptlang.org/tsconfig#exclude) semantics.
 ---@field autoImportFileExcludePatterns string[]
+-- Specify regular expressions to exclude auto imports with matching import specifiers. Examples:
+-- 
+-- - `^node:`
+-- - `lib/internal` (slashes don't need to be escaped...)
+-- - `/lib\/internal/i` (...unless including surrounding slashes for `i` or `u` flags)
+-- - `^lodash$` (only allow subpath imports from lodash)
+---@field autoImportSpecifierExcludeRegexes string[]
 -- Preferred path style for auto imports.
 -- 
 -- ```lua
@@ -16241,6 +16965,8 @@
 -- default = "auto"
 -- ```
 ---@field jsxAttributeCompletionStyle "auto" | "braces" | "none"
+-- Advanced preferences that control how imports are ordered.
+---@field organizeImports _.lspconfig.settings.vtsls.OrganizeImports
 -- Preferred quote style to use for Quick Fixes.
 -- 
 -- ```lua
@@ -16399,9 +17125,9 @@
 -- Set target JavaScript language version for emitted JavaScript and include library declarations. See more: https://www.typescriptlang.org/tsconfig#target.
 -- 
 -- ```lua
--- default = "ES2020"
+-- default = "ES2022"
 -- ```
----@field target "ES3" | "ES5" | "ES6" | "ES2015" | "ES2016" | "ES2017" | "ES2018" | "ES2019" | "ES2020" | "ES2021" | "ES2022" | "ESNext"
+---@field target "ES3" | "ES5" | "ES6" | "ES2015" | "ES2016" | "ES2017" | "ES2018" | "ES2019" | "ES2020" | "ES2021" | "ES2022" | "ES2023" | "ES2024" | "ESNext"
 
 ---@class _.lspconfig.settings.vtsls.Js/ts
 ---@field implicitProjectConfig _.lspconfig.settings.vtsls.ImplicitProjectConfig
@@ -16585,9 +17311,43 @@
 ---@field propertyDeclarationTypes _.lspconfig.settings.vtsls.PropertyDeclarationTypes
 ---@field variableTypes _.lspconfig.settings.vtsls.VariableTypes
 
+-- Advanced preferences that control how imports are ordered.
+---@class _.lspconfig.settings.vtsls.OrganizeImports
+-- Compare characters with diacritical marks as unequal to base character.
+---@field accentCollation boolean
+-- Indicates whether upper-case comes before lower-case. Only applies to `organizeImportsCollation: 'unicode'`.
+-- 
+-- ```lua
+-- default = "default"
+-- ```
+---@field caseFirst "default" | "upper" | "lower"
+-- ```lua
+-- default = "auto"
+-- ```
+---@field caseSensitivity "auto" | "caseInsensitive" | "caseSensitive"
+-- Overrides the locale used for collation. Specify `auto` to use the UI locale. Only applies to `organizeImportsCollation: 'unicode'`.
+---@field locale string
+-- Sort numeric strings by integer value.
+---@field numericCollation boolean
+-- ```lua
+-- default = "auto"
+-- ```
+---@field typeOrder "auto" | "last" | "inline" | "first"
+-- ```lua
+-- default = "ordinal"
+-- ```
+---@field unicodeCollation "ordinal" | "unicode"
+
 ---@class _.lspconfig.settings.vtsls.Preferences
 -- Specify glob patterns of files to exclude from auto imports. Relative paths are resolved relative to the workspace root. Patterns are evaluated using tsconfig.json [`exclude`](https://www.typescriptlang.org/tsconfig#exclude) semantics.
 ---@field autoImportFileExcludePatterns string[]
+-- Specify regular expressions to exclude auto imports with matching import specifiers. Examples:
+-- 
+-- - `^node:`
+-- - `lib/internal` (slashes don't need to be escaped...)
+-- - `/lib\/internal/i` (...unless including surrounding slashes for `i` or `u` flags)
+-- - `^lodash$` (only allow subpath imports from lodash)
+---@field autoImportSpecifierExcludeRegexes string[]
 -- Preferred path style for auto imports.
 -- 
 -- ```lua
@@ -16612,6 +17372,8 @@
 -- default = "auto"
 -- ```
 ---@field jsxAttributeCompletionStyle "auto" | "braces" | "none"
+-- Advanced preferences that control how imports are ordered.
+---@field organizeImports _.lspconfig.settings.vtsls.OrganizeImports
 -- Include the `type` keyword in auto-imports whenever possible. Requires using TypeScript 5.3+ in the workspace.
 ---@field preferTypeOnlyAutoImports boolean
 -- Preferred quote style to use for Quick Fixes.
@@ -16751,14 +17513,14 @@
 -- ```
 ---@field enabled boolean
 -- Suppresses semantic errors on web even when project wide IntelliSense is enabled. This is always on when project wide IntelliSense is not enabled or available. See `#typescript.tsserver.web.projectWideIntellisense.enabled#`
--- 
--- ```lua
--- default = true
--- ```
 ---@field suppressSemanticErrors boolean
 
 ---@class _.lspconfig.settings.vtsls.TypeAcquisition
 -- Enable/disable package acquisition on the web. This enables IntelliSense for imported packages. Requires `#typescript.tsserver.web.projectWideIntellisense.enabled#`. Currently not supported for Safari.
+-- 
+-- ```lua
+-- default = true
+-- ```
 ---@field enabled boolean
 
 ---@class _.lspconfig.settings.vtsls.Web

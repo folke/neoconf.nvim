@@ -27,7 +27,8 @@
           "lambdaExpression",
           "switchExpression",
           "tryWithResource",
-          "renameFileToType"
+          "renameFileToType",
+          "organizeImports"
         ],
         "type": "string"
       },
@@ -419,7 +420,8 @@
               "JavaSE-19",
               "JavaSE-20",
               "JavaSE-21",
-              "JavaSE-22"
+              "JavaSE-22",
+              "JavaSE-23"
             ],
             "type": "string"
           },
