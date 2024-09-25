@@ -579,6 +579,15 @@
       "scope": "window",
       "type": "boolean"
     },
+    "typescript.experimental.expandableHover": {
+      "default": false,
+      "description": "(Experimental) Enable/disable expanding on hover.",
+      "scope": "window",
+      "tags": [
+        "experimental"
+      ],
+      "type": "boolean"
+    },
     "typescript.experimental.updateImportsOnPaste": {
       "default": false,
       "description": "Automatically update imports when pasting code. Requires TypeScript 5.6+.",

@@ -73,6 +73,14 @@
 -- ```
 ---@field namedNotationThreshold integer
 ---@field onTypeFormatting _.lspconfig.settings.als.OnTypeFormatting
+-- Controls whether or not the Ada Language Server should emit project diagnostics into the VS Code Problems view.
+-- 
+-- Note: this setting is ignored if `ada.enableDiagnostics` is disabled and a workspace reload is necessary to refresh the diagnostics after modifying this setting.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field projectDiagnostics boolean
 -- GPR project file (*.gpr) for this workspace.
 -- 
 -- It is recommended to set this to a relative path starting at the root of the workspace.
@@ -108,6 +116,12 @@
 ---@field trace _.lspconfig.settings.als.Trace
 -- Enable snippets in completion results (e.g. subprogram calls).
 ---@field useCompletionSnippets boolean
+-- Enable GNATformat as the formatting provider for Ada source files.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field useGnatformat boolean
 
 ---@class _.lspconfig.settings.als.Trace
 -- Traces the communication between VS Code and the GPR language server in the 'GPR Language Server' Output view.
@@ -16041,6 +16055,8 @@
 ---@field npmIsInstalled boolean
 
 ---@class _.lspconfig.settings.ts_ls.Experimental
+-- (Experimental) Enable/disable expanding on hover.
+---@field expandableHover boolean
 -- Automatically update imports when pasting code. Requires TypeScript 5.6+.
 ---@field updateImportsOnPaste boolean
 
