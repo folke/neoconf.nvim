@@ -82,6 +82,12 @@
       "scope": "window",
       "type": "boolean"
     },
+    "ada.projectDiagnostics": {
+      "default": true,
+      "description": "Controls whether or not the Ada Language Server should emit project diagnostics into the VS Code Problems view.\n\nNote: this setting is ignored if `ada.enableDiagnostics` is disabled and a workspace reload is necessary to refresh the diagnostics after modifying this setting.",
+      "scope": "window",
+      "type": "boolean"
+    },
     "ada.projectFile": {
       "default": "",
       "description": "GPR project file (*.gpr) for this workspace.\n\nIt is recommended to set this to a relative path starting at the root of the workspace.",
@@ -139,6 +145,12 @@
     "ada.useCompletionSnippets": {
       "default": false,
       "description": "Enable snippets in completion results (e.g. subprogram calls).",
+      "scope": "window",
+      "type": "boolean"
+    },
+    "ada.useGnatformat": {
+      "default": true,
+      "markdownDescription": "Enable GNATformat as the formatting provider for Ada source files.",
       "scope": "window",
       "type": "boolean"
     },
