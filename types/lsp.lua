@@ -6072,6 +6072,17 @@
 -- Enable/disable auto organize imports on save action
 ---@field organizeImports boolean
 
+---@class _.lspconfig.settings.jdtls.Search
+-- Specifies the scope which must be used for search operation like 
+--  - Find Reference
+--  - Call Hierarchy
+--  - Workspace Symbols
+-- 
+-- ```lua
+-- default = "all"
+-- ```
+---@field scope "all" | "main"
+
 ---@class _.lspconfig.settings.jdtls.SelectionRange
 -- Enable/disable Smart Selection support for Java. Disabling this option will not affect the VS Code built-in word-based and bracket-based smart selection.
 -- 
@@ -6218,6 +6229,7 @@
 ---@field references _.lspconfig.settings.jdtls.References
 ---@field referencesCodeLens _.lspconfig.settings.jdtls.ReferencesCodeLens
 ---@field saveActions _.lspconfig.settings.jdtls.SaveActions
+---@field search _.lspconfig.settings.jdtls.Search
 ---@field selectionRange _.lspconfig.settings.jdtls.SelectionRange
 ---@field server _.lspconfig.settings.jdtls.Server
 ---@field settings _.lspconfig.settings.jdtls.Settings
