@@ -8,6 +8,7 @@ M.index = {
   als = "https://raw.githubusercontent.com/AdaCore/ada_language_server/master/integration/vscode/ada/package.json",
   astro = "https://raw.githubusercontent.com/withastro/language-tools/main/packages/vscode/package.json",
   awkls = "https://raw.githubusercontent.com/Beaglefoot/awk-language-server/master/client/package.json",
+  basedpyright = "https://raw.githubusercontent.com/DetachHead/basedpyright/main/packages/vscode-pyright/package.json",
   bashls = "https://raw.githubusercontent.com/bash-lsp/bash-language-server/master/vscode-client/package.json",
   clangd = "https://raw.githubusercontent.com/clangd/vscode-clangd/master/package.json",
   cssls = "https://raw.githubusercontent.com/microsoft/vscode/main/extensions/css-language-features/package.json",
@@ -58,7 +59,7 @@ M.index = {
   svlangserver = "https://raw.githubusercontent.com/eirikpre/VSCode-SystemVerilog/master/package.json",
   tailwindcss = "https://raw.githubusercontent.com/tailwindlabs/tailwindcss-intellisense/master/packages/vscode-tailwindcss/package.json",
   terraformls = "https://raw.githubusercontent.com/hashicorp/vscode-terraform/master/package.json",
-  tsserver = "https://raw.githubusercontent.com/microsoft/vscode/main/extensions/typescript-language-features/package.json",
+  ts_ls = "https://raw.githubusercontent.com/microsoft/vscode/main/extensions/typescript-language-features/package.json",
   volar = "https://raw.githubusercontent.com/vuejs/language-tools/master/extensions/vscode/package.json",
   vtsls = "https://raw.githubusercontent.com/yioneko/vtsls/main/packages/service/configuration.schema.json",
   vuels = "https://raw.githubusercontent.com/vuejs/vetur/master/package.json",
@@ -81,7 +82,7 @@ M.overrides = {
   jsonls = {
     translate = true,
   },
-  tsserver = {
+  ts_ls = {
     translate = true,
   },
   ltex = {

@@ -1,38 +1,20 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "description": "VS Code static type checking for Python",
+  "description": "VS Code static type checking for Python (but based)",
   "properties": {
-    "pyright.disableLanguageServices": {
-      "default": false,
-      "description": "Disables type completion, definitions, and references.",
-      "scope": "resource",
-      "type": "boolean"
-    },
-    "pyright.disableOrganizeImports": {
-      "default": false,
-      "description": "Disables the “Organize Imports” command.",
-      "scope": "resource",
-      "type": "boolean"
-    },
-    "pyright.disableTaggedHints": {
-      "default": false,
-      "description": "Disable hint diagnostics with special hints for grayed-out or strike-through text.",
-      "scope": "resource",
-      "type": "boolean"
-    },
-    "python.analysis.autoImportCompletions": {
+    "basedpyright.analysis.autoImportCompletions": {
       "default": true,
       "description": "Offer auto-import completions.",
       "scope": "resource",
       "type": "boolean"
     },
-    "python.analysis.autoSearchPaths": {
+    "basedpyright.analysis.autoSearchPaths": {
       "default": true,
       "description": "Automatically add common search paths like 'src'?",
       "scope": "resource",
       "type": "boolean"
     },
-    "python.analysis.diagnosticMode": {
+    "basedpyright.analysis.diagnosticMode": {
       "default": "openFilesOnly",
       "enum": [
         "openFilesOnly",
@@ -45,12 +27,28 @@
       "scope": "resource",
       "type": "string"
     },
-    "python.analysis.diagnosticSeverityOverrides": {
-      "description": "Allows a user to override the severity levels for individual diagnostics. Use the rule name as a key and one of \"error\", \"warning\", \"information\", \"none\", `true` (alias for \"error\") or `false` (alias for \"none\") as value. The default value shown for each diagnostic is the default when \"python.analysis.typeCheckingMode\" is set to \"standard\". See [here](https://github.com/microsoft/pyright/blob/main/docs/configuration.md#diagnostic-rule-defaults) for defaults for each type checking mode (\"off\", \"basic\", \"standard\", and \"strict\").",
+    "basedpyright.analysis.diagnosticSeverityOverrides": {
+      "description": "Allows a user to override the severity levels for individual diagnostics. Use the rule name as a key and one of \"error\", \"warning\", \"information\", \"none\", `true` (alias for \"error\") or `false` (alias for \"none\") as value. The default value shown for each diagnostic is the default when \"basedpyright.analysis.typeCheckingMode\" is set to \"standard\". See [here](https://github.com/detachhead/basedpyright/blob/main/docs/configuration.md#diagnostic-rule-defaults) for defaults for each type checking mode (\"off\", \"basic\", \"standard\", \"strict\", and \"all\").",
       "properties": {
         "reportAbstractUsage": {
           "default": "error",
           "description": "Diagnostics for an attempt to instantiate an abstract or protocol class or use an abstract method.",
+          "enum": [
+            "none",
+            "information",
+            "warning",
+            "error",
+            true,
+            false
+          ],
+          "type": [
+            "string",
+            "boolean"
+          ]
+        },
+        "reportAny": {
+          "default": "none",
+          "description": "Diagnostics for anything with the `Any` type",
           "enum": [
             "none",
             "information",
@@ -197,6 +195,7 @@
           "description": "Diagnostics for use of deprecated classes or functions.",
           "enum": [
             "none",
+            "deprecated",
             "information",
             "warning",
             "error",
@@ -256,9 +255,41 @@
             "boolean"
           ]
         },
+        "reportIgnoreCommentWithoutRule": {
+          "default": "none",
+          "description": "Diagnostics for `# type: ignore` and `# pyright: ignore` comments without specifying a rule",
+          "enum": [
+            "none",
+            "information",
+            "warning",
+            "error",
+            true,
+            false
+          ],
+          "type": [
+            "string",
+            "boolean"
+          ]
+        },
         "reportImplicitOverride": {
           "default": "none",
           "description": "Diagnostics for overridden methods that do not include an `@override` decorator.",
+          "enum": [
+            "none",
+            "information",
+            "warning",
+            "error",
+            true,
+            false
+          ],
+          "type": [
+            "string",
+            "boolean"
+          ]
+        },
+        "reportImplicitRelativeImport": {
+          "default": "none",
+          "description": "Diagnostics for non-relative imports that do not specify the full path to the module",
           "enum": [
             "none",
             "information",
@@ -387,6 +418,22 @@
         "reportIndexIssue": {
           "default": "error",
           "description": "Diagnostics related to index operations and expressions.",
+          "enum": [
+            "none",
+            "information",
+            "warning",
+            "error",
+            true,
+            false
+          ],
+          "type": [
+            "string",
+            "boolean"
+          ]
+        },
+        "reportInvalidCast": {
+          "default": "none",
+          "description": "Diagnostics for `cast`s to non-overlapping types",
           "enum": [
             "none",
             "information",
@@ -768,6 +815,22 @@
             "boolean"
           ]
         },
+        "reportPrivateLocalImportUsage": {
+          "default": "none",
+          "description": "Diagnostics for incorrect usage of symbol imported from a non-\"py.typed\" module that is not re-exported from that module. Should be used along with `reportNonPrivateImportUsage`",
+          "enum": [
+            "none",
+            "information",
+            "warning",
+            "error",
+            true,
+            false
+          ],
+          "type": [
+            "string",
+            "boolean"
+          ]
+        },
         "reportPrivateUsage": {
           "default": "none",
           "description": "Diagnostics for incorrect usage of private or protected variables or functions. Protected class members begin with a single underscore _ and can be accessed only by subclasses. Private class members begin with a double underscore but do not end in a double underscore and can be accessed only within the declaring class. Variables and functions declared outside of a class are considered private if their names start with either a single or double underscore, and they cannot be accessed outside of the declaring module.",
@@ -869,6 +932,7 @@
           "description": "Diagnostics for usage of deprecated type comments.",
           "enum": [
             "none",
+            "deprecated",
             "information",
             "warning",
             "error",
@@ -1120,6 +1184,39 @@
             "boolean"
           ]
         },
+        "reportUnreachable": {
+          "default": "none",
+          "description": "Diagnostics for unreachable code.",
+          "enum": [
+            "none",
+            "unreachable",
+            "information",
+            "warning",
+            "error",
+            true,
+            false
+          ],
+          "type": [
+            "string",
+            "boolean"
+          ]
+        },
+        "reportUnsafeMultipleInheritance": {
+          "default": "none",
+          "description": "Diagnostics for multiple inheritance where a base class's constructor may not get called",
+          "enum": [
+            "none",
+            "information",
+            "warning",
+            "error",
+            true,
+            false
+          ],
+          "type": [
+            "string",
+            "boolean"
+          ]
+        },
         "reportUnsupportedDunderAll": {
           "default": "warning",
           "description": "Diagnostics for unsupported operations performed on __all__.",
@@ -1221,6 +1318,7 @@
           "description": "Diagnostics for a class with a private name (starting with an underscore) that is not accessed.",
           "enum": [
             "none",
+            "unused",
             "information",
             "warning",
             "error",
@@ -1253,6 +1351,7 @@
           "description": "Diagnostics for unreachable except clause.",
           "enum": [
             "none",
+            "unreachable",
             "information",
             "warning",
             "error",
@@ -1285,6 +1384,7 @@
           "description": "Diagnostics for a function or method with a private name (starting with an underscore) that is not accessed.",
           "enum": [
             "none",
+            "unused",
             "information",
             "warning",
             "error",
@@ -1301,6 +1401,24 @@
           "description": "Diagnostics for an imported symbol that is not referenced within that file.",
           "enum": [
             "none",
+            "unused",
+            "information",
+            "warning",
+            "error",
+            true,
+            false
+          ],
+          "type": [
+            "string",
+            "boolean"
+          ]
+        },
+        "reportUnusedParameter": {
+          "default": "unused",
+          "description": "Diagnostics for unused function parameters",
+          "enum": [
+            "none",
+            "unused",
             "information",
             "warning",
             "error",
@@ -1317,6 +1435,7 @@
           "description": "Diagnostics for a variable that is not accessed.",
           "enum": [
             "none",
+            "unused",
             "information",
             "warning",
             "error",
@@ -1348,7 +1467,7 @@
       "scope": "resource",
       "type": "object"
     },
-    "python.analysis.exclude": {
+    "basedpyright.analysis.exclude": {
       "default": [],
       "description": "Paths of directories or files that should not be included. These override the include directories, allowing specific subdirectories to be excluded. Note that files in the exclude paths may still be included in the analysis if they are referenced (imported) by source files that are not excluded. Paths may contain wildcard characters ** (a directory or multiple levels of directories), * (a sequence of zero or more characters), or ? (a single character). If no exclude paths are specified, pyright automatically excludes the following: `**/node_modules`, `**/__pycache__`, `.git` and any virtual environment directories.",
       "items": {
@@ -1357,7 +1476,7 @@
       "scope": "resource",
       "type": "array"
     },
-    "python.analysis.extraPaths": {
+    "basedpyright.analysis.extraPaths": {
       "default": [],
       "description": "Additional import search resolution paths",
       "items": {
@@ -1366,7 +1485,7 @@
       "scope": "resource",
       "type": "array"
     },
-    "python.analysis.ignore": {
+    "basedpyright.analysis.ignore": {
       "default": [],
       "description": "Paths of directories or files whose diagnostic output (errors and warnings) should be suppressed even if they are an included file or within the transitive closure of an included file. Paths may contain wildcard characters ** (a directory or multiple levels of directories), * (a sequence of zero or more characters), or ? (a single character). If no value is provided, the value of python.linting.ignorePatterns (if set) will be used.",
       "items": {
@@ -1375,7 +1494,7 @@
       "scope": "resource",
       "type": "array"
     },
-    "python.analysis.include": {
+    "basedpyright.analysis.include": {
       "default": [],
       "description": "Paths of directories or files that should be included. If no paths are specified, pyright defaults to the workspace root directory. Paths may contain wildcard characters ** (a directory or multiple levels of directories), * (a sequence of zero or more characters), or ? (a single character).",
       "items": {
@@ -1384,7 +1503,7 @@
       "scope": "resource",
       "type": "array"
     },
-    "python.analysis.logLevel": {
+    "basedpyright.analysis.logLevel": {
       "default": "Information",
       "description": "Specifies the level of logging for the Output panel",
       "enum": [
@@ -1395,25 +1514,26 @@
       ],
       "type": "string"
     },
-    "python.analysis.stubPath": {
+    "basedpyright.analysis.stubPath": {
       "default": "typings",
       "description": "Path to directory containing custom type stub files.",
       "scope": "resource",
       "type": "string"
     },
-    "python.analysis.typeCheckingMode": {
-      "default": "standard",
+    "basedpyright.analysis.typeCheckingMode": {
+      "default": "all",
       "description": "Defines the default rule set for type checking.",
       "enum": [
         "off",
         "basic",
         "standard",
-        "strict"
+        "strict",
+        "all"
       ],
       "scope": "resource",
       "type": "string"
     },
-    "python.analysis.typeshedPaths": {
+    "basedpyright.analysis.typeshedPaths": {
       "default": [],
       "description": "Paths to look for typeshed modules.",
       "items": {
@@ -1422,11 +1542,39 @@
       "scope": "resource",
       "type": "array"
     },
-    "python.analysis.useLibraryCodeForTypes": {
+    "basedpyright.analysis.useLibraryCodeForTypes": {
       "default": true,
       "description": "Use library implementations to extract type information when type stub is not present.",
       "scope": "resource",
       "type": "boolean"
+    },
+    "basedpyright.disableLanguageServices": {
+      "default": false,
+      "description": "Disables type completion, definitions, and references.",
+      "scope": "resource",
+      "type": "boolean"
+    },
+    "basedpyright.disableOrganizeImports": {
+      "default": false,
+      "description": "Disables the “Organize Imports” command.",
+      "scope": "resource",
+      "type": "boolean"
+    },
+    "basedpyright.disableTaggedHints": {
+      "default": false,
+      "description": "Disable hint diagnostics with special hints for grayed-out or strike-through text.",
+      "scope": "resource",
+      "type": "boolean"
+    },
+    "basedpyright.importStrategy": {
+      "default": "fromEnvironment",
+      "description": "Whether to use the version of pyright installed in the project (recommended) or the one bundled with the extension (not recommended).",
+      "enum": [
+        "fromEnvironment",
+        "useBundled"
+      ],
+      "scope": "resource",
+      "type": "string"
     },
     "python.pythonPath": {
       "default": "python",

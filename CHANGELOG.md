@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.3.3](https://github.com/folke/neoconf.nvim/compare/v1.3.2...v1.3.3) (2024-09-16)
+
+
+### Bug Fixes
+
+* **basedpyright:** add basedpyright schema ([#90](https://github.com/folke/neoconf.nvim/issues/90)) ([557f3e7](https://github.com/folke/neoconf.nvim/commit/557f3e753550ea6856ba812a4c517fd5751dadf0))
+* **schemas:** `tsserver` renamed to `ts_ls` ([#89](https://github.com/folke/neoconf.nvim/issues/89)) ([559836d](https://github.com/folke/neoconf.nvim/commit/559836d2b66bcf1e9e6a048ac81ad13b5061842a))
+
 ## [1.3.2](https://github.com/folke/neoconf.nvim/compare/v1.3.1...v1.3.2) (2024-07-18)
 
 
