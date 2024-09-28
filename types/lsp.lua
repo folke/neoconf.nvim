@@ -13289,6 +13289,8 @@
 ---@field termSearch _.lspconfig.settings.rust_analyzer.TermSearch
 
 ---@class _.lspconfig.settings.rust_analyzer.Debug
+-- Whether to rebuild the project modules before debugging the same test again
+---@field buildBeforeRestart boolean
 -- Preferred debug engine.
 -- 
 -- ```lua
@@ -15651,7 +15653,7 @@
 ---@field terraform _.lspconfig.settings.terraformls.Terraform
 
 ---@class _.lspconfig.settings.ts_ls.Experimental
--- Automatically update imports when pasting code. Requires TypeScript 5.6+.
+-- Automatically update imports when pasting code. Requires TypeScript 5.7+.
 ---@field updateImportsOnPaste boolean
 
 ---@class _.lspconfig.settings.ts_ls.Format
@@ -16069,7 +16071,7 @@
 ---@class _.lspconfig.settings.ts_ls.Experimental
 -- (Experimental) Enable/disable expanding on hover.
 ---@field expandableHover boolean
--- Automatically update imports when pasting code. Requires TypeScript 5.6+.
+-- Automatically update imports when pasting code. Requires TypeScript 5.7+.
 ---@field updateImportsOnPaste boolean
 
 ---@class _.lspconfig.settings.ts_ls.Format
@@ -18104,9 +18106,9 @@
 -- Which version of naga to use for its diagnostics
 -- 
 -- ```lua
--- default = "0.11"
+-- default = "0.22"
 -- ```
----@field nagaVersion "0.12" | "0.13" | "0.14" | "main"
+---@field nagaVersion "0.14" | "0.19" | "0.22" | "main"
 -- Controls whether to show type errors.
 -- 
 -- ```lua

@@ -10,7 +10,7 @@
     },
     "javascript.experimental.updateImportsOnPaste": {
       "default": false,
-      "description": "Automatically update imports when pasting code. Requires TypeScript 5.6+.",
+      "description": "Automatically update imports when pasting code. Requires TypeScript 5.7+.",
       "scope": "window",
       "tags": [
         "experimental"
@@ -590,7 +590,7 @@
     },
     "typescript.experimental.updateImportsOnPaste": {
       "default": false,
-      "description": "Automatically update imports when pasting code. Requires TypeScript 5.6+.",
+      "description": "Automatically update imports when pasting code. Requires TypeScript 5.7+.",
       "scope": "window",
       "tags": [
         "experimental"
