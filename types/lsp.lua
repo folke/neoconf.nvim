@@ -8768,6 +8768,20 @@
 -- ```
 ---@field viewStringMax integer
 
+---@class _.lspconfig.settings.lua_ls.Language
+-- (VSCode only) Automatically insert "---@ " after a line break following a annotation.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field completeAnnotation boolean
+-- (VSCode only) Fix incorrect auto-indentation, such as incorrect indentation when line breaks occur within a string containing the word "function."
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field fixIndent boolean
+
 ---@class _.lspconfig.settings.lua_ls.Misc
 -- Specify the executable path in VSCode.
 -- 
@@ -9154,6 +9168,7 @@
 ---@field format _.lspconfig.settings.lua_ls.Format
 ---@field hint _.lspconfig.settings.lua_ls.Hint
 ---@field hover _.lspconfig.settings.lua_ls.Hover
+---@field language _.lspconfig.settings.lua_ls.Language
 ---@field misc _.lspconfig.settings.lua_ls.Misc
 ---@field nameStyle _.lspconfig.settings.lua_ls.NameStyle
 ---@field runtime _.lspconfig.settings.lua_ls.Runtime
@@ -13075,6 +13090,14 @@
 -- set to a path relative to the workspace to use that path.
 ---@field targetDir any|boolean|string
 
+---@class _.lspconfig.settings.rust_analyzer.Cfg
+-- Set `cfg(test)` for local crates. Defaults to true.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field setTest boolean
+
 ---@class _.lspconfig.settings.rust_analyzer.Check
 -- Check all targets and tests (`--all-targets`). Defaults to
 -- `#rust-analyzer.cargo.allTargets#`.
@@ -14254,6 +14277,7 @@
 ---@field assist _.lspconfig.settings.rust_analyzer.Assist
 ---@field cachePriming _.lspconfig.settings.rust_analyzer.CachePriming
 ---@field cargo _.lspconfig.settings.rust_analyzer.Cargo
+---@field cfg _.lspconfig.settings.rust_analyzer.Cfg
 ---@field check _.lspconfig.settings.rust_analyzer.Check
 -- Run the check command for diagnostics on save.
 -- 
@@ -16454,25 +16478,6 @@
 -- ```
 ---@field useVsCodeWatcher boolean
 
--- Configure which watching strategies should be used to keep track of files and directories.
----@class _.lspconfig.settings.ts_ls.WatchOptions
--- When using file system events, this option specifies the polling strategy that gets used when the system runs out of native file watchers and/or doesn't support native file watchers.
----@field fallbackPolling "fixedPollingInterval" | "priorityPollingInterval" | "dynamicPriorityPolling"
--- Disable deferred watching on directories. Deferred watching is useful when lots of file changes might occur at once (e.g. a change in node_modules from running npm install), but you might want to disable it with this flag for some less-common setups.
----@field synchronousWatchDirectory boolean
--- Strategy for how entire directory trees are watched under systems that lack recursive file-watching functionality.
--- 
--- ```lua
--- default = "useFsEvents"
--- ```
----@field watchDirectory "fixedChunkSizePolling" | "fixedPollingInterval" | "dynamicPriorityPolling" | "useFsEvents"
--- Strategy for how individual files are watched.
--- 
--- ```lua
--- default = "useFsEvents"
--- ```
----@field watchFile "fixedChunkSizePolling" | "fixedPollingInterval" | "priorityPollingInterval" | "dynamicPriorityPolling" | "useFsEvents" | "useFsEventsOnParentDirectory"
-
 ---@class _.lspconfig.settings.ts_ls.ProjectWideIntellisense
 -- Enable/disable project-wide IntelliSense on web. Requires that VS Code is running in a trusted context.
 -- 
@@ -16538,7 +16543,11 @@
 -- ```
 ---@field useSyntaxServer "always" | "never" | "auto"
 -- Configure which watching strategies should be used to keep track of files and directories.
----@field watchOptions _.lspconfig.settings.ts_ls.WatchOptions
+-- 
+-- ```lua
+-- default = "vscode"
+-- ```
+---@field watchOptions any
 ---@field web _.lspconfig.settings.ts_ls.Web
 
 ---@class _.lspconfig.settings.ts_ls.UpdateImportsOnFileMove

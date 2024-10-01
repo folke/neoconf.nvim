@@ -193,6 +193,11 @@
       "default": null,
       "markdownDescription": "Optional path to a rust-analyzer specific target directory.\nThis prevents rust-analyzer's `cargo check` and initial build-script and proc-macro\nbuilding from locking the `Cargo.lock` at the expense of duplicating build artifacts.\n\nSet to `true` to use a subdirectory of the existing target directory or\nset to a path relative to the workspace to use that path."
     },
+    "rust-analyzer.cfg.setTest": {
+      "default": true,
+      "markdownDescription": "Set `cfg(test)` for local crates. Defaults to true.",
+      "type": "boolean"
+    },
     "rust-analyzer.check.allTargets": {
       "default": null,
       "markdownDescription": "Check all targets and tests (`--all-targets`). Defaults to\n`#rust-analyzer.cargo.allTargets#`.",
