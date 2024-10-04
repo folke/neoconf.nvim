@@ -987,6 +987,11 @@
       "scope": "machine-overridable",
       "type": "boolean"
     },
+    "razor.languageServer.suppressLspErrorToasts": {
+      "default": true,
+      "description": "%configuration.razor.languageServer.suppressLspErrorToasts%",
+      "type": "boolean"
+    },
     "razor.plugin.path": {
       "description": "%configuration.omnisharp.razor.plugin.path%",
       "scope": "machine",

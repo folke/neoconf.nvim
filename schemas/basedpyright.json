@@ -1576,6 +1576,24 @@
       "scope": "resource",
       "type": "string"
     },
+    "basedpyright.inlayHints.callArgumentNames": {
+      "default": true,
+      "description": "Whether to show inlay hints on function arguments.",
+      "scope": "resource",
+      "type": "boolean"
+    },
+    "basedpyright.inlayHints.functionReturnTypes": {
+      "default": true,
+      "description": "Whether to show inlay hints on function return types.",
+      "scope": "resource",
+      "type": "boolean"
+    },
+    "basedpyright.inlayHints.variableTypes": {
+      "default": true,
+      "description": "Whether to show inlay hints on assignments to variables.",
+      "scope": "resource",
+      "type": "boolean"
+    },
     "python.pythonPath": {
       "default": "python",
       "description": "Path to Python, you can use a custom version of Python.",
