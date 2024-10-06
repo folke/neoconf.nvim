@@ -717,6 +717,26 @@
 -- ```
 ---@field reportWildcardImportFromLibrary "none" | "information" | "warning" | "error" | true | false
 
+---@class _.lspconfig.settings.basedpyright.InlayHints
+-- Whether to show inlay hints on function arguments.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field callArgumentNames boolean
+-- Whether to show inlay hints on function return types.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field functionReturnTypes boolean
+-- Whether to show inlay hints on assignments to variables.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field variableTypes boolean
+
 ---@class _.lspconfig.settings.basedpyright.Analysis
 -- Offer auto-import completions.
 -- 
@@ -760,6 +780,7 @@
 -- default = {}
 -- ```
 ---@field include string[]
+---@field inlayHints _.lspconfig.settings.basedpyright.InlayHints
 -- Specifies the level of logging for the Output panel
 -- 
 -- ```lua
@@ -791,26 +812,6 @@
 -- ```
 ---@field useLibraryCodeForTypes boolean
 
----@class _.lspconfig.settings.basedpyright.InlayHints
--- Whether to show inlay hints on function arguments.
--- 
--- ```lua
--- default = true
--- ```
----@field callArgumentNames boolean
--- Whether to show inlay hints on function return types.
--- 
--- ```lua
--- default = true
--- ```
----@field functionReturnTypes boolean
--- Whether to show inlay hints on assignments to variables.
--- 
--- ```lua
--- default = true
--- ```
----@field variableTypes boolean
-
 ---@class _.lspconfig.settings.basedpyright.Basedpyright
 ---@field analysis _.lspconfig.settings.basedpyright.Analysis
 -- Disables type completion, definitions, and references.
@@ -825,7 +826,6 @@
 -- default = "fromEnvironment"
 -- ```
 ---@field importStrategy "fromEnvironment" | "useBundled"
----@field inlayHints _.lspconfig.settings.basedpyright.InlayHints
 
 ---@class _.lspconfig.settings.basedpyright.Python
 -- Path to Python, you can use a custom version of Python.
