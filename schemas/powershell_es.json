@@ -168,6 +168,19 @@
       "markdownDescription": "Creates a temporary PowerShell Extension Terminal for each debugging session. This is useful for debugging PowerShell classes and binary modules.",
       "type": "boolean"
     },
+    "powershell.debugging.executeMode": {
+      "default": "DotSource",
+      "enum": [
+        "DotSource",
+        "Call"
+      ],
+      "markdownDescription": "Sets the operator used to launch scripts.",
+      "markdownEnumDescriptions": [
+        "Use the Dot-Source operator `.` to launch the script, for example, `. 'C:\\Data\\MyScript.ps1'`",
+        "Use the Call operator `&` to launch the script, for example, `& 'C:\\Data\\MyScript.ps1'`"
+      ],
+      "type": "string"
+    },
     "powershell.developer.bundledModulesPath": {
       "default": "../../PowerShellEditorServices/module",
       "markdownDescription": "Specifies an alternative path to the folder containing modules that are bundled with the PowerShell extension, that is: PowerShell Editor Services, PSScriptAnalyzer and PSReadLine. **This setting is only meant for extension developers and requires the extension to be run in development mode!**",

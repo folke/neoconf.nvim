@@ -10834,6 +10834,12 @@
 ---@class _.lspconfig.settings.powershell_es.Debugging
 -- Creates a temporary PowerShell Extension Terminal for each debugging session. This is useful for debugging PowerShell classes and binary modules.
 ---@field createTemporaryIntegratedConsole boolean
+-- Sets the operator used to launch scripts.
+-- 
+-- ```lua
+-- default = "DotSource"
+-- ```
+---@field executeMode "DotSource" | "Call"
 
 ---@class _.lspconfig.settings.powershell_es.Developer
 -- Specifies an alternative path to the folder containing modules that are bundled with the PowerShell extension, that is: PowerShell Editor Services, PSScriptAnalyzer and PSReadLine. **This setting is only meant for extension developers and requires the extension to be run in development mode!**
