@@ -533,6 +533,11 @@
       "description": "%configuration.dotnet.server.suppressLspErrorToasts%",
       "type": "boolean"
     },
+    "dotnet.server.suppressMiscellaneousFilesToasts": {
+      "default": false,
+      "description": "%configuration.dotnet.server.suppressMiscellaneousFilesToasts%",
+      "type": "boolean"
+    },
     "dotnet.server.trace": {
       "default": "Information",
       "description": "%configuration.dotnet.server.trace%",

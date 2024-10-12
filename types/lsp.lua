@@ -9937,6 +9937,8 @@
 ---@field startTimeout number
 -- %configuration.dotnet.server.suppressLspErrorToasts%
 ---@field suppressLspErrorToasts boolean
+-- %configuration.dotnet.server.suppressMiscellaneousFilesToasts%
+---@field suppressMiscellaneousFilesToasts boolean
 -- %configuration.dotnet.server.trace%
 -- 
 -- ```lua
