@@ -1157,7 +1157,7 @@
     },
     "rust-analyzer.references.excludeTests": {
       "default": false,
-      "markdownDescription": "Exclude tests from find-all-references.",
+      "markdownDescription": "Exclude tests from find-all-references and call-hierarchy.",
       "type": "boolean"
     },
     "rust-analyzer.restartServerOnConfigChange": {

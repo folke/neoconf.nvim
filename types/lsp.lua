@@ -13987,7 +13987,7 @@
 ---@class _.lspconfig.settings.rust_analyzer.References
 -- Exclude imports from find-all-references.
 ---@field excludeImports boolean
--- Exclude tests from find-all-references.
+-- Exclude tests from find-all-references and call-hierarchy.
 ---@field excludeTests boolean
 
 ---@class _.lspconfig.settings.rust_analyzer.Runnables
