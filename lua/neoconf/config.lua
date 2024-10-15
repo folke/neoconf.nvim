@@ -2,6 +2,10 @@ local M = {}
 
 ---@class Config
 M.defaults = {
+  -- Use cwd for neoconf root, prevents searching upwards outside the current project
+  root_use_cwd = false,
+  -- on_write callback
+  on_write = function() end,
   -- name of the local settings files
   local_settings = ".neoconf.json",
   -- name of the global settings file in your Neovim config directory
