@@ -272,6 +272,12 @@
 -- default = "none"
 -- ```
 ---@field reportIgnoreCommentWithoutRule "none" | "information" | "warning" | "error" | true | false
+-- Diagnostics for abstract classes that do not explicitly extend `ABC`
+-- 
+-- ```lua
+-- default = "none"
+-- ```
+---@field reportImplicitAbstractClass "none" | "information" | "warning" | "error" | true | false
 -- Diagnostics for overridden methods that do not include an `@override` decorator.
 -- 
 -- ```lua

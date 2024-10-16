@@ -271,6 +271,22 @@
             "boolean"
           ]
         },
+        "reportImplicitAbstractClass": {
+          "default": "none",
+          "description": "Diagnostics for abstract classes that do not explicitly extend `ABC`",
+          "enum": [
+            "none",
+            "information",
+            "warning",
+            "error",
+            true,
+            false
+          ],
+          "type": [
+            "string",
+            "boolean"
+          ]
+        },
         "reportImplicitOverride": {
           "default": "none",
           "description": "Diagnostics for overridden methods that do not include an `@override` decorator.",
