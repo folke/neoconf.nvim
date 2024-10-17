@@ -226,6 +226,21 @@
       "scope": "window",
       "type": "boolean"
     },
+    "java.completion.engine": {
+      "default": "ecj",
+      "description": "[Experimental] Select code completion engine",
+      "enum": [
+        "ecj",
+        "dom"
+      ],
+      "markdownEnumDescriptions": [
+        "Use ECJ-based code completion engine (default)",
+        "Use (highly experimental) JDT DOM-based code completion engine (requires `java.jdt.ls.javac.enabled` to be `on`)"
+      ],
+      "order": 1000,
+      "scope": "window",
+      "type": "string"
+    },
     "java.completion.favoriteStaticMembers": {
       "default": [
         "org.junit.Assert.*",
@@ -786,6 +801,17 @@
         "string",
         "null"
       ]
+    },
+    "java.jdt.ls.javac.enabled": {
+      "default": "off",
+      "enum": [
+        "on",
+        "off"
+      ],
+      "markdownDescription": "[Experimental] Specify whether to enable Javac-based compilation in the language server. Requires running this extension with Java 23",
+      "order": 95,
+      "scope": "window",
+      "type": "string"
     },
     "java.jdt.ls.lombokSupport.enabled": {
       "default": true,

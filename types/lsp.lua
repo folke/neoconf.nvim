@@ -802,9 +802,9 @@
 -- Defines the default rule set for type checking.
 -- 
 -- ```lua
--- default = "all"
+-- default = "recommended"
 -- ```
----@field typeCheckingMode "off" | "basic" | "standard" | "strict" | "all"
+---@field typeCheckingMode "off" | "basic" | "standard" | "strict" | "recommended" | "all"
 -- Paths to look for typeshed modules.
 -- 
 -- ```lua
@@ -5651,6 +5651,12 @@
 -- default = true
 -- ```
 ---@field enabled boolean
+-- [Experimental] Select code completion engine
+-- 
+-- ```lua
+-- default = "ecj"
+-- ```
+---@field engine "ecj" | "dom"
 -- Defines a list of static members or types with static members. Content assist will propose those static members even if the import is missing.
 -- 
 -- ```lua
@@ -5971,6 +5977,14 @@
 -- "java.jdt.ls.java.home":"C:\\Program Files\\Java\\jdk-17.0_3"
 ---@field home string
 
+---@class _.lspconfig.settings.jdtls.Javac
+-- [Experimental] Specify whether to enable Javac-based compilation in the language server. Requires running this extension with Java 23
+-- 
+-- ```lua
+-- default = "off"
+-- ```
+---@field enabled "on" | "off"
+
 ---@class _.lspconfig.settings.jdtls.LombokSupport
 -- Whether to load lombok processors from project classpath
 -- 
@@ -5992,6 +6006,7 @@
 ---@class _.lspconfig.settings.jdtls.Ls
 ---@field androidSupport _.lspconfig.settings.jdtls.AndroidSupport
 ---@field java _.lspconfig.settings.jdtls.Java
+---@field javac _.lspconfig.settings.jdtls.Javac
 ---@field lombokSupport _.lspconfig.settings.jdtls.LombokSupport
 ---@field protobufSupport _.lspconfig.settings.jdtls.ProtobufSupport
 -- Specifies extra VM arguments used to launch the Java Language Server. Eg. use `-XX:+UseParallelGC -XX:GCTimeRatio=4 -XX:AdaptiveSizePolicyWeight=90 -Dsun.zip.disableMemoryMapping=true -Xmx1G -Xms100m -Xlog:disable` to optimize memory usage with the parallel garbage collector
