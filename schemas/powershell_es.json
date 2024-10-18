@@ -407,6 +407,11 @@
       "markdownDescription": "Suppresses the warning message when any of `#powershell.powerShellAdditionalExePaths#` is not found.",
       "type": "boolean"
     },
+    "powershell.trace.dap": {
+      "default": false,
+      "markdownDescription": "Traces the communication between VS Code and the PowerShell Editor Services [DAP Server](https://microsoft.github.io/debug-adapter-protocol/). **This setting is only meant for extension developers and issue troubleshooting!**",
+      "type": "boolean"
+    },
     "powershell.trace.server": {
       "default": "off",
       "enum": [
@@ -414,7 +419,7 @@
         "messages",
         "verbose"
       ],
-      "markdownDescription": "Traces the communication between VS Code and the PowerShell Editor Services language server. **This setting is only meant for extension developers!**",
+      "markdownDescription": "Traces the communication between VS Code and the PowerShell Editor Services [LSP Server](https://microsoft.github.io/language-server-protocol/). **only for extension developers and issue troubleshooting!**",
       "type": "string"
     },
     "powershell.useX86Host": {

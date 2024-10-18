@@ -10987,7 +10987,9 @@
 ---@field osx boolean
 
 ---@class _.lspconfig.settings.powershell_es.Trace
--- Traces the communication between VS Code and the PowerShell Editor Services language server. **This setting is only meant for extension developers!**
+-- Traces the communication between VS Code and the PowerShell Editor Services [DAP Server](https://microsoft.github.io/debug-adapter-protocol/). **This setting is only meant for extension developers and issue troubleshooting!**
+---@field dap boolean
+-- Traces the communication between VS Code and the PowerShell Editor Services [LSP Server](https://microsoft.github.io/language-server-protocol/). **only for extension developers and issue troubleshooting!**
 -- 
 -- ```lua
 -- default = "off"
