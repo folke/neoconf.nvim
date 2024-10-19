@@ -25,6 +25,11 @@
       "description": "Enable code completion provided by the language server",
       "type": "boolean"
     },
+    "clangd.enableHover": {
+      "default": true,
+      "description": "Enable hovers provided by the language server",
+      "type": "boolean"
+    },
     "clangd.fallbackFlags": {
       "default": [],
       "description": "Extra clang flags used to parse files when no compilation database is found.",

@@ -956,6 +956,12 @@
 -- default = true
 -- ```
 ---@field enableCodeCompletion boolean
+-- Enable hovers provided by the language server
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enableHover boolean
 -- Extra clang flags used to parse files when no compilation database is found.
 -- 
 -- ```lua
