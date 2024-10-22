@@ -15756,6 +15756,139 @@
 ---@class lspconfig.settings.terraformls
 ---@field terraform _.lspconfig.settings.terraformls.Terraform
 
+---@class _.lspconfig.settings.tinymist.Preview
+-- (Experimental) Show typst cursor indicator in preview.
+---@field cursorIndicator boolean
+-- List of *additional* paths to font assets used by typst-preview.
+-- 
+-- ```lua
+-- default = {}
+-- ```
+---@field fontPaths string[]
+-- Invert colors of the preview (useful for dark themes without cost). Please note you could see the origin colors when you hover elements in the preview. It is also possible to specify strategy to each element kind by an object map in JSON format.
+---@field invertColors "never" | "auto" | "always"|table
+-- Only render visible part of the document. This can improve performance but still being experimental.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field partialRendering boolean
+-- Declare current previewing file as entrypoint for typst-lsp or tinymist. This will make typst-lsp or tinymist to use this file as entrypoint instead of the file opened in vscode. This can improve diagnostics messages and auto completion but still being experimental.
+---@field pinPreviewFile boolean
+-- Refresh preview when the document is saved or when the document is changed
+-- 
+-- ```lua
+-- default = "onType"
+-- ```
+---@field refresh "onSave" | "onType"
+-- Configure scroll sync mode.
+-- 
+-- ```lua
+-- default = "onSelectionChangeByMouse"
+-- ```
+---@field scrollSync "never" | "onSelectionChangeByMouse" | "onSelectionChange"
+-- key-value pairs visible through `sys.inputs`, corresponds to `--input` argument of typst cli
+-- 
+-- ```lua
+-- default = {}
+-- ```
+---@field sysInputs table
+-- Whether to load system fonts. If disabled, only fonts in `typst-preview.fontPaths` is loaded
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field systemFonts boolean
+
+---@class _.lspconfig.settings.tinymist.Trace
+-- Traces the communication between VS Code and the language server.
+-- 
+-- ```lua
+-- default = "off"
+-- ```
+---@field server "off" | "messages" | "verbose"
+
+---@class _.lspconfig.settings.tinymist.Tinymist
+-- In VSCode, enable compile status meaning that the extension will show the compilation status in the status bar. Since Neovim and Helix don't have a such feature, it is disabled by default at the language server label.
+-- 
+-- ```lua
+-- default = "enable"
+-- ```
+---@field compileStatus "enable" | "disable"
+-- Whether to handle drag-and-drop of resources into the editing typst document. Note: restarting the editor is required to change this setting.
+-- 
+-- ```lua
+-- default = "enable"
+-- ```
+---@field dragAndDrop "enable" | "disable"
+-- The extension can export PDFs of your Typst files. This setting controls whether this feature is enabled and how often it runs.
+-- 
+-- ```lua
+-- default = "never"
+-- ```
+---@field exportPdf "never" | "onSave" | "onType" | "onDocumentHasTitle"
+-- A list of file or directory path to fonts. Note: The configuration source in higher priority will **override** the configuration source in lower priority. The order of precedence is: Configuration `tinymist.fontPaths` > Configuration `tinymist.typstExtraArgs.fontPaths` > LSP's CLI Argument `--font-path` > The environment variable `TYPST_FONT_PATHS` (a path list separated by `;` (on Windows) or `:` (Otherwise)). Note: If the path to fonts is a relative path, it will be resolved based on the root directory. Note: In VSCode, you can use VSCode variables in the path, e.g. `${workspaceFolder}/fonts`.
+---@field fontPaths any[]
+-- The extension can format Typst files using typstfmt or typstyle.
+-- 
+-- ```lua
+-- default = "disable"
+-- ```
+---@field formatterMode "disable" | "typstyle" | "typstfmt"
+-- Set the print width for the formatter, which is a **soft limit** of characters per line. See [the definition of *Print Width*](https://prettier.io/docs/en/options.html#print-width). Note: this has lower priority than the formatter's specific configurations.
+-- 
+-- ```lua
+-- default = 120
+-- ```
+---@field formatterPrintWidth number
+-- Enable or disable [experimental/onEnter](https://github.com/rust-lang/rust-analyzer/blob/master/docs/dev/lsp-extensions.md#on-enter) (LSP onEnter feature) to allow automatic insertion of characters on enter, such as `///` for comments. Note: restarting the editor is required to change this setting.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field onEnterEvent boolean
+-- The path pattern to store Typst artifacts, you can use `$root` or `$dir` or `$name` to do magic configuration, e.g. `$dir/$name` (default) and `$root/target/$dir/$name`.
+-- 
+-- ```lua
+-- default = ""
+-- ```
+---@field outputPath string
+---@field preview _.lspconfig.settings.tinymist.Preview
+-- Enable or disable preview features of Typst. Note: restarting the editor is required to change this setting.
+-- 
+-- ```lua
+-- default = "enable"
+-- ```
+---@field previewFeature "enable" | "disable"
+-- Configure the root for absolute paths in typst. Hint: you can set the rootPath to `-`, so that tinymist will always use parent directory of the file as the root path. Note: for neovim users, if it complains root not found, you must set `require("lspconfig")["tinymist"].setup { root_dir }` as well, see [tinymist#528](https://github.com/Myriad-Dreamin/tinymist/issues/528).
+---@field rootPath string
+-- Enable or disable semantic tokens (LSP syntax highlighting)
+-- 
+-- ```lua
+-- default = "enable"
+-- ```
+---@field semanticTokens "enable" | "disable"
+-- The extension can use a local tinymist executable instead of the one bundled with the extension. This setting controls the path to the executable.
+---@field serverPath string
+-- Configures way of opening exported files, e.g. inside of editor tabs or using system application.
+---@field showExportFileIn "editorTab" | "systemDefault"
+-- A flag that determines whether to load system fonts for Typst compiler, which is useful for ensuring reproducible compilation. If set to null or not set, the extension will use the default behavior of the Typst compiler. Note: You need to restart LSP to change this options. 
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field systemFonts boolean
+---@field trace _.lspconfig.settings.tinymist.Trace
+-- You can pass any arguments as you like, and we will try to follow behaviors of the **same version** of typst-cli. Note: the arguments may be overridden by other settings. For example, `--font-path` will be overridden by `tinymist.fontPaths`.
+-- 
+-- ```lua
+-- default = {}
+-- ```
+---@field typstExtraArgs string[]
+
+---@class lspconfig.settings.tinymist
+---@field tinymist _.lspconfig.settings.tinymist.Tinymist
+
 ---@class _.lspconfig.settings.ts_ls.Experimental
 -- Automatically update imports when pasting code. Requires TypeScript 5.7+.
 ---@field updateImportsOnPaste boolean
@@ -16714,6 +16847,42 @@
 ---@field javascript _.lspconfig.settings.ts_ls.Javascript
 ---@field js/ts _.lspconfig.settings.ts_ls.Js/ts
 ---@field typescript _.lspconfig.settings.ts_ls.Typescript
+
+---@class _.lspconfig.settings.typst_lsp.Trace
+-- Traces the communication between VS Code and the language server.
+-- 
+-- ```lua
+-- default = "off"
+-- ```
+---@field server "off" | "messages" | "verbose"
+
+---@class _.lspconfig.settings.typst_lsp.Typst-lsp
+-- The extension can format Typst files using typstfmt (experimental).
+-- 
+-- ```lua
+-- default = "off"
+-- ```
+---@field experimentalFormatterMode "off" | "on"
+-- The extension can export PDFs of your Typst files. This setting controls whether this feature is enabled and how often it runs.
+-- 
+-- ```lua
+-- default = "onSave"
+-- ```
+---@field exportPdf "never" | "onSave" | "onPinnedMainSave" | "onType" | "onPinnedMainType"
+-- Configure the root for absolute paths in typst
+---@field rootPath string
+-- Enable or disable semantic tokens (LSP syntax highlighting)
+-- 
+-- ```lua
+-- default = "enable"
+-- ```
+---@field semanticTokens "enable" | "disable"
+-- The extension can use a local typst-lsp executable instead of the one bundled with the extension. This setting controls the path to the executable.
+---@field serverPath string
+---@field trace _.lspconfig.settings.typst_lsp.Trace
+
+---@class lspconfig.settings.typst_lsp
+---@field typst-lsp _.lspconfig.settings.typst_lsp.Typst-lsp
 
 ---@class _.lspconfig.settings.volar.AutoInsert
 -- Auto add space between double curly brackets: {{|}} -> {{ | }}

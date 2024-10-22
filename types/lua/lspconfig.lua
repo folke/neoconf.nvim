@@ -449,11 +449,27 @@ lspconfig.terraformls = {
   setup = function(options) end,
 }
 
+---@class lspconfig.options.tinymist: _.lspconfig.options
+---@field settings lspconfig.settings.tinymist
+
+lspconfig.tinymist = {
+  ---@param options lspconfig.options.tinymist
+  setup = function(options) end,
+}
+
 ---@class lspconfig.options.ts_ls: _.lspconfig.options
 ---@field settings lspconfig.settings.ts_ls
 
 lspconfig.ts_ls = {
   ---@param options lspconfig.options.ts_ls
+  setup = function(options) end,
+}
+
+---@class lspconfig.options.typst_lsp: _.lspconfig.options
+---@field settings lspconfig.settings.typst_lsp
+
+lspconfig.typst_lsp = {
+  ---@param options lspconfig.options.typst_lsp
   setup = function(options) end,
 }
 
@@ -568,7 +584,9 @@ lspconfig.zls = {
 ---@field svlangserver lspconfig.options.svlangserver
 ---@field tailwindcss lspconfig.options.tailwindcss
 ---@field terraformls lspconfig.options.terraformls
+---@field tinymist lspconfig.options.tinymist
 ---@field ts_ls lspconfig.options.ts_ls
+---@field typst_lsp lspconfig.options.typst_lsp
 ---@field volar lspconfig.options.volar
 ---@field vtsls lspconfig.options.vtsls
 ---@field vuels lspconfig.options.vuels
@@ -632,7 +650,9 @@ lspconfig.zls = {
 ---@field svlangserver lspconfig.settings.svlangserver
 ---@field tailwindcss lspconfig.settings.tailwindcss
 ---@field terraformls lspconfig.settings.terraformls
+---@field tinymist lspconfig.settings.tinymist
 ---@field ts_ls lspconfig.settings.ts_ls
+---@field typst_lsp lspconfig.settings.typst_lsp
 ---@field volar lspconfig.settings.volar
 ---@field vtsls lspconfig.settings.vtsls
 ---@field vuels lspconfig.settings.vuels
