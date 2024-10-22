@@ -789,6 +789,11 @@
       "markdownDescription": "Whether to prefix external (including std, core) crate imports with `::`. e.g. \"use ::std::io::Read;\".",
       "type": "boolean"
     },
+    "rust-analyzer.initializeStopped": {
+      "default": false,
+      "markdownDescription": "Do not start rust-analyzer server when the extension is activated.",
+      "type": "boolean"
+    },
     "rust-analyzer.inlayHints.bindingModeHints.enable": {
       "default": false,
       "markdownDescription": "Whether to show inlay type hints for binding modes.",

@@ -2423,6 +2423,14 @@
 -- ```
 ---@field args string[]
 
+---@class _.lspconfig.settings.denols.Trace
+-- Traces the communication between VS Code and the Deno Language Server.
+-- 
+-- ```lua
+-- default = "off"
+-- ```
+---@field server "messages" | "off" | "verbose"
+
 ---@class _.lspconfig.settings.denols.Deno
 -- A path to the cache directory for Deno. By default, the operating system's cache path plus `deno` is used, or the `DENO_DIR` environment variable, but if set, this path will be used instead.
 ---@field cache string
@@ -2520,6 +2528,7 @@
 ---@field testing _.lspconfig.settings.denols.Testing
 -- A path to a PEM certificate to use as the certificate authority when validating TLS certificates when fetching and caching remote resources. This is like using `--cert` on the Deno CLI and overrides the `DENO_CERT` environment variable if set.
 ---@field tlsCertificate string
+---@field trace _.lspconfig.settings.denols.Trace
 -- **DANGER** disables verification of TLS certificates for the hosts provided. There is likely a better way to deal with any errors than use this option. This is like using `--unsafely-ignore-certificate-errors` in the Deno CLI.
 ---@field unsafelyIgnoreCertificateErrors string[]
 -- Controls which `--unstable-*` features tests will be run with when running them via the explorer.
@@ -14361,6 +14370,8 @@
 ---@field highlightRelated _.lspconfig.settings.rust_analyzer.HighlightRelated
 ---@field hover _.lspconfig.settings.rust_analyzer.Hover
 ---@field imports _.lspconfig.settings.rust_analyzer.Imports
+-- Do not start rust-analyzer server when the extension is activated.
+---@field initializeStopped boolean
 ---@field inlayHints _.lspconfig.settings.rust_analyzer.InlayHints
 ---@field interpret _.lspconfig.settings.rust_analyzer.Interpret
 ---@field joinLines _.lspconfig.settings.rust_analyzer.JoinLines

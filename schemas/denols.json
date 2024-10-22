@@ -379,6 +379,16 @@
       "scope": "window",
       "type": "string"
     },
+    "deno.trace.server": {
+      "default": "off",
+      "enum": [
+        "messages",
+        "off",
+        "verbose"
+      ],
+      "markdownDescription": "Traces the communication between VS Code and the Deno Language Server.",
+      "scope": "window"
+    },
     "deno.unsafelyIgnoreCertificateErrors": {
       "default": null,
       "items": {
