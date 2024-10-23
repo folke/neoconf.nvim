@@ -16306,7 +16306,7 @@
 ---@field npmIsInstalled boolean
 
 ---@class _.lspconfig.settings.ts_ls.Experimental
--- (Experimental) Enable/disable expanding on hover.
+-- Enable/disable expanding on hover.
 ---@field expandableHover boolean
 -- Automatically update imports when pasting code. Requires TypeScript 5.7+.
 ---@field updateImportsOnPaste boolean
@@ -16682,7 +16682,7 @@
 ---@field autoDetect "on" | "off" | "build" | "watch"
 
 ---@class _.lspconfig.settings.ts_ls.Experimental
--- (Experimental) Enables project wide error reporting.
+-- Enables project wide error reporting.
 ---@field enableProjectDiagnostics boolean
 -- Use VS Code's file watchers instead of TypeScript's. Requires using TypeScript 5.4+ in the workspace.
 -- 

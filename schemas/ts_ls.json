@@ -581,7 +581,7 @@
     },
     "typescript.experimental.expandableHover": {
       "default": false,
-      "description": "(Experimental) Enable/disable expanding on hover.",
+      "description": "Enable/disable expanding on hover.",
       "scope": "window",
       "tags": [
         "experimental"
@@ -1162,7 +1162,7 @@
     },
     "typescript.tsserver.experimental.enableProjectDiagnostics": {
       "default": false,
-      "description": "(Experimental) Enables project wide error reporting.",
+      "description": "Enables project wide error reporting.",
       "scope": "window",
       "tags": [
         "experimental"
