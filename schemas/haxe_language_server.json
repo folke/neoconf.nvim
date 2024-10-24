@@ -614,10 +614,10 @@
       "additionalProperties": false,
       "default": {
         "conditionals": false,
-        "functionReturnTypes": true,
-        "parameterNames": true,
+        "functionReturnTypes": false,
+        "parameterNames": false,
         "parameterTypes": false,
-        "variableTypes": true
+        "variableTypes": false
       },
       "markdownDescription": "Options for inlay hints feature",
       "properties": {
@@ -627,12 +627,12 @@
           "type": "boolean"
         },
         "functionReturnTypes": {
-          "default": true,
+          "default": false,
           "markdownDescription": "Show inlay hints for function return types",
           "type": "boolean"
         },
         "parameterNames": {
-          "default": true,
+          "default": false,
           "markdownDescription": "Show inlay hints for parameter names",
           "type": "boolean"
         },
@@ -642,7 +642,7 @@
           "type": "boolean"
         },
         "variableTypes": {
-          "default": true,
+          "default": false,
           "markdownDescription": "Show inlay hints for variables",
           "type": "boolean"
         }

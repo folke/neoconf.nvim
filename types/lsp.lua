@@ -3973,34 +3973,22 @@
 -- ```lua
 -- default = {
 --   conditionals = false,
---   functionReturnTypes = true,
---   parameterNames = true,
+--   functionReturnTypes = false,
+--   parameterNames = false,
 --   parameterTypes = false,
---   variableTypes = true
+--   variableTypes = false
 -- }
 -- ```
 ---@class _.lspconfig.settings.haxe_language_server.InlayHints
 -- Show inlay hints for conditionals
 ---@field conditionals boolean
 -- Show inlay hints for function return types
--- 
--- ```lua
--- default = true
--- ```
 ---@field functionReturnTypes boolean
 -- Show inlay hints for parameter names
--- 
--- ```lua
--- default = true
--- ```
 ---@field parameterNames boolean
 -- Show inlay hints for parameter types
 ---@field parameterTypes boolean
 -- Show inlay hints for variables
--- 
--- ```lua
--- default = true
--- ```
 ---@field variableTypes boolean
 
 -- Options for postfix completion
@@ -4202,10 +4190,10 @@
 -- ```lua
 -- default = {
 --   conditionals = false,
---   functionReturnTypes = true,
---   parameterNames = true,
+--   functionReturnTypes = false,
+--   parameterNames = false,
 --   parameterTypes = false,
---   variableTypes = true
+--   variableTypes = false
 -- }
 -- ```
 ---@field inlayHints _.lspconfig.settings.haxe_language_server.InlayHints
