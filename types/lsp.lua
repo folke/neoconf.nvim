@@ -12526,8 +12526,12 @@
 ---@field r _.lspconfig.settings.r_language_server.R
 
 ---@class _.lspconfig.settings.rescriptls.ProjectConfig
--- (beta/experimental) Enable project config caching. Can speed up latency dramatically.
----@field enabled boolean
+-- Enable project config caching. Can speed up latency dramatically.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enable boolean
 
 ---@class _.lspconfig.settings.rescriptls.Cache
 ---@field projectConfig _.lspconfig.settings.rescriptls.ProjectConfig
@@ -12537,8 +12541,12 @@
 ---@field acrossFiles boolean
 -- (debug) Enable debug logging (ends up in the extension output).
 ---@field debugLogging boolean
--- (beta/experimental) Enable incremental type checking.
----@field enabled boolean
+-- Enable incremental type checking.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enable boolean
 
 ---@class _.lspconfig.settings.rescriptls.InlayHints
 -- Enable (experimental) inlay hints.
