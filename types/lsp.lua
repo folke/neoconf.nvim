@@ -736,6 +736,12 @@
 -- default = true
 -- ```
 ---@field functionReturnTypes boolean
+-- Whether to show inlay hints on inferred generic types.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field genericTypes boolean
 -- Whether to show inlay hints on assignments to variables.
 -- 
 -- ```lua
