@@ -536,6 +536,12 @@
 -- default = "error"
 -- ```
 ---@field reportTypedDictNotRequiredAccess "none" | "information" | "warning" | "error" | true | false
+-- Diagnostics for class variable declarations that do not have a type annotation, which is required due to performance reasons for strict validation of subclasses
+-- 
+-- ```lua
+-- default = "none"
+-- ```
+---@field reportUnannotatedClassAttribute "none" | "information" | "warning" | "error" | true | false
 -- Diagnostics for the use of unbound variables.
 -- 
 -- ```lua
