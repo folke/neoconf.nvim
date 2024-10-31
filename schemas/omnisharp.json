@@ -538,21 +538,6 @@
       "description": "%configuration.dotnet.server.suppressMiscellaneousFilesToasts%",
       "type": "boolean"
     },
-    "dotnet.server.trace": {
-      "default": "Information",
-      "description": "%configuration.dotnet.server.trace%",
-      "enum": [
-        "Trace",
-        "Debug",
-        "Information",
-        "Warning",
-        "Error",
-        "Critical",
-        "None"
-      ],
-      "scope": "window",
-      "type": "string"
-    },
     "dotnet.server.useOmnisharp": {
       "default": false,
       "description": "%configuration.omnisharp.dotnet.server.useOmnisharp%",

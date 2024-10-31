@@ -9971,12 +9971,6 @@
 ---@field suppressLspErrorToasts boolean
 -- %configuration.dotnet.server.suppressMiscellaneousFilesToasts%
 ---@field suppressMiscellaneousFilesToasts boolean
--- %configuration.dotnet.server.trace%
--- 
--- ```lua
--- default = "Information"
--- ```
----@field trace "Trace" | "Debug" | "Information" | "Warning" | "Error" | "Critical" | "None"
 -- %configuration.omnisharp.dotnet.server.useOmnisharp%
 ---@field useOmnisharp boolean
 -- %configuration.dotnet.server.useServerGC%
@@ -16074,26 +16068,32 @@
 
 -- Advanced preferences that control how imports are ordered.
 ---@class _.lspconfig.settings.ts_ls.OrganizeImports
--- Compare characters with diacritical marks as unequal to base character.
+-- Requires `organizeImports.unicodeCollation: 'unicode'`. Compare characters with diacritical marks as unequal to base character.
 ---@field accentCollation boolean
--- Indicates whether upper-case comes before lower-case. Only applies to `organizeImportsCollation: 'unicode'`.
+-- Requires `organizeImports.unicodeCollation: 'unicode'`, and `organizeImports.caseSensitivity` is not `caseInsensitive`. Indicates whether upper-case will sort before lower-case.
 -- 
 -- ```lua
 -- default = "default"
 -- ```
 ---@field caseFirst "default" | "upper" | "lower"
+-- Specifies how imports should be sorted with regards to case-sensitivity. If `auto` or unspecified, we will detect the case-sensitivity per file
+-- 
 -- ```lua
 -- default = "auto"
 -- ```
 ---@field caseSensitivity "auto" | "caseInsensitive" | "caseSensitive"
--- Overrides the locale used for collation. Specify `auto` to use the UI locale. Only applies to `organizeImportsCollation: 'unicode'`.
+-- Requires `organizeImports.unicodeCollation: 'unicode'`. Overrides the locale used for collation. Specify `auto` to use the UI locale.
 ---@field locale string
--- Sort numeric strings by integer value.
+-- Requires `organizeImports.unicodeCollation: 'unicode'`. Sort numeric strings by integer value.
 ---@field numericCollation boolean
+-- Specify how type-only named imports should be sorted.
+-- 
 -- ```lua
 -- default = "auto"
 -- ```
 ---@field typeOrder "auto" | "last" | "inline" | "first"
+-- Specify whether to sort imports using Unicode or Ordinal collation.
+-- 
 -- ```lua
 -- default = "ordinal"
 -- ```
@@ -16259,7 +16259,7 @@
 ---@field format _.lspconfig.settings.ts_ls.Format
 ---@field implicitProjectConfig _.lspconfig.settings.ts_ls.ImplicitProjectConfig
 ---@field inlayHints _.lspconfig.settings.ts_ls.InlayHints
--- Makes Go to Definition avoid type declaration files when possible by triggering Go to Source Definition instead. This allows Go to Source Definition to be triggered with the mouse gesture.
+-- Makes `Go to Definition` avoid type declaration files when possible by triggering `Go to Source Definition` instead. This allows `Go to Source Definition` to be triggered with the mouse gesture.
 ---@field preferGoToSourceDefinition boolean
 ---@field preferences _.lspconfig.settings.ts_ls.Preferences
 ---@field referencesCodeLens _.lspconfig.settings.ts_ls.ReferencesCodeLens
@@ -16500,26 +16500,32 @@
 
 -- Advanced preferences that control how imports are ordered.
 ---@class _.lspconfig.settings.ts_ls.OrganizeImports
--- Compare characters with diacritical marks as unequal to base character.
+-- Requires `organizeImports.unicodeCollation: 'unicode'`. Compare characters with diacritical marks as unequal to base character.
 ---@field accentCollation boolean
--- Indicates whether upper-case comes before lower-case. Only applies to `organizeImportsCollation: 'unicode'`.
+-- Requires `organizeImports.unicodeCollation: 'unicode'`, and `organizeImports.caseSensitivity` is not `caseInsensitive`. Indicates whether upper-case will sort before lower-case.
 -- 
 -- ```lua
 -- default = "default"
 -- ```
 ---@field caseFirst "default" | "upper" | "lower"
+-- Specifies how imports should be sorted with regards to case-sensitivity. If `auto` or unspecified, we will detect the case-sensitivity per file
+-- 
 -- ```lua
 -- default = "auto"
 -- ```
 ---@field caseSensitivity "auto" | "caseInsensitive" | "caseSensitive"
--- Overrides the locale used for collation. Specify `auto` to use the UI locale. Only applies to `organizeImportsCollation: 'unicode'`.
+-- Requires `organizeImports.unicodeCollation: 'unicode'`. Overrides the locale used for collation. Specify `auto` to use the UI locale.
 ---@field locale string
--- Sort numeric strings by integer value.
+-- Requires `organizeImports.unicodeCollation: 'unicode'`. Sort numeric strings by integer value.
 ---@field numericCollation boolean
+-- Specify how type-only named imports should be sorted.
+-- 
 -- ```lua
 -- default = "auto"
 -- ```
 ---@field typeOrder "auto" | "last" | "inline" | "first"
+-- Specify whether to sort imports using Unicode or Ordinal collation.
+-- 
 -- ```lua
 -- default = "ordinal"
 -- ```
@@ -16784,7 +16790,7 @@
 ---@field enable boolean
 
 ---@class _.lspconfig.settings.ts_ls.WorkspaceSymbols
--- Exclude symbols that come from library files in Go to Symbol in Workspace results. Requires using TypeScript 5.3+ in the workspace.
+-- Exclude symbols that come from library files in `Go to Symbol in Workspace` results. Requires using TypeScript 5.3+ in the workspace.
 -- 
 -- ```lua
 -- default = true
@@ -16821,7 +16827,7 @@
 ---@field locale "auto" | "de" | "es" | "en" | "fr" | "it" | "ja" | "ko" | "ru" | "zh-CN" | "zh-TW"
 -- Specifies the path to the npm executable used for [Automatic Type Acquisition](https://code.visualstudio.com/docs/nodejs/working-with-javascript#_typings-and-automatic-type-acquisition).
 ---@field npm string
--- Makes Go to Definition avoid type declaration files when possible by triggering Go to Source Definition instead. This allows Go to Source Definition to be triggered with the mouse gesture.
+-- Makes `Go to Definition` avoid type declaration files when possible by triggering `Go to Source Definition` instead. This allows `Go to Source Definition` to be triggered with the mouse gesture.
 ---@field preferGoToSourceDefinition boolean
 ---@field preferences _.lspconfig.settings.ts_ls.Preferences
 ---@field referencesCodeLens _.lspconfig.settings.ts_ls.ReferencesCodeLens
@@ -16936,6 +16942,12 @@
 
 ---@class _.lspconfig.settings.volar.Complete
 ---@field casing _.lspconfig.settings.volar.Casing
+-- Auto add `const props = ` before `defineProps` when selecting the completion item `props`. (also `emit` and `slots`)
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field defineAssignment boolean
 
 ---@class _.lspconfig.settings.volar.Doctor
 -- Show known problems in status bar.
