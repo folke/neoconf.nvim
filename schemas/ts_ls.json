@@ -8,15 +8,6 @@
       "scope": "language-overridable",
       "type": "boolean"
     },
-    "javascript.experimental.updateImportsOnPaste": {
-      "default": false,
-      "description": "Automatically update imports when pasting code. Requires TypeScript 5.7+.",
-      "scope": "window",
-      "tags": [
-        "experimental"
-      ],
-      "type": "boolean"
-    },
     "javascript.format.enable": {
       "default": true,
       "description": "Enable/disable default JavaScript formatter.",
@@ -488,6 +479,12 @@
       "scope": "resource",
       "type": "string"
     },
+    "javascript.updateImportsOnPaste.enabled": {
+      "default": true,
+      "markdownDescription": "Enable updating imports when pasting code. Requires TypeScript 5.7+.\n\nBy default this shows a option to update imports after pasting. You can use the `#editor.pasteAs.preferences#` setting to update imports automatically when pasting: `\"editor.pasteAs.preferences\": [{ \"kind\": \"text.jsts.pasteWithImports\" }]`.",
+      "scope": "window",
+      "type": "boolean"
+    },
     "javascript.validate.enable": {
       "default": true,
       "description": "Enable/disable JavaScript validation.",
@@ -590,15 +587,6 @@
     "typescript.experimental.expandableHover": {
       "default": false,
       "description": "Enable/disable expanding on hover.",
-      "scope": "window",
-      "tags": [
-        "experimental"
-      ],
-      "type": "boolean"
-    },
-    "typescript.experimental.updateImportsOnPaste": {
-      "default": false,
-      "description": "Automatically update imports when pasting code. Requires TypeScript 5.7+.",
       "scope": "window",
       "tags": [
         "experimental"
@@ -1353,6 +1341,12 @@
       ],
       "scope": "resource",
       "type": "string"
+    },
+    "typescript.updateImportsOnPaste.enabled": {
+      "default": true,
+      "markdownDescription": "Enable updating imports when pasting code. Requires TypeScript 5.7+.\n\nBy default this shows a option to update imports after pasting. You can use the `#editor.pasteAs.preferences#` setting to update imports automatically when pasting: `\"editor.pasteAs.preferences\": [{ \"kind\": \"text.jsts.pasteWithImports\" }]`.",
+      "scope": "window",
+      "type": "boolean"
     },
     "typescript.validate.enable": {
       "default": true,

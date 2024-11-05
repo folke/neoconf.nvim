@@ -35,6 +35,7 @@
           "description": "Diagnostics for an attempt to instantiate an abstract or protocol class or use an abstract method.",
           "enum": [
             "none",
+            "hint",
             "information",
             "warning",
             "error",
@@ -51,6 +52,7 @@
           "description": "Diagnostics for anything with the `Any` type",
           "enum": [
             "none",
+            "hint",
             "information",
             "warning",
             "error",
@@ -67,6 +69,7 @@
           "description": "Diagnostics for a type incompatibility for an argument to a call.",
           "enum": [
             "none",
+            "hint",
             "information",
             "warning",
             "error",
@@ -83,6 +86,7 @@
           "description": "Diagnostics for 'assert' statement that will provably always assert. This can be indicative of a programming error.",
           "enum": [
             "none",
+            "hint",
             "information",
             "warning",
             "error",
@@ -99,6 +103,7 @@
           "description": "Diagnostics for a type incompatibility detected by a typing.assert_type call.",
           "enum": [
             "none",
+            "hint",
             "information",
             "warning",
             "error",
@@ -115,6 +120,7 @@
           "description": "Diagnostics for type incompatibilities for assignments.",
           "enum": [
             "none",
+            "hint",
             "information",
             "warning",
             "error",
@@ -131,6 +137,7 @@
           "description": "Diagnostics for issues involving attribute accesses.",
           "enum": [
             "none",
+            "hint",
             "information",
             "warning",
             "error",
@@ -147,6 +154,7 @@
           "description": "Diagnostics for function calls within a default value initialization expression. Such calls can mask expensive operations that are performed at module initialization time.",
           "enum": [
             "none",
+            "hint",
             "information",
             "warning",
             "error",
@@ -163,6 +171,7 @@
           "description": "Diagnostics for issues involving call expressions and arguments.",
           "enum": [
             "none",
+            "hint",
             "information",
             "warning",
             "error",
@@ -179,6 +188,7 @@
           "description": "Diagnostics for attempts to redefine variables whose names are all-caps with underscores and numerals.",
           "enum": [
             "none",
+            "hint",
             "information",
             "warning",
             "error",
@@ -195,7 +205,7 @@
           "description": "Diagnostics for use of deprecated classes or functions.",
           "enum": [
             "none",
-            "deprecated",
+            "hint",
             "information",
             "warning",
             "error",
@@ -212,6 +222,7 @@
           "description": "Diagnostics for an imported symbol or module that is imported more than once.",
           "enum": [
             "none",
+            "hint",
             "information",
             "warning",
             "error",
@@ -228,6 +239,7 @@
           "description": "Diagnostics for member accesses on functions.",
           "enum": [
             "none",
+            "hint",
             "information",
             "warning",
             "error",
@@ -244,6 +256,7 @@
           "description": "Diagnostics for general type inconsistencies, unsupported operations, argument/parameter mismatches, etc. Covers all of the basic type-checking rules not covered by other rules. Does not include syntax errors.",
           "enum": [
             "none",
+            "hint",
             "information",
             "warning",
             "error",
@@ -260,6 +273,7 @@
           "description": "Diagnostics for `# type: ignore` and `# pyright: ignore` comments without specifying a rule",
           "enum": [
             "none",
+            "hint",
             "information",
             "warning",
             "error",
@@ -276,6 +290,7 @@
           "description": "Diagnostics for abstract classes that do not explicitly extend `ABC`",
           "enum": [
             "none",
+            "hint",
             "information",
             "warning",
             "error",
@@ -292,6 +307,7 @@
           "description": "Diagnostics for overridden methods that do not include an `@override` decorator.",
           "enum": [
             "none",
+            "hint",
             "information",
             "warning",
             "error",
@@ -308,6 +324,7 @@
           "description": "Diagnostics for non-relative imports that do not specify the full path to the module",
           "enum": [
             "none",
+            "hint",
             "information",
             "warning",
             "error",
@@ -324,6 +341,7 @@
           "description": "Diagnostics for two or more string literals that follow each other, indicating an implicit concatenation. This is considered a bad practice and often masks bugs such as missing commas.",
           "enum": [
             "none",
+            "hint",
             "information",
             "warning",
             "error",
@@ -340,6 +358,7 @@
           "description": "Diagnostics for cyclical import chains. These are not errors in Python, but they do slow down type analysis and often hint at architectural layering issues. Generally, they should be avoided.",
           "enum": [
             "none",
+            "hint",
             "information",
             "warning",
             "error",
@@ -356,6 +375,7 @@
           "description": "Diagnostics for methods that override a method of the same name in a base class in an incompatible manner (wrong number of parameters, incompatible parameter types, or incompatible return type).",
           "enum": [
             "none",
+            "hint",
             "information",
             "warning",
             "error",
@@ -372,6 +392,7 @@
           "description": "Diagnostics for overrides in subclasses that redefine a variable in an incompatible way.",
           "enum": [
             "none",
+            "hint",
             "information",
             "warning",
             "error",
@@ -388,6 +409,7 @@
           "description": "Diagnostics for the use of a module-level “__getattr__” function, indicating that the stub is incomplete.",
           "enum": [
             "none",
+            "hint",
             "information",
             "warning",
             "error",
@@ -404,6 +426,7 @@
           "description": "Diagnostics for __init__ and __new__ methods whose signatures are inconsistent.",
           "enum": [
             "none",
+            "hint",
             "information",
             "warning",
             "error",
@@ -420,6 +443,7 @@
           "description": "Diagnostics for inconsistencies between function overload signatures and implementation.",
           "enum": [
             "none",
+            "hint",
             "information",
             "warning",
             "error",
@@ -436,6 +460,7 @@
           "description": "Diagnostics related to index operations and expressions.",
           "enum": [
             "none",
+            "hint",
             "information",
             "warning",
             "error",
@@ -452,6 +477,7 @@
           "description": "Diagnostics for `cast`s to non-overlapping types",
           "enum": [
             "none",
+            "hint",
             "information",
             "warning",
             "error",
@@ -468,6 +494,7 @@
           "description": "Diagnostics for invalid escape sequences used within string literals. The Python specification indicates that such sequences will generate a syntax error in future versions.",
           "enum": [
             "none",
+            "hint",
             "information",
             "warning",
             "error",
@@ -484,6 +511,7 @@
           "description": "Diagnostics for type stub statements that do not conform to PEP 484.",
           "enum": [
             "none",
+            "hint",
             "information",
             "warning",
             "error",
@@ -500,6 +528,7 @@
           "description": "Diagnostics for invalid type argument usage.",
           "enum": [
             "none",
+            "hint",
             "information",
             "warning",
             "error",
@@ -516,6 +545,7 @@
           "description": "Diagnostics for type expression that uses an invalid form.",
           "enum": [
             "none",
+            "hint",
             "information",
             "warning",
             "error",
@@ -532,6 +562,7 @@
           "description": "Diagnostics for improper use of type variables in a function signature.",
           "enum": [
             "none",
+            "hint",
             "information",
             "warning",
             "error",
@@ -548,6 +579,7 @@
           "description": "Diagnostics for 'match' statements that do not exhaustively match all possible values.",
           "enum": [
             "none",
+            "hint",
             "information",
             "warning",
             "error",
@@ -564,6 +596,7 @@
           "description": "Diagnostics for imports that have no corresponding imported python file or type stub file.",
           "enum": [
             "none",
+            "hint",
             "information",
             "warning",
             "error",
@@ -580,6 +613,7 @@
           "description": "Diagnostics for imports that have no corresponding source file. This happens when a type stub is found, but the module source file was not found, indicating that the code may fail at runtime when using this execution environment. Type checking will be done using the type stub.",
           "enum": [
             "none",
+            "hint",
             "information",
             "warning",
             "error",
@@ -596,6 +630,7 @@
           "description": "Diagnostics for parameters that are missing a type annotation.",
           "enum": [
             "none",
+            "hint",
             "information",
             "warning",
             "error",
@@ -612,6 +647,7 @@
           "description": "Diagnostics for missing call to parent class for inherited `__init__` methods.",
           "enum": [
             "none",
+            "hint",
             "information",
             "warning",
             "error",
@@ -628,6 +664,7 @@
           "description": "Diagnostics for generic class reference with missing type arguments.",
           "enum": [
             "none",
+            "hint",
             "information",
             "warning",
             "error",
@@ -644,6 +681,7 @@
           "description": "Diagnostics for imports that have no corresponding type stub file (either a typeshed file or a custom type stub). The type checker requires type stubs to do its best job at analysis.",
           "enum": [
             "none",
+            "hint",
             "information",
             "warning",
             "error",
@@ -660,6 +698,7 @@
           "description": "Diagnostics for an overloaded function or method with a missing implementation.",
           "enum": [
             "none",
+            "hint",
             "information",
             "warning",
             "error",
@@ -676,6 +715,7 @@
           "description": "Diagnostics for related to unary or binary operators.",
           "enum": [
             "none",
+            "hint",
             "information",
             "warning",
             "error",
@@ -692,6 +732,7 @@
           "description": "Diagnostics for an attempt to call a variable with an Optional type.",
           "enum": [
             "none",
+            "hint",
             "information",
             "warning",
             "error",
@@ -708,6 +749,7 @@
           "description": "Diagnostics for an attempt to use an Optional type as a context manager (as a parameter to a with statement).",
           "enum": [
             "none",
+            "hint",
             "information",
             "warning",
             "error",
@@ -724,6 +766,7 @@
           "description": "Diagnostics for an attempt to use an Optional type as an iterable value (e.g. within a for statement).",
           "enum": [
             "none",
+            "hint",
             "information",
             "warning",
             "error",
@@ -740,6 +783,7 @@
           "description": "Diagnostics for an attempt to access a member of a variable with an Optional type.",
           "enum": [
             "none",
+            "hint",
             "information",
             "warning",
             "error",
@@ -756,6 +800,7 @@
           "description": "Diagnostics for an attempt to use an Optional type as an operand to a binary or unary operator (like '+', '==', 'or', 'not').",
           "enum": [
             "none",
+            "hint",
             "information",
             "warning",
             "error",
@@ -772,6 +817,7 @@
           "description": "Diagnostics for an attempt to subscript (index) a variable with an Optional type.",
           "enum": [
             "none",
+            "hint",
             "information",
             "warning",
             "error",
@@ -788,6 +834,7 @@
           "description": "Diagnostics for function overloads that overlap in signature and obscure each other or have incompatible return types.",
           "enum": [
             "none",
+            "hint",
             "information",
             "warning",
             "error",
@@ -804,6 +851,7 @@
           "description": "Diagnostics for the use of variables that may be unbound on some code paths.",
           "enum": [
             "none",
+            "hint",
             "information",
             "warning",
             "error",
@@ -820,6 +868,7 @@
           "description": "Diagnostics for incorrect usage of symbol imported from a \"py.typed\" module that is not re-exported from that module.",
           "enum": [
             "none",
+            "hint",
             "information",
             "warning",
             "error",
@@ -836,6 +885,7 @@
           "description": "Diagnostics for incorrect usage of symbol imported from a non-\"py.typed\" module that is not re-exported from that module. Should be used along with `reportNonPrivateImportUsage`",
           "enum": [
             "none",
+            "hint",
             "information",
             "warning",
             "error",
@@ -852,6 +902,7 @@
           "description": "Diagnostics for incorrect usage of private or protected variables or functions. Protected class members begin with a single underscore _ and can be accessed only by subclasses. Private class members begin with a double underscore but do not end in a double underscore and can be accessed only within the declaring class. Variables and functions declared outside of a class are considered private if their names start with either a single or double underscore, and they cannot be accessed outside of the declaring module.",
           "enum": [
             "none",
+            "hint",
             "information",
             "warning",
             "error",
@@ -868,6 +919,7 @@
           "description": "Diagnostics for property whose setter and getter have mismatched types.",
           "enum": [
             "none",
+            "hint",
             "information",
             "warning",
             "error",
@@ -884,6 +936,7 @@
           "description": "Diagnostics for an attempt to declare the type of a symbol multiple times.",
           "enum": [
             "none",
+            "hint",
             "information",
             "warning",
             "error",
@@ -900,6 +953,7 @@
           "description": "Diagnostics related to function return type compatibility.",
           "enum": [
             "none",
+            "hint",
             "information",
             "warning",
             "error",
@@ -916,6 +970,7 @@
           "description": "Diagnostics for a missing or misnamed “self” parameter in instance methods and “cls” parameter in class methods. Instance methods in metaclasses (classes that derive from “type”) are allowed to use “cls” for instance methods.",
           "enum": [
             "none",
+            "hint",
             "information",
             "warning",
             "error",
@@ -932,6 +987,7 @@
           "description": "Diagnostics for files that are overriding a module in the stdlib.",
           "enum": [
             "none",
+            "hint",
             "information",
             "warning",
             "error",
@@ -948,7 +1004,7 @@
           "description": "Diagnostics for usage of deprecated type comments.",
           "enum": [
             "none",
-            "deprecated",
+            "hint",
             "information",
             "warning",
             "error",
@@ -965,6 +1021,7 @@
           "description": "Diagnostics for an attempt to access a non-required key within a TypedDict without a check for its presence.",
           "enum": [
             "none",
+            "hint",
             "information",
             "warning",
             "error",
@@ -981,6 +1038,7 @@
           "description": "Diagnostics for class variable declarations that do not have a type annotation, which is required due to performance reasons for strict validation of subclasses",
           "enum": [
             "none",
+            "hint",
             "information",
             "warning",
             "error",
@@ -997,6 +1055,7 @@
           "description": "Diagnostics for the use of unbound variables.",
           "enum": [
             "none",
+            "hint",
             "information",
             "warning",
             "error",
@@ -1013,6 +1072,7 @@
           "description": "Diagnostics for undefined variables.",
           "enum": [
             "none",
+            "hint",
             "information",
             "warning",
             "error",
@@ -1029,6 +1089,7 @@
           "description": "Diagnostics for the use of an unhashable object in a container that requires hashability.",
           "enum": [
             "none",
+            "hint",
             "information",
             "warning",
             "error",
@@ -1045,6 +1106,7 @@
           "description": "Diagnostics for instance variables that are not declared or initialized within class body or `__init__` method.",
           "enum": [
             "none",
+            "hint",
             "information",
             "warning",
             "error",
@@ -1061,6 +1123,7 @@
           "description": "Diagnostics for call arguments for functions or methods that have an unknown type.",
           "enum": [
             "none",
+            "hint",
             "information",
             "warning",
             "error",
@@ -1077,6 +1140,7 @@
           "description": "Diagnostics for input or return parameters for lambdas that have an unknown type.",
           "enum": [
             "none",
+            "hint",
             "information",
             "warning",
             "error",
@@ -1093,6 +1157,7 @@
           "description": "Diagnostics for class or instance variables that have an unknown type.",
           "enum": [
             "none",
+            "hint",
             "information",
             "warning",
             "error",
@@ -1109,6 +1174,7 @@
           "description": "Diagnostics for input or return parameters for functions or methods that have an unknown type.",
           "enum": [
             "none",
+            "hint",
             "information",
             "warning",
             "error",
@@ -1125,6 +1191,7 @@
           "description": "Diagnostics for variables that have an unknown type..",
           "enum": [
             "none",
+            "hint",
             "information",
             "warning",
             "error",
@@ -1141,6 +1208,7 @@
           "description": "Diagnostics for 'cast' calls that are statically determined to be unnecessary. Such calls are sometimes indicative of a programming error.",
           "enum": [
             "none",
+            "hint",
             "information",
             "warning",
             "error",
@@ -1157,6 +1225,7 @@
           "description": "Diagnostics for '==' and '!=' comparisons that are statically determined to be unnecessary. Such calls are sometimes indicative of a programming error.",
           "enum": [
             "none",
+            "hint",
             "information",
             "warning",
             "error",
@@ -1173,6 +1242,7 @@
           "description": "Diagnostics for 'in' operation that is statically determined to be unnecessary. Such operations are sometimes indicative of a programming error.",
           "enum": [
             "none",
+            "hint",
             "information",
             "warning",
             "error",
@@ -1189,6 +1259,7 @@
           "description": "Diagnostics for 'isinstance' or 'issubclass' calls where the result is statically determined to be always (or never) true. Such calls are often indicative of a programming error.",
           "enum": [
             "none",
+            "hint",
             "information",
             "warning",
             "error",
@@ -1205,6 +1276,7 @@
           "description": "Diagnostics for '# type: ignore' comments that have no effect.",
           "enum": [
             "none",
+            "hint",
             "information",
             "warning",
             "error",
@@ -1221,7 +1293,7 @@
           "description": "Diagnostics for unreachable code.",
           "enum": [
             "none",
-            "unreachable",
+            "hint",
             "information",
             "warning",
             "error",
@@ -1238,6 +1310,7 @@
           "description": "Diagnostics for multiple inheritance where a base class's constructor may not get called",
           "enum": [
             "none",
+            "hint",
             "information",
             "warning",
             "error",
@@ -1254,6 +1327,7 @@
           "description": "Diagnostics for unsupported operations performed on __all__.",
           "enum": [
             "none",
+            "hint",
             "information",
             "warning",
             "error",
@@ -1270,6 +1344,7 @@
           "description": "Diagnostics for base classes whose type cannot be determined statically. These obscure the class type, defeating many type analysis features.",
           "enum": [
             "none",
+            "hint",
             "information",
             "warning",
             "error",
@@ -1286,6 +1361,7 @@
           "description": "Diagnostics for class decorators that have no type annotations. These obscure the class type, defeating many type analysis features.",
           "enum": [
             "none",
+            "hint",
             "information",
             "warning",
             "error",
@@ -1302,6 +1378,7 @@
           "description": "Diagnostics for function decorators that have no type annotations. These obscure the function type, defeating many type analysis features.",
           "enum": [
             "none",
+            "hint",
             "information",
             "warning",
             "error",
@@ -1318,6 +1395,7 @@
           "description": "Diagnostics when “namedtuple” is used rather than “NamedTuple”. The former contains no type information, whereas the latter does.",
           "enum": [
             "none",
+            "hint",
             "information",
             "warning",
             "error",
@@ -1334,6 +1412,7 @@
           "description": "Diagnostics for call expressions whose results are not consumed and are not None.",
           "enum": [
             "none",
+            "hint",
             "information",
             "warning",
             "error",
@@ -1350,7 +1429,7 @@
           "description": "Diagnostics for a class with a private name (starting with an underscore) that is not accessed.",
           "enum": [
             "none",
-            "unused",
+            "hint",
             "information",
             "warning",
             "error",
@@ -1367,6 +1446,7 @@
           "description": "Diagnostics for call expressions that return a Coroutine and whose results are not consumed.",
           "enum": [
             "none",
+            "hint",
             "information",
             "warning",
             "error",
@@ -1383,7 +1463,7 @@
           "description": "Diagnostics for unreachable except clause.",
           "enum": [
             "none",
-            "unreachable",
+            "hint",
             "information",
             "warning",
             "error",
@@ -1400,6 +1480,7 @@
           "description": "Diagnostics for simple expressions whose value is not used in any way.",
           "enum": [
             "none",
+            "hint",
             "information",
             "warning",
             "error",
@@ -1416,7 +1497,7 @@
           "description": "Diagnostics for a function or method with a private name (starting with an underscore) that is not accessed.",
           "enum": [
             "none",
-            "unused",
+            "hint",
             "information",
             "warning",
             "error",
@@ -1433,7 +1514,7 @@
           "description": "Diagnostics for an imported symbol that is not referenced within that file.",
           "enum": [
             "none",
-            "unused",
+            "hint",
             "information",
             "warning",
             "error",
@@ -1446,11 +1527,11 @@
           ]
         },
         "reportUnusedParameter": {
-          "default": "unused",
+          "default": "hint",
           "description": "Diagnostics for unused function parameters",
           "enum": [
             "none",
-            "unused",
+            "hint",
             "information",
             "warning",
             "error",
@@ -1467,7 +1548,7 @@
           "description": "Diagnostics for a variable that is not accessed.",
           "enum": [
             "none",
-            "unused",
+            "hint",
             "information",
             "warning",
             "error",
@@ -1484,6 +1565,7 @@
           "description": "Diagnostics for an wildcard import from an external library.",
           "enum": [
             "none",
+            "hint",
             "information",
             "warning",
             "error",
