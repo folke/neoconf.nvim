@@ -481,7 +481,7 @@
     },
     "javascript.updateImportsOnPaste.enabled": {
       "default": true,
-      "markdownDescription": "Enable updating imports when pasting code. Requires TypeScript 5.7+.\n\nBy default this shows a option to update imports after pasting. You can use the `#editor.pasteAs.preferences#` setting to update imports automatically when pasting: `\"editor.pasteAs.preferences\": [{ \"kind\": \"text.jsts.pasteWithImports\" }]`.",
+      "markdownDescription": "Enable updating imports when pasting code. Requires TypeScript 5.7+.\n\nBy default this shows a option to update imports after pasting. You can use the `#editor.pasteAs.preferences#` setting to update imports automatically when pasting: `\"editor.pasteAs.preferences\": [ \"text.updateImports.jsts\" ]`.",
       "scope": "window",
       "type": "boolean"
     },
@@ -1344,7 +1344,7 @@
     },
     "typescript.updateImportsOnPaste.enabled": {
       "default": true,
-      "markdownDescription": "Enable updating imports when pasting code. Requires TypeScript 5.7+.\n\nBy default this shows a option to update imports after pasting. You can use the `#editor.pasteAs.preferences#` setting to update imports automatically when pasting: `\"editor.pasteAs.preferences\": [{ \"kind\": \"text.jsts.pasteWithImports\" }]`.",
+      "markdownDescription": "Enable updating imports when pasting code. Requires TypeScript 5.7+.\n\nBy default this shows a option to update imports after pasting. You can use the `#editor.pasteAs.preferences#` setting to update imports automatically when pasting: `\"editor.pasteAs.preferences\": [ \"text.updateImports.jsts\" ]`.",
       "scope": "window",
       "type": "boolean"
     },

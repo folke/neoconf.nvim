@@ -16239,7 +16239,7 @@
 ---@class _.lspconfig.settings.ts_ls.UpdateImportsOnPaste
 -- Enable updating imports when pasting code. Requires TypeScript 5.7+.
 -- 
--- By default this shows a option to update imports after pasting. You can use the `#editor.pasteAs.preferences#` setting to update imports automatically when pasting: `"editor.pasteAs.preferences": [{ "kind": "text.jsts.pasteWithImports" }]`.
+-- By default this shows a option to update imports after pasting. You can use the `#editor.pasteAs.preferences#` setting to update imports automatically when pasting: `"editor.pasteAs.preferences": [ "text.updateImports.jsts" ]`.
 -- 
 -- ```lua
 -- default = true
@@ -16788,7 +16788,7 @@
 ---@class _.lspconfig.settings.ts_ls.UpdateImportsOnPaste
 -- Enable updating imports when pasting code. Requires TypeScript 5.7+.
 -- 
--- By default this shows a option to update imports after pasting. You can use the `#editor.pasteAs.preferences#` setting to update imports automatically when pasting: `"editor.pasteAs.preferences": [{ "kind": "text.jsts.pasteWithImports" }]`.
+-- By default this shows a option to update imports after pasting. You can use the `#editor.pasteAs.preferences#` setting to update imports automatically when pasting: `"editor.pasteAs.preferences": [ "text.updateImports.jsts" ]`.
 -- 
 -- ```lua
 -- default = true
