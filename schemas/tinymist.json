@@ -221,6 +221,16 @@
       "title": "Enable preview features",
       "type": "string"
     },
+    "tinymist.renderDocs": {
+      "default": "enable",
+      "description": "(Experimental) Whether to render typst elements in (hover) docs. In VS Code, when this feature is enabled, tinymist will store rendered results in the filesystem's temporary storage to show them in the hover content. Note: Please disable this feature if the editor doesn't support/handle image previewing in docs.",
+      "enum": [
+        "enable",
+        "disable"
+      ],
+      "title": "(Experimental) Render Docs",
+      "type": "string"
+    },
     "tinymist.rootPath": {
       "default": null,
       "markdownDescription": "Configure the root for absolute paths in typst. Hint: you can set the rootPath to `-`, so that tinymist will always use parent directory of the file as the root path. Note: for neovim users, if it complains root not found, you must set `require(\"lspconfig\")[\"tinymist\"].setup { root_dir }` as well, see [tinymist#528](https://github.com/Myriad-Dreamin/tinymist/issues/528).",

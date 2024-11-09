@@ -8,6 +8,18 @@
       "scope": "resource",
       "type": "boolean"
     },
+    "Lua.addonManager.repositoryBranch": {
+      "default": "",
+      "markdownDescription": "Specifies the git branch used by the addon manager.",
+      "scope": "resource",
+      "type": "string"
+    },
+    "Lua.addonManager.repositoryPath": {
+      "default": "",
+      "markdownDescription": "Specifies the git path used by the addon manager.",
+      "scope": "resource",
+      "type": "string"
+    },
     "Lua.codeLens.enable": {
       "default": false,
       "markdownDescription": "Enable code lens.",

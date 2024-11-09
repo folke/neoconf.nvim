@@ -7512,6 +7512,18 @@
 -- default = true
 -- ```
 ---@field enable boolean
+-- Specifies the git branch used by the addon manager.
+-- 
+-- ```lua
+-- default = ""
+-- ```
+---@field repositoryBranch string
+-- Specifies the git path used by the addon manager.
+-- 
+-- ```lua
+-- default = ""
+-- ```
+---@field repositoryPath string
 
 ---@class _.lspconfig.settings.lua_ls.CodeLens
 -- Enable code lens.
@@ -13395,7 +13407,7 @@
 -- ```lua
 -- default = "auto"
 -- ```
----@field engine "auto" | "vadimcn.vscode-lldb" | "ms-vscode.cpptools"
+---@field engine "auto" | "llvm-vs-code-extensions.lldb-dap" | "vadimcn.vscode-lldb" | "ms-vscode.cpptools" | "webfreak.debug"
 -- Optional settings passed to the debug engine. Example: `{ "lldb": { "terminal":"external"} }`
 -- 
 -- ```lua
@@ -15858,6 +15870,12 @@
 -- default = "enable"
 -- ```
 ---@field previewFeature "enable" | "disable"
+-- (Experimental) Whether to render typst elements in (hover) docs. In VS Code, when this feature is enabled, tinymist will store rendered results in the filesystem's temporary storage to show them in the hover content. Note: Please disable this feature if the editor doesn't support/handle image previewing in docs.
+-- 
+-- ```lua
+-- default = "enable"
+-- ```
+---@field renderDocs "enable" | "disable"
 -- Configure the root for absolute paths in typst. Hint: you can set the rootPath to `-`, so that tinymist will always use parent directory of the file as the root path. Note: for neovim users, if it complains root not found, you must set `require("lspconfig")["tinymist"].setup { root_dir }` as well, see [tinymist#528](https://github.com/Myriad-Dreamin/tinymist/issues/528).
 ---@field rootPath string
 -- Enable or disable semantic tokens (LSP syntax highlighting)
