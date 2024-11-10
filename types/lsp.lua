@@ -175,6 +175,12 @@
 ---@field server "off" | "messages" | "verbose"
 
 ---@class _.lspconfig.settings.awkls.Awk-ide-vscode
+-- Turns on/off source files indexing. Requires restart.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field indexing boolean
 ---@field trace _.lspconfig.settings.awkls.Trace
 
 ---@class lspconfig.settings.awkls
@@ -9489,12 +9495,6 @@
 -- default = {}
 -- ```
 ---@field fileAliases table
--- How string requires should be interpreted
--- 
--- ```lua
--- default = "relativeToWorkspaceRoot"
--- ```
----@field mode "relativeToWorkspaceRoot" | "relativeToFile"
 
 ---@class _.lspconfig.settings.luau_lsp.SignatureHelp
 -- Enable signature help
@@ -9532,6 +9532,12 @@
 -- default = "default.project.json"
 -- ```
 ---@field rojoProjectFile string
+-- The name of the sourcemap file
+-- 
+-- ```lua
+-- default = "sourcemap.json"
+-- ```
+---@field sourcemapFile string
 
 ---@class _.lspconfig.settings.luau_lsp.Types
 -- A list of paths to definition files to load in to the type checker. Note that definition file syntax is currently unstable and may change at any time
@@ -15290,6 +15296,14 @@
 -- ```
 ---@field enable boolean
 
+---@class _.lspconfig.settings.svelte.RunesLegacyModeCodeLens
+-- Show a code lens at the top of Svelte files indicating if they are in runes mode or legacy mode. Only visible in Svelte 5 projects.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enable boolean
+
 ---@class _.lspconfig.settings.svelte.SelectionRange
 -- Enable selection range for Svelte
 -- 
@@ -15323,6 +15337,7 @@
 ---@field format _.lspconfig.settings.svelte.Format
 ---@field hover _.lspconfig.settings.svelte.Hover
 ---@field rename _.lspconfig.settings.svelte.Rename
+---@field runesLegacyModeCodeLens _.lspconfig.settings.svelte.RunesLegacyModeCodeLens
 ---@field selectionRange _.lspconfig.settings.svelte.SelectionRange
 
 ---@class _.lspconfig.settings.svelte.CodeActions
@@ -17249,26 +17264,32 @@
 
 -- Advanced preferences that control how imports are ordered.
 ---@class _.lspconfig.settings.vtsls.OrganizeImports
--- Compare characters with diacritical marks as unequal to base character.
+-- Requires `organizeImports.unicodeCollation: 'unicode'`. Compare characters with diacritical marks as unequal to base character.
 ---@field accentCollation boolean
--- Indicates whether upper-case comes before lower-case. Only applies to `organizeImportsCollation: 'unicode'`.
+-- Requires `organizeImports.unicodeCollation: 'unicode'`, and `organizeImports.caseSensitivity` is not `caseInsensitive`. Indicates whether upper-case will sort before lower-case.
 -- 
 -- ```lua
 -- default = "default"
 -- ```
 ---@field caseFirst "default" | "upper" | "lower"
+-- Specifies how imports should be sorted with regards to case-sensitivity. If `auto` or unspecified, we will detect the case-sensitivity per file
+-- 
 -- ```lua
 -- default = "auto"
 -- ```
 ---@field caseSensitivity "auto" | "caseInsensitive" | "caseSensitive"
--- Overrides the locale used for collation. Specify `auto` to use the UI locale. Only applies to `organizeImportsCollation: 'unicode'`.
+-- Requires `organizeImports.unicodeCollation: 'unicode'`. Overrides the locale used for collation. Specify `auto` to use the UI locale.
 ---@field locale string
--- Sort numeric strings by integer value.
+-- Requires `organizeImports.unicodeCollation: 'unicode'`. Sort numeric strings by integer value.
 ---@field numericCollation boolean
+-- Specify how type-only named imports should be sorted.
+-- 
 -- ```lua
 -- default = "auto"
 -- ```
 ---@field typeOrder "auto" | "last" | "inline" | "first"
+-- Specify whether to sort imports using Unicode or Ordinal collation.
+-- 
 -- ```lua
 -- default = "ordinal"
 -- ```
@@ -17427,7 +17448,7 @@
 ---@field format _.lspconfig.settings.vtsls.Format
 ---@field implicitProjectConfig _.lspconfig.settings.vtsls.ImplicitProjectConfig
 ---@field inlayHints _.lspconfig.settings.vtsls.InlayHints
--- Makes Go to Definition avoid type declaration files when possible by triggering Go to Source Definition instead. This allows Go to Source Definition to be triggered with the mouse gesture.
+-- Makes `Go to Definition` avoid type declaration files when possible by triggering `Go to Source Definition` instead. This allows `Go to Source Definition` to be triggered with the mouse gesture.
 ---@field preferGoToSourceDefinition boolean
 ---@field preferences _.lspconfig.settings.vtsls.Preferences
 ---@field referencesCodeLens _.lspconfig.settings.vtsls.ReferencesCodeLens
@@ -17650,26 +17671,32 @@
 
 -- Advanced preferences that control how imports are ordered.
 ---@class _.lspconfig.settings.vtsls.OrganizeImports
--- Compare characters with diacritical marks as unequal to base character.
+-- Requires `organizeImports.unicodeCollation: 'unicode'`. Compare characters with diacritical marks as unequal to base character.
 ---@field accentCollation boolean
--- Indicates whether upper-case comes before lower-case. Only applies to `organizeImportsCollation: 'unicode'`.
+-- Requires `organizeImports.unicodeCollation: 'unicode'`, and `organizeImports.caseSensitivity` is not `caseInsensitive`. Indicates whether upper-case will sort before lower-case.
 -- 
 -- ```lua
 -- default = "default"
 -- ```
 ---@field caseFirst "default" | "upper" | "lower"
+-- Specifies how imports should be sorted with regards to case-sensitivity. If `auto` or unspecified, we will detect the case-sensitivity per file
+-- 
 -- ```lua
 -- default = "auto"
 -- ```
 ---@field caseSensitivity "auto" | "caseInsensitive" | "caseSensitive"
--- Overrides the locale used for collation. Specify `auto` to use the UI locale. Only applies to `organizeImportsCollation: 'unicode'`.
+-- Requires `organizeImports.unicodeCollation: 'unicode'`. Overrides the locale used for collation. Specify `auto` to use the UI locale.
 ---@field locale string
--- Sort numeric strings by integer value.
+-- Requires `organizeImports.unicodeCollation: 'unicode'`. Sort numeric strings by integer value.
 ---@field numericCollation boolean
+-- Specify how type-only named imports should be sorted.
+-- 
 -- ```lua
 -- default = "auto"
 -- ```
 ---@field typeOrder "auto" | "last" | "inline" | "first"
+-- Specify whether to sort imports using Unicode or Ordinal collation.
+-- 
 -- ```lua
 -- default = "ordinal"
 -- ```
@@ -17820,27 +17847,8 @@
 ---@field enabled boolean
 
 ---@class _.lspconfig.settings.vtsls.Experimental
--- (Experimental) Enables project wide error reporting.
+-- Enables project wide error reporting.
 ---@field enableProjectDiagnostics boolean
-
--- Configure which watching strategies should be used to keep track of files and directories.
----@class _.lspconfig.settings.vtsls.WatchOptions
--- When using file system events, this option specifies the polling strategy that gets used when the system runs out of native file watchers and/or doesn't support native file watchers.
----@field fallbackPolling "fixedPollingInterval" | "priorityPollingInterval" | "dynamicPriorityPolling"
--- Disable deferred watching on directories. Deferred watching is useful when lots of file changes might occur at once (e.g. a change in node_modules from running npm install), but you might want to disable it with this flag for some less-common setups.
----@field synchronousWatchDirectory boolean
--- Strategy for how entire directory trees are watched under systems that lack recursive file-watching functionality.
--- 
--- ```lua
--- default = "useFsEvents"
--- ```
----@field watchDirectory "fixedChunkSizePolling" | "fixedPollingInterval" | "dynamicPriorityPolling" | "useFsEvents"
--- Strategy for how individual files are watched.
--- 
--- ```lua
--- default = "useFsEvents"
--- ```
----@field watchFile "fixedChunkSizePolling" | "fixedPollingInterval" | "priorityPollingInterval" | "dynamicPriorityPolling" | "useFsEvents" | "useFsEventsOnParentDirectory"
 
 ---@class _.lspconfig.settings.vtsls.ProjectWideIntellisense
 -- Enable/disable project-wide IntelliSense on web. Requires that VS Code is running in a trusted context.
@@ -17901,7 +17909,11 @@
 -- ```
 ---@field useSyntaxServer "always" | "never" | "auto"
 -- Configure which watching strategies should be used to keep track of files and directories.
----@field watchOptions _.lspconfig.settings.vtsls.WatchOptions
+-- 
+-- ```lua
+-- default = "vscode"
+-- ```
+---@field watchOptions any
 ---@field web _.lspconfig.settings.vtsls.Web
 
 ---@class _.lspconfig.settings.vtsls.UpdateImportsOnFileMove
@@ -17921,7 +17933,7 @@
 ---@field enable boolean
 
 ---@class _.lspconfig.settings.vtsls.WorkspaceSymbols
--- Exclude symbols that come from library files in Go to Symbol in Workspace results. Requires using TypeScript 5.3+ in the workspace.
+-- Exclude symbols that come from library files in `Go to Symbol in Workspace` results. Requires using TypeScript 5.3+ in the workspace.
 -- 
 -- ```lua
 -- default = true
@@ -17949,7 +17961,7 @@
 ---@field locale "auto" | "de" | "es" | "en" | "fr" | "it" | "ja" | "ko" | "ru" | "zh-CN" | "zh-TW"
 -- Specifies the path to the npm executable used for [Automatic Type Acquisition](https://code.visualstudio.com/docs/nodejs/working-with-javascript#_typings-and-automatic-type-acquisition).
 ---@field npm string
--- Makes Go to Definition avoid type declaration files when possible by triggering Go to Source Definition instead. This allows Go to Source Definition to be triggered with the mouse gesture.
+-- Makes `Go to Definition` avoid type declaration files when possible by triggering `Go to Source Definition` instead. This allows `Go to Source Definition` to be triggered with the mouse gesture.
 ---@field preferGoToSourceDefinition boolean
 ---@field preferences _.lspconfig.settings.vtsls.Preferences
 ---@field referencesCodeLens _.lspconfig.settings.vtsls.ReferencesCodeLens

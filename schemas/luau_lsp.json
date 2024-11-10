@@ -322,19 +322,6 @@
       "scope": "resource",
       "type": "object"
     },
-    "luau-lsp.require.mode": {
-      "default": "relativeToWorkspaceRoot",
-      "enum": [
-        "relativeToWorkspaceRoot",
-        "relativeToFile"
-      ],
-      "enumDescriptions": [
-        "String requires are interpreted relative to the root of the workspace",
-        "String requires are interpreted relative to the current file"
-      ],
-      "markdownDescription": "How string requires should be interpreted",
-      "type": "string"
-    },
     "luau-lsp.signatureHelp.enabled": {
       "default": true,
       "markdownDescription": "Enable signature help",
@@ -368,6 +355,12 @@
     "luau-lsp.sourcemap.rojoProjectFile": {
       "default": "default.project.json",
       "markdownDescription": "The name of the Rojo project file to generate a sourcemap for.\nOnly applies if `#luau-lsp.sourcemap.autogenerate#` is enabled",
+      "scope": "resource",
+      "type": "string"
+    },
+    "luau-lsp.sourcemap.sourcemapFile": {
+      "default": "sourcemap.json",
+      "markdownDescription": "The name of the sourcemap file",
       "scope": "resource",
       "type": "string"
     },

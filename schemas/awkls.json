@@ -2,6 +2,12 @@
   "$schema": "http://json-schema.org/draft-07/schema#",
   "description": "VSCode client for AWK Language Server",
   "properties": {
+    "awk-ide-vscode.indexing": {
+      "default": true,
+      "description": "Turns on/off source files indexing. Requires restart.",
+      "scope": "window",
+      "type": "boolean"
+    },
     "awk-ide-vscode.trace.server": {
       "default": "off",
       "description": "Traces the communication between VS Code and the language server.",
