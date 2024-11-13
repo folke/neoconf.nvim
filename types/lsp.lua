@@ -1873,6 +1873,12 @@
 ---@field doNotFormat string[]
 -- What level of documentation to show in Hovers and Code Completion details. When `null`, defaults to 'full' when running locally and 'none' in remote workspaces. This setting is only supported for Dart SDKs after v2.18.
 ---@field documentation "full" | "summary" | "none"
+-- How long (in ms) to delay sending editor location change events over the Dart Tooling Daemon. Increasing this results in less events which may improve performance, at the expensive of tools that use these events not updating as quickly after your location/editor changes (requires restart).
+-- 
+-- ```lua
+-- default = 200
+-- ```
+---@field dtdEditorActiveLocationDelay integer
 -- Whether to automatically commit the selected completion item when pressing certain keys such as . , ( and \[. This setting does not currently apply to LSP, see `#dart.previewCommitCharacters#`.
 ---@field enableCompletionCommitCharacters boolean
 -- Whether to enable functionality for using Pub. Turning this setting off will prevent the extension from ever running pub and hide all commands relating to this. Use this if you are using an alternative package manager.
@@ -1917,6 +1923,8 @@
 -- default = true
 -- ```
 ---@field evaluateToStringInDebugViews boolean
+-- Whether to enable experimental (possibly unfinished or unstable) LSP handlers through DTD. This setting is passed to the analysis server in the connectToDtd request and therefore relies on DTD being supported and enabled for the analysis server (requires restart).
+---@field experimentalDtdHandlers boolean
 -- Whether to enable experimental (possibly unfinished or unstable) refactors on the lightbulb menu. This setting is intended for use by Dart Analysis Server developers or users that want to try out and provide feedback on in-progress refactors.
 ---@field experimentalRefactors boolean
 -- The path to a low-traffic log file for basic extension and editor issues. Use `${workspaceName}` to insert the name of the current workspace in the file path. Use `~` to insert the user's home directory (the path should use `/` separators even on Windows). Only the noted substitutions are supported, others will stay as-is.
@@ -6115,6 +6123,12 @@
 -- default = true
 -- ```
 ---@field includeAccessors boolean
+-- Include declarations when finding references.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field includeDeclarations boolean
 -- Include the decompiled sources when finding references.
 -- 
 -- ```lua
@@ -10384,6 +10398,8 @@
 -- default = true
 -- ```
 ---@field suppressLspErrorToasts boolean
+-- %configuration.razor.languageServer.useRoslynTokenizer%
+---@field useRoslynTokenizer boolean
 
 ---@class _.lspconfig.settings.omnisharp.Plugin
 -- %configuration.omnisharp.razor.plugin.path%

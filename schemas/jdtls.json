@@ -766,7 +766,7 @@
         "Enable parameter name hints for literal and non-literal arguments"
       ],
       "markdownDescription": "Enable/disable inlay hints for parameter names:\n```java\n\nInteger.valueOf(/* s: */ '123', /* radix: */ 10)\n \n```\n `#java.inlayHints.parameterNames.exclusions#` can be used to disable the inlay hints for methods.",
-      "order": 70,
+      "order": 80,
       "scope": "window",
       "type": "string"
     },
@@ -776,7 +776,7 @@
         "type": "string"
       },
       "markdownDescription": "The patterns for the methods that will be disabled to show the inlay hints. Supported pattern examples:\n - `java.lang.Math.*` - All the methods from java.lang.Math.\n - `*.Arrays.asList` - Methods named as 'asList' in the types named as 'Arrays'.\n - `*.println(*)` - Methods named as 'println'.\n - `(from, to)` - Methods with two parameters named as 'from' and 'to'.\n - `(arg*)` - Methods with one parameter whose name starts with 'arg'.",
-      "order": 80,
+      "order": 90,
       "scope": "window",
       "type": "array"
     },
@@ -973,10 +973,17 @@
       "scope": "window",
       "type": "boolean"
     },
+    "java.references.includeDeclarations": {
+      "default": true,
+      "description": "Include declarations when finding references.",
+      "order": 40,
+      "scope": "window",
+      "type": "boolean"
+    },
     "java.references.includeDecompiledSources": {
       "default": true,
       "description": "Include the decompiled sources when finding references.",
-      "order": 40,
+      "order": 50,
       "scope": "window",
       "type": "boolean"
     },
@@ -1010,7 +1017,7 @@
         "All classpath entries excluding test classpath entries."
       ],
       "markdownDescription": "Specifies the scope which must be used for search operation like \n - Find Reference\n - Call Hierarchy\n - Workspace Symbols",
-      "order": 90,
+      "order": 100,
       "scope": "window",
       "type": "string"
     },
@@ -1114,7 +1121,7 @@
     "java.symbols.includeSourceMethodDeclarations": {
       "default": false,
       "markdownDescription": "Include method declarations from source files in symbol search.",
-      "order": 50,
+      "order": 60,
       "scope": "window",
       "type": "boolean"
     },
@@ -1146,7 +1153,7 @@
     "java.typeHierarchy.lazyLoad": {
       "default": false,
       "description": "Enable/disable lazy loading the content in type hierarchy. Lazy loading could save a lot of loading time but every type should be expanded manually to load its content.",
-      "order": 60,
+      "order": 70,
       "scope": "window",
       "type": "boolean"
     },
