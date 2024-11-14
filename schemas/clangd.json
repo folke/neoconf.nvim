@@ -20,6 +20,11 @@
       "description": "Warn about conflicting extensions and suggest disabling them.",
       "type": "boolean"
     },
+    "clangd.enable": {
+      "default": true,
+      "description": "Enable clangd language server features",
+      "type": "boolean"
+    },
     "clangd.enableCodeCompletion": {
       "default": true,
       "description": "Enable code completion provided by the language server",

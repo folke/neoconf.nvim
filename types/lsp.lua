@@ -964,6 +964,12 @@
 -- default = true
 -- ```
 ---@field detectExtensionConflicts boolean
+-- Enable clangd language server features
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enable boolean
 -- Enable code completion provided by the language server
 -- 
 -- ```lua

@@ -28,7 +28,8 @@
           "switchExpression",
           "tryWithResource",
           "renameFileToType",
-          "organizeImports"
+          "organizeImports",
+          "removeUnusedLambdaParameters"
         ],
         "type": "string"
       },
