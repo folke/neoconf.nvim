@@ -10002,7 +10002,7 @@
 -- %configuration.dotnet.server.startTimeout%
 -- 
 -- ```lua
--- default = 30000
+-- default = 120000
 -- ```
 ---@field startTimeout number
 -- %configuration.dotnet.server.suppressLspErrorToasts%
@@ -15932,6 +15932,12 @@
 -- ```
 ---@field systemFonts boolean
 ---@field trace _.lspconfig.settings.tinymist.Trace
+-- Whether to prefix newlines after comments with the corresponding comment prefix.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field typingContinueCommentsOnNewline boolean
 -- You can pass any arguments as you like, and we will try to follow behaviors of the **same version** of typst-cli. Note: the arguments may be overridden by other settings. For example, `--font-path` will be overridden by `tinymist.fontPaths`.
 -- 
 -- ```lua

@@ -523,7 +523,7 @@
       "type": "string"
     },
     "dotnet.server.startTimeout": {
-      "default": 30000,
+      "default": 120000,
       "description": "%configuration.dotnet.server.startTimeout%",
       "scope": "machine-overridable",
       "type": "number"

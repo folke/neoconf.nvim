@@ -299,6 +299,12 @@
       "scope": "window",
       "type": "string"
     },
+    "tinymist.typingContinueCommentsOnNewline": {
+      "default": true,
+      "markdownDescription": "Whether to prefix newlines after comments with the corresponding comment prefix.",
+      "title": "Continue Comments on Newline",
+      "type": "boolean"
+    },
     "tinymist.typstExtraArgs": {
       "default": [],
       "description": "You can pass any arguments as you like, and we will try to follow behaviors of the **same version** of typst-cli. Note: the arguments may be overridden by other settings. For example, `--font-path` will be overridden by `tinymist.fontPaths`.",
