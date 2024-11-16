@@ -10916,12 +10916,12 @@
 -- default = "../../PowerShellEditorServices/module"
 -- ```
 ---@field bundledModulesPath string
--- Sets the log verbosity for both the extension and its LSP server, PowerShell Editor Services. **Please set to `Diagnostic` when recording logs for a bug report!**
+-- Sets the log verbosity for both the extension and its LSP server, PowerShell Editor Services. **Please set to `Trace` when recording logs for a bug report!**
 -- 
 -- ```lua
--- default = "Normal"
+-- default = "Warning"
 -- ```
----@field editorServicesLogLevel "Diagnostic" | "Verbose" | "Normal" | "Warning" | "Error" | "None"
+---@field editorServicesLogLevel "Trace" | "Debug" | "Information" | "Warning" | "Error" | "None"
 -- Launches the LSP server with the `/waitForDebugger` flag to force it to wait for a .NET debugger to attach before proceeding, and emit its PID until then. **This setting is only meant for extension developers and requires the extension to be run in development mode!**
 ---@field editorServicesWaitForDebugger boolean
 -- An array of strings that enable experimental features in the PowerShell extension. **No flags are currently available!**
@@ -10936,6 +10936,8 @@
 -- default = true
 -- ```
 ---@field setExecutionPolicy boolean
+-- Traces the DAP communication between VS Code and the PowerShell Editor Services [DAP Server](https://microsoft.github.io/debug-adapter-protocol/). The output will be logged and also visible in the Output pane, where the verbosity is configurable. **For extension developers and issue troubleshooting only!**
+---@field traceDap boolean
 -- Specifies how many seconds the extension will wait for the LSP server, PowerShell Editor Services, to connect. The default is four minutes; try increasing this value if your computer is particularly slow (often caused by overactive anti-malware programs).
 -- 
 -- ```lua
@@ -11032,9 +11034,7 @@
 ---@field osx boolean
 
 ---@class _.lspconfig.settings.powershell_es.Trace
--- Traces the communication between VS Code and the PowerShell Editor Services [DAP Server](https://microsoft.github.io/debug-adapter-protocol/). **This setting is only meant for extension developers and issue troubleshooting!**
----@field dap boolean
--- Traces the communication between VS Code and the PowerShell Editor Services [LSP Server](https://microsoft.github.io/language-server-protocol/). **only for extension developers and issue troubleshooting!**
+-- Traces the communication between VS Code and the PowerShell Editor Services [LSP Server](https://microsoft.github.io/language-server-protocol/). The output will be logged and also visible in the Output pane, where the verbosity is configurable. **For extension developers and issue troubleshooting only!**
 -- 
 -- ```lua
 -- default = "off"
