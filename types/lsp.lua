@@ -194,7 +194,7 @@
 -- default = "error"
 -- ```
 ---@field reportAbstractUsage "none" | "hint" | "information" | "warning" | "error" | true | false
--- Diagnostics for anything with the `Any` type
+-- Diagnostics for expressions with the `Any` type
 -- 
 -- ```lua
 -- default = "none"
@@ -260,6 +260,12 @@
 -- default = "none"
 -- ```
 ---@field reportDuplicateImport "none" | "hint" | "information" | "warning" | "error" | true | false
+-- Diagnostics for type annotations that use the `Any` type
+-- 
+-- ```lua
+-- default = "none"
+-- ```
+---@field reportExplicitAny "none" | "hint" | "information" | "warning" | "error" | true | false
 -- Diagnostics for member accesses on functions.
 -- 
 -- ```lua
@@ -9392,6 +9398,18 @@
 -- default = true
 -- ```
 ---@field includeDependents boolean
+-- Whether to update document diagnostics whenever the text file changes
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field pullOnChange boolean
+-- Whether to update document diagnostics whenever the text file is saved
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field pullOnSave boolean
 -- Use strict DataModel types in diagnostics. When on, this is equivalent to the more expressive autocompletion types. When this is off, `game`/`script`/`workspace` (and their members) are all typed as `any`, and helps to prevent false positives. [Read More](https://github.com/JohnnyMorganz/luau-lsp/issues/83#issuecomment-1192865024)
 ---@field strictDatamodelTypes boolean
 -- Compute diagnostics for the whole workspace
@@ -9400,6 +9418,8 @@
 ---@class _.lspconfig.settings.luau_lsp.Fflags
 -- Enable all (boolean) Luau FFlags by default. These flags can later be overriden by `#luau-lsp.fflags.override#` and `#luau-lsp.fflags.sync#`
 ---@field enableByDefault boolean
+-- Enables the flags required for Luau's new type solver. These flags can be overriden by `#luau-lsp.fflags.override#`
+---@field enableNewSolver boolean
 -- Override FFlags passed to Luau
 -- 
 -- ```lua

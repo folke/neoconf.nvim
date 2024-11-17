@@ -49,7 +49,7 @@
         },
         "reportAny": {
           "default": "none",
-          "description": "Diagnostics for anything with the `Any` type",
+          "description": "Diagnostics for expressions with the `Any` type",
           "enum": [
             "none",
             "hint",
@@ -220,6 +220,23 @@
         "reportDuplicateImport": {
           "default": "none",
           "description": "Diagnostics for an imported symbol or module that is imported more than once.",
+          "enum": [
+            "none",
+            "hint",
+            "information",
+            "warning",
+            "error",
+            true,
+            false
+          ],
+          "type": [
+            "string",
+            "boolean"
+          ]
+        },
+        "reportExplicitAny": {
+          "default": "none",
+          "description": "Diagnostics for type annotations that use the `Any` type",
           "enum": [
             "none",
             "hint",
