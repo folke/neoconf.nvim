@@ -12,6 +12,30 @@
       "title": "Show/Report compilation status",
       "type": "string"
     },
+    "tinymist.completion.postfix": {
+      "default": true,
+      "description": "Whether to enable postfix code completion. For example, `[A].box|` will be completed to `box[A]|`. Hint: Restarting the editor is required to change this setting.",
+      "title": "Enable Postfix Code Completion",
+      "type": "boolean"
+    },
+    "tinymist.completion.postfixUfcs": {
+      "default": true,
+      "description": "Whether to enable UFCS-style completion. For example, `[A].box|` will be completed to `box[A]|`. Hint: Restarting the editor is required to change this setting.",
+      "title": "Completion: Convert Field Access to Call",
+      "type": "boolean"
+    },
+    "tinymist.completion.postfixUfcsLeft": {
+      "default": true,
+      "description": "Whether to enable left-variant UFCS-style completion. For example, `[A].table|` will be completed to `table(|)[A]`. Hint: Restarting the editor is required to change this setting.",
+      "title": "Completion: Convert Field Access to Call (Left Variant)",
+      "type": "boolean"
+    },
+    "tinymist.completion.postfixUfcsRight": {
+      "default": true,
+      "description": "Whether to enable right-variant UFCS-style completion. For example, `[A].table|` will be completed to `table([A], |)`. Hint: Restarting the editor is required to change this setting.",
+      "title": "Completion: Convert Field Access to Call (Right Variant)",
+      "type": "boolean"
+    },
     "tinymist.dragAndDrop": {
       "default": "enable",
       "description": "Whether to handle drag-and-drop of resources into the editing typst document. Note: restarting the editor is required to change this setting.",
