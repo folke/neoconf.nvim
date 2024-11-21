@@ -1027,6 +1027,12 @@
 ---@field serverCompletionRanking boolean
 -- Names a file that clangd should log a performance trace to, in chrome trace-viewer JSON format.
 ---@field trace string
+-- Allows the path to be a script e.g.: clangd.sh.
+-- 
+-- ```lua
+-- default = "false"
+-- ```
+---@field useScriptAsExecutable boolean
 
 ---@class lspconfig.settings.clangd
 ---@field clangd _.lspconfig.settings.clangd.Clangd
@@ -10431,14 +10437,6 @@
 -- %configuration.omnisharp.razor.plugin.path%
 ---@field path string
 
----@class _.lspconfig.settings.omnisharp.Server
--- %configuration.razor.server.trace%
--- 
--- ```lua
--- default = "Information"
--- ```
----@field trace "Trace" | "Debug" | "Information" | "Warning" | "Error" | "Critical" | "None"
-
 ---@class _.lspconfig.settings.omnisharp.Razor
 ---@field completion _.lspconfig.settings.omnisharp.Completion
 -- %configuration.omnisharp.razor.devmode%
@@ -10446,7 +10444,6 @@
 ---@field format _.lspconfig.settings.omnisharp.Format
 ---@field languageServer _.lspconfig.settings.omnisharp.LanguageServer
 ---@field plugin _.lspconfig.settings.omnisharp.Plugin
----@field server _.lspconfig.settings.omnisharp.Server
 
 ---@class lspconfig.settings.omnisharp
 ---@field csharp _.lspconfig.settings.omnisharp.Csharp

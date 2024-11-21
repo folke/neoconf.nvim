@@ -29,7 +29,7 @@
           "tryWithResource",
           "renameFileToType",
           "organizeImports",
-          "removeUnusedLambdaParameters"
+          "renameUnusedLocalVariables"
         ],
         "type": "string"
       },

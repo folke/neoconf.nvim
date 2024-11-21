@@ -993,22 +993,6 @@
       "description": "%configuration.omnisharp.razor.plugin.path%",
       "scope": "machine",
       "type": "string"
-    },
-    "razor.server.trace": {
-      "default": "Information",
-      "description": "%configuration.razor.server.trace%",
-      "enum": [
-        "Trace",
-        "Debug",
-        "Information",
-        "Warning",
-        "Error",
-        "Critical",
-        "None"
-      ],
-      "order": 90,
-      "scope": "window",
-      "type": "string"
     }
   }
 }
