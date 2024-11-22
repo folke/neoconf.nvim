@@ -15845,6 +15845,8 @@
 -- default = true
 -- ```
 ---@field postfixUfcsRight boolean
+-- Whether to trigger completions on arguments (placeholders) of snippets. For example, `box` will be completed to `box(|)`, and server will request the editor (lsp client) to request completion after moving cursor to the placeholder in the snippet. Note: this has no effect if the editor doesn't support `editor.action.triggerSuggest` or `tinymist.triggerSuggestAndParameterHints` command. Hint: Restarting the editor is required to change this setting.
+---@field triggerOnSnippetPlaceholders boolean
 
 ---@class _.lspconfig.settings.tinymist.Preview
 -- (Experimental) Show typst cursor indicator in preview.
