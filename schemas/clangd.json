@@ -93,12 +93,6 @@
     "clangd.trace": {
       "description": "Names a file that clangd should log a performance trace to, in chrome trace-viewer JSON format.",
       "type": "string"
-    },
-    "clangd.useScriptAsExecutable": {
-      "default": "false",
-      "description": "Allows the path to be a script e.g.: clangd.sh.",
-      "scope": "machine-overridable",
-      "type": "boolean"
     }
   }
 }

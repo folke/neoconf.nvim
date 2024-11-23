@@ -1027,12 +1027,6 @@
 ---@field serverCompletionRanking boolean
 -- Names a file that clangd should log a performance trace to, in chrome trace-viewer JSON format.
 ---@field trace string
--- Allows the path to be a script e.g.: clangd.sh.
--- 
--- ```lua
--- default = "false"
--- ```
----@field useScriptAsExecutable boolean
 
 ---@class lspconfig.settings.clangd
 ---@field clangd _.lspconfig.settings.clangd.Clangd
