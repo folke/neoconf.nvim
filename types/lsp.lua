@@ -3095,11 +3095,7 @@
 ---@class _.lspconfig.settings.fsautocomplete.Gc
 -- Configures the garbage collector to [conserve memory](https://learn.microsoft.com/en-us/dotnet/core/runtime-config/garbage-collector#conserve-memory) at the expense of more frequent garbage collections and possibly longer pause times. Acceptable values are 0-9. Any non-zero value will allow the [Large Object Heap](https://learn.microsoft.com/en-us/dotnet/standard/garbage-collection/large-object-heap) to be compacted automatically if it has too much fragmentation. Requires restart.
 ---@field conserveMemory integer
--- Limits the number of [heaps](https://learn.microsoft.com/en-us/dotnet/standard/garbage-collection/fundamentals#the-managed-heap) created by the garbage collector. Applies to server garbage collection only. See [Middle Ground between Server and Workstation GC](https://devblogs.microsoft.com/dotnet/middle-ground-between-server-and-workstation-gc/) for more details. This can allow FSAC to still benefit from Server garbage collection while still limiting the number of heaps. [Only available on .NET 7 or higher](https://github.com/ionide/ionide-vscode-fsharp/issues/1899#issuecomment-1649009462). Requires restart.
--- 
--- ```lua
--- default = 2
--- ```
+-- Limits the number of [heaps](https://learn.microsoft.com/en-us/dotnet/standard/garbage-collection/fundamentals#the-managed-heap) created by the garbage collector. Applies to server garbage collection only. See [Middle Ground between Server and Workstation GC](https://devblogs.microsoft.com/dotnet/middle-ground-between-server-and-workstation-gc/) for more details. This can allow FSAC to still benefit from Server garbage collection while still limiting the number of heaps. [Only available on .NET 7 or higher](https://github.com/ionide/ionide-vscode-fsharp/issues/1899#issuecomment-1649009462). Requires restart. If FSAC is run on .NET 8 runtimes, this will be set to 2 by default to prevent inflated memory use. On .NET 9 with DATAS enabled, this will not be set. 
 ---@field heapCount integer
 -- Configures whether the application uses workstation garbage collection or server garbage collection. See [Workstation vs Server Garbage Collection](https://devblogs.microsoft.com/premier-developer/understanding-different-gc-modes-with-concurrency-visualizer/#workstation-gc-vs-server-gc) for more details. Workstation will use less memory but Server will have more throughput. Requires restart.
 -- 
@@ -3107,6 +3103,8 @@
 -- default = true
 -- ```
 ---@field server boolean
+-- Configures whether the application uses the DATAS(dynamic adaptation to application sizes) server garbage collection mode. See [DATAS](https://learn.microsoft.com/dotnet/core/runtime-config/garbage-collector#dynamic-adaptation-to-application-sizes-datas) for more details. Requires restart. When FSAC is run on .NET 8 runtimes, this will be set to false by default. On .NET 9 runtimes, this will be set to true by default.
+---@field useDatas boolean
 
 ---@class _.lspconfig.settings.fsautocomplete.Fsac
 -- Appends the `--attachdebugger` argument to fsac, this will allow you to attach a debugger.
@@ -3509,11 +3507,7 @@
 ---@field workspacePath string
 
 ---@class _.lspconfig.settings.fsautocomplete.Gc
--- Specifies whether to [affinitize](https://learn.microsoft.com/en-us/dotnet/core/runtime-config/garbage-collector#affinitize) garbage collection threads with processors. To affinitize a GC thread means that it can only run on its specific CPU.. Applies to server garbage collection only. See [GCNoAffinitize](https://learn.microsoft.com/en-us/dotnet/framework/configure-apps/file-schema/runtime/gcnoaffinitize-element#remarks) for more details. [Only available on .NET 7 or higher](https://github.com/ionide/ionide-vscode-fsharp/issues/1899#issuecomment-1649009462). Requires restart.
--- 
--- ```lua
--- default = true
--- ```
+-- Specifies whether to [affinitize](https://learn.microsoft.com/en-us/dotnet/core/runtime-config/garbage-collector#affinitize) garbage collection threads with processors. To affinitize a GC thread means that it can only run on its specific CPU.. Applies to server garbage collection only. See [GCNoAffinitize](https://learn.microsoft.com/en-us/dotnet/framework/configure-apps/file-schema/runtime/gcnoaffinitize-element#remarks) for more details. [Only available on .NET 7 or higher](https://github.com/ionide/ionide-vscode-fsharp/issues/1899#issuecomment-1649009462). Requires restart. If FSAC is run on .NET 8 runtimes, this will be set by default. On .NET 9 with DATAS enabled, this will not be set.
 ---@field noAffinitize boolean
 
 ---@class _.lspconfig.settings.fsautocomplete.Fsac
@@ -15961,7 +15955,7 @@
 -- default = "enable"
 -- ```
 ---@field semanticTokens "enable" | "disable"
--- The extension can use a local tinymist executable instead of the one bundled with the extension. This setting controls the path to the executable.
+-- The extension can use a local tinymist executable instead of the one bundled with the extension. This setting controls the path to the executable. The string "tinymist" means look up Tinymist in PATH.
 ---@field serverPath string
 -- Configures way of opening exported files, e.g. inside of editor tabs or using system application.
 ---@field showExportFileIn "editorTab" | "systemDefault"
