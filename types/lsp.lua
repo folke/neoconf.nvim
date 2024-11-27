@@ -10277,8 +10277,6 @@
 ---@field completion _.lspconfig.settings.omnisharp.Completion
 -- %configuration.dotnet.defaultSolution.description%
 ---@field defaultSolution string
--- %configuration.dotnet.dotnetPath%
----@field dotnetPath string
 -- %configuration.dotnet.enableXamlTools%
 -- 
 -- ```lua
@@ -10314,6 +10312,8 @@
 ---@field disableMSBuildDiagnosticWarning boolean
 -- %configuration.omnisharp.dotNetCliPaths%
 ---@field dotNetCliPaths string[]
+-- %configuration.omnisharp.dotnetPath%
+---@field dotnetPath string
 -- %configuration.omnisharp.enableAsyncCompletion%
 ---@field enableAsyncCompletion boolean
 -- %configuration.omnisharp.enableDecompilationSupport%
@@ -13196,6 +13196,13 @@
 -- default = "discover"
 -- ```
 ---@field sysroot string
+-- How to query metadata for the sysroot crate. Using cargo metadata allows rust-analyzer
+-- to analyze third-party dependencies of the standard libraries.
+-- 
+-- ```lua
+-- default = "cargo_metadata"
+-- ```
+---@field sysrootQueryMetadata "none" | "cargo_metadata"
 -- Relative path to the sysroot library sources. If left unset, this will default to
 -- `{cargo.sysroot}/lib/rustlib/src/rust/library`.
 -- 

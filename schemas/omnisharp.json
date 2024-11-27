@@ -378,11 +378,6 @@
       "order": 0,
       "type": "string"
     },
-    "dotnet.dotnetPath": {
-      "description": "%configuration.dotnet.dotnetPath%",
-      "scope": "machine-overridable",
-      "type": "string"
-    },
     "dotnet.enableXamlTools": {
       "default": true,
       "description": "%configuration.dotnet.enableXamlTools%",
@@ -831,6 +826,11 @@
       },
       "type": "array",
       "uniqueItems": true
+    },
+    "omnisharp.dotnetPath": {
+      "description": "%configuration.omnisharp.dotnetPath%",
+      "scope": "machine-overridable",
+      "type": "string"
     },
     "omnisharp.enableAsyncCompletion": {
       "default": false,
