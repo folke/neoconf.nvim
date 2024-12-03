@@ -14845,8 +14845,12 @@
 ---@field server "off" | "messages" | "verbose"
 
 ---@class _.lspconfig.settings.sourcekit.Sourcekit-lsp
--- **Experimental**: Enable or disable background indexing. This option has no effect in Swift versions prior to 6.0.
----@field backgroundIndexing boolean
+-- Turns background indexing `on` or `off`. `auto` will enable background indexing if the Swift version is >= 6.1. This option has no effect in Swift versions prior to 6.0.
+-- 
+-- ```lua
+-- default = "auto"
+-- ```
+---@field backgroundIndexing "on" | "off" | "auto"
 -- Disable SourceKit-LSP
 ---@field disable boolean
 -- Arguments to pass to SourceKit-LSP. Keys and values should be provided as individual entries in the list. e.g. `['--log-level', 'debug']`
