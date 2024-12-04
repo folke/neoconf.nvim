@@ -14255,6 +14255,18 @@
 -- default = "openLogs"
 -- ```
 ---@field clickAction "stopServer" | "openLogs"
+-- Determines when to show the extension status bar item based on the currently open file. Use `{ "pattern": "**" }` to always show. Use `null` to never show.
+-- 
+-- ```lua
+-- default = { {
+--     language = "rust"
+--   }, {
+--     pattern = "**/Cargo.toml"
+--   }, {
+--     pattern = "**/Cargo.lock"
+--   } }
+-- ```
+---@field documentSelector object[]
 
 ---@class _.lspconfig.settings.rust_analyzer.Trace
 -- Enable logging of VS Code extensions itself.

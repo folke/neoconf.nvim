@@ -1402,6 +1402,41 @@
       "markdownDescription": "Action to run when clicking the extension status bar item.",
       "type": "string"
     },
+    "rust-analyzer.statusBar.documentSelector": {
+      "default": [
+        {
+          "language": "rust"
+        },
+        {
+          "pattern": "**/Cargo.toml"
+        },
+        {
+          "pattern": "**/Cargo.lock"
+        }
+      ],
+      "items": {
+        "properties": {
+          "language": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "pattern": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        },
+        "type": "object"
+      },
+      "markdownDescription": "Determines when to show the extension status bar item based on the currently open file. Use `{ \"pattern\": \"**\" }` to always show. Use `null` to never show.",
+      "type": [
+        "array",
+        "null"
+      ]
+    },
     "rust-analyzer.testExplorer": {
       "default": false,
       "markdownDescription": "Whether to show the test explorer.",
