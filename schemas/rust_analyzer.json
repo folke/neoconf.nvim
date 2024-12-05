@@ -1464,15 +1464,18 @@
       "scope": "window",
       "type": "string"
     },
-    "rust-analyzer.typing.autoClosingAngleBrackets.enable": {
-      "default": false,
-      "markdownDescription": "Whether to insert closing angle brackets when typing an opening angle bracket of a generic argument list.",
-      "type": "boolean"
-    },
     "rust-analyzer.typing.continueCommentsOnNewline": {
       "default": true,
       "markdownDescription": "Whether to prefix newlines after comments with the corresponding comment prefix.",
       "type": "boolean"
+    },
+    "rust-analyzer.typing.excludeChars": {
+      "default": null,
+      "markdownDescription": "Specify the characters to exclude from triggering typing assists. The default trigger characters are `.`, `=`, `<`, `>`, `{`, and `(`. Setting this to a string will disable typing assists for the specified characters.",
+      "type": [
+        "null",
+        "string"
+      ]
     },
     "rust-analyzer.workspace.discoverConfig": {
       "anyOf": [

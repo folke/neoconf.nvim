@@ -126,6 +126,11 @@
       "scope": "window",
       "type": "object"
     },
+    "ada.showNotificationsOnErrors": {
+      "default": false,
+      "markdownDescription": "Whether to show error notifications for failing LSP requests.",
+      "type": "boolean"
+    },
     "ada.trace.server": {
       "default": "off",
       "description": "Traces the communication between VS Code and the Ada language server in the 'Ada Language Server' Output view.",

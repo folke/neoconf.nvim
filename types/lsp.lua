@@ -113,6 +113,8 @@
 -- default = {}
 -- ```
 ---@field scenarioVariables table
+-- Whether to show error notifications for failing LSP requests.
+---@field showNotificationsOnErrors boolean
 ---@field trace _.lspconfig.settings.als.Trace
 -- Enable snippets in completion results (e.g. subprogram calls).
 ---@field useCompletionSnippets boolean
@@ -9871,6 +9873,14 @@
 -- %configuration.omnisharp.csharp.suppressProjectJsonWarning%
 ---@field suppressProjectJsonWarning boolean
 
+---@class _.lspconfig.settings.omnisharp.AutoInsert
+-- %configuration.dotnet.autoInsert.enableAutoInsert%
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enableAutoInsert boolean
+
 ---@class _.lspconfig.settings.omnisharp.BackgroundAnalysis
 -- %configuration.dotnet.backgroundAnalysis.analyzerDiagnosticsScope%
 -- 
@@ -10272,6 +10282,7 @@
 ---@field runSettingsPath string
 
 ---@class _.lspconfig.settings.omnisharp.Dotnet
+---@field autoInsert _.lspconfig.settings.omnisharp.AutoInsert
 ---@field backgroundAnalysis _.lspconfig.settings.omnisharp.BackgroundAnalysis
 ---@field codeLens _.lspconfig.settings.omnisharp.CodeLens
 ---@field completion _.lspconfig.settings.omnisharp.Completion
@@ -14278,18 +14289,15 @@
 -- ```
 ---@field server "off" | "messages" | "verbose"
 
----@class _.lspconfig.settings.rust_analyzer.AutoClosingAngleBrackets
--- Whether to insert closing angle brackets when typing an opening angle bracket of a generic argument list.
----@field enable boolean
-
 ---@class _.lspconfig.settings.rust_analyzer.Typing
----@field autoClosingAngleBrackets _.lspconfig.settings.rust_analyzer.AutoClosingAngleBrackets
 -- Whether to prefix newlines after comments with the corresponding comment prefix.
 -- 
 -- ```lua
 -- default = true
 -- ```
 ---@field continueCommentsOnNewline boolean
+-- Specify the characters to exclude from triggering typing assists. The default trigger characters are `.`, `=`, `<`, `>`, `{`, and `(`. Setting this to a string will disable typing assists for the specified characters.
+---@field excludeChars string
 
 ---@class _.lspconfig.settings.rust_analyzer.Search
 -- Workspace symbol search kind.

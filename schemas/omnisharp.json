@@ -307,6 +307,11 @@
       "description": "%configuration.omnisharp.csharp.suppressProjectJsonWarning%",
       "type": "boolean"
     },
+    "dotnet.autoInsert.enableAutoInsert": {
+      "default": true,
+      "description": "%configuration.dotnet.autoInsert.enableAutoInsert%",
+      "type": "boolean"
+    },
     "dotnet.backgroundAnalysis.analyzerDiagnosticsScope": {
       "default": "openFiles",
       "description": "%configuration.dotnet.backgroundAnalysis.analyzerDiagnosticsScope%",
