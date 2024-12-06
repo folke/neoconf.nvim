@@ -5,10 +5,6 @@
 -- If the VS Code `editor.formatOnType` setting is enabled, the Ada Language Server will format Ada code while it is being typed in the editor, in particular when a new line is typed.
 -- 
 -- This setting controls whether formatting should only perform the indentation of the new line (true) or also format the previous line (false).
--- 
--- ```lua
--- default = true
--- ```
 ---@field indentOnly boolean
 
 ---@class _.lspconfig.settings.als.Trace
@@ -21,97 +17,47 @@
 
 ---@class _.lspconfig.settings.als.Ada
 -- The character set that the Ada Language Server should use when reading files from disk.
--- 
--- ```lua
--- default = "iso-8859-1"
--- ```
 ---@field defaultCharset string
 -- Controls the policy for displaying overriding and overridden subprograms on navigation requests such as 'Go To Definition' or 'Go To Implementations'.
--- 
--- ```lua
--- default = "usage_and_abstract_only"
--- ```
 ---@field displayMethodAncestryOnNavigation "never" | "usage_and_abstract_only" | "definition_only" | "always"
 -- Controls the primary documentation style of entities.
--- 
--- ```lua
--- default = "gnat"
--- ```
 ---@field documentationStyle "gnat" | "leading"
 -- Controls whether or not the Ada Language Server should emit diagnostics into the VS Code Problems view.
--- 
--- ```lua
--- default = true
--- ```
 ---@field enableDiagnostics boolean
 -- Controls whether the Ada Language Server should index the source files immediately after loading a project.
 -- 
 -- If set to false, indexing will be deferred to the time when an action requiring the index is first performed, e.g. hovering over a referenced entity to get its documentation.
--- 
--- ```lua
--- default = true
--- ```
 ---@field enableIndexing boolean
 -- Controls whether comments should be folded like code blocks.
--- 
--- ```lua
--- default = true
--- ```
 ---@field foldComments boolean
 -- Controls the Ada Language Server normalizes the file paths received from the client.
--- 
--- ```lua
--- default = true
--- ```
 ---@field followSymlinks boolean
 -- Enable insertion of missing with-clauses when accepting completion for invisible symbols.
 ---@field insertWithClauses boolean
+-- Controls the maximum number of trace files preserved in the ALS log directory (which defaults to `~/.als`). When this threshold is reached, old trace files get deleted automatically. The default number of preserved trace files is `10`.
+---@field logThreshold integer
 -- Defines the number of parameters/components beyond which named notation is used for completion snippets.
--- 
--- ```lua
--- default = 3
--- ```
 ---@field namedNotationThreshold integer
 ---@field onTypeFormatting _.lspconfig.settings.als.OnTypeFormatting
 -- Controls whether or not the Ada Language Server should emit project diagnostics into the VS Code Problems view.
 -- 
 -- Note: this setting is ignored if `ada.enableDiagnostics` is disabled and a workspace reload is necessary to refresh the diagnostics after modifying this setting.
--- 
--- ```lua
--- default = true
--- ```
 ---@field projectDiagnostics boolean
 -- GPR project file (*.gpr) for this workspace.
 -- 
 -- It is recommended to set this to a relative path starting at the root of the workspace.
--- 
--- ```lua
--- default = ""
--- ```
 ---@field projectFile string
 -- The path to a directory used for out-of-tree builds. This feature is related to the [--relocate-build-tree GPRbuild command line switch](https://docs.adacore.com/gprbuild-docs/html/gprbuild_ug/building_with_gprbuild.html#switches).
--- 
--- ```lua
--- default = ""
--- ```
 ---@field relocateBuildTree string
 -- Enable editing Ada comments to update references to an entity when it is being renamed.
 ---@field renameInComments boolean
 -- This setting must be used in conjunction with the `relocateBuildTree` setting.
 -- 
 -- It specifies the root directory for artifact relocation. It corresponds to the [--root-dir GPRbuild command line switch](https://docs.adacore.com/gprbuild-docs/html/gprbuild_ug/building_with_gprbuild.html#switches).
--- 
--- ```lua
--- default = ""
--- ```
 ---@field rootDir string
 -- Scenario variables to apply to the GPR project file.
 -- 
 -- This value should be provided as an object where the property names are GPR scenario variables and the values are strings.
--- 
--- ```lua
--- default = {}
--- ```
 ---@field scenarioVariables table
 -- Whether to show error notifications for failing LSP requests.
 ---@field showNotificationsOnErrors boolean
@@ -119,10 +65,6 @@
 -- Enable snippets in completion results (e.g. subprogram calls).
 ---@field useCompletionSnippets boolean
 -- Enable GNATformat as the formatting provider for Ada source files.
--- 
--- ```lua
--- default = true
--- ```
 ---@field useGnatformat boolean
 
 ---@class _.lspconfig.settings.als.Trace
@@ -14297,6 +14239,10 @@
 -- ```
 ---@field continueCommentsOnNewline boolean
 -- Specify the characters to exclude from triggering typing assists. The default trigger characters are `.`, `=`, `<`, `>`, `{`, and `(`. Setting this to a string will disable typing assists for the specified characters.
+-- 
+-- ```lua
+-- default = "<"
+-- ```
 ---@field excludeChars string
 
 ---@class _.lspconfig.settings.rust_analyzer.Search
