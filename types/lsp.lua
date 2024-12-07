@@ -14238,7 +14238,7 @@
 -- default = true
 -- ```
 ---@field continueCommentsOnNewline boolean
--- Specify the characters to exclude from triggering typing assists. The default trigger characters are `.`, `=`, `<`, `>`, `{`, and `(`. Setting this to a string will disable typing assists for the specified characters.
+-- Specify the characters to exclude from triggering typing assists. The default trigger characters are `.`, `=`, `<`, `>`, `{`, and `(`.
 -- 
 -- ```lua
 -- default = "<"
