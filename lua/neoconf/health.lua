@@ -32,9 +32,13 @@ function M.check()
   end
 
   if pcall(require, "neodev") then
-    ok("**neodev.nvim** is installed")
+    warn("**neodev.nvim** is installed. lazydev.nvim is a much faster and better replacement for neodev")
+  end
+
+  if pcall(require, "lazydev") then
+    ok("**lazydev.nvim** is installed")
   else
-    warn("**neodev.nvim** is not installed. You won't get any proper completion for your Neovim config.")
+    warn("**lazydev.nvim** is not installed. You won't get any proper completion for your Neovim config.")
   end
 
   local _, lspconfig = pcall(require, "lspconfig.util")
