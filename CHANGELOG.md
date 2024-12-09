@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.4.0](https://github.com/folke/neoconf.nvim/compare/v1.3.3...v1.4.0) (2024-12-09)
+
+
+### Features
+
+* **typst:** add typst_lsp and tinymist ([#93](https://github.com/folke/neoconf.nvim/issues/93)) ([e901bc6](https://github.com/folke/neoconf.nvim/commit/e901bc61d8fa3ec1d5fd592739cfdc8c4b602fe4))
+
+
+### Bug Fixes
+
+* **health:** lazydev.nvim instead of neodev.nvim ([#96](https://github.com/folke/neoconf.nvim/issues/96)) ([605cf4f](https://github.com/folke/neoconf.nvim/commit/605cf4f9aaf2b8f25f448534d2877a54defba9c1))
+
 ## [1.3.3](https://github.com/folke/neoconf.nvim/compare/v1.3.2...v1.3.3) (2024-09-16)
 
 
