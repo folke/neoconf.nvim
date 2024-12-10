@@ -586,7 +586,7 @@
     },
     "typescript.experimental.expandableHover": {
       "default": false,
-      "description": "Enable/disable expanding on hover.",
+      "description": "Enable expanding/contracting the hover to reveal more/less information from the TS server.",
       "scope": "window",
       "tags": [
         "experimental"

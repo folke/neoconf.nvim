@@ -1470,7 +1470,7 @@
       "type": "boolean"
     },
     "rust-analyzer.typing.excludeChars": {
-      "default": "<",
+      "default": "|<",
       "markdownDescription": "Specify the characters to exclude from triggering typing assists. The default trigger characters are `.`, `=`, `<`, `>`, `{`, and `(`.",
       "type": [
         "null",

@@ -14241,7 +14241,7 @@
 -- Specify the characters to exclude from triggering typing assists. The default trigger characters are `.`, `=`, `<`, `>`, `{`, and `(`.
 -- 
 -- ```lua
--- default = "<"
+-- default = "|<"
 -- ```
 ---@field excludeChars string
 
@@ -16388,7 +16388,7 @@
 ---@field npmIsInstalled boolean
 
 ---@class _.lspconfig.settings.ts_ls.Experimental
--- Enable/disable expanding on hover.
+-- Enable expanding/contracting the hover to reveal more/less information from the TS server.
 ---@field expandableHover boolean
 
 ---@class _.lspconfig.settings.ts_ls.Format
