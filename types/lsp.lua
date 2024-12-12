@@ -1016,7 +1016,7 @@
 -- default = true
 -- ```
 ---@field newlineBetweenSelectors boolean
--- Whether existing line breaks before elements should be preserved.
+-- Whether existing line breaks before rules and declarations should be preserved.
 -- 
 -- ```lua
 -- default = true
@@ -1233,7 +1233,7 @@
 -- default = true
 -- ```
 ---@field newlineBetweenSelectors boolean
--- Whether existing line breaks before elements should be preserved.
+-- Whether existing line breaks before rules and declarations should be preserved.
 -- 
 -- ```lua
 -- default = true
@@ -1431,7 +1431,7 @@
 -- default = true
 -- ```
 ---@field newlineBetweenSelectors boolean
--- Whether existing line breaks before elements should be preserved.
+-- Whether existing line breaks before rules and declarations should be preserved.
 -- 
 -- ```lua
 -- default = true
