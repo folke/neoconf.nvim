@@ -17078,6 +17078,12 @@
 ---@field vBindShorthand boolean
 
 ---@class _.lspconfig.settings.volar.Server
+-- Set compatible extensions to skip automatic detection of Hybrid Mode.
+-- 
+-- ```lua
+-- default = {}
+-- ```
+---@field compatibleExtensions string[]
 -- Vue language server only handles CSS and HTML language support, and tsserver takes over TS language support via TS plugin.
 -- 
 -- ```lua

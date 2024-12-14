@@ -175,6 +175,7 @@
     },
     "deno.future": {
       "default": false,
+      "deprecationMessage": "Deno 2.0 has been released. This setting still affects 1.x.x installations, however.",
       "examples": [
         true,
         false

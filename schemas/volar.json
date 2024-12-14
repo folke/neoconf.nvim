@@ -121,6 +121,14 @@
       "description": "Show inlay hints for v-bind shorthand.",
       "type": "boolean"
     },
+    "vue.server.compatibleExtensions": {
+      "default": [],
+      "description": "Set compatible extensions to skip automatic detection of Hybrid Mode.",
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    },
     "vue.server.hybridMode": {
       "default": "auto",
       "description": "Vue language server only handles CSS and HTML language support, and tsserver takes over TS language support via TS plugin.",
