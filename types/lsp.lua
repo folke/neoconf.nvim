@@ -5163,6 +5163,12 @@
 -- default = true
 -- ```
 ---@field languageConstraints boolean
+-- Enables reporting of errors associated with type member access.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field memberAccess boolean
 -- This setting turns off type checking for the `mixed` type. This is useful for projects that may have incomplete or innacurate typings. Set to `false` to make type checking more thorough by not allowing `mixed` to satisy any type constraint. This setting has no effect when `relaxedTypeCheck` is `true`.
 -- 
 -- ```lua
@@ -5443,7 +5449,7 @@
 -- Configure stub files for built in symbols and common extensions. The default setting includes PHP core and all bundled extensions.
 -- 
 -- ```lua
--- default = { "apache", "bcmath", "bz2", "calendar", "com_dotnet", "Core", "ctype", "curl", "date", "dba", "dom", "enchant", "exif", "FFI", "fileinfo", "filter", "fpm", "ftp", "gd", "gettext", "gmp", "hash", "iconv", "imap", "intl", "json", "ldap", "libxml", "mbstring", "meta", "mysqli", "oci8", "odbc", "openssl", "pcntl", "pcre", "PDO", "pdo_ibm", "pdo_mysql", "pdo_pgsql", "pdo_sqlite", "pgsql", "Phar", "posix", "pspell", "random", "readline", "Reflection", "session", "shmop", "SimpleXML", "snmp", "soap", "sockets", "sodium", "SPL", "sqlite3", "standard", "superglobals", "sysvmsg", "sysvsem", "sysvshm", "tidy", "tokenizer", "xml", "xmlreader", "xmlrpc", "xmlwriter", "xsl", "Zend OPcache", "zip", "zlib" }
+-- default = { "apache", "bcmath", "bz2", "calendar", "com_dotnet", "Core", "ctype", "curl", "date", "dba", "dom", "enchant", "exif", "FFI", "fileinfo", "filter", "fpm", "frankenphp", "ftp", "gd", "gettext", "gmp", "hash", "iconv", "imap", "intl", "json", "ldap", "libxml", "mbstring", "meta", "mysqli", "oci8", "odbc", "openssl", "pcntl", "pcre", "PDO", "pdo_ibm", "pdo_mysql", "pdo_pgsql", "pdo_sqlite", "pgsql", "Phar", "posix", "pspell", "random", "readline", "Reflection", "session", "shmop", "SimpleXML", "snmp", "soap", "sockets", "sodium", "SPL", "sqlite3", "standard", "superglobals", "sysvmsg", "sysvsem", "sysvshm", "tidy", "tokenizer", "xml", "xmlreader", "xmlrpc", "xmlwriter", "xsl", "Zend OPcache", "zip", "zlib" }
 -- ```
 ---@field stubs string[]
 ---@field telemetry _.lspconfig.settings.intelephense.Telemetry
@@ -8786,7 +8792,7 @@
 -- When hovering to view a table, limits the maximum number of previews for fields.
 -- 
 -- ```lua
--- default = 50
+-- default = 10
 -- ```
 ---@field previewFields integer
 -- Hover to view numeric content (only if literal is not decimal).
@@ -9089,6 +9095,12 @@
 -- When this setting is `false`, the type of the parameter is `any` when it is not annotated.
 -- 
 ---@field inferParamType boolean
+-- TODO: Needs documentation
+-- 
+-- ```lua
+-- default = 10
+-- ```
+---@field inferTableSize integer
 -- When checking the type of union type, ignore the `nil` in it.
 -- 
 -- When this setting is `false`, the `number|nil` type cannot be assigned to the `number` type. It can be with `true`.
@@ -14696,6 +14708,152 @@
 
 ---@class lspconfig.settings.solidity_ls
 ---@field solidity _.lspconfig.settings.solidity_ls.Solidity
+
+---@class _.lspconfig.settings.sonarlint.Connections
+-- Connect SonarQube for VS Code to SonarQube Cloud to apply the same Clean Code standards as your team. Analyze more languages, detect more issues **on the whole project**, receive notifications about the quality gate status, and more. Quality Profiles and file exclusion settings defined on the server are shared between all connected users. Please find the documentation [here](https://docs.sonarsource.com/sonarqube-for-ide/vs-code/team-features/connected-mode/)
+-- 
+-- ```lua
+-- default = {}
+-- ```
+---@field sonarcloud object[]
+-- Connect SonarQube for VS Code to SonarQube Server to apply the same Clean Code standards as your team. Analyze more languages, detect more issues **on the whole project**, receive notifications about the quality gate status, and more. Quality Profiles and file exclusion settings defined on the server are shared between all connected users. Please find the documentation [here](https://docs.sonarsource.com/sonarqube-for-ide/vs-code/team-features/connected-mode/)
+-- 
+-- ```lua
+-- default = {}
+-- ```
+---@field sonarqube object[]
+
+---@class _.lspconfig.settings.sonarlint.ConnectedMode
+---@field connections _.lspconfig.settings.sonarlint.Connections
+-- Bind the current workspace folder to a [SonarQube Server](command:SonarLint.HelpAndFeedbackLinkClicked?%22sonarQubeProductPage%22) or [SonarQube Cloud](command:SonarLint.HelpAndFeedbackLinkClicked?%22sonarCloudProductPage%22) project. Requires connection details to be defined in the setting `#sonarlint.connectedMode.connections.sonarqube#` or `#sonarlint.connectedMode.connections.sonarcloud#`.
+-- 
+-- Binding a workspace folder to a server project allows SonarQube for VS Code to match, as much as possible, the same rules and settings as found on the server, and hence share the analysis configuration with other contributors.
+-- 
+-- Example:
+-- 
+--     "sonarlint.connectedMode.project": {
+--       "projectKey": "my_project",
+--       "connectionId":"my_connection_id"
+--     }
+-- 
+-- 
+-- 
+-- ```lua
+-- default = {}
+-- ```
+---@field project table|table
+-- Configure one or more connection(s) to SonarQube (Server, Cloud). For security reasons, the token should not be stored in SCM with workspace settings. The `serverId` can be any identifier and will be referenced in `#sonarlint.connectedMode.project#`.
+-- 
+-- Example for SonarQube Cloud:
+-- 
+--     "sonarlint.connectedMode.servers": [
+--       {
+--         "serverId": "my_orga_in_sonarcloud.io",
+--         "serverUrl": "https://sonarcloud.io",
+--         "organizationKey": "my_organization",
+--         "token": "V2VkIE1..."
+--       }
+--     ]
+-- 
+-- Example for SonarQube Server:
+-- 
+--     "sonarlint.connectedMode.servers": [
+--       {
+--         "serverId": "my_sonarqube",
+--         "serverUrl": "https://sonar.mycompany.com",
+--         "token": "V2VkIE1..."
+--       }
+--     ]
+-- 
+-- ```lua
+-- default = {}
+-- ```
+---@field servers any[]
+
+---@class _.lspconfig.settings.sonarlint.Ls
+-- Path to a Java Runtime Environment (17 or more recent) used to launch the SonarQube for VS Code Language Server.
+-- * On Windows, backslashes must be escaped, e.g. `C:\\Program Files\\Java\\jdk-17` 
+-- * On macOS, this path should include the `/Contents/Home` directory, e.g `/Library/Java/JavaVirtualMachines/corretto-17.0.5/Contents/Home`
+---@field javaHome string
+-- Extra JVM arguments used to launch the SonarLint Language Server. e.g. `-Xmx1024m`
+---@field vmargs string
+
+---@class _.lspconfig.settings.sonarlint.Output
+-- Show analyzer's logs in the SonarQube for IDE output.
+---@field showAnalyzerLogs boolean
+-- Enable verbose log level in the SonarQube for IDE output.
+---@field showVerboseLogs boolean
+
+---@class _.lspconfig.settings.sonarlint.Trace
+-- Traces the communication between VS Code and the SonarLint language server.
+-- 
+-- ```lua
+-- default = "off"
+-- ```
+---@field server "off" | "messages" | "verbose"|table
+
+---@class _.lspconfig.settings.sonarlint.Sonarlint
+-- Files whose name match this [glob pattern](https://docs.oracle.com/javase/tutorial/essential/io/fileOps.html#glob) will not be processed by analyzers. In [Connected Mode](command:SonarLint.HelpAndFeedbackLinkClicked?%22connectedModeDocs%22) with SonarQube Server or SonarQube Cloud, this property will be ignored and the server's exclusion settings will be applied. No rules are evaluated on excluded files. Example: `**/lib/**,**/*generated*`
+-- 
+-- ```lua
+-- default = ""
+-- ```
+---@field analysisExcludesStandalone string
+-- Extra properties that could be passed to the code analyzers. Only for advanced use cases.
+---@field analyzerProperties table
+---@field connectedMode _.lspconfig.settings.sonarlint.ConnectedMode
+-- Disable sending anonymous usage statistics to SonarSource. Click [here](https://github.com/SonarSource/sonarlint-vscode/blob/master/telemetry-sample.md) to see a sample of the data that are collected.
+---@field disableTelemetry boolean
+-- Highlight issues in new code.
+-- 
+-- Focusing on new code helps you practice [Clean as You Code](https://docs.sonarsource.com/sonarqube-for-ide/vs-code/clean-as-you-code-in-the-ide/).
+-- 
+-- In [Connected Mode](https://docs.sonarsource.com/sonarqube-for-ide/vs-code/team-features/connected-mode/) you benefit from a more accurate new code definition based on your SonarQube (Server, Cloud) settings.
+-- 
+-- Without Connected Mode (in standalone mode), any code added or changed in the **last 30 days** is considered new code.
+---@field focusOnNewCode boolean
+---@field ls _.lspconfig.settings.sonarlint.Ls
+---@field output _.lspconfig.settings.sonarlint.Output
+-- Path to the active compilation database, e.g. `C:\\Repos\\MyProject\\compile_commands.json`
+---@field pathToCompileCommands string
+-- Path to a Node.js executable (18.18 or more recent) used to analyze JavaScript and TypeScript code. 
+-- On Windows, backslashes must be escaped, e.g. `C:\\Program Files\\NodeJS\\20-lts\\bin\\node.exe`
+---@field pathToNodeExecutable string
+-- Customize applied rule set. This property contains a list of rules whose activation level or parameter values differ from the one provided by default. In [Connected Mode](command:SonarLint.HelpAndFeedbackLinkClicked?%22connectedModeDocs%22), this configuration is overridden by the projects's Quality Profile, as configured on server side and can be **shared among contributors**. See [SonarLint Rules](command:SonarLint.AllRules.focus) view for the list of **locally** available rules.
+-- 
+-- Example:
+-- 
+--     "sonarlint.rules": {
+--         "javascript:S1481": {
+--             "level": "off",
+--          },
+--         "javascript:S103": {
+--             "level": "on",
+--             "parameters": {
+--                 "maximumLineLength": "120"
+--             }
+--         }
+--     }
+-- 
+-- 
+-- ```lua
+-- default = {}
+-- ```
+---@field rules table
+-- Files whose name match this [glob pattern](https://docs.oracle.com/javase/tutorial/essential/io/fileOps.html#glob) are considered as test files by analyzers. Most rules are *not* evaluated on test files.
+-- 
+-- In [Connected Mode](command:SonarLint.HelpAndFeedbackLinkClicked?%22connectedModeDocs%22), this setting is configured **on the server-side** and shared among all contributors.
+-- 
+-- Example: `**/test/**,**/*test*,**/*Test*`
+-- 
+-- ```lua
+-- default = ""
+-- ```
+---@field testFilePattern string
+---@field trace _.lspconfig.settings.sonarlint.Trace
+
+---@class lspconfig.settings.sonarlint
+---@field sonarlint _.lspconfig.settings.sonarlint.Sonarlint
 
 ---@class _.lspconfig.settings.sorbet.Sorbet
 -- List of workspace file patterns that contribute to Sorbet's configuration.  Changes to any of those files should trigger a restart of any actively running Sorbet language server.

@@ -385,6 +385,14 @@ lspconfig.solidity_ls = {
   setup = function(options) end,
 }
 
+---@class lspconfig.options.sonarlint: _.lspconfig.options
+---@field settings lspconfig.settings.sonarlint
+
+lspconfig.sonarlint = {
+  ---@param options lspconfig.options.sonarlint
+  setup = function(options) end,
+}
+
 ---@class lspconfig.options.sorbet: _.lspconfig.options
 ---@field settings lspconfig.settings.sorbet
 
@@ -576,6 +584,7 @@ lspconfig.zls = {
 ---@field rust_analyzer lspconfig.options.rust_analyzer
 ---@field solargraph lspconfig.options.solargraph
 ---@field solidity_ls lspconfig.options.solidity_ls
+---@field sonarlint lspconfig.options.sonarlint
 ---@field sorbet lspconfig.options.sorbet
 ---@field sourcekit lspconfig.options.sourcekit
 ---@field spectral lspconfig.options.spectral
@@ -642,6 +651,7 @@ lspconfig.zls = {
 ---@field rust_analyzer lspconfig.settings.rust_analyzer
 ---@field solargraph lspconfig.settings.solargraph
 ---@field solidity_ls lspconfig.settings.solidity_ls
+---@field sonarlint lspconfig.settings.sonarlint
 ---@field sorbet lspconfig.settings.sorbet
 ---@field sourcekit lspconfig.settings.sourcekit
 ---@field spectral lspconfig.settings.spectral
