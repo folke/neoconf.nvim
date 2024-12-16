@@ -52,6 +52,7 @@ M.index = {
   solargraph = "https://raw.githubusercontent.com/castwide/vscode-solargraph/master/package.json",
   solidity_ls = "https://raw.githubusercontent.com/juanfranblanco/vscode-solidity/master/package.json",
   sorbet = "https://raw.githubusercontent.com/sorbet/sorbet/master/vscode_extension/package.json",
+  sonarlint = "https://raw.githubusercontent.com/SonarSource/sonarlint-vscode/master/package.json",
   sourcekit = "https://raw.githubusercontent.com/swift-server/vscode-swift/main/package.json",
   spectral = "https://raw.githubusercontent.com/stoplightio/vscode-spectral/master/package.json",
   stylelint_lsp = "https://raw.githubusercontent.com/bmatcuk/coc-stylelintplus/master/package.json",
