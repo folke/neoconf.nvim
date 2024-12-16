@@ -42,6 +42,20 @@
       "title": "Trigger LSP Completion on Snippet Placeholders",
       "type": "boolean"
     },
+    "tinymist.configureDefaultWordSeparator": {
+      "default": "enable",
+      "description": "Whether to configure default word separators on startup",
+      "enum": [
+        "enable",
+        "disable"
+      ],
+      "enumDescriptions": [
+        "Override the default word separators on startup",
+        "Do not override the default word separators on startup"
+      ],
+      "title": "Configure default word separators",
+      "type": "string"
+    },
     "tinymist.dragAndDrop": {
       "default": "enable",
       "description": "Whether to handle drag-and-drop of resources into the editing typst document. Note: restarting the editor is required to change this setting.",

@@ -15873,6 +15873,12 @@
 -- ```
 ---@field compileStatus "enable" | "disable"
 ---@field completion _.lspconfig.settings.tinymist.Completion
+-- Whether to configure default word separators on startup
+-- 
+-- ```lua
+-- default = "enable"
+-- ```
+---@field configureDefaultWordSeparator "enable" | "disable"
 -- Whether to handle drag-and-drop of resources into the editing typst document. Note: restarting the editor is required to change this setting.
 -- 
 -- ```lua
