@@ -32,6 +32,10 @@
 ---@field foldComments boolean
 -- Controls the Ada Language Server normalizes the file paths received from the client.
 ---@field followSymlinks boolean
+-- GPR configuration file (*.cgpr) for this workspace.
+-- 
+-- It is recommended to set this to a relative path starting at the root of the workspace.
+---@field gprConfigurationFile string
 -- Enable insertion of missing with-clauses when accepting completion for invisible symbols.
 ---@field insertWithClauses boolean
 -- Controls the maximum number of trace files preserved in the ALS log directory (which defaults to `~/.als`). When this threshold is reached, old trace files get deleted automatically. The default number of preserved trace files is `10`.
@@ -15020,7 +15024,7 @@
 ---@field autoGenerateLaunchConfigurations boolean
 -- **Experimental**: Run `swift build` in the background whenever a file is saved. It is possible the background compilation will already be running when you attempt a compile yourself, so this is disabled by default.
 ---@field backgroundCompilation boolean
--- Additional arguments to pass to `swift` commands such as `swift build`, `swift package`, `swift test`, etc... Keys and values should be provided as individual entries in the list. If you have created a copy of the build task in `tasks.json` then these build arguments will not be propogated to that task.
+-- Additional arguments to pass to `swift` commands such as `swift build`, `swift package`, `swift test`, etc... Keys and values should be provided as individual entries in the list. If you have created a copy of the build task in `tasks.json` then these build arguments will not be propagated to that task.
 -- 
 -- ```lua
 -- default = {}

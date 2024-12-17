@@ -64,6 +64,13 @@
       "scope": "window",
       "type": "boolean"
     },
+    "ada.gprConfigurationFile": {
+      "default": null,
+      "description": "GPR configuration file (*.cgpr) for this workspace.\n\nIt is recommended to set this to a relative path starting at the root of the workspace.",
+      "order": 0,
+      "scope": "window",
+      "type": "string"
+    },
     "ada.insertWithClauses": {
       "default": null,
       "description": "Enable insertion of missing with-clauses when accepting completion for invisible symbols.",
