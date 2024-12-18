@@ -5816,10 +5816,6 @@
 ---@field onType _.lspconfig.settings.jdtls.OnType
 ---@field settings _.lspconfig.settings.jdtls.Settings
 
----@class _.lspconfig.settings.jdtls.ImplementationsCodeLens
--- Enable/disable the implementations code lens.
----@field enabled boolean
-
 ---@class _.lspconfig.settings.jdtls.AnnotationProcessing
 -- Enable/disable the annotation processing on Gradle projects and delegate Annotation Processing to JDT APT. Only works for Gradle 5.2 or higher.
 -- 
@@ -6249,7 +6245,12 @@
 -- On Windows, backslashes must be escaped, i.e.
 -- "java.home":"C:\\Program Files\\Java\\jdk-17.0_3"
 ---@field home string
----@field implementationsCodeLens _.lspconfig.settings.jdtls.ImplementationsCodeLens
+-- Enable/disable the implementations code lens for the provided categories.
+-- 
+-- ```lua
+-- default = "none"
+-- ```
+---@field implementationCodeLens "none" | "types" | "methods" | "all"
 ---@field import _.lspconfig.settings.jdtls.Import
 ---@field imports _.lspconfig.settings.jdtls.Imports
 ---@field inlayHints _.lspconfig.settings.jdtls.InlayHints

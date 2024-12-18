@@ -598,12 +598,24 @@
         "null"
       ]
     },
-    "java.implementationsCodeLens.enabled": {
-      "default": false,
-      "description": "Enable/disable the implementations code lens.",
+    "java.implementationCodeLens": {
+      "default": "none",
+      "description": "Enable/disable the implementations code lens for the provided categories.",
+      "enum": [
+        "none",
+        "types",
+        "methods",
+        "all"
+      ],
+      "enumDescriptions": [
+        "Disable the implementations code lens",
+        "Enable the implementations code lens only for types",
+        "Enable the implementations code lens only for methods",
+        "Enable the implementations code lens for types and methods"
+      ],
       "order": 20,
       "scope": "window",
-      "type": "boolean"
+      "type": "string"
     },
     "java.import.exclusions": {
       "default": [
