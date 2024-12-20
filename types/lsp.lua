@@ -5266,7 +5266,7 @@
 -- A semver compatible string that represents the target PHP version. Used for providing version appropriate suggestions and diagnostics. PHP 5.3.0 and greater supported.
 -- 
 -- ```lua
--- default = "8.3.0"
+-- default = "8.4.0"
 -- ```
 ---@field phpVersion string
 -- When enabled '<?' will be parsed as a PHP open tag. Defaults to true.
@@ -16206,20 +16206,6 @@
 -- Enable/disable `experimentalDecorators` in JavaScript files that are not part of a project. Existing `jsconfig.json` or `tsconfig.json` files override this setting.
 ---@field experimentalDecorators boolean
 
----@class _.lspconfig.settings.ts_ls.EnumMemberValues
--- Enable/disable inlay hints for member values in enum declarations:
--- ```typescript
--- 
--- enum MyValue {
--- 	A /* = 0 */;
--- 	B /* = 1 */;
--- }
---  
--- ```
--- 
--- The text inside the ``` block is code and should not be localized.
----@field enabled boolean
-
 ---@class _.lspconfig.settings.ts_ls.FunctionLikeReturnTypes
 -- Enable/disable inlay hints for implicit return types on function signatures:
 -- ```typescript
@@ -16296,7 +16282,6 @@
 ---@field suppressWhenTypeMatchesName boolean
 
 ---@class _.lspconfig.settings.ts_ls.InlayHints
----@field enumMemberValues _.lspconfig.settings.ts_ls.EnumMemberValues
 ---@field functionLikeReturnTypes _.lspconfig.settings.ts_ls.FunctionLikeReturnTypes
 ---@field parameterNames _.lspconfig.settings.ts_ls.ParameterNames
 ---@field parameterTypes _.lspconfig.settings.ts_ls.ParameterTypes

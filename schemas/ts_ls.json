@@ -134,12 +134,6 @@
       "scope": "window",
       "type": "boolean"
     },
-    "javascript.inlayHints.enumMemberValues.enabled": {
-      "default": false,
-      "markdownDescription": "Enable/disable inlay hints for member values in enum declarations:\n```typescript\n\nenum MyValue {\n\tA /* = 0 */;\n\tB /* = 1 */;\n}\n \n```\n\nThe text inside the ``` block is code and should not be localized.",
-      "scope": "resource",
-      "type": "boolean"
-    },
     "javascript.inlayHints.functionLikeReturnTypes.enabled": {
       "default": false,
       "markdownDescription": "Enable/disable inlay hints for implicit return types on function signatures:\n```typescript\n\nfunction foo() /* :number */ {\n\treturn Date.now();\n} \n \n```\n\nThe text inside the ``` block is code and should not be localized.",
