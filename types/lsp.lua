@@ -8751,6 +8751,8 @@
 -- default = true
 -- ```
 ---@field await boolean
+-- Enable the propagation of `await`. When a function calls a function marked `---@async`,it will be automatically marked as `---@async`.
+---@field awaitPropagate boolean
 -- Enable inlay hint.
 ---@field enable boolean
 -- Show hints of parameter name at the function call.
@@ -17220,15 +17222,39 @@
 ---@field wrapAttributes "auto" | "force" | "force-aligned" | "force-expand-multiline" | "aligned-multiple" | "preserve" | "preserve-aligned"
 
 ---@class _.lspconfig.settings.volar.InlayHints
--- Show inlay hints for destructured props.
+-- Show inlay hints for destructured props:
+-- 
+-- ```ts
+-- watch(() => /* props. */foo, () => { ... });
+-- ```
 ---@field destructuredProps boolean
--- Show inlay hints for event argument in inline handlers.
+-- Show inlay hints for event argument in inline handlers:
+-- 
+-- ```html
+-- <Comp @foo="/* $event => */console.log($event)" />
+-- ```
 ---@field inlineHandlerLeading boolean
--- Show inlay hints for missing required props.
+-- Show inlay hints for missing required props:
+-- 
+-- ```html
+-- <Comp />
+-- <!-- ^ foo! -->
+-- ```
 ---@field missingProps boolean
--- Show inlay hints for component options wrapper for type support.
+-- Show inlay hints for component options wrapper for type support:
+-- 
+-- ```vue
+-- <script lang="ts">
+-- export default /* (await import('vue')).defineComponent( */{}/* ) */;
+-- </script>
+-- ```
 ---@field optionsWrapper boolean
--- Show inlay hints for v-bind shorthand.
+-- Show inlay hints for v-bind shorthand:
+-- 
+-- ```html
+-- <Comp :foo />
+--      <!-- ^ ="foo" -->
+-- ```
 ---@field vBindShorthand boolean
 
 ---@class _.lspconfig.settings.volar.Server

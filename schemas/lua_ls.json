@@ -2522,6 +2522,12 @@
       "scope": "resource",
       "type": "boolean"
     },
+    "Lua.hint.awaitPropagate": {
+      "default": false,
+      "markdownDescription": "Enable the propagation of `await`. When a function calls a function marked `---@async`,it will be automatically marked as `---@async`.",
+      "scope": "resource",
+      "type": "boolean"
+    },
     "Lua.hint.enable": {
       "default": false,
       "markdownDescription": "Enable inlay hint.",

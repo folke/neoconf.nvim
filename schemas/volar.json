@@ -98,27 +98,27 @@
     },
     "vue.inlayHints.destructuredProps": {
       "default": false,
-      "description": "Show inlay hints for destructured props.",
+      "markdownDescription": "Show inlay hints for destructured props:\n\n```ts\nwatch(() => /* props. */foo, () => { ... });\n```",
       "type": "boolean"
     },
     "vue.inlayHints.inlineHandlerLeading": {
       "default": false,
-      "description": "Show inlay hints for event argument in inline handlers.",
+      "markdownDescription": "Show inlay hints for event argument in inline handlers:\n\n```html\n<Comp @foo=\"/* $event => */console.log($event)\" />\n```",
       "type": "boolean"
     },
     "vue.inlayHints.missingProps": {
       "default": false,
-      "description": "Show inlay hints for missing required props.",
+      "markdownDescription": "Show inlay hints for missing required props:\n\n```html\n<Comp />\n<!-- ^ foo! -->\n```",
       "type": "boolean"
     },
     "vue.inlayHints.optionsWrapper": {
       "default": false,
-      "description": "Show inlay hints for component options wrapper for type support.",
+      "markdownDescription": "Show inlay hints for component options wrapper for type support:\n\n```vue\n<script lang=\"ts\">\nexport default /* (await import('vue')).defineComponent( */{}/* ) */;\n</script>\n```",
       "type": "boolean"
     },
     "vue.inlayHints.vBindShorthand": {
       "default": false,
-      "description": "Show inlay hints for v-bind shorthand.",
+      "markdownDescription": "Show inlay hints for v-bind shorthand:\n\n```html\n<Comp :foo />\n     <!-- ^ =\"foo\" -->\n```",
       "type": "boolean"
     },
     "vue.server.compatibleExtensions": {
