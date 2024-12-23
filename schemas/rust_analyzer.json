@@ -322,7 +322,7 @@
     },
     "rust-analyzer.check.workspace": {
       "default": true,
-      "markdownDescription": "Whether `--workspace` should be passed to `cargo check`.\nIf false, `-p <package>` will be passed instead.",
+      "markdownDescription": "Whether `--workspace` should be passed to `cargo check`.\nIf false, `-p <package>` will be passed instead if applicable. In case it is not, no\ncheck will be performed.",
       "type": "boolean"
     },
     "rust-analyzer.checkOnSave": {

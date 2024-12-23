@@ -975,6 +975,8 @@
 ---@field serverCompletionRanking boolean
 -- Names a file that clangd should log a performance trace to, in chrome trace-viewer JSON format.
 ---@field trace string
+-- Allows the path to be a script e.g.: clangd.sh.
+---@field useScriptAsExecutable boolean
 
 ---@class lspconfig.settings.clangd
 ---@field clangd _.lspconfig.settings.clangd.Clangd
@@ -13282,7 +13284,8 @@
 -- Aliased as `"checkOnSave.targets"`.
 ---@field targets any|string|string[]
 -- Whether `--workspace` should be passed to `cargo check`.
--- If false, `-p <package>` will be passed instead.
+-- If false, `-p <package>` will be passed instead if applicable. In case it is not, no
+-- check will be performed.
 -- 
 -- ```lua
 -- default = true
