@@ -13687,6 +13687,16 @@
 ---@field actions _.lspconfig.settings.rust_analyzer.Actions
 ---@field documentation _.lspconfig.settings.rust_analyzer.Documentation
 ---@field links _.lspconfig.settings.rust_analyzer.Links
+-- Whether to show what types are used as generic arguments in calls etc. on hover, and what is their max length to show such types, beyond it they will be shown with ellipsis.
+-- 
+-- This can take three values: `null` means "unlimited", the string `"hide"` means to not show generic substitutions at all, and a number means to limit them to X characters.
+-- 
+-- The default is 20 characters.
+-- 
+-- ```lua
+-- default = 20
+-- ```
+---@field maxSubstitutionLength any|"hide"|integer
 ---@field memoryLayout _.lspconfig.settings.rust_analyzer.MemoryLayout
 ---@field show _.lspconfig.settings.rust_analyzer.Show
 
@@ -14232,18 +14242,28 @@
 -- default = "openLogs"
 -- ```
 ---@field clickAction "stopServer" | "openLogs"
--- Determines when to show the extension status bar item based on the currently open file. Use `{ "pattern": "**" }` to always show. Use `null` to never show.
+-- When to show the extension status bar.
+-- 
+-- `"always"` Always show the status bar.
+-- 
+-- `"never"` Never show the status bar.
+-- 
+-- `{ documentSelector: <DocumentSelector>[] }` Show the status bar if the open file matches any of the given document selectors.
+-- 
+-- See [VS Code -- DocumentSelector](https://code.visualstudio.com/api/references/document-selector) for more information.
 -- 
 -- ```lua
--- default = { {
---     language = "rust"
---   }, {
---     pattern = "**/Cargo.toml"
---   }, {
---     pattern = "**/Cargo.lock"
---   } }
+-- default = {
+--   documentSelector = { {
+--       language = "rust"
+--     }, {
+--       pattern = "**/Cargo.toml"
+--     }, {
+--       pattern = "**/Cargo.lock"
+--     } }
+-- }
 -- ```
----@field documentSelector object[]
+---@field showStatusBar "always" | "never"|table
 
 ---@class _.lspconfig.settings.rust_analyzer.Trace
 -- Enable logging of VS Code extensions itself.

@@ -636,6 +636,24 @@
       "markdownDescription": "Use markdown syntax for links on hover.",
       "type": "boolean"
     },
+    "rust-analyzer.hover.maxSubstitutionLength": {
+      "anyOf": [
+        {
+          "type": "null"
+        },
+        {
+          "enum": [
+            "hide"
+          ],
+          "type": "string"
+        },
+        {
+          "type": "integer"
+        }
+      ],
+      "default": 20,
+      "markdownDescription": "Whether to show what types are used as generic arguments in calls etc. on hover, and what is their max length to show such types, beyond it they will be shown with ellipsis.\n\nThis can take three values: `null` means \"unlimited\", the string `\"hide\"` means to not show generic substitutions at all, and a number means to limit them to X characters.\n\nThe default is 20 characters."
+    },
     "rust-analyzer.hover.memoryLayout.alignment": {
       "anyOf": [
         {
@@ -1402,40 +1420,55 @@
       "markdownDescription": "Action to run when clicking the extension status bar item.",
       "type": "string"
     },
-    "rust-analyzer.statusBar.documentSelector": {
-      "default": [
+    "rust-analyzer.statusBar.showStatusBar": {
+      "anyOf": [
         {
-          "language": "rust"
+          "enum": [
+            "always",
+            "never"
+          ],
+          "type": "string"
         },
         {
-          "pattern": "**/Cargo.toml"
-        },
-        {
-          "pattern": "**/Cargo.lock"
+          "properties": {
+            "documentSelector": {
+              "items": {
+                "properties": {
+                  "language": {
+                    "type": "string"
+                  },
+                  "notebookType": {
+                    "type": "string"
+                  },
+                  "pattern": {
+                    "type": "string"
+                  },
+                  "scheme": {
+                    "type": "string"
+                  }
+                },
+                "type": "object"
+              },
+              "type": "array"
+            }
+          },
+          "type": "object"
         }
       ],
-      "items": {
-        "properties": {
-          "language": {
-            "type": [
-              "string",
-              "null"
-            ]
+      "default": {
+        "documentSelector": [
+          {
+            "language": "rust"
           },
-          "pattern": {
-            "type": [
-              "string",
-              "null"
-            ]
+          {
+            "pattern": "**/Cargo.toml"
+          },
+          {
+            "pattern": "**/Cargo.lock"
           }
-        },
-        "type": "object"
+        ]
       },
-      "markdownDescription": "Determines when to show the extension status bar item based on the currently open file. Use `{ \"pattern\": \"**\" }` to always show. Use `null` to never show.",
-      "type": [
-        "array",
-        "null"
-      ]
+      "markdownDescription": "When to show the extension status bar.\n\n`\"always\"` Always show the status bar.\n\n`\"never\"` Never show the status bar.\n\n`{ documentSelector: <DocumentSelector>[] }` Show the status bar if the open file matches any of the given document selectors.\n\nSee [VS Code -- DocumentSelector](https://code.visualstudio.com/api/references/document-selector) for more information."
     },
     "rust-analyzer.testExplorer": {
       "default": false,
