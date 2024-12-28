@@ -9436,6 +9436,14 @@
 ---@class _.lspconfig.settings.luau_lsp.InlayHints
 -- Show inlay hints for function return types
 ---@field functionReturnTypes boolean
+-- Whether type hints should be hidden if they resolve to an error type
+---@field hideHintsForErrorTypes boolean
+-- Whether type hints should be hidden if the resolved variable name matches the parameter name
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field hideHintsForMatchingParameterNames boolean
 -- Whether type annotation inlay hints can be made insertable by clicking
 -- 
 -- ```lua

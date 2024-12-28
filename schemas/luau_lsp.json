@@ -258,6 +258,18 @@
       "scope": "resource",
       "type": "boolean"
     },
+    "luau-lsp.inlayHints.hideHintsForErrorTypes": {
+      "default": false,
+      "markdownDescription": "Whether type hints should be hidden if they resolve to an error type",
+      "scope": "resource",
+      "type": "boolean"
+    },
+    "luau-lsp.inlayHints.hideHintsForMatchingParameterNames": {
+      "default": true,
+      "markdownDescription": "Whether type hints should be hidden if the resolved variable name matches the parameter name",
+      "scope": "resource",
+      "type": "boolean"
+    },
     "luau-lsp.inlayHints.makeInsertable": {
       "default": true,
       "markdownDescription": "Whether type annotation inlay hints can be made insertable by clicking",
