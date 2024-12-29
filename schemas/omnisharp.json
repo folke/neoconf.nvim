@@ -307,6 +307,11 @@
       "description": "%configuration.omnisharp.csharp.suppressProjectJsonWarning%",
       "type": "boolean"
     },
+    "dotnet.autoInsert.enableAutoInsert": {
+      "default": true,
+      "description": "%configuration.dotnet.autoInsert.enableAutoInsert%",
+      "type": "boolean"
+    },
     "dotnet.backgroundAnalysis.analyzerDiagnosticsScope": {
       "default": "openFiles",
       "description": "%configuration.dotnet.backgroundAnalysis.analyzerDiagnosticsScope%",
@@ -376,11 +381,6 @@
     "dotnet.defaultSolution": {
       "description": "%configuration.dotnet.defaultSolution.description%",
       "order": 0,
-      "type": "string"
-    },
-    "dotnet.dotnetPath": {
-      "description": "%configuration.dotnet.dotnetPath%",
-      "scope": "machine-overridable",
       "type": "string"
     },
     "dotnet.enableXamlTools": {
@@ -523,7 +523,7 @@
       "type": "string"
     },
     "dotnet.server.startTimeout": {
-      "default": 30000,
+      "default": 120000,
       "description": "%configuration.dotnet.server.startTimeout%",
       "scope": "machine-overridable",
       "type": "number"
@@ -533,20 +533,10 @@
       "description": "%configuration.dotnet.server.suppressLspErrorToasts%",
       "type": "boolean"
     },
-    "dotnet.server.trace": {
-      "default": "Information",
-      "description": "%configuration.dotnet.server.trace%",
-      "enum": [
-        "Trace",
-        "Debug",
-        "Information",
-        "Warning",
-        "Error",
-        "Critical",
-        "None"
-      ],
-      "scope": "window",
-      "type": "string"
+    "dotnet.server.suppressMiscellaneousFilesToasts": {
+      "default": false,
+      "description": "%configuration.dotnet.server.suppressMiscellaneousFilesToasts%",
+      "type": "boolean"
     },
     "dotnet.server.useOmnisharp": {
       "default": false,
@@ -842,6 +832,11 @@
       "type": "array",
       "uniqueItems": true
     },
+    "omnisharp.dotnetPath": {
+      "description": "%configuration.omnisharp.dotnetPath%",
+      "scope": "machine-overridable",
+      "type": "string"
+    },
     "omnisharp.enableAsyncCompletion": {
       "default": false,
       "description": "%configuration.omnisharp.enableAsyncCompletion%",
@@ -981,8 +976,20 @@
       "type": "string"
     },
     "razor.languageServer.forceRuntimeCodeGeneration": {
-      "default": false,
+      "default": null,
       "description": "%configuration.razor.languageServer.forceRuntimeCodeGeneration%",
+      "order": 90,
+      "scope": "machine-overridable",
+      "type": "boolean"
+    },
+    "razor.languageServer.suppressLspErrorToasts": {
+      "default": true,
+      "description": "%configuration.razor.languageServer.suppressLspErrorToasts%",
+      "type": "boolean"
+    },
+    "razor.languageServer.useRoslynTokenizer": {
+      "default": false,
+      "markdownDescription": "%configuration.razor.languageServer.useRoslynTokenizer%",
       "order": 90,
       "scope": "machine-overridable",
       "type": "boolean"
@@ -990,22 +997,6 @@
     "razor.plugin.path": {
       "description": "%configuration.omnisharp.razor.plugin.path%",
       "scope": "machine",
-      "type": "string"
-    },
-    "razor.server.trace": {
-      "default": "Information",
-      "description": "%configuration.razor.server.trace%",
-      "enum": [
-        "Trace",
-        "Debug",
-        "Information",
-        "Warning",
-        "Error",
-        "Critical",
-        "None"
-      ],
-      "order": 90,
-      "scope": "window",
       "type": "string"
     }
   }

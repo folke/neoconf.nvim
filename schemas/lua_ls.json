@@ -8,6 +8,18 @@
       "scope": "resource",
       "type": "boolean"
     },
+    "Lua.addonManager.repositoryBranch": {
+      "default": "",
+      "markdownDescription": "Specifies the git branch used by the addon manager.",
+      "scope": "resource",
+      "type": "string"
+    },
+    "Lua.addonManager.repositoryPath": {
+      "default": "",
+      "markdownDescription": "Specifies the git path used by the addon manager.",
+      "scope": "resource",
+      "type": "string"
+    },
     "Lua.codeLens.enable": {
       "default": false,
       "markdownDescription": "Enable code lens.",
@@ -2510,6 +2522,12 @@
       "scope": "resource",
       "type": "boolean"
     },
+    "Lua.hint.awaitPropagate": {
+      "default": false,
+      "markdownDescription": "Enable the propagation of `await`. When a function calls a function marked `---@async`,it will be automatically marked as `---@async`.",
+      "scope": "resource",
+      "type": "boolean"
+    },
     "Lua.hint.enable": {
       "default": false,
       "markdownDescription": "Enable inlay hint.",
@@ -2579,7 +2597,7 @@
       "type": "boolean"
     },
     "Lua.hover.previewFields": {
-      "default": 50,
+      "default": 10,
       "markdownDescription": "When hovering to view a table, limits the maximum number of previews for fields.",
       "scope": "resource",
       "type": "integer"
@@ -2601,6 +2619,18 @@
       "markdownDescription": "The maximum length of a hover to view the contents of a string.",
       "scope": "resource",
       "type": "integer"
+    },
+    "Lua.language.completeAnnotation": {
+      "default": true,
+      "markdownDescription": "(VSCode only) Automatically insert \"---@ \" after a line break following a annotation.",
+      "scope": "resource",
+      "type": "boolean"
+    },
+    "Lua.language.fixIndent": {
+      "default": true,
+      "markdownDescription": "(VSCode only) Fix incorrect auto-indentation, such as incorrect indentation when line breaks occur within a string containing the word \"function.\"",
+      "scope": "resource",
+      "type": "boolean"
     },
     "Lua.misc.executablePath": {
       "default": "",
@@ -3041,6 +3071,12 @@
       "markdownDescription": "When a parameter type is not annotated, it is inferred from the function's call sites.\n\nWhen this setting is `false`, the type of the parameter is `any` when it is not annotated.\n",
       "scope": "resource",
       "type": "boolean"
+    },
+    "Lua.type.inferTableSize": {
+      "default": 10,
+      "markdownDescription": "TODO: Needs documentation",
+      "scope": "resource",
+      "type": "integer"
     },
     "Lua.type.weakNilCheck": {
       "default": false,

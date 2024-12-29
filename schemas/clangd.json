@@ -20,9 +20,19 @@
       "description": "Warn about conflicting extensions and suggest disabling them.",
       "type": "boolean"
     },
+    "clangd.enable": {
+      "default": true,
+      "description": "Enable clangd language server features",
+      "type": "boolean"
+    },
     "clangd.enableCodeCompletion": {
       "default": true,
       "description": "Enable code completion provided by the language server",
+      "type": "boolean"
+    },
+    "clangd.enableHover": {
+      "default": true,
+      "description": "Enable hovers provided by the language server",
       "type": "boolean"
     },
     "clangd.fallbackFlags": {
@@ -83,6 +93,12 @@
     "clangd.trace": {
       "description": "Names a file that clangd should log a performance trace to, in chrome trace-viewer JSON format.",
       "type": "string"
+    },
+    "clangd.useScriptAsExecutable": {
+      "default": false,
+      "description": "Allows the path to be a script e.g.: clangd.sh.",
+      "scope": "machine-overridable",
+      "type": "boolean"
     }
   }
 }

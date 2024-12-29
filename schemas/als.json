@@ -3,13 +3,13 @@
   "description": "Ada & SPARK IntelliSense, code browsing, debugging and more.",
   "properties": {
     "ada.defaultCharset": {
-      "default": "iso-8859-1",
+      "default": null,
       "description": "The character set that the Ada Language Server should use when reading files from disk.",
       "scope": "window",
       "type": "string"
     },
     "ada.displayMethodAncestryOnNavigation": {
-      "default": "usage_and_abstract_only",
+      "default": null,
       "description": "Controls the policy for displaying overriding and overridden subprograms on navigation requests such as 'Go To Definition' or 'Go To Implementations'.",
       "enum": [
         "never",
@@ -27,7 +27,7 @@
       "type": "string"
     },
     "ada.documentationStyle": {
-      "default": "gnat",
+      "default": null,
       "description": "Controls the primary documentation style of entities.",
       "enum": [
         "gnat",
@@ -41,81 +41,94 @@
       "type": "string"
     },
     "ada.enableDiagnostics": {
-      "default": true,
+      "default": null,
       "description": "Controls whether or not the Ada Language Server should emit diagnostics into the VS Code Problems view.",
       "scope": "window",
       "type": "boolean"
     },
     "ada.enableIndexing": {
-      "default": true,
+      "default": null,
       "description": "Controls whether the Ada Language Server should index the source files immediately after loading a project.\n\nIf set to false, indexing will be deferred to the time when an action requiring the index is first performed, e.g. hovering over a referenced entity to get its documentation.",
       "scope": "window",
       "type": "boolean"
     },
     "ada.foldComments": {
-      "default": true,
+      "default": null,
       "description": "Controls whether comments should be folded like code blocks.",
       "scope": "window",
       "type": "boolean"
     },
     "ada.followSymlinks": {
-      "default": true,
+      "default": null,
       "description": "Controls the Ada Language Server normalizes the file paths received from the client.",
       "scope": "window",
       "type": "boolean"
     },
+    "ada.gprConfigurationFile": {
+      "default": null,
+      "description": "GPR configuration file (*.cgpr) for this workspace.\n\nIt is recommended to set this to a relative path starting at the root of the workspace.",
+      "order": 0,
+      "scope": "window",
+      "type": "string"
+    },
     "ada.insertWithClauses": {
-      "default": false,
+      "default": null,
       "description": "Enable insertion of missing with-clauses when accepting completion for invisible symbols.",
       "scope": "window",
       "type": "boolean"
     },
+    "ada.logThreshold": {
+      "default": null,
+      "description": "Controls the maximum number of trace files preserved in the ALS log directory (which defaults to `~/.als`). When this threshold is reached, old trace files get deleted automatically. The default number of preserved trace files is `10`.",
+      "scope": "window",
+      "type": "integer"
+    },
     "ada.namedNotationThreshold": {
-      "default": 3,
+      "default": null,
       "description": "Defines the number of parameters/components beyond which named notation is used for completion snippets.",
       "scope": "window",
       "type": "integer"
     },
     "ada.onTypeFormatting.indentOnly": {
-      "default": true,
+      "default": null,
       "markdownDescription": "If the VS Code `editor.formatOnType` setting is enabled, the Ada Language Server will format Ada code while it is being typed in the editor, in particular when a new line is typed.\n\nThis setting controls whether formatting should only perform the indentation of the new line (true) or also format the previous line (false).",
       "scope": "window",
       "type": "boolean"
     },
     "ada.projectDiagnostics": {
-      "default": true,
+      "default": null,
       "description": "Controls whether or not the Ada Language Server should emit project diagnostics into the VS Code Problems view.\n\nNote: this setting is ignored if `ada.enableDiagnostics` is disabled and a workspace reload is necessary to refresh the diagnostics after modifying this setting.",
       "scope": "window",
       "type": "boolean"
     },
     "ada.projectFile": {
-      "default": "",
+      "default": null,
       "description": "GPR project file (*.gpr) for this workspace.\n\nIt is recommended to set this to a relative path starting at the root of the workspace.",
       "order": 0,
       "scope": "window",
       "type": "string"
     },
     "ada.relocateBuildTree": {
-      "default": "",
+      "default": null,
       "description": "The folder for out-of-tree build.",
       "markdownDescription": "The path to a directory used for out-of-tree builds. This feature is related to the [--relocate-build-tree GPRbuild command line switch](https://docs.adacore.com/gprbuild-docs/html/gprbuild_ug/building_with_gprbuild.html#switches).",
       "scope": "window",
       "type": "string"
     },
     "ada.renameInComments": {
-      "default": false,
+      "default": null,
       "description": "Enable editing Ada comments to update references to an entity when it is being renamed.",
       "scope": "window",
       "type": "boolean"
     },
     "ada.rootDir": {
-      "default": "",
+      "default": null,
       "markdownDescription": "This setting must be used in conjunction with the `relocateBuildTree` setting.\n\nIt specifies the root directory for artifact relocation. It corresponds to the [--root-dir GPRbuild command line switch](https://docs.adacore.com/gprbuild-docs/html/gprbuild_ug/building_with_gprbuild.html#switches).",
       "scope": "window",
       "type": "string"
     },
     "ada.scenarioVariables": {
-      "default": {},
+      "default": null,
       "description": "Scenario variables to apply to the GPR project file.\n\nThis value should be provided as an object where the property names are GPR scenario variables and the values are strings.",
       "order": 1,
       "patternProperties": {
@@ -125,6 +138,11 @@
       },
       "scope": "window",
       "type": "object"
+    },
+    "ada.showNotificationsOnErrors": {
+      "default": false,
+      "markdownDescription": "Whether to show error notifications for failing LSP requests.",
+      "type": "boolean"
     },
     "ada.trace.server": {
       "default": "off",
@@ -143,13 +161,13 @@
       "type": "string"
     },
     "ada.useCompletionSnippets": {
-      "default": false,
+      "default": null,
       "description": "Enable snippets in completion results (e.g. subprogram calls).",
       "scope": "window",
       "type": "boolean"
     },
     "ada.useGnatformat": {
-      "default": true,
+      "default": null,
       "markdownDescription": "Enable GNATformat as the formatting provider for Ada source files.",
       "scope": "window",
       "type": "boolean"

@@ -175,6 +175,7 @@
     },
     "deno.future": {
       "default": false,
+      "deprecationMessage": "Deno 2.0 has been released. This setting still affects 1.x.x installations, however.",
       "examples": [
         true,
         false
@@ -378,6 +379,16 @@
       "markdownDescription": "A path to a PEM certificate to use as the certificate authority when validating TLS certificates when fetching and caching remote resources. This is like using `--cert` on the Deno CLI and overrides the `DENO_CERT` environment variable if set.",
       "scope": "window",
       "type": "string"
+    },
+    "deno.trace.server": {
+      "default": "off",
+      "enum": [
+        "messages",
+        "off",
+        "verbose"
+      ],
+      "markdownDescription": "Traces the communication between VS Code and the Deno Language Server.",
+      "scope": "window"
     },
     "deno.unsafelyIgnoreCertificateErrors": {
       "default": null,

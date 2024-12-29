@@ -22,9 +22,9 @@
         "null"
       ]
     },
-    "rescript.settings.cache.projectConfig.enabled": {
-      "default": false,
-      "description": "(beta/experimental) Enable project config caching. Can speed up latency dramatically.",
+    "rescript.settings.cache.projectConfig.enable": {
+      "default": true,
+      "description": "Enable project config caching. Can speed up latency dramatically.",
       "type": "boolean"
     },
     "rescript.settings.codeLens": {
@@ -42,9 +42,9 @@
       "description": "(debug) Enable debug logging (ends up in the extension output).",
       "type": "boolean"
     },
-    "rescript.settings.incrementalTypechecking.enabled": {
-      "default": false,
-      "description": "(beta/experimental) Enable incremental type checking.",
+    "rescript.settings.incrementalTypechecking.enable": {
+      "default": true,
+      "description": "Enable incremental type checking.",
       "type": "boolean"
     },
     "rescript.settings.inlayHints.enable": {

@@ -100,7 +100,7 @@
       "items": {
         "type": "string"
       },
-      "markdownDescription": "Additional arguments to pass to `swift` commands such as `swift build`, `swift package`, `swift test`, etc... Keys and values should be provided as individual entries in the list. If you have created a copy of the build task in `tasks.json` then these build arguments will not be propogated to that task.",
+      "markdownDescription": "Additional arguments to pass to `swift` commands such as `swift build`, `swift package`, `swift test`, etc... Keys and values should be provided as individual entries in the list. If you have created a copy of the build task in `tasks.json` then these build arguments will not be propagated to that task.",
       "type": "array"
     },
     "swift.buildPath": {
@@ -263,10 +263,15 @@
       "type": "boolean"
     },
     "swift.sourcekit-lsp.backgroundIndexing": {
-      "default": false,
-      "markdownDescription": "**Experimental**: Enable or disable background indexing. This option has no effect in Swift versions prior to 6.0.",
+      "default": "auto",
+      "enum": [
+        "on",
+        "off",
+        "auto"
+      ],
+      "markdownDescription": "Turns background indexing `on` or `off`. `auto` will enable background indexing if the Swift version is >= 6.1. This option has no effect in Swift versions prior to 6.0.",
       "order": 4,
-      "type": "boolean"
+      "type": "string"
     },
     "swift.sourcekit-lsp.disable": {
       "default": false,
