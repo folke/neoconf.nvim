@@ -5,10 +5,6 @@
 -- If the VS Code `editor.formatOnType` setting is enabled, the Ada Language Server will format Ada code while it is being typed in the editor, in particular when a new line is typed.
 -- 
 -- This setting controls whether formatting should only perform the indentation of the new line (true) or also format the previous line (false).
--- 
--- ```lua
--- default = true
--- ```
 ---@field indentOnly boolean
 
 ---@class _.lspconfig.settings.als.Trace
@@ -21,106 +17,58 @@
 
 ---@class _.lspconfig.settings.als.Ada
 -- The character set that the Ada Language Server should use when reading files from disk.
--- 
--- ```lua
--- default = "iso-8859-1"
--- ```
 ---@field defaultCharset string
 -- Controls the policy for displaying overriding and overridden subprograms on navigation requests such as 'Go To Definition' or 'Go To Implementations'.
--- 
--- ```lua
--- default = "usage_and_abstract_only"
--- ```
 ---@field displayMethodAncestryOnNavigation "never" | "usage_and_abstract_only" | "definition_only" | "always"
 -- Controls the primary documentation style of entities.
--- 
--- ```lua
--- default = "gnat"
--- ```
 ---@field documentationStyle "gnat" | "leading"
 -- Controls whether or not the Ada Language Server should emit diagnostics into the VS Code Problems view.
--- 
--- ```lua
--- default = true
--- ```
 ---@field enableDiagnostics boolean
 -- Controls whether the Ada Language Server should index the source files immediately after loading a project.
 -- 
 -- If set to false, indexing will be deferred to the time when an action requiring the index is first performed, e.g. hovering over a referenced entity to get its documentation.
--- 
--- ```lua
--- default = true
--- ```
 ---@field enableIndexing boolean
 -- Controls whether comments should be folded like code blocks.
--- 
--- ```lua
--- default = true
--- ```
 ---@field foldComments boolean
 -- Controls the Ada Language Server normalizes the file paths received from the client.
--- 
--- ```lua
--- default = true
--- ```
 ---@field followSymlinks boolean
+-- GPR configuration file (*.cgpr) for this workspace.
+-- 
+-- It is recommended to set this to a relative path starting at the root of the workspace.
+---@field gprConfigurationFile string
 -- Enable insertion of missing with-clauses when accepting completion for invisible symbols.
 ---@field insertWithClauses boolean
+-- Controls the maximum number of trace files preserved in the ALS log directory (which defaults to `~/.als`). When this threshold is reached, old trace files get deleted automatically. The default number of preserved trace files is `10`.
+---@field logThreshold integer
 -- Defines the number of parameters/components beyond which named notation is used for completion snippets.
--- 
--- ```lua
--- default = 3
--- ```
 ---@field namedNotationThreshold integer
 ---@field onTypeFormatting _.lspconfig.settings.als.OnTypeFormatting
 -- Controls whether or not the Ada Language Server should emit project diagnostics into the VS Code Problems view.
 -- 
 -- Note: this setting is ignored if `ada.enableDiagnostics` is disabled and a workspace reload is necessary to refresh the diagnostics after modifying this setting.
--- 
--- ```lua
--- default = true
--- ```
 ---@field projectDiagnostics boolean
 -- GPR project file (*.gpr) for this workspace.
 -- 
 -- It is recommended to set this to a relative path starting at the root of the workspace.
--- 
--- ```lua
--- default = ""
--- ```
 ---@field projectFile string
 -- The path to a directory used for out-of-tree builds. This feature is related to the [--relocate-build-tree GPRbuild command line switch](https://docs.adacore.com/gprbuild-docs/html/gprbuild_ug/building_with_gprbuild.html#switches).
--- 
--- ```lua
--- default = ""
--- ```
 ---@field relocateBuildTree string
 -- Enable editing Ada comments to update references to an entity when it is being renamed.
 ---@field renameInComments boolean
 -- This setting must be used in conjunction with the `relocateBuildTree` setting.
 -- 
 -- It specifies the root directory for artifact relocation. It corresponds to the [--root-dir GPRbuild command line switch](https://docs.adacore.com/gprbuild-docs/html/gprbuild_ug/building_with_gprbuild.html#switches).
--- 
--- ```lua
--- default = ""
--- ```
 ---@field rootDir string
 -- Scenario variables to apply to the GPR project file.
 -- 
 -- This value should be provided as an object where the property names are GPR scenario variables and the values are strings.
--- 
--- ```lua
--- default = {}
--- ```
 ---@field scenarioVariables table
+-- Whether to show error notifications for failing LSP requests.
+---@field showNotificationsOnErrors boolean
 ---@field trace _.lspconfig.settings.als.Trace
 -- Enable snippets in completion results (e.g. subprogram calls).
 ---@field useCompletionSnippets boolean
 -- Enable GNATformat as the formatting provider for Ada source files.
--- 
--- ```lua
--- default = true
--- ```
 ---@field useGnatformat boolean
 
 ---@class _.lspconfig.settings.als.Trace
@@ -152,11 +100,16 @@
 -- ```
 ---@field server "off" | "messages" | "verbose"
 
+---@class _.lspconfig.settings.astro.UpdateImportsOnFileMove
+-- Controls whether the extension updates imports when a file is moved to a new location. In most cases, you'll want to keep this disabled as TypeScript and the Astro TypeScript plugin already handles this for you. Having multiple tools updating imports at the same time can lead to corrupted files.
+---@field enabled boolean
+
 ---@class _.lspconfig.settings.astro.Astro
 -- Enable experimental support for content collection intellisense inside Markdown, MDX and Markdoc. Note that this require also enabling the feature in your Astro config (experimental.contentCollectionIntellisense) (Astro 4.14+)
 ---@field content-intellisense boolean
 ---@field language-server _.lspconfig.settings.astro.Language-server
 ---@field trace _.lspconfig.settings.astro.Trace
+---@field updateImportsOnFileMove _.lspconfig.settings.astro.UpdateImportsOnFileMove
 
 ---@class lspconfig.settings.astro
 ---@field astro _.lspconfig.settings.astro.Astro
@@ -170,6 +123,12 @@
 ---@field server "off" | "messages" | "verbose"
 
 ---@class _.lspconfig.settings.awkls.Awk-ide-vscode
+-- Turns on/off source files indexing. Requires restart.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field indexing boolean
 ---@field trace _.lspconfig.settings.awkls.Trace
 
 ---@class lspconfig.settings.awkls
@@ -182,535 +141,575 @@
 -- ```lua
 -- default = "error"
 -- ```
----@field reportAbstractUsage "none" | "information" | "warning" | "error" | true | false
--- Diagnostics for anything with the `Any` type
+---@field reportAbstractUsage "none" | "hint" | "information" | "warning" | "error" | true | false
+-- Diagnostics for expressions with the `Any` type
 -- 
 -- ```lua
 -- default = "none"
 -- ```
----@field reportAny "none" | "information" | "warning" | "error" | true | false
+---@field reportAny "none" | "hint" | "information" | "warning" | "error" | true | false
 -- Diagnostics for a type incompatibility for an argument to a call.
 -- 
 -- ```lua
 -- default = "error"
 -- ```
----@field reportArgumentType "none" | "information" | "warning" | "error" | true | false
+---@field reportArgumentType "none" | "hint" | "information" | "warning" | "error" | true | false
 -- Diagnostics for 'assert' statement that will provably always assert. This can be indicative of a programming error.
 -- 
 -- ```lua
 -- default = "warning"
 -- ```
----@field reportAssertAlwaysTrue "none" | "information" | "warning" | "error" | true | false
+---@field reportAssertAlwaysTrue "none" | "hint" | "information" | "warning" | "error" | true | false
 -- Diagnostics for a type incompatibility detected by a typing.assert_type call.
 -- 
 -- ```lua
 -- default = "error"
 -- ```
----@field reportAssertTypeFailure "none" | "information" | "warning" | "error" | true | false
+---@field reportAssertTypeFailure "none" | "hint" | "information" | "warning" | "error" | true | false
 -- Diagnostics for type incompatibilities for assignments.
 -- 
 -- ```lua
 -- default = "error"
 -- ```
----@field reportAssignmentType "none" | "information" | "warning" | "error" | true | false
+---@field reportAssignmentType "none" | "hint" | "information" | "warning" | "error" | true | false
 -- Diagnostics for issues involving attribute accesses.
 -- 
 -- ```lua
 -- default = "error"
 -- ```
----@field reportAttributeAccessIssue "none" | "information" | "warning" | "error" | true | false
+---@field reportAttributeAccessIssue "none" | "hint" | "information" | "warning" | "error" | true | false
 -- Diagnostics for function calls within a default value initialization expression. Such calls can mask expensive operations that are performed at module initialization time.
 -- 
 -- ```lua
 -- default = "none"
 -- ```
----@field reportCallInDefaultInitializer "none" | "information" | "warning" | "error" | true | false
+---@field reportCallInDefaultInitializer "none" | "hint" | "information" | "warning" | "error" | true | false
 -- Diagnostics for issues involving call expressions and arguments.
 -- 
 -- ```lua
 -- default = "error"
 -- ```
----@field reportCallIssue "none" | "information" | "warning" | "error" | true | false
+---@field reportCallIssue "none" | "hint" | "information" | "warning" | "error" | true | false
 -- Diagnostics for attempts to redefine variables whose names are all-caps with underscores and numerals.
 -- 
 -- ```lua
 -- default = "none"
 -- ```
----@field reportConstantRedefinition "none" | "information" | "warning" | "error" | true | false
+---@field reportConstantRedefinition "none" | "hint" | "information" | "warning" | "error" | true | false
 -- Diagnostics for use of deprecated classes or functions.
 -- 
 -- ```lua
 -- default = "none"
 -- ```
----@field reportDeprecated "none" | "deprecated" | "information" | "warning" | "error" | true | false
+---@field reportDeprecated "none" | "hint" | "information" | "warning" | "error" | true | false
 -- Diagnostics for an imported symbol or module that is imported more than once.
 -- 
 -- ```lua
 -- default = "none"
 -- ```
----@field reportDuplicateImport "none" | "information" | "warning" | "error" | true | false
+---@field reportDuplicateImport "none" | "hint" | "information" | "warning" | "error" | true | false
+-- Diagnostics for type annotations that use the `Any` type
+-- 
+-- ```lua
+-- default = "none"
+-- ```
+---@field reportExplicitAny "none" | "hint" | "information" | "warning" | "error" | true | false
 -- Diagnostics for member accesses on functions.
 -- 
 -- ```lua
 -- default = "error"
 -- ```
----@field reportFunctionMemberAccess "none" | "information" | "warning" | "error" | true | false
+---@field reportFunctionMemberAccess "none" | "hint" | "information" | "warning" | "error" | true | false
 -- Diagnostics for general type inconsistencies, unsupported operations, argument/parameter mismatches, etc. Covers all of the basic type-checking rules not covered by other rules. Does not include syntax errors.
 -- 
 -- ```lua
 -- default = "error"
 -- ```
----@field reportGeneralTypeIssues "none" | "information" | "warning" | "error" | true | false
+---@field reportGeneralTypeIssues "none" | "hint" | "information" | "warning" | "error" | true | false
 -- Diagnostics for `# type: ignore` and `# pyright: ignore` comments without specifying a rule
 -- 
 -- ```lua
 -- default = "none"
 -- ```
----@field reportIgnoreCommentWithoutRule "none" | "information" | "warning" | "error" | true | false
+---@field reportIgnoreCommentWithoutRule "none" | "hint" | "information" | "warning" | "error" | true | false
+-- Diagnostics for abstract classes that do not explicitly extend `ABC`
+-- 
+-- ```lua
+-- default = "none"
+-- ```
+---@field reportImplicitAbstractClass "none" | "hint" | "information" | "warning" | "error" | true | false
 -- Diagnostics for overridden methods that do not include an `@override` decorator.
 -- 
 -- ```lua
 -- default = "none"
 -- ```
----@field reportImplicitOverride "none" | "information" | "warning" | "error" | true | false
+---@field reportImplicitOverride "none" | "hint" | "information" | "warning" | "error" | true | false
 -- Diagnostics for non-relative imports that do not specify the full path to the module
 -- 
 -- ```lua
 -- default = "none"
 -- ```
----@field reportImplicitRelativeImport "none" | "information" | "warning" | "error" | true | false
+---@field reportImplicitRelativeImport "none" | "hint" | "information" | "warning" | "error" | true | false
 -- Diagnostics for two or more string literals that follow each other, indicating an implicit concatenation. This is considered a bad practice and often masks bugs such as missing commas.
 -- 
 -- ```lua
 -- default = "none"
 -- ```
----@field reportImplicitStringConcatenation "none" | "information" | "warning" | "error" | true | false
+---@field reportImplicitStringConcatenation "none" | "hint" | "information" | "warning" | "error" | true | false
 -- Diagnostics for cyclical import chains. These are not errors in Python, but they do slow down type analysis and often hint at architectural layering issues. Generally, they should be avoided.
 -- 
 -- ```lua
 -- default = "none"
 -- ```
----@field reportImportCycles "none" | "information" | "warning" | "error" | true | false
+---@field reportImportCycles "none" | "hint" | "information" | "warning" | "error" | true | false
 -- Diagnostics for methods that override a method of the same name in a base class in an incompatible manner (wrong number of parameters, incompatible parameter types, or incompatible return type).
 -- 
 -- ```lua
 -- default = "error"
 -- ```
----@field reportIncompatibleMethodOverride "none" | "information" | "warning" | "error" | true | false
+---@field reportIncompatibleMethodOverride "none" | "hint" | "information" | "warning" | "error" | true | false
 -- Diagnostics for overrides in subclasses that redefine a variable in an incompatible way.
 -- 
 -- ```lua
 -- default = "error"
 -- ```
----@field reportIncompatibleVariableOverride "none" | "information" | "warning" | "error" | true | false
+---@field reportIncompatibleVariableOverride "none" | "hint" | "information" | "warning" | "error" | true | false
 -- Diagnostics for the use of a module-level “__getattr__” function, indicating that the stub is incomplete.
 -- 
 -- ```lua
 -- default = "none"
 -- ```
----@field reportIncompleteStub "none" | "information" | "warning" | "error" | true | false
+---@field reportIncompleteStub "none" | "hint" | "information" | "warning" | "error" | true | false
 -- Diagnostics for __init__ and __new__ methods whose signatures are inconsistent.
 -- 
 -- ```lua
 -- default = "none"
 -- ```
----@field reportInconsistentConstructor "none" | "information" | "warning" | "error" | true | false
+---@field reportInconsistentConstructor "none" | "hint" | "information" | "warning" | "error" | true | false
 -- Diagnostics for inconsistencies between function overload signatures and implementation.
 -- 
 -- ```lua
 -- default = "error"
 -- ```
----@field reportInconsistentOverload "none" | "information" | "warning" | "error" | true | false
+---@field reportInconsistentOverload "none" | "hint" | "information" | "warning" | "error" | true | false
 -- Diagnostics related to index operations and expressions.
 -- 
 -- ```lua
 -- default = "error"
 -- ```
----@field reportIndexIssue "none" | "information" | "warning" | "error" | true | false
+---@field reportIndexIssue "none" | "hint" | "information" | "warning" | "error" | true | false
 -- Diagnostics for `cast`s to non-overlapping types
 -- 
 -- ```lua
 -- default = "none"
 -- ```
----@field reportInvalidCast "none" | "information" | "warning" | "error" | true | false
+---@field reportInvalidCast "none" | "hint" | "information" | "warning" | "error" | true | false
 -- Diagnostics for invalid escape sequences used within string literals. The Python specification indicates that such sequences will generate a syntax error in future versions.
 -- 
 -- ```lua
 -- default = "warning"
 -- ```
----@field reportInvalidStringEscapeSequence "none" | "information" | "warning" | "error" | true | false
+---@field reportInvalidStringEscapeSequence "none" | "hint" | "information" | "warning" | "error" | true | false
 -- Diagnostics for type stub statements that do not conform to PEP 484.
 -- 
 -- ```lua
 -- default = "none"
 -- ```
----@field reportInvalidStubStatement "none" | "information" | "warning" | "error" | true | false
+---@field reportInvalidStubStatement "none" | "hint" | "information" | "warning" | "error" | true | false
 -- Diagnostics for invalid type argument usage.
 -- 
 -- ```lua
 -- default = "error"
 -- ```
----@field reportInvalidTypeArguments "none" | "information" | "warning" | "error" | true | false
+---@field reportInvalidTypeArguments "none" | "hint" | "information" | "warning" | "error" | true | false
 -- Diagnostics for type expression that uses an invalid form.
 -- 
 -- ```lua
 -- default = "error"
 -- ```
----@field reportInvalidTypeForm "none" | "information" | "warning" | "error" | true | false
+---@field reportInvalidTypeForm "none" | "hint" | "information" | "warning" | "error" | true | false
 -- Diagnostics for improper use of type variables in a function signature.
 -- 
 -- ```lua
 -- default = "warning"
 -- ```
----@field reportInvalidTypeVarUse "none" | "information" | "warning" | "error" | true | false
+---@field reportInvalidTypeVarUse "none" | "hint" | "information" | "warning" | "error" | true | false
 -- Diagnostics for 'match' statements that do not exhaustively match all possible values.
 -- 
 -- ```lua
 -- default = "none"
 -- ```
----@field reportMatchNotExhaustive "none" | "information" | "warning" | "error" | true | false
+---@field reportMatchNotExhaustive "none" | "hint" | "information" | "warning" | "error" | true | false
 -- Diagnostics for imports that have no corresponding imported python file or type stub file.
 -- 
 -- ```lua
 -- default = "error"
 -- ```
----@field reportMissingImports "none" | "information" | "warning" | "error" | true | false
+---@field reportMissingImports "none" | "hint" | "information" | "warning" | "error" | true | false
 -- Diagnostics for imports that have no corresponding source file. This happens when a type stub is found, but the module source file was not found, indicating that the code may fail at runtime when using this execution environment. Type checking will be done using the type stub.
 -- 
 -- ```lua
 -- default = "warning"
 -- ```
----@field reportMissingModuleSource "none" | "information" | "warning" | "error" | true | false
+---@field reportMissingModuleSource "none" | "hint" | "information" | "warning" | "error" | true | false
 -- Diagnostics for parameters that are missing a type annotation.
 -- 
 -- ```lua
 -- default = "none"
 -- ```
----@field reportMissingParameterType "none" | "information" | "warning" | "error" | true | false
+---@field reportMissingParameterType "none" | "hint" | "information" | "warning" | "error" | true | false
 -- Diagnostics for missing call to parent class for inherited `__init__` methods.
 -- 
 -- ```lua
 -- default = "none"
 -- ```
----@field reportMissingSuperCall "none" | "information" | "warning" | "error" | true | false
+---@field reportMissingSuperCall "none" | "hint" | "information" | "warning" | "error" | true | false
 -- Diagnostics for generic class reference with missing type arguments.
 -- 
 -- ```lua
 -- default = "none"
 -- ```
----@field reportMissingTypeArgument "none" | "information" | "warning" | "error" | true | false
+---@field reportMissingTypeArgument "none" | "hint" | "information" | "warning" | "error" | true | false
 -- Diagnostics for imports that have no corresponding type stub file (either a typeshed file or a custom type stub). The type checker requires type stubs to do its best job at analysis.
 -- 
 -- ```lua
 -- default = "none"
 -- ```
----@field reportMissingTypeStubs "none" | "information" | "warning" | "error" | true | false
+---@field reportMissingTypeStubs "none" | "hint" | "information" | "warning" | "error" | true | false
 -- Diagnostics for an overloaded function or method with a missing implementation.
 -- 
 -- ```lua
 -- default = "error"
 -- ```
----@field reportNoOverloadImplementation "none" | "information" | "warning" | "error" | true | false
+---@field reportNoOverloadImplementation "none" | "hint" | "information" | "warning" | "error" | true | false
 -- Diagnostics for related to unary or binary operators.
 -- 
 -- ```lua
 -- default = "error"
 -- ```
----@field reportOperatorIssue "none" | "information" | "warning" | "error" | true | false
+---@field reportOperatorIssue "none" | "hint" | "information" | "warning" | "error" | true | false
 -- Diagnostics for an attempt to call a variable with an Optional type.
 -- 
 -- ```lua
 -- default = "error"
 -- ```
----@field reportOptionalCall "none" | "information" | "warning" | "error" | true | false
+---@field reportOptionalCall "none" | "hint" | "information" | "warning" | "error" | true | false
 -- Diagnostics for an attempt to use an Optional type as a context manager (as a parameter to a with statement).
 -- 
 -- ```lua
 -- default = "error"
 -- ```
----@field reportOptionalContextManager "none" | "information" | "warning" | "error" | true | false
+---@field reportOptionalContextManager "none" | "hint" | "information" | "warning" | "error" | true | false
 -- Diagnostics for an attempt to use an Optional type as an iterable value (e.g. within a for statement).
 -- 
 -- ```lua
 -- default = "error"
 -- ```
----@field reportOptionalIterable "none" | "information" | "warning" | "error" | true | false
+---@field reportOptionalIterable "none" | "hint" | "information" | "warning" | "error" | true | false
 -- Diagnostics for an attempt to access a member of a variable with an Optional type.
 -- 
 -- ```lua
 -- default = "error"
 -- ```
----@field reportOptionalMemberAccess "none" | "information" | "warning" | "error" | true | false
+---@field reportOptionalMemberAccess "none" | "hint" | "information" | "warning" | "error" | true | false
 -- Diagnostics for an attempt to use an Optional type as an operand to a binary or unary operator (like '+', '==', 'or', 'not').
 -- 
 -- ```lua
 -- default = "error"
 -- ```
----@field reportOptionalOperand "none" | "information" | "warning" | "error" | true | false
+---@field reportOptionalOperand "none" | "hint" | "information" | "warning" | "error" | true | false
 -- Diagnostics for an attempt to subscript (index) a variable with an Optional type.
 -- 
 -- ```lua
 -- default = "error"
 -- ```
----@field reportOptionalSubscript "none" | "information" | "warning" | "error" | true | false
+---@field reportOptionalSubscript "none" | "hint" | "information" | "warning" | "error" | true | false
 -- Diagnostics for function overloads that overlap in signature and obscure each other or have incompatible return types.
 -- 
 -- ```lua
 -- default = "error"
 -- ```
----@field reportOverlappingOverload "none" | "information" | "warning" | "error" | true | false
+---@field reportOverlappingOverload "none" | "hint" | "information" | "warning" | "error" | true | false
 -- Diagnostics for the use of variables that may be unbound on some code paths.
 -- 
 -- ```lua
 -- default = "error"
 -- ```
----@field reportPossiblyUnboundVariable "none" | "information" | "warning" | "error" | true | false
+---@field reportPossiblyUnboundVariable "none" | "hint" | "information" | "warning" | "error" | true | false
 -- Diagnostics for incorrect usage of symbol imported from a "py.typed" module that is not re-exported from that module.
 -- 
 -- ```lua
 -- default = "error"
 -- ```
----@field reportPrivateImportUsage "none" | "information" | "warning" | "error" | true | false
+---@field reportPrivateImportUsage "none" | "hint" | "information" | "warning" | "error" | true | false
 -- Diagnostics for incorrect usage of symbol imported from a non-"py.typed" module that is not re-exported from that module. Should be used along with `reportNonPrivateImportUsage`
 -- 
 -- ```lua
 -- default = "none"
 -- ```
----@field reportPrivateLocalImportUsage "none" | "information" | "warning" | "error" | true | false
+---@field reportPrivateLocalImportUsage "none" | "hint" | "information" | "warning" | "error" | true | false
 -- Diagnostics for incorrect usage of private or protected variables or functions. Protected class members begin with a single underscore _ and can be accessed only by subclasses. Private class members begin with a double underscore but do not end in a double underscore and can be accessed only within the declaring class. Variables and functions declared outside of a class are considered private if their names start with either a single or double underscore, and they cannot be accessed outside of the declaring module.
 -- 
 -- ```lua
 -- default = "none"
 -- ```
----@field reportPrivateUsage "none" | "information" | "warning" | "error" | true | false
+---@field reportPrivateUsage "none" | "hint" | "information" | "warning" | "error" | true | false
 -- Diagnostics for property whose setter and getter have mismatched types.
 -- 
 -- ```lua
 -- default = "none"
 -- ```
----@field reportPropertyTypeMismatch "none" | "information" | "warning" | "error" | true | false
+---@field reportPropertyTypeMismatch "none" | "hint" | "information" | "warning" | "error" | true | false
 -- Diagnostics for an attempt to declare the type of a symbol multiple times.
 -- 
 -- ```lua
 -- default = "error"
 -- ```
----@field reportRedeclaration "none" | "information" | "warning" | "error" | true | false
+---@field reportRedeclaration "none" | "hint" | "information" | "warning" | "error" | true | false
 -- Diagnostics related to function return type compatibility.
 -- 
 -- ```lua
 -- default = "error"
 -- ```
----@field reportReturnType "none" | "information" | "warning" | "error" | true | false
+---@field reportReturnType "none" | "hint" | "information" | "warning" | "error" | true | false
 -- Diagnostics for a missing or misnamed “self” parameter in instance methods and “cls” parameter in class methods. Instance methods in metaclasses (classes that derive from “type”) are allowed to use “cls” for instance methods.
 -- 
 -- ```lua
 -- default = "warning"
 -- ```
----@field reportSelfClsParameterName "none" | "information" | "warning" | "error" | true | false
+---@field reportSelfClsParameterName "none" | "hint" | "information" | "warning" | "error" | true | false
 -- Diagnostics for files that are overriding a module in the stdlib.
 -- 
 -- ```lua
 -- default = "none"
 -- ```
----@field reportShadowedImports "none" | "information" | "warning" | "error" | true | false
+---@field reportShadowedImports "none" | "hint" | "information" | "warning" | "error" | true | false
 -- Diagnostics for usage of deprecated type comments.
 -- 
 -- ```lua
 -- default = "none"
 -- ```
----@field reportTypeCommentUsage "none" | "deprecated" | "information" | "warning" | "error" | true | false
+---@field reportTypeCommentUsage "none" | "hint" | "information" | "warning" | "error" | true | false
 -- Diagnostics for an attempt to access a non-required key within a TypedDict without a check for its presence.
 -- 
 -- ```lua
 -- default = "error"
 -- ```
----@field reportTypedDictNotRequiredAccess "none" | "information" | "warning" | "error" | true | false
+---@field reportTypedDictNotRequiredAccess "none" | "hint" | "information" | "warning" | "error" | true | false
+-- Diagnostics for class variable declarations that do not have a type annotation, which is required due to performance reasons for strict validation of subclasses
+-- 
+-- ```lua
+-- default = "none"
+-- ```
+---@field reportUnannotatedClassAttribute "none" | "hint" | "information" | "warning" | "error" | true | false
 -- Diagnostics for the use of unbound variables.
 -- 
 -- ```lua
 -- default = "error"
 -- ```
----@field reportUnboundVariable "none" | "information" | "warning" | "error" | true | false
+---@field reportUnboundVariable "none" | "hint" | "information" | "warning" | "error" | true | false
 -- Diagnostics for undefined variables.
 -- 
 -- ```lua
 -- default = "error"
 -- ```
----@field reportUndefinedVariable "none" | "information" | "warning" | "error" | true | false
+---@field reportUndefinedVariable "none" | "hint" | "information" | "warning" | "error" | true | false
 -- Diagnostics for the use of an unhashable object in a container that requires hashability.
 -- 
 -- ```lua
 -- default = "error"
 -- ```
----@field reportUnhashable "none" | "information" | "warning" | "error" | true | false
+---@field reportUnhashable "none" | "hint" | "information" | "warning" | "error" | true | false
 -- Diagnostics for instance variables that are not declared or initialized within class body or `__init__` method.
 -- 
 -- ```lua
 -- default = "none"
 -- ```
----@field reportUninitializedInstanceVariable "none" | "information" | "warning" | "error" | true | false
+---@field reportUninitializedInstanceVariable "none" | "hint" | "information" | "warning" | "error" | true | false
 -- Diagnostics for call arguments for functions or methods that have an unknown type.
 -- 
 -- ```lua
 -- default = "none"
 -- ```
----@field reportUnknownArgumentType "none" | "information" | "warning" | "error" | true | false
+---@field reportUnknownArgumentType "none" | "hint" | "information" | "warning" | "error" | true | false
 -- Diagnostics for input or return parameters for lambdas that have an unknown type.
 -- 
 -- ```lua
 -- default = "none"
 -- ```
----@field reportUnknownLambdaType "none" | "information" | "warning" | "error" | true | false
+---@field reportUnknownLambdaType "none" | "hint" | "information" | "warning" | "error" | true | false
 -- Diagnostics for class or instance variables that have an unknown type.
 -- 
 -- ```lua
 -- default = "none"
 -- ```
----@field reportUnknownMemberType "none" | "information" | "warning" | "error" | true | false
+---@field reportUnknownMemberType "none" | "hint" | "information" | "warning" | "error" | true | false
 -- Diagnostics for input or return parameters for functions or methods that have an unknown type.
 -- 
 -- ```lua
 -- default = "none"
 -- ```
----@field reportUnknownParameterType "none" | "information" | "warning" | "error" | true | false
+---@field reportUnknownParameterType "none" | "hint" | "information" | "warning" | "error" | true | false
 -- Diagnostics for variables that have an unknown type..
 -- 
 -- ```lua
 -- default = "none"
 -- ```
----@field reportUnknownVariableType "none" | "information" | "warning" | "error" | true | false
+---@field reportUnknownVariableType "none" | "hint" | "information" | "warning" | "error" | true | false
 -- Diagnostics for 'cast' calls that are statically determined to be unnecessary. Such calls are sometimes indicative of a programming error.
 -- 
 -- ```lua
 -- default = "none"
 -- ```
----@field reportUnnecessaryCast "none" | "information" | "warning" | "error" | true | false
+---@field reportUnnecessaryCast "none" | "hint" | "information" | "warning" | "error" | true | false
 -- Diagnostics for '==' and '!=' comparisons that are statically determined to be unnecessary. Such calls are sometimes indicative of a programming error.
 -- 
 -- ```lua
 -- default = "none"
 -- ```
----@field reportUnnecessaryComparison "none" | "information" | "warning" | "error" | true | false
+---@field reportUnnecessaryComparison "none" | "hint" | "information" | "warning" | "error" | true | false
 -- Diagnostics for 'in' operation that is statically determined to be unnecessary. Such operations are sometimes indicative of a programming error.
 -- 
 -- ```lua
 -- default = "none"
 -- ```
----@field reportUnnecessaryContains "none" | "information" | "warning" | "error" | true | false
+---@field reportUnnecessaryContains "none" | "hint" | "information" | "warning" | "error" | true | false
 -- Diagnostics for 'isinstance' or 'issubclass' calls where the result is statically determined to be always (or never) true. Such calls are often indicative of a programming error.
 -- 
 -- ```lua
 -- default = "none"
 -- ```
----@field reportUnnecessaryIsInstance "none" | "information" | "warning" | "error" | true | false
+---@field reportUnnecessaryIsInstance "none" | "hint" | "information" | "warning" | "error" | true | false
 -- Diagnostics for '# type: ignore' comments that have no effect.
 -- 
 -- ```lua
 -- default = "none"
 -- ```
----@field reportUnnecessaryTypeIgnoreComment "none" | "information" | "warning" | "error" | true | false
+---@field reportUnnecessaryTypeIgnoreComment "none" | "hint" | "information" | "warning" | "error" | true | false
 -- Diagnostics for unreachable code.
 -- 
 -- ```lua
 -- default = "none"
 -- ```
----@field reportUnreachable "none" | "unreachable" | "information" | "warning" | "error" | true | false
+---@field reportUnreachable "none" | "hint" | "information" | "warning" | "error" | true | false
 -- Diagnostics for multiple inheritance where a base class's constructor may not get called
 -- 
 -- ```lua
 -- default = "none"
 -- ```
----@field reportUnsafeMultipleInheritance "none" | "information" | "warning" | "error" | true | false
+---@field reportUnsafeMultipleInheritance "none" | "hint" | "information" | "warning" | "error" | true | false
 -- Diagnostics for unsupported operations performed on __all__.
 -- 
 -- ```lua
 -- default = "warning"
 -- ```
----@field reportUnsupportedDunderAll "none" | "information" | "warning" | "error" | true | false
+---@field reportUnsupportedDunderAll "none" | "hint" | "information" | "warning" | "error" | true | false
 -- Diagnostics for base classes whose type cannot be determined statically. These obscure the class type, defeating many type analysis features.
 -- 
 -- ```lua
 -- default = "none"
 -- ```
----@field reportUntypedBaseClass "none" | "information" | "warning" | "error" | true | false
+---@field reportUntypedBaseClass "none" | "hint" | "information" | "warning" | "error" | true | false
 -- Diagnostics for class decorators that have no type annotations. These obscure the class type, defeating many type analysis features.
 -- 
 -- ```lua
 -- default = "none"
 -- ```
----@field reportUntypedClassDecorator "none" | "information" | "warning" | "error" | true | false
+---@field reportUntypedClassDecorator "none" | "hint" | "information" | "warning" | "error" | true | false
 -- Diagnostics for function decorators that have no type annotations. These obscure the function type, defeating many type analysis features.
 -- 
 -- ```lua
 -- default = "none"
 -- ```
----@field reportUntypedFunctionDecorator "none" | "information" | "warning" | "error" | true | false
+---@field reportUntypedFunctionDecorator "none" | "hint" | "information" | "warning" | "error" | true | false
 -- Diagnostics when “namedtuple” is used rather than “NamedTuple”. The former contains no type information, whereas the latter does.
 -- 
 -- ```lua
 -- default = "none"
 -- ```
----@field reportUntypedNamedTuple "none" | "information" | "warning" | "error" | true | false
+---@field reportUntypedNamedTuple "none" | "hint" | "information" | "warning" | "error" | true | false
 -- Diagnostics for call expressions whose results are not consumed and are not None.
 -- 
 -- ```lua
 -- default = "none"
 -- ```
----@field reportUnusedCallResult "none" | "information" | "warning" | "error" | true | false
+---@field reportUnusedCallResult "none" | "hint" | "information" | "warning" | "error" | true | false
 -- Diagnostics for a class with a private name (starting with an underscore) that is not accessed.
 -- 
 -- ```lua
 -- default = "none"
 -- ```
----@field reportUnusedClass "none" | "unused" | "information" | "warning" | "error" | true | false
+---@field reportUnusedClass "none" | "hint" | "information" | "warning" | "error" | true | false
 -- Diagnostics for call expressions that return a Coroutine and whose results are not consumed.
 -- 
 -- ```lua
 -- default = "error"
 -- ```
----@field reportUnusedCoroutine "none" | "information" | "warning" | "error" | true | false
+---@field reportUnusedCoroutine "none" | "hint" | "information" | "warning" | "error" | true | false
 -- Diagnostics for unreachable except clause.
 -- 
 -- ```lua
 -- default = "error"
 -- ```
----@field reportUnusedExcept "none" | "unreachable" | "information" | "warning" | "error" | true | false
+---@field reportUnusedExcept "none" | "hint" | "information" | "warning" | "error" | true | false
 -- Diagnostics for simple expressions whose value is not used in any way.
 -- 
 -- ```lua
 -- default = "warning"
 -- ```
----@field reportUnusedExpression "none" | "information" | "warning" | "error" | true | false
+---@field reportUnusedExpression "none" | "hint" | "information" | "warning" | "error" | true | false
 -- Diagnostics for a function or method with a private name (starting with an underscore) that is not accessed.
 -- 
 -- ```lua
 -- default = "none"
 -- ```
----@field reportUnusedFunction "none" | "unused" | "information" | "warning" | "error" | true | false
+---@field reportUnusedFunction "none" | "hint" | "information" | "warning" | "error" | true | false
 -- Diagnostics for an imported symbol that is not referenced within that file.
 -- 
 -- ```lua
 -- default = "none"
 -- ```
----@field reportUnusedImport "none" | "unused" | "information" | "warning" | "error" | true | false
+---@field reportUnusedImport "none" | "hint" | "information" | "warning" | "error" | true | false
 -- Diagnostics for unused function parameters
 -- 
 -- ```lua
--- default = "unused"
+-- default = "hint"
 -- ```
----@field reportUnusedParameter "none" | "unused" | "information" | "warning" | "error" | true | false
+---@field reportUnusedParameter "none" | "hint" | "information" | "warning" | "error" | true | false
 -- Diagnostics for a variable that is not accessed.
 -- 
 -- ```lua
 -- default = "none"
 -- ```
----@field reportUnusedVariable "none" | "unused" | "information" | "warning" | "error" | true | false
+---@field reportUnusedVariable "none" | "hint" | "information" | "warning" | "error" | true | false
 -- Diagnostics for an wildcard import from an external library.
 -- 
 -- ```lua
 -- default = "warning"
 -- ```
----@field reportWildcardImportFromLibrary "none" | "information" | "warning" | "error" | true | false
+---@field reportWildcardImportFromLibrary "none" | "hint" | "information" | "warning" | "error" | true | false
+
+---@class _.lspconfig.settings.basedpyright.InlayHints
+-- Whether to show inlay hints on function arguments.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field callArgumentNames boolean
+-- Whether to show inlay hints on function return types.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field functionReturnTypes boolean
+-- Whether to show inlay hints on inferred generic types.
+---@field genericTypes boolean
+-- Whether to show inlay hints on assignments to variables.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field variableTypes boolean
 
 ---@class _.lspconfig.settings.basedpyright.Analysis
 -- Offer auto-import completions.
@@ -755,6 +754,7 @@
 -- default = {}
 -- ```
 ---@field include string[]
+---@field inlayHints _.lspconfig.settings.basedpyright.InlayHints
 -- Specifies the level of logging for the Output panel
 -- 
 -- ```lua
@@ -770,9 +770,9 @@
 -- Defines the default rule set for type checking.
 -- 
 -- ```lua
--- default = "all"
+-- default = "recommended"
 -- ```
----@field typeCheckingMode "off" | "basic" | "standard" | "strict" | "all"
+---@field typeCheckingMode "off" | "basic" | "standard" | "strict" | "recommended" | "all"
 -- Paths to look for typeshed modules.
 -- 
 -- ```lua
@@ -918,12 +918,24 @@
 -- default = true
 -- ```
 ---@field detectExtensionConflicts boolean
+-- Enable clangd language server features
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enable boolean
 -- Enable code completion provided by the language server
 -- 
 -- ```lua
 -- default = true
 -- ```
 ---@field enableCodeCompletion boolean
+-- Enable hovers provided by the language server
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enableHover boolean
 -- Extra clang flags used to parse files when no compilation database is found.
 -- 
 -- ```lua
@@ -963,6 +975,8 @@
 ---@field serverCompletionRanking boolean
 -- Names a file that clangd should log a performance trace to, in chrome trace-viewer JSON format.
 ---@field trace string
+-- Allows the path to be a script e.g.: clangd.sh.
+---@field useScriptAsExecutable boolean
 
 ---@class lspconfig.settings.clangd
 ---@field clangd _.lspconfig.settings.clangd.Clangd
@@ -1008,7 +1022,7 @@
 -- default = true
 -- ```
 ---@field newlineBetweenSelectors boolean
--- Whether existing line breaks before elements should be preserved.
+-- Whether existing line breaks before rules and declarations should be preserved.
 -- 
 -- ```lua
 -- default = true
@@ -1225,7 +1239,7 @@
 -- default = true
 -- ```
 ---@field newlineBetweenSelectors boolean
--- Whether existing line breaks before elements should be preserved.
+-- Whether existing line breaks before rules and declarations should be preserved.
 -- 
 -- ```lua
 -- default = true
@@ -1423,7 +1437,7 @@
 -- default = true
 -- ```
 ---@field newlineBetweenSelectors boolean
--- Whether existing line breaks before elements should be preserved.
+-- Whether existing line breaks before rules and declarations should be preserved.
 -- 
 -- ```lua
 -- default = true
@@ -1672,11 +1686,11 @@
 ---@field analyzerAdditionalArgs string[]
 -- The port number to be used for the Dart analyzer diagnostic server. This setting is can be useful for troubleshooting issues with the Dart Analysis Server.
 ---@field analyzerDiagnosticsPort number
--- The path to a log file for very detailed logging in the Dart Analysis Server that may be useful when trying to diagnose Analysis Server issues. Use `${workspaceName}` to insert the name of the current workspace in the file path. Use `~` to insert the user's home directory (the path should use `/` separators even on Windows). Only the noted substitutions are supported, others will stay as-is.
+-- The path to a log file for very detailed logging in the Dart Analysis Server that may be useful when trying to diagnose Analysis Server issues. Use `${workspaceName}` to insert the name of the current workspace in the file path. Use `~` to insert the user's home directory (the path should then use `/` separators even on Windows). Only the noted substitutions are supported, others will stay as-is.
 ---@field analyzerInstrumentationLogFile string
--- The path to a log file for communication between Dart Code and the Analysis Server. Use `${workspaceName}` to insert the name of the current workspace in the file path. Use `~` to insert the user's home directory (the path should use `/` separators even on Windows). Only the noted substitutions are supported, others will stay as-is.
+-- The path to a log file for communication between Dart Code and the Analysis Server. Use `${workspaceName}` to insert the name of the current workspace in the file path. Use `~` to insert the user's home directory (the path should then use `/` separators even on Windows). Only the noted substitutions are supported, others will stay as-is.
 ---@field analyzerLogFile string
--- The path to a custom Dart Analysis Server. This setting is intended for use by Dart Analysis Server developers.
+-- The path to a custom Dart Analysis Server. This setting is intended for use by Dart Analysis Server developers. Use `~` to insert the user's home directory (the path should then use `/` separators even on Windows).
 ---@field analyzerPath string
 -- An SSH host to run the Analysis Server.
 -- This can be useful when modifying code on a remote machine using SSHFS.
@@ -1757,19 +1771,19 @@
 -- default = true
 -- ```
 ---@field completeFunctionCalls boolean
--- The path to a custom Dart Debug Adapter. This setting is intended for use by Dart Debug Adapter developers.
+-- The path to a custom Dart Debug Adapter. This setting is intended for use by Dart Debug Adapter developers. Use `~` to insert the user's home directory (the path should then use `/` separators even on Windows).
 ---@field customDartDapPath string
 -- Custom settings for launching DevTools. This setting is intended for use by Dart DevTools developers.
 ---@field customDevTools _.lspconfig.settings.dartls.CustomDevTools
--- The path to a custom Flutter Debug Adapter. This setting is intended for use by Dart Debug Adapter developers.
+-- The path to a custom Flutter Debug Adapter. This setting is intended for use by Dart Debug Adapter developers. Use `~` to insert the user's home directory (the path should then use `/` separators even on Windows).
 ---@field customFlutterDapPath string
 -- EXPERIMENTAL: The port where flutter daemon can be accessed if daemon is run remotely. This setting is intended for use by Google developers.
 ---@field daemonPort number
--- The path to a log file for communication with the DAP debug adapters. This is useful when trying to diagnose issues with debugging such as missed breakpoints. Use `${name}` in the log file name to insert the Debug Session name to prevent concurrent debug sessions overwriting each others logs. Use `${workspaceName}` to insert the name of the current workspace in the file path. Use `${kind}` to insert a description of the kind of debug session ('dart', 'dart_test', 'flutter' etc.). Use `~` to insert the user's home directory (the path should use `/` separators even on Windows). Only the noted substitutions are supported, others will stay as-is.
+-- The path to a log file for communication with the DAP debug adapters. This is useful when trying to diagnose issues with debugging such as missed breakpoints. Use `${name}` in the log file name to insert the Debug Session name to prevent concurrent debug sessions overwriting each others logs. Use `${workspaceName}` to insert the name of the current workspace in the file path. Use `${kind}` to insert a description of the kind of debug session ('dart', 'dart_test', 'flutter' etc.). Use `~` to insert the user's home directory (the path should then use `/` separators even on Windows). Only the noted substitutions are supported, others will stay as-is.
 ---@field dapLogFile string
 -- **LEGACY SETTING: Only applies when using the legacy debug adapters.**
 -- 
--- The path to a log file for Dart test runs. This is useful when trying to diagnose issues with unit test executions. Use `${name}` in the log file name to insert the Debug Session name to prevent concurrent debug sessions overwriting each others logs. Use `${workspaceName}` to insert the name of the current workspace in the file path. Use `~` to insert the user's home directory (the path should use `/` separators even on Windows). Only the noted substitutions are supported, others will stay as-is.
+-- The path to a log file for Dart test runs. This is useful when trying to diagnose issues with unit test executions. Use `${name}` in the log file name to insert the Debug Session name to prevent concurrent debug sessions overwriting each others logs. Use `${workspaceName}` to insert the name of the current workspace in the file path. Use `~` to insert the user's home directory (the path should then use `/` separators even on Windows). Only the noted substitutions are supported, others will stay as-is.
 ---@field dartTestLogFile string
 -- The protocol to use for the Dart Debug Extension backend service and injected client. Using WebSockets can improve performance but may fail when connecting through some proxy servers.
 -- 
@@ -1795,7 +1809,7 @@
 -- }
 -- ```
 ---@field devToolsLocation _.lspconfig.settings.dartls.DevToolsLocation
--- The path to a low-traffic log file for the Dart DevTools service. Use `${workspaceName}` to insert the name of the current workspace in the file path. Use `~` to insert the user's home directory (the path should use `/` separators even on Windows). Only the noted substitutions are supported, others will stay as-is.
+-- The path to a low-traffic log file for the Dart DevTools service. Use `${workspaceName}` to insert the name of the current workspace in the file path. Use `~` to insert the user's home directory (the path should then use `/` separators even on Windows). Only the noted substitutions are supported, others will stay as-is.
 ---@field devToolsLogFile string
 -- The port number to be used for the Dart DevTools (requires restart).
 ---@field devToolsPort number
@@ -1821,6 +1835,12 @@
 ---@field doNotFormat string[]
 -- What level of documentation to show in Hovers and Code Completion details. When `null`, defaults to 'full' when running locally and 'none' in remote workspaces. This setting is only supported for Dart SDKs after v2.18.
 ---@field documentation "full" | "summary" | "none"
+-- How long (in ms) to delay sending editor location change events over the Dart Tooling Daemon. Increasing this results in less events which may improve performance, at the expensive of tools that use these events not updating as quickly after your location/editor changes (requires restart).
+-- 
+-- ```lua
+-- default = 200
+-- ```
+---@field dtdEditorActiveLocationDelay integer
 -- Whether to automatically commit the selected completion item when pressing certain keys such as . , ( and \[. This setting does not currently apply to LSP, see `#dart.previewCommitCharacters#`.
 ---@field enableCompletionCommitCharacters boolean
 -- Whether to enable functionality for using Pub. Turning this setting off will prevent the extension from ever running pub and hide all commands relating to this. Use this if you are using an alternative package manager.
@@ -1865,9 +1885,11 @@
 -- default = true
 -- ```
 ---@field evaluateToStringInDebugViews boolean
+-- Whether to enable experimental (possibly unfinished or unstable) LSP handlers through DTD. This setting is passed to the analysis server in the connectToDtd request and therefore relies on DTD being supported and enabled for the analysis server (requires restart).
+---@field experimentalDtdHandlers boolean
 -- Whether to enable experimental (possibly unfinished or unstable) refactors on the lightbulb menu. This setting is intended for use by Dart Analysis Server developers or users that want to try out and provide feedback on in-progress refactors.
 ---@field experimentalRefactors boolean
--- The path to a low-traffic log file for basic extension and editor issues. Use `${workspaceName}` to insert the name of the current workspace in the file path. Use `~` to insert the user's home directory (the path should use `/` separators even on Windows). Only the noted substitutions are supported, others will stay as-is.
+-- The path to a low-traffic log file for basic extension and editor issues. Use `${workspaceName}` to insert the name of the current workspace in the file path. Use `~` to insert the user's home directory (the path should then use `/` separators even on Windows). Only the noted substitutions are supported, others will stay as-is.
 ---@field extensionLogFile string
 -- Whether to automatically run `adb connect 100.115.92.2:5555` when spawning the Flutter daemon when running on Chrome OS.
 ---@field flutterAdbConnectOnChromeOs boolean
@@ -1905,7 +1927,7 @@
 -- default = {}
 -- ```
 ---@field flutterCustomEmulators object[]
--- The path to a log file for the `flutter daemon` service, which provides information about connected devices accessible from the status bar. Use `${workspaceName}` to insert the name of the current workspace in the file path. Use `~` to insert the user's home directory (the path should use `/` separators even on Windows). Only the noted substitutions are supported, others will stay as-is.
+-- The path to a log file for the `flutter daemon` service, which provides information about connected devices accessible from the status bar. Use `${workspaceName}` to insert the name of the current workspace in the file path. Use `~` to insert the user's home directory (the path should then use `/` separators even on Windows). Only the noted substitutions are supported, others will stay as-is.
 ---@field flutterDaemonLogFile string
 -- Whether to automatically run the Generate Localizations command for Flutter apps when saving .arb files.
 -- 
@@ -1945,13 +1967,13 @@
 ---@field flutterRunAdditionalArgs string[]
 -- **LEGACY SETTING: Only applies when using the legacy debug adapters.**
 -- 
--- The path to a log file for `flutter run`, which is used to launch Flutter apps from VS Code. This is useful when trying to diagnose issues with apps launching (or failing to) on simulators and devices. Use `${name}` in the log file name to insert the Debug Session name to prevent concurrent debug sessions overwriting each others logs. Use `${workspaceName}` to insert the name of the current workspace in the file path. Use `~` to insert the user's home directory (the path should use `/` separators even on Windows). Only the noted substitutions are supported, others will stay as-is.
+-- The path to a log file for `flutter run`, which is used to launch Flutter apps from VS Code. This is useful when trying to diagnose issues with apps launching (or failing to) on simulators and devices. Use `${name}` in the log file name to insert the Debug Session name to prevent concurrent debug sessions overwriting each others logs. Use `${workspaceName}` to insert the name of the current workspace in the file path. Use `~` to insert the user's home directory (the path should then use `/` separators even on Windows). Only the noted substitutions are supported, others will stay as-is.
 ---@field flutterRunLogFile string
--- The path to a directory to save Flutter screenshots.
+-- The path to a directory to save Flutter screenshots. Use `~` to insert the user's home directory (the path should then use `/` separators even on Windows).
 ---@field flutterScreenshotPath string
--- The location of the Flutter SDK to use. If blank (or not a valid SDK), Dart Code will attempt to find it from the project directory, `FLUTTER_ROOT` environment variable and the `PATH` environment variable.
+-- The location of the Flutter SDK to use. If blank (or not a valid SDK), Dart Code will attempt to find it from the project directory, `FLUTTER_ROOT` environment variable and the `PATH` environment variable. Use `~` to insert the user's home directory (the path should then use `/` separators even on Windows).
 ---@field flutterSdkPath string
--- An array of paths that either directly point to a Flutter SDK or the parent directory of multiple Flutter SDKs that can be used for fast SDK switching. These paths are not used directly when searching for an SDK. When this setting is populated, the version number in the status bar can be used to quickly switch between SDKs.
+-- An array of paths that either directly point to a Flutter SDK or the parent directory of multiple Flutter SDKs that can be used for fast SDK switching. These paths are not used directly when searching for an SDK. When this setting is populated, the version number in the status bar can be used to quickly switch between SDKs. Use `~` to insert the user's home directory (the path should then use `/` separators even on Windows).
 -- 
 -- ```lua
 -- default = {}
@@ -1983,7 +2005,7 @@
 ---@field flutterTestAdditionalArgs string[]
 -- **LEGACY SETTING: Only applies when using the legacy debug adapters.**
 -- 
--- The path to a log file for `flutter test`, which is used to run unit tests from VS Code. This is useful when trying to diagnose issues with unit test executions. Use `${name}` in the log file name to insert the Debug Session name to prevent concurrent debug sessions overwriting each others logs. Use `${workspaceName}` to insert the name of the current workspace in the file path. Use `~` to insert the user's home directory (the path should use `/` separators even on Windows). Only the noted substitutions are supported, others will stay as-is.
+-- The path to a log file for `flutter test`, which is used to run unit tests from VS Code. This is useful when trying to diagnose issues with unit test executions. Use `${name}` in the log file name to insert the Debug Session name to prevent concurrent debug sessions overwriting each others logs. Use `${workspaceName}` to insert the name of the current workspace in the file path. Use `~` to insert the user's home directory (the path should then use `/` separators even on Windows). Only the noted substitutions are supported, others will stay as-is.
 ---@field flutterTestLogFile string
 -- **LEGACY SETTING: Disabling this may break functionality on modern SDKs.**
 -- 
@@ -2029,7 +2051,7 @@
 -- default = true
 -- ```
 ---@field insertArgumentPlaceholders boolean
--- The maximum length of a line of code. This is used by the document formatter. If you change this value, you may wish to update `editor.rulers` (which draws vertical lines in the editor) in the `["dart"]` section if your settings to match.
+-- The maximum length of a line of code. This is used by the document formatter. If you change this value, you may wish to update `editor.rulers` (which draws vertical lines in the editor) in the `["dart"]` section of your settings to match.
 -- 
 -- ```lua
 -- default = 80
@@ -2123,9 +2145,9 @@
 -- default = "always"
 -- ```
 ---@field runPubGetOnPubspecChanges "always" | "prompt" | "never"
--- The location of the Dart SDK to use for analyzing and executing code. If blank (or not a valid SDK), Dart Code will attempt to find it from the `PATH` environment variable. When editing a Flutter project, the version of Dart included in the Flutter SDK is used in preference.
+-- The location of the Dart SDK to use for analyzing and executing code. If blank (or not a valid SDK), Dart Code will attempt to find it from the `PATH` environment variable. When editing a Flutter project, the version of Dart included in the Flutter SDK is used in preference. Use `~` to insert the user's home directory (the path should then use `/` separators even on Windows).
 ---@field sdkPath string
--- An array of paths that either directly point to a Dart SDK or the parent directory of multiple Dart SDKs that can be used for fast SDK switching. These paths are not used directly when searching for an SDK. When this setting is populated, the SDK version number in the status bar can be used to quickly switch between SDKs.
+-- An array of paths that either directly point to a Dart SDK or the parent directory of multiple Dart SDKs that can be used for fast SDK switching. These paths are not used directly when searching for an SDK. When this setting is populated, the SDK version number in the status bar can be used to quickly switch between SDKs. Use `~` to insert the user's home directory (the path should then use `/` separators even on Windows).
 -- 
 -- ```lua
 -- default = {}
@@ -2223,7 +2245,7 @@
 -- default = "name"
 -- ```
 ---@field testInvocationMode "name" | "line"
--- The path to a log file for the `dart tooling-daemon` service, which coordinates between various Dart and Flutter tools and extensions. Use `${workspaceName}` to insert the name of the current workspace in the file path. Use `~` to insert the user's home directory (the path should use `/` separators even on Windows). Only the noted substitutions are supported, others will stay as-is.
+-- The path to a log file for the `dart tooling-daemon` service, which coordinates between various Dart and Flutter tools and extensions. Use `${workspaceName}` to insert the name of the current workspace in the file path. Use `~` to insert the user's home directory (the path should then use `/` separators even on Windows). Only the noted substitutions are supported, others will stay as-is.
 ---@field toolingDaemonLogFile string
 -- **LEGACY SETTING: Only applies to Dart SDKs before v2.15 since DevTools now ships in the SDK.**
 -- 
@@ -2259,7 +2281,7 @@
 ---@field vmAdditionalArgs string[]
 -- **LEGACY SETTING: Only applies when using the legacy debug adapters.**
 -- 
--- The path to a log file for communication between Dart Code and the VM service. This is useful when trying to diagnose issues with debugging such as missed breakpoints. Use `${name}` in the log file name to insert the Debug Session name to prevent concurrent debug sessions overwriting each others logs. Use `${workspaceName}` to insert the name of the current workspace in the file path. Use `~` to insert the user's home directory (the path should use `/` separators even on Windows). Only the noted substitutions are supported, others will stay as-is.
+-- The path to a log file for communication between Dart Code and the VM service. This is useful when trying to diagnose issues with debugging such as missed breakpoints. Use `${name}` in the log file name to insert the Debug Session name to prevent concurrent debug sessions overwriting each others logs. Use `${workspaceName}` to insert the name of the current workspace in the file path. Use `~` to insert the user's home directory (the path should then use `/` separators even on Windows). Only the noted substitutions are supported, others will stay as-is.
 ---@field vmServiceLogFile string
 -- Whether to show a warning when modifying files in the [system package cache](https://dart.dev/tools/pub/glossary#system-cache) directory.
 -- 
@@ -2275,7 +2297,7 @@
 ---@field warnWhenEditingFilesOutsideWorkspace boolean
 -- **LEGACY SETTING: Only applies when using the legacy debug adapters.**
 -- 
--- The path to a log file for communication between Dart Code and the webdev daemon. This is useful when trying to diagnose issues with launching web apps. Use `${name}` in the log file name to insert the Debug Session name to prevent concurrent debug sessions overwriting each others logs. Use `${workspaceName}` to insert the name of the current workspace in the file path. Use `~` to insert the user's home directory (the path should use `/` separators even on Windows). Only the noted substitutions are supported, others will stay as-is.
+-- The path to a log file for communication between Dart Code and the webdev daemon. This is useful when trying to diagnose issues with launching web apps. Use `${name}` in the log file name to insert the Debug Session name to prevent concurrent debug sessions overwriting each others logs. Use `${workspaceName}` to insert the name of the current workspace in the file path. Use `~` to insert the user's home directory (the path should then use `/` separators even on Windows). Only the noted substitutions are supported, others will stay as-is.
 ---@field webDaemonLogFile string
 
 ---@class lspconfig.settings.dartls
@@ -2385,6 +2407,14 @@
 -- ```
 ---@field args string[]
 
+---@class _.lspconfig.settings.denols.Trace
+-- Traces the communication between VS Code and the Deno Language Server.
+-- 
+-- ```lua
+-- default = "off"
+-- ```
+---@field server "messages" | "off" | "verbose"
+
 ---@class _.lspconfig.settings.denols.Deno
 -- A path to the cache directory for Deno. By default, the operating system's cache path plus `deno` is used, or the `DENO_DIR` environment variable, but if set, this path will be used instead.
 ---@field cache string
@@ -2482,6 +2512,7 @@
 ---@field testing _.lspconfig.settings.denols.Testing
 -- A path to a PEM certificate to use as the certificate authority when validating TLS certificates when fetching and caching remote resources. This is like using `--cert` on the Deno CLI and overrides the `DENO_CERT` environment variable if set.
 ---@field tlsCertificate string
+---@field trace _.lspconfig.settings.denols.Trace
 -- **DANGER** disables verification of TLS certificates for the hosts provided. There is likely a better way to deal with any errors than use this option. This is like using `--unsafely-ignore-certificate-errors` in the Deno CLI.
 ---@field unsafelyIgnoreCertificateErrors string[]
 -- Controls which `--unstable-*` features tests will be run with when running them via the explorer.
@@ -3014,11 +3045,7 @@
 ---@class _.lspconfig.settings.fsautocomplete.Gc
 -- Configures the garbage collector to [conserve memory](https://learn.microsoft.com/en-us/dotnet/core/runtime-config/garbage-collector#conserve-memory) at the expense of more frequent garbage collections and possibly longer pause times. Acceptable values are 0-9. Any non-zero value will allow the [Large Object Heap](https://learn.microsoft.com/en-us/dotnet/standard/garbage-collection/large-object-heap) to be compacted automatically if it has too much fragmentation. Requires restart.
 ---@field conserveMemory integer
--- Limits the number of [heaps](https://learn.microsoft.com/en-us/dotnet/standard/garbage-collection/fundamentals#the-managed-heap) created by the garbage collector. Applies to server garbage collection only. See [Middle Ground between Server and Workstation GC](https://devblogs.microsoft.com/dotnet/middle-ground-between-server-and-workstation-gc/) for more details. This can allow FSAC to still benefit from Server garbage collection while still limiting the number of heaps. [Only available on .NET 7 or higher](https://github.com/ionide/ionide-vscode-fsharp/issues/1899#issuecomment-1649009462). Requires restart.
--- 
--- ```lua
--- default = 2
--- ```
+-- Limits the number of [heaps](https://learn.microsoft.com/en-us/dotnet/standard/garbage-collection/fundamentals#the-managed-heap) created by the garbage collector. Applies to server garbage collection only. See [Middle Ground between Server and Workstation GC](https://devblogs.microsoft.com/dotnet/middle-ground-between-server-and-workstation-gc/) for more details. This can allow FSAC to still benefit from Server garbage collection while still limiting the number of heaps. [Only available on .NET 7 or higher](https://github.com/ionide/ionide-vscode-fsharp/issues/1899#issuecomment-1649009462). Requires restart. If FSAC is run on .NET 8 runtimes, this will be set to 2 by default to prevent inflated memory use. On .NET 9 with DATAS enabled, this will not be set. 
 ---@field heapCount integer
 -- Configures whether the application uses workstation garbage collection or server garbage collection. See [Workstation vs Server Garbage Collection](https://devblogs.microsoft.com/premier-developer/understanding-different-gc-modes-with-concurrency-visualizer/#workstation-gc-vs-server-gc) for more details. Workstation will use less memory but Server will have more throughput. Requires restart.
 -- 
@@ -3026,6 +3053,8 @@
 -- default = true
 -- ```
 ---@field server boolean
+-- Configures whether the application uses the DATAS(dynamic adaptation to application sizes) server garbage collection mode. See [DATAS](https://learn.microsoft.com/dotnet/core/runtime-config/garbage-collector#dynamic-adaptation-to-application-sizes-datas) for more details. Requires restart. When FSAC is run on .NET 8 runtimes, this will be set to false by default. On .NET 9 runtimes, this will be set to true by default.
+---@field useDatas boolean
 
 ---@class _.lspconfig.settings.fsautocomplete.Fsac
 -- Appends the `--attachdebugger` argument to fsac, this will allow you to attach a debugger.
@@ -3428,11 +3457,7 @@
 ---@field workspacePath string
 
 ---@class _.lspconfig.settings.fsautocomplete.Gc
--- Specifies whether to [affinitize](https://learn.microsoft.com/en-us/dotnet/core/runtime-config/garbage-collector#affinitize) garbage collection threads with processors. To affinitize a GC thread means that it can only run on its specific CPU.. Applies to server garbage collection only. See [GCNoAffinitize](https://learn.microsoft.com/en-us/dotnet/framework/configure-apps/file-schema/runtime/gcnoaffinitize-element#remarks) for more details. [Only available on .NET 7 or higher](https://github.com/ionide/ionide-vscode-fsharp/issues/1899#issuecomment-1649009462). Requires restart.
--- 
--- ```lua
--- default = true
--- ```
+-- Specifies whether to [affinitize](https://learn.microsoft.com/en-us/dotnet/core/runtime-config/garbage-collector#affinitize) garbage collection threads with processors. To affinitize a GC thread means that it can only run on its specific CPU.. Applies to server garbage collection only. See [GCNoAffinitize](https://learn.microsoft.com/en-us/dotnet/framework/configure-apps/file-schema/runtime/gcnoaffinitize-element#remarks) for more details. [Only available on .NET 7 or higher](https://github.com/ionide/ionide-vscode-fsharp/issues/1899#issuecomment-1649009462). Requires restart. If FSAC is run on .NET 8 runtimes, this will be set by default. On .NET 9 with DATAS enabled, this will not be set.
 ---@field noAffinitize boolean
 
 ---@class _.lspconfig.settings.fsautocomplete.Fsac
@@ -3926,34 +3951,22 @@
 -- ```lua
 -- default = {
 --   conditionals = false,
---   functionReturnTypes = true,
---   parameterNames = true,
+--   functionReturnTypes = false,
+--   parameterNames = false,
 --   parameterTypes = false,
---   variableTypes = true
+--   variableTypes = false
 -- }
 -- ```
 ---@class _.lspconfig.settings.haxe_language_server.InlayHints
 -- Show inlay hints for conditionals
 ---@field conditionals boolean
 -- Show inlay hints for function return types
--- 
--- ```lua
--- default = true
--- ```
 ---@field functionReturnTypes boolean
 -- Show inlay hints for parameter names
--- 
--- ```lua
--- default = true
--- ```
 ---@field parameterNames boolean
 -- Show inlay hints for parameter types
 ---@field parameterTypes boolean
 -- Show inlay hints for variables
--- 
--- ```lua
--- default = true
--- ```
 ---@field variableTypes boolean
 
 -- Options for postfix completion
@@ -4077,6 +4090,8 @@
 -- default = "${workspaceRoot}"
 -- ```
 ---@field diagnosticsPathFilter string
+-- Disable refactor / rename cache. Will also disbale all rename and refactor options.
+---@field disableRefactorCache boolean
 -- ```lua
 -- default = {}
 -- ```
@@ -4155,10 +4170,10 @@
 -- ```lua
 -- default = {
 --   conditionals = false,
---   functionReturnTypes = true,
---   parameterNames = true,
+--   functionReturnTypes = false,
+--   parameterNames = false,
 --   parameterTypes = false,
---   variableTypes = true
+--   variableTypes = false
 -- }
 -- ```
 ---@field inlayHints _.lspconfig.settings.haxe_language_server.InlayHints
@@ -5156,6 +5171,12 @@
 -- default = true
 -- ```
 ---@field languageConstraints boolean
+-- Enables reporting of errors associated with type member access.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field memberAccess boolean
 -- This setting turns off type checking for the `mixed` type. This is useful for projects that may have incomplete or innacurate typings. Set to `false` to make type checking more thorough by not allowing `mixed` to satisy any type constraint. This setting has no effect when `relaxedTypeCheck` is `true`.
 -- 
 -- ```lua
@@ -5249,7 +5270,7 @@
 -- A semver compatible string that represents the target PHP version. Used for providing version appropriate suggestions and diagnostics. PHP 5.3.0 and greater supported.
 -- 
 -- ```lua
--- default = "8.3.0"
+-- default = "8.4.0"
 -- ```
 ---@field phpVersion string
 -- When enabled '<?' will be parsed as a PHP open tag. Defaults to true.
@@ -5619,6 +5640,12 @@
 -- default = true
 -- ```
 ---@field enabled boolean
+-- [Experimental] Select code completion engine
+-- 
+-- ```lua
+-- default = "ecj"
+-- ```
+---@field engine "ecj" | "dom"
 -- Defines a list of static members or types with static members. Content assist will propose those static members even if the import is missing.
 -- 
 -- ```lua
@@ -5793,10 +5820,6 @@
 ---@field onType _.lspconfig.settings.jdtls.OnType
 ---@field settings _.lspconfig.settings.jdtls.Settings
 
----@class _.lspconfig.settings.jdtls.ImplementationsCodeLens
--- Enable/disable the implementations code lens.
----@field enabled boolean
-
 ---@class _.lspconfig.settings.jdtls.AnnotationProcessing
 -- Enable/disable the annotation processing on Gradle projects and delegate Annotation Processing to JDT APT. Only works for Gradle 5.2 or higher.
 -- 
@@ -5939,6 +5962,14 @@
 -- "java.jdt.ls.java.home":"C:\\Program Files\\Java\\jdk-17.0_3"
 ---@field home string
 
+---@class _.lspconfig.settings.jdtls.Javac
+-- [Experimental] Specify whether to enable Javac-based compilation in the language server. Requires running this extension with Java 23
+-- 
+-- ```lua
+-- default = "off"
+-- ```
+---@field enabled "on" | "off"
+
 ---@class _.lspconfig.settings.jdtls.LombokSupport
 -- Whether to load lombok processors from project classpath
 -- 
@@ -5960,6 +5991,7 @@
 ---@class _.lspconfig.settings.jdtls.Ls
 ---@field androidSupport _.lspconfig.settings.jdtls.AndroidSupport
 ---@field java _.lspconfig.settings.jdtls.Java
+---@field javac _.lspconfig.settings.jdtls.Javac
 ---@field lombokSupport _.lspconfig.settings.jdtls.LombokSupport
 ---@field protobufSupport _.lspconfig.settings.jdtls.ProtobufSupport
 -- Specifies extra VM arguments used to launch the Java Language Server. Eg. use `-XX:+UseParallelGC -XX:GCTimeRatio=4 -XX:AdaptiveSizePolicyWeight=90 -Dsun.zip.disableMemoryMapping=true -Xmx1G -Xms100m -Xlog:disable` to optimize memory usage with the parallel garbage collector
@@ -6051,6 +6083,12 @@
 -- default = true
 -- ```
 ---@field includeAccessors boolean
+-- Include declarations when finding references.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field includeDeclarations boolean
 -- Include the decompiled sources when finding references.
 -- 
 -- ```lua
@@ -6211,7 +6249,12 @@
 -- On Windows, backslashes must be escaped, i.e.
 -- "java.home":"C:\\Program Files\\Java\\jdk-17.0_3"
 ---@field home string
----@field implementationsCodeLens _.lspconfig.settings.jdtls.ImplementationsCodeLens
+-- Enable/disable the implementations code lens for the provided categories.
+-- 
+-- ```lua
+-- default = "none"
+-- ```
+---@field implementationCodeLens "none" | "types" | "methods" | "all"
 ---@field import _.lspconfig.settings.jdtls.Import
 ---@field imports _.lspconfig.settings.jdtls.Imports
 ---@field inlayHints _.lspconfig.settings.jdtls.InlayHints
@@ -7454,6 +7497,18 @@
 -- default = true
 -- ```
 ---@field enable boolean
+-- Specifies the git branch used by the addon manager.
+-- 
+-- ```lua
+-- default = ""
+-- ```
+---@field repositoryBranch string
+-- Specifies the git path used by the addon manager.
+-- 
+-- ```lua
+-- default = ""
+-- ```
+---@field repositoryPath string
 
 ---@class _.lspconfig.settings.lua_ls.CodeLens
 -- Enable code lens.
@@ -8700,6 +8755,8 @@
 -- default = true
 -- ```
 ---@field await boolean
+-- Enable the propagation of `await`. When a function calls a function marked `---@async`,it will be automatically marked as `---@async`.
+---@field awaitPropagate boolean
 -- Enable inlay hint.
 ---@field enable boolean
 -- Show hints of parameter name at the function call.
@@ -8746,7 +8803,7 @@
 -- When hovering to view a table, limits the maximum number of previews for fields.
 -- 
 -- ```lua
--- default = 50
+-- default = 10
 -- ```
 ---@field previewFields integer
 -- Hover to view numeric content (only if literal is not decimal).
@@ -8767,6 +8824,20 @@
 -- default = 1000
 -- ```
 ---@field viewStringMax integer
+
+---@class _.lspconfig.settings.lua_ls.Language
+-- (VSCode only) Automatically insert "---@ " after a line break following a annotation.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field completeAnnotation boolean
+-- (VSCode only) Fix incorrect auto-indentation, such as incorrect indentation when line breaks occur within a string containing the word "function."
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field fixIndent boolean
 
 ---@class _.lspconfig.settings.lua_ls.Misc
 -- Specify the executable path in VSCode.
@@ -9035,6 +9106,12 @@
 -- When this setting is `false`, the type of the parameter is `any` when it is not annotated.
 -- 
 ---@field inferParamType boolean
+-- TODO: Needs documentation
+-- 
+-- ```lua
+-- default = 10
+-- ```
+---@field inferTableSize integer
 -- When checking the type of union type, ignore the `nil` in it.
 -- 
 -- When this setting is `false`, the `number|nil` type cannot be assigned to the `number` type. It can be with `true`.
@@ -9154,6 +9231,7 @@
 ---@field format _.lspconfig.settings.lua_ls.Format
 ---@field hint _.lspconfig.settings.lua_ls.Hint
 ---@field hover _.lspconfig.settings.lua_ls.Hover
+---@field language _.lspconfig.settings.lua_ls.Language
 ---@field misc _.lspconfig.settings.lua_ls.Misc
 ---@field nameStyle _.lspconfig.settings.lua_ls.NameStyle
 ---@field runtime _.lspconfig.settings.lua_ls.Runtime
@@ -9281,6 +9359,18 @@
 -- default = true
 -- ```
 ---@field includeDependents boolean
+-- Whether to update document diagnostics whenever the text file changes
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field pullOnChange boolean
+-- Whether to update document diagnostics whenever the text file is saved
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field pullOnSave boolean
 -- Use strict DataModel types in diagnostics. When on, this is equivalent to the more expressive autocompletion types. When this is off, `game`/`script`/`workspace` (and their members) are all typed as `any`, and helps to prevent false positives. [Read More](https://github.com/JohnnyMorganz/luau-lsp/issues/83#issuecomment-1192865024)
 ---@field strictDatamodelTypes boolean
 -- Compute diagnostics for the whole workspace
@@ -9289,6 +9379,8 @@
 ---@class _.lspconfig.settings.luau_lsp.Fflags
 -- Enable all (boolean) Luau FFlags by default. These flags can later be overriden by `#luau-lsp.fflags.override#` and `#luau-lsp.fflags.sync#`
 ---@field enableByDefault boolean
+-- Enables the flags required for Luau's new type solver. These flags can be overriden by `#luau-lsp.fflags.override#`
+---@field enableNewSolver boolean
 -- Override FFlags passed to Luau
 -- 
 -- ```lua
@@ -9344,6 +9436,14 @@
 ---@class _.lspconfig.settings.luau_lsp.InlayHints
 -- Show inlay hints for function return types
 ---@field functionReturnTypes boolean
+-- Whether type hints should be hidden if they resolve to an error type
+---@field hideHintsForErrorTypes boolean
+-- Whether type hints should be hidden if the resolved variable name matches the parameter name
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field hideHintsForMatchingParameterNames boolean
 -- Whether type annotation inlay hints can be made insertable by clicking
 -- 
 -- ```lua
@@ -9404,12 +9504,6 @@
 -- default = {}
 -- ```
 ---@field fileAliases table
--- How string requires should be interpreted
--- 
--- ```lua
--- default = "relativeToWorkspaceRoot"
--- ```
----@field mode "relativeToWorkspaceRoot" | "relativeToFile"
 
 ---@class _.lspconfig.settings.luau_lsp.SignatureHelp
 -- Enable signature help
@@ -9447,6 +9541,12 @@
 -- default = "default.project.json"
 -- ```
 ---@field rojoProjectFile string
+-- The name of the sourcemap file
+-- 
+-- ```lua
+-- default = "sourcemap.json"
+-- ```
+---@field sourcemapFile string
 
 ---@class _.lspconfig.settings.luau_lsp.Types
 -- A list of paths to definition files to load in to the type checker. Note that definition file syntax is currently unstable and may change at any time
@@ -9746,6 +9846,14 @@
 -- %configuration.omnisharp.csharp.suppressProjectJsonWarning%
 ---@field suppressProjectJsonWarning boolean
 
+---@class _.lspconfig.settings.omnisharp.AutoInsert
+-- %configuration.dotnet.autoInsert.enableAutoInsert%
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enableAutoInsert boolean
+
 ---@class _.lspconfig.settings.omnisharp.BackgroundAnalysis
 -- %configuration.dotnet.backgroundAnalysis.analyzerDiagnosticsScope%
 -- 
@@ -9891,17 +9999,13 @@
 -- %configuration.dotnet.server.startTimeout%
 -- 
 -- ```lua
--- default = 30000
+-- default = 120000
 -- ```
 ---@field startTimeout number
 -- %configuration.dotnet.server.suppressLspErrorToasts%
 ---@field suppressLspErrorToasts boolean
--- %configuration.dotnet.server.trace%
--- 
--- ```lua
--- default = "Information"
--- ```
----@field trace "Trace" | "Debug" | "Information" | "Warning" | "Error" | "Critical" | "None"
+-- %configuration.dotnet.server.suppressMiscellaneousFilesToasts%
+---@field suppressMiscellaneousFilesToasts boolean
 -- %configuration.omnisharp.dotnet.server.useOmnisharp%
 ---@field useOmnisharp boolean
 -- %configuration.dotnet.server.useServerGC%
@@ -10151,13 +10255,12 @@
 ---@field runSettingsPath string
 
 ---@class _.lspconfig.settings.omnisharp.Dotnet
+---@field autoInsert _.lspconfig.settings.omnisharp.AutoInsert
 ---@field backgroundAnalysis _.lspconfig.settings.omnisharp.BackgroundAnalysis
 ---@field codeLens _.lspconfig.settings.omnisharp.CodeLens
 ---@field completion _.lspconfig.settings.omnisharp.Completion
 -- %configuration.dotnet.defaultSolution.description%
 ---@field defaultSolution string
--- %configuration.dotnet.dotnetPath%
----@field dotnetPath string
 -- %configuration.dotnet.enableXamlTools%
 -- 
 -- ```lua
@@ -10193,6 +10296,8 @@
 ---@field disableMSBuildDiagnosticWarning boolean
 -- %configuration.omnisharp.dotNetCliPaths%
 ---@field dotNetCliPaths string[]
+-- %configuration.omnisharp.dotnetPath%
+---@field dotnetPath string
 -- %configuration.omnisharp.enableAsyncCompletion%
 ---@field enableAsyncCompletion boolean
 -- %configuration.omnisharp.enableDecompilationSupport%
@@ -10291,18 +10396,18 @@
 ---@field directory string
 -- %configuration.razor.languageServer.forceRuntimeCodeGeneration%
 ---@field forceRuntimeCodeGeneration boolean
+-- %configuration.razor.languageServer.suppressLspErrorToasts%
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field suppressLspErrorToasts boolean
+-- %configuration.razor.languageServer.useRoslynTokenizer%
+---@field useRoslynTokenizer boolean
 
 ---@class _.lspconfig.settings.omnisharp.Plugin
 -- %configuration.omnisharp.razor.plugin.path%
 ---@field path string
-
----@class _.lspconfig.settings.omnisharp.Server
--- %configuration.razor.server.trace%
--- 
--- ```lua
--- default = "Information"
--- ```
----@field trace "Trace" | "Debug" | "Information" | "Warning" | "Error" | "Critical" | "None"
 
 ---@class _.lspconfig.settings.omnisharp.Razor
 ---@field completion _.lspconfig.settings.omnisharp.Completion
@@ -10311,7 +10416,6 @@
 ---@field format _.lspconfig.settings.omnisharp.Format
 ---@field languageServer _.lspconfig.settings.omnisharp.LanguageServer
 ---@field plugin _.lspconfig.settings.omnisharp.Plugin
----@field server _.lspconfig.settings.omnisharp.Server
 
 ---@class lspconfig.settings.omnisharp
 ---@field csharp _.lspconfig.settings.omnisharp.Csharp
@@ -10787,6 +10891,12 @@
 ---@class _.lspconfig.settings.powershell_es.Debugging
 -- Creates a temporary PowerShell Extension Terminal for each debugging session. This is useful for debugging PowerShell classes and binary modules.
 ---@field createTemporaryIntegratedConsole boolean
+-- Sets the operator used to launch scripts.
+-- 
+-- ```lua
+-- default = "DotSource"
+-- ```
+---@field executeMode "DotSource" | "Call"
 
 ---@class _.lspconfig.settings.powershell_es.Developer
 -- Specifies an alternative path to the folder containing modules that are bundled with the PowerShell extension, that is: PowerShell Editor Services, PSScriptAnalyzer and PSReadLine. **This setting is only meant for extension developers and requires the extension to be run in development mode!**
@@ -10795,12 +10905,12 @@
 -- default = "../../PowerShellEditorServices/module"
 -- ```
 ---@field bundledModulesPath string
--- Sets the log verbosity for both the extension and its LSP server, PowerShell Editor Services. **Please set to `Diagnostic` when recording logs for a bug report!**
+-- Sets the log verbosity for both the extension and its LSP server, PowerShell Editor Services. **Please set to `Trace` when recording logs for a bug report!**
 -- 
 -- ```lua
--- default = "Normal"
+-- default = "Warning"
 -- ```
----@field editorServicesLogLevel "Diagnostic" | "Verbose" | "Normal" | "Warning" | "Error" | "None"
+---@field editorServicesLogLevel "Trace" | "Debug" | "Information" | "Warning" | "Error" | "None"
 -- Launches the LSP server with the `/waitForDebugger` flag to force it to wait for a .NET debugger to attach before proceeding, and emit its PID until then. **This setting is only meant for extension developers and requires the extension to be run in development mode!**
 ---@field editorServicesWaitForDebugger boolean
 -- An array of strings that enable experimental features in the PowerShell extension. **No flags are currently available!**
@@ -10815,6 +10925,8 @@
 -- default = true
 -- ```
 ---@field setExecutionPolicy boolean
+-- Traces the DAP communication between VS Code and the PowerShell Editor Services [DAP Server](https://microsoft.github.io/debug-adapter-protocol/). The output will be logged and also visible in the Output pane, where the verbosity is configurable. **For extension developers and issue troubleshooting only!**
+---@field traceDap boolean
 -- Specifies how many seconds the extension will wait for the LSP server, PowerShell Editor Services, to connect. The default is four minutes; try increasing this value if your computer is particularly slow (often caused by overactive anti-malware programs).
 -- 
 -- ```lua
@@ -10911,7 +11023,7 @@
 ---@field osx boolean
 
 ---@class _.lspconfig.settings.powershell_es.Trace
--- Traces the communication between VS Code and the PowerShell Editor Services language server. **This setting is only meant for extension developers!**
+-- Traces the communication between VS Code and the PowerShell Editor Services [LSP Server](https://microsoft.github.io/language-server-protocol/). The output will be logged and also visible in the Output pane, where the verbosity is configurable. **For extension developers and issue troubleshooting only!**
 -- 
 -- ```lua
 -- default = "off"
@@ -12445,8 +12557,12 @@
 ---@field r _.lspconfig.settings.r_language_server.R
 
 ---@class _.lspconfig.settings.rescriptls.ProjectConfig
--- (beta/experimental) Enable project config caching. Can speed up latency dramatically.
----@field enabled boolean
+-- Enable project config caching. Can speed up latency dramatically.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enable boolean
 
 ---@class _.lspconfig.settings.rescriptls.Cache
 ---@field projectConfig _.lspconfig.settings.rescriptls.ProjectConfig
@@ -12456,8 +12572,12 @@
 ---@field acrossFiles boolean
 -- (debug) Enable debug logging (ends up in the extension output).
 ---@field debugLogging boolean
--- (beta/experimental) Enable incremental type checking.
----@field enabled boolean
+-- Enable incremental type checking.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enable boolean
 
 ---@class _.lspconfig.settings.rescriptls.InlayHints
 -- Enable (experimental) inlay hints.
@@ -13060,6 +13180,13 @@
 -- default = "discover"
 -- ```
 ---@field sysroot string
+-- How to query metadata for the sysroot crate. Using cargo metadata allows rust-analyzer
+-- to analyze third-party dependencies of the standard libraries.
+-- 
+-- ```lua
+-- default = "cargo_metadata"
+-- ```
+---@field sysrootQueryMetadata "none" | "cargo_metadata"
 -- Relative path to the sysroot library sources. If left unset, this will default to
 -- `{cargo.sysroot}/lib/rustlib/src/rust/library`.
 -- 
@@ -13074,6 +13201,14 @@
 -- Set to `true` to use a subdirectory of the existing target directory or
 -- set to a path relative to the workspace to use that path.
 ---@field targetDir any|boolean|string
+
+---@class _.lspconfig.settings.rust_analyzer.Cfg
+-- Set `cfg(test)` for local crates. Defaults to true.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field setTest boolean
 
 ---@class _.lspconfig.settings.rust_analyzer.Check
 -- Check all targets and tests (`--all-targets`). Defaults to
@@ -13159,7 +13294,8 @@
 -- Aliased as `"checkOnSave.targets"`.
 ---@field targets any|string|string[]
 -- Whether `--workspace` should be passed to `cargo check`.
--- If false, `-p <package>` will be passed instead.
+-- If false, `-p <package>` will be passed instead if applicable. In case it is not, no
+-- check will be performed.
 -- 
 -- ```lua
 -- default = true
@@ -13289,12 +13425,14 @@
 ---@field termSearch _.lspconfig.settings.rust_analyzer.TermSearch
 
 ---@class _.lspconfig.settings.rust_analyzer.Debug
+-- Whether to rebuild the project modules before debugging the same test again
+---@field buildBeforeRestart boolean
 -- Preferred debug engine.
 -- 
 -- ```lua
 -- default = "auto"
 -- ```
----@field engine "auto" | "vadimcn.vscode-lldb" | "ms-vscode.cpptools"
+---@field engine "auto" | "llvm-vs-code-extensions.lldb-dap" | "vadimcn.vscode-lldb" | "ms-vscode.cpptools" | "webfreak.debug"
 -- Optional settings passed to the debug engine. Example: `{ "lldb": { "terminal":"external"} }`
 -- 
 -- ```lua
@@ -13557,6 +13695,16 @@
 ---@field actions _.lspconfig.settings.rust_analyzer.Actions
 ---@field documentation _.lspconfig.settings.rust_analyzer.Documentation
 ---@field links _.lspconfig.settings.rust_analyzer.Links
+-- Whether to show what types are used as generic arguments in calls etc. on hover, and what is their max length to show such types, beyond it they will be shown with ellipsis.
+-- 
+-- This can take three values: `null` means "unlimited", the string `"hide"` means to not show generic substitutions at all, and a number means to limit them to X characters.
+-- 
+-- The default is 20 characters.
+-- 
+-- ```lua
+-- default = 20
+-- ```
+---@field maxSubstitutionLength any|"hide"|integer
 ---@field memoryLayout _.lspconfig.settings.rust_analyzer.MemoryLayout
 ---@field show _.lspconfig.settings.rust_analyzer.Show
 
@@ -13922,7 +14070,7 @@
 ---@class _.lspconfig.settings.rust_analyzer.References
 -- Exclude imports from find-all-references.
 ---@field excludeImports boolean
--- Exclude tests from find-all-references.
+-- Exclude tests from find-all-references and call-hierarchy.
 ---@field excludeTests boolean
 
 ---@class _.lspconfig.settings.rust_analyzer.Runnables
@@ -14102,6 +14250,28 @@
 -- default = "openLogs"
 -- ```
 ---@field clickAction "stopServer" | "openLogs"
+-- When to show the extension status bar.
+-- 
+-- `"always"` Always show the status bar.
+-- 
+-- `"never"` Never show the status bar.
+-- 
+-- `{ documentSelector: <DocumentSelector>[] }` Show the status bar if the open file matches any of the given document selectors.
+-- 
+-- See [VS Code -- DocumentSelector](https://code.visualstudio.com/api/references/document-selector) for more information.
+-- 
+-- ```lua
+-- default = {
+--   documentSelector = { {
+--       language = "rust"
+--     }, {
+--       pattern = "**/Cargo.toml"
+--     }, {
+--       pattern = "**/Cargo.lock"
+--     } }
+-- }
+-- ```
+---@field showStatusBar "always" | "never"|table
 
 ---@class _.lspconfig.settings.rust_analyzer.Trace
 -- Enable logging of VS Code extensions itself.
@@ -14113,18 +14283,19 @@
 -- ```
 ---@field server "off" | "messages" | "verbose"
 
----@class _.lspconfig.settings.rust_analyzer.AutoClosingAngleBrackets
--- Whether to insert closing angle brackets when typing an opening angle bracket of a generic argument list.
----@field enable boolean
-
 ---@class _.lspconfig.settings.rust_analyzer.Typing
----@field autoClosingAngleBrackets _.lspconfig.settings.rust_analyzer.AutoClosingAngleBrackets
 -- Whether to prefix newlines after comments with the corresponding comment prefix.
 -- 
 -- ```lua
 -- default = true
 -- ```
 ---@field continueCommentsOnNewline boolean
+-- Specify the characters to exclude from triggering typing assists. The default trigger characters are `.`, `=`, `<`, `>`, `{`, and `(`.
+-- 
+-- ```lua
+-- default = "|<"
+-- ```
+---@field excludeChars string
 
 ---@class _.lspconfig.settings.rust_analyzer.Search
 -- Workspace symbol search kind.
@@ -14252,6 +14423,7 @@
 ---@field assist _.lspconfig.settings.rust_analyzer.Assist
 ---@field cachePriming _.lspconfig.settings.rust_analyzer.CachePriming
 ---@field cargo _.lspconfig.settings.rust_analyzer.Cargo
+---@field cfg _.lspconfig.settings.rust_analyzer.Cfg
 ---@field check _.lspconfig.settings.rust_analyzer.Check
 -- Run the check command for diagnostics on save.
 -- 
@@ -14266,6 +14438,8 @@
 ---@field highlightRelated _.lspconfig.settings.rust_analyzer.HighlightRelated
 ---@field hover _.lspconfig.settings.rust_analyzer.Hover
 ---@field imports _.lspconfig.settings.rust_analyzer.Imports
+-- Do not start rust-analyzer server when the extension is activated.
+---@field initializeStopped boolean
 ---@field inlayHints _.lspconfig.settings.rust_analyzer.InlayHints
 ---@field interpret _.lspconfig.settings.rust_analyzer.Interpret
 ---@field joinLines _.lspconfig.settings.rust_analyzer.JoinLines
@@ -14575,6 +14749,152 @@
 ---@class lspconfig.settings.solidity_ls
 ---@field solidity _.lspconfig.settings.solidity_ls.Solidity
 
+---@class _.lspconfig.settings.sonarlint.Connections
+-- Connect SonarQube for VS Code to SonarQube Cloud to apply the same Clean Code standards as your team. Analyze more languages, detect more issues **on the whole project**, receive notifications about the quality gate status, and more. Quality Profiles and file exclusion settings defined on the server are shared between all connected users. Please find the documentation [here](https://docs.sonarsource.com/sonarqube-for-ide/vs-code/team-features/connected-mode/)
+-- 
+-- ```lua
+-- default = {}
+-- ```
+---@field sonarcloud object[]
+-- Connect SonarQube for VS Code to SonarQube Server to apply the same Clean Code standards as your team. Analyze more languages, detect more issues **on the whole project**, receive notifications about the quality gate status, and more. Quality Profiles and file exclusion settings defined on the server are shared between all connected users. Please find the documentation [here](https://docs.sonarsource.com/sonarqube-for-ide/vs-code/team-features/connected-mode/)
+-- 
+-- ```lua
+-- default = {}
+-- ```
+---@field sonarqube object[]
+
+---@class _.lspconfig.settings.sonarlint.ConnectedMode
+---@field connections _.lspconfig.settings.sonarlint.Connections
+-- Bind the current workspace folder to a [SonarQube Server](command:SonarLint.HelpAndFeedbackLinkClicked?%22sonarQubeProductPage%22) or [SonarQube Cloud](command:SonarLint.HelpAndFeedbackLinkClicked?%22sonarCloudProductPage%22) project. Requires connection details to be defined in the setting `#sonarlint.connectedMode.connections.sonarqube#` or `#sonarlint.connectedMode.connections.sonarcloud#`.
+-- 
+-- Binding a workspace folder to a server project allows SonarQube for VS Code to match, as much as possible, the same rules and settings as found on the server, and hence share the analysis configuration with other contributors.
+-- 
+-- Example:
+-- 
+--     "sonarlint.connectedMode.project": {
+--       "projectKey": "my_project",
+--       "connectionId":"my_connection_id"
+--     }
+-- 
+-- 
+-- 
+-- ```lua
+-- default = {}
+-- ```
+---@field project table|table
+-- Configure one or more connection(s) to SonarQube (Server, Cloud). For security reasons, the token should not be stored in SCM with workspace settings. The `serverId` can be any identifier and will be referenced in `#sonarlint.connectedMode.project#`.
+-- 
+-- Example for SonarQube Cloud:
+-- 
+--     "sonarlint.connectedMode.servers": [
+--       {
+--         "serverId": "my_orga_in_sonarcloud.io",
+--         "serverUrl": "https://sonarcloud.io",
+--         "organizationKey": "my_organization",
+--         "token": "V2VkIE1..."
+--       }
+--     ]
+-- 
+-- Example for SonarQube Server:
+-- 
+--     "sonarlint.connectedMode.servers": [
+--       {
+--         "serverId": "my_sonarqube",
+--         "serverUrl": "https://sonar.mycompany.com",
+--         "token": "V2VkIE1..."
+--       }
+--     ]
+-- 
+-- ```lua
+-- default = {}
+-- ```
+---@field servers any[]
+
+---@class _.lspconfig.settings.sonarlint.Ls
+-- Path to a Java Runtime Environment (17 or more recent) used to launch the SonarQube for VS Code Language Server.
+-- * On Windows, backslashes must be escaped, e.g. `C:\\Program Files\\Java\\jdk-17` 
+-- * On macOS, this path should include the `/Contents/Home` directory, e.g `/Library/Java/JavaVirtualMachines/corretto-17.0.5/Contents/Home`
+---@field javaHome string
+-- Extra JVM arguments used to launch the SonarLint Language Server. e.g. `-Xmx1024m`
+---@field vmargs string
+
+---@class _.lspconfig.settings.sonarlint.Output
+-- Show analyzer's logs in the SonarQube for IDE output.
+---@field showAnalyzerLogs boolean
+-- Enable verbose log level in the SonarQube for IDE output.
+---@field showVerboseLogs boolean
+
+---@class _.lspconfig.settings.sonarlint.Trace
+-- Traces the communication between VS Code and the SonarLint language server.
+-- 
+-- ```lua
+-- default = "off"
+-- ```
+---@field server "off" | "messages" | "verbose"|table
+
+---@class _.lspconfig.settings.sonarlint.Sonarlint
+-- Files whose name match this [glob pattern](https://docs.oracle.com/javase/tutorial/essential/io/fileOps.html#glob) will not be processed by analyzers. In [Connected Mode](command:SonarLint.HelpAndFeedbackLinkClicked?%22connectedModeDocs%22) with SonarQube Server or SonarQube Cloud, this property will be ignored and the server's exclusion settings will be applied. No rules are evaluated on excluded files. Example: `**/lib/**,**/*generated*`
+-- 
+-- ```lua
+-- default = ""
+-- ```
+---@field analysisExcludesStandalone string
+-- Extra properties that could be passed to the code analyzers. Only for advanced use cases.
+---@field analyzerProperties table
+---@field connectedMode _.lspconfig.settings.sonarlint.ConnectedMode
+-- Disable sending anonymous usage statistics to SonarSource. Click [here](https://github.com/SonarSource/sonarlint-vscode/blob/master/telemetry-sample.md) to see a sample of the data that are collected.
+---@field disableTelemetry boolean
+-- Highlight issues in new code.
+-- 
+-- Focusing on new code helps you practice [Clean as You Code](https://docs.sonarsource.com/sonarqube-for-ide/vs-code/clean-as-you-code-in-the-ide/).
+-- 
+-- In [Connected Mode](https://docs.sonarsource.com/sonarqube-for-ide/vs-code/team-features/connected-mode/) you benefit from a more accurate new code definition based on your SonarQube (Server, Cloud) settings.
+-- 
+-- Without Connected Mode (in standalone mode), any code added or changed in the **last 30 days** is considered new code.
+---@field focusOnNewCode boolean
+---@field ls _.lspconfig.settings.sonarlint.Ls
+---@field output _.lspconfig.settings.sonarlint.Output
+-- Path to the active compilation database, e.g. `C:\\Repos\\MyProject\\compile_commands.json`
+---@field pathToCompileCommands string
+-- Path to a Node.js executable (18.18 or more recent) used to analyze JavaScript and TypeScript code. 
+-- On Windows, backslashes must be escaped, e.g. `C:\\Program Files\\NodeJS\\20-lts\\bin\\node.exe`
+---@field pathToNodeExecutable string
+-- Customize applied rule set. This property contains a list of rules whose activation level or parameter values differ from the one provided by default. In [Connected Mode](command:SonarLint.HelpAndFeedbackLinkClicked?%22connectedModeDocs%22), this configuration is overridden by the projects's Quality Profile, as configured on server side and can be **shared among contributors**. See [SonarLint Rules](command:SonarLint.AllRules.focus) view for the list of **locally** available rules.
+-- 
+-- Example:
+-- 
+--     "sonarlint.rules": {
+--         "javascript:S1481": {
+--             "level": "off",
+--          },
+--         "javascript:S103": {
+--             "level": "on",
+--             "parameters": {
+--                 "maximumLineLength": "120"
+--             }
+--         }
+--     }
+-- 
+-- 
+-- ```lua
+-- default = {}
+-- ```
+---@field rules table
+-- Files whose name match this [glob pattern](https://docs.oracle.com/javase/tutorial/essential/io/fileOps.html#glob) are considered as test files by analyzers. Most rules are *not* evaluated on test files.
+-- 
+-- In [Connected Mode](command:SonarLint.HelpAndFeedbackLinkClicked?%22connectedModeDocs%22), this setting is configured **on the server-side** and shared among all contributors.
+-- 
+-- Example: `**/test/**,**/*test*,**/*Test*`
+-- 
+-- ```lua
+-- default = ""
+-- ```
+---@field testFilePattern string
+---@field trace _.lspconfig.settings.sonarlint.Trace
+
+---@class lspconfig.settings.sonarlint
+---@field sonarlint _.lspconfig.settings.sonarlint.Sonarlint
+
 ---@class _.lspconfig.settings.sorbet.Sorbet
 -- List of workspace file patterns that contribute to Sorbet's configuration.  Changes to any of those files should trigger a restart of any actively running Sorbet language server.
 -- 
@@ -14689,8 +15009,12 @@
 ---@field server "off" | "messages" | "verbose"
 
 ---@class _.lspconfig.settings.sourcekit.Sourcekit-lsp
--- **Experimental**: Enable or disable background indexing. This option has no effect in Swift versions prior to 6.0.
----@field backgroundIndexing boolean
+-- Turns background indexing `on` or `off`. `auto` will enable background indexing if the Swift version is >= 6.1. This option has no effect in Swift versions prior to 6.0.
+-- 
+-- ```lua
+-- default = "auto"
+-- ```
+---@field backgroundIndexing "on" | "off" | "auto"
 -- Disable SourceKit-LSP
 ---@field disable boolean
 -- Arguments to pass to SourceKit-LSP. Keys and values should be provided as individual entries in the list. e.g. `['--log-level', 'debug']`
@@ -14736,7 +15060,7 @@
 ---@field autoGenerateLaunchConfigurations boolean
 -- **Experimental**: Run `swift build` in the background whenever a file is saved. It is possible the background compilation will already be running when you attempt a compile yourself, so this is disabled by default.
 ---@field backgroundCompilation boolean
--- Additional arguments to pass to `swift` commands such as `swift build`, `swift package`, `swift test`, etc... Keys and values should be provided as individual entries in the list. If you have created a copy of the build task in `tasks.json` then these build arguments will not be propogated to that task.
+-- Additional arguments to pass to `swift` commands such as `swift build`, `swift package`, `swift test`, etc... Keys and values should be provided as individual entries in the list. If you have created a copy of the build task in `tasks.json` then these build arguments will not be propagated to that task.
 -- 
 -- ```lua
 -- default = {}
@@ -15174,6 +15498,14 @@
 -- ```
 ---@field enable boolean
 
+---@class _.lspconfig.settings.svelte.RunesLegacyModeCodeLens
+-- Show a code lens at the top of Svelte files indicating if they are in runes mode or legacy mode. Only visible in Svelte 5 projects.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enable boolean
+
 ---@class _.lspconfig.settings.svelte.SelectionRange
 -- Enable selection range for Svelte
 -- 
@@ -15207,6 +15539,7 @@
 ---@field format _.lspconfig.settings.svelte.Format
 ---@field hover _.lspconfig.settings.svelte.Hover
 ---@field rename _.lspconfig.settings.svelte.Rename
+---@field runesLegacyModeCodeLens _.lspconfig.settings.svelte.RunesLegacyModeCodeLens
 ---@field selectionRange _.lspconfig.settings.svelte.SelectionRange
 
 ---@class _.lspconfig.settings.svelte.CodeActions
@@ -15650,9 +15983,185 @@
 ---@class lspconfig.settings.terraformls
 ---@field terraform _.lspconfig.settings.terraformls.Terraform
 
----@class _.lspconfig.settings.ts_ls.Experimental
--- Automatically update imports when pasting code. Requires TypeScript 5.6+.
----@field updateImportsOnPaste boolean
+---@class _.lspconfig.settings.tinymist.Completion
+-- Whether to enable postfix code completion. For example, `[A].box|` will be completed to `box[A]|`. Hint: Restarting the editor is required to change this setting.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field postfix boolean
+-- Whether to enable UFCS-style completion. For example, `[A].box|` will be completed to `box[A]|`. Hint: Restarting the editor is required to change this setting.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field postfixUfcs boolean
+-- Whether to enable left-variant UFCS-style completion. For example, `[A].table|` will be completed to `table(|)[A]`. Hint: Restarting the editor is required to change this setting.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field postfixUfcsLeft boolean
+-- Whether to enable right-variant UFCS-style completion. For example, `[A].table|` will be completed to `table([A], |)`. Hint: Restarting the editor is required to change this setting.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field postfixUfcsRight boolean
+-- Whether to trigger completions on arguments (placeholders) of snippets. For example, `box` will be completed to `box(|)`, and server will request the editor (lsp client) to request completion after moving cursor to the placeholder in the snippet. Note: this has no effect if the editor doesn't support `editor.action.triggerSuggest` or `tinymist.triggerSuggestAndParameterHints` command. Hint: Restarting the editor is required to change this setting.
+---@field triggerOnSnippetPlaceholders boolean
+
+---@class _.lspconfig.settings.tinymist.Preview
+-- (Experimental) Show typst cursor indicator in preview.
+---@field cursorIndicator boolean
+-- List of *additional* paths to font assets used by typst-preview.
+-- 
+-- ```lua
+-- default = {}
+-- ```
+---@field fontPaths string[]
+-- Invert colors of the preview (useful for dark themes without cost). Please note you could see the origin colors when you hover elements in the preview. It is also possible to specify strategy to each element kind by an object map in JSON format.
+---@field invertColors "never" | "auto" | "always"|table
+-- Only render visible part of the document. This can improve performance but still being experimental.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field partialRendering boolean
+-- Declare current previewing file as entrypoint for typst-lsp or tinymist. This will make typst-lsp or tinymist to use this file as entrypoint instead of the file opened in vscode. This can improve diagnostics messages and auto completion but still being experimental.
+---@field pinPreviewFile boolean
+-- Refresh preview when the document is saved or when the document is changed
+-- 
+-- ```lua
+-- default = "onType"
+-- ```
+---@field refresh "onSave" | "onType"
+-- Configure scroll sync mode.
+-- 
+-- ```lua
+-- default = "onSelectionChangeByMouse"
+-- ```
+---@field scrollSync "never" | "onSelectionChangeByMouse" | "onSelectionChange"
+-- key-value pairs visible through `sys.inputs`, corresponds to `--input` argument of typst cli
+-- 
+-- ```lua
+-- default = {}
+-- ```
+---@field sysInputs table
+-- Whether to load system fonts. If disabled, only fonts in `typst-preview.fontPaths` is loaded
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field systemFonts boolean
+
+---@class _.lspconfig.settings.tinymist.Trace
+-- Traces the communication between VS Code and the language server.
+-- 
+-- ```lua
+-- default = "off"
+-- ```
+---@field server "off" | "messages" | "verbose"
+
+---@class _.lspconfig.settings.tinymist.Tinymist
+-- In VSCode, enable compile status meaning that the extension will show the compilation status in the status bar. Since Neovim and Helix don't have a such feature, it is disabled by default at the language server label.
+-- 
+-- ```lua
+-- default = "enable"
+-- ```
+---@field compileStatus "enable" | "disable"
+---@field completion _.lspconfig.settings.tinymist.Completion
+-- Whether to configure default word separators on startup
+-- 
+-- ```lua
+-- default = "enable"
+-- ```
+---@field configureDefaultWordSeparator "enable" | "disable"
+-- Whether to handle drag-and-drop of resources into the editing typst document. Note: restarting the editor is required to change this setting.
+-- 
+-- ```lua
+-- default = "enable"
+-- ```
+---@field dragAndDrop "enable" | "disable"
+-- The extension can export PDFs of your Typst files. This setting controls whether this feature is enabled and how often it runs.
+-- 
+-- ```lua
+-- default = "never"
+-- ```
+---@field exportPdf "never" | "onSave" | "onType" | "onDocumentHasTitle"
+-- A list of file or directory path to fonts. Note: The configuration source in higher priority will **override** the configuration source in lower priority. The order of precedence is: Configuration `tinymist.fontPaths` > Configuration `tinymist.typstExtraArgs.fontPaths` > LSP's CLI Argument `--font-path` > The environment variable `TYPST_FONT_PATHS` (a path list separated by `;` (on Windows) or `:` (Otherwise)). Note: If the path to fonts is a relative path, it will be resolved based on the root directory. Note: In VSCode, you can use VSCode variables in the path, e.g. `${workspaceFolder}/fonts`.
+---@field fontPaths any[]
+-- The extension can format Typst files using typstfmt or typstyle.
+-- 
+-- ```lua
+-- default = "disable"
+-- ```
+---@field formatterMode "disable" | "typstyle" | "typstfmt"
+-- Set the print width for the formatter, which is a **soft limit** of characters per line. See [the definition of *Print Width*](https://prettier.io/docs/en/options.html#print-width). Note: this has lower priority than the formatter's specific configurations.
+-- 
+-- ```lua
+-- default = 120
+-- ```
+---@field formatterPrintWidth number
+-- Enable or disable [experimental/onEnter](https://github.com/rust-lang/rust-analyzer/blob/master/docs/dev/lsp-extensions.md#on-enter) (LSP onEnter feature) to allow automatic insertion of characters on enter, such as `///` for comments. Note: restarting the editor is required to change this setting.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field onEnterEvent boolean
+-- The path pattern to store Typst artifacts, you can use `$root` or `$dir` or `$name` to do magic configuration, e.g. `$dir/$name` (default) and `$root/target/$dir/$name`.
+-- 
+-- ```lua
+-- default = ""
+-- ```
+---@field outputPath string
+---@field preview _.lspconfig.settings.tinymist.Preview
+-- Enable or disable preview features of Typst. Note: restarting the editor is required to change this setting.
+-- 
+-- ```lua
+-- default = "enable"
+-- ```
+---@field previewFeature "enable" | "disable"
+-- (Experimental) Whether to render typst elements in (hover) docs. In VS Code, when this feature is enabled, tinymist will store rendered results in the filesystem's temporary storage to show them in the hover content. Note: Please disable this feature if the editor doesn't support/handle image previewing in docs.
+-- 
+-- ```lua
+-- default = "enable"
+-- ```
+---@field renderDocs "enable" | "disable"
+-- Configure the root for absolute paths in typst. Hint: you can set the rootPath to `-`, so that tinymist will always use parent directory of the file as the root path. Note: for neovim users, if it complains root not found, you must set `require("lspconfig")["tinymist"].setup { root_dir }` as well, see [tinymist#528](https://github.com/Myriad-Dreamin/tinymist/issues/528).
+---@field rootPath string
+-- Enable or disable semantic tokens (LSP syntax highlighting)
+-- 
+-- ```lua
+-- default = "enable"
+-- ```
+---@field semanticTokens "enable" | "disable"
+-- The extension can use a local tinymist executable instead of the one bundled with the extension. This setting controls the path to the executable. The string "tinymist" means look up Tinymist in PATH.
+---@field serverPath string
+-- Configures way of opening exported files, e.g. inside of editor tabs or using system application.
+---@field showExportFileIn "editorTab" | "systemDefault"
+-- A flag that determines whether to load system fonts for Typst compiler, which is useful for ensuring reproducible compilation. If set to null or not set, the extension will use the default behavior of the Typst compiler. Note: You need to restart LSP to change this options. 
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field systemFonts boolean
+---@field trace _.lspconfig.settings.tinymist.Trace
+-- Whether to prefix newlines after comments with the corresponding comment prefix.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field typingContinueCommentsOnNewline boolean
+-- You can pass any arguments as you like, and we will try to follow behaviors of the **same version** of typst-cli. Note: the arguments may be overridden by other settings. For example, `--font-path` will be overridden by `tinymist.fontPaths`.
+-- 
+-- ```lua
+-- default = {}
+-- ```
+---@field typstExtraArgs string[]
+
+---@class lspconfig.settings.tinymist
+---@field tinymist _.lspconfig.settings.tinymist.Tinymist
 
 ---@class _.lspconfig.settings.ts_ls.Format
 -- Enable/disable default JavaScript formatter.
@@ -15732,20 +16241,6 @@
 -- Enable/disable `experimentalDecorators` in JavaScript files that are not part of a project. Existing `jsconfig.json` or `tsconfig.json` files override this setting.
 ---@field experimentalDecorators boolean
 
----@class _.lspconfig.settings.ts_ls.EnumMemberValues
--- Enable/disable inlay hints for member values in enum declarations:
--- ```typescript
--- 
--- enum MyValue {
--- 	A /* = 0 */;
--- 	B /* = 1 */;
--- }
---  
--- ```
--- 
--- The text inside the ``` block is code and should not be localized.
----@field enabled boolean
-
 ---@class _.lspconfig.settings.ts_ls.FunctionLikeReturnTypes
 -- Enable/disable inlay hints for implicit return types on function signatures:
 -- ```typescript
@@ -15822,7 +16317,6 @@
 ---@field suppressWhenTypeMatchesName boolean
 
 ---@class _.lspconfig.settings.ts_ls.InlayHints
----@field enumMemberValues _.lspconfig.settings.ts_ls.EnumMemberValues
 ---@field functionLikeReturnTypes _.lspconfig.settings.ts_ls.FunctionLikeReturnTypes
 ---@field parameterNames _.lspconfig.settings.ts_ls.ParameterNames
 ---@field parameterTypes _.lspconfig.settings.ts_ls.ParameterTypes
@@ -15831,26 +16325,32 @@
 
 -- Advanced preferences that control how imports are ordered.
 ---@class _.lspconfig.settings.ts_ls.OrganizeImports
--- Compare characters with diacritical marks as unequal to base character.
+-- Requires `organizeImports.unicodeCollation: 'unicode'`. Compare characters with diacritical marks as unequal to base character.
 ---@field accentCollation boolean
--- Indicates whether upper-case comes before lower-case. Only applies to `organizeImportsCollation: 'unicode'`.
+-- Requires `organizeImports.unicodeCollation: 'unicode'`, and `organizeImports.caseSensitivity` is not `caseInsensitive`. Indicates whether upper-case will sort before lower-case.
 -- 
 -- ```lua
 -- default = "default"
 -- ```
 ---@field caseFirst "default" | "upper" | "lower"
+-- Specifies how imports should be sorted with regards to case-sensitivity. If `auto` or unspecified, we will detect the case-sensitivity per file
+-- 
 -- ```lua
 -- default = "auto"
 -- ```
 ---@field caseSensitivity "auto" | "caseInsensitive" | "caseSensitive"
--- Overrides the locale used for collation. Specify `auto` to use the UI locale. Only applies to `organizeImportsCollation: 'unicode'`.
+-- Requires `organizeImports.unicodeCollation: 'unicode'`. Overrides the locale used for collation. Specify `auto` to use the UI locale.
 ---@field locale string
--- Sort numeric strings by integer value.
+-- Requires `organizeImports.unicodeCollation: 'unicode'`. Sort numeric strings by integer value.
 ---@field numericCollation boolean
+-- Specify how type-only named imports should be sorted.
+-- 
 -- ```lua
 -- default = "auto"
 -- ```
 ---@field typeOrder "auto" | "last" | "inline" | "first"
+-- Specify whether to sort imports using Unicode or Ordinal collation.
+-- 
 -- ```lua
 -- default = "ordinal"
 -- ```
@@ -15997,6 +16497,16 @@
 -- ```
 ---@field enabled "prompt" | "always" | "never"
 
+---@class _.lspconfig.settings.ts_ls.UpdateImportsOnPaste
+-- Enable updating imports when pasting code. Requires TypeScript 5.7+.
+-- 
+-- By default this shows a option to update imports after pasting. You can use the `#editor.pasteAs.preferences#` setting to update imports automatically when pasting: `"editor.pasteAs.preferences": [ "text.updateImports.jsts" ]`.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enabled boolean
+
 ---@class _.lspconfig.settings.ts_ls.Validate
 -- Enable/disable JavaScript validation.
 -- 
@@ -16012,17 +16522,17 @@
 -- default = true
 -- ```
 ---@field autoClosingTags boolean
----@field experimental _.lspconfig.settings.ts_ls.Experimental
 ---@field format _.lspconfig.settings.ts_ls.Format
 ---@field implicitProjectConfig _.lspconfig.settings.ts_ls.ImplicitProjectConfig
 ---@field inlayHints _.lspconfig.settings.ts_ls.InlayHints
--- Makes Go to Definition avoid type declaration files when possible by triggering Go to Source Definition instead. This allows Go to Source Definition to be triggered with the mouse gesture.
+-- Makes `Go to Definition` avoid type declaration files when possible by triggering `Go to Source Definition` instead. This allows `Go to Source Definition` to be triggered with the mouse gesture.
 ---@field preferGoToSourceDefinition boolean
 ---@field preferences _.lspconfig.settings.ts_ls.Preferences
 ---@field referencesCodeLens _.lspconfig.settings.ts_ls.ReferencesCodeLens
 ---@field suggest _.lspconfig.settings.ts_ls.Suggest
 ---@field suggestionActions _.lspconfig.settings.ts_ls.SuggestionActions
 ---@field updateImportsOnFileMove _.lspconfig.settings.ts_ls.UpdateImportsOnFileMove
+---@field updateImportsOnPaste _.lspconfig.settings.ts_ls.UpdateImportsOnPaste
 ---@field validate _.lspconfig.settings.ts_ls.Validate
 
 ---@class _.lspconfig.settings.ts_ls.ImplicitProjectConfig
@@ -16067,10 +16577,8 @@
 ---@field npmIsInstalled boolean
 
 ---@class _.lspconfig.settings.ts_ls.Experimental
--- (Experimental) Enable/disable expanding on hover.
+-- Enable expanding/contracting the hover to reveal more/less information from the TS server.
 ---@field expandableHover boolean
--- Automatically update imports when pasting code. Requires TypeScript 5.6+.
----@field updateImportsOnPaste boolean
 
 ---@class _.lspconfig.settings.ts_ls.Format
 -- Enable/disable default TypeScript formatter.
@@ -16257,26 +16765,32 @@
 
 -- Advanced preferences that control how imports are ordered.
 ---@class _.lspconfig.settings.ts_ls.OrganizeImports
--- Compare characters with diacritical marks as unequal to base character.
+-- Requires `organizeImports.unicodeCollation: 'unicode'`. Compare characters with diacritical marks as unequal to base character.
 ---@field accentCollation boolean
--- Indicates whether upper-case comes before lower-case. Only applies to `organizeImportsCollation: 'unicode'`.
+-- Requires `organizeImports.unicodeCollation: 'unicode'`, and `organizeImports.caseSensitivity` is not `caseInsensitive`. Indicates whether upper-case will sort before lower-case.
 -- 
 -- ```lua
 -- default = "default"
 -- ```
 ---@field caseFirst "default" | "upper" | "lower"
+-- Specifies how imports should be sorted with regards to case-sensitivity. If `auto` or unspecified, we will detect the case-sensitivity per file
+-- 
 -- ```lua
 -- default = "auto"
 -- ```
 ---@field caseSensitivity "auto" | "caseInsensitive" | "caseSensitive"
--- Overrides the locale used for collation. Specify `auto` to use the UI locale. Only applies to `organizeImportsCollation: 'unicode'`.
+-- Requires `organizeImports.unicodeCollation: 'unicode'`. Overrides the locale used for collation. Specify `auto` to use the UI locale.
 ---@field locale string
--- Sort numeric strings by integer value.
+-- Requires `organizeImports.unicodeCollation: 'unicode'`. Sort numeric strings by integer value.
 ---@field numericCollation boolean
+-- Specify how type-only named imports should be sorted.
+-- 
 -- ```lua
 -- default = "auto"
 -- ```
 ---@field typeOrder "auto" | "last" | "inline" | "first"
+-- Specify whether to sort imports using Unicode or Ordinal collation.
+-- 
 -- ```lua
 -- default = "ordinal"
 -- ```
@@ -16443,7 +16957,7 @@
 ---@field autoDetect "on" | "off" | "build" | "watch"
 
 ---@class _.lspconfig.settings.ts_ls.Experimental
--- (Experimental) Enables project wide error reporting.
+-- Enables project wide error reporting.
 ---@field enableProjectDiagnostics boolean
 -- Use VS Code's file watchers instead of TypeScript's. Requires using TypeScript 5.4+ in the workspace.
 -- 
@@ -16451,25 +16965,6 @@
 -- default = true
 -- ```
 ---@field useVsCodeWatcher boolean
-
--- Configure which watching strategies should be used to keep track of files and directories.
----@class _.lspconfig.settings.ts_ls.WatchOptions
--- When using file system events, this option specifies the polling strategy that gets used when the system runs out of native file watchers and/or doesn't support native file watchers.
----@field fallbackPolling "fixedPollingInterval" | "priorityPollingInterval" | "dynamicPriorityPolling"
--- Disable deferred watching on directories. Deferred watching is useful when lots of file changes might occur at once (e.g. a change in node_modules from running npm install), but you might want to disable it with this flag for some less-common setups.
----@field synchronousWatchDirectory boolean
--- Strategy for how entire directory trees are watched under systems that lack recursive file-watching functionality.
--- 
--- ```lua
--- default = "useFsEvents"
--- ```
----@field watchDirectory "fixedChunkSizePolling" | "fixedPollingInterval" | "dynamicPriorityPolling" | "useFsEvents"
--- Strategy for how individual files are watched.
--- 
--- ```lua
--- default = "useFsEvents"
--- ```
----@field watchFile "fixedChunkSizePolling" | "fixedPollingInterval" | "priorityPollingInterval" | "dynamicPriorityPolling" | "useFsEvents" | "useFsEventsOnParentDirectory"
 
 ---@class _.lspconfig.settings.ts_ls.ProjectWideIntellisense
 -- Enable/disable project-wide IntelliSense on web. Requires that VS Code is running in a trusted context.
@@ -16536,7 +17031,11 @@
 -- ```
 ---@field useSyntaxServer "always" | "never" | "auto"
 -- Configure which watching strategies should be used to keep track of files and directories.
----@field watchOptions _.lspconfig.settings.ts_ls.WatchOptions
+-- 
+-- ```lua
+-- default = "vscode"
+-- ```
+---@field watchOptions any
 ---@field web _.lspconfig.settings.ts_ls.Web
 
 ---@class _.lspconfig.settings.ts_ls.UpdateImportsOnFileMove
@@ -16547,6 +17046,16 @@
 -- ```
 ---@field enabled "prompt" | "always" | "never"
 
+---@class _.lspconfig.settings.ts_ls.UpdateImportsOnPaste
+-- Enable updating imports when pasting code. Requires TypeScript 5.7+.
+-- 
+-- By default this shows a option to update imports after pasting. You can use the `#editor.pasteAs.preferences#` setting to update imports automatically when pasting: `"editor.pasteAs.preferences": [ "text.updateImports.jsts" ]`.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enabled boolean
+
 ---@class _.lspconfig.settings.ts_ls.Validate
 -- Enable/disable TypeScript validation.
 -- 
@@ -16556,7 +17065,7 @@
 ---@field enable boolean
 
 ---@class _.lspconfig.settings.ts_ls.WorkspaceSymbols
--- Exclude symbols that come from library files in Go to Symbol in Workspace results. Requires using TypeScript 5.3+ in the workspace.
+-- Exclude symbols that come from library files in `Go to Symbol in Workspace` results. Requires using TypeScript 5.3+ in the workspace.
 -- 
 -- ```lua
 -- default = true
@@ -16593,7 +17102,7 @@
 ---@field locale "auto" | "de" | "es" | "en" | "fr" | "it" | "ja" | "ko" | "ru" | "zh-CN" | "zh-TW"
 -- Specifies the path to the npm executable used for [Automatic Type Acquisition](https://code.visualstudio.com/docs/nodejs/working-with-javascript#_typings-and-automatic-type-acquisition).
 ---@field npm string
--- Makes Go to Definition avoid type declaration files when possible by triggering Go to Source Definition instead. This allows Go to Source Definition to be triggered with the mouse gesture.
+-- Makes `Go to Definition` avoid type declaration files when possible by triggering `Go to Source Definition` instead. This allows `Go to Source Definition` to be triggered with the mouse gesture.
 ---@field preferGoToSourceDefinition boolean
 ---@field preferences _.lspconfig.settings.ts_ls.Preferences
 ---@field referencesCodeLens _.lspconfig.settings.ts_ls.ReferencesCodeLens
@@ -16616,6 +17125,7 @@
 ---@field tsdk string
 ---@field tsserver _.lspconfig.settings.ts_ls.Tsserver
 ---@field updateImportsOnFileMove _.lspconfig.settings.ts_ls.UpdateImportsOnFileMove
+---@field updateImportsOnPaste _.lspconfig.settings.ts_ls.UpdateImportsOnPaste
 ---@field validate _.lspconfig.settings.ts_ls.Validate
 ---@field workspaceSymbols _.lspconfig.settings.ts_ls.WorkspaceSymbols
 
@@ -16623,6 +17133,42 @@
 ---@field javascript _.lspconfig.settings.ts_ls.Javascript
 ---@field js/ts _.lspconfig.settings.ts_ls.Js/ts
 ---@field typescript _.lspconfig.settings.ts_ls.Typescript
+
+---@class _.lspconfig.settings.typst_lsp.Trace
+-- Traces the communication between VS Code and the language server.
+-- 
+-- ```lua
+-- default = "off"
+-- ```
+---@field server "off" | "messages" | "verbose"
+
+---@class _.lspconfig.settings.typst_lsp.Typst-lsp
+-- The extension can format Typst files using typstfmt (experimental).
+-- 
+-- ```lua
+-- default = "off"
+-- ```
+---@field experimentalFormatterMode "off" | "on"
+-- The extension can export PDFs of your Typst files. This setting controls whether this feature is enabled and how often it runs.
+-- 
+-- ```lua
+-- default = "onSave"
+-- ```
+---@field exportPdf "never" | "onSave" | "onPinnedMainSave" | "onType" | "onPinnedMainType"
+-- Configure the root for absolute paths in typst
+---@field rootPath string
+-- Enable or disable semantic tokens (LSP syntax highlighting)
+-- 
+-- ```lua
+-- default = "enable"
+-- ```
+---@field semanticTokens "enable" | "disable"
+-- The extension can use a local typst-lsp executable instead of the one bundled with the extension. This setting controls the path to the executable.
+---@field serverPath string
+---@field trace _.lspconfig.settings.typst_lsp.Trace
+
+---@class lspconfig.settings.typst_lsp
+---@field typst-lsp _.lspconfig.settings.typst_lsp.Typst-lsp
 
 ---@class _.lspconfig.settings.volar.AutoInsert
 -- Auto add space between double curly brackets: {{|}} -> {{ | }}
@@ -16672,6 +17218,12 @@
 
 ---@class _.lspconfig.settings.volar.Complete
 ---@field casing _.lspconfig.settings.volar.Casing
+-- Auto add `const props = ` before `defineProps` when selecting the completion item `props`. (also `emit` and `slots`)
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field defineAssignment boolean
 
 ---@class _.lspconfig.settings.volar.Doctor
 -- Show known problems in status bar.
@@ -16703,18 +17255,48 @@
 ---@field wrapAttributes "auto" | "force" | "force-aligned" | "force-expand-multiline" | "aligned-multiple" | "preserve" | "preserve-aligned"
 
 ---@class _.lspconfig.settings.volar.InlayHints
--- Show inlay hints for destructured props.
+-- Show inlay hints for destructured props:
+-- 
+-- ```ts
+-- watch(() => /* props. */foo, () => { ... });
+-- ```
 ---@field destructuredProps boolean
--- Show inlay hints for event argument in inline handlers.
+-- Show inlay hints for event argument in inline handlers:
+-- 
+-- ```html
+-- <Comp @foo="/* $event => */console.log($event)" />
+-- ```
 ---@field inlineHandlerLeading boolean
--- Show inlay hints for missing required props.
+-- Show inlay hints for missing required props:
+-- 
+-- ```html
+-- <Comp />
+-- <!-- ^ foo! -->
+-- ```
 ---@field missingProps boolean
--- Show inlay hints for component options wrapper for type support.
+-- Show inlay hints for component options wrapper for type support:
+-- 
+-- ```vue
+-- <script lang="ts">
+-- export default /* (await import('vue')).defineComponent( */{}/* ) */;
+-- </script>
+-- ```
 ---@field optionsWrapper boolean
--- Show inlay hints for v-bind shorthand.
+-- Show inlay hints for v-bind shorthand:
+-- 
+-- ```html
+-- <Comp :foo />
+--      <!-- ^ ="foo" -->
+-- ```
 ---@field vBindShorthand boolean
 
 ---@class _.lspconfig.settings.volar.Server
+-- Set compatible extensions to skip automatic detection of Hybrid Mode.
+-- 
+-- ```lua
+-- default = {}
+-- ```
+---@field compatibleExtensions string[]
 -- Vue language server only handles CSS and HTML language support, and tsserver takes over TS language support via TS plugin.
 -- 
 -- ```lua
@@ -16940,26 +17522,32 @@
 
 -- Advanced preferences that control how imports are ordered.
 ---@class _.lspconfig.settings.vtsls.OrganizeImports
--- Compare characters with diacritical marks as unequal to base character.
+-- Requires `organizeImports.unicodeCollation: 'unicode'`. Compare characters with diacritical marks as unequal to base character.
 ---@field accentCollation boolean
--- Indicates whether upper-case comes before lower-case. Only applies to `organizeImportsCollation: 'unicode'`.
+-- Requires `organizeImports.unicodeCollation: 'unicode'`, and `organizeImports.caseSensitivity` is not `caseInsensitive`. Indicates whether upper-case will sort before lower-case.
 -- 
 -- ```lua
 -- default = "default"
 -- ```
 ---@field caseFirst "default" | "upper" | "lower"
+-- Specifies how imports should be sorted with regards to case-sensitivity. If `auto` or unspecified, we will detect the case-sensitivity per file
+-- 
 -- ```lua
 -- default = "auto"
 -- ```
 ---@field caseSensitivity "auto" | "caseInsensitive" | "caseSensitive"
--- Overrides the locale used for collation. Specify `auto` to use the UI locale. Only applies to `organizeImportsCollation: 'unicode'`.
+-- Requires `organizeImports.unicodeCollation: 'unicode'`. Overrides the locale used for collation. Specify `auto` to use the UI locale.
 ---@field locale string
--- Sort numeric strings by integer value.
+-- Requires `organizeImports.unicodeCollation: 'unicode'`. Sort numeric strings by integer value.
 ---@field numericCollation boolean
+-- Specify how type-only named imports should be sorted.
+-- 
 -- ```lua
 -- default = "auto"
 -- ```
 ---@field typeOrder "auto" | "last" | "inline" | "first"
+-- Specify whether to sort imports using Unicode or Ordinal collation.
+-- 
 -- ```lua
 -- default = "ordinal"
 -- ```
@@ -17118,7 +17706,7 @@
 ---@field format _.lspconfig.settings.vtsls.Format
 ---@field implicitProjectConfig _.lspconfig.settings.vtsls.ImplicitProjectConfig
 ---@field inlayHints _.lspconfig.settings.vtsls.InlayHints
--- Makes Go to Definition avoid type declaration files when possible by triggering Go to Source Definition instead. This allows Go to Source Definition to be triggered with the mouse gesture.
+-- Makes `Go to Definition` avoid type declaration files when possible by triggering `Go to Source Definition` instead. This allows `Go to Source Definition` to be triggered with the mouse gesture.
 ---@field preferGoToSourceDefinition boolean
 ---@field preferences _.lspconfig.settings.vtsls.Preferences
 ---@field referencesCodeLens _.lspconfig.settings.vtsls.ReferencesCodeLens
@@ -17341,26 +17929,32 @@
 
 -- Advanced preferences that control how imports are ordered.
 ---@class _.lspconfig.settings.vtsls.OrganizeImports
--- Compare characters with diacritical marks as unequal to base character.
+-- Requires `organizeImports.unicodeCollation: 'unicode'`. Compare characters with diacritical marks as unequal to base character.
 ---@field accentCollation boolean
--- Indicates whether upper-case comes before lower-case. Only applies to `organizeImportsCollation: 'unicode'`.
+-- Requires `organizeImports.unicodeCollation: 'unicode'`, and `organizeImports.caseSensitivity` is not `caseInsensitive`. Indicates whether upper-case will sort before lower-case.
 -- 
 -- ```lua
 -- default = "default"
 -- ```
 ---@field caseFirst "default" | "upper" | "lower"
+-- Specifies how imports should be sorted with regards to case-sensitivity. If `auto` or unspecified, we will detect the case-sensitivity per file
+-- 
 -- ```lua
 -- default = "auto"
 -- ```
 ---@field caseSensitivity "auto" | "caseInsensitive" | "caseSensitive"
--- Overrides the locale used for collation. Specify `auto` to use the UI locale. Only applies to `organizeImportsCollation: 'unicode'`.
+-- Requires `organizeImports.unicodeCollation: 'unicode'`. Overrides the locale used for collation. Specify `auto` to use the UI locale.
 ---@field locale string
--- Sort numeric strings by integer value.
+-- Requires `organizeImports.unicodeCollation: 'unicode'`. Sort numeric strings by integer value.
 ---@field numericCollation boolean
+-- Specify how type-only named imports should be sorted.
+-- 
 -- ```lua
 -- default = "auto"
 -- ```
 ---@field typeOrder "auto" | "last" | "inline" | "first"
+-- Specify whether to sort imports using Unicode or Ordinal collation.
+-- 
 -- ```lua
 -- default = "ordinal"
 -- ```
@@ -17511,27 +18105,8 @@
 ---@field enabled boolean
 
 ---@class _.lspconfig.settings.vtsls.Experimental
--- (Experimental) Enables project wide error reporting.
+-- Enables project wide error reporting.
 ---@field enableProjectDiagnostics boolean
-
--- Configure which watching strategies should be used to keep track of files and directories.
----@class _.lspconfig.settings.vtsls.WatchOptions
--- When using file system events, this option specifies the polling strategy that gets used when the system runs out of native file watchers and/or doesn't support native file watchers.
----@field fallbackPolling "fixedPollingInterval" | "priorityPollingInterval" | "dynamicPriorityPolling"
--- Disable deferred watching on directories. Deferred watching is useful when lots of file changes might occur at once (e.g. a change in node_modules from running npm install), but you might want to disable it with this flag for some less-common setups.
----@field synchronousWatchDirectory boolean
--- Strategy for how entire directory trees are watched under systems that lack recursive file-watching functionality.
--- 
--- ```lua
--- default = "useFsEvents"
--- ```
----@field watchDirectory "fixedChunkSizePolling" | "fixedPollingInterval" | "dynamicPriorityPolling" | "useFsEvents"
--- Strategy for how individual files are watched.
--- 
--- ```lua
--- default = "useFsEvents"
--- ```
----@field watchFile "fixedChunkSizePolling" | "fixedPollingInterval" | "priorityPollingInterval" | "dynamicPriorityPolling" | "useFsEvents" | "useFsEventsOnParentDirectory"
 
 ---@class _.lspconfig.settings.vtsls.ProjectWideIntellisense
 -- Enable/disable project-wide IntelliSense on web. Requires that VS Code is running in a trusted context.
@@ -17592,7 +18167,11 @@
 -- ```
 ---@field useSyntaxServer "always" | "never" | "auto"
 -- Configure which watching strategies should be used to keep track of files and directories.
----@field watchOptions _.lspconfig.settings.vtsls.WatchOptions
+-- 
+-- ```lua
+-- default = "vscode"
+-- ```
+---@field watchOptions any
 ---@field web _.lspconfig.settings.vtsls.Web
 
 ---@class _.lspconfig.settings.vtsls.UpdateImportsOnFileMove
@@ -17612,7 +18191,7 @@
 ---@field enable boolean
 
 ---@class _.lspconfig.settings.vtsls.WorkspaceSymbols
--- Exclude symbols that come from library files in Go to Symbol in Workspace results. Requires using TypeScript 5.3+ in the workspace.
+-- Exclude symbols that come from library files in `Go to Symbol in Workspace` results. Requires using TypeScript 5.3+ in the workspace.
 -- 
 -- ```lua
 -- default = true
@@ -17640,7 +18219,7 @@
 ---@field locale "auto" | "de" | "es" | "en" | "fr" | "it" | "ja" | "ko" | "ru" | "zh-CN" | "zh-TW"
 -- Specifies the path to the npm executable used for [Automatic Type Acquisition](https://code.visualstudio.com/docs/nodejs/working-with-javascript#_typings-and-automatic-type-acquisition).
 ---@field npm string
--- Makes Go to Definition avoid type declaration files when possible by triggering Go to Source Definition instead. This allows Go to Source Definition to be triggered with the mouse gesture.
+-- Makes `Go to Definition` avoid type declaration files when possible by triggering `Go to Source Definition` instead. This allows `Go to Source Definition` to be triggered with the mouse gesture.
 ---@field preferGoToSourceDefinition boolean
 ---@field preferences _.lspconfig.settings.vtsls.Preferences
 ---@field referencesCodeLens _.lspconfig.settings.vtsls.ReferencesCodeLens
@@ -18104,9 +18683,9 @@
 -- Which version of naga to use for its diagnostics
 -- 
 -- ```lua
--- default = "0.11"
+-- default = "0.22"
 -- ```
----@field nagaVersion "0.12" | "0.13" | "0.14" | "main"
+---@field nagaVersion "0.14" | "0.19" | "0.22" | "main"
 -- Controls whether to show type errors.
 -- 
 -- ```lua

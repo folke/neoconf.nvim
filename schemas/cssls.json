@@ -62,7 +62,7 @@
     },
     "css.format.preserveNewLines": {
       "default": true,
-      "markdownDescription": "Whether existing line breaks before elements should be preserved.",
+      "markdownDescription": "Whether existing line breaks before rules and declarations should be preserved.",
       "scope": "resource",
       "type": "boolean"
     },
@@ -371,7 +371,7 @@
     },
     "less.format.preserveNewLines": {
       "default": true,
-      "markdownDescription": "Whether existing line breaks before elements should be preserved.",
+      "markdownDescription": "Whether existing line breaks before rules and declarations should be preserved.",
       "scope": "resource",
       "type": "boolean"
     },
@@ -669,7 +669,7 @@
     },
     "scss.format.preserveNewLines": {
       "default": true,
-      "markdownDescription": "Whether existing line breaks before elements should be preserved.",
+      "markdownDescription": "Whether existing line breaks before rules and declarations should be preserved.",
       "scope": "resource",
       "type": "boolean"
     },

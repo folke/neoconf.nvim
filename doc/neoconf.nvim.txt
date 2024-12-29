@@ -1,4 +1,4 @@
-*neoconf.nvim.txt*          For Neovim          Last change: 2024 September 16
+*neoconf.nvim.txt*           For Neovim          Last change: 2024 December 16
 
 ==============================================================================
 Table of Contents                             *neoconf.nvim-table-of-contents*
@@ -282,6 +282,7 @@ SUPPORTED LANGUAGE SERVERS*neoconf.nvim-neoconf.nvim-supported-language-servers*
 - rust_analyzer <https://github.com/rust-analyzer/rust-analyzer/tree/master/editors/code/package.json>
 - solargraph <https://github.com/castwide/vscode-solargraph/tree/master/package.json>
 - solidity_ls <https://github.com/juanfranblanco/vscode-solidity/tree/master/package.json>
+- sonarlint <https://github.com/SonarSource/sonarlint-vscode/tree/master/package.json>
 - sorbet <https://github.com/sorbet/sorbet/tree/master/vscode_extension/package.json>
 - sourcekit <https://github.com/swift-server/vscode-swift/tree/main/package.json>
 - spectral <https://github.com/stoplightio/vscode-spectral/tree/master/package.json>
@@ -290,7 +291,9 @@ SUPPORTED LANGUAGE SERVERS*neoconf.nvim-neoconf.nvim-supported-language-servers*
 - svlangserver <https://github.com/eirikpre/VSCode-SystemVerilog/tree/master/package.json>
 - tailwindcss <https://github.com/tailwindlabs/tailwindcss-intellisense/tree/master/packages/vscode-tailwindcss/package.json>
 - terraformls <https://github.com/hashicorp/vscode-terraform/tree/master/package.json>
+- tinymist <https://github.com/Myriad-Dreamin/tinymist/refs/heads/tree/main/editors/vscode/package.json>
 - ts_ls <https://github.com/microsoft/vscode/tree/main/extensions/typescript-language-features/package.json>
+- typst_lsp <https://github.com/nvarner/typst-lsp/refs/heads/tree/master/editors/vscode/package.json>
 - volar <https://github.com/vuejs/language-tools/tree/master/extensions/vscode/package.json>
 - vtsls <https://github.com/yioneko/vtsls/tree/main/packages/service/configuration.schema.json>
 - vuels <https://github.com/vuejs/vetur/tree/master/package.json>

@@ -191,7 +191,7 @@
     },
     "javascript.preferGoToSourceDefinition": {
       "default": false,
-      "description": "Makes Go to Definition avoid type declaration files when possible by triggering Go to Source Definition instead. This allows Go to Source Definition to be triggered with the mouse gesture.",
+      "description": "Makes `Go to Definition` avoid type declaration files when possible by triggering `Go to Source Definition` instead. This allows `Go to Source Definition` to be triggered with the mouse gesture.",
       "type": "boolean"
     },
     "javascript.preferences.autoImportFileExcludePatterns": {
@@ -257,7 +257,7 @@
         "none"
       ],
       "markdownEnumDescriptions": [
-        "Insert `={}` or `=\"\"` after attribute names based on the prop type. See `javascript.preferences.quoteStyle` to control the type of quotes used for string attributes.",
+        "Insert `={}` or `=\"\"` after attribute names based on the prop type. See `#javascript.preferences.quoteStyle#` to control the type of quotes used for string attributes.",
         "Insert `={}` after attribute names.",
         "Only insert attribute names."
       ],
@@ -267,7 +267,7 @@
       "markdownDescription": "Advanced preferences that control how imports are ordered.",
       "properties": {
         "accentCollation": {
-          "markdownDescription": "Compare characters with diacritical marks as unequal to base character.",
+          "markdownDescription": "Requires `organizeImports.unicodeCollation: 'unicode'`. Compare characters with diacritical marks as unequal to base character.",
           "type": "boolean"
         },
         "caseFirst": {
@@ -277,7 +277,12 @@
             "upper",
             "lower"
           ],
-          "markdownDescription": "Indicates whether upper-case comes before lower-case. Only applies to `organizeImportsCollation: 'unicode'`.",
+          "markdownDescription": "Requires `organizeImports.unicodeCollation: 'unicode'`, and `organizeImports.caseSensitivity` is not `caseInsensitive`. Indicates whether upper-case will sort before lower-case.",
+          "markdownEnumDescriptions": [
+            "Default order given by `locale`.",
+            "Upper-case comes before lower-case. E.g. ` A, a, B, b`.",
+            "Lower-case comes before upper-case. E.g.` a, A, z, Z`."
+          ],
           "type": "string"
         },
         "caseSensitivity": {
@@ -287,6 +292,7 @@
             "caseInsensitive",
             "caseSensitive"
           ],
+          "markdownDescription": "Specifies how imports should be sorted with regards to case-sensitivity. If `auto` or unspecified, we will detect the case-sensitivity per file",
           "markdownEnumDescriptions": [
             "Detect case-sensitivity for import sorting.",
             null,
@@ -295,11 +301,11 @@
           "type": "string"
         },
         "locale": {
-          "markdownDescription": "Overrides the locale used for collation. Specify `auto` to use the UI locale. Only applies to `organizeImportsCollation: 'unicode'`.",
+          "markdownDescription": "Requires `organizeImports.unicodeCollation: 'unicode'`. Overrides the locale used for collation. Specify `auto` to use the UI locale.",
           "type": "string"
         },
         "numericCollation": {
-          "markdownDescription": "Sort numeric strings by integer value.",
+          "markdownDescription": "Requires `organizeImports.unicodeCollation: 'unicode'`. Sort numeric strings by integer value.",
           "type": "boolean"
         },
         "typeOrder": {
@@ -310,11 +316,12 @@
             "inline",
             "first"
           ],
+          "markdownDescription": "Specify how type-only named imports should be sorted.",
           "markdownEnumDescriptions": [
             "Detect where type-only named imports should be sorted.",
-            "Type only named imports are sorted to the end of the import list.",
-            "Named imports are sorted by name only.",
-            "Type only named imports are sorted to the end of the import list."
+            "Type only named imports are sorted to the end of the import list. E.g. `import { B, Z, type A, type Y } from 'module';`",
+            "Named imports are sorted by name only. E.g. `import { type A, B, type Y, Z } from 'module';`",
+            "Type only named imports are sorted to the beginning of the import list. E.g. `import { type A, type Y, B, Z } from 'module';`"
           ],
           "type": "string"
         },
@@ -324,6 +331,7 @@
             "ordinal",
             "unicode"
           ],
+          "markdownDescription": "Specify whether to sort imports using Unicode or Ordinal collation.",
           "markdownEnumDescriptions": [
             "Sort imports using the numeric value of each code point.",
             "Sort imports using the Unicode code collation."
@@ -730,7 +738,7 @@
         "zh-TW"
       ],
       "enumDescriptions": [
-        "Use VS Code's configured display language",
+        "Use VS Code's configured display language.",
         null,
         null,
         null,
@@ -751,7 +759,7 @@
     },
     "typescript.preferGoToSourceDefinition": {
       "default": false,
-      "description": "Makes Go to Definition avoid type declaration files when possible by triggering Go to Source Definition instead. This allows Go to Source Definition to be triggered with the mouse gesture.",
+      "description": "Makes `Go to Definition` avoid type declaration files when possible by triggering `Go to Source Definition` instead. This allows `Go to Source Definition` to be triggered with the mouse gesture.",
       "type": "boolean"
     },
     "typescript.preferences.autoImportFileExcludePatterns": {
@@ -832,7 +840,7 @@
         "none"
       ],
       "markdownEnumDescriptions": [
-        "Insert `={}` or `=\"\"` after attribute names based on the prop type. See `typescript.preferences.quoteStyle` to control the type of quotes used for string attributes.",
+        "Insert `={}` or `=\"\"` after attribute names based on the prop type. See `#typescript.preferences.quoteStyle#` to control the type of quotes used for string attributes.",
         "Insert `={}` after attribute names.",
         "Only insert attribute names."
       ],
@@ -842,7 +850,7 @@
       "markdownDescription": "Advanced preferences that control how imports are ordered.",
       "properties": {
         "accentCollation": {
-          "markdownDescription": "Compare characters with diacritical marks as unequal to base character.",
+          "markdownDescription": "Requires `organizeImports.unicodeCollation: 'unicode'`. Compare characters with diacritical marks as unequal to base character.",
           "type": "boolean"
         },
         "caseFirst": {
@@ -852,7 +860,12 @@
             "upper",
             "lower"
           ],
-          "markdownDescription": "Indicates whether upper-case comes before lower-case. Only applies to `organizeImportsCollation: 'unicode'`.",
+          "markdownDescription": "Requires `organizeImports.unicodeCollation: 'unicode'`, and `organizeImports.caseSensitivity` is not `caseInsensitive`. Indicates whether upper-case will sort before lower-case.",
+          "markdownEnumDescriptions": [
+            "Default order given by `locale`.",
+            "Upper-case comes before lower-case. E.g. ` A, a, B, b`.",
+            "Lower-case comes before upper-case. E.g.` a, A, z, Z`."
+          ],
           "type": "string"
         },
         "caseSensitivity": {
@@ -862,6 +875,7 @@
             "caseInsensitive",
             "caseSensitive"
           ],
+          "markdownDescription": "Specifies how imports should be sorted with regards to case-sensitivity. If `auto` or unspecified, we will detect the case-sensitivity per file",
           "markdownEnumDescriptions": [
             "Detect case-sensitivity for import sorting.",
             null,
@@ -870,11 +884,11 @@
           "type": "string"
         },
         "locale": {
-          "markdownDescription": "Overrides the locale used for collation. Specify `auto` to use the UI locale. Only applies to `organizeImportsCollation: 'unicode'`.",
+          "markdownDescription": "Requires `organizeImports.unicodeCollation: 'unicode'`. Overrides the locale used for collation. Specify `auto` to use the UI locale.",
           "type": "string"
         },
         "numericCollation": {
-          "markdownDescription": "Sort numeric strings by integer value.",
+          "markdownDescription": "Requires `organizeImports.unicodeCollation: 'unicode'`. Sort numeric strings by integer value.",
           "type": "boolean"
         },
         "typeOrder": {
@@ -885,11 +899,12 @@
             "inline",
             "first"
           ],
+          "markdownDescription": "Specify how type-only named imports should be sorted.",
           "markdownEnumDescriptions": [
             "Detect where type-only named imports should be sorted.",
-            "Type only named imports are sorted to the end of the import list.",
-            "Named imports are sorted by name only.",
-            "Type only named imports are sorted to the end of the import list."
+            "Type only named imports are sorted to the end of the import list. E.g. `import { B, Z, type A, type Y } from 'module';`",
+            "Named imports are sorted by name only. E.g. `import { type A, B, type Y, Z } from 'module';`",
+            "Type only named imports are sorted to the beginning of the import list. E.g. `import { type A, type Y, B, Z } from 'module';`"
           ],
           "type": "string"
         },
@@ -899,6 +914,7 @@
             "ordinal",
             "unicode"
           ],
+          "markdownDescription": "Specify whether to sort imports using Unicode or Ordinal collation.",
           "markdownEnumDescriptions": [
             "Sort imports using the numeric value of each code point.",
             "Sort imports using the Unicode code collation."
@@ -1025,7 +1041,7 @@
     },
     "typescript.tsserver.experimental.enableProjectDiagnostics": {
       "default": false,
-      "description": "(Experimental) Enables project wide error reporting.",
+      "description": "Enables project wide error reporting.",
       "type": "boolean"
     },
     "typescript.tsserver.log": {
@@ -1079,66 +1095,76 @@
       "type": "string"
     },
     "typescript.tsserver.watchOptions": {
+      "default": "vscode",
       "description": "Configure which watching strategies should be used to keep track of files and directories.",
-      "properties": {
-        "fallbackPolling": {
-          "description": "When using file system events, this option specifies the polling strategy that gets used when the system runs out of native file watchers and/or doesn't support native file watchers.",
-          "enum": [
-            "fixedPollingInterval",
-            "priorityPollingInterval",
-            "dynamicPriorityPolling"
-          ],
-          "enumDescriptions": [
-            "Check every file for changes several times a second at a fixed interval.",
-            "Check every file for changes several times a second, but use heuristics to check certain types of files less frequently than others.",
-            null
-          ],
+      "oneOf": [
+        {
+          "const": "vscode",
+          "description": "%configuration.tsserver.watchOptions.vscode%",
           "type": "string"
         },
-        "synchronousWatchDirectory": {
-          "description": "Disable deferred watching on directories. Deferred watching is useful when lots of file changes might occur at once (e.g. a change in node_modules from running npm install), but you might want to disable it with this flag for some less-common setups.",
-          "type": "boolean"
-        },
-        "watchDirectory": {
-          "default": "useFsEvents",
-          "description": "Strategy for how entire directory trees are watched under systems that lack recursive file-watching functionality.",
-          "enum": [
-            "fixedChunkSizePolling",
-            "fixedPollingInterval",
-            "dynamicPriorityPolling",
-            "useFsEvents"
-          ],
-          "enumDescriptions": [
-            "Polls directories in chunks at regular interval.",
-            "Check every directory for changes several times a second at a fixed interval.",
-            "Use a dynamic queue where less-frequently modified directories will be checked less often.",
-            "Attempt to use the operating system/file system's native events for directory changes."
-          ],
-          "type": "string"
-        },
-        "watchFile": {
-          "default": "useFsEvents",
-          "description": "Strategy for how individual files are watched.",
-          "enum": [
-            "fixedChunkSizePolling",
-            "fixedPollingInterval",
-            "priorityPollingInterval",
-            "dynamicPriorityPolling",
-            "useFsEvents",
-            "useFsEventsOnParentDirectory"
-          ],
-          "enumDescriptions": [
-            "Polls files in chunks at regular interval.",
-            "Check every file for changes several times a second at a fixed interval.",
-            "Check every file for changes several times a second, but use heuristics to check certain types of files less frequently than others.",
-            "Use a dynamic queue where less-frequently modified files will be checked less often.",
-            "Attempt to use the operating system/file system's native events for file changes.",
-            "Attempt to use the operating system/file system's native events to listen for changes on a file's containing directories. This can use fewer file watchers, but might be less accurate."
-          ],
-          "type": "string"
+        {
+          "properties": {
+            "fallbackPolling": {
+              "description": "%configuration.tsserver.watchOptions.fallbackPolling%",
+              "enum": [
+                "fixedPollingInterval",
+                "priorityPollingInterval",
+                "dynamicPriorityPolling"
+              ],
+              "enumDescriptions": [
+                "configuration.tsserver.watchOptions.fallbackPolling.fixedPollingInterval",
+                "configuration.tsserver.watchOptions.fallbackPolling.priorityPollingInterval",
+                "configuration.tsserver.watchOptions.fallbackPolling.dynamicPriorityPolling"
+              ],
+              "type": "string"
+            },
+            "synchronousWatchDirectory": {
+              "description": "%configuration.tsserver.watchOptions.synchronousWatchDirectory%",
+              "type": "boolean"
+            },
+            "watchDirectory": {
+              "default": "useFsEvents",
+              "description": "%configuration.tsserver.watchOptions.watchDirectory%",
+              "enum": [
+                "fixedChunkSizePolling",
+                "fixedPollingInterval",
+                "dynamicPriorityPolling",
+                "useFsEvents"
+              ],
+              "enumDescriptions": [
+                "%configuration.tsserver.watchOptions.watchDirectory.fixedChunkSizePolling%",
+                "%configuration.tsserver.watchOptions.watchDirectory.fixedPollingInterval%",
+                "%configuration.tsserver.watchOptions.watchDirectory.dynamicPriorityPolling%",
+                "%configuration.tsserver.watchOptions.watchDirectory.useFsEvents%"
+              ],
+              "type": "string"
+            },
+            "watchFile": {
+              "default": "useFsEvents",
+              "description": "%configuration.tsserver.watchOptions.watchFile%",
+              "enum": [
+                "fixedChunkSizePolling",
+                "fixedPollingInterval",
+                "priorityPollingInterval",
+                "dynamicPriorityPolling",
+                "useFsEvents",
+                "useFsEventsOnParentDirectory"
+              ],
+              "enumDescriptions": [
+                "%configuration.tsserver.watchOptions.watchFile.fixedChunkSizePolling%",
+                "%configuration.tsserver.watchOptions.watchFile.fixedPollingInterval%",
+                "%configuration.tsserver.watchOptions.watchFile.priorityPollingInterval%",
+                "%configuration.tsserver.watchOptions.watchFile.dynamicPriorityPolling%",
+                "%configuration.tsserver.watchOptions.watchFile.useFsEvents%",
+                "%configuration.tsserver.watchOptions.watchFile.useFsEventsOnParentDirectory%"
+              ],
+              "type": "string"
+            }
+          },
+          "type": "object"
         }
-      },
-      "type": "object"
+      ]
     },
     "typescript.tsserver.web.projectWideIntellisense.enabled": {
       "default": true,
@@ -1177,7 +1203,7 @@
     },
     "typescript.workspaceSymbols.excludeLibrarySymbols": {
       "default": true,
-      "markdownDescription": "Exclude symbols that come from library files in Go to Symbol in Workspace results. Requires using TypeScript 5.3+ in the workspace.",
+      "markdownDescription": "Exclude symbols that come from library files in `Go to Symbol in Workspace` results. Requires using TypeScript 5.3+ in the workspace.",
       "type": "boolean"
     },
     "typescript.workspaceSymbols.scope": {

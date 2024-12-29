@@ -29,6 +29,12 @@
       ],
       "scope": "window",
       "type": "string"
+    },
+    "astro.updateImportsOnFileMove.enabled": {
+      "default": false,
+      "description": "Controls whether the extension updates imports when a file is moved to a new location. In most cases, you'll want to keep this disabled as TypeScript and the Astro TypeScript plugin already handles this for you. Having multiple tools updating imports at the same time can lead to corrupted files.",
+      "scope": "resource",
+      "type": "boolean"
     }
   }
 }

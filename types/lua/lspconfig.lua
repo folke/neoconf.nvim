@@ -385,6 +385,14 @@ lspconfig.solidity_ls = {
   setup = function(options) end,
 }
 
+---@class lspconfig.options.sonarlint: _.lspconfig.options
+---@field settings lspconfig.settings.sonarlint
+
+lspconfig.sonarlint = {
+  ---@param options lspconfig.options.sonarlint
+  setup = function(options) end,
+}
+
 ---@class lspconfig.options.sorbet: _.lspconfig.options
 ---@field settings lspconfig.settings.sorbet
 
@@ -449,11 +457,27 @@ lspconfig.terraformls = {
   setup = function(options) end,
 }
 
+---@class lspconfig.options.tinymist: _.lspconfig.options
+---@field settings lspconfig.settings.tinymist
+
+lspconfig.tinymist = {
+  ---@param options lspconfig.options.tinymist
+  setup = function(options) end,
+}
+
 ---@class lspconfig.options.ts_ls: _.lspconfig.options
 ---@field settings lspconfig.settings.ts_ls
 
 lspconfig.ts_ls = {
   ---@param options lspconfig.options.ts_ls
+  setup = function(options) end,
+}
+
+---@class lspconfig.options.typst_lsp: _.lspconfig.options
+---@field settings lspconfig.settings.typst_lsp
+
+lspconfig.typst_lsp = {
+  ---@param options lspconfig.options.typst_lsp
   setup = function(options) end,
 }
 
@@ -560,6 +584,7 @@ lspconfig.zls = {
 ---@field rust_analyzer lspconfig.options.rust_analyzer
 ---@field solargraph lspconfig.options.solargraph
 ---@field solidity_ls lspconfig.options.solidity_ls
+---@field sonarlint lspconfig.options.sonarlint
 ---@field sorbet lspconfig.options.sorbet
 ---@field sourcekit lspconfig.options.sourcekit
 ---@field spectral lspconfig.options.spectral
@@ -568,7 +593,9 @@ lspconfig.zls = {
 ---@field svlangserver lspconfig.options.svlangserver
 ---@field tailwindcss lspconfig.options.tailwindcss
 ---@field terraformls lspconfig.options.terraformls
+---@field tinymist lspconfig.options.tinymist
 ---@field ts_ls lspconfig.options.ts_ls
+---@field typst_lsp lspconfig.options.typst_lsp
 ---@field volar lspconfig.options.volar
 ---@field vtsls lspconfig.options.vtsls
 ---@field vuels lspconfig.options.vuels
@@ -624,6 +651,7 @@ lspconfig.zls = {
 ---@field rust_analyzer lspconfig.settings.rust_analyzer
 ---@field solargraph lspconfig.settings.solargraph
 ---@field solidity_ls lspconfig.settings.solidity_ls
+---@field sonarlint lspconfig.settings.sonarlint
 ---@field sorbet lspconfig.settings.sorbet
 ---@field sourcekit lspconfig.settings.sourcekit
 ---@field spectral lspconfig.settings.spectral
@@ -632,7 +660,9 @@ lspconfig.zls = {
 ---@field svlangserver lspconfig.settings.svlangserver
 ---@field tailwindcss lspconfig.settings.tailwindcss
 ---@field terraformls lspconfig.settings.terraformls
+---@field tinymist lspconfig.settings.tinymist
 ---@field ts_ls lspconfig.settings.ts_ls
+---@field typst_lsp lspconfig.settings.typst_lsp
 ---@field volar lspconfig.settings.volar
 ---@field vtsls lspconfig.settings.vtsls
 ---@field vuels lspconfig.settings.vuels
