@@ -145,6 +145,18 @@
       "scope": "resource",
       "type": "boolean"
     },
+    "luau-lsp.diagnostics.pullOnChange": {
+      "default": true,
+      "markdownDescription": "Whether to update document diagnostics whenever the text file changes",
+      "scope": "resource",
+      "type": "boolean"
+    },
+    "luau-lsp.diagnostics.pullOnSave": {
+      "default": true,
+      "markdownDescription": "Whether to update document diagnostics whenever the text file is saved",
+      "scope": "resource",
+      "type": "boolean"
+    },
     "luau-lsp.diagnostics.strictDatamodelTypes": {
       "default": false,
       "markdownDescription": "Use strict DataModel types in diagnostics. When on, this is equivalent to the more expressive autocompletion types. When this is off, `game`/`script`/`workspace` (and their members) are all typed as `any`, and helps to prevent false positives. [Read More](https://github.com/JohnnyMorganz/luau-lsp/issues/83#issuecomment-1192865024)",
@@ -160,6 +172,12 @@
     "luau-lsp.fflags.enableByDefault": {
       "default": false,
       "markdownDescription": "Enable all (boolean) Luau FFlags by default. These flags can later be overriden by `#luau-lsp.fflags.override#` and `#luau-lsp.fflags.sync#`",
+      "scope": "window",
+      "type": "boolean"
+    },
+    "luau-lsp.fflags.enableNewSolver": {
+      "default": false,
+      "markdownDescription": "Enables the flags required for Luau's new type solver. These flags can be overriden by `#luau-lsp.fflags.override#`",
       "scope": "window",
       "type": "boolean"
     },
@@ -240,6 +258,18 @@
       "scope": "resource",
       "type": "boolean"
     },
+    "luau-lsp.inlayHints.hideHintsForErrorTypes": {
+      "default": false,
+      "markdownDescription": "Whether type hints should be hidden if they resolve to an error type",
+      "scope": "resource",
+      "type": "boolean"
+    },
+    "luau-lsp.inlayHints.hideHintsForMatchingParameterNames": {
+      "default": true,
+      "markdownDescription": "Whether type hints should be hidden if the resolved variable name matches the parameter name",
+      "scope": "resource",
+      "type": "boolean"
+    },
     "luau-lsp.inlayHints.makeInsertable": {
       "default": true,
       "markdownDescription": "Whether type annotation inlay hints can be made insertable by clicking",
@@ -309,6 +339,8 @@
         "type": "string"
       },
       "default": {},
+      "deprecationMessage": "Deprecated: Please use aliases in a .luaurc file instead.",
+      "markdownDeprecationMessage": "**Deprecated**: Please use `aliases` in a `.luaurc` file instead.",
       "markdownDescription": "A mapping of custom require string prefixes to directory paths. The aliases should include trailing slashes",
       "scope": "resource",
       "type": "object"
@@ -318,22 +350,11 @@
         "type": "string"
       },
       "default": {},
+      "deprecationMessage": "Deprecated: Please use aliases in a .luaurc file instead.",
+      "markdownDeprecationMessage": "**Deprecated**: Please use `aliases` in a `.luaurc` file instead.",
       "markdownDescription": "A mapping of custom require string aliases to file paths",
       "scope": "resource",
       "type": "object"
-    },
-    "luau-lsp.require.mode": {
-      "default": "relativeToWorkspaceRoot",
-      "enum": [
-        "relativeToWorkspaceRoot",
-        "relativeToFile"
-      ],
-      "enumDescriptions": [
-        "String requires are interpreted relative to the root of the workspace",
-        "String requires are interpreted relative to the current file"
-      ],
-      "markdownDescription": "How string requires should be interpreted",
-      "type": "string"
     },
     "luau-lsp.signatureHelp.enabled": {
       "default": true,
@@ -368,6 +389,12 @@
     "luau-lsp.sourcemap.rojoProjectFile": {
       "default": "default.project.json",
       "markdownDescription": "The name of the Rojo project file to generate a sourcemap for.\nOnly applies if `#luau-lsp.sourcemap.autogenerate#` is enabled",
+      "scope": "resource",
+      "type": "string"
+    },
+    "luau-lsp.sourcemap.sourcemapFile": {
+      "default": "sourcemap.json",
+      "markdownDescription": "The name of the sourcemap file",
       "scope": "resource",
       "type": "string"
     },

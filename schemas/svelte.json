@@ -249,6 +249,12 @@
       "title": "Svelte: Rename",
       "type": "boolean"
     },
+    "svelte.plugin.svelte.runesLegacyModeCodeLens.enable": {
+      "default": true,
+      "description": "Show a code lens at the top of Svelte files indicating if they are in runes mode or legacy mode. Only visible in Svelte 5 projects.",
+      "title": "Svelte: Legacy/Runes mode Code Lens",
+      "type": "boolean"
+    },
     "svelte.plugin.svelte.selectionRange.enable": {
       "default": true,
       "description": "Enable selection range for Svelte",

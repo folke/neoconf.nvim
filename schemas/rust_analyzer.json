@@ -162,6 +162,19 @@
         "string"
       ]
     },
+    "rust-analyzer.cargo.sysrootQueryMetadata": {
+      "default": "cargo_metadata",
+      "enum": [
+        "none",
+        "cargo_metadata"
+      ],
+      "enumDescriptions": [
+        "Do not query sysroot metadata, always use stitched sysroot.",
+        "Use `cargo metadata` to query sysroot metadata."
+      ],
+      "markdownDescription": "How to query metadata for the sysroot crate. Using cargo metadata allows rust-analyzer\nto analyze third-party dependencies of the standard libraries.",
+      "type": "string"
+    },
     "rust-analyzer.cargo.sysrootSrc": {
       "default": null,
       "markdownDescription": "Relative path to the sysroot library sources. If left unset, this will default to\n`{cargo.sysroot}/lib/rustlib/src/rust/library`.\n\nThis option does not take effect until rust-analyzer is restarted.",
@@ -192,6 +205,11 @@
       ],
       "default": null,
       "markdownDescription": "Optional path to a rust-analyzer specific target directory.\nThis prevents rust-analyzer's `cargo check` and initial build-script and proc-macro\nbuilding from locking the `Cargo.lock` at the expense of duplicating build artifacts.\n\nSet to `true` to use a subdirectory of the existing target directory or\nset to a path relative to the workspace to use that path."
+    },
+    "rust-analyzer.cfg.setTest": {
+      "default": true,
+      "markdownDescription": "Set `cfg(test)` for local crates. Defaults to true.",
+      "type": "boolean"
     },
     "rust-analyzer.check.allTargets": {
       "default": null,
@@ -304,7 +322,7 @@
     },
     "rust-analyzer.check.workspace": {
       "default": true,
-      "markdownDescription": "Whether `--workspace` should be passed to `cargo check`.\nIf false, `-p <package>` will be passed instead.",
+      "markdownDescription": "Whether `--workspace` should be passed to `cargo check`.\nIf false, `-p <package>` will be passed instead if applicable. In case it is not, no\ncheck will be performed.",
       "type": "boolean"
     },
     "rust-analyzer.checkOnSave": {
@@ -427,18 +445,27 @@
       "minimum": 0,
       "type": "integer"
     },
+    "rust-analyzer.debug.buildBeforeRestart": {
+      "default": false,
+      "markdownDescription": "Whether to rebuild the project modules before debugging the same test again",
+      "type": "boolean"
+    },
     "rust-analyzer.debug.engine": {
       "default": "auto",
       "description": "Preferred debug engine.",
       "enum": [
         "auto",
+        "llvm-vs-code-extensions.lldb-dap",
         "vadimcn.vscode-lldb",
-        "ms-vscode.cpptools"
+        "ms-vscode.cpptools",
+        "webfreak.debug"
       ],
       "markdownEnumDescriptions": [
-        "First try to use [CodeLLDB](https://marketplace.visualstudio.com/items?itemName=vadimcn.vscode-lldb), if it's not installed try to use [MS C++ tools](https://marketplace.visualstudio.com/items?itemName=ms-vscode.cpptools).",
+        "Use the first available extension out of [LLDB DAP](https://marketplace.visualstudio.com/items?itemName=llvm-vs-code-extensions.lldb-dap), [CodeLLDB](https://marketplace.visualstudio.com/items?itemName=vadimcn.vscode-lldb), [C/C++ for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-vscode.cpptools), and [Native Debug](https://marketplace.visualstudio.com/items?itemName=webfreak.debug).",
+        "Use [LLDB DAP](https://marketplace.visualstudio.com/items?itemName=llvm-vs-code-extensions.lldb-dap)",
         "Use [CodeLLDB](https://marketplace.visualstudio.com/items?itemName=vadimcn.vscode-lldb)",
-        "Use [MS C++ tools](https://marketplace.visualstudio.com/items?itemName=ms-vscode.cpptools)"
+        "Use [C/C++ for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-vscode.cpptools)",
+        "Use [Native Debug](https://marketplace.visualstudio.com/items?itemName=webfreak.debug)"
       ],
       "type": "string"
     },
@@ -609,6 +636,24 @@
       "markdownDescription": "Use markdown syntax for links on hover.",
       "type": "boolean"
     },
+    "rust-analyzer.hover.maxSubstitutionLength": {
+      "anyOf": [
+        {
+          "type": "null"
+        },
+        {
+          "enum": [
+            "hide"
+          ],
+          "type": "string"
+        },
+        {
+          "type": "integer"
+        }
+      ],
+      "default": 20,
+      "markdownDescription": "Whether to show what types are used as generic arguments in calls etc. on hover, and what is their max length to show such types, beyond it they will be shown with ellipsis.\n\nThis can take three values: `null` means \"unlimited\", the string `\"hide\"` means to not show generic substitutions at all, and a number means to limit them to X characters.\n\nThe default is 20 characters."
+    },
     "rust-analyzer.hover.memoryLayout.alignment": {
       "anyOf": [
         {
@@ -777,6 +822,11 @@
     "rust-analyzer.imports.prefixExternPrelude": {
       "default": false,
       "markdownDescription": "Whether to prefix external (including std, core) crate imports with `::`. e.g. \"use ::std::io::Read;\".",
+      "type": "boolean"
+    },
+    "rust-analyzer.initializeStopped": {
+      "default": false,
+      "markdownDescription": "Do not start rust-analyzer server when the extension is activated.",
       "type": "boolean"
     },
     "rust-analyzer.inlayHints.bindingModeHints.enable": {
@@ -1147,7 +1197,7 @@
     },
     "rust-analyzer.references.excludeTests": {
       "default": false,
-      "markdownDescription": "Exclude tests from find-all-references.",
+      "markdownDescription": "Exclude tests from find-all-references and call-hierarchy.",
       "type": "boolean"
     },
     "rust-analyzer.restartServerOnConfigChange": {
@@ -1370,6 +1420,56 @@
       "markdownDescription": "Action to run when clicking the extension status bar item.",
       "type": "string"
     },
+    "rust-analyzer.statusBar.showStatusBar": {
+      "anyOf": [
+        {
+          "enum": [
+            "always",
+            "never"
+          ],
+          "type": "string"
+        },
+        {
+          "properties": {
+            "documentSelector": {
+              "items": {
+                "properties": {
+                  "language": {
+                    "type": "string"
+                  },
+                  "notebookType": {
+                    "type": "string"
+                  },
+                  "pattern": {
+                    "type": "string"
+                  },
+                  "scheme": {
+                    "type": "string"
+                  }
+                },
+                "type": "object"
+              },
+              "type": "array"
+            }
+          },
+          "type": "object"
+        }
+      ],
+      "default": {
+        "documentSelector": [
+          {
+            "language": "rust"
+          },
+          {
+            "pattern": "**/Cargo.toml"
+          },
+          {
+            "pattern": "**/Cargo.lock"
+          }
+        ]
+      },
+      "markdownDescription": "When to show the extension status bar.\n\n`\"always\"` Always show the status bar.\n\n`\"never\"` Never show the status bar.\n\n`{ documentSelector: <DocumentSelector>[] }` Show the status bar if the open file matches any of the given document selectors.\n\nSee [VS Code -- DocumentSelector](https://code.visualstudio.com/api/references/document-selector) for more information."
+    },
     "rust-analyzer.testExplorer": {
       "default": false,
       "markdownDescription": "Whether to show the test explorer.",
@@ -1397,15 +1497,18 @@
       "scope": "window",
       "type": "string"
     },
-    "rust-analyzer.typing.autoClosingAngleBrackets.enable": {
-      "default": false,
-      "markdownDescription": "Whether to insert closing angle brackets when typing an opening angle bracket of a generic argument list.",
-      "type": "boolean"
-    },
     "rust-analyzer.typing.continueCommentsOnNewline": {
       "default": true,
       "markdownDescription": "Whether to prefix newlines after comments with the corresponding comment prefix.",
       "type": "boolean"
+    },
+    "rust-analyzer.typing.excludeChars": {
+      "default": "|<",
+      "markdownDescription": "Specify the characters to exclude from triggering typing assists. The default trigger characters are `.`, `=`, `<`, `>`, `{`, and `(`.",
+      "type": [
+        "null",
+        "string"
+      ]
     },
     "rust-analyzer.workspace.discoverConfig": {
       "anyOf": [

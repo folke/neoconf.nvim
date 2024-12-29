@@ -168,27 +168,40 @@
       "markdownDescription": "Creates a temporary PowerShell Extension Terminal for each debugging session. This is useful for debugging PowerShell classes and binary modules.",
       "type": "boolean"
     },
+    "powershell.debugging.executeMode": {
+      "default": "DotSource",
+      "enum": [
+        "DotSource",
+        "Call"
+      ],
+      "markdownDescription": "Sets the operator used to launch scripts.",
+      "markdownEnumDescriptions": [
+        "Use the Dot-Source operator `.` to launch the script, for example, `. 'C:\\Data\\MyScript.ps1'`",
+        "Use the Call operator `&` to launch the script, for example, `& 'C:\\Data\\MyScript.ps1'`"
+      ],
+      "type": "string"
+    },
     "powershell.developer.bundledModulesPath": {
       "default": "../../PowerShellEditorServices/module",
       "markdownDescription": "Specifies an alternative path to the folder containing modules that are bundled with the PowerShell extension, that is: PowerShell Editor Services, PSScriptAnalyzer and PSReadLine. **This setting is only meant for extension developers and requires the extension to be run in development mode!**",
       "type": "string"
     },
     "powershell.developer.editorServicesLogLevel": {
-      "default": "Normal",
+      "default": "Warning",
       "enum": [
-        "Diagnostic",
-        "Verbose",
-        "Normal",
+        "Trace",
+        "Debug",
+        "Information",
         "Warning",
         "Error",
         "None"
       ],
-      "markdownDescription": "Sets the log verbosity for both the extension and its LSP server, PowerShell Editor Services. **Please set to `Diagnostic` when recording logs for a bug report!**",
+      "markdownDescription": "Sets the log verbosity for both the extension and its LSP server, PowerShell Editor Services. **Please set to `Trace` when recording logs for a bug report!**",
       "markdownEnumDescriptions": [
         "Enables all logging possible, please use this setting when submitting logs for bug reports!",
-        "Enables more logging than normal.",
-        "The default logging level.",
-        "Only log warnings and errors.",
+        "Enables more detailed logging of the extension",
+        "Logs high-level information about what the extension is doing.",
+        "Only log warnings and errors. This is the default setting",
         "Only log errors.",
         "Disable all logging possible. No log files will be written!"
       ],
@@ -210,6 +223,11 @@
     "powershell.developer.setExecutionPolicy": {
       "default": true,
       "markdownDescription": "On Windows we launch the PowerShell executable with `-ExecutionPolicy Bypass` so that the LSP server (PowerShell Editor Services module) will launch without issue. Some anti-virus programs disallow this command-line argument and this flag can be used to remove it. **Using this setting may require trusting the script manually in order for it to launch!**",
+      "type": "boolean"
+    },
+    "powershell.developer.traceDap": {
+      "default": false,
+      "markdownDescription": "Traces the DAP communication between VS Code and the PowerShell Editor Services [DAP Server](https://microsoft.github.io/debug-adapter-protocol/). The output will be logged and also visible in the Output pane, where the verbosity is configurable. **For extension developers and issue troubleshooting only!**",
       "type": "boolean"
     },
     "powershell.developer.waitForSessionFileTimeoutSeconds": {
@@ -401,7 +419,7 @@
         "messages",
         "verbose"
       ],
-      "markdownDescription": "Traces the communication between VS Code and the PowerShell Editor Services language server. **This setting is only meant for extension developers!**",
+      "markdownDescription": "Traces the communication between VS Code and the PowerShell Editor Services [LSP Server](https://microsoft.github.io/language-server-protocol/). The output will be logged and also visible in the Output pane, where the verbosity is configurable. **For extension developers and issue troubleshooting only!**",
       "type": "string"
     },
     "powershell.useX86Host": {
