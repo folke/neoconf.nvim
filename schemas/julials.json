@@ -288,12 +288,6 @@
       "description": "Check that all declared arguments are used within the function body.",
       "type": "boolean"
     },
-    "julia.liveTestFile": {
-      "default": "test/runtests.jl",
-      "description": "A workspace relative path to a Julia file that contains the tests that should be run for live testing.",
-      "scope": "window",
-      "type": "string"
-    },
     "julia.numTestProcesses": {
       "default": 1,
       "markdownDescription": "Number of processes to use for testing.",
