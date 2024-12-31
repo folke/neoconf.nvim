@@ -109,16 +109,6 @@
       "markdownDescription": "Enable/disable `experimentalDecorators` in JavaScript files that are not part of a project. Existing `jsconfig.json` or `tsconfig.json` files override this setting.",
       "type": "boolean"
     },
-    "javascript.inlayHints.enumMemberValues.enabled": {
-      "default": false,
-      "markdownDescription": {
-        "comment": [
-          "The text inside the ``` block is code and should not be localized."
-        ],
-        "message": "Enable/disable inlay hints for member values in enum declarations:\n```typescript\n\nenum MyValue {\n\tA /* = 0 */;\n\tB /* = 1 */;\n}\n \n```"
-      },
-      "type": "boolean"
-    },
     "javascript.inlayHints.functionLikeReturnTypes.enabled": {
       "default": false,
       "markdownDescription": {

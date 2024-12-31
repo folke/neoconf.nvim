@@ -17429,18 +17429,6 @@
 -- Enable/disable `experimentalDecorators` in JavaScript files that are not part of a project. Existing `jsconfig.json` or `tsconfig.json` files override this setting.
 ---@field experimentalDecorators boolean
 
----@class _.lspconfig.settings.vtsls.EnumMemberValues
--- Enable/disable inlay hints for member values in enum declarations:
--- ```typescript
--- 
--- enum MyValue {
--- 	A /* = 0 */;
--- 	B /* = 1 */;
--- }
---  
--- ```
----@field enabled boolean
-
 ---@class _.lspconfig.settings.vtsls.FunctionLikeReturnTypes
 -- Enable/disable inlay hints for implicit return types on function signatures:
 -- ```typescript
@@ -17507,7 +17495,6 @@
 ---@field suppressWhenTypeMatchesName boolean
 
 ---@class _.lspconfig.settings.vtsls.InlayHints
----@field enumMemberValues _.lspconfig.settings.vtsls.EnumMemberValues
 ---@field functionLikeReturnTypes _.lspconfig.settings.vtsls.FunctionLikeReturnTypes
 ---@field parameterNames _.lspconfig.settings.vtsls.ParameterNames
 ---@field parameterTypes _.lspconfig.settings.vtsls.ParameterTypes
