@@ -3420,6 +3420,10 @@
 -- ```
 ---@field unionCaseStubGenerationBody string
 -- Enables detection of unnecessary parentheses
+-- 
+-- ```lua
+-- default = true
+-- ```
 ---@field unnecessaryParenthesesAnalyzer boolean
 -- Enables detection of unused declarations
 -- 
