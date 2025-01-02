@@ -340,6 +340,46 @@
       "markdownDescription": "Toggles the additional completions that automatically add imports when completed.\nNote that your client must specify the `additionalTextEdits` LSP client capability to truly have this feature enabled.",
       "type": "boolean"
     },
+    "rust-analyzer.completion.autoimport.exclude": {
+      "default": [
+        {
+          "path": "core::borrow::Borrow",
+          "type": "methods"
+        },
+        {
+          "path": "core::borrow::BorrowMut",
+          "type": "methods"
+        }
+      ],
+      "items": {
+        "anyOf": [
+          {
+            "type": "string"
+          },
+          {
+            "properties": {
+              "path": {
+                "type": "string"
+              },
+              "type": {
+                "enum": [
+                  "always",
+                  "methods"
+                ],
+                "enumDescriptions": [
+                  "Do not show this item or its methods (if it is a trait) in auto-import completions.",
+                  "Do not show this traits methods in auto-import completions."
+                ],
+                "type": "string"
+              }
+            },
+            "type": "object"
+          }
+        ]
+      },
+      "markdownDescription": "A list of full paths to items to exclude from auto-importing completions.\n\nTraits in this list won't have their methods suggested in completions unless the trait\nis in scope.\n\nYou can either specify a string path which defaults to type \"always\" or use the more verbose\nform `{ \"path\": \"path::to::item\", type: \"always\" }`.\n\nFor traits the type \"methods\" can be used to only exclude the methods but not the trait itself.\n\nThis setting also inherits `#rust-analyzer.completion.excludeTraits#`.",
+      "type": "array"
+    },
     "rust-analyzer.completion.autoself.enable": {
       "default": true,
       "markdownDescription": "Toggles the additional completions that automatically show method calls and field accesses\nwith `self` prefixed to them when inside a method.",
@@ -359,6 +399,14 @@
       ],
       "markdownDescription": "Whether to add parenthesis and argument snippets when completing function.",
       "type": "string"
+    },
+    "rust-analyzer.completion.excludeTraits": {
+      "default": [],
+      "items": {
+        "type": "string"
+      },
+      "markdownDescription": "A list of full paths to traits whose methods to exclude from completion.\n\nMethods from these traits won't be completed, even if the trait is in scope. However, they will still be suggested on expressions whose type is `dyn Trait`, `impl Trait` or `T where T: Trait`.\n\nNote that the trait themselves can still be completed.",
+      "type": "array"
     },
     "rust-analyzer.completion.fullFunctionSignatures.enable": {
       "default": false,
@@ -619,6 +667,11 @@
     "rust-analyzer.hover.actions.run.enable": {
       "default": true,
       "markdownDescription": "Whether to show `Run` action. Only applies when\n`#rust-analyzer.hover.actions.enable#` is set.",
+      "type": "boolean"
+    },
+    "rust-analyzer.hover.actions.updateTest.enable": {
+      "default": true,
+      "markdownDescription": "Whether to show `Update Test` action. Only applies when\n`#rust-analyzer.hover.actions.enable#` and `#rust-analyzer.hover.actions.run.enable#` are set.",
       "type": "boolean"
     },
     "rust-analyzer.hover.documentation.enable": {
@@ -1111,6 +1164,11 @@
       "markdownDescription": "Whether to show `Run` lens. Only applies when\n`#rust-analyzer.lens.enable#` is set.",
       "type": "boolean"
     },
+    "rust-analyzer.lens.updateTest.enable": {
+      "default": true,
+      "markdownDescription": "Whether to show `Update Test` lens. Only applies when\n`#rust-analyzer.lens.enable#` and `#rust-analyzer.lens.run.enable#` are set.",
+      "type": "boolean"
+    },
     "rust-analyzer.linkedProjects": {
       "default": [],
       "items": {
@@ -1203,6 +1261,11 @@
     "rust-analyzer.restartServerOnConfigChange": {
       "default": false,
       "markdownDescription": "Whether to restart the server automatically when certain settings that require a restart are changed.",
+      "type": "boolean"
+    },
+    "rust-analyzer.runnables.askBeforeUpdateTest": {
+      "default": true,
+      "markdownDescription": "Ask before updating the test when running it.",
       "type": "boolean"
     },
     "rust-analyzer.runnables.command": {

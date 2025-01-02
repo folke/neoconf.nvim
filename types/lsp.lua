@@ -13308,6 +13308,28 @@
 -- default = true
 -- ```
 ---@field enable boolean
+-- A list of full paths to items to exclude from auto-importing completions.
+-- 
+-- Traits in this list won't have their methods suggested in completions unless the trait
+-- is in scope.
+-- 
+-- You can either specify a string path which defaults to type "always" or use the more verbose
+-- form `{ "path": "path::to::item", type: "always" }`.
+-- 
+-- For traits the type "methods" can be used to only exclude the methods but not the trait itself.
+-- 
+-- This setting also inherits `#rust-analyzer.completion.excludeTraits#`.
+-- 
+-- ```lua
+-- default = { {
+--     path = "core::borrow::Borrow",
+--     type = "methods"
+--   }, {
+--     path = "core::borrow::BorrowMut",
+--     type = "methods"
+--   } }
+-- ```
+---@field exclude any[]
 
 ---@class _.lspconfig.settings.rust_analyzer.Autoself
 -- Toggles the additional completions that automatically show method calls and field accesses
@@ -13412,6 +13434,16 @@
 ---@field autoimport _.lspconfig.settings.rust_analyzer.Autoimport
 ---@field autoself _.lspconfig.settings.rust_analyzer.Autoself
 ---@field callable _.lspconfig.settings.rust_analyzer.Callable
+-- A list of full paths to traits whose methods to exclude from completion.
+-- 
+-- Methods from these traits won't be completed, even if the trait is in scope. However, they will still be suggested on expressions whose type is `dyn Trait`, `impl Trait` or `T where T: Trait`.
+-- 
+-- Note that the trait themselves can still be completed.
+-- 
+-- ```lua
+-- default = {}
+-- ```
+---@field excludeTraits string[]
 ---@field fullFunctionSignatures _.lspconfig.settings.rust_analyzer.FullFunctionSignatures
 -- Whether to omit deprecated items from autocompletion. By default they are marked as deprecated but not hidden.
 ---@field hideDeprecated boolean
@@ -13606,6 +13638,15 @@
 -- ```
 ---@field enable boolean
 
+---@class _.lspconfig.settings.rust_analyzer.UpdateTest
+-- Whether to show `Update Test` action. Only applies when
+-- `#rust-analyzer.hover.actions.enable#` and `#rust-analyzer.hover.actions.run.enable#` are set.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enable boolean
+
 ---@class _.lspconfig.settings.rust_analyzer.Actions
 ---@field debug _.lspconfig.settings.rust_analyzer.Debug
 -- Whether to show HoverActions in Rust files.
@@ -13618,6 +13659,7 @@
 ---@field implementations _.lspconfig.settings.rust_analyzer.Implementations
 ---@field references _.lspconfig.settings.rust_analyzer.References
 ---@field run _.lspconfig.settings.rust_analyzer.Run
+---@field updateTest _.lspconfig.settings.rust_analyzer.UpdateTest
 
 ---@class _.lspconfig.settings.rust_analyzer.Keywords
 -- Whether to show keyword hover popups. Only applies when
@@ -13999,6 +14041,15 @@
 -- ```
 ---@field enable boolean
 
+---@class _.lspconfig.settings.rust_analyzer.UpdateTest
+-- Whether to show `Update Test` lens. Only applies when
+-- `#rust-analyzer.lens.enable#` and `#rust-analyzer.lens.run.enable#` are set.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enable boolean
+
 ---@class _.lspconfig.settings.rust_analyzer.Lens
 ---@field debug _.lspconfig.settings.rust_analyzer.Debug
 -- Whether to show CodeLens in Rust files.
@@ -14016,6 +14067,7 @@
 ---@field location "above_name" | "above_whole_item"
 ---@field references _.lspconfig.settings.rust_analyzer.References
 ---@field run _.lspconfig.settings.rust_analyzer.Run
+---@field updateTest _.lspconfig.settings.rust_analyzer.UpdateTest
 
 ---@class _.lspconfig.settings.rust_analyzer.Query
 -- Sets the LRU capacity of the specified queries.
@@ -14072,6 +14124,12 @@
 ---@field excludeTests boolean
 
 ---@class _.lspconfig.settings.rust_analyzer.Runnables
+-- Ask before updating the test when running it.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field askBeforeUpdateTest boolean
 -- Command to be executed instead of 'cargo' for runnables.
 ---@field command string
 -- Additional arguments to be passed to cargo for runnables such as
