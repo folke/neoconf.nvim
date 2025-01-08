@@ -13178,19 +13178,12 @@
 -- default = "discover"
 -- ```
 ---@field sysroot string
--- How to query metadata for the sysroot crate. Using cargo metadata allows rust-analyzer
--- to analyze third-party dependencies of the standard libraries.
--- 
--- ```lua
--- default = "cargo_metadata"
--- ```
----@field sysrootQueryMetadata "none" | "cargo_metadata"
 -- Relative path to the sysroot library sources. If left unset, this will default to
 -- `{cargo.sysroot}/lib/rustlib/src/rust/library`.
 -- 
 -- This option does not take effect until rust-analyzer is restarted.
 ---@field sysrootSrc string
--- Compilation target override (target triple).
+-- Compilation target override (target tuple).
 ---@field target string
 -- Optional path to a rust-analyzer specific target directory.
 -- This prevents rust-analyzer's `cargo check` and initial build-script and proc-macro
@@ -15179,6 +15172,18 @@
 -- default = ""
 -- ```
 ---@field path string
+-- Configures a list of permissions to be used when running a command plugins.
+-- 
+-- Permissions objects are defined in the form:
+-- 
+-- `{ "PluginName:command": { "allowWritingToPackageDirectory": true } }`.
+-- 
+-- A key of `PluginName:command` will set permissions for a specific command. A key of `PluginName` will set permissions for all commands in the plugin.
+-- 
+-- ```lua
+-- default = {}
+-- ```
+---@field pluginPermissions table
 -- The path of the folder containing the Swift runtime libraries. This is of use when supporting non-standard SDK layouts on Windows. On Windows the runtime path is added to the `Path` environment variable. This is of less use on macOS and Linux but will be added to `DYLD_LIBRARY_PATH` and `LD_LIBRARY_PATH` environment variables respectively on each platform. 
 -- 
 -- ```lua

@@ -217,6 +217,46 @@
       "markdownDescription": "Override the default path of the folder containing the Swift executables. The default is to look in the `PATH` environment variable. This path is also used to search for other executables used by the extension like `sourcekit-lsp` and `lldb`.",
       "type": "string"
     },
+    "swift.pluginPermissions": {
+      "default": {},
+      "markdownDescription": "Configures a list of permissions to be used when running a command plugins.\n\nPermissions objects are defined in the form:\n\n`{ \"PluginName:command\": { \"allowWritingToPackageDirectory\": true } }`.\n\nA key of `PluginName:command` will set permissions for a specific command. A key of `PluginName` will set permissions for all commands in the plugin.",
+      "patternProperties": {
+        "^([a-zA-Z0-9_-]+(:[a-zA-Z0-9_-]+)?)$": {
+          "properties": {
+            "allowNetworkConnections": {
+              "description": "Allow the plugin to make network connections",
+              "type": "string"
+            },
+            "allowWritingToDirectory": {
+              "oneOf": [
+                {
+                  "description": "Allow the plugin to write to an additional directory",
+                  "type": "string"
+                },
+                {
+                  "description": "Allow the plugin to write to additional directories",
+                  "items": {
+                    "type": "string"
+                  },
+                  "type": "array"
+                }
+              ]
+            },
+            "allowWritingToPackageDirectory": {
+              "description": "Allow the plugin to write to the package directory",
+              "type": "boolean"
+            },
+            "disableSandbox": {
+              "description": "Disable using the sandbox when executing plugins",
+              "type": "boolean"
+            }
+          },
+          "type": "object"
+        }
+      },
+      "scope": "machine-overridable",
+      "type": "object"
+    },
     "swift.runtimePath": {
       "default": "",
       "markdownDescription": "The path of the folder containing the Swift runtime libraries. This is of use when supporting non-standard SDK layouts on Windows. On Windows the runtime path is added to the `Path` environment variable. This is of less use on macOS and Linux but will be added to `DYLD_LIBRARY_PATH` and `LD_LIBRARY_PATH` environment variables respectively on each platform. ",
