@@ -1,6 +1,6 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "description": "A Visual Studio Code extension with support for the Ruff linter.",
+  "description": "A Visual Studio Code extension with support for the Ruff linter and formatter.",
   "properties": {
     "ruff.args": {
       "default": [],

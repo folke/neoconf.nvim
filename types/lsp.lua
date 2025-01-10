@@ -5960,10 +5960,10 @@
 ---@field enabled "auto" | "on" | "off"
 
 ---@class _.lspconfig.settings.jdtls.Java
--- Specifies the folder path to the JDK (17 or more recent) used to launch the Java Language Server. This setting will replace the Java extension's embedded JRE to start the Java Language Server. 
+-- Specifies the folder path to the JDK (21 or more recent) used to launch the Java Language Server. This setting will replace the Java extension's embedded JRE to start the Java Language Server. 
 -- 
 -- On Windows, backslashes must be escaped, i.e.
--- "java.jdt.ls.java.home":"C:\\Program Files\\Java\\jdk-17.0_3"
+-- "java.jdt.ls.java.home":"C:\\Program Files\\Java\\jdk-21.0_5"
 ---@field home string
 
 ---@class _.lspconfig.settings.jdtls.Javac
@@ -6249,9 +6249,9 @@
 ---@field errors _.lspconfig.settings.jdtls.Errors
 ---@field foldingRange _.lspconfig.settings.jdtls.FoldingRange
 ---@field format _.lspconfig.settings.jdtls.Format
--- Specifies the folder path to the JDK (17 or more recent) used to launch the Java Language Server.
+-- Specifies the folder path to the JDK (21 or more recent) used to launch the Java Language Server.
 -- On Windows, backslashes must be escaped, i.e.
--- "java.home":"C:\\Program Files\\Java\\jdk-17.0_3"
+-- "java.home":"C:\\Program Files\\Java\\jdk-21.0_5"
 ---@field home string
 -- Enable/disable the implementations code lens for the provided categories.
 -- 
@@ -13141,9 +13141,9 @@
 -- List of cfg options to enable with the given values.
 -- 
 -- ```lua
--- default = {}
+-- default = { "debug_assertion", "miri" }
 -- ```
----@field cfgs table
+---@field cfgs string[]
 -- Extra arguments that are passed to every cargo invocation.
 -- 
 -- ```lua
@@ -14346,6 +14346,16 @@
 -- ```
 ---@field excludeChars string
 
+---@class _.lspconfig.settings.rust_analyzer.Vfs
+-- Additional paths to include in the VFS. Generally for code that is
+-- generated or otherwise managed by a build system outside of Cargo,
+-- though Cargo might be the eventual consumer.
+-- 
+-- ```lua
+-- default = {}
+-- ```
+---@field extraIncludes string[]
+
 ---@class _.lspconfig.settings.rust_analyzer.Search
 -- Workspace symbol search kind.
 -- 
@@ -14541,6 +14551,7 @@
 ---@field testExplorer boolean
 ---@field trace _.lspconfig.settings.rust_analyzer.Trace
 ---@field typing _.lspconfig.settings.rust_analyzer.Typing
+---@field vfs _.lspconfig.settings.rust_analyzer.Vfs
 ---@field workspace _.lspconfig.settings.rust_analyzer.Workspace
 
 ---@class lspconfig.settings.rust_analyzer
@@ -15498,6 +15509,14 @@
 -- ```
 ---@field enable boolean
 
+---@class _.lspconfig.settings.svelte.DocumentHighlight
+-- Enable document highlight support. Requires a restart.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enable boolean
+
 ---@class _.lspconfig.settings.svelte.Config
 -- Maximum line width after which code is tried to be broken up. This is a Prettier core option. If you have the Prettier extension installed, this option is ignored and the corresponding option of that extension is used instead. This option is also ignored if there's any kind of configuration file, for example a `.prettierrc` file.
 -- 
@@ -15591,6 +15610,7 @@
 -- ```
 ---@field defaultScriptLanguage "none" | "ts"
 ---@field diagnostics _.lspconfig.settings.svelte.Diagnostics
+---@field documentHighlight _.lspconfig.settings.svelte.DocumentHighlight
 -- Enable the Svelte plugin
 -- 
 -- ```lua

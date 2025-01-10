@@ -108,12 +108,15 @@
       "type": "boolean"
     },
     "rust-analyzer.cargo.cfgs": {
-      "default": {
-        "debug_assertions": null,
-        "miri": null
+      "default": [
+        "debug_assertion",
+        "miri"
+      ],
+      "items": {
+        "type": "string"
       },
       "markdownDescription": "List of cfg options to enable with the given values.",
-      "type": "object"
+      "type": "array"
     },
     "rust-analyzer.cargo.extraArgs": {
       "default": [],
@@ -1559,6 +1562,14 @@
         "null",
         "string"
       ]
+    },
+    "rust-analyzer.vfs.extraIncludes": {
+      "default": [],
+      "items": {
+        "type": "string"
+      },
+      "markdownDescription": "Additional paths to include in the VFS. Generally for code that is\ngenerated or otherwise managed by a build system outside of Cargo,\nthough Cargo might be the eventual consumer.",
+      "type": "array"
     },
     "rust-analyzer.workspace.discoverConfig": {
       "anyOf": [

@@ -183,6 +183,12 @@
       "title": "Svelte: Diagnostics",
       "type": "boolean"
     },
+    "svelte.plugin.svelte.documentHighlight.enable": {
+      "default": true,
+      "description": "Enable document highlight support. Requires a restart.",
+      "title": "Svelte: Document Highlight",
+      "type": "boolean"
+    },
     "svelte.plugin.svelte.enable": {
       "default": true,
       "description": "Enable the Svelte plugin",
