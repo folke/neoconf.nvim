@@ -13872,6 +13872,10 @@
 -- Whether to show implicit drop hints.
 ---@field enable boolean
 
+---@class _.lspconfig.settings.rust_analyzer.ImplicitSizedBoundHints
+-- Whether to show inlay hints for the implied type parameter `Sized` bound.
+---@field enable boolean
+
 ---@class _.lspconfig.settings.rust_analyzer.LifetimeElisionHints
 -- Whether to show inlay type hints for elided lifetimes in function signatures.
 -- 
@@ -13933,6 +13937,7 @@
 ---@field expressionAdjustmentHints _.lspconfig.settings.rust_analyzer.ExpressionAdjustmentHints
 ---@field genericParameterHints _.lspconfig.settings.rust_analyzer.GenericParameterHints
 ---@field implicitDrops _.lspconfig.settings.rust_analyzer.ImplicitDrops
+---@field implicitSizedBoundHints _.lspconfig.settings.rust_analyzer.ImplicitSizedBoundHints
 ---@field lifetimeElisionHints _.lspconfig.settings.rust_analyzer.LifetimeElisionHints
 -- Maximum length for inlay hints. Set to null to have an unlimited length.
 -- 
@@ -14539,6 +14544,12 @@
 -- default = true
 -- ```
 ---@field showRequestFailedErrorNotification boolean
+-- Whether to show the syntax tree view.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field showSyntaxTree boolean
 -- Whether to show a notification for unlinked files asking the user to add the corresponding Cargo.toml to the linked projects setting.
 -- 
 -- ```lua

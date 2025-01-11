@@ -1002,6 +1002,11 @@
       "markdownDescription": "Whether to show implicit drop hints.",
       "type": "boolean"
     },
+    "rust-analyzer.inlayHints.implicitSizedBoundHints.enable": {
+      "default": false,
+      "markdownDescription": "Whether to show inlay hints for the implied type parameter `Sized` bound.",
+      "type": "boolean"
+    },
     "rust-analyzer.inlayHints.lifetimeElisionHints.enable": {
       "default": "never",
       "enum": [
@@ -1435,6 +1440,11 @@
     "rust-analyzer.showRequestFailedErrorNotification": {
       "default": true,
       "markdownDescription": "Whether to show error notifications for failing requests.",
+      "type": "boolean"
+    },
+    "rust-analyzer.showSyntaxTree": {
+      "default": true,
+      "markdownDescription": "Whether to show the syntax tree view.",
       "type": "boolean"
     },
     "rust-analyzer.showUnlinkedFileNotification": {
