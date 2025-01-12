@@ -9,7 +9,7 @@
         "enable",
         "disable"
       ],
-      "title": "Show/Report compilation status",
+      "title": "Show/Report Compile Status",
       "type": "string"
     },
     "tinymist.completion.postfix": {
@@ -325,6 +325,12 @@
       ],
       "description": "Configures way of opening exported files, e.g. inside of editor tabs or using system application.",
       "title": "(Experimental) Show Exported Files in Some Place"
+    },
+    "tinymist.statusBarFormat": {
+      "default": "{compileStatusIcon} {wordCount} [{fileName}]",
+      "markdownDescription": "Set format string of the server status. For example, `{compileStatusIcon}{wordCount} [{fileName}]` will format the status as `$(check) 123 words [main]`. Valid placeholders are:\n\n- `{compileStatusIcon}`: Icon indicating the compile status\n- `{wordCount}`: Number of words in the document\n- `{fileName}`: Name of the file being compiled\n\nNote: The status bar will be hidden if the format string is empty.",
+      "title": "Format of the Server Status in the Status Bar",
+      "type": "string"
     },
     "tinymist.systemFonts": {
       "default": true,

@@ -16232,6 +16232,18 @@
 ---@field serverPath string
 -- Configures way of opening exported files, e.g. inside of editor tabs or using system application.
 ---@field showExportFileIn "editorTab" | "systemDefault"
+-- Set format string of the server status. For example, `{compileStatusIcon}{wordCount} [{fileName}]` will format the status as `$(check) 123 words [main]`. Valid placeholders are:
+-- 
+-- - `{compileStatusIcon}`: Icon indicating the compile status
+-- - `{wordCount}`: Number of words in the document
+-- - `{fileName}`: Name of the file being compiled
+-- 
+-- Note: The status bar will be hidden if the format string is empty.
+-- 
+-- ```lua
+-- default = "{compileStatusIcon} {wordCount} [{fileName}]"
+-- ```
+---@field statusBarFormat string
 -- A flag that determines whether to load system fonts for Typst compiler, which is useful for ensuring reproducible compilation. If set to null or not set, the extension will use the default behavior of the Typst compiler. Note: You need to restart LSP to change this options. 
 -- 
 -- ```lua
