@@ -84,6 +84,12 @@
       "scope": "machine-overridable",
       "type": "array"
     },
+    "swift.attachmentsPath": {
+      "default": ".build/attachments",
+      "markdownDescription": "The path to a directory that will be used to store attachments produced during a test run.\n\nA relative path resolves relative to the root directory of the workspace running the test(s)",
+      "scope": "machine-overridable",
+      "type": "string"
+    },
     "swift.autoGenerateLaunchConfigurations": {
       "default": true,
       "markdownDescription": "When loading a `Package.swift`, auto-generate `launch.json` configurations for running any executables.",

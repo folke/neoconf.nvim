@@ -15123,6 +15123,14 @@
 -- default = {}
 -- ```
 ---@field additionalTestArguments string[]
+-- The path to a directory that will be used to store attachments produced during a test run.
+-- 
+-- A relative path resolves relative to the root directory of the workspace running the test(s)
+-- 
+-- ```lua
+-- default = ".build/attachments"
+-- ```
+---@field attachmentsPath string
 -- When loading a `Package.swift`, auto-generate `launch.json` configurations for running any executables.
 -- 
 -- ```lua
