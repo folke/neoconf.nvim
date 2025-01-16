@@ -14,6 +14,12 @@
       "scope": "window",
       "type": "boolean"
     },
+    "javascript.format.indentSwitchCase": {
+      "default": true,
+      "description": "Indent case clauses in switch statements. Requires using TypeScript 5.1+ in the workspace.",
+      "scope": "resource",
+      "type": "boolean"
+    },
     "javascript.format.insertSpaceAfterCommaDelimiter": {
       "default": true,
       "description": "Defines space handling after a comma delimiter.",

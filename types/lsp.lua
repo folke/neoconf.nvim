@@ -14344,12 +14344,20 @@
 -- default = true
 -- ```
 ---@field continueCommentsOnNewline boolean
--- Specify the characters to exclude from triggering typing assists. The default trigger characters are `.`, `=`, `<`, `>`, `{`, and `(`.
+-- Specify the characters allowed to invoke special on typing triggers.
+-- - typing `=` after `let` tries to smartly add `;` if `=` is followed by an existing expression
+-- - typing `=` between two expressions adds `;` when in statement position
+-- - typing `=` to turn an assignment into an equality comparison removes `;` when in expression position
+-- - typing `.` in a chain method call auto-indents
+-- - typing `{` or `(` in front of an expression inserts a closing `}` or `)` after the expression
+-- - typing `{` in a use item adds a closing `}` in the right place
+-- - typing `>` to complete a return type `->` will insert a whitespace after it
+-- - typing `<` in a path or type position inserts a closing `>` after the path or type.
 -- 
 -- ```lua
--- default = "|<"
+-- default = "=."
 -- ```
----@field excludeChars string
+---@field triggerChars string
 
 ---@class _.lspconfig.settings.rust_analyzer.Vfs
 -- Additional paths to include in the VFS. Generally for code that is
@@ -15103,6 +15111,8 @@
 ---@class _.lspconfig.settings.sourcekit.Swift
 -- The path of the SDK to compile against (`--sdk` parameter). This is of use when supporting non-standard SDK layouts on Windows and using custom SDKs. The default SDK is determined by the environment on macOS and Windows.
 -- 
+-- For SwiftPM projects, prefer using `swift.swiftSDK` with a triple (such as `arm64-apple-ios`) or Swift SDK name instead.
+-- 
 -- ```lua
 -- default = ""
 -- ```
@@ -15243,6 +15253,12 @@
 -- default = {}
 -- ```
 ---@field swiftEnvironmentVariables table
+-- The [Swift SDK](https://github.com/swiftlang/swift-evolution/blob/main/proposals/0387-cross-compilation-destinations.md) to compile against (`--swift-sdk` parameter).
+-- 
+-- ```lua
+-- default = ""
+-- ```
+---@field swiftSDK string
 -- Environment variables to set when running tests. To set environment variables when debugging an application you should edit the `env` field in the relevant `launch.json` configuration.
 -- 
 -- ```lua
@@ -16278,6 +16294,12 @@
 -- default = true
 -- ```
 ---@field enable boolean
+-- Indent case clauses in switch statements. Requires using TypeScript 5.1+ in the workspace.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field indentSwitchCase boolean
 -- Defines space handling after a comma delimiter.
 -- 
 -- ```lua
