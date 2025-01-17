@@ -109,7 +109,7 @@
     },
     "rust-analyzer.cargo.cfgs": {
       "default": [
-        "debug_assertion",
+        "debug_assertions",
         "miri"
       ],
       "items": {

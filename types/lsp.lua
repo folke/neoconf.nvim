@@ -10400,8 +10400,12 @@
 -- default = true
 -- ```
 ---@field suppressLspErrorToasts boolean
--- %configuration.razor.languageServer.useRoslynTokenizer%
----@field useRoslynTokenizer boolean
+-- %configuration.razor.languageServer.useNewFormattingEngine%
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field useNewFormattingEngine boolean
 
 ---@class _.lspconfig.settings.omnisharp.Plugin
 -- %configuration.omnisharp.razor.plugin.path%
@@ -13141,7 +13145,7 @@
 -- List of cfg options to enable with the given values.
 -- 
 -- ```lua
--- default = { "debug_assertion", "miri" }
+-- default = { "debug_assertions", "miri" }
 -- ```
 ---@field cfgs string[]
 -- Extra arguments that are passed to every cargo invocation.

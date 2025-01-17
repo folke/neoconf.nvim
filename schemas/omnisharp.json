@@ -987,11 +987,9 @@
       "description": "%configuration.razor.languageServer.suppressLspErrorToasts%",
       "type": "boolean"
     },
-    "razor.languageServer.useRoslynTokenizer": {
-      "default": false,
-      "markdownDescription": "%configuration.razor.languageServer.useRoslynTokenizer%",
-      "order": 90,
-      "scope": "machine-overridable",
+    "razor.languageServer.useNewFormattingEngine": {
+      "default": true,
+      "description": "%configuration.razor.languageServer.useNewFormattingEngine%",
       "type": "boolean"
     },
     "razor.plugin.path": {
