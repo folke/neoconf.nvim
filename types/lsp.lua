@@ -16238,6 +16238,12 @@
 -- default = "enable"
 -- ```
 ---@field previewFeature "enable" | "disable"
+-- This configuration specifies the way to resolved projects.
+-- 
+-- ```lua
+-- default = "singleFile"
+-- ```
+---@field projectResolution "singleFile" | "lockDatabase"
 -- (Experimental) Whether to render typst elements in (hover) docs. In VS Code, when this feature is enabled, tinymist will store rendered results in the filesystem's temporary storage to show them in the hover content. Note: Please disable this feature if the editor doesn't support/handle image previewing in docs.
 -- 
 -- ```lua

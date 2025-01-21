@@ -265,6 +265,19 @@
       "title": "Enable preview features",
       "type": "string"
     },
+    "tinymist.projectResolution": {
+      "default": "singleFile",
+      "enum": [
+        "singleFile",
+        "lockDatabase"
+      ],
+      "enumDescriptions": [
+        "Manage typst documents like what we did in Markdown. Each single file is an individual document and no project resolution is needed.",
+        "Manage typst documents like what we did in Rust. For each workspace, tinymist tracks your preview and compilation history, and stores the information in a lock file. Tinymist will automatically selects the main file to use according to the lock file. This also allows other tools push preview and export tasks to language server by updating the lock file."
+      ],
+      "markdownDescription": "This configuration specifies the way to resolved projects.",
+      "type": "string"
+    },
     "tinymist.renderDocs": {
       "default": "enable",
       "description": "(Experimental) Whether to render typst elements in (hover) docs. In VS Code, when this feature is enabled, tinymist will store rendered results in the filesystem's temporary storage to show them in the hover content. Note: Please disable this feature if the editor doesn't support/handle image previewing in docs.",
