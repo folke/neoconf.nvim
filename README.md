@@ -75,7 +75,7 @@ require("lspconfig").lua_ls.setup(...)
     lspconfig = {
       enabled = true,
     },
-    -- configures jsonls to get completion in .nvim.settings.json files
+    -- configures jsonls to get completion in .neoconf.json files
     jsonls = {
       enabled = true,
       -- only show completion in json settings for configured lsp servers
@@ -85,7 +85,7 @@ require("lspconfig").lua_ls.setup(...)
     lua_ls = {
       -- by default, lua_ls annotations are only enabled in your neovim config directory
       enabled_for_neovim_config = true,
-      -- explicitly enable adding annotations. Mostly relevant to put in your local .nvim.settings.json file
+      -- explicitly enable adding annotations. Mostly relevant to put in your local .neoconf.json file
       enabled = false,
     },
   },
