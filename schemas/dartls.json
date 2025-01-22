@@ -847,6 +847,94 @@
       "markdownDescription": "Sets the [Web renderer](https://flutter.dev/to/web-renderers) used for Flutter web apps.",
       "scope": "window"
     },
+    "dart.getDartSdkCommand": {
+      "additionalProperties": false,
+      "default": null,
+      "description": "Get the Dart SDK path from a command. Useful when using tools such as direnv, asdf, mise... The command should exit with a 0 status code and it should print to the standard output just the path to the SDK. If the command fails (non zero exit or bad path), the extension will keep looking for other SDK paths. Some configuration examples can be found in: https://github.com/Dart-Code/Dart-Code/pull/5377",
+      "properties": {
+        "args": {
+          "items": {
+            "type": "string"
+          },
+          "type": [
+            "null",
+            "array"
+          ]
+        },
+        "cwd": {
+          "description": "The working directory of the command relative to the workspace file directory if any, or relative to the workspace folder.",
+          "type": [
+            "null",
+            "string"
+          ]
+        },
+        "env": {
+          "additionalProperties": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "description": "Environment variables to use when running the command. Keys are variable names, and values are strings or null.",
+          "type": "object"
+        },
+        "executable": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "executable"
+      ],
+      "scope": "machine-overridable",
+      "type": [
+        "null",
+        "object"
+      ]
+    },
+    "dart.getFlutterSdkCommand": {
+      "additionalProperties": false,
+      "default": null,
+      "description": "Get the Flutter SDK path from a command. Useful when using tools such as direnv, asdf, mise... The command should exit with a 0 status code and it should print to the standard output just the path to the SDK. If the command fails (non zero exit or bad path), the extension will keep looking for other SDK paths. Some configuration examples can be found in: https://github.com/Dart-Code/Dart-Code/pull/5377",
+      "properties": {
+        "args": {
+          "items": {
+            "type": "string"
+          },
+          "type": [
+            "null",
+            "array"
+          ]
+        },
+        "cwd": {
+          "description": "The working directory of the command relative to the workspace file directory if any, or relative to the workspace folder.",
+          "type": [
+            "null",
+            "string"
+          ]
+        },
+        "env": {
+          "additionalProperties": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "description": "Environment variables to use when running the command. Keys are variable names, and values are strings or null.",
+          "type": "object"
+        },
+        "executable": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "executable"
+      ],
+      "scope": "machine-overridable",
+      "type": [
+        "null",
+        "object"
+      ]
+    },
     "dart.hotReloadOnSave": {
       "default": "never",
       "enum": [

@@ -321,7 +321,7 @@
     },
     "swift.sourcekit-lsp.disable": {
       "default": false,
-      "markdownDescription": "Disable SourceKit-LSP",
+      "markdownDescription": "Disable SourceKit-LSP. This will turn off features like code completion, error diagnostics and jump-to-definition. Features like swift-testing test discovery will not work correctly.",
       "order": 6,
       "type": "boolean"
     },

@@ -2021,6 +2021,10 @@
 -- default = "flutter-default"
 -- ```
 ---@field flutterWebRenderer "flutter-default" | "canvaskit" | "html" | "auto"
+-- Get the Dart SDK path from a command. Useful when using tools such as direnv, asdf, mise... The command should exit with a 0 status code and it should print to the standard output just the path to the SDK. If the command fails (non zero exit or bad path), the extension will keep looking for other SDK paths. Some configuration examples can be found in: https://github.com/Dart-Code/Dart-Code/pull/5377
+---@field getDartSdkCommand table
+-- Get the Flutter SDK path from a command. Useful when using tools such as direnv, asdf, mise... The command should exit with a 0 status code and it should print to the standard output just the path to the SDK. If the command fails (non zero exit or bad path), the extension will keep looking for other SDK paths. Some configuration examples can be found in: https://github.com/Dart-Code/Dart-Code/pull/5377
+---@field getFlutterSdkCommand table
 -- Whether to automatically send a Hot Reload request to Dart apps during a debug session when saving files. Flutter apps are controlled by the flutterHotReloadOnSave setting.
 -- 
 -- ```lua
@@ -15094,7 +15098,7 @@
 -- default = "auto"
 -- ```
 ---@field backgroundIndexing "on" | "off" | "auto"
--- Disable SourceKit-LSP
+-- Disable SourceKit-LSP. This will turn off features like code completion, error diagnostics and jump-to-definition. Features like swift-testing test discovery will not work correctly.
 ---@field disable boolean
 -- Arguments to pass to SourceKit-LSP. Keys and values should be provided as individual entries in the list. e.g. `['--log-level', 'debug']`
 -- 
