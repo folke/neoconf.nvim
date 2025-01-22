@@ -1,5 +1,20 @@
 # Changelog
 
+## [1.4.0](https://github.com/folke/neoconf.nvim/compare/v1.3.3...v1.4.0) (2025-01-22)
+
+
+### Features
+
+* **sonarlint:** add sonarlint to schemas ([#95](https://github.com/folke/neoconf.nvim/issues/95)) ([593fa6b](https://github.com/folke/neoconf.nvim/commit/593fa6b71aa8202f52baaf478ed3a46c3c231570))
+* **typst:** add typst_lsp and tinymist ([#93](https://github.com/folke/neoconf.nvim/issues/93)) ([e901bc6](https://github.com/folke/neoconf.nvim/commit/e901bc61d8fa3ec1d5fd592739cfdc8c4b602fe4))
+
+
+### Bug Fixes
+
+* **health:** lazydev.nvim instead of neodev.nvim ([#96](https://github.com/folke/neoconf.nvim/issues/96)) ([605cf4f](https://github.com/folke/neoconf.nvim/commit/605cf4f9aaf2b8f25f448534d2877a54defba9c1))
+* **lspconfig:** use `_available_servers` in  health.lua ([#105](https://github.com/folke/neoconf.nvim/issues/105)) ([f25f676](https://github.com/folke/neoconf.nvim/commit/f25f676e1c9b457a56d5f3d698bfd3611692cec0))
+* **util:** update deprecated methods ([#106](https://github.com/folke/neoconf.nvim/issues/106)) ([9f73ae6](https://github.com/folke/neoconf.nvim/commit/9f73ae6aa60e0c1d915fb0b4384d0cb9be3c078c))
+
 ## [1.3.3](https://github.com/folke/neoconf.nvim/compare/v1.3.2...v1.3.3) (2024-09-16)
 
 
