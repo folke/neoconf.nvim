@@ -68,7 +68,7 @@ function M.check_setup()
   end
   local lsputil = package.loaded["lspconfig.util"]
   if lsputil then
-    if #lsputil.available_servers() == 0 then
+    if #lsputil._available_servers() == 0 then
       return true
     else
       util.error(
