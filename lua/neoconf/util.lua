@@ -29,7 +29,7 @@ function M.root_pattern(...)
 end
 
 function M.find_git_ancestor(...)
-  return require("lspconfig.util").find_git_ancestor(...)
+  return vim.fs.dirname(vim.fs.find(".git", { path = startpath, upward = true })[1])
 end
 
 function M.has_lspconfig(server)
