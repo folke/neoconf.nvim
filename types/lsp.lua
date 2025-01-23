@@ -9910,6 +9910,10 @@
 -- ```
 ---@field triggerCompletionInArgumentLists boolean
 
+---@class _.lspconfig.settings.omnisharp.Formatting
+-- %configuration.dotnet.formatting.organizeImportsOnFormat%
+---@field organizeImportsOnFormat boolean
+
 ---@class _.lspconfig.settings.omnisharp.Highlighting
 -- %configuration.dotnet.highlighting.highlightRelatedJsonComponents%
 -- 
@@ -10269,6 +10273,7 @@
 -- default = true
 -- ```
 ---@field enableXamlTools boolean
+---@field formatting _.lspconfig.settings.omnisharp.Formatting
 ---@field highlighting _.lspconfig.settings.omnisharp.Highlighting
 ---@field inlayHints _.lspconfig.settings.omnisharp.InlayHints
 ---@field navigation _.lspconfig.settings.omnisharp.Navigation
@@ -10340,8 +10345,6 @@
 ---@field minFindSymbolsFilterLength number
 -- %configuration.omnisharp.monoPath%
 ---@field monoPath string
--- %configuration.omnisharp.organizeImportsOnFormat%
----@field organizeImportsOnFormat boolean
 -- %configuration.omnisharp.projectFilesExcludePattern%
 -- 
 -- ```lua

@@ -389,6 +389,11 @@
       "scope": "machine-overridable",
       "type": "boolean"
     },
+    "dotnet.formatting.organizeImportsOnFormat": {
+      "default": false,
+      "description": "%configuration.dotnet.formatting.organizeImportsOnFormat%",
+      "type": "boolean"
+    },
     "dotnet.highlighting.highlightRelatedJsonComponents": {
       "default": "true",
       "description": "%configuration.dotnet.highlighting.highlightRelatedJsonComponents%",
@@ -895,11 +900,6 @@
       "description": "%configuration.omnisharp.monoPath%",
       "scope": "machine",
       "type": "string"
-    },
-    "omnisharp.organizeImportsOnFormat": {
-      "default": false,
-      "description": "%configuration.omnisharp.organizeImportsOnFormat%",
-      "type": "boolean"
     },
     "omnisharp.projectFilesExcludePattern": {
       "default": "**/node_modules/**,**/.git/**,**/bower_components/**",
