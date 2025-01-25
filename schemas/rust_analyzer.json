@@ -325,6 +325,16 @@
       "markdownDescription": "Whether to automatically add a semicolon when completing unit-returning functions.\n\nIn `match` arms it completes a comma instead.",
       "type": "boolean"
     },
+    "rust-analyzer.completion.autoAwait.enable": {
+      "default": true,
+      "markdownDescription": "Toggles the additional completions that automatically show method calls and field accesses with `await` prefixed to them when completing on a future.",
+      "type": "boolean"
+    },
+    "rust-analyzer.completion.autoIter.enable": {
+      "default": true,
+      "markdownDescription": "Toggles the additional completions that automatically show method calls with `iter()` or `into_iter()` prefixed to them when completing on a type that has them.",
+      "type": "boolean"
+    },
     "rust-analyzer.completion.autoimport.enable": {
       "default": true,
       "markdownDescription": "Toggles the additional completions that automatically add imports when completed.\nNote that your client must specify the `additionalTextEdits` LSP client capability to truly have this feature enabled.",
