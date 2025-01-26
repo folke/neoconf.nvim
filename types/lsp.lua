@@ -4098,7 +4098,9 @@
 -- default = "${workspaceRoot}"
 -- ```
 ---@field diagnosticsPathFilter string
--- Disable refactor / rename cache. Will also disbale all rename and refactor options.
+-- Disable inline value feature. Stops value annotations from showing up during debugging.
+---@field disableInlineValue boolean
+-- Disable refactor / rename cache. Will also disbale all rename and refactor options (and inline value feature).
 ---@field disableRefactorCache boolean
 -- ```lua
 -- default = {}
