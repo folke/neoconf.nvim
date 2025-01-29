@@ -14353,6 +14353,9 @@
 --       pattern = "**/Cargo.toml"
 --     }, {
 --       pattern = "**/Cargo.lock"
+--     }, {
+--       pattern = "extension-output-rust-lang.rust-analyzer*",
+--       scheme = "output"
 --     } }
 -- }
 -- ```
