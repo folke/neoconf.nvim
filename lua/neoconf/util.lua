@@ -39,7 +39,7 @@ end
 ---@param opts { on_config: fun(config, root_dir:string, original_config), root_dir: fun(), name: string }
 function M.on_config(opts)
   local lsputil = require("lspconfig.util")
-  local hook = lsputil.add_hook_after
+  local hook = lsputil.add_hook_before
 
   lsputil.on_setup = hook(lsputil.on_setup, function(initial_config)
     if opts.on_config then
