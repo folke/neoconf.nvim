@@ -356,6 +356,11 @@
       "scope": "resource",
       "type": "object"
     },
+    "luau-lsp.server.path": {
+      "default": "",
+      "markdownDescription": "Path to the Luau LSP server binary. If not provided, uses the binary included in the extension.",
+      "type": "string"
+    },
     "luau-lsp.signatureHelp.enabled": {
       "default": true,
       "markdownDescription": "Enable signature help",

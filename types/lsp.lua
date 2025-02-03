@@ -9509,6 +9509,14 @@
 -- ```
 ---@field fileAliases table
 
+---@class _.lspconfig.settings.luau_lsp.Server
+-- Path to the Luau LSP server binary. If not provided, uses the binary included in the extension.
+-- 
+-- ```lua
+-- default = ""
+-- ```
+---@field path string
+
 ---@class _.lspconfig.settings.luau_lsp.SignatureHelp
 -- Enable signature help
 -- 
@@ -9597,6 +9605,7 @@
 ---@field platform _.lspconfig.settings.luau_lsp.Platform
 ---@field plugin _.lspconfig.settings.luau_lsp.Plugin
 ---@field require _.lspconfig.settings.luau_lsp.Require
+---@field server _.lspconfig.settings.luau_lsp.Server
 ---@field signatureHelp _.lspconfig.settings.luau_lsp.SignatureHelp
 ---@field sourcemap _.lspconfig.settings.luau_lsp.Sourcemap
 ---@field types _.lspconfig.settings.luau_lsp.Types
