@@ -189,7 +189,7 @@
       "type": "string"
     },
     "haxe.disableInlineValue": {
-      "default": false,
+      "default": true,
       "markdownDescription": "Disable inline value feature. Stops value annotations from showing up during debugging.",
       "type": "boolean"
     },

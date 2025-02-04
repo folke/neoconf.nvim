@@ -4099,6 +4099,10 @@
 -- ```
 ---@field diagnosticsPathFilter string
 -- Disable inline value feature. Stops value annotations from showing up during debugging.
+-- 
+-- ```lua
+-- default = true
+-- ```
 ---@field disableInlineValue boolean
 -- Disable refactor / rename cache. Will also disbale all rename and refactor options (and inline value feature).
 ---@field disableRefactorCache boolean
