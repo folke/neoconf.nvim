@@ -2249,6 +2249,12 @@
 -- default = "name"
 -- ```
 ---@field testInvocationMode "name" | "line"
+-- Additional args to pass to the `dart tooling-daemon` command that runs as a background service (requires restart).
+-- 
+-- ```lua
+-- default = {}
+-- ```
+---@field toolingDaemonAdditionalArgs string[]
 -- The path to a log file for the `dart tooling-daemon` service, which coordinates between various Dart and Flutter tools and extensions. Use `${workspaceName}` to insert the name of the current workspace in the file path. Use `~` to insert the user's home directory (the path should then use `/` separators even on Windows). Only the noted substitutions are supported, others will stay as-is.
 ---@field toolingDaemonLogFile string
 -- **LEGACY SETTING: Only applies to Dart SDKs before v2.15 since DevTools now ships in the SDK.**
@@ -18886,7 +18892,7 @@
 ---@field typeVerbosity "full" | "compact" | "inner"
 
 ---@class _.lspconfig.settings.wgls_analyzer.Preprocessor
--- Shader defines used in `#ifdef` directives in the flavour of [Bevy Engine](https://bevyengine.org)'s [shader preprocessor](https://bevyengine.org/news/bevy-0-6/#shader-imports).
+-- Shader defines used in `#ifdef` directives in the flavor of [Bevy Engine](https://bevyengine.org)'s [shader preprocessor](https://bevyengine.org/news/bevy-0-6/#shader-imports).
 -- 
 -- ```lua
 -- default = {}
@@ -18904,7 +18910,7 @@
 ---@field server boolean
 
 ---@class _.lspconfig.settings.wgls_analyzer.Wgsl-analyzer
--- `#import` directives in the flavour of [Bevy Engine](https://bevyengine.org)'s [shader preprocessor](https://bevyengine.org/news/bevy-0-6/#shader-imports). To use objects from an import, add `#import <name>` to your WGSL.
+-- `#import` directives in the flavor of [Bevy Engine](https://bevyengine.org)'s [shader preprocessor](https://bevyengine.org/news/bevy-0-6/#shader-imports). To use objects from an import, add `#import <name>` to your WGSL.
 -- 
 -- ```lua
 -- default = {}

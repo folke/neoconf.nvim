@@ -7,7 +7,7 @@
         "type": "string"
       },
       "default": {},
-      "markdownDescription": "`#import` directives in the flavour of [Bevy Engine](https://bevyengine.org)'s [shader preprocessor](https://bevyengine.org/news/bevy-0-6/#shader-imports). To use objects from an import, add `#import <name>` to your WGSL.",
+      "markdownDescription": "`#import` directives in the flavor of [Bevy Engine](https://bevyengine.org)'s [shader preprocessor](https://bevyengine.org/news/bevy-0-6/#shader-imports). To use objects from an import, add `#import <name>` to your WGSL.",
       "type": "object"
     },
     "wgsl-analyzer.diagnostics.nagaParsingErrors": {
@@ -75,7 +75,7 @@
       "items": {
         "type": "string"
       },
-      "markdownDescription": "Shader defines used in `#ifdef` directives in the flavour of [Bevy Engine](https://bevyengine.org)'s [shader preprocessor](https://bevyengine.org/news/bevy-0-6/#shader-imports).",
+      "markdownDescription": "Shader defines used in `#ifdef` directives in the flavor of [Bevy Engine](https://bevyengine.org)'s [shader preprocessor](https://bevyengine.org/news/bevy-0-6/#shader-imports).",
       "type": "array"
     },
     "wgsl-analyzer.server.path": {
