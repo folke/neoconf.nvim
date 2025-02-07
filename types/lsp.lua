@@ -12997,7 +12997,7 @@
 -- default = "fromEnvironment"
 -- ```
 ---@field importStrategy "fromEnvironment" | "useBundled"
--- Path to a Python interpreter to use to run the LSP server.
+-- Path to a Python interpreter to use to find the `ruff` executable.
 -- 
 -- ```lua
 -- default = {}
