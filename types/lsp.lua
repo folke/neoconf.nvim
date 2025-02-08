@@ -13964,6 +13964,8 @@
 -- Whether to hide inlay type hints for `let` statements that initialize to a closure.
 -- Only applies to closures with blocks, same as `#rust-analyzer.inlayHints.closureReturnTypeHints.enable#`.
 ---@field hideClosureInitialization boolean
+-- Whether to hide inlay parameter type hints for closures.
+---@field hideClosureParameter boolean
 -- Whether to hide inlay type hints for constructors.
 ---@field hideNamedConstructor boolean
 

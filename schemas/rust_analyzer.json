@@ -1086,6 +1086,11 @@
       "markdownDescription": "Whether to hide inlay type hints for `let` statements that initialize to a closure.\nOnly applies to closures with blocks, same as `#rust-analyzer.inlayHints.closureReturnTypeHints.enable#`.",
       "type": "boolean"
     },
+    "rust-analyzer.inlayHints.typeHints.hideClosureParameter": {
+      "default": false,
+      "markdownDescription": "Whether to hide inlay parameter type hints for closures.",
+      "type": "boolean"
+    },
     "rust-analyzer.inlayHints.typeHints.hideNamedConstructor": {
       "default": false,
       "markdownDescription": "Whether to hide inlay type hints for constructors.",
