@@ -62,6 +62,12 @@
       "scope": "resource",
       "type": "boolean"
     },
+    "luau-lsp.completion.enableFragmentAutocomplete": {
+      "default": false,
+      "markdownDescription": "Enables the experimental fragment autocomplete system for performance improvements",
+      "scope": "resource",
+      "type": "boolean"
+    },
     "luau-lsp.completion.enabled": {
       "default": true,
       "markdownDescription": "Enable autocomplete",
