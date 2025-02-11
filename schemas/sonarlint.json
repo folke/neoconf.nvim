@@ -49,6 +49,14 @@
             "description": "A SonarQube Cloud organization key. If you want to bind different projects that are in different organizations, simply declare multiple connections.",
             "type": "string"
           },
+          "region": {
+            "description": "Region of the SonarQube Cloud instance. Use 'US' for `us.sonarcloud.io`, 'EU' for `sonarcloud.io`.",
+            "enum": [
+              "EU",
+              "US"
+            ],
+            "type": "string"
+          },
           "token": {
             "description": "Token generated from 'My Account>Security' in SonarQube Cloud",
             "type": "string"
