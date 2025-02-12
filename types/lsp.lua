@@ -13576,14 +13576,14 @@
 ---@field warningsAsInfo string[]
 
 ---@class _.lspconfig.settings.rust_analyzer.Files
--- These directories will be ignored by rust-analyzer. They are
+-- These paths (file/directories) will be ignored by rust-analyzer. They are
 -- relative to the workspace root, and globs are not supported. You may
 -- also need to add the folders to Code's `files.watcherExclude`.
 -- 
 -- ```lua
 -- default = {}
 -- ```
----@field excludeDirs string[]
+---@field exclude string[]
 -- Controls file watching implementation.
 -- 
 -- ```lua
