@@ -234,6 +234,7 @@
     "eslint.probe": {
       "default": [
         "astro",
+        "civet",
         "javascript",
         "javascriptreact",
         "typescript",

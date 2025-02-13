@@ -2912,7 +2912,7 @@
 -- An array of language ids for which the extension should probe if support is installed.
 -- 
 -- ```lua
--- default = { "astro", "javascript", "javascriptreact", "typescript", "typescriptreact", "html", "mdx", "vue", "markdown", "json", "jsonc" }
+-- default = { "astro", "civet", "javascript", "javascriptreact", "typescript", "typescriptreact", "html", "mdx", "vue", "markdown", "json", "jsonc" }
 -- ```
 ---@field probe string[]
 ---@field problems _.lspconfig.settings.eslint.Problems
@@ -15119,6 +15119,10 @@
 ---@field trace _.lspconfig.settings.sourcekit.Trace
 
 ---@class _.lspconfig.settings.sourcekit.Debugger
+-- ```lua
+-- default = "auto"
+-- ```
+---@field debugAdapter "auto" | "lldb-dap" | "CodeLLDB"
 -- Path to lldb debug adapter.
 -- 
 -- ```lua
