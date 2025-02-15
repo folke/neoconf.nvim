@@ -29,7 +29,8 @@
           "tryWithResource",
           "renameFileToType",
           "organizeImports",
-          "renameUnusedLocalVariables"
+          "renameUnusedLocalVariables",
+          "useSwitchForInstanceofPattern"
         ],
         "type": "string"
       },
