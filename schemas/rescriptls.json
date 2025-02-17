@@ -2,12 +2,6 @@
   "$schema": "http://json-schema.org/draft-07/schema#",
   "description": "ReScript language support (official)",
   "properties": {
-    "rescript.settings.allowBuiltInFormatter": {
-      "default": false,
-      "description": "Whether you want to allow the extension to format your code using its built in formatter when it cannot find a ReScript compiler version in your current project to use for formatting.",
-      "scope": "language-overridable",
-      "type": "boolean"
-    },
     "rescript.settings.askToStartBuild": {
       "default": true,
       "description": "Whether you want the extension to prompt for autostarting a ReScript build if a project is opened with no build running.",

@@ -12632,8 +12632,6 @@
 ---@field forConstructorPayloads boolean
 
 ---@class _.lspconfig.settings.rescriptls.Settings
--- Whether you want to allow the extension to format your code using its built in formatter when it cannot find a ReScript compiler version in your current project to use for formatting.
----@field allowBuiltInFormatter boolean
 -- Whether you want the extension to prompt for autostarting a ReScript build if a project is opened with no build running.
 -- 
 -- ```lua
