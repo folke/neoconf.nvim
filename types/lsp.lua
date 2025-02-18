@@ -16250,6 +16250,12 @@
 -- default = "enable"
 -- ```
 ---@field configureDefaultWordSeparator "enable" | "disable"
+-- Whether to handle paste of resources into the editing typst document. Note: restarting the editor is required to change this setting.
+-- 
+-- ```lua
+-- default = "enable"
+-- ```
+---@field copyAndPaste "enable" | "disable"
 -- Whether to handle drag-and-drop of resources into the editing typst document. Note: restarting the editor is required to change this setting.
 -- 
 -- ```lua

@@ -56,6 +56,16 @@
       "title": "Configure default word separators",
       "type": "string"
     },
+    "tinymist.copyAndPaste": {
+      "default": "enable",
+      "description": "Whether to handle paste of resources into the editing typst document. Note: restarting the editor is required to change this setting.",
+      "enum": [
+        "enable",
+        "disable"
+      ],
+      "title": "Copy and Paste",
+      "type": "string"
+    },
     "tinymist.dragAndDrop": {
       "default": "enable",
       "description": "Whether to handle drag-and-drop of resources into the editing typst document. Note: restarting the editor is required to change this setting.",
@@ -63,7 +73,7 @@
         "enable",
         "disable"
       ],
-      "title": "Drag and drop",
+      "title": "Drag and Drop",
       "type": "string"
     },
     "tinymist.exportPdf": {
