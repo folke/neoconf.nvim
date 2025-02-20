@@ -188,6 +188,12 @@
       "scope": "machine-overridable",
       "type": "boolean"
     },
+    "swift.disableSandox": {
+      "default": false,
+      "markdownDescription": "Disable sandboxing when running SwiftPM commands. In most cases you should keep the sandbox enabled and leave this setting set to `false`",
+      "order": 4,
+      "type": "boolean"
+    },
     "swift.disableSwiftPackageManagerIntegration": {
       "default": false,
       "markdownDescription": "Disables automated Build Tasks, Package Dependency view, Launch configuration generation and TestExplorer.",
@@ -411,7 +417,6 @@
     "swift.swiftSDK": {
       "default": "",
       "markdownDescription": "The [Swift SDK](https://github.com/swiftlang/swift-evolution/blob/main/proposals/0387-cross-compilation-destinations.md) to compile against (`--swift-sdk` parameter).",
-      "order": 4,
       "type": "string"
     },
     "swift.testEnvironmentVariables": {

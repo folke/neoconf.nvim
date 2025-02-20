@@ -15231,6 +15231,8 @@
 ---@field diagnosticsStyle "default" | "llvm" | "swift"
 -- Disable automatic running of `swift package resolve` whenever the `Package.swift` or `Package.resolve` files are updated. This will also disable searching for command plugins and the initial test discovery process.
 ---@field disableAutoResolve boolean
+-- Disable sandboxing when running SwiftPM commands. In most cases you should keep the sandbox enabled and leave this setting set to `false`
+---@field disableSandox boolean
 -- Disables automated Build Tasks, Package Dependency view, Launch configuration generation and TestExplorer.
 ---@field disableSwiftPackageManagerIntegration boolean
 -- Controls whether or not the extension will contribute environment variables defined in `Swift: Environment Variables` to the integrated terminal. If this is set to `true` and a custom `Swift: Path` is also set then the swift path is appended to the terminal's `PATH`.
@@ -16270,13 +16272,19 @@
 ---@field exportPdf "never" | "onSave" | "onType" | "onDocumentHasTitle"
 -- A list of file or directory path to fonts. Note: The configuration source in higher priority will **override** the configuration source in lower priority. The order of precedence is: Configuration `tinymist.fontPaths` > Configuration `tinymist.typstExtraArgs.fontPaths` > LSP's CLI Argument `--font-path` > The environment variable `TYPST_FONT_PATHS` (a path list separated by `;` (on Windows) or `:` (Otherwise)). Note: If the path to fonts is a relative path, it will be resolved based on the root directory. Note: In VSCode, you can use VSCode variables in the path, e.g. `${workspaceFolder}/fonts`.
 ---@field fontPaths any[]
+-- Sets the indent size (using space) for the formatter.
+-- 
+-- ```lua
+-- default = 2
+-- ```
+---@field formatterIndentSize number
 -- The extension can format Typst files using typstfmt or typstyle.
 -- 
 -- ```lua
 -- default = "disable"
 -- ```
 ---@field formatterMode "disable" | "typstyle" | "typstfmt"
--- Set the print width for the formatter, which is a **soft limit** of characters per line. See [the definition of *Print Width*](https://prettier.io/docs/en/options.html#print-width). Note: this has lower priority than the formatter's specific configurations.
+-- Sets the print width for the formatter, which is a **soft limit** of characters per line. See [the definition of *Print Width*](https://prettier.io/docs/en/options.html#print-width). Note: this has lower priority than the formatter's specific configurations.
 -- 
 -- ```lua
 -- default = 120
