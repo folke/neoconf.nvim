@@ -2,6 +2,18 @@
   "$schema": "http://json-schema.org/draft-07/schema#",
   "description": "Ada & SPARK IntelliSense, code browsing, debugging and more.",
   "properties": {
+    "ada.adaFileDiagnostics": {
+      "default": null,
+      "description": "Controls whether or not the Ada Language Server should emit diagnostics related to Ada files into the VS Code Problems view.",
+      "scope": "window",
+      "type": "boolean"
+    },
+    "ada.alireDiagnostics": {
+      "default": null,
+      "description": "Controls whether or not the Ada Language Server should emit diagnostics related to alire into the VS Code Problems view.",
+      "scope": "window",
+      "type": "boolean"
+    },
     "ada.defaultCharset": {
       "default": null,
       "description": "The character set that the Ada Language Server should use when reading files from disk.",
@@ -39,12 +51,6 @@
       ],
       "scope": "window",
       "type": "string"
-    },
-    "ada.enableDiagnostics": {
-      "default": null,
-      "description": "Controls whether or not the Ada Language Server should emit diagnostics into the VS Code Problems view.",
-      "scope": "window",
-      "type": "boolean"
     },
     "ada.enableIndexing": {
       "default": null,
@@ -97,7 +103,7 @@
     },
     "ada.projectDiagnostics": {
       "default": null,
-      "description": "Controls whether or not the Ada Language Server should emit project diagnostics into the VS Code Problems view.\n\nNote: this setting is ignored if `ada.enableDiagnostics` is disabled and a workspace reload is necessary to refresh the diagnostics after modifying this setting.",
+      "description": "Controls whether or not the Ada Language Server should emit project diagnostics into the VS Code Problems view.",
       "scope": "window",
       "type": "boolean"
     },

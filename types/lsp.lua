@@ -16,14 +16,16 @@
 ---@field server "off" | "messages" | "verbose"
 
 ---@class _.lspconfig.settings.als.Ada
+-- Controls whether or not the Ada Language Server should emit diagnostics related to Ada files into the VS Code Problems view.
+---@field adaFileDiagnostics boolean
+-- Controls whether or not the Ada Language Server should emit diagnostics related to alire into the VS Code Problems view.
+---@field alireDiagnostics boolean
 -- The character set that the Ada Language Server should use when reading files from disk.
 ---@field defaultCharset string
 -- Controls the policy for displaying overriding and overridden subprograms on navigation requests such as 'Go To Definition' or 'Go To Implementations'.
 ---@field displayMethodAncestryOnNavigation "never" | "usage_and_abstract_only" | "definition_only" | "always"
 -- Controls the primary documentation style of entities.
 ---@field documentationStyle "gnat" | "leading"
--- Controls whether or not the Ada Language Server should emit diagnostics into the VS Code Problems view.
----@field enableDiagnostics boolean
 -- Controls whether the Ada Language Server should index the source files immediately after loading a project.
 -- 
 -- If set to false, indexing will be deferred to the time when an action requiring the index is first performed, e.g. hovering over a referenced entity to get its documentation.
@@ -44,8 +46,6 @@
 ---@field namedNotationThreshold integer
 ---@field onTypeFormatting _.lspconfig.settings.als.OnTypeFormatting
 -- Controls whether or not the Ada Language Server should emit project diagnostics into the VS Code Problems view.
--- 
--- Note: this setting is ignored if `ada.enableDiagnostics` is disabled and a workspace reload is necessary to refresh the diagnostics after modifying this setting.
 ---@field projectDiagnostics boolean
 -- GPR project file (*.gpr) for this workspace.
 -- 
@@ -15117,6 +15117,8 @@
 ---@field trace _.lspconfig.settings.sourcekit.Trace
 
 ---@class _.lspconfig.settings.sourcekit.Debugger
+-- Select which debug adapter to use to debus Swift executables.
+-- 
 -- ```lua
 -- default = "auto"
 -- ```
@@ -15127,6 +15129,12 @@
 -- default = ""
 -- ```
 ---@field path string
+-- Choose how CodeLLDB settings are updated when debugging Swift executables.
+-- 
+-- ```lua
+-- default = "prompt"
+-- ```
+---@field setupCodeLLDB "prompt" | "alwaysUpdateGlobal" | "alwaysUpdateWorkspace" | "never"
 -- Use the LLDB debug adapter packaged with the Swift toolchain as your debug adapter. Note: this is only available starting with Swift 6. The CodeLLDB extension will be used if your Swift toolchain does not contain lldb-dap.
 ---@field useDebugAdapterFromToolchain boolean
 
@@ -16270,6 +16278,12 @@
 -- default = "never"
 -- ```
 ---@field exportPdf "never" | "onSave" | "onType" | "onDocumentHasTitle"
+-- The target to export the document to. Defaults to `paged`. Note: you can still export pdf when it is set to `html`. This configuration only affects how the language server completes your code.
+-- 
+-- ```lua
+-- default = "paged"
+-- ```
+---@field exportTarget "paged" | "html"
 -- A list of file or directory path to fonts. Note: The configuration source in higher priority will **override** the configuration source in lower priority. The order of precedence is: Configuration `tinymist.fontPaths` > Configuration `tinymist.typstExtraArgs.fontPaths` > LSP's CLI Argument `--font-path` > The environment variable `TYPST_FONT_PATHS` (a path list separated by `;` (on Windows) or `:` (Otherwise)). Note: If the path to fonts is a relative path, it will be resolved based on the root directory. Note: In VSCode, you can use VSCode variables in the path, e.g. `${workspaceFolder}/fonts`.
 ---@field fontPaths any[]
 -- Sets the indent size (using space) for the formatter.
