@@ -383,6 +383,12 @@
       "order": 0,
       "type": "string"
     },
+    "dotnet.diagnostics.reportInformationAsHint": {
+      "default": true,
+      "description": "%configuration.dotnet.diagnostics.reportInformationAsHint%",
+      "order": 30,
+      "type": "boolean"
+    },
     "dotnet.enableXamlTools": {
       "default": true,
       "description": "%configuration.dotnet.enableXamlTools%",

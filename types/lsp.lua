@@ -9929,6 +9929,14 @@
 -- ```
 ---@field triggerCompletionInArgumentLists boolean
 
+---@class _.lspconfig.settings.omnisharp.Diagnostics
+-- %configuration.dotnet.diagnostics.reportInformationAsHint%
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field reportInformationAsHint boolean
+
 ---@class _.lspconfig.settings.omnisharp.Formatting
 -- %configuration.dotnet.formatting.organizeImportsOnFormat%
 ---@field organizeImportsOnFormat boolean
@@ -10286,6 +10294,7 @@
 ---@field completion _.lspconfig.settings.omnisharp.Completion
 -- %configuration.dotnet.defaultSolution.description%
 ---@field defaultSolution string
+---@field diagnostics _.lspconfig.settings.omnisharp.Diagnostics
 -- %configuration.dotnet.enableXamlTools%
 -- 
 -- ```lua
