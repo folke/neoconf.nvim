@@ -785,6 +785,8 @@
 -- default = true
 -- ```
 ---@field useLibraryCodeForTypes boolean
+-- Whether to rely on imports from the `typing_extensions` module when targeting older versions of python that do not include certain typing features such as the `@override` decorator.
+---@field useTypingExtensions boolean
 
 ---@class _.lspconfig.settings.basedpyright.Basedpyright
 ---@field analysis _.lspconfig.settings.basedpyright.Analysis
@@ -2612,6 +2614,12 @@
 -- default = true
 -- ```
 ---@field signatureAfterComplete boolean
+-- Subdirectory where the Elixir stdlib resides to allow for source code lookup. E.g. /home/youruser/.asdf/installs/elixir/1.18.2
+-- 
+-- ```lua
+-- default = ""
+-- ```
+---@field stdlibSrcDir string
 -- Suggest @spec annotations inline using Dialyzer's inferred success typings (Requires Dialyzer).
 -- 
 -- ```lua

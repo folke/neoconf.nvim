@@ -1704,6 +1704,12 @@
       "scope": "resource",
       "type": "boolean"
     },
+    "basedpyright.analysis.useTypingExtensions": {
+      "default": false,
+      "markdownDescription": "Whether to rely on imports from the `typing_extensions` module when targeting older versions of python that do not include certain typing features such as the `@override` decorator.",
+      "scope": "resource",
+      "type": "boolean"
+    },
     "basedpyright.disableLanguageServices": {
       "default": false,
       "description": "Disables type completion, definitions, and references.",

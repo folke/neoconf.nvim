@@ -138,6 +138,13 @@
       "scope": "resource",
       "type": "boolean"
     },
+    "elixirLS.stdlibSrcDir": {
+      "default": "",
+      "description": "Subdirectory where the Elixir stdlib resides to allow for source code lookup. E.g. /home/youruser/.asdf/installs/elixir/1.18.2",
+      "minLength": 0,
+      "scope": "resource",
+      "type": "string"
+    },
     "elixirLS.suggestSpecs": {
       "default": true,
       "description": "Suggest @spec annotations inline using Dialyzer's inferred success typings (Requires Dialyzer).",
