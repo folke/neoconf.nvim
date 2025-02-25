@@ -13735,6 +13735,14 @@
 ---@field enable boolean
 ---@field keywords _.lspconfig.settings.rust_analyzer.Keywords
 
+---@class _.lspconfig.settings.rust_analyzer.DropGlue
+-- Whether to show drop glue information on hover.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enable boolean
+
 ---@class _.lspconfig.settings.rust_analyzer.Links
 -- Use markdown syntax for links on hover.
 -- 
@@ -13790,6 +13798,7 @@
 ---@class _.lspconfig.settings.rust_analyzer.Hover
 ---@field actions _.lspconfig.settings.rust_analyzer.Actions
 ---@field documentation _.lspconfig.settings.rust_analyzer.Documentation
+---@field dropGlue _.lspconfig.settings.rust_analyzer.DropGlue
 ---@field links _.lspconfig.settings.rust_analyzer.Links
 -- Whether to show what types are used as generic arguments in calls etc. on hover, and what is their max length to show such types, beyond it they will be shown with ellipsis.
 -- 
@@ -16274,7 +16283,7 @@
 -- Whether to configure default word separators on startup
 -- 
 -- ```lua
--- default = "enable"
+-- default = "disable"
 -- ```
 ---@field configureDefaultWordSeparator "enable" | "disable"
 -- Whether to handle paste of resources into the editing typst document. Note: restarting the editor is required to change this setting.

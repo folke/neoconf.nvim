@@ -475,7 +475,7 @@
     "dotnet.preferCSharpExtension": {
       "default": false,
       "description": "%configuration.dotnet.preferCSharpExtension%",
-      "scope": "resource",
+      "scope": "window",
       "type": "boolean"
     },
     "dotnet.projects.binaryLogPath": {

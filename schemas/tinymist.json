@@ -43,7 +43,7 @@
       "type": "boolean"
     },
     "tinymist.configureDefaultWordSeparator": {
-      "default": "enable",
+      "default": "disable",
       "description": "Whether to configure default word separators on startup",
       "enum": [
         "enable",
