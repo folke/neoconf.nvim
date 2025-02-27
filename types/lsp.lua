@@ -12971,10 +12971,10 @@
 -- ```
 ---@field args string[]
 ---@field codeAction _.lspconfig.settings.ruff_lsp.CodeAction
--- Path to a `ruff.toml` or `pyproject.toml` file to use for configuration. By default, Ruff will discover configuration for each project from the filesystem, mirroring the behavior of the Ruff CLI.
+-- Configuration overrides for Ruff. See [the documentation](https://docs.astral.sh/ruff/editors/settings/#configuration) for more details.
 -- 
 -- **This setting is used only by the native server.**
----@field configuration string
+---@field configuration string|table
 -- The preferred method of resolving configuration in the editor with local configuration from `.toml` files.
 -- 
 -- **This setting is used only by the native server.**
@@ -16749,9 +16749,7 @@
 ---@field enabled "prompt" | "always" | "never"
 
 ---@class _.lspconfig.settings.ts_ls.UpdateImportsOnPaste
--- Enable updating imports when pasting code. Requires TypeScript 5.7+.
--- 
--- By default this shows a option to update imports after pasting. You can use the `#editor.pasteAs.preferences#` setting to update imports automatically when pasting: `"editor.pasteAs.preferences": [ "text.updateImports.jsts" ]`.
+-- Automatically update imports when pasting code. Requires TypeScript 5.6+.
 -- 
 -- ```lua
 -- default = true
@@ -16826,10 +16824,6 @@
 -- default = true
 -- ```
 ---@field npmIsInstalled boolean
-
----@class _.lspconfig.settings.ts_ls.Experimental
--- Enable expanding/contracting the hover to reveal more/less information from the TS server.
----@field expandableHover boolean
 
 ---@class _.lspconfig.settings.ts_ls.Format
 -- Enable/disable default TypeScript formatter.
@@ -17298,9 +17292,7 @@
 ---@field enabled "prompt" | "always" | "never"
 
 ---@class _.lspconfig.settings.ts_ls.UpdateImportsOnPaste
--- Enable updating imports when pasting code. Requires TypeScript 5.7+.
--- 
--- By default this shows a option to update imports after pasting. You can use the `#editor.pasteAs.preferences#` setting to update imports automatically when pasting: `"editor.pasteAs.preferences": [ "text.updateImports.jsts" ]`.
+-- Automatically update imports when pasting code. Requires TypeScript 5.6+.
 -- 
 -- ```lua
 -- default = true
@@ -17341,7 +17333,6 @@
 ---@field disableAutomaticTypeAcquisition boolean
 -- Enables prompting of users to use the TypeScript version configured in the workspace for Intellisense.
 ---@field enablePromptUseWorkspaceTsdk boolean
----@field experimental _.lspconfig.settings.ts_ls.Experimental
 ---@field format _.lspconfig.settings.ts_ls.Format
 ---@field implementationsCodeLens _.lspconfig.settings.ts_ls.ImplementationsCodeLens
 ---@field inlayHints _.lspconfig.settings.ts_ls.InlayHints

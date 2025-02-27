@@ -481,7 +481,7 @@
     },
     "javascript.updateImportsOnPaste.enabled": {
       "default": true,
-      "markdownDescription": "Enable updating imports when pasting code. Requires TypeScript 5.7+.\n\nBy default this shows a option to update imports after pasting. You can use the `#editor.pasteAs.preferences#` setting to update imports automatically when pasting: `\"editor.pasteAs.preferences\": [ \"text.updateImports.jsts\" ]`.",
+      "markdownDescription": "Automatically update imports when pasting code. Requires TypeScript 5.6+.",
       "scope": "window",
       "type": "boolean"
     },
@@ -582,15 +582,6 @@
       "default": false,
       "description": "Enables prompting of users to use the TypeScript version configured in the workspace for Intellisense.",
       "scope": "window",
-      "type": "boolean"
-    },
-    "typescript.experimental.expandableHover": {
-      "default": false,
-      "description": "Enable expanding/contracting the hover to reveal more/less information from the TS server.",
-      "scope": "window",
-      "tags": [
-        "experimental"
-      ],
       "type": "boolean"
     },
     "typescript.format.enable": {
@@ -1344,7 +1335,7 @@
     },
     "typescript.updateImportsOnPaste.enabled": {
       "default": true,
-      "markdownDescription": "Enable updating imports when pasting code. Requires TypeScript 5.7+.\n\nBy default this shows a option to update imports after pasting. You can use the `#editor.pasteAs.preferences#` setting to update imports automatically when pasting: `\"editor.pasteAs.preferences\": [ \"text.updateImports.jsts\" ]`.",
+      "markdownDescription": "Automatically update imports when pasting code. Requires TypeScript 5.6+.",
       "scope": "window",
       "type": "boolean"
     },
