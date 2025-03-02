@@ -9583,6 +9583,12 @@
 -- default = {}
 -- ```
 ---@field definitionFiles string[]
+-- A list of globals to remove from the global scope. Accepts full libraries or particular functions (e.g., `table` or `table.clone`)
+-- 
+-- ```lua
+-- default = {}
+-- ```
+---@field disabledGlobals string[]
 -- A list of paths to documentation files which provide documentation support to the definition files provided
 -- 
 -- ```lua
