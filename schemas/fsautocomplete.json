@@ -488,6 +488,20 @@
       "description": "Enables detection of unnecessary parentheses",
       "type": "boolean"
     },
+    "FSharp.unnecessaryParenthesesAnalyzerExclusions": {
+      "default": [
+        ".*\\.g\\.fs",
+        ".*\\.cg\\.fs"
+      ],
+      "description": "A set of regex patterns to exclude from the unnecessary parentheses analyzer",
+      "items": {
+        "type": "string"
+      },
+      "required": [
+        "FSharp.unnecessaryParenthesesAnalyzer"
+      ],
+      "type": "array"
+    },
     "FSharp.unusedDeclarationsAnalyzer": {
       "default": true,
       "description": "Enables detection of unused declarations",

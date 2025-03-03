@@ -3439,6 +3439,12 @@
 -- default = true
 -- ```
 ---@field unnecessaryParenthesesAnalyzer boolean
+-- A set of regex patterns to exclude from the unnecessary parentheses analyzer
+-- 
+-- ```lua
+-- default = { ".*\\.g\\.fs", ".*\\.cg\\.fs" }
+-- ```
+---@field unnecessaryParenthesesAnalyzerExclusions string[]
 -- Enables detection of unused declarations
 -- 
 -- ```lua
