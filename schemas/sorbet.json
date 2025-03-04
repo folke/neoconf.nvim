@@ -36,7 +36,6 @@
             "typecheck",
             "--lsp"
           ],
-          "cwd": "${workspaceFolder}",
           "description": "Stable Sorbet Ruby IDE features",
           "id": "stable",
           "name": "Sorbet"
@@ -50,7 +49,6 @@
             "--lsp",
             "--enable-all-beta-lsp-features"
           ],
-          "cwd": "${workspaceFolder}",
           "description": "Beta Sorbet Ruby IDE features",
           "id": "beta",
           "name": "Sorbet (Beta)"
@@ -64,7 +62,6 @@
             "--lsp",
             "--enable-all-experimental-lsp-features"
           ],
-          "cwd": "${workspaceFolder}",
           "description": "Experimental Sorbet Ruby IDE features (warning: crashy, for developers only)",
           "id": "experimental",
           "name": "Sorbet (Experimental)"
@@ -82,7 +79,8 @@
           },
           "cwd": {
             "default": "${workspaceFolder}",
-            "description": "Current working directory when launching sorbet",
+            "deprecated": true,
+            "description": "Current working directory when launching Sorbet. *DEPRECATED*: Property has never been used",
             "format": "uri-reference",
             "type": "string"
           },
@@ -136,7 +134,6 @@
             "--flags",
             "--here"
           ],
-          "cwd": "${workspaceFolder}",
           "description": "A longer description of this Sorbet Configuration for use in hover text",
           "env": {
             "MY_ENV_VAR": "my-value"
@@ -155,7 +152,8 @@
           },
           "cwd": {
             "default": "${workspaceFolder}",
-            "description": "Current working directory when launching sorbet",
+            "deprecated": true,
+            "description": "Current working directory when launching Sorbet. *DEPRECATED*: Property has never been used",
             "format": "uri-reference",
             "type": "string"
           },

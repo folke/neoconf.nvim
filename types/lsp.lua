@@ -13197,6 +13197,10 @@
 ---@field buildScripts _.lspconfig.settings.rust_analyzer.BuildScripts
 -- List of cfg options to enable with the given values.
 -- 
+-- To enable a name without a value, use `"key"`.
+-- To enable a name with a value, use `"key=value"`.
+-- To disable, prefix the entry with a `!`.
+-- 
 -- ```lua
 -- default = { "debug_assertions", "miri" }
 -- ```
@@ -15079,19 +15083,16 @@
 -- ```lua
 -- default = { {
 --     command = { "bundle", "exec", "srb", "typecheck", "--lsp" },
---     cwd = "${workspaceFolder}",
 --     description = "Stable Sorbet Ruby IDE features",
 --     id = "stable",
 --     name = "Sorbet"
 --   }, {
 --     command = { "bundle", "exec", "srb", "typecheck", "--lsp", "--enable-all-beta-lsp-features" },
---     cwd = "${workspaceFolder}",
 --     description = "Beta Sorbet Ruby IDE features",
 --     id = "beta",
 --     name = "Sorbet (Beta)"
 --   }, {
 --     command = { "bundle", "exec", "srb", "typecheck", "--lsp", "--enable-all-experimental-lsp-features" },
---     cwd = "${workspaceFolder}",
 --     description = "Experimental Sorbet Ruby IDE features (warning: crashy, for developers only)",
 --     id = "experimental",
 --     name = "Sorbet (Experimental)"
