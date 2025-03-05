@@ -323,7 +323,7 @@
     },
     "dart.devToolsBrowser": {
       "default": "chrome",
-      "description": "Whether to launch external DevTools windows using Chrome or the system default browser.",
+      "description": "Whether to launch external DevTools windows using Chrome or the system default browser. This setting is ignored for remote workspaces (including Docker, SSH, WSL).",
       "enum": [
         "chrome",
         "default"
