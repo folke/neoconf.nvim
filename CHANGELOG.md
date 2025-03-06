@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.4.1](https://github.com/folke/neoconf.nvim/compare/v1.4.0...v1.4.1) (2025-02-27)
+
+
+### Bug Fixes
+
+* **lspconfig:** add hook before and not after ([#92](https://github.com/folke/neoconf.nvim/issues/92)) ([5cff548](https://github.com/folke/neoconf.nvim/commit/5cff548d38e8df4432ec19c1d7095e7b31c40fd1))
+* **lspconfig:** revert `_available_servers` ([#108](https://github.com/folke/neoconf.nvim/issues/108)) ([92c1a48](https://github.com/folke/neoconf.nvim/commit/92c1a48a2d751b15dc1a5b63ffe19cf82f981d92))
+
 ## [1.4.0](https://github.com/folke/neoconf.nvim/compare/v1.3.3...v1.4.0) (2025-01-22)
 
 
