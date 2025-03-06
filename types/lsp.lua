@@ -17546,24 +17546,10 @@
 ---@field vBindShorthand boolean
 
 ---@class _.lspconfig.settings.volar.Server
--- Set compatible extensions to skip automatic detection of Hybrid Mode.
--- 
--- ```lua
--- default = {}
--- ```
----@field compatibleExtensions string[]
--- Vue language server only handles CSS and HTML language support, and tsserver takes over TS language support via TS plugin.
--- 
--- ```lua
--- default = "auto"
--- ```
----@field hybridMode "auto" | "typeScriptPluginOnly" | true | false
 -- ```lua
 -- default = { "vue" }
 -- ```
 ---@field includeLanguages string[]
--- Set --max-old-space-size option on server process. If you have problem on frequently "Request textDocument/** failed." error, try setting higher memory(MB) on it.
----@field maxOldSpaceSize number
 
 ---@class _.lspconfig.settings.volar.Layout
 -- ```lua
@@ -17588,14 +17574,6 @@
 -- ```
 ---@field server "off" | "messages" | "verbose"
 
----@class _.lspconfig.settings.volar.UpdateImportsOnFileMove
--- Enabled update imports on file move.
--- 
--- ```lua
--- default = true
--- ```
----@field enabled boolean
-
 ---@class _.lspconfig.settings.volar.Vue
 ---@field autoInsert _.lspconfig.settings.volar.AutoInsert
 ---@field codeActions _.lspconfig.settings.volar.CodeActions
@@ -17607,7 +17585,6 @@
 ---@field server _.lspconfig.settings.volar.Server
 ---@field splitEditors _.lspconfig.settings.volar.SplitEditors
 ---@field trace _.lspconfig.settings.volar.Trace
----@field updateImportsOnFileMove _.lspconfig.settings.volar.UpdateImportsOnFileMove
 
 ---@class lspconfig.settings.volar
 ---@field vue _.lspconfig.settings.volar.Vue
