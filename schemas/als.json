@@ -4,7 +4,7 @@
   "properties": {
     "ada.adaFileDiagnostics": {
       "default": null,
-      "description": "Controls whether or not the Ada Language Server should emit diagnostics related to Ada files into the VS Code Problems view.",
+      "description": "Controls whether or not the Ada Language Server should emit diagnostics related to the edition of Ada files into the VS Code Problems view.",
       "scope": "window",
       "type": "boolean"
     },
@@ -77,6 +77,12 @@
       "scope": "window",
       "type": "string"
     },
+    "ada.gprFileDiagnostics": {
+      "default": null,
+      "description": "Controls whether or not the Ada Language Server should emit diagnostics related to the edition of GPR files into the VS Code Problems view.",
+      "scope": "window",
+      "type": "boolean"
+    },
     "ada.insertWithClauses": {
       "default": null,
       "description": "Enable insertion of missing with-clauses when accepting completion for invisible symbols.",
@@ -103,7 +109,7 @@
     },
     "ada.projectDiagnostics": {
       "default": null,
-      "description": "Controls whether or not the Ada Language Server should emit project diagnostics into the VS Code Problems view.",
+      "description": "Controls whether or not the Ada Language Server should emit diagnostics related to project loading into the VS Code Problems view.",
       "scope": "window",
       "type": "boolean"
     },

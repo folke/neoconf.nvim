@@ -16,7 +16,7 @@
 ---@field server "off" | "messages" | "verbose"
 
 ---@class _.lspconfig.settings.als.Ada
--- Controls whether or not the Ada Language Server should emit diagnostics related to Ada files into the VS Code Problems view.
+-- Controls whether or not the Ada Language Server should emit diagnostics related to the edition of Ada files into the VS Code Problems view.
 ---@field adaFileDiagnostics boolean
 -- Controls whether or not the Ada Language Server should emit diagnostics related to alire into the VS Code Problems view.
 ---@field alireDiagnostics boolean
@@ -38,6 +38,8 @@
 -- 
 -- It is recommended to set this to a relative path starting at the root of the workspace.
 ---@field gprConfigurationFile string
+-- Controls whether or not the Ada Language Server should emit diagnostics related to the edition of GPR files into the VS Code Problems view.
+---@field gprFileDiagnostics boolean
 -- Enable insertion of missing with-clauses when accepting completion for invisible symbols.
 ---@field insertWithClauses boolean
 -- Controls the maximum number of trace files preserved in the ALS log directory (which defaults to `~/.als`). When this threshold is reached, old trace files get deleted automatically. The default number of preserved trace files is `10`.
@@ -45,7 +47,7 @@
 -- Defines the number of parameters/components beyond which named notation is used for completion snippets.
 ---@field namedNotationThreshold integer
 ---@field onTypeFormatting _.lspconfig.settings.als.OnTypeFormatting
--- Controls whether or not the Ada Language Server should emit project diagnostics into the VS Code Problems view.
+-- Controls whether or not the Ada Language Server should emit diagnostics related to project loading into the VS Code Problems view.
 ---@field projectDiagnostics boolean
 -- GPR project file (*.gpr) for this workspace.
 -- 
@@ -10448,6 +10450,10 @@
 -- %configuration.razor.languageServer.directory%
 ---@field directory string
 -- %configuration.razor.languageServer.forceRuntimeCodeGeneration%
+-- 
+-- ```lua
+-- default = true
+-- ```
 ---@field forceRuntimeCodeGeneration boolean
 -- %configuration.razor.languageServer.suppressLspErrorToasts%
 -- 
