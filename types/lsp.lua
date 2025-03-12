@@ -11977,6 +11977,8 @@
 ---@field disableLanguageServices boolean
 -- Disables the “Organize Imports” command.
 ---@field disableOrganizeImports boolean
+-- Disables the use of pull diagnostics from VS Code.
+---@field disablePullDiagnostics boolean
 -- Disable hint diagnostics with special hints for grayed-out or strike-through text.
 ---@field disableTaggedHints boolean
 
@@ -14984,6 +14986,10 @@
 -- ```
 ---@field servers any[]
 
+---@class _.lspconfig.settings.sonarlint.EarlyAccess
+-- Show region selection while creating SonarQube Cloud Connection _(Early Access)_
+---@field showRegionSelection boolean
+
 ---@class _.lspconfig.settings.sonarlint.Ls
 -- Path to a Java Runtime Environment (17 or more recent) used to launch the SonarQube for VS Code Language Server.
 -- * On Windows, backslashes must be escaped, e.g. `C:\\Program Files\\Java\\jdk-17` 
@@ -15018,6 +15024,7 @@
 ---@field connectedMode _.lspconfig.settings.sonarlint.ConnectedMode
 -- Disable sending anonymous usage statistics to SonarSource. Click [here](https://github.com/SonarSource/sonarlint-vscode/blob/master/telemetry-sample.md) to see a sample of the data that are collected.
 ---@field disableTelemetry boolean
+---@field earlyAccess _.lspconfig.settings.sonarlint.EarlyAccess
 -- Highlight issues in new code.
 -- 
 -- Focusing on new code helps you practice [Clean as You Code](https://docs.sonarsource.com/sonarqube-for-ide/vs-code/clean-as-you-code-in-the-ide/).
@@ -15324,6 +15331,12 @@
 -- default = ""
 -- ```
 ---@field path string
+-- Configure a list of arguments to pass to command invocations. This can either be an array of arguments, which will apply to all command invocations, or an object with command names as the key where the value is an array of arguments.
+-- 
+-- ```lua
+-- default = {}
+-- ```
+---@field pluginArguments any
 -- Configures a list of permissions to be used when running a command plugins.
 -- 
 -- Permissions objects are defined in the form:

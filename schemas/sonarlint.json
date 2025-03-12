@@ -50,7 +50,7 @@
             "type": "string"
           },
           "region": {
-            "description": "Region of the SonarQube Cloud instance. Use 'US' for `us.sonarcloud.io`, 'EU' for `sonarcloud.io`.",
+            "description": "Region of the SonarQube Cloud instance. Use 'US' for `sonarqube.us`, 'EU' for `sonarcloud.io`.",
             "enum": [
               "EU",
               "US"
@@ -200,6 +200,12 @@
       "markdownDescription": "Disable sending anonymous usage statistics to SonarSource. Click [here](https://github.com/SonarSource/sonarlint-vscode/blob/master/telemetry-sample.md) to see a sample of the data that are collected.",
       "order": 99,
       "scope": "window",
+      "type": "boolean"
+    },
+    "sonarlint.earlyAccess.showRegionSelection": {
+      "default": false,
+      "markdownDescription": "Show region selection while creating SonarQube Cloud Connection _(Early Access)_",
+      "scope": "machine",
       "type": "boolean"
     },
     "sonarlint.focusOnNewCode": {

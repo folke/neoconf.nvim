@@ -272,6 +272,30 @@
       "markdownDescription": "Override the default path of the folder containing the Swift executables. The default is to look in the `PATH` environment variable. This path is also used to search for other executables used by the extension like `sourcekit-lsp` and `lldb`.",
       "type": "string"
     },
+    "swift.pluginArguments": {
+      "default": [],
+      "markdownDescription": "Configure a list of arguments to pass to command invocations. This can either be an array of arguments, which will apply to all command invocations, or an object with command names as the key where the value is an array of arguments.",
+      "oneOf": [
+        {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        {
+          "patternProperties": {
+            "^([a-zA-Z0-9_-]+(:[a-zA-Z0-9_-]+)?)$": {
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
+            }
+          },
+          "type": "object"
+        }
+      ],
+      "scope": "machine-overridable"
+    },
     "swift.pluginPermissions": {
       "default": {},
       "markdownDescription": "Configures a list of permissions to be used when running a command plugins.\n\nPermissions objects are defined in the form:\n\n`{ \"PluginName:command\": { \"allowWritingToPackageDirectory\": true } }`.\n\nA key of `PluginName:command` will set permissions for a specific command. A key of `PluginName` will set permissions for all commands in the plugin.",
