@@ -10450,10 +10450,6 @@
 -- %configuration.razor.languageServer.directory%
 ---@field directory string
 -- %configuration.razor.languageServer.forceRuntimeCodeGeneration%
--- 
--- ```lua
--- default = true
--- ```
 ---@field forceRuntimeCodeGeneration boolean
 -- %configuration.razor.languageServer.suppressLspErrorToasts%
 -- 
@@ -16225,71 +16221,71 @@
 ---@field terraform _.lspconfig.settings.terraformls.Terraform
 
 ---@class _.lspconfig.settings.tinymist.Completion
--- Whether to enable postfix code completion. For example, `[A].box|` will be completed to `box[A]|`. Hint: Restarting the editor is required to change this setting.
+-- %extension.tinymist.config.tinymist.completion.postfix.desc%
 -- 
 -- ```lua
 -- default = true
 -- ```
 ---@field postfix boolean
--- Whether to enable UFCS-style completion. For example, `[A].box|` will be completed to `box[A]|`. Hint: Restarting the editor is required to change this setting.
+-- %extension.tinymist.config.tinymist.completion.postfixUfcs.desc%
 -- 
 -- ```lua
 -- default = true
 -- ```
 ---@field postfixUfcs boolean
--- Whether to enable left-variant UFCS-style completion. For example, `[A].table|` will be completed to `table(|)[A]`. Hint: Restarting the editor is required to change this setting.
+-- %extension.tinymist.config.tinymist.completion.postfixUfcsLeft.desc%
 -- 
 -- ```lua
 -- default = true
 -- ```
 ---@field postfixUfcsLeft boolean
--- Whether to enable right-variant UFCS-style completion. For example, `[A].table|` will be completed to `table([A], |)`. Hint: Restarting the editor is required to change this setting.
+-- %extension.tinymist.config.tinymist.completion.postfixUfcsRight.desc%
 -- 
 -- ```lua
 -- default = true
 -- ```
 ---@field postfixUfcsRight boolean
--- Whether to trigger completions on arguments (placeholders) of snippets. For example, `box` will be completed to `box(|)`, and server will request the editor (lsp client) to request completion after moving cursor to the placeholder in the snippet. Note: this has no effect if the editor doesn't support `editor.action.triggerSuggest` or `tinymist.triggerSuggestAndParameterHints` command. Hint: Restarting the editor is required to change this setting.
+-- %extension.tinymist.config.tinymist.completion.triggerOnSnippetPlaceholders.desc%
 ---@field triggerOnSnippetPlaceholders boolean
 
 ---@class _.lspconfig.settings.tinymist.Preview
--- (Experimental) Show typst cursor indicator in preview.
+-- %extension.tinymist.config.tinymist.preview.cursorIndicator.desc%
 ---@field cursorIndicator boolean
--- List of *additional* paths to font assets used by typst-preview.
+-- %extension.tinymist.config.tinymist.preview.fontPaths.desc%
 -- 
 -- ```lua
 -- default = {}
 -- ```
 ---@field fontPaths string[]
--- Invert colors of the preview (useful for dark themes without cost). Please note you could see the origin colors when you hover elements in the preview. It is also possible to specify strategy to each element kind by an object map in JSON format.
+-- %extension.tinymist.config.tinymist.preview.invertColors.desc%
 ---@field invertColors "never" | "auto" | "always"|table
--- Only render visible part of the document. This can improve performance but still being experimental.
+-- %extension.tinymist.config.tinymist.preview.partialRendering.desc%
 -- 
 -- ```lua
 -- default = true
 -- ```
 ---@field partialRendering boolean
--- Declare current previewing file as entrypoint for typst-lsp or tinymist. This will make typst-lsp or tinymist to use this file as entrypoint instead of the file opened in vscode. This can improve diagnostics messages and auto completion but still being experimental.
+-- %extension.tinymist.config.tinymist.preview.pinPreviewFile.desc%
 ---@field pinPreviewFile boolean
--- Refresh preview when the document is saved or when the document is changed
+-- %extension.tinymist.config.tinymist.preview.refresh.desc%
 -- 
 -- ```lua
 -- default = "onType"
 -- ```
 ---@field refresh "onSave" | "onType"
--- Configure scroll sync mode.
+-- %extension.tinymist.config.tinymist.preview.scrollSync.desc%
 -- 
 -- ```lua
 -- default = "onSelectionChangeByMouse"
 -- ```
 ---@field scrollSync "never" | "onSelectionChangeByMouse" | "onSelectionChange"
--- key-value pairs visible through `sys.inputs`, corresponds to `--input` argument of typst cli
+-- %extension.tinymist.config.tinymist.preview.sysInputs.desc%
 -- 
 -- ```lua
 -- default = {}
 -- ```
 ---@field sysInputs table
--- Whether to load system fonts. If disabled, only fonts in `typst-preview.fontPaths` is loaded
+-- %extension.tinymist.config.tinymist.preview.systemFonts.desc%
 -- 
 -- ```lua
 -- default = true
@@ -16297,7 +16293,7 @@
 ---@field systemFonts boolean
 
 ---@class _.lspconfig.settings.tinymist.Trace
--- Traces the communication between VS Code and the language server.
+-- %extension.tinymist.config.tinymist.trace.server.desc%
 -- 
 -- ```lua
 -- default = "off"
@@ -16305,132 +16301,126 @@
 ---@field server "off" | "messages" | "verbose"
 
 ---@class _.lspconfig.settings.tinymist.Tinymist
--- In VSCode, enable compile status meaning that the extension will show the compilation status in the status bar. Since Neovim and Helix don't have a such feature, it is disabled by default at the language server label.
+-- %extension.tinymist.config.tinymist.compileStatus.desc%
 -- 
 -- ```lua
 -- default = "enable"
 -- ```
 ---@field compileStatus "enable" | "disable"
 ---@field completion _.lspconfig.settings.tinymist.Completion
--- Whether to configure default word separators on startup
+-- %extension.tinymist.config.tinymist.configureDefaultWordSeparator.string.desc%
 -- 
 -- ```lua
 -- default = "disable"
 -- ```
 ---@field configureDefaultWordSeparator "enable" | "disable"
--- Whether to handle paste of resources into the editing typst document. Note: restarting the editor is required to change this setting.
+-- %extension.tinymist.config.tinymist.copyAndPaste.desc%
 -- 
 -- ```lua
 -- default = "enable"
 -- ```
 ---@field copyAndPaste "enable" | "disable"
--- Whether to handle drag-and-drop of resources into the editing typst document. Note: restarting the editor is required to change this setting.
+-- %extension.tinymist.config.tinymist.dragAndDrop.desc%
 -- 
 -- ```lua
 -- default = "enable"
 -- ```
 ---@field dragAndDrop "enable" | "disable"
--- The extension can export PDFs of your Typst files. This setting controls whether this feature is enabled and how often it runs.
+-- %extension.tinymist.config.tinymist.exportPdf.desc%
 -- 
 -- ```lua
 -- default = "never"
 -- ```
 ---@field exportPdf "never" | "onSave" | "onType" | "onDocumentHasTitle"
--- The target to export the document to. Defaults to `paged`. Note: you can still export pdf when it is set to `html`. This configuration only affects how the language server completes your code.
+-- %extension.tinymist.config.tinymist.exportTarget.desc%
 -- 
 -- ```lua
 -- default = "paged"
 -- ```
 ---@field exportTarget "paged" | "html"
--- A list of file or directory path to fonts. Note: The configuration source in higher priority will **override** the configuration source in lower priority. The order of precedence is: Configuration `tinymist.fontPaths` > Configuration `tinymist.typstExtraArgs.fontPaths` > LSP's CLI Argument `--font-path` > The environment variable `TYPST_FONT_PATHS` (a path list separated by `;` (on Windows) or `:` (Otherwise)). Note: If the path to fonts is a relative path, it will be resolved based on the root directory. Note: In VSCode, you can use VSCode variables in the path, e.g. `${workspaceFolder}/fonts`.
+-- %extension.tinymist.config.tinymist.fontPaths.desc%
 ---@field fontPaths any[]
--- Sets the indent size (using space) for the formatter.
+-- %extension.tinymist.config.tinymist.formatterIndentSize.desc%
 -- 
 -- ```lua
 -- default = 2
 -- ```
 ---@field formatterIndentSize number
--- The extension can format Typst files using typstfmt or typstyle.
+-- %extension.tinymist.config.tinymist.formatterMode.desc%
 -- 
 -- ```lua
 -- default = "disable"
 -- ```
 ---@field formatterMode "disable" | "typstyle" | "typstfmt"
--- Sets the print width for the formatter, which is a **soft limit** of characters per line. See [the definition of *Print Width*](https://prettier.io/docs/en/options.html#print-width). Note: this has lower priority than the formatter's specific configurations.
+-- %extension.tinymist.config.tinymist.formatterPrintWidth.desc%
 -- 
 -- ```lua
 -- default = 120
 -- ```
 ---@field formatterPrintWidth number
--- Enable or disable [experimental/onEnter](https://github.com/rust-lang/rust-analyzer/blob/master/docs/dev/lsp-extensions.md#on-enter) (LSP onEnter feature) to allow automatic insertion of characters on enter, such as `///` for comments. Note: restarting the editor is required to change this setting.
+-- %extension.tinymist.config.tinymist.onEnterEvent.desc%
 -- 
 -- ```lua
 -- default = true
 -- ```
 ---@field onEnterEvent boolean
--- The path pattern to store Typst artifacts, you can use `$root` or `$dir` or `$name` to do magic configuration, e.g. `$dir/$name` (default) and `$root/target/$dir/$name`.
+-- %extension.tinymist.config.tinymist.outputPath.desc%
 -- 
 -- ```lua
 -- default = ""
 -- ```
 ---@field outputPath string
 ---@field preview _.lspconfig.settings.tinymist.Preview
--- Enable or disable preview features of Typst. Note: restarting the editor is required to change this setting.
+-- %extension.tinymist.config.tinymist.previewFeature.desc%
 -- 
 -- ```lua
 -- default = "enable"
 -- ```
 ---@field previewFeature "enable" | "disable"
--- This configuration specifies the way to resolved projects.
+-- %extension.tinymist.config.tinymist.projectResolution.desc%
 -- 
 -- ```lua
 -- default = "singleFile"
 -- ```
 ---@field projectResolution "singleFile" | "lockDatabase"
--- (Experimental) Whether to render typst elements in (hover) docs. In VS Code, when this feature is enabled, tinymist will store rendered results in the filesystem's temporary storage to show them in the hover content. Note: Please disable this feature if the editor doesn't support/handle image previewing in docs.
+-- %extension.tinymist.config.tinymist.renderDocs.desc%
 -- 
 -- ```lua
 -- default = "enable"
 -- ```
 ---@field renderDocs "enable" | "disable"
--- Configure the root for absolute paths in typst. Hint: you can set the rootPath to `-`, so that tinymist will always use parent directory of the file as the root path. Note: for neovim users, if it complains root not found, you must set `require("lspconfig")["tinymist"].setup { root_dir }` as well, see [tinymist#528](https://github.com/Myriad-Dreamin/tinymist/issues/528).
+-- %extension.tinymist.config.tinymist.rootPath.desc%
 ---@field rootPath string
--- Enable or disable semantic tokens (LSP syntax highlighting)
+-- %extension.tinymist.config.tinymist.semanticTokens.desc%
 -- 
 -- ```lua
 -- default = "enable"
 -- ```
 ---@field semanticTokens "enable" | "disable"
--- The extension can use a local tinymist executable instead of the one bundled with the extension. This setting controls the path to the executable. The string "tinymist" means look up Tinymist in PATH.
+-- %extension.tinymist.config.tinymist.serverPath.desc%
 ---@field serverPath string
--- Configures way of opening exported files, e.g. inside of editor tabs or using system application.
+-- %extension.tinymist.config.tinymist.showExportFileIn.desc%
 ---@field showExportFileIn "editorTab" | "systemDefault"
--- Set format string of the server status. For example, `{compileStatusIcon}{wordCount} [{fileName}]` will format the status as `$(check) 123 words [main]`. Valid placeholders are:
--- 
--- - `{compileStatusIcon}`: Icon indicating the compile status
--- - `{wordCount}`: Number of words in the document
--- - `{fileName}`: Name of the file being compiled
--- 
--- Note: The status bar will be hidden if the format string is empty.
+-- %extension.tinymist.config.tinymist.statusBarFormat.desc%
 -- 
 -- ```lua
 -- default = "{compileStatusIcon} {wordCount} [{fileName}]"
 -- ```
 ---@field statusBarFormat string
--- A flag that determines whether to load system fonts for Typst compiler, which is useful for ensuring reproducible compilation. If set to null or not set, the extension will use the default behavior of the Typst compiler. Note: You need to restart LSP to change this options. 
+-- %extension.tinymist.config.tinymist.systemFonts.desc%
 -- 
 -- ```lua
 -- default = true
 -- ```
 ---@field systemFonts boolean
 ---@field trace _.lspconfig.settings.tinymist.Trace
--- Whether to prefix newlines after comments with the corresponding comment prefix.
+-- %extension.tinymist.config.tinymist.typingContinueCommentsOnNewline.desc%
 -- 
 -- ```lua
 -- default = true
 -- ```
 ---@field typingContinueCommentsOnNewline boolean
--- You can pass any arguments as you like, and we will try to follow behaviors of the **same version** of typst-cli. Note: the arguments may be overridden by other settings. For example, `--font-path` will be overridden by `tinymist.fontPaths`.
+-- %extension.tinymist.config.tinymist.typstExtraArgs.desc%
 -- 
 -- ```lua
 -- default = {}
