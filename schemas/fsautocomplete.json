@@ -414,7 +414,7 @@
       "type": "boolean"
     },
     "FSharp.showExplorerOnStartup": {
-      "default": true,
+      "default": false,
       "description": "Automatically shows solution explorer on plugin startup",
       "type": "boolean"
     },

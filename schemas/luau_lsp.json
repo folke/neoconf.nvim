@@ -391,6 +391,11 @@
       "scope": "resource",
       "type": "boolean"
     },
+    "luau-lsp.sourcemap.generatorCommand": {
+      "markdownDescription": "A command to run to generate the sourcemap. If not specified, defaults to `rojo`",
+      "scope": "resource",
+      "type": "string"
+    },
     "luau-lsp.sourcemap.includeNonScripts": {
       "default": true,
       "markdownDescription": "Include non-script instances in the generated sourcemap",
@@ -414,6 +419,12 @@
       "markdownDescription": "The name of the sourcemap file",
       "scope": "resource",
       "type": "string"
+    },
+    "luau-lsp.sourcemap.useVSCodeWatcher": {
+      "default": false,
+      "markdownDescription": "Whether the VSCode filesystem watchers are used to regenerate the sourcemap. If disabled, delegates to the generator process. If using `rojo`, this command stops using `--watch`",
+      "scope": "resource",
+      "type": "boolean"
     },
     "luau-lsp.types.definitionFiles": {
       "default": [],

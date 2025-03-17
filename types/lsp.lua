@@ -3385,10 +3385,6 @@
 -- If enabled, the current file will be saved before sending the last selection to FSI for evaluation
 ---@field saveOnSendLastSelection boolean
 -- Automatically shows solution explorer on plugin startup
--- 
--- ```lua
--- default = true
--- ```
 ---@field showExplorerOnStartup boolean
 -- Set the activity (left bar) where the project explorer view will be displayed. If `explorer`, then the project explorer will be a collapsible tab in the main explorer view, a sibling to the file system explorer. If `fsharp`, a new activity with the F# logo will be added and the project explorer will be rendered in this activity.Requires restart.
 -- 
@@ -9562,6 +9558,8 @@
 -- default = true
 -- ```
 ---@field enabled boolean
+-- A command to run to generate the sourcemap. If not specified, defaults to `rojo`
+---@field generatorCommand string
 -- Include non-script instances in the generated sourcemap
 -- 
 -- ```lua
@@ -9583,6 +9581,8 @@
 -- default = "sourcemap.json"
 -- ```
 ---@field sourcemapFile string
+-- Whether the VSCode filesystem watchers are used to regenerate the sourcemap. If disabled, delegates to the generator process. If using `rojo`, this command stops using `--watch`
+---@field useVSCodeWatcher boolean
 
 ---@class _.lspconfig.settings.luau_lsp.Types
 -- A list of paths to definition files to load in to the type checker. Note that definition file syntax is currently unstable and may change at any time
