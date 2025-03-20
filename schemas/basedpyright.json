@@ -1738,6 +1738,12 @@
       "scope": "resource",
       "type": "string"
     },
+    "pyright.disablePullDiagnostics": {
+      "default": false,
+      "description": "Disables the use of pull diagnostics from VS Code.",
+      "scope": "machine",
+      "type": "boolean"
+    },
     "python.pythonPath": {
       "default": "python",
       "description": "Path to Python, you can use a custom version of Python.",

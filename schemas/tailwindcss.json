@@ -15,9 +15,23 @@
       "markdownDescription": "The HTML attributes for which to provide class completions, hover previews, linting etc.",
       "type": "array"
     },
+    "tailwindCSS.classFunctions": {
+      "default": [],
+      "items": {
+        "type": "string"
+      },
+      "markdownDescription": "The function or tagged template literal names for which to provide class completions, hover previews, linting etc.",
+      "type": "array"
+    },
     "tailwindCSS.codeActions": {
       "default": true,
       "markdownDescription": "Enable code actions.",
+      "scope": "language-overridable",
+      "type": "boolean"
+    },
+    "tailwindCSS.codeLens": {
+      "default": true,
+      "markdownDescription": "Enable code lens.",
       "scope": "language-overridable",
       "type": "boolean"
     },

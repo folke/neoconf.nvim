@@ -805,6 +805,10 @@
 -- ```
 ---@field importStrategy "fromEnvironment" | "useBundled"
 
+---@class _.lspconfig.settings.basedpyright.Pyright
+-- Disables the use of pull diagnostics from VS Code.
+---@field disablePullDiagnostics boolean
+
 ---@class _.lspconfig.settings.basedpyright.Python
 -- Path to Python, you can use a custom version of Python.
 -- 
@@ -821,6 +825,7 @@
 
 ---@class lspconfig.settings.basedpyright
 ---@field basedpyright _.lspconfig.settings.basedpyright.Basedpyright
+---@field pyright _.lspconfig.settings.basedpyright.Pyright
 ---@field python _.lspconfig.settings.basedpyright.Python
 
 ---@class _.lspconfig.settings.bashls.Shfmt
@@ -16070,12 +16075,24 @@
 -- default = { "class", "className", "ngClass", "class:list" }
 -- ```
 ---@field classAttributes string[]
+-- The function or tagged template literal names for which to provide class completions, hover previews, linting etc.
+-- 
+-- ```lua
+-- default = {}
+-- ```
+---@field classFunctions string[]
 -- Enable code actions.
 -- 
 -- ```lua
 -- default = true
 -- ```
 ---@field codeActions boolean
+-- Enable code lens.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field codeLens boolean
 -- Controls whether the editor should render inline color decorators for Tailwind CSS classes and helper functions.
 -- 
 -- ```lua
