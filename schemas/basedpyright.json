@@ -1722,6 +1722,12 @@
       "scope": "resource",
       "type": "boolean"
     },
+    "basedpyright.disablePullDiagnostics": {
+      "default": false,
+      "description": "Disables the use of pull diagnostics from VS Code.",
+      "scope": "machine",
+      "type": "boolean"
+    },
     "basedpyright.disableTaggedHints": {
       "default": false,
       "description": "Disable hint diagnostics with special hints for grayed-out or strike-through text.",
@@ -1737,12 +1743,6 @@
       ],
       "scope": "resource",
       "type": "string"
-    },
-    "pyright.disablePullDiagnostics": {
-      "default": false,
-      "description": "Disables the use of pull diagnostics from VS Code.",
-      "scope": "machine",
-      "type": "boolean"
     },
     "python.pythonPath": {
       "default": "python",

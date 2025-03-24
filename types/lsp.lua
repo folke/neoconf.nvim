@@ -796,6 +796,8 @@
 ---@field disableLanguageServices boolean
 -- Disables the “Organize Imports” command.
 ---@field disableOrganizeImports boolean
+-- Disables the use of pull diagnostics from VS Code.
+---@field disablePullDiagnostics boolean
 -- Disable hint diagnostics with special hints for grayed-out or strike-through text.
 ---@field disableTaggedHints boolean
 -- Whether to use the version of pyright installed in the project (recommended) or the one bundled with the extension (not recommended).
@@ -804,10 +806,6 @@
 -- default = "fromEnvironment"
 -- ```
 ---@field importStrategy "fromEnvironment" | "useBundled"
-
----@class _.lspconfig.settings.basedpyright.Pyright
--- Disables the use of pull diagnostics from VS Code.
----@field disablePullDiagnostics boolean
 
 ---@class _.lspconfig.settings.basedpyright.Python
 -- Path to Python, you can use a custom version of Python.
@@ -825,7 +823,6 @@
 
 ---@class lspconfig.settings.basedpyright
 ---@field basedpyright _.lspconfig.settings.basedpyright.Basedpyright
----@field pyright _.lspconfig.settings.basedpyright.Pyright
 ---@field python _.lspconfig.settings.basedpyright.Python
 
 ---@class _.lspconfig.settings.bashls.Shfmt
