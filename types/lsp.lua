@@ -2281,11 +2281,11 @@
 -- 
 -- Whether to use the legacy debug adapters even if the new debug adapters are available in the current Dart/Flutter SDKs contain. Setting the value to `true` will force use of the legacay adapters. Setting to `false` will force use of the SDK adapters. Leaving as `null` will allow the extension to decide which debug adapters to use depending on the SDK version and rollout progress.
 ---@field useLegacyDebugAdapters boolean
--- Arguments to be passed to the Dart VM when running Dart CLI scripts.
+-- Arguments to be passed to the Dart VM when running Dart CLI scripts/tests.
 -- 
--- These arguments appear between "dart" and "run":
+-- These arguments appear after "dart" but before subcommands like "test":
 -- 
--- `dart (vmAdditionalArgs) run (toolArgs) bin/main.dart (args)`
+-- `dart (vmAdditionalArgs) test (toolArgs) test/my_test.dart (args)`
 -- 
 -- ```lua
 -- default = {}
@@ -13547,8 +13547,6 @@
 -- default = {}
 -- ```
 ---@field engineSettings table
--- Whether to open up the `Debug Panel` on debugging start.
----@field openDebugPane boolean
 -- Optional source file mappings passed to the debug engine.
 -- 
 -- ```lua

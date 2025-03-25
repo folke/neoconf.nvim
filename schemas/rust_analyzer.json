@@ -522,11 +522,6 @@
       "markdownDescription": "Optional settings passed to the debug engine. Example: `{ \"lldb\": { \"terminal\":\"external\"} }`",
       "type": "object"
     },
-    "rust-analyzer.debug.openDebugPane": {
-      "default": false,
-      "markdownDescription": "Whether to open up the `Debug Panel` on debugging start.",
-      "type": "boolean"
-    },
     "rust-analyzer.debug.sourceFileMap": {
       "const": "auto",
       "default": {
