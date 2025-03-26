@@ -17219,14 +17219,6 @@
 -- ```
 ---@field enabled boolean
 
----@class _.lspconfig.settings.ts_ls.Surveys
--- Enabled/disable occasional surveys that help us improve VS Code's JavaScript and TypeScript support.
--- 
--- ```lua
--- default = true
--- ```
----@field enabled boolean
-
 ---@class _.lspconfig.settings.ts_ls.Tsc
 -- Controls auto detection of tsc tasks.
 -- 
@@ -17390,7 +17382,6 @@
 ---@field reportStyleChecksAsWarnings boolean
 ---@field suggest _.lspconfig.settings.ts_ls.Suggest
 ---@field suggestionActions _.lspconfig.settings.ts_ls.SuggestionActions
----@field surveys _.lspconfig.settings.ts_ls.Surveys
 ---@field tsc _.lspconfig.settings.ts_ls.Tsc
 -- Specifies the folder path to the tsserver and `lib*.d.ts` files under a TypeScript install to use for IntelliSense, for example: `./node_modules/typescript/lib`.
 -- 

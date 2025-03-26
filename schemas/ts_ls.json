@@ -1114,12 +1114,6 @@
       "scope": "resource",
       "type": "boolean"
     },
-    "typescript.surveys.enabled": {
-      "default": true,
-      "description": "Enabled/disable occasional surveys that help us improve VS Code's JavaScript and TypeScript support.",
-      "scope": "window",
-      "type": "boolean"
-    },
     "typescript.tsc.autoDetect": {
       "default": "on",
       "description": "Controls auto detection of tsc tasks.",
