@@ -1,6 +1,6 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "description": "A language server implementation for the WGSL shading language",
+  "description": "WGSL support for Visual Studio Code",
   "properties": {
     "wgsl-analyzer.customImports": {
       "additionalProperties": {
