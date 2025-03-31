@@ -18958,6 +18958,31 @@
 ---@class lspconfig.settings.vuels
 ---@field vetur _.lspconfig.settings.vuels.Vetur
 
+---@class _.lspconfig.settings.wgls_analyzer.TermSearch
+-- Term search fuel in "units of work" for assists (Defaults to 1800).
+-- 
+-- ```lua
+-- default = 1800
+-- ```
+---@field fuel integer
+
+---@class _.lspconfig.settings.wgls_analyzer.Assist
+---@field termSearch _.lspconfig.settings.wgls_analyzer.TermSearch
+
+---@class _.lspconfig.settings.wgls_analyzer.CachePriming
+-- Warm up caches on project load.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enable boolean
+-- How many worker threads to handle priming caches. The default `0` means to pick automatically.
+-- 
+-- ```lua
+-- default = "physical"
+-- ```
+---@field numThreads number|"physical" | "logical"
+
 ---@class _.lspconfig.settings.wgls_analyzer.Diagnostics
 -- Controls whether to show naga's parsing errors.
 ---@field nagaParsingErrors boolean
@@ -18973,12 +18998,16 @@
 -- default = "0.22"
 -- ```
 ---@field nagaVersion "0.14" | "0.19" | "0.22" | "main"
+-- Whether to show the main part of the rendered naga output of a diagnostic message.
+---@field previewNagaOutput boolean
 -- Controls whether to show type errors.
 -- 
 -- ```lua
 -- default = true
 -- ```
 ---@field typeErrors boolean
+-- Whether to show diagnostics using the original naga error code. If this is false, all naga diagnostics will have the code 'naga(Click for full compiler diagnostics)'
+---@field useNagaErrorCode boolean
 
 ---@class _.lspconfig.settings.wgls_analyzer.InlayHints
 -- Whether to show inlay hints
@@ -19015,16 +19044,63 @@
 ---@field shaderDefs string[]
 
 ---@class _.lspconfig.settings.wgls_analyzer.Server
--- Path to the wgsl-analyzer executable.
+-- Extra environment variables that will be passed to the wgsl-analyzer executable. Useful for passing e.g. `WA_LOG` for debugging.
+---@field extraEnv table
+-- Path to wgsl-analyzer executable (points to bundled binary by default).
 ---@field path string
 
+---@class _.lspconfig.settings.wgls_analyzer.StatusBar
+-- Action to run when clicking the extension status bar item.
+-- 
+-- ```lua
+-- default = "openLogs"
+-- ```
+---@field clickAction "stopServer" | "openLogs"
+-- When to show the extension status bar.
+-- 
+-- `"always"` Always show the status bar.
+-- 
+-- `"never"` Never show the status bar.
+-- 
+-- `{ documentSelector: <DocumentSelector>[] }` Show the status bar if the open file matches any of the given document selectors.
+-- 
+-- See [VS Code -- DocumentSelector](https://code.visualstudio.com/api/references/document-selector) for more information.
+-- 
+-- ```lua
+-- default = {
+--   documentSelector = { {
+--       language = "wgsl"
+--     }, {
+--       pattern = "**/*.wgsl"
+--     }, {
+--       pattern = "extension-output-wgsl-analyzer.wgsl-analyzer*",
+--       scheme = "output"
+--     } }
+-- }
+-- ```
+---@field showStatusBar "always" | "never"|table
+
 ---@class _.lspconfig.settings.wgls_analyzer.Trace
--- Log debug info in the WGSL Analyzer output pane.
+-- Enable logging of VS Code extensions itself.
 ---@field extension boolean
--- Log messages between client and server in the WGSL Analyzer output pane.
----@field server boolean
+-- Trace requests to the wgsl-analyzer (this is usually overly verbose and not recommended for regular users).
+-- 
+-- ```lua
+-- default = "off"
+-- ```
+---@field server "off" | "messages" | "verbose"
+
+---@class _.lspconfig.settings.wgls_analyzer.Typing
+-- Whether to prefix newlines after comments with the corresponding comment prefix.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field continueCommentsOnNewline boolean
 
 ---@class _.lspconfig.settings.wgls_analyzer.Wgsl-analyzer
+---@field assist _.lspconfig.settings.wgls_analyzer.Assist
+---@field cachePriming _.lspconfig.settings.wgls_analyzer.CachePriming
 -- `#import` directives in the flavor of [Bevy Engine](https://bevyengine.org)'s [shader preprocessor](https://bevyengine.org/news/bevy-0-6/#shader-imports). To use objects from an import, add `#import <name>` to your WGSL.
 -- 
 -- ```lua
@@ -19032,10 +19108,36 @@
 -- ```
 ---@field customImports table
 ---@field diagnostics _.lspconfig.settings.wgls_analyzer.Diagnostics
+-- Do not start wgsl-analyzer server when the extension is activated.
+---@field initializeStopped boolean
 ---@field inlayHints _.lspconfig.settings.wgls_analyzer.InlayHints
 ---@field preprocessor _.lspconfig.settings.wgls_analyzer.Preprocessor
+-- Whether to restart the server automatically when certain settings that require a restart are changed.
+---@field restartServerOnConfigChange boolean
 ---@field server _.lspconfig.settings.wgls_analyzer.Server
+-- Whether to show the dependencies view.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field showDependenciesExplorer boolean
+-- Whether to show error notifications for failing requests.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field showRequestFailedErrorNotification boolean
+-- Whether to show the syntax tree view.
+---@field showSyntaxTree boolean
+-- Whether to show a notification for unlinked files asking the user to add the corresponding Cargo.toml to the linked projects setting.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field showUnlinkedFileNotification boolean
+---@field statusBar _.lspconfig.settings.wgls_analyzer.StatusBar
 ---@field trace _.lspconfig.settings.wgls_analyzer.Trace
+---@field typing _.lspconfig.settings.wgls_analyzer.Typing
 
 ---@class lspconfig.settings.wgls_analyzer
 ---@field wgsl-analyzer _.lspconfig.settings.wgls_analyzer.Wgsl-analyzer

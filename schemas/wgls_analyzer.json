@@ -2,6 +2,39 @@
   "$schema": "http://json-schema.org/draft-07/schema#",
   "description": "WGSL support for Visual Studio Code",
   "properties": {
+    "wgsl-analyzer.assist.termSearch.fuel": {
+      "default": 1800,
+      "markdownDescription": "Term search fuel in \"units of work\" for assists (Defaults to 1800).",
+      "minimum": 0,
+      "type": "integer"
+    },
+    "wgsl-analyzer.cachePriming.enable": {
+      "default": true,
+      "markdownDescription": "Warm up caches on project load.",
+      "type": "boolean"
+    },
+    "wgsl-analyzer.cachePriming.numThreads": {
+      "anyOf": [
+        {
+          "maximum": 255,
+          "minimum": 0,
+          "type": "number"
+        },
+        {
+          "enum": [
+            "physical",
+            "logical"
+          ],
+          "enumDescriptions": [
+            "Use the number of physical cores",
+            "Use the number of logical cores"
+          ],
+          "type": "string"
+        }
+      ],
+      "default": "physical",
+      "markdownDescription": "How many worker threads to handle priming caches. The default `0` means to pick automatically."
+    },
     "wgsl-analyzer.customImports": {
       "additionalProperties": {
         "type": "string"
@@ -31,9 +64,24 @@
       ],
       "type": "string"
     },
+    "wgsl-analyzer.diagnostics.previewNagaOutput": {
+      "default": false,
+      "markdownDescription": "Whether to show the main part of the rendered naga output of a diagnostic message.",
+      "type": "boolean"
+    },
     "wgsl-analyzer.diagnostics.typeErrors": {
       "default": true,
       "description": "Controls whether to show type errors.",
+      "type": "boolean"
+    },
+    "wgsl-analyzer.diagnostics.useNagaErrorCode": {
+      "default": false,
+      "markdownDescription": "Whether to show diagnostics using the original naga error code. If this is false, all naga diagnostics will have the code 'naga(Click for full compiler diagnostics)'",
+      "type": "boolean"
+    },
+    "wgsl-analyzer.initializeStopped": {
+      "default": false,
+      "markdownDescription": "Do not start wgsl-analyzer server when the extension is activated.",
       "type": "boolean"
     },
     "wgsl-analyzer.inlayHints.enabled": {
@@ -78,21 +126,143 @@
       "markdownDescription": "Shader defines used in `#ifdef` directives in the flavor of [Bevy Engine](https://bevyengine.org)'s [shader preprocessor](https://bevyengine.org/news/bevy-0-6/#shader-imports).",
       "type": "array"
     },
+    "wgsl-analyzer.restartServerOnConfigChange": {
+      "default": false,
+      "markdownDescription": "Whether to restart the server automatically when certain settings that require a restart are changed.",
+      "type": "boolean"
+    },
+    "wgsl-analyzer.server.extraEnv": {
+      "additionalProperties": {
+        "type": [
+          "string",
+          "number"
+        ]
+      },
+      "default": null,
+      "markdownDescription": "Extra environment variables that will be passed to the wgsl-analyzer executable. Useful for passing e.g. `WA_LOG` for debugging.",
+      "type": [
+        "null",
+        "object"
+      ]
+    },
     "wgsl-analyzer.server.path": {
-      "description": "Path to the wgsl-analyzer executable.",
+      "default": null,
+      "markdownDescription": "Path to wgsl-analyzer executable (points to bundled binary by default).",
+      "scope": "machine-overridable",
       "type": [
         "null",
         "string"
       ]
     },
+    "wgsl-analyzer.showDependenciesExplorer": {
+      "default": true,
+      "markdownDescription": "Whether to show the dependencies view.",
+      "type": "boolean"
+    },
+    "wgsl-analyzer.showRequestFailedErrorNotification": {
+      "default": true,
+      "markdownDescription": "Whether to show error notifications for failing requests.",
+      "type": "boolean"
+    },
+    "wgsl-analyzer.showSyntaxTree": {
+      "default": false,
+      "markdownDescription": "Whether to show the syntax tree view.",
+      "type": "boolean"
+    },
+    "wgsl-analyzer.showUnlinkedFileNotification": {
+      "default": true,
+      "markdownDescription": "Whether to show a notification for unlinked files asking the user to add the corresponding Cargo.toml to the linked projects setting.",
+      "type": "boolean"
+    },
+    "wgsl-analyzer.statusBar.clickAction": {
+      "default": "openLogs",
+      "enum": [
+        "stopServer",
+        "openLogs"
+      ],
+      "enumDescriptions": [
+        "Stop Server",
+        "Open Logs"
+      ],
+      "markdownDescription": "Action to run when clicking the extension status bar item.",
+      "type": "string"
+    },
+    "wgsl-analyzer.statusBar.showStatusBar": {
+      "anyOf": [
+        {
+          "enum": [
+            "always",
+            "never"
+          ],
+          "type": "string"
+        },
+        {
+          "properties": {
+            "documentSelector": {
+              "items": {
+                "properties": {
+                  "language": {
+                    "type": "string"
+                  },
+                  "notebookType": {
+                    "type": "string"
+                  },
+                  "pattern": {
+                    "type": "string"
+                  },
+                  "scheme": {
+                    "type": "string"
+                  }
+                },
+                "type": "object"
+              },
+              "type": "array"
+            }
+          },
+          "type": "object"
+        }
+      ],
+      "default": {
+        "documentSelector": [
+          {
+            "language": "wgsl"
+          },
+          {
+            "pattern": "**/*.wgsl"
+          },
+          {
+            "pattern": "extension-output-wgsl-analyzer.wgsl-analyzer*",
+            "scheme": "output"
+          }
+        ]
+      },
+      "markdownDescription": "When to show the extension status bar.\n\n`\"always\"` Always show the status bar.\n\n`\"never\"` Never show the status bar.\n\n`{ documentSelector: <DocumentSelector>[] }` Show the status bar if the open file matches any of the given document selectors.\n\nSee [VS Code -- DocumentSelector](https://code.visualstudio.com/api/references/document-selector) for more information."
+    },
     "wgsl-analyzer.trace.extension": {
       "default": false,
-      "description": "Log debug info in the WGSL Analyzer output pane.",
+      "description": "Enable logging of VS Code extensions itself.",
+      "markdownDeprecationMessage": "Log level is now controlled by the [Developer: Set Log Level...](command:workbench.action.setLogLevel) command. You can set the log level for the current session and also the default log level from there. This is also available by clicking the gear icon on the OUTPUT tab when WGSL Analyzer Client is visible or by passing the --log wgsl-analyzer.wgsl-analyzer:debug parameter to VS Code.",
       "type": "boolean"
     },
     "wgsl-analyzer.trace.server": {
-      "default": false,
-      "description": "Log messages between client and server in the WGSL Analyzer output pane.",
+      "default": "off",
+      "description": "Trace requests to the wgsl-analyzer (this is usually overly verbose and not recommended for regular users).",
+      "enum": [
+        "off",
+        "messages",
+        "verbose"
+      ],
+      "enumDescriptions": [
+        "No traces",
+        "Error only",
+        "Full log"
+      ],
+      "scope": "window",
+      "type": "string"
+    },
+    "wgsl-analyzer.typing.continueCommentsOnNewline": {
+      "default": true,
+      "markdownDescription": "Whether to prefix newlines after comments with the corresponding comment prefix.",
       "type": "boolean"
     }
   }
