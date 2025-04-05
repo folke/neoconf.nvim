@@ -157,6 +157,11 @@
       "markdownDescription": "Whether to pass `--no-default-features` to cargo.",
       "type": "boolean"
     },
+    "rust-analyzer.cargo.noDeps": {
+      "default": false,
+      "markdownDescription": "Whether to skip fetching dependencies. If set to \"true\", the analysis is performed\nentirely offline, and Cargo metadata for dependencies is not fetched.",
+      "type": "boolean"
+    },
     "rust-analyzer.cargo.sysroot": {
       "default": "discover",
       "markdownDescription": "Relative path to the sysroot, or \"discover\" to try to automatically find it via\n\"rustc --print sysroot\".\n\nUnsetting this disables sysroot loading.\n\nThis option does not take effect until rust-analyzer is restarted.",

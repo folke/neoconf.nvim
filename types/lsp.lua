@@ -13290,6 +13290,9 @@
 ---@field features "all"|string[]
 -- Whether to pass `--no-default-features` to cargo.
 ---@field noDefaultFeatures boolean
+-- Whether to skip fetching dependencies. If set to "true", the analysis is performed
+-- entirely offline, and Cargo metadata for dependencies is not fetched.
+---@field noDeps boolean
 -- Relative path to the sysroot, or "discover" to try to automatically find it via
 -- "rustc --print sysroot".
 -- 
@@ -18967,6 +18970,12 @@
 ---@field fuel integer
 
 ---@class _.lspconfig.settings.wgls_analyzer.Assist
+-- Placeholder expression to use for missing expressions in assists.
+-- 
+-- ```lua
+-- default = "todo"
+-- ```
+---@field expressionFillDefault "todo" | "default"
 ---@field termSearch _.lspconfig.settings.wgls_analyzer.TermSearch
 
 ---@class _.lspconfig.settings.wgls_analyzer.CachePriming
@@ -18983,7 +18992,81 @@
 -- ```
 ---@field numThreads number|"physical" | "logical"
 
+---@class _.lspconfig.settings.wgls_analyzer.Callable
+-- Whether to add parenthesis and argument snippets when completing function.
+-- 
+-- ```lua
+-- default = "fill_arguments"
+-- ```
+---@field snippets "fill_arguments" | "add_parentheses" | "none"
+
+---@class _.lspconfig.settings.wgls_analyzer.FullFunctionSignatures
+-- Whether to show full function/method signatures in completion docs.
+---@field enable boolean
+
+---@class _.lspconfig.settings.wgls_analyzer.Postfix
+-- Whether to show postfix snippets like `if` and `not`.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enable boolean
+
+---@class _.lspconfig.settings.wgls_analyzer.Snippets
+-- Custom completion snippets.
+-- 
+-- ```lua
+-- default = {}
+-- ```
+---@field custom table
+
+---@class _.lspconfig.settings.wgls_analyzer.TermSearch
+-- Whether to enable term search based snippets.
+---@field enable boolean
+-- Term search fuel in "units of work" for autocompletion (Defaults to 1000).
+-- 
+-- ```lua
+-- default = 1000
+-- ```
+---@field fuel integer
+
+---@class _.lspconfig.settings.wgls_analyzer.Completion
+-- Whether to automatically add a semicolon when completing unit-returning functions.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field addSemicolonToUnit boolean
+---@field callable _.lspconfig.settings.wgls_analyzer.Callable
+---@field fullFunctionSignatures _.lspconfig.settings.wgls_analyzer.FullFunctionSignatures
+-- Maximum number of completions to return. If `null`, then there is no limit.
+---@field limit integer
+---@field postfix _.lspconfig.settings.wgls_analyzer.Postfix
+---@field snippets _.lspconfig.settings.wgls_analyzer.Snippets
+---@field termSearch _.lspconfig.settings.wgls_analyzer.TermSearch
+
+---@class _.lspconfig.settings.wgls_analyzer.Experimental
+-- Whether to show experimental wgsl-analyzer diagnostics that might have more false positives than usual.
+---@field enable boolean
+
+---@class _.lspconfig.settings.wgls_analyzer.StyleLints
+-- Whether to run additional style lints.
+---@field enable boolean
+
 ---@class _.lspconfig.settings.wgls_analyzer.Diagnostics
+-- List of wgsl-analyzer diagnostics to disable.
+-- 
+-- ```lua
+-- default = {}
+-- ```
+---@field disabled string[]
+-- Whether to show native wgsl-analyzer diagnostics.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enable boolean
+---@field experimental _.lspconfig.settings.wgls_analyzer.Experimental
 -- Controls whether to show naga's parsing errors.
 ---@field nagaParsingErrors boolean
 -- Controls whether to show naga's validation errors.
@@ -18998,30 +19081,350 @@
 -- default = "0.22"
 -- ```
 ---@field nagaVersion "0.14" | "0.19" | "0.22" | "main"
--- Whether to show the main part of the rendered naga output of a diagnostic message.
+-- Whether to show the main part of the rendered Naga output of a diagnostic message.
 ---@field previewNagaOutput boolean
+---@field styleLints _.lspconfig.settings.wgls_analyzer.StyleLints
 -- Controls whether to show type errors.
 -- 
 -- ```lua
 -- default = true
 -- ```
 ---@field typeErrors boolean
--- Whether to show diagnostics using the original naga error code. If this is false, all naga diagnostics will have the code 'naga(Click for full compiler diagnostics)'
+-- Whether to show diagnostics using the original Naga error code. If this is false, all Naga diagnostics will have the code 'Naga(Click for full compiler diagnostics)'
 ---@field useNagaErrorCode boolean
+-- List of warnings that should be displayed with hint severity.
+-- 
+-- The warnings will be indicated by faded text or three dots in code and will not show up in the `Problems Panel`.
+-- 
+-- ```lua
+-- default = {}
+-- ```
+---@field warningsAsHint string[]
+-- List of warnings that should be displayed with info severity.
+-- 
+-- The warnings will be indicated by a blue squiggly underline in code and a blue icon in the `Problems Panel`.
+-- 
+-- ```lua
+-- default = {}
+-- ```
+---@field warningsAsInfo string[]
+
+---@class _.lspconfig.settings.wgls_analyzer.Files
+-- These paths (file/directories) will be ignored by wgsl-analyzer. They are relative to the workspace root, and globs are not supported. You may also need to add the folders to Code's `files.watcherExclude`.
+-- 
+-- ```lua
+-- default = {}
+-- ```
+---@field exclude string[]
+-- Controls file watching implementation.
+-- 
+-- ```lua
+-- default = "client"
+-- ```
+---@field watcher "client" | "server"
+
+---@class _.lspconfig.settings.wgls_analyzer.BreakPoints
+-- Enables highlighting of related references while the cursor is on `break`, `loop`, `while`, or `for` keywords.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enable boolean
+
+---@class _.lspconfig.settings.wgls_analyzer.ExitPoints
+-- Enables highlighting of all exit points while the cursor is on any `return`, `fn`, or return type arrow (`->`).
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enable boolean
+
+---@class _.lspconfig.settings.wgls_analyzer.References
+-- Enables highlighting of related references while the cursor is on any identifier.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enable boolean
+
+---@class _.lspconfig.settings.wgls_analyzer.HighlightRelated
+---@field breakPoints _.lspconfig.settings.wgls_analyzer.BreakPoints
+---@field exitPoints _.lspconfig.settings.wgls_analyzer.ExitPoints
+---@field references _.lspconfig.settings.wgls_analyzer.References
+
+---@class _.lspconfig.settings.wgls_analyzer.GotoTypeDef
+-- Whether to show `Go to Type Definition` action. Only applies when `#wgsl-analyzer.hover.actions.enable#` is set.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enable boolean
+
+---@class _.lspconfig.settings.wgls_analyzer.Implementations
+-- Whether to show `Implementations` action. Only applies when `#wgsl-analyzer.hover.actions.enable#` is set.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enable boolean
+
+---@class _.lspconfig.settings.wgls_analyzer.References
+-- Whether to show `References` action. Only applies when `#wgsl-analyzer.hover.actions.enable#` is set.
+---@field enable boolean
+
+---@class _.lspconfig.settings.wgls_analyzer.Actions
+-- Whether to show HoverActions in WGSL files.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enable boolean
+---@field gotoTypeDef _.lspconfig.settings.wgls_analyzer.GotoTypeDef
+---@field implementations _.lspconfig.settings.wgls_analyzer.Implementations
+---@field references _.lspconfig.settings.wgls_analyzer.References
+
+---@class _.lspconfig.settings.wgls_analyzer.Keywords
+-- Whether to show keyword hover popups. Only applies when `#wgsl-analyzer.hover.documentation.enable#` is set.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enable boolean
+
+---@class _.lspconfig.settings.wgls_analyzer.Documentation
+-- Whether to show documentation on hover.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enable boolean
+---@field keywords _.lspconfig.settings.wgls_analyzer.Keywords
+
+---@class _.lspconfig.settings.wgls_analyzer.Links
+-- Use markdown syntax for links on hover.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enable boolean
+
+---@class _.lspconfig.settings.wgls_analyzer.MemoryLayout
+-- How to render the align information in a memory layout hover.
+-- 
+-- ```lua
+-- default = "hexadecimal"
+-- ```
+---@field alignment any|"both" | "decimal" | "hexadecimal"
+-- Whether to show memory layout data on hover.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enable boolean
+-- How to render the niche information in a memory layout hover.
+---@field niches boolean
+-- How to render the offset information in a memory layout hover.
+-- 
+-- ```lua
+-- default = "hexadecimal"
+-- ```
+---@field offset any|"both" | "decimal" | "hexadecimal"
+-- How to render the size information in a memory layout hover.
+-- 
+-- ```lua
+-- default = "both"
+-- ```
+---@field size any|"both" | "decimal" | "hexadecimal"
+
+---@class _.lspconfig.settings.wgls_analyzer.Show
+-- How many fields of a struct, variant or union to display when hovering on. Show none if empty.
+-- 
+-- ```lua
+-- default = 5
+-- ```
+---@field fields integer
+-- How many associated items of a trait to display when hovering a trait.
+---@field traitAssocItems integer
+
+---@class _.lspconfig.settings.wgls_analyzer.Hover
+---@field actions _.lspconfig.settings.wgls_analyzer.Actions
+---@field documentation _.lspconfig.settings.wgls_analyzer.Documentation
+---@field links _.lspconfig.settings.wgls_analyzer.Links
+---@field memoryLayout _.lspconfig.settings.wgls_analyzer.MemoryLayout
+---@field show _.lspconfig.settings.wgls_analyzer.Show
+
+---@class _.lspconfig.settings.wgls_analyzer.Granularity
+-- Whether to enforce the import granularity setting for all files. If set to false wgsl-analyzer will try to keep import styles consistent per file.
+---@field enforce boolean
+-- How imports should be grouped into use statements.
+-- 
+-- ```lua
+-- default = "crate"
+-- ```
+---@field group "preserve" | "crate" | "module" | "item" | "one"
+
+---@class _.lspconfig.settings.wgls_analyzer.Group
+-- Group inserted imports by the [following order](https://wgsl-analyzer.github.io/manual.html#auto-import). Groups are separated by newlines.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enable boolean
+
+---@class _.lspconfig.settings.wgls_analyzer.Merge
+-- Whether to allow import insertion to merge new imports into single path glob imports like `use std::fmt::*;`.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field glob boolean
+
+---@class _.lspconfig.settings.wgls_analyzer.Imports
+---@field granularity _.lspconfig.settings.wgls_analyzer.Granularity
+---@field group _.lspconfig.settings.wgls_analyzer.Group
+---@field merge _.lspconfig.settings.wgls_analyzer.Merge
+-- Prefer to unconditionally use imports of the core and alloc crate, over the std crate.
+---@field preferNoStd boolean
+-- Whether to prefer import paths containing a `prelude` module.
+---@field preferPrelude boolean
+-- The path structure for newly inserted paths to use.
+-- 
+-- ```lua
+-- default = "plain"
+-- ```
+---@field prefix "plain" | "self" | "crate"
+-- Whether to prefix external (including std, core) crate imports with `::`. e.g. "use ::std::io::Read;".
+---@field prefixExternPrelude boolean
+
+---@class _.lspconfig.settings.wgls_analyzer.BindingModeHints
+-- Whether to show inlay type hints for binding modes.
+---@field enable boolean
+
+---@class _.lspconfig.settings.wgls_analyzer.ChainingHints
+-- Whether to show inlay type hints for method chains.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enable boolean
+
+---@class _.lspconfig.settings.wgls_analyzer.ClosingBraceHints
+-- Whether to show inlay hints after a closing `}` to indicate what item it belongs to.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enable boolean
+-- Minimum number of lines required before the `}` until the hint is shown (set to 0 or 1 to always show them).
+-- 
+-- ```lua
+-- default = 25
+-- ```
+---@field minLines integer
+
+---@class _.lspconfig.settings.wgls_analyzer.ExpressionAdjustmentHints
+-- Whether to show inlay hints for type adjustments.
+-- 
+-- ```lua
+-- default = "never"
+-- ```
+---@field enable "always" | "never" | "reborrow"
+-- Whether to hide inlay hints for type adjustments outside of `unsafe` blocks.
+---@field hideOutsideUnsafe boolean
+-- Whether to show inlay hints as postfix ops (`.*` instead of `*`, etc).
+-- 
+-- ```lua
+-- default = "prefix"
+-- ```
+---@field mode "prefix" | "postfix" | "prefer_prefix" | "prefer_postfix"
+
+---@class _.lspconfig.settings.wgls_analyzer.Const
+-- Whether to show const generic parameter name inlay hints.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enable boolean
+
+---@class _.lspconfig.settings.wgls_analyzer.Lifetime
+-- Whether to show generic lifetime parameter name inlay hints.
+---@field enable boolean
+
+---@class _.lspconfig.settings.wgls_analyzer.Type
+-- Whether to show generic type parameter name inlay hints.
+---@field enable boolean
+
+---@class _.lspconfig.settings.wgls_analyzer.GenericParameterHints
+---@field const _.lspconfig.settings.wgls_analyzer.Const
+---@field lifetime _.lspconfig.settings.wgls_analyzer.Lifetime
+---@field type _.lspconfig.settings.wgls_analyzer.Type
+
+---@class _.lspconfig.settings.wgls_analyzer.ImplicitDrops
+-- Whether to show implicit drop hints.
+---@field enable boolean
+
+---@class _.lspconfig.settings.wgls_analyzer.ImplicitSizedBoundHints
+-- Whether to show inlay hints for the implied type parameter `Sized` bound.
+---@field enable boolean
+
+---@class _.lspconfig.settings.wgls_analyzer.LifetimeElisionHints
+-- Whether to show inlay type hints for elided lifetimes in function signatures.
+-- 
+-- ```lua
+-- default = "never"
+-- ```
+---@field enable "always" | "never" | "skip_trivial"
+-- Whether to prefer using parameter names as the name for elided lifetime hints if possible.
+---@field useParameterNames boolean
+
+---@class _.lspconfig.settings.wgls_analyzer.RangeExclusiveHints
+-- Whether to show exclusive range inlay hints.
+---@field enable boolean
+
+---@class _.lspconfig.settings.wgls_analyzer.ReborrowHints
+-- Whether to show inlay hints for compiler inserted reborrows.
+-- This setting is deprecated in favor of #wgsl-analyzer.inlayHints.expressionAdjustmentHints.enable#.
+-- 
+-- ```lua
+-- default = "never"
+-- ```
+---@field enable "always" | "never" | "mutable"
 
 ---@class _.lspconfig.settings.wgls_analyzer.InlayHints
+---@field bindingModeHints _.lspconfig.settings.wgls_analyzer.BindingModeHints
+---@field chainingHints _.lspconfig.settings.wgls_analyzer.ChainingHints
+---@field closingBraceHints _.lspconfig.settings.wgls_analyzer.ClosingBraceHints
 -- Whether to show inlay hints
 -- 
 -- ```lua
 -- default = true
 -- ```
 ---@field enabled boolean
+---@field expressionAdjustmentHints _.lspconfig.settings.wgls_analyzer.ExpressionAdjustmentHints
+---@field genericParameterHints _.lspconfig.settings.wgls_analyzer.GenericParameterHints
+---@field implicitDrops _.lspconfig.settings.wgls_analyzer.ImplicitDrops
+---@field implicitSizedBoundHints _.lspconfig.settings.wgls_analyzer.ImplicitSizedBoundHints
+---@field lifetimeElisionHints _.lspconfig.settings.wgls_analyzer.LifetimeElisionHints
+-- Maximum length for inlay hints. Set to null to have an unlimited length.
+-- 
+-- ```lua
+-- default = 25
+-- ```
+---@field maxLength integer
 -- Whether to show inlay hints for the names of function parameters
 -- 
 -- ```lua
 -- default = true
 -- ```
 ---@field parameterHints boolean
+---@field rangeExclusiveHints _.lspconfig.settings.wgls_analyzer.RangeExclusiveHints
+---@field reborrowHints _.lspconfig.settings.wgls_analyzer.ReborrowHints
+-- Whether to render leading colons for type hints, and trailing colons for parameter hints.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field renderColons boolean
 -- Whether to show inlay hints for the layout of struct fields
 ---@field structLayoutHints boolean
 -- Whether to show inlay hints for types of variable declarations
@@ -19035,6 +19438,103 @@
 -- ```
 ---@field typeVerbosity "full" | "compact" | "inner"
 
+---@class _.lspconfig.settings.wgls_analyzer.JoinLines
+-- Join lines merges consecutive declaration and initialization of an assignment.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field joinAssignments boolean
+-- Join lines inserts else between consecutive ifs.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field joinElseIf boolean
+-- Join lines removes trailing commas.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field removeTrailingComma boolean
+-- Join lines unwraps trivial blocks.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field unwrapTrivialBlock boolean
+
+---@class _.lspconfig.settings.wgls_analyzer.Implementations
+-- Whether to show `Implementations` lens. Only applies when `#wgsl-analyzer.lens.enable#` is set.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enable boolean
+
+---@class _.lspconfig.settings.wgls_analyzer.Adt
+-- Whether to show `References` lens for Struct, Enum, and Union.
+-- Only applies when `#wgsl-analyzer.lens.enable#` is set.
+---@field enable boolean
+
+---@class _.lspconfig.settings.wgls_analyzer.EnumVariant
+-- Whether to show `References` lens for Enum Variants.
+-- Only applies when `#wgsl-analyzer.lens.enable#` is set.
+---@field enable boolean
+
+---@class _.lspconfig.settings.wgls_analyzer.Method
+-- Whether to show `Method References` lens. Only applies when `#wgsl-analyzer.lens.enable#` is set.
+---@field enable boolean
+
+---@class _.lspconfig.settings.wgls_analyzer.Trait
+-- Whether to show `References` lens for Trait.
+-- Only applies when `#wgsl-analyzer.lens.enable#` is set.
+---@field enable boolean
+
+---@class _.lspconfig.settings.wgls_analyzer.References
+---@field adt _.lspconfig.settings.wgls_analyzer.Adt
+---@field enumVariant _.lspconfig.settings.wgls_analyzer.EnumVariant
+---@field method _.lspconfig.settings.wgls_analyzer.Method
+---@field trait _.lspconfig.settings.wgls_analyzer.Trait
+
+---@class _.lspconfig.settings.wgls_analyzer.Run
+-- Whether to show `Run` lens. Only applies when `#wgsl-analyzer.lens.enable#` is set.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enable boolean
+
+---@class _.lspconfig.settings.wgls_analyzer.Lens
+-- Whether to show CodeLens in WGSL files.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enable boolean
+---@field implementations _.lspconfig.settings.wgls_analyzer.Implementations
+-- Where to render annotations.
+-- 
+-- ```lua
+-- default = "above_name"
+-- ```
+---@field location "above_name" | "above_whole_item"
+---@field references _.lspconfig.settings.wgls_analyzer.References
+---@field run _.lspconfig.settings.wgls_analyzer.Run
+
+---@class _.lspconfig.settings.wgls_analyzer.Query
+-- Sets the LRU capacity of the specified queries.
+-- 
+-- ```lua
+-- default = {}
+-- ```
+---@field capacities table
+
+---@class _.lspconfig.settings.wgls_analyzer.Lru
+-- Number of syntax trees wgsl-analyzer keeps in memory. Defaults to 128.
+---@field capacity integer
+---@field query _.lspconfig.settings.wgls_analyzer.Query
+
 ---@class _.lspconfig.settings.wgls_analyzer.Preprocessor
 -- Shader defines used in `#ifdef` directives in the flavor of [Bevy Engine](https://bevyengine.org)'s [shader preprocessor](https://bevyengine.org/news/bevy-0-6/#shader-imports).
 -- 
@@ -19043,11 +19543,101 @@
 -- ```
 ---@field shaderDefs string[]
 
+---@class _.lspconfig.settings.wgls_analyzer.References
+-- Exclude imports from find-all-references.
+---@field excludeImports boolean
+
+---@class _.lspconfig.settings.wgls_analyzer.Inject
+-- Inject additional highlighting into doc comments.
+-- 
+-- When enabled, wgsl-analyzer will highlight WGSL source in doc comments as well as intra doc links.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enable boolean
+
+---@class _.lspconfig.settings.wgls_analyzer.Comment
+---@field inject _.lspconfig.settings.wgls_analyzer.Inject
+
+---@class _.lspconfig.settings.wgls_analyzer.Doc
+---@field comment _.lspconfig.settings.wgls_analyzer.Comment
+
+---@class _.lspconfig.settings.wgls_analyzer.Specialization
+-- Use specialized semantic tokens for operators.
+-- 
+-- When enabled, wgsl-analyzer will emit special token types for operator tokens instead of the generic `operator` token type.
+---@field enable boolean
+
+---@class _.lspconfig.settings.wgls_analyzer.Operator
+-- Use semantic tokens for operators.
+-- 
+-- When disabled, wgsl-analyzer will emit semantic tokens only for operator tokens when they are tagged with modifiers.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enable boolean
+---@field specialization _.lspconfig.settings.wgls_analyzer.Specialization
+
+---@class _.lspconfig.settings.wgls_analyzer.Specialization
+-- Use specialized semantic tokens for punctuation.
+-- 
+-- When enabled, wgsl-analyzer will emit special token types for punctuation tokens instead of the generic `punctuation` token type.
+---@field enable boolean
+
+---@class _.lspconfig.settings.wgls_analyzer.Punctuation
+-- Use semantic tokens for punctuation.
+-- 
+-- When disabled, wgsl-analyzer will emit semantic tokens only for punctuation tokens when they are tagged with modifiers or have a special role.
+---@field enable boolean
+---@field specialization _.lspconfig.settings.wgls_analyzer.Specialization
+
+---@class _.lspconfig.settings.wgls_analyzer.Strings
+-- Use semantic tokens for strings.
+-- 
+-- In some editors (e.g. VS Code) semantic tokens override other highlighting grammars.
+-- By disabling semantic tokens for strings, other grammars can be used to highlight their contents.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enable boolean
+
+---@class _.lspconfig.settings.wgls_analyzer.SemanticHighlighting
+---@field doc _.lspconfig.settings.wgls_analyzer.Doc
+-- Whether the server is allowed to emit non-standard tokens and modifiers.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field nonStandardTokens boolean
+---@field operator _.lspconfig.settings.wgls_analyzer.Operator
+---@field punctuation _.lspconfig.settings.wgls_analyzer.Punctuation
+---@field strings _.lspconfig.settings.wgls_analyzer.Strings
+
 ---@class _.lspconfig.settings.wgls_analyzer.Server
 -- Extra environment variables that will be passed to the wgsl-analyzer executable. Useful for passing e.g. `WA_LOG` for debugging.
 ---@field extraEnv table
 -- Path to wgsl-analyzer executable (points to bundled binary by default).
 ---@field path string
+
+---@class _.lspconfig.settings.wgls_analyzer.Documentation
+-- Show documentation.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enable boolean
+
+---@class _.lspconfig.settings.wgls_analyzer.SignatureInfo
+-- Show full signature of the callable. Only shows parameters if disabled.
+-- 
+-- ```lua
+-- default = "full"
+-- ```
+---@field detail "full" | "parameters"
+---@field documentation _.lspconfig.settings.wgls_analyzer.Documentation
 
 ---@class _.lspconfig.settings.wgls_analyzer.StatusBar
 -- Action to run when clicking the extension status bar item.
@@ -19097,10 +19687,75 @@
 -- default = true
 -- ```
 ---@field continueCommentsOnNewline boolean
+-- Specify the characters allowed to invoke special on typing triggers.
+-- - typing `=` after `let` tries to smartly add `;` if `=` is followed by an existing expression
+-- - typing `=` between two expressions adds `;` when in statement position
+-- - typing `=` to turn an assignment into an equality comparison removes `;` when in expression position
+-- - typing `.` in a chain method call auto-indents
+-- - typing `{` or `(` in front of an expression inserts a closing `}` or `)` after the expression
+-- - typing `{` in a use item adds a closing `}` in the right place
+-- - typing `>` to complete a return type `->` will insert a whitespace after it.
+-- 
+-- ```lua
+-- default = "=."
+-- ```
+---@field triggerChars string
+
+---@class _.lspconfig.settings.wgls_analyzer.Vfs
+-- Additional paths to include in the VFS.
+-- 
+-- ```lua
+-- default = {}
+-- ```
+---@field extraIncludes string[]
+
+---@class _.lspconfig.settings.wgls_analyzer.RangeFormatting
+-- Enables the use of wgslfmt's unstable range formatting command for the `textDocument/rangeFormatting` request. The wgslfmt option is unstable.
+---@field enable boolean
+
+---@class _.lspconfig.settings.wgls_analyzer.Wgslfmt
+-- Additional arguments to `wgslfmt`.
+-- 
+-- ```lua
+-- default = {}
+-- ```
+---@field extraArgs string[]
+-- Advanced option, fully override the command wgsl-analyzer uses for formatting. This should be the equivalent of `wgslfmt` here, and not that of `cargo wgslfmt`. The file contents will be passed on the standard input and the formatted result will be read from the standard output.
+---@field overrideCommand string[]
+---@field rangeFormatting _.lspconfig.settings.wgls_analyzer.RangeFormatting
+
+---@class _.lspconfig.settings.wgls_analyzer.Search
+-- Workspace symbol search kind.
+-- 
+-- ```lua
+-- default = "only_types"
+-- ```
+---@field kind "only_types" | "all_symbols"
+-- Limits the number of items returned from a workspace symbol search (Defaults to 128).
+-- Some clients like vs-code issue new searches on result filtering and don't require all results to be returned in the initial search.
+-- Other clients requires all results upfront and might require a higher limit.
+-- 
+-- ```lua
+-- default = 128
+-- ```
+---@field limit integer
+-- Workspace symbol search scope.
+-- 
+-- ```lua
+-- default = "workspace"
+-- ```
+---@field scope "workspace" | "workspace_and_dependencies"
+
+---@class _.lspconfig.settings.wgls_analyzer.Symbol
+---@field search _.lspconfig.settings.wgls_analyzer.Search
+
+---@class _.lspconfig.settings.wgls_analyzer.Workspace
+---@field symbol _.lspconfig.settings.wgls_analyzer.Symbol
 
 ---@class _.lspconfig.settings.wgls_analyzer.Wgsl-analyzer
 ---@field assist _.lspconfig.settings.wgls_analyzer.Assist
 ---@field cachePriming _.lspconfig.settings.wgls_analyzer.CachePriming
+---@field completion _.lspconfig.settings.wgls_analyzer.Completion
 -- `#import` directives in the flavor of [Bevy Engine](https://bevyengine.org)'s [shader preprocessor](https://bevyengine.org/news/bevy-0-6/#shader-imports). To use objects from an import, add `#import <name>` to your WGSL.
 -- 
 -- ```lua
@@ -19108,12 +19763,31 @@
 -- ```
 ---@field customImports table
 ---@field diagnostics _.lspconfig.settings.wgls_analyzer.Diagnostics
+---@field files _.lspconfig.settings.wgls_analyzer.Files
+---@field highlightRelated _.lspconfig.settings.wgls_analyzer.HighlightRelated
+---@field hover _.lspconfig.settings.wgls_analyzer.Hover
+---@field imports _.lspconfig.settings.wgls_analyzer.Imports
 -- Do not start wgsl-analyzer server when the extension is activated.
 ---@field initializeStopped boolean
 ---@field inlayHints _.lspconfig.settings.wgls_analyzer.InlayHints
+---@field joinLines _.lspconfig.settings.wgls_analyzer.JoinLines
+---@field lens _.lspconfig.settings.wgls_analyzer.Lens
+-- Disable project auto-discovery in favor of explicitly specified set of projects.
+-- 
+-- Elements must be paths pointing to `Cargo.toml`, `wgsl-project.json`, `.rs` files (which will be treated as standalone files) or JSON objects in `wgsl-project.json` format.
+-- 
+-- ```lua
+-- default = {}
+-- ```
+---@field linkedProjects any[]
+---@field lru _.lspconfig.settings.wgls_analyzer.Lru
+-- How many worker threads in the main loop. The default `null` means to pick automatically.
+---@field numThreads any|number|"physical" | "logical"
 ---@field preprocessor _.lspconfig.settings.wgls_analyzer.Preprocessor
+---@field references _.lspconfig.settings.wgls_analyzer.References
 -- Whether to restart the server automatically when certain settings that require a restart are changed.
 ---@field restartServerOnConfigChange boolean
+---@field semanticHighlighting _.lspconfig.settings.wgls_analyzer.SemanticHighlighting
 ---@field server _.lspconfig.settings.wgls_analyzer.Server
 -- Whether to show the dependencies view.
 -- 
@@ -19135,9 +19809,13 @@
 -- default = true
 -- ```
 ---@field showUnlinkedFileNotification boolean
+---@field signatureInfo _.lspconfig.settings.wgls_analyzer.SignatureInfo
 ---@field statusBar _.lspconfig.settings.wgls_analyzer.StatusBar
 ---@field trace _.lspconfig.settings.wgls_analyzer.Trace
 ---@field typing _.lspconfig.settings.wgls_analyzer.Typing
+---@field vfs _.lspconfig.settings.wgls_analyzer.Vfs
+---@field wgslfmt _.lspconfig.settings.wgls_analyzer.Wgslfmt
+---@field workspace _.lspconfig.settings.wgls_analyzer.Workspace
 
 ---@class lspconfig.settings.wgls_analyzer
 ---@field wgsl-analyzer _.lspconfig.settings.wgls_analyzer.Wgsl-analyzer
