@@ -800,6 +800,12 @@
 -- default = {}
 -- ```
 ---@field extraPaths string[]
+-- Timeout (in seconds) for file enumeration operations. Default is 10 seconds.
+-- 
+-- ```lua
+-- default = 10
+-- ```
+---@field fileEnumerationTimeout integer
 -- Paths of directories or files whose diagnostic output (errors and warnings) should be suppressed even if they are an included file or within the transitive closure of an included file. Paths may contain wildcard characters ** (a directory or multiple levels of directories), * (a sequence of zero or more characters), or ? (a single character). If no value is provided, the value of python.linting.ignorePatterns (if set) will be used.
 -- 
 -- ```lua
