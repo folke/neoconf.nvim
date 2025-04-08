@@ -353,6 +353,24 @@
       "scope": "machine-overridable",
       "type": "string"
     },
+    "swift.scriptSwiftLanguageVersion": {
+      "default": "6",
+      "enum": [
+        "6",
+        "5",
+        "4.2",
+        "4",
+        "Ask Every Run"
+      ],
+      "enumDescriptions": [
+        "Use Swift 6 when running Swift scripts.",
+        "Use Swift 5 when running Swift scripts.",
+        "Prompt to select the Swift version each time a script is run."
+      ],
+      "markdownDescription": "The default Swift version to use when running Swift scripts.",
+      "scope": "machine-overridable",
+      "type": "string"
+    },
     "swift.searchSubfoldersForPackages": {
       "default": false,
       "markdownDescription": "Search sub-folders of workspace folder for Swift Packages at start up.",

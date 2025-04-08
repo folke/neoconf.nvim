@@ -12284,7 +12284,7 @@
 -- default = "error"
 -- ```
 ---@field reportOptionalMemberAccess "none" | "information" | "warning" | "error" | true | false
--- Diagnostics for an attempt to use an Optional type as an operand to a binary or unary operator (like '+', '==', 'or', 'not').
+-- Diagnostics for an attempt to use an Optional type as an operand to a binary or unary operator (like '+', '<<', '~').
 -- 
 -- ```lua
 -- default = "error"
@@ -15422,6 +15422,12 @@
 -- default = "off"
 -- ```
 ---@field sanitizer "off" | "thread" | "address"
+-- The default Swift version to use when running Swift scripts.
+-- 
+-- ```lua
+-- default = "6"
+-- ```
+---@field scriptSwiftLanguageVersion "6" | "5" | "4.2" | "4" | "Ask Every Run"
 -- Search sub-folders of workspace folder for Swift Packages at start up.
 ---@field searchSubfoldersForPackages boolean
 -- Controls where to show the Swift build progress when running a `swift` build task.

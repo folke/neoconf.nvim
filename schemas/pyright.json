@@ -696,7 +696,7 @@
         },
         "reportOptionalOperand": {
           "default": "error",
-          "description": "Diagnostics for an attempt to use an Optional type as an operand to a binary or unary operator (like '+', '==', 'or', 'not').",
+          "description": "Diagnostics for an attempt to use an Optional type as an operand to a binary or unary operator (like '+', '<<', '~').",
           "enum": [
             "none",
             "information",
