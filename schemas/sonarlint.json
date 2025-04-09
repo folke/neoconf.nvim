@@ -212,7 +212,7 @@
       "default": false,
       "markdownDescription": "Highlight issues in new code.\n\nFocusing on new code helps you practice [Clean as You Code](https://docs.sonarsource.com/sonarqube-for-ide/vs-code/clean-as-you-code-in-the-ide/).\n\nIn [Connected Mode](https://docs.sonarsource.com/sonarqube-for-ide/vs-code/team-features/connected-mode/) you benefit from a more accurate new code definition based on your SonarQube (Server, Cloud) settings.\n\nWithout Connected Mode (in standalone mode), any code added or changed in the **last 30 days** is considered new code.",
       "order": 100,
-      "scope": "window",
+      "scope": "machine",
       "type": "boolean"
     },
     "sonarlint.ls.javaHome": {
