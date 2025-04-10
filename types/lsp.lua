@@ -470,7 +470,7 @@
 -- default = "error"
 -- ```
 ---@field reportOptionalMemberAccess "none" | "hint" | "information" | "warning" | "error" | true | false
--- Diagnostics for an attempt to use an Optional type as an operand to a binary or unary operator (like '+', '==', 'or', 'not').
+-- Diagnostics for an attempt to use an Optional type as an operand to a binary or unary operator (like '+', '<<', '~').
 -- 
 -- ```lua
 -- default = "error"
