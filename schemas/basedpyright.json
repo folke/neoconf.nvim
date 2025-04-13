@@ -404,6 +404,23 @@
             "boolean"
           ]
         },
+        "reportIncompatibleUnannotatedOverride": {
+          "default": "none",
+          "description": "Diagnostics for overrides in subclasses that redefine a variable without a type annotation in an incompatible way",
+          "enum": [
+            "none",
+            "hint",
+            "information",
+            "warning",
+            "error",
+            true,
+            false
+          ],
+          "type": [
+            "string",
+            "boolean"
+          ]
+        },
         "reportIncompatibleVariableOverride": {
           "default": "error",
           "description": "Diagnostics for overrides in subclasses that redefine a variable in an incompatible way.",

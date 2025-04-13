@@ -326,6 +326,12 @@
 -- default = "error"
 -- ```
 ---@field reportIncompatibleMethodOverride "none" | "hint" | "information" | "warning" | "error" | true | false
+-- Diagnostics for overrides in subclasses that redefine a variable without a type annotation in an incompatible way
+-- 
+-- ```lua
+-- default = "none"
+-- ```
+---@field reportIncompatibleUnannotatedOverride "none" | "hint" | "information" | "warning" | "error" | true | false
 -- Diagnostics for overrides in subclasses that redefine a variable in an incompatible way.
 -- 
 -- ```lua
