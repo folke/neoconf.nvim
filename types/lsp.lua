@@ -4991,6 +4991,12 @@
 -- default = "singleComponent"
 -- ```
 ---@field sessionLoading "singleComponent" | "multipleComponents"
+-- Enable Language Server support for `.cabal` files. Requires Haskell Language Server version >= 1.9.0.0.
+-- 
+-- ```lua
+-- default = "automatic"
+-- ```
+---@field supportCabalFiles "enable" | "disable" | "automatic"
 -- When manageHLS is set to GHCup, this can overwrite the automatic toolchain configuration with a more specific one. When a tool is omitted, the extension will manage the version (for 'ghc' we try to figure out the version the project requires). The format is '{"tool": "version", ...}'. 'version' accepts all identifiers that 'ghcup' accepts.
 -- 
 -- ```lua

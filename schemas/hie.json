@@ -1153,6 +1153,22 @@
       "scope": "resource",
       "type": "string"
     },
+    "haskell.supportCabalFiles": {
+      "default": "automatic",
+      "description": "Enable Language Server support for `.cabal` files. Requires Haskell Language Server version >= 1.9.0.0.",
+      "enum": [
+        "enable",
+        "disable",
+        "automatic"
+      ],
+      "enumDescriptions": [
+        "Enable Language Server support for `.cabal` files",
+        "Disable Language Server support for `.cabal` files",
+        "Enable Language Server support for `.cabal` files if the HLS version supports it."
+      ],
+      "scope": "resource",
+      "type": "string"
+    },
     "haskell.toolchain": {
       "default": {},
       "description": "When manageHLS is set to GHCup, this can overwrite the automatic toolchain configuration with a more specific one. When a tool is omitted, the extension will manage the version (for 'ghc' we try to figure out the version the project requires). The format is '{\"tool\": \"version\", ...}'. 'version' accepts all identifiers that 'ghcup' accepts.",
