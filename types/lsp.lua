@@ -16145,6 +16145,12 @@
 -- default = "warning"
 -- ```
 ---@field recommendedVariantOrder "ignore" | "warning" | "error"
+-- Usage of class names that have been blocklisted via `@source not inline(…)`
+-- 
+-- ```lua
+-- default = "warning"
+-- ```
+---@field usedBlocklistedClass "ignore" | "warning" | "error"
 
 ---@class _.lspconfig.settings.tailwindcss.TailwindCSS
 -- The HTML attributes for which to provide class completions, hover previews, linting etc.

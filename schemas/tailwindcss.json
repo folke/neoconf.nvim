@@ -171,6 +171,17 @@
       "scope": "language-overridable",
       "type": "string"
     },
+    "tailwindCSS.lint.usedBlocklistedClass": {
+      "default": "warning",
+      "enum": [
+        "ignore",
+        "warning",
+        "error"
+      ],
+      "markdownDescription": "Usage of class names that have been blocklisted via `@source not inline(…)`",
+      "scope": "language-overridable",
+      "type": "string"
+    },
     "tailwindCSS.rootFontSize": {
       "default": 16,
       "markdownDescription": "Root font size in pixels. Used to convert `rem` CSS values to their `px` equivalents. See `#tailwindCSS.showPixelEquivalents#`.",
