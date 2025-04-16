@@ -16349,6 +16349,20 @@
 -- %extension.tinymist.config.tinymist.completion.triggerOnSnippetPlaceholders.desc%
 ---@field triggerOnSnippetPlaceholders boolean
 
+---@class _.lspconfig.settings.tinymist.Lint
+-- %extension.tinymist.config.tinymist.lint.enabled.desc%
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enabled boolean
+-- %extension.tinymist.config.tinymist.lint.when.desc%
+-- 
+-- ```lua
+-- default = "onSave"
+-- ```
+---@field when "onSave" | "onType"
+
 ---@class _.lspconfig.settings.tinymist.Preview
 -- %extension.tinymist.config.tinymist.preview.cursorIndicator.desc%
 ---@field cursorIndicator boolean
@@ -16450,7 +16464,7 @@
 -- %extension.tinymist.config.tinymist.formatterMode.desc%
 -- 
 -- ```lua
--- default = "disable"
+-- default = "typstyle"
 -- ```
 ---@field formatterMode "disable" | "typstyle" | "typstfmt"
 -- %extension.tinymist.config.tinymist.formatterPrintWidth.desc%
@@ -16459,6 +16473,7 @@
 -- default = 120
 -- ```
 ---@field formatterPrintWidth number
+---@field lint _.lspconfig.settings.tinymist.Lint
 -- %extension.tinymist.config.tinymist.onEnterEvent.desc%
 -- 
 -- ```lua

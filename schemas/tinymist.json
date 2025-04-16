@@ -132,7 +132,7 @@
       "type": "number"
     },
     "tinymist.formatterMode": {
-      "default": "disable",
+      "default": "typstyle",
       "enum": [
         "disable",
         "typstyle",
@@ -152,6 +152,26 @@
       "markdownDescription": "%extension.tinymist.config.tinymist.formatterPrintWidth.desc%",
       "title": "%extension.tinymist.config.tinymist.formatterPrintWidth.title%",
       "type": "number"
+    },
+    "tinymist.lint.enabled": {
+      "default": true,
+      "markdownDescription": "%extension.tinymist.config.tinymist.lint.enabled.desc%",
+      "title": "%extension.tinymist.config.tinymist.lint.enabled.title%",
+      "type": "boolean"
+    },
+    "tinymist.lint.when": {
+      "default": "onSave",
+      "enum": [
+        "onSave",
+        "onType"
+      ],
+      "enumDescriptions": [
+        "%extension.tinymist.config.tinymist.lint.when.string.enum.onSave%",
+        "%extension.tinymist.config.tinymist.lint.when.string.enum.onType%"
+      ],
+      "markdownDescription": "%extension.tinymist.config.tinymist.lint.when.desc%",
+      "title": "%extension.tinymist.config.tinymist.lint.when.title%",
+      "type": "string"
     },
     "tinymist.onEnterEvent": {
       "default": true,
