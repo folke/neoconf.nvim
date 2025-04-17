@@ -6699,6 +6699,12 @@
 -- Whether to automatically show the plot navigator when plotting.
 ---@field focusPlotNavigator boolean
 ---@field inlayHints _.lspconfig.settings.julials.InlayHints
+-- Points to the julia executable used to launch the language server process. This overwrites julia.executablePath for the language server launch if present.
+-- 
+-- ```lua
+-- default = ""
+-- ```
+---@field languageServerExecutablePath string
 ---@field lint _.lspconfig.settings.julials.Lint
 -- Number of processes to use for testing.
 -- 

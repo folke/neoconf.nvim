@@ -215,6 +215,12 @@
       "markdownDescription": "Enable type hints for variable definitions:\n```julia\nfoo #=::Int64=# = 42\n```",
       "type": "boolean"
     },
+    "julia.languageServerExecutablePath": {
+      "default": "",
+      "description": "Points to the julia executable used to launch the language server process. This overwrites julia.executablePath for the language server launch if present.",
+      "scope": "machine-overridable",
+      "type": "string"
+    },
     "julia.lint.call": {
       "default": true,
       "description": "This compares  call signatures against all known methods for the called function. Calls with too many or too few arguments, or unknown keyword parameters are highlighted.",
