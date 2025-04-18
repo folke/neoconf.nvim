@@ -4433,6 +4433,18 @@
 -- default = true
 -- ```
 ---@field diagnosticsOn boolean
+-- Enables cabal hover
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field hoverOn boolean
+-- Enables cabal symbols
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field symbolsOn boolean
 
 ---@class _.lspconfig.settings.hie.Config
 -- Set path to 'cabal-fmt' executable
@@ -4455,6 +4467,14 @@
 
 ---@class _.lspconfig.settings.hie.Cabal-gild
 ---@field config _.lspconfig.settings.hie.Config
+
+---@class _.lspconfig.settings.hie.CabalHaskellIntegration
+-- Enables cabalHaskellIntegration plugin
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field globalOn boolean
 
 ---@class _.lspconfig.settings.hie.CallHierarchy
 -- Enables callHierarchy plugin
@@ -4506,12 +4526,18 @@
 ---@field globalOn boolean
 
 ---@class _.lspconfig.settings.hie.Explicit-fields
--- Enables explicit-fields plugin
+-- Enables explicit-fields code actions
 -- 
 -- ```lua
 -- default = true
 -- ```
----@field globalOn boolean
+---@field codeActionsOn boolean
+-- Enables explicit-fields inlay hints
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field inlayHintsOn boolean
 
 ---@class _.lspconfig.settings.hie.Explicit-fixity
 -- Enables explicit-fixity plugin
@@ -4664,6 +4690,12 @@
 -- default = true
 -- ```
 ---@field codeLensOn boolean
+-- Enables importLens inlay hints
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field inlayHintsOn boolean
 
 ---@class _.lspconfig.settings.hie.ModuleName
 -- Enables moduleName plugin
@@ -4843,6 +4875,7 @@
 ---@field cabal _.lspconfig.settings.hie.Cabal
 ---@field cabal-fmt _.lspconfig.settings.hie.Cabal-fmt
 ---@field cabal-gild _.lspconfig.settings.hie.Cabal-gild
+---@field cabalHaskellIntegration _.lspconfig.settings.hie.CabalHaskellIntegration
 ---@field callHierarchy _.lspconfig.settings.hie.CallHierarchy
 ---@field changeTypeSignature _.lspconfig.settings.hie.ChangeTypeSignature
 ---@field class _.lspconfig.settings.hie.Class

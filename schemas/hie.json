@@ -119,6 +119,24 @@
       "scope": "resource",
       "type": "boolean"
     },
+    "haskell.plugin.cabal.hoverOn": {
+      "default": true,
+      "description": "Enables cabal hover",
+      "scope": "resource",
+      "type": "boolean"
+    },
+    "haskell.plugin.cabal.symbolsOn": {
+      "default": true,
+      "description": "Enables cabal symbols",
+      "scope": "resource",
+      "type": "boolean"
+    },
+    "haskell.plugin.cabalHaskellIntegration.globalOn": {
+      "default": true,
+      "description": "Enables cabalHaskellIntegration plugin",
+      "scope": "resource",
+      "type": "boolean"
+    },
     "haskell.plugin.callHierarchy.globalOn": {
       "default": true,
       "description": "Enables callHierarchy plugin",
@@ -161,9 +179,15 @@
       "scope": "resource",
       "type": "boolean"
     },
-    "haskell.plugin.explicit-fields.globalOn": {
+    "haskell.plugin.explicit-fields.codeActionsOn": {
       "default": true,
-      "description": "Enables explicit-fields plugin",
+      "description": "Enables explicit-fields code actions",
+      "scope": "resource",
+      "type": "boolean"
+    },
+    "haskell.plugin.explicit-fields.inlayHintsOn": {
+      "default": true,
+      "description": "Enables explicit-fields inlay hints",
       "scope": "resource",
       "type": "boolean"
     },
@@ -294,6 +318,12 @@
     "haskell.plugin.importLens.codeLensOn": {
       "default": true,
       "description": "Enables importLens code lenses",
+      "scope": "resource",
+      "type": "boolean"
+    },
+    "haskell.plugin.importLens.inlayHintsOn": {
+      "default": true,
+      "description": "Enables importLens inlay hints",
       "scope": "resource",
       "type": "boolean"
     },
