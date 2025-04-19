@@ -788,6 +788,12 @@
 -- default = true
 -- ```
 ---@field autoSearchPaths boolean
+-- Path to the baseline file. Defaults to `./.basedpyright/baseline.json`
+-- 
+-- ```lua
+-- default = ""
+-- ```
+---@field baselineFile string
 -- ```lua
 -- default = "openFilesOnly"
 -- ```
