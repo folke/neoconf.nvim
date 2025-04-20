@@ -368,6 +368,24 @@
       "scope": "resource",
       "type": "object"
     },
+    "luau-lsp.server.communicationChannel": {
+      "default": "stdio",
+      "enum": [
+        "stdio",
+        "pipe"
+      ],
+      "enumDescriptions": [
+        "Communicate via stdin/stdout (default)",
+        "Communicate via UNIX socket files. Useful for debugging"
+      ],
+      "markdownDescription": "Type of communication channel to use for communicating with the server. Only useful for debug purposes",
+      "type": "string"
+    },
+    "luau-lsp.server.delayStartup": {
+      "default": false,
+      "markdownDescription": "Make the server spin indefinitely when starting up to allow time to attach a debugger. Only useful for debug purposes",
+      "type": "boolean"
+    },
     "luau-lsp.server.path": {
       "default": "",
       "markdownDescription": "Path to the Luau LSP server binary. If not provided, uses the binary included in the extension.",

@@ -512,6 +512,23 @@
             "boolean"
           ]
         },
+        "reportInvalidAbstractMethod": {
+          "default": "none",
+          "description": "Diagnostics for usages of `@abstractmethod` on a non-abstract class",
+          "enum": [
+            "none",
+            "hint",
+            "information",
+            "warning",
+            "error",
+            true,
+            false
+          ],
+          "type": [
+            "string",
+            "boolean"
+          ]
+        },
         "reportInvalidCast": {
           "default": "none",
           "description": "Diagnostics for `cast`s to non-overlapping types",

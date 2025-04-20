@@ -4,32 +4,31 @@
   "properties": {
     "vue.autoInsert.bracketSpacing": {
       "default": true,
-      "description": "Auto add space between double curly brackets: {{|}} -> {{ | }}",
+      "markdownDescription": "%configuration.autoInsert.bracketSpacing%",
       "type": "boolean"
     },
     "vue.autoInsert.dotValue": {
       "default": false,
-      "description": "Auto-complete Ref value with `.value`.",
+      "markdownDescription": "%configuration.autoInsert.dotValue%",
       "type": "boolean"
     },
     "vue.codeActions.askNewComponentName": {
       "default": true,
-      "description": "Ask for new component name when extract component.",
+      "markdownDescription": "%configuration.codeActions.askNewComponentName%",
       "type": "boolean"
     },
     "vue.codeActions.enabled": {
       "default": true,
-      "description": "Enabled code actions.",
+      "markdownDescription": "%configuration.codeActions.enabled%",
       "type": "boolean"
     },
     "vue.codeLens.enabled": {
       "default": true,
-      "description": "Enabled code lens.",
+      "markdownDescription": "%configuration.codeLens.enabled%",
       "type": "boolean"
     },
     "vue.complete.casing.props": {
       "default": "autoKebab",
-      "description": "Preferred attr name case.",
       "enum": [
         "autoKebab",
         "autoCamel",
@@ -42,11 +41,11 @@
         ":kebab-case=\"...\"",
         ":camelCase=\"...\""
       ],
+      "markdownDescription": "%configuration.complete.casing.props%",
       "type": "string"
     },
     "vue.complete.casing.tags": {
       "default": "autoPascal",
-      "description": "Preferred tag name case.",
       "enum": [
         "autoKebab",
         "autoPascal",
@@ -59,28 +58,32 @@
         "<kebab-case>",
         "<PascalCase>"
       ],
+      "markdownDescription": "%configuration.complete.casing.tags%",
       "type": "string"
     },
     "vue.complete.defineAssignment": {
       "default": true,
-      "description": "Auto add `const props = ` before `defineProps` when selecting the completion item `props`. (also `emit` and `slots`)",
+      "markdownDescription": "%configuration.complete.defineAssignment%",
       "type": "boolean"
     },
     "vue.doctor.status": {
       "default": true,
-      "description": "Show known problems in status bar.",
+      "markdownDescription": "%configuration.doctor.status%",
       "type": "boolean"
     },
     "vue.format.script.initialIndent": {
       "default": false,
+      "markdownDescription": "%configuration.format.script.initialIndent%",
       "type": "boolean"
     },
     "vue.format.style.initialIndent": {
       "default": false,
+      "markdownDescription": "%configuration.format.style.initialIndent%",
       "type": "boolean"
     },
     "vue.format.template.initialIndent": {
       "default": true,
+      "markdownDescription": "%configuration.format.template.initialIndent%",
       "type": "boolean"
     },
     "vue.format.wrapAttributes": {
@@ -94,31 +97,32 @@
         "preserve",
         "preserve-aligned"
       ],
+      "markdownDescription": "%configuration.format.wrapAttributes%",
       "type": "string"
     },
     "vue.inlayHints.destructuredProps": {
       "default": false,
-      "markdownDescription": "Show inlay hints for destructured props:\n\n```ts\nwatch(() => /* props. */foo, () => { ... });\n```",
+      "markdownDescription": "%configuration.inlayHints.destructuredProps%",
       "type": "boolean"
     },
     "vue.inlayHints.inlineHandlerLeading": {
       "default": false,
-      "markdownDescription": "Show inlay hints for event argument in inline handlers:\n\n```html\n<Comp @foo=\"/* $event => */console.log($event)\" />\n```",
+      "markdownDescription": "%configuration.inlayHints.inlineHandlerLeading%",
       "type": "boolean"
     },
     "vue.inlayHints.missingProps": {
       "default": false,
-      "markdownDescription": "Show inlay hints for missing required props:\n\n```html\n<Comp />\n<!-- ^ foo! -->\n```",
+      "markdownDescription": "%configuration.inlayHints.missingProps%",
       "type": "boolean"
     },
     "vue.inlayHints.optionsWrapper": {
       "default": false,
-      "markdownDescription": "Show inlay hints for component options wrapper for type support:\n\n```vue\n<script lang=\"ts\">\nexport default /* (await import('vue')).defineComponent( */{}/* ) */;\n</script>\n```",
+      "markdownDescription": "%configuration.inlayHints.optionsWrapper%",
       "type": "boolean"
     },
     "vue.inlayHints.vBindShorthand": {
       "default": false,
-      "markdownDescription": "Show inlay hints for v-bind shorthand:\n\n```html\n<Comp :foo />\n     <!-- ^ =\"foo\" -->\n```",
+      "markdownDescription": "%configuration.inlayHints.vBindShorthand%",
       "type": "boolean"
     },
     "vue.server.includeLanguages": {
@@ -128,11 +132,12 @@
       "items": {
         "type": "string"
       },
+      "markdownDescription": "%configuration.server.includeLanguages%",
       "type": "array"
     },
     "vue.splitEditors.icon": {
       "default": false,
-      "description": "Show split editor icon in title area of editor.",
+      "markdownDescription": "%configuration.splitEditors.icon%",
       "type": "boolean"
     },
     "vue.splitEditors.layout.left": {
@@ -144,6 +149,7 @@
       "items": {
         "type": "string"
       },
+      "markdownDescription": "%configuration.splitEditors.layout.left%",
       "type": "array"
     },
     "vue.splitEditors.layout.right": {
@@ -154,16 +160,17 @@
       "items": {
         "type": "string"
       },
+      "markdownDescription": "%configuration.splitEditors.layout.right%",
       "type": "array"
     },
     "vue.trace.server": {
       "default": "off",
-      "description": "Traces the communication between VS Code and the language server.",
       "enum": [
         "off",
         "messages",
         "verbose"
       ],
+      "markdownDescription": "%configuration.trace.server%",
       "scope": "window",
       "type": "string"
     }

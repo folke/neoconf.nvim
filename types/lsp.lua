@@ -362,6 +362,12 @@
 -- default = "error"
 -- ```
 ---@field reportIndexIssue "none" | "hint" | "information" | "warning" | "error" | true | false
+-- Diagnostics for usages of `@abstractmethod` on a non-abstract class
+-- 
+-- ```lua
+-- default = "none"
+-- ```
+---@field reportInvalidAbstractMethod "none" | "hint" | "information" | "warning" | "error" | true | false
 -- Diagnostics for `cast`s to non-overlapping types
 -- 
 -- ```lua
@@ -9651,6 +9657,14 @@
 ---@field fileAliases table
 
 ---@class _.lspconfig.settings.luau_lsp.Server
+-- Type of communication channel to use for communicating with the server. Only useful for debug purposes
+-- 
+-- ```lua
+-- default = "stdio"
+-- ```
+---@field communicationChannel "stdio" | "pipe"
+-- Make the server spin indefinitely when starting up to allow time to attach a debugger. Only useful for debug purposes
+---@field delayStartup boolean
 -- Path to the Luau LSP server binary. If not provided, uses the binary included in the extension.
 -- 
 -- ```lua
@@ -16391,6 +16405,12 @@
 -- default = true
 -- ```
 ---@field postfixUfcsRight boolean
+-- Whether to make symbol completion stepless. For example, `$ar|$` will be completed to `$arrow.r$`. Hint: Restarting the editor is required to change this setting.
+-- 
+-- ```lua
+-- default = "step"
+-- ```
+---@field symbol "step" | "stepless"
 -- %extension.tinymist.config.tinymist.completion.triggerOnSnippetPlaceholders.desc%
 ---@field triggerOnSnippetPlaceholders boolean
 
@@ -17587,23 +17607,23 @@
 ---@field typst-lsp _.lspconfig.settings.typst_lsp.Typst-lsp
 
 ---@class _.lspconfig.settings.volar.AutoInsert
--- Auto add space between double curly brackets: {{|}} -> {{ | }}
+-- %configuration.autoInsert.bracketSpacing%
 -- 
 -- ```lua
 -- default = true
 -- ```
 ---@field bracketSpacing boolean
--- Auto-complete Ref value with `.value`.
+-- %configuration.autoInsert.dotValue%
 ---@field dotValue boolean
 
 ---@class _.lspconfig.settings.volar.CodeActions
--- Ask for new component name when extract component.
+-- %configuration.codeActions.askNewComponentName%
 -- 
 -- ```lua
 -- default = true
 -- ```
 ---@field askNewComponentName boolean
--- Enabled code actions.
+-- %configuration.codeActions.enabled%
 -- 
 -- ```lua
 -- default = true
@@ -17611,7 +17631,7 @@
 ---@field enabled boolean
 
 ---@class _.lspconfig.settings.volar.CodeLens
--- Enabled code lens.
+-- %configuration.codeLens.enabled%
 -- 
 -- ```lua
 -- default = true
@@ -17619,13 +17639,13 @@
 ---@field enabled boolean
 
 ---@class _.lspconfig.settings.volar.Casing
--- Preferred attr name case.
+-- %configuration.complete.casing.props%
 -- 
 -- ```lua
 -- default = "autoKebab"
 -- ```
 ---@field props "autoKebab" | "autoCamel" | "kebab" | "camel"
--- Preferred tag name case.
+-- %configuration.complete.casing.tags%
 -- 
 -- ```lua
 -- default = "autoPascal"
@@ -17634,7 +17654,7 @@
 
 ---@class _.lspconfig.settings.volar.Complete
 ---@field casing _.lspconfig.settings.volar.Casing
--- Auto add `const props = ` before `defineProps` when selecting the completion item `props`. (also `emit` and `slots`)
+-- %configuration.complete.defineAssignment%
 -- 
 -- ```lua
 -- default = true
@@ -17642,7 +17662,7 @@
 ---@field defineAssignment boolean
 
 ---@class _.lspconfig.settings.volar.Doctor
--- Show known problems in status bar.
+-- %configuration.doctor.status%
 -- 
 -- ```lua
 -- default = true
@@ -17650,12 +17670,16 @@
 ---@field status boolean
 
 ---@class _.lspconfig.settings.volar.Script
+-- %configuration.format.script.initialIndent%
 ---@field initialIndent boolean
 
 ---@class _.lspconfig.settings.volar.Style
+-- %configuration.format.style.initialIndent%
 ---@field initialIndent boolean
 
 ---@class _.lspconfig.settings.volar.Template
+-- %configuration.format.template.initialIndent%
+-- 
 -- ```lua
 -- default = true
 -- ```
@@ -17665,70 +17689,54 @@
 ---@field script _.lspconfig.settings.volar.Script
 ---@field style _.lspconfig.settings.volar.Style
 ---@field template _.lspconfig.settings.volar.Template
+-- %configuration.format.wrapAttributes%
+-- 
 -- ```lua
 -- default = "auto"
 -- ```
 ---@field wrapAttributes "auto" | "force" | "force-aligned" | "force-expand-multiline" | "aligned-multiple" | "preserve" | "preserve-aligned"
 
 ---@class _.lspconfig.settings.volar.InlayHints
--- Show inlay hints for destructured props:
--- 
--- ```ts
--- watch(() => /* props. */foo, () => { ... });
--- ```
+-- %configuration.inlayHints.destructuredProps%
 ---@field destructuredProps boolean
--- Show inlay hints for event argument in inline handlers:
--- 
--- ```html
--- <Comp @foo="/* $event => */console.log($event)" />
--- ```
+-- %configuration.inlayHints.inlineHandlerLeading%
 ---@field inlineHandlerLeading boolean
--- Show inlay hints for missing required props:
--- 
--- ```html
--- <Comp />
--- <!-- ^ foo! -->
--- ```
+-- %configuration.inlayHints.missingProps%
 ---@field missingProps boolean
--- Show inlay hints for component options wrapper for type support:
--- 
--- ```vue
--- <script lang="ts">
--- export default /* (await import('vue')).defineComponent( */{}/* ) */;
--- </script>
--- ```
+-- %configuration.inlayHints.optionsWrapper%
 ---@field optionsWrapper boolean
--- Show inlay hints for v-bind shorthand:
--- 
--- ```html
--- <Comp :foo />
---      <!-- ^ ="foo" -->
--- ```
+-- %configuration.inlayHints.vBindShorthand%
 ---@field vBindShorthand boolean
 
 ---@class _.lspconfig.settings.volar.Server
+-- %configuration.server.includeLanguages%
+-- 
 -- ```lua
 -- default = { "vue" }
 -- ```
 ---@field includeLanguages string[]
 
 ---@class _.lspconfig.settings.volar.Layout
+-- %configuration.splitEditors.layout.left%
+-- 
 -- ```lua
 -- default = { "script", "scriptSetup", "styles" }
 -- ```
 ---@field left string[]
+-- %configuration.splitEditors.layout.right%
+-- 
 -- ```lua
 -- default = { "template", "customBlocks" }
 -- ```
 ---@field right string[]
 
 ---@class _.lspconfig.settings.volar.SplitEditors
--- Show split editor icon in title area of editor.
+-- %configuration.splitEditors.icon%
 ---@field icon boolean
 ---@field layout _.lspconfig.settings.volar.Layout
 
 ---@class _.lspconfig.settings.volar.Trace
--- Traces the communication between VS Code and the language server.
+-- %configuration.trace.server%
 -- 
 -- ```lua
 -- default = "off"
