@@ -9438,6 +9438,10 @@
 -- ```
 ---@field vectorType string
 
+---@class _.lspconfig.settings.luau_lsp.StringRequires
+-- Whether to use string requires when auto-importing requires. Only checked if `#luau-lsp.platform.type#` is `roblox`
+---@field enabled boolean
+
 ---@class _.lspconfig.settings.luau_lsp.Imports
 -- Suggest automatic imports in completion items
 ---@field enabled boolean
@@ -9455,6 +9459,7 @@
 ---@field requireStyle "auto" | "alwaysRelative" | "alwaysAbsolute"
 -- Whether services and requires should be separated by an empty line
 ---@field separateGroupsWithLine boolean
+---@field stringRequires _.lspconfig.settings.luau_lsp.StringRequires
 -- Whether module requires are suggested in autocomplete
 -- 
 -- ```lua
@@ -13980,7 +13985,7 @@
 ---@field group "preserve" | "crate" | "module" | "item" | "one"
 
 ---@class _.lspconfig.settings.rust_analyzer.Group
--- Group inserted imports by the [following order](https://rust-analyzer.github.io/manual.html#auto-import). Groups are separated by newlines.
+-- Group inserted imports by the [following order](https://rust-analyzer.github.io/book/features.html#auto-import). Groups are separated by newlines.
 -- 
 -- ```lua
 -- default = true
@@ -14710,7 +14715,7 @@
 -- 
 -- Similarly, the JSON representation of `DiscoverArgument::Buildfile` is:
 -- 
--- ```
+-- ```json
 -- {
 --         "buildfile": "BUILD"
 -- }

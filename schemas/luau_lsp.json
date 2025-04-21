@@ -122,6 +122,12 @@
       "scope": "resource",
       "type": "boolean"
     },
+    "luau-lsp.completion.imports.stringRequires.enabled": {
+      "default": false,
+      "markdownDescription": "Whether to use string requires when auto-importing requires. Only checked if `#luau-lsp.platform.type#` is `roblox`",
+      "scope": "resource",
+      "type": "boolean"
+    },
     "luau-lsp.completion.imports.suggestRequires": {
       "default": true,
       "markdownDescription": "Whether module requires are suggested in autocomplete",
