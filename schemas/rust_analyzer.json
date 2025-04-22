@@ -1433,7 +1433,8 @@
       "additionalProperties": {
         "type": [
           "string",
-          "number"
+          "number",
+          "null"
         ]
       },
       "default": null,

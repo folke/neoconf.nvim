@@ -968,6 +968,11 @@
       "scope": "window",
       "type": "boolean"
     },
+    "razor.languageServer.cohostingEnabled": {
+      "default": false,
+      "description": "%configuration.razor.languageServer.cohostingEnabled%",
+      "type": "boolean"
+    },
     "razor.languageServer.debug": {
       "default": false,
       "description": "%configuration.razor.languageServer.debug%",

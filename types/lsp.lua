@@ -10585,6 +10585,8 @@
 ---@field enable boolean
 
 ---@class _.lspconfig.settings.omnisharp.LanguageServer
+-- %configuration.razor.languageServer.cohostingEnabled%
+---@field cohostingEnabled boolean
 -- %configuration.razor.languageServer.debug%
 ---@field debug boolean
 -- %configuration.razor.languageServer.directory%
