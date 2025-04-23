@@ -584,6 +584,15 @@
       "scope": "window",
       "type": "boolean"
     },
+    "typescript.experimental.expandableHover": {
+      "default": false,
+      "description": "Enable expanding/contracting the hover to reveal more/less information from the TS server. Requires TypeScript 5.9+.",
+      "scope": "window",
+      "tags": [
+        "experimental"
+      ],
+      "type": "boolean"
+    },
     "typescript.format.enable": {
       "default": true,
       "description": "Enable/disable default TypeScript formatter.",
