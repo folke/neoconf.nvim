@@ -19,6 +19,7 @@
     },
     "julia.cellDelimiters": {
       "default": [
+        "^\\s?#\\s#+",
         "^##(?!#)",
         "^#(\\s?)%%",
         "^#-"
