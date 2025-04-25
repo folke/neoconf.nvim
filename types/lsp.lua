@@ -6112,7 +6112,7 @@
 ---@field home string
 
 ---@class _.lspconfig.settings.jdtls.Javac
--- [Experimental] Specify whether to enable Javac-based compilation in the language server. Requires running this extension with Java 23
+-- [Experimental] Specify whether to enable Javac-based compilation in the language server. Requires running this extension with Java 24
 -- 
 -- ```lua
 -- default = "off"
@@ -17037,6 +17037,10 @@
 
 ---@class _.lspconfig.settings.ts_ls.Experimental
 -- Enable expanding/contracting the hover to reveal more/less information from the TS server. Requires TypeScript 5.9+.
+-- 
+-- ```lua
+-- default = true
+-- ```
 ---@field expandableHover boolean
 
 ---@class _.lspconfig.settings.ts_ls.Format
