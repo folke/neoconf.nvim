@@ -17677,14 +17677,6 @@
 -- ```
 ---@field defineAssignment boolean
 
----@class _.lspconfig.settings.volar.Doctor
--- %configuration.doctor.status%
--- 
--- ```lua
--- default = true
--- ```
----@field status boolean
-
 ---@class _.lspconfig.settings.volar.Script
 -- %configuration.format.script.initialIndent%
 ---@field initialIndent boolean
@@ -17764,7 +17756,6 @@
 ---@field codeActions _.lspconfig.settings.volar.CodeActions
 ---@field codeLens _.lspconfig.settings.volar.CodeLens
 ---@field complete _.lspconfig.settings.volar.Complete
----@field doctor _.lspconfig.settings.volar.Doctor
 ---@field format _.lspconfig.settings.volar.Format
 ---@field inlayHints _.lspconfig.settings.volar.InlayHints
 ---@field server _.lspconfig.settings.volar.Server

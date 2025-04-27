@@ -66,11 +66,6 @@
       "markdownDescription": "%configuration.complete.defineAssignment%",
       "type": "boolean"
     },
-    "vue.doctor.status": {
-      "default": true,
-      "markdownDescription": "%configuration.doctor.status%",
-      "type": "boolean"
-    },
     "vue.format.script.initialIndent": {
       "default": false,
       "markdownDescription": "%configuration.format.script.initialIndent%",
