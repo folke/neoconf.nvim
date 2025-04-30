@@ -168,7 +168,7 @@
       "type": "number"
     },
     "tinymist.lint.enabled": {
-      "default": true,
+      "default": false,
       "markdownDescription": "%extension.tinymist.config.tinymist.lint.enabled.desc%",
       "title": "%extension.tinymist.config.tinymist.lint.enabled.title%",
       "type": "boolean"

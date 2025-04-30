@@ -593,6 +593,15 @@
       ],
       "type": "boolean"
     },
+    "typescript.experimental.useTsgo": {
+      "default": false,
+      "markdownDescription": "Disables TypeScript and JavaScript language features to allow usage of the TypeScript Go experimental extension. Requires TypeScript Go to be installed and configured. Requires reloading extensions after changing this setting.",
+      "scope": "window",
+      "tags": [
+        "experimental"
+      ],
+      "type": "boolean"
+    },
     "typescript.format.enable": {
       "default": true,
       "description": "Enable/disable default TypeScript formatter.",
