@@ -423,7 +423,7 @@
     },
     "javascript.suggest.enabled": {
       "default": true,
-      "description": "Enabled/disable autocomplete suggestions.",
+      "description": "Enable/disable autocomplete suggestions.",
       "scope": "language-overridable",
       "type": "boolean"
     },
@@ -1092,7 +1092,7 @@
     },
     "typescript.suggest.enabled": {
       "default": true,
-      "description": "Enabled/disable autocomplete suggestions.",
+      "description": "Enable/disable autocomplete suggestions.",
       "scope": "language-overridable",
       "type": "boolean"
     },
