@@ -2841,6 +2841,12 @@
 -- default = "all"
 -- ```
 ---@field mode "all" | "problems"
+-- The ESLint options object to use on save (see https://eslint.org/docs/developer-guide/nodejs-api#eslint-class). `eslint.codeActionsOnSave.rules`, if specified, will take priority over any rule options here.
+-- 
+-- ```lua
+-- default = {}
+-- ```
+---@field options table
 -- The rules that should be executed when computing the code actions on save or formatting a file. Defaults to the rules configured via the ESLint configuration
 ---@field rules string[]|any
 

@@ -851,6 +851,9 @@
     "omnisharp.enableAsyncCompletion": {
       "default": false,
       "description": "%configuration.omnisharp.enableAsyncCompletion%",
+      "tags": [
+        "experimental"
+      ],
       "type": "boolean"
     },
     "omnisharp.enableDecompilationSupport": {
@@ -867,6 +870,9 @@
     "omnisharp.enableLspDriver": {
       "default": false,
       "description": "%configuration.omnisharp.enableLspDriver%",
+      "tags": [
+        "experimental"
+      ],
       "type": "boolean"
     },
     "omnisharp.enableMsBuildLoadProjectsOnDemand": {
@@ -971,6 +977,9 @@
     "razor.languageServer.cohostingEnabled": {
       "default": false,
       "description": "%configuration.razor.languageServer.cohostingEnabled%",
+      "tags": [
+        "experimental"
+      ],
       "type": "boolean"
     },
     "razor.languageServer.debug": {
@@ -991,6 +1000,9 @@
       "description": "%configuration.razor.languageServer.forceRuntimeCodeGeneration%",
       "order": 90,
       "scope": "machine-overridable",
+      "tags": [
+        "experimental"
+      ],
       "type": "boolean"
     },
     "razor.languageServer.suppressLspErrorToasts": {

@@ -75,6 +75,12 @@
       "scope": "resource",
       "type": "string"
     },
+    "eslint.codeActionsOnSave.options": {
+      "default": {},
+      "markdownDescription": "The ESLint options object to use on save (see https://eslint.org/docs/developer-guide/nodejs-api#eslint-class). `eslint.codeActionsOnSave.rules`, if specified, will take priority over any rule options here.",
+      "scope": "resource",
+      "type": "object"
+    },
     "eslint.codeActionsOnSave.rules": {
       "anyOf": [
         {
