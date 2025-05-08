@@ -16698,12 +16698,6 @@
 -- ```
 ---@field semicolons "ignore" | "insert" | "remove"
 
----@class _.lspconfig.settings.ts_ls.ImplicitProjectConfig
--- Enable/disable semantic checking of JavaScript files. Existing `jsconfig.json` or `tsconfig.json` files override this setting.
----@field checkJs boolean
--- Enable/disable `experimentalDecorators` in JavaScript files that are not part of a project. Existing `jsconfig.json` or `tsconfig.json` files override this setting.
----@field experimentalDecorators boolean
-
 ---@class _.lspconfig.settings.ts_ls.FunctionLikeReturnTypes
 -- Enable/disable inlay hints for implicit return types on function signatures:
 -- ```typescript
@@ -16866,12 +16860,6 @@
 -- ```lua
 -- default = true
 -- ```
----@field renameShorthandProperties boolean
--- Enable/disable introducing aliases for object shorthand properties during renames.
--- 
--- ```lua
--- default = true
--- ```
 ---@field useAliasesForRenames boolean
 
 ---@class _.lspconfig.settings.ts_ls.ReferencesCodeLens
@@ -16984,7 +16972,6 @@
 -- ```
 ---@field autoClosingTags boolean
 ---@field format _.lspconfig.settings.ts_ls.Format
----@field implicitProjectConfig _.lspconfig.settings.ts_ls.ImplicitProjectConfig
 ---@field inlayHints _.lspconfig.settings.ts_ls.InlayHints
 -- Makes `Go to Definition` avoid type declaration files when possible by triggering `Go to Source Definition` instead. This allows `Go to Source Definition` to be triggered with the mouse gesture.
 ---@field preferGoToSourceDefinition boolean
@@ -17318,12 +17305,6 @@
 -- ```lua
 -- default = true
 -- ```
----@field renameShorthandProperties boolean
--- Enable/disable introducing aliases for object shorthand properties during renames.
--- 
--- ```lua
--- default = true
--- ```
 ---@field useAliasesForRenames boolean
 
 ---@class _.lspconfig.settings.ts_ls.ReferencesCodeLens
@@ -17418,12 +17399,6 @@
 ---@class _.lspconfig.settings.ts_ls.Experimental
 -- Enables project wide error reporting.
 ---@field enableProjectDiagnostics boolean
--- Use VS Code's file watchers instead of TypeScript's. Requires using TypeScript 5.4+ in the workspace.
--- 
--- ```lua
--- default = true
--- ```
----@field useVsCodeWatcher boolean
 
 ---@class _.lspconfig.settings.ts_ls.ProjectWideIntellisense
 -- Enable/disable project-wide IntelliSense on web. Requires that VS Code is running in a trusted context.
@@ -17477,12 +17452,6 @@
 -- default = {}
 -- ```
 ---@field pluginPaths string[]
--- Enable/disable spawning a separate TypeScript server that can more quickly respond to syntax related operations, such as calculating folding or computing document symbols.
--- 
--- ```lua
--- default = true
--- ```
----@field useSeparateSyntaxServer boolean
 -- Controls if TypeScript launches a dedicated server to more quickly handle syntax related operations, such as computing code folding.
 -- 
 -- ```lua

@@ -126,20 +126,6 @@
       "scope": "resource",
       "type": "string"
     },
-    "javascript.implicitProjectConfig.checkJs": {
-      "default": false,
-      "markdownDeprecationMessage": "This setting has been deprecated in favor of `js/ts.implicitProjectConfig.checkJs`.",
-      "markdownDescription": "Enable/disable semantic checking of JavaScript files. Existing `jsconfig.json` or `tsconfig.json` files override this setting.",
-      "scope": "window",
-      "type": "boolean"
-    },
-    "javascript.implicitProjectConfig.experimentalDecorators": {
-      "default": false,
-      "markdownDeprecationMessage": "This setting has been deprecated in favor of `js/ts.implicitProjectConfig.experimentalDecorators`.",
-      "markdownDescription": "Enable/disable `experimentalDecorators` in JavaScript files that are not part of a project. Existing `jsconfig.json` or `tsconfig.json` files override this setting.",
-      "scope": "window",
-      "type": "boolean"
-    },
     "javascript.inlayHints.functionLikeReturnTypes.enabled": {
       "default": false,
       "markdownDescription": "Enable/disable inlay hints for implicit return types on function signatures:\n```typescript\n\nfunction foo() /* :number */ {\n\treturn Date.now();\n} \n \n```\n\nThe text inside the ``` block is code and should not be localized.",
@@ -369,13 +355,6 @@
     "javascript.preferences.renameMatchingJsxTags": {
       "default": true,
       "description": "When on a JSX tag, try to rename the matching tag instead of renaming the symbol. Requires using TypeScript 5.1+ in the workspace.",
-      "scope": "language-overridable",
-      "type": "boolean"
-    },
-    "javascript.preferences.renameShorthandProperties": {
-      "default": true,
-      "deprecationMessage": "The setting 'typescript.preferences.renameShorthandProperties' has been deprecated in favor of 'typescript.preferences.useAliasesForRenames'",
-      "description": "Enable/disable introducing aliases for object shorthand properties during renames.",
       "scope": "language-overridable",
       "type": "boolean"
     },
@@ -1035,13 +1014,6 @@
       "scope": "language-overridable",
       "type": "boolean"
     },
-    "typescript.preferences.renameShorthandProperties": {
-      "default": true,
-      "deprecationMessage": "The setting 'typescript.preferences.renameShorthandProperties' has been deprecated in favor of 'typescript.preferences.useAliasesForRenames'",
-      "description": "Enable/disable introducing aliases for object shorthand properties during renames.",
-      "scope": "language-overridable",
-      "type": "boolean"
-    },
     "typescript.preferences.useAliasesForRenames": {
       "default": true,
       "description": "Enable/disable introducing aliases for object shorthand properties during renames.",
@@ -1176,12 +1148,6 @@
       ],
       "type": "boolean"
     },
-    "typescript.tsserver.experimental.useVsCodeWatcher": {
-      "default": true,
-      "deprecationMessage": "Please use the `#typescript.tsserver.watchOptions#` setting instead.",
-      "description": "Use VS Code's file watchers instead of TypeScript's. Requires using TypeScript 5.4+ in the workspace.",
-      "type": "boolean"
-    },
     "typescript.tsserver.log": {
       "default": "off",
       "description": "Enables logging of the TS server to a file. This log can be used to diagnose TS Server issues. The log may contain file paths, source code, and other potentially sensitive information from your project.",
@@ -1214,13 +1180,6 @@
       },
       "scope": "machine",
       "type": "array"
-    },
-    "typescript.tsserver.useSeparateSyntaxServer": {
-      "default": true,
-      "description": "Enable/disable spawning a separate TypeScript server that can more quickly respond to syntax related operations, such as calculating folding or computing document symbols.",
-      "markdownDeprecationMessage": "This setting has been deprecated in favor of `typescript.tsserver.useSyntaxServer`.",
-      "scope": "window",
-      "type": "boolean"
     },
     "typescript.tsserver.useSyntaxServer": {
       "default": "auto",
