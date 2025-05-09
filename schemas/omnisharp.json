@@ -996,7 +996,7 @@
       "type": "string"
     },
     "razor.languageServer.forceRuntimeCodeGeneration": {
-      "default": null,
+      "default": true,
       "description": "%configuration.razor.languageServer.forceRuntimeCodeGeneration%",
       "order": 90,
       "scope": "machine-overridable",

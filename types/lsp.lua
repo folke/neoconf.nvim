@@ -10598,6 +10598,10 @@
 -- %configuration.razor.languageServer.directory%
 ---@field directory string
 -- %configuration.razor.languageServer.forceRuntimeCodeGeneration%
+-- 
+-- ```lua
+-- default = true
+-- ```
 ---@field forceRuntimeCodeGeneration boolean
 -- %configuration.razor.languageServer.suppressLspErrorToasts%
 -- 
