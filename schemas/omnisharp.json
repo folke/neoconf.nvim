@@ -489,6 +489,14 @@
       "description": "%configuration.dotnet.projects.enableAutomaticRestore%",
       "type": "boolean"
     },
+    "dotnet.projects.enableFileBasedPrograms": {
+      "default": true,
+      "description": "%configuration.dotnet.projects.enableFileBasedPrograms%",
+      "tags": [
+        "preview"
+      ],
+      "type": "boolean"
+    },
     "dotnet.quickInfo.showRemarksInQuickInfo": {
       "default": "true",
       "description": "%configuration.dotnet.quickInfo.showRemarksInQuickInfo%",

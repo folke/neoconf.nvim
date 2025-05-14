@@ -10164,6 +10164,12 @@
 -- default = true
 -- ```
 ---@field enableAutomaticRestore boolean
+-- %configuration.dotnet.projects.enableFileBasedPrograms%
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enableFileBasedPrograms boolean
 
 ---@class _.lspconfig.settings.omnisharp.QuickInfo
 -- %configuration.dotnet.quickInfo.showRemarksInQuickInfo%
