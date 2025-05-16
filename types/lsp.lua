@@ -16993,6 +16993,14 @@
 ---@field updateImportsOnPaste _.lspconfig.settings.ts_ls.UpdateImportsOnPaste
 ---@field validate _.lspconfig.settings.ts_ls.Validate
 
+---@class _.lspconfig.settings.ts_ls.Hover
+-- The maximum number of characters in a hover. If the hover is longer than this, it will be truncated. Requires TypeScript 5.9+.
+-- 
+-- ```lua
+-- default = 500
+-- ```
+---@field maximumLength number
+
 ---@class _.lspconfig.settings.ts_ls.ImplicitProjectConfig
 -- Enable/disable semantic checking of JavaScript files. Existing `jsconfig.json` or `tsconfig.json` files override this setting.
 ---@field checkJs boolean
@@ -17024,6 +17032,7 @@
 ---@field target "ES3" | "ES5" | "ES6" | "ES2015" | "ES2016" | "ES2017" | "ES2018" | "ES2019" | "ES2020" | "ES2021" | "ES2022" | "ES2023" | "ES2024" | "ESNext"
 
 ---@class _.lspconfig.settings.ts_ls.Js/ts
+---@field hover _.lspconfig.settings.ts_ls.Hover
 ---@field implicitProjectConfig _.lspconfig.settings.ts_ls.ImplicitProjectConfig
 
 ---@class _.lspconfig.settings.ts_ls.Check

@@ -470,6 +470,12 @@
       "scope": "window",
       "type": "boolean"
     },
+    "js/ts.hover.maximumLength": {
+      "default": 500,
+      "description": "The maximum number of characters in a hover. If the hover is longer than this, it will be truncated. Requires TypeScript 5.9+.",
+      "scope": "resource",
+      "type": "number"
+    },
     "js/ts.implicitProjectConfig.checkJs": {
       "default": false,
       "markdownDescription": "Enable/disable semantic checking of JavaScript files. Existing `jsconfig.json` or `tsconfig.json` files override this setting.",
