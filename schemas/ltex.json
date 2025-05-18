@@ -1,0 +1,2436 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "description": "Grammar/spell checker using LanguageTool with support for LaTeX, Markdown, and others",
+  "properties": {
+    "ltex.additionalRules.enablePickyRules": {
+      "default": false,
+      "markdownDescription": "Enable LanguageTool rules that are marked as picky and that are disabled by default, e.g., rules about passive voice, sentence length, etc., at the cost of more false positives.",
+      "scope": "resource",
+      "type": "boolean"
+    },
+    "ltex.additionalRules.languageModel": {
+      "default": "",
+      "markdownDescription": "Optional path to a directory with rules of a language model with *n*-gram occurrence counts. Set this setting to the parent directory that contains subdirectories for languages (e.g., `en`).",
+      "scope": "resource",
+      "type": "string"
+    },
+    "ltex.additionalRules.motherTongue": {
+      "default": "",
+      "enum": [
+        "",
+        "ar",
+        "ast-ES",
+        "be-BY",
+        "br-FR",
+        "ca-ES",
+        "ca-ES-valencia",
+        "da-DK",
+        "de",
+        "de-AT",
+        "de-CH",
+        "de-DE",
+        "de-DE-x-simple-language",
+        "el-GR",
+        "en",
+        "en-AU",
+        "en-CA",
+        "en-GB",
+        "en-NZ",
+        "en-US",
+        "en-ZA",
+        "eo",
+        "es",
+        "es-AR",
+        "fa",
+        "fr",
+        "ga-IE",
+        "gl-ES",
+        "it",
+        "ja-JP",
+        "km-KH",
+        "nl",
+        "nl-BE",
+        "pl-PL",
+        "pt",
+        "pt-AO",
+        "pt-BR",
+        "pt-MZ",
+        "pt-PT",
+        "ro-RO",
+        "ru-RU",
+        "sk-SK",
+        "sl-SI",
+        "sv",
+        "ta-IN",
+        "tl-PH",
+        "uk-UA",
+        "zh-CN"
+      ],
+      "enumDescriptions": [
+        "No mother tongue",
+        "Arabic",
+        "Asturian",
+        "Belarusian",
+        "Breton",
+        "Catalan",
+        "Catalan (Valencian)",
+        "Danish",
+        "German",
+        "German (Austria)",
+        "German (Swiss)",
+        "German (Germany)",
+        "Simple German",
+        "Greek",
+        "English",
+        "English (Australian)",
+        "English (Canadian)",
+        "English (GB)",
+        "English (New Zealand)",
+        "English (US)",
+        "English (South African)",
+        "Esperanto",
+        "Spanish",
+        "Spanish (voseo)",
+        "Persian",
+        "French",
+        "Irish",
+        "Galician",
+        "Italian",
+        "Japanese",
+        "Khmer",
+        "Dutch",
+        "Dutch (Belgium)",
+        "Polish",
+        "Portuguese",
+        "Portuguese (Angola preAO)",
+        "Portuguese (Brazil)",
+        "Portuguese (Moçambique preAO)",
+        "Portuguese (Portugal)",
+        "Romanian",
+        "Russian",
+        "Slovak",
+        "Slovenian",
+        "Swedish",
+        "Tamil",
+        "Tagalog",
+        "Ukrainian",
+        "Chinese"
+      ],
+      "markdownDescription": "Optional mother tongue of the user (e.g., `\"de-DE\"`). [More info...](https://valentjn.github.io/ltex/settings.html#ltexadditionalrulesmothertongue)",
+      "markdownEnumDescriptions": [
+        "No mother tongue",
+        "Arabic",
+        "Asturian",
+        "Belarusian",
+        "Breton",
+        "Catalan",
+        "Catalan (Valencian)",
+        "Danish",
+        "German",
+        "German (Austria)",
+        "German (Swiss)",
+        "German (Germany)",
+        "Simple German",
+        "Greek",
+        "English",
+        "English (Australian)",
+        "English (Canadian)",
+        "English (GB)",
+        "English (New Zealand)",
+        "English (US)",
+        "English (South African)",
+        "Esperanto",
+        "Spanish",
+        "Spanish (voseo)",
+        "Persian",
+        "French",
+        "Irish",
+        "Galician",
+        "Italian",
+        "Japanese",
+        "Khmer",
+        "Dutch",
+        "Dutch (Belgium)",
+        "Polish",
+        "Portuguese",
+        "Portuguese (Angola preAO)",
+        "Portuguese (Brazil)",
+        "Portuguese (Moçambique preAO)",
+        "Portuguese (Portugal)",
+        "Romanian",
+        "Russian",
+        "Slovak",
+        "Slovenian",
+        "Swedish",
+        "Tamil",
+        "Tagalog",
+        "Ukrainian",
+        "Chinese"
+      ],
+      "scope": "resource",
+      "type": "string"
+    },
+    "ltex.additionalRules.neuralNetworkModel": {
+      "default": "",
+      "markdownDescription": "Optional path to a directory with rules of a pretrained neural network model.",
+      "scope": "resource",
+      "type": "string"
+    },
+    "ltex.additionalRules.word2VecModel": {
+      "default": "",
+      "markdownDescription": "Optional path to a directory with rules of a word2vec language model.",
+      "scope": "resource",
+      "type": "string"
+    },
+    "ltex.bibtex.fields": {
+      "additionalProperties": false,
+      "default": {},
+      "examples": [
+        {
+          "maintitle": false,
+          "seealso": true
+        }
+      ],
+      "markdownDescription": "List of BibTeX fields whose values are to be checked in BibTeX files. [More info...](https://valentjn.github.io/ltex/settings.html#ltexbibtexfields)",
+      "patternProperties": {
+        "^.*$": {
+          "type": "boolean"
+        }
+      },
+      "scope": "resource",
+      "type": "object"
+    },
+    "ltex.checkFrequency": {
+      "default": "edit",
+      "enum": [
+        "edit",
+        "save",
+        "manual"
+      ],
+      "enumDescriptions": [
+        "Documents are checked when they are opened or edited (on every keystroke), or when the settings change.",
+        "Documents are checked when they are opened or saved, or when the settings change.",
+        "Documents are not checked automatically, except when the settings change. Use commands such as 'LTeX: Check Current Document' (see https://valentjn.github.io/ltex/vscode-ltex/commands.html#ltex-check-current-document) to manually trigger checks."
+      ],
+      "markdownDescription": "Controls when documents should be checked. [More info...](https://valentjn.github.io/ltex/settings.html#ltexcheckfrequency)",
+      "markdownEnumDescriptions": [
+        "Documents are checked when they are opened or edited (on every keystroke), or when the settings change.",
+        "Documents are checked when they are opened or saved, or when the settings change.",
+        "Documents are not checked automatically, except when the settings change. Use commands such as [`LTeX: Check Current Document`](https://valentjn.github.io/ltex/vscode-ltex/commands.html#ltex-check-current-document) to manually trigger checks."
+      ],
+      "scope": "window",
+      "type": "string"
+    },
+    "ltex.clearDiagnosticsWhenClosingFile": {
+      "default": true,
+      "markdownDescription": "If set to `true`, diagnostics of a file are cleared when the file is closed.",
+      "scope": "resource",
+      "type": "boolean"
+    },
+    "ltex.completionEnabled": {
+      "default": false,
+      "markdownDescription": "Whether completion is enabled (also known as auto-completion, suggestions, or IntelliSense). [More info...](https://valentjn.github.io/ltex/settings.html#ltexcompletionenabled)",
+      "scope": "resource",
+      "type": "boolean"
+    },
+    "ltex.configurationTarget": {
+      "additionalProperties": false,
+      "default": {
+        "dictionary": "workspaceFolderExternalFile",
+        "disabledRules": "workspaceFolderExternalFile",
+        "hiddenFalsePositives": "workspaceFolderExternalFile"
+      },
+      "markdownDescription": "Controls which `settings.json` or external setting file ([see documentation](https://valentjn.github.io/ltex/vscode-ltex/setting-scopes-files.html#external-setting-files)) to update when using one of the quick fixes.",
+      "properties": {
+        "dictionary": {
+          "enum": [
+            "user",
+            "workspace",
+            "workspaceFolder",
+            "userExternalFile",
+            "workspaceExternalFile",
+            "workspaceFolderExternalFile"
+          ],
+          "enumDescriptions": [
+            "When adding a word to the dictionary, always update the user configuration.",
+            "When adding a word to the dictionary, update the workspace configuration if currently in a workspace, otherwise update the user configuration.",
+            "When adding a word to the dictionary, update the workspace folder configuration if currently in a workspace folder, otherwise update the workspace configuration if currently in a workspace, otherwise update the user configuration.",
+            "When adding a word to the dictionary, always update the first external setting file listed in the user configuration.",
+            "When adding a word to the dictionary, update the first external setting file listed in the workspace configuration if currently in a workspace, otherwise update the analogous file in the user configuration.",
+            "When adding a word to the dictionary, update the first external setting file listed in the workspace folder configuration if currently in a workspace folder, otherwise update the analogous file in the workspace configuration if currently in a workspace, otherwise update the analogous file in the user configuration."
+          ],
+          "markdownEnumDescriptions": [
+            "When adding a word to the dictionary, always update the user configuration.",
+            "When adding a word to the dictionary, update the workspace configuration if currently in a workspace, otherwise update the user configuration.",
+            "When adding a word to the dictionary, update the workspace folder configuration if currently in a workspace folder, otherwise update the workspace configuration if currently in a workspace, otherwise update the user configuration.",
+            "When adding a word to the dictionary, always update the first external setting file listed in the user configuration.",
+            "When adding a word to the dictionary, update the first external setting file listed in the workspace configuration if currently in a workspace, otherwise update the analogous file in the user configuration.",
+            "When adding a word to the dictionary, update the first external setting file listed in the workspace folder configuration if currently in a workspace folder, otherwise update the analogous file in the workspace configuration if currently in a workspace, otherwise update the analogous file in the user configuration."
+          ],
+          "type": "string"
+        },
+        "disabledRules": {
+          "enum": [
+            "user",
+            "workspace",
+            "workspaceFolder",
+            "userExternalFile",
+            "workspaceExternalFile",
+            "workspaceFolderExternalFile"
+          ],
+          "enumDescriptions": [
+            "When disabling a rule, always update the user configuration.",
+            "When disabling a rule, update the workspace configuration if currently in a workspace, otherwise update the user configuration.",
+            "When disabling a rule, update the workspace folder configuration if currently in a workspace folder, otherwise update the workspace configuration if currently in a workspace, otherwise update the user configuration.",
+            "When disabling a rule, always update the first external setting file listed in the user configuration.",
+            "When disabling a rule, update the first external setting file listed in the workspace configuration if currently in a workspace, otherwise update the analogous file in the user configuration.",
+            "When disabling a rule, update the first external setting file listed in the workspace folder configuration if currently in a workspace folder, otherwise update the analogous file in the workspace configuration if currently in a workspace, otherwise update the analogous file in the user configuration."
+          ],
+          "markdownEnumDescriptions": [
+            "When disabling a rule, always update the user configuration.",
+            "When disabling a rule, update the workspace configuration if currently in a workspace, otherwise update the user configuration.",
+            "When disabling a rule, update the workspace folder configuration if currently in a workspace folder, otherwise update the workspace configuration if currently in a workspace, otherwise update the user configuration.",
+            "When disabling a rule, always update the first external setting file listed in the user configuration.",
+            "When disabling a rule, update the first external setting file listed in the workspace configuration if currently in a workspace, otherwise update the analogous file in the user configuration.",
+            "When disabling a rule, update the first external setting file listed in the workspace folder configuration if currently in a workspace folder, otherwise update the analogous file in the workspace configuration if currently in a workspace, otherwise update the analogous file in the user configuration."
+          ],
+          "type": "string"
+        },
+        "hiddenFalsePositives": {
+          "enum": [
+            "user",
+            "workspace",
+            "workspaceFolder",
+            "userExternalFile",
+            "workspaceExternalFile",
+            "workspaceFolderExternalFile"
+          ],
+          "enumDescriptions": [
+            "When hiding a false positive, always update the user configuration.",
+            "When hiding a false positive, update the workspace configuration if currently in a workspace, otherwise update the user configuration.",
+            "When hiding a false positive, update the workspace folder configuration if currently in a workspace folder, otherwise update the workspace configuration if currently in a workspace, otherwise update the user configuration.",
+            "When hiding a false positive, always update the first external setting file listed in the user configuration.",
+            "When hiding a false positive, update the first external setting file listed in the workspace configuration if currently in a workspace, otherwise update the analogous file in the user configuration.",
+            "When hiding a false positive, update the first external setting file listed in the workspace folder configuration if currently in a workspace folder, otherwise update the analogous file in the workspace configuration if currently in a workspace, otherwise update the analogous file in the user configuration."
+          ],
+          "markdownEnumDescriptions": [
+            "When hiding a false positive, always update the user configuration.",
+            "When hiding a false positive, update the workspace configuration if currently in a workspace, otherwise update the user configuration.",
+            "When hiding a false positive, update the workspace folder configuration if currently in a workspace folder, otherwise update the workspace configuration if currently in a workspace, otherwise update the user configuration.",
+            "When hiding a false positive, always update the first external setting file listed in the user configuration.",
+            "When hiding a false positive, update the first external setting file listed in the workspace configuration if currently in a workspace, otherwise update the analogous file in the user configuration.",
+            "When hiding a false positive, update the first external setting file listed in the workspace folder configuration if currently in a workspace folder, otherwise update the analogous file in the workspace configuration if currently in a workspace, otherwise update the analogous file in the user configuration."
+          ],
+          "type": "string"
+        }
+      },
+      "propertyNames": {
+        "enum": [
+          "dictionary",
+          "disabledRules",
+          "hiddenFalsePositives"
+        ],
+        "type": "string"
+      },
+      "scope": "resource",
+      "type": "object"
+    },
+    "ltex.diagnosticSeverity": {
+      "default": "information",
+      "examples": [
+        "information",
+        {
+          "PASSIVE_VOICE": "hint",
+          "default": "information"
+        }
+      ],
+      "markdownDescription": "Severity of the diagnostics corresponding to the grammar and spelling errors. [More info...](https://valentjn.github.io/ltex/settings.html#ltexdiagnosticseverity)",
+      "oneOf": [
+        {
+          "enum": [
+            "error",
+            "warning",
+            "information",
+            "hint"
+          ],
+          "enumDescriptions": [
+            "Error diagnostics are usually underlined with a red squiggly line and appear in editor, minimap, Problems tab, and Explorer.",
+            "Warning diagnostics are usually underlined with a yellow squiggly line and appear in editor, minimap, Problems tab, and Explorer.",
+            "Information diagnostics are usually underlined with a blue squiggly line and appear in editor, minimap, and Problems tab, but not in the Explorer.",
+            "Hint diagnostics are not underlined (only subtly marked) and only appear in the editor, not in minimap, Problems tab, or Explorer."
+          ],
+          "markdownEnumDescriptions": [
+            "Error diagnostics are usually underlined with a red squiggly line and appear in editor, minimap, Problems tab, and Explorer.",
+            "Warning diagnostics are usually underlined with a yellow squiggly line and appear in editor, minimap, Problems tab, and Explorer.",
+            "Information diagnostics are usually underlined with a blue squiggly line and appear in editor, minimap, and Problems tab, but not in the Explorer.",
+            "Hint diagnostics are not underlined (only subtly marked) and only appear in the editor, not in minimap, Problems tab, or Explorer."
+          ],
+          "type": "string"
+        },
+        {
+          "additionalProperties": false,
+          "patternProperties": {
+            "^.*$": {
+              "enum": [
+                "error",
+                "warning",
+                "information",
+                "hint"
+              ],
+              "enumDescriptions": [
+                "Error diagnostics are usually underlined with a red squiggly line and appear in editor, minimap, Problems tab, and Explorer.",
+                "Warning diagnostics are usually underlined with a yellow squiggly line and appear in editor, minimap, Problems tab, and Explorer.",
+                "Information diagnostics are usually underlined with a blue squiggly line and appear in editor, minimap, and Problems tab, but not in the Explorer.",
+                "Hint diagnostics are not underlined (only subtly marked) and only appear in the editor, not in minimap, Problems tab, or Explorer."
+              ],
+              "markdownEnumDescriptions": [
+                "Error diagnostics are usually underlined with a red squiggly line and appear in editor, minimap, Problems tab, and Explorer.",
+                "Warning diagnostics are usually underlined with a yellow squiggly line and appear in editor, minimap, Problems tab, and Explorer.",
+                "Information diagnostics are usually underlined with a blue squiggly line and appear in editor, minimap, and Problems tab, but not in the Explorer.",
+                "Hint diagnostics are not underlined (only subtly marked) and only appear in the editor, not in minimap, Problems tab, or Explorer."
+              ],
+              "type": "string"
+            }
+          },
+          "required": [
+            "default"
+          ],
+          "type": "object"
+        }
+      ],
+      "scope": "resource"
+    },
+    "ltex.dictionary": {
+      "additionalProperties": false,
+      "default": {},
+      "examples": [
+        {
+          "de-DE": [
+            "B-Splines",
+            ":/path/to/externalFile.txt"
+          ],
+          "en-US": [
+            "adaptivity",
+            "precomputed",
+            "subproblem"
+          ]
+        }
+      ],
+      "markdownDescription": "Lists of additional words that should not be counted as spelling errors. [More info...](https://valentjn.github.io/ltex/settings.html#ltexdictionary)",
+      "properties": {
+        "ar": {
+          "items": {
+            "type": "string"
+          },
+          "markdownDescription": "List of additional `ar` (Arabic) words that should not be counted as spelling errors.",
+          "type": "array"
+        },
+        "ast-ES": {
+          "items": {
+            "type": "string"
+          },
+          "markdownDescription": "List of additional `ast-ES` (Asturian) words that should not be counted as spelling errors.",
+          "type": "array"
+        },
+        "be-BY": {
+          "items": {
+            "type": "string"
+          },
+          "markdownDescription": "List of additional `be-BY` (Belarusian) words that should not be counted as spelling errors.",
+          "type": "array"
+        },
+        "br-FR": {
+          "items": {
+            "type": "string"
+          },
+          "markdownDescription": "List of additional `br-FR` (Breton) words that should not be counted as spelling errors.",
+          "type": "array"
+        },
+        "ca-ES": {
+          "items": {
+            "type": "string"
+          },
+          "markdownDescription": "List of additional `ca-ES` (Catalan) words that should not be counted as spelling errors.",
+          "type": "array"
+        },
+        "ca-ES-valencia": {
+          "items": {
+            "type": "string"
+          },
+          "markdownDescription": "List of additional `ca-ES-valencia` (Catalan (Valencian)) words that should not be counted as spelling errors.",
+          "type": "array"
+        },
+        "da-DK": {
+          "items": {
+            "type": "string"
+          },
+          "markdownDescription": "List of additional `da-DK` (Danish) words that should not be counted as spelling errors.",
+          "type": "array"
+        },
+        "de": {
+          "items": {
+            "type": "string"
+          },
+          "markdownDescription": "List of additional `de` (German) words that should not be counted as spelling errors.",
+          "type": "array"
+        },
+        "de-AT": {
+          "items": {
+            "type": "string"
+          },
+          "markdownDescription": "List of additional `de-AT` (German (Austria)) words that should not be counted as spelling errors.",
+          "type": "array"
+        },
+        "de-CH": {
+          "items": {
+            "type": "string"
+          },
+          "markdownDescription": "List of additional `de-CH` (German (Swiss)) words that should not be counted as spelling errors.",
+          "type": "array"
+        },
+        "de-DE": {
+          "items": {
+            "type": "string"
+          },
+          "markdownDescription": "List of additional `de-DE` (German (Germany)) words that should not be counted as spelling errors.",
+          "type": "array"
+        },
+        "de-DE-x-simple-language": {
+          "items": {
+            "type": "string"
+          },
+          "markdownDescription": "List of additional `de-DE-x-simple-language` (Simple German) words that should not be counted as spelling errors.",
+          "type": "array"
+        },
+        "el-GR": {
+          "items": {
+            "type": "string"
+          },
+          "markdownDescription": "List of additional `el-GR` (Greek) words that should not be counted as spelling errors.",
+          "type": "array"
+        },
+        "en": {
+          "items": {
+            "type": "string"
+          },
+          "markdownDescription": "List of additional `en` (English) words that should not be counted as spelling errors.",
+          "type": "array"
+        },
+        "en-AU": {
+          "items": {
+            "type": "string"
+          },
+          "markdownDescription": "List of additional `en-AU` (English (Australian)) words that should not be counted as spelling errors.",
+          "type": "array"
+        },
+        "en-CA": {
+          "items": {
+            "type": "string"
+          },
+          "markdownDescription": "List of additional `en-CA` (English (Canadian)) words that should not be counted as spelling errors.",
+          "type": "array"
+        },
+        "en-GB": {
+          "items": {
+            "type": "string"
+          },
+          "markdownDescription": "List of additional `en-GB` (English (GB)) words that should not be counted as spelling errors.",
+          "type": "array"
+        },
+        "en-NZ": {
+          "items": {
+            "type": "string"
+          },
+          "markdownDescription": "List of additional `en-NZ` (English (New Zealand)) words that should not be counted as spelling errors.",
+          "type": "array"
+        },
+        "en-US": {
+          "items": {
+            "type": "string"
+          },
+          "markdownDescription": "List of additional `en-US` (English (US)) words that should not be counted as spelling errors.",
+          "type": "array"
+        },
+        "en-ZA": {
+          "items": {
+            "type": "string"
+          },
+          "markdownDescription": "List of additional `en-ZA` (English (South African)) words that should not be counted as spelling errors.",
+          "type": "array"
+        },
+        "eo": {
+          "items": {
+            "type": "string"
+          },
+          "markdownDescription": "List of additional `eo` (Esperanto) words that should not be counted as spelling errors.",
+          "type": "array"
+        },
+        "es": {
+          "items": {
+            "type": "string"
+          },
+          "markdownDescription": "List of additional `es` (Spanish) words that should not be counted as spelling errors.",
+          "type": "array"
+        },
+        "es-AR": {
+          "items": {
+            "type": "string"
+          },
+          "markdownDescription": "List of additional `es-AR` (Spanish (voseo)) words that should not be counted as spelling errors.",
+          "type": "array"
+        },
+        "fa": {
+          "items": {
+            "type": "string"
+          },
+          "markdownDescription": "List of additional `fa` (Persian) words that should not be counted as spelling errors.",
+          "type": "array"
+        },
+        "fr": {
+          "items": {
+            "type": "string"
+          },
+          "markdownDescription": "List of additional `fr` (French) words that should not be counted as spelling errors.",
+          "type": "array"
+        },
+        "ga-IE": {
+          "items": {
+            "type": "string"
+          },
+          "markdownDescription": "List of additional `ga-IE` (Irish) words that should not be counted as spelling errors.",
+          "type": "array"
+        },
+        "gl-ES": {
+          "items": {
+            "type": "string"
+          },
+          "markdownDescription": "List of additional `gl-ES` (Galician) words that should not be counted as spelling errors.",
+          "type": "array"
+        },
+        "it": {
+          "items": {
+            "type": "string"
+          },
+          "markdownDescription": "List of additional `it` (Italian) words that should not be counted as spelling errors.",
+          "type": "array"
+        },
+        "ja-JP": {
+          "items": {
+            "type": "string"
+          },
+          "markdownDescription": "List of additional `ja-JP` (Japanese) words that should not be counted as spelling errors.",
+          "type": "array"
+        },
+        "km-KH": {
+          "items": {
+            "type": "string"
+          },
+          "markdownDescription": "List of additional `km-KH` (Khmer) words that should not be counted as spelling errors.",
+          "type": "array"
+        },
+        "nl": {
+          "items": {
+            "type": "string"
+          },
+          "markdownDescription": "List of additional `nl` (Dutch) words that should not be counted as spelling errors.",
+          "type": "array"
+        },
+        "nl-BE": {
+          "items": {
+            "type": "string"
+          },
+          "markdownDescription": "List of additional `nl-BE` (Dutch (Belgium)) words that should not be counted as spelling errors.",
+          "type": "array"
+        },
+        "pl-PL": {
+          "items": {
+            "type": "string"
+          },
+          "markdownDescription": "List of additional `pl-PL` (Polish) words that should not be counted as spelling errors.",
+          "type": "array"
+        },
+        "pt": {
+          "items": {
+            "type": "string"
+          },
+          "markdownDescription": "List of additional `pt` (Portuguese) words that should not be counted as spelling errors.",
+          "type": "array"
+        },
+        "pt-AO": {
+          "items": {
+            "type": "string"
+          },
+          "markdownDescription": "List of additional `pt-AO` (Portuguese (Angola preAO)) words that should not be counted as spelling errors.",
+          "type": "array"
+        },
+        "pt-BR": {
+          "items": {
+            "type": "string"
+          },
+          "markdownDescription": "List of additional `pt-BR` (Portuguese (Brazil)) words that should not be counted as spelling errors.",
+          "type": "array"
+        },
+        "pt-MZ": {
+          "items": {
+            "type": "string"
+          },
+          "markdownDescription": "List of additional `pt-MZ` (Portuguese (Moçambique preAO)) words that should not be counted as spelling errors.",
+          "type": "array"
+        },
+        "pt-PT": {
+          "items": {
+            "type": "string"
+          },
+          "markdownDescription": "List of additional `pt-PT` (Portuguese (Portugal)) words that should not be counted as spelling errors.",
+          "type": "array"
+        },
+        "ro-RO": {
+          "items": {
+            "type": "string"
+          },
+          "markdownDescription": "List of additional `ro-RO` (Romanian) words that should not be counted as spelling errors.",
+          "type": "array"
+        },
+        "ru-RU": {
+          "items": {
+            "type": "string"
+          },
+          "markdownDescription": "List of additional `ru-RU` (Russian) words that should not be counted as spelling errors.",
+          "type": "array"
+        },
+        "sk-SK": {
+          "items": {
+            "type": "string"
+          },
+          "markdownDescription": "List of additional `sk-SK` (Slovak) words that should not be counted as spelling errors.",
+          "type": "array"
+        },
+        "sl-SI": {
+          "items": {
+            "type": "string"
+          },
+          "markdownDescription": "List of additional `sl-SI` (Slovenian) words that should not be counted as spelling errors.",
+          "type": "array"
+        },
+        "sv": {
+          "items": {
+            "type": "string"
+          },
+          "markdownDescription": "List of additional `sv` (Swedish) words that should not be counted as spelling errors.",
+          "type": "array"
+        },
+        "ta-IN": {
+          "items": {
+            "type": "string"
+          },
+          "markdownDescription": "List of additional `ta-IN` (Tamil) words that should not be counted as spelling errors.",
+          "type": "array"
+        },
+        "tl-PH": {
+          "items": {
+            "type": "string"
+          },
+          "markdownDescription": "List of additional `tl-PH` (Tagalog) words that should not be counted as spelling errors.",
+          "type": "array"
+        },
+        "uk-UA": {
+          "items": {
+            "type": "string"
+          },
+          "markdownDescription": "List of additional `uk-UA` (Ukrainian) words that should not be counted as spelling errors.",
+          "type": "array"
+        },
+        "zh-CN": {
+          "items": {
+            "type": "string"
+          },
+          "markdownDescription": "List of additional `zh-CN` (Chinese) words that should not be counted as spelling errors.",
+          "type": "array"
+        }
+      },
+      "propertyNames": {
+        "enum": [
+          "ar",
+          "ast-ES",
+          "be-BY",
+          "br-FR",
+          "ca-ES",
+          "ca-ES-valencia",
+          "da-DK",
+          "de",
+          "de-AT",
+          "de-CH",
+          "de-DE",
+          "de-DE-x-simple-language",
+          "el-GR",
+          "en",
+          "en-AU",
+          "en-CA",
+          "en-GB",
+          "en-NZ",
+          "en-US",
+          "en-ZA",
+          "eo",
+          "es",
+          "es-AR",
+          "fa",
+          "fr",
+          "ga-IE",
+          "gl-ES",
+          "it",
+          "ja-JP",
+          "km-KH",
+          "nl",
+          "nl-BE",
+          "pl-PL",
+          "pt",
+          "pt-AO",
+          "pt-BR",
+          "pt-MZ",
+          "pt-PT",
+          "ro-RO",
+          "ru-RU",
+          "sk-SK",
+          "sl-SI",
+          "sv",
+          "ta-IN",
+          "tl-PH",
+          "uk-UA",
+          "zh-CN"
+        ],
+        "type": "string"
+      },
+      "scope": "resource",
+      "type": "object"
+    },
+    "ltex.disabledRules": {
+      "additionalProperties": false,
+      "default": {},
+      "examples": [
+        {
+          "en-US": [
+            "EN_QUOTES",
+            "UPPERCASE_SENTENCE_START",
+            ":/path/to/externalFile.txt"
+          ]
+        }
+      ],
+      "markdownDescription": "Lists of rules that should be disabled (if enabled by default by LanguageTool). [More info...](https://valentjn.github.io/ltex/settings.html#ltexdisabledrules)",
+      "properties": {
+        "ar": {
+          "items": {
+            "type": "string"
+          },
+          "markdownDescription": "List of additional `ar` (Arabic) rules that should be disabled (if enabled by default by LanguageTool).",
+          "type": "array"
+        },
+        "ast-ES": {
+          "items": {
+            "type": "string"
+          },
+          "markdownDescription": "List of additional `ast-ES` (Asturian) rules that should be disabled (if enabled by default by LanguageTool).",
+          "type": "array"
+        },
+        "be-BY": {
+          "items": {
+            "type": "string"
+          },
+          "markdownDescription": "List of additional `be-BY` (Belarusian) rules that should be disabled (if enabled by default by LanguageTool).",
+          "type": "array"
+        },
+        "br-FR": {
+          "items": {
+            "type": "string"
+          },
+          "markdownDescription": "List of additional `br-FR` (Breton) rules that should be disabled (if enabled by default by LanguageTool).",
+          "type": "array"
+        },
+        "ca-ES": {
+          "items": {
+            "type": "string"
+          },
+          "markdownDescription": "List of additional `ca-ES` (Catalan) rules that should be disabled (if enabled by default by LanguageTool).",
+          "type": "array"
+        },
+        "ca-ES-valencia": {
+          "items": {
+            "type": "string"
+          },
+          "markdownDescription": "List of additional `ca-ES-valencia` (Catalan (Valencian)) rules that should be disabled (if enabled by default by LanguageTool).",
+          "type": "array"
+        },
+        "da-DK": {
+          "items": {
+            "type": "string"
+          },
+          "markdownDescription": "List of additional `da-DK` (Danish) rules that should be disabled (if enabled by default by LanguageTool).",
+          "type": "array"
+        },
+        "de": {
+          "items": {
+            "type": "string"
+          },
+          "markdownDescription": "List of additional `de` (German) rules that should be disabled (if enabled by default by LanguageTool).",
+          "type": "array"
+        },
+        "de-AT": {
+          "items": {
+            "type": "string"
+          },
+          "markdownDescription": "List of additional `de-AT` (German (Austria)) rules that should be disabled (if enabled by default by LanguageTool).",
+          "type": "array"
+        },
+        "de-CH": {
+          "items": {
+            "type": "string"
+          },
+          "markdownDescription": "List of additional `de-CH` (German (Swiss)) rules that should be disabled (if enabled by default by LanguageTool).",
+          "type": "array"
+        },
+        "de-DE": {
+          "items": {
+            "type": "string"
+          },
+          "markdownDescription": "List of additional `de-DE` (German (Germany)) rules that should be disabled (if enabled by default by LanguageTool).",
+          "type": "array"
+        },
+        "de-DE-x-simple-language": {
+          "items": {
+            "type": "string"
+          },
+          "markdownDescription": "List of additional `de-DE-x-simple-language` (Simple German) rules that should be disabled (if enabled by default by LanguageTool).",
+          "type": "array"
+        },
+        "el-GR": {
+          "items": {
+            "type": "string"
+          },
+          "markdownDescription": "List of additional `el-GR` (Greek) rules that should be disabled (if enabled by default by LanguageTool).",
+          "type": "array"
+        },
+        "en": {
+          "items": {
+            "type": "string"
+          },
+          "markdownDescription": "List of additional `en` (English) rules that should be disabled (if enabled by default by LanguageTool).",
+          "type": "array"
+        },
+        "en-AU": {
+          "items": {
+            "type": "string"
+          },
+          "markdownDescription": "List of additional `en-AU` (English (Australian)) rules that should be disabled (if enabled by default by LanguageTool).",
+          "type": "array"
+        },
+        "en-CA": {
+          "items": {
+            "type": "string"
+          },
+          "markdownDescription": "List of additional `en-CA` (English (Canadian)) rules that should be disabled (if enabled by default by LanguageTool).",
+          "type": "array"
+        },
+        "en-GB": {
+          "items": {
+            "type": "string"
+          },
+          "markdownDescription": "List of additional `en-GB` (English (GB)) rules that should be disabled (if enabled by default by LanguageTool).",
+          "type": "array"
+        },
+        "en-NZ": {
+          "items": {
+            "type": "string"
+          },
+          "markdownDescription": "List of additional `en-NZ` (English (New Zealand)) rules that should be disabled (if enabled by default by LanguageTool).",
+          "type": "array"
+        },
+        "en-US": {
+          "items": {
+            "type": "string"
+          },
+          "markdownDescription": "List of additional `en-US` (English (US)) rules that should be disabled (if enabled by default by LanguageTool).",
+          "type": "array"
+        },
+        "en-ZA": {
+          "items": {
+            "type": "string"
+          },
+          "markdownDescription": "List of additional `en-ZA` (English (South African)) rules that should be disabled (if enabled by default by LanguageTool).",
+          "type": "array"
+        },
+        "eo": {
+          "items": {
+            "type": "string"
+          },
+          "markdownDescription": "List of additional `eo` (Esperanto) rules that should be disabled (if enabled by default by LanguageTool).",
+          "type": "array"
+        },
+        "es": {
+          "items": {
+            "type": "string"
+          },
+          "markdownDescription": "List of additional `es` (Spanish) rules that should be disabled (if enabled by default by LanguageTool).",
+          "type": "array"
+        },
+        "es-AR": {
+          "items": {
+            "type": "string"
+          },
+          "markdownDescription": "List of additional `es-AR` (Spanish (voseo)) rules that should be disabled (if enabled by default by LanguageTool).",
+          "type": "array"
+        },
+        "fa": {
+          "items": {
+            "type": "string"
+          },
+          "markdownDescription": "List of additional `fa` (Persian) rules that should be disabled (if enabled by default by LanguageTool).",
+          "type": "array"
+        },
+        "fr": {
+          "items": {
+            "type": "string"
+          },
+          "markdownDescription": "List of additional `fr` (French) rules that should be disabled (if enabled by default by LanguageTool).",
+          "type": "array"
+        },
+        "ga-IE": {
+          "items": {
+            "type": "string"
+          },
+          "markdownDescription": "List of additional `ga-IE` (Irish) rules that should be disabled (if enabled by default by LanguageTool).",
+          "type": "array"
+        },
+        "gl-ES": {
+          "items": {
+            "type": "string"
+          },
+          "markdownDescription": "List of additional `gl-ES` (Galician) rules that should be disabled (if enabled by default by LanguageTool).",
+          "type": "array"
+        },
+        "it": {
+          "items": {
+            "type": "string"
+          },
+          "markdownDescription": "List of additional `it` (Italian) rules that should be disabled (if enabled by default by LanguageTool).",
+          "type": "array"
+        },
+        "ja-JP": {
+          "items": {
+            "type": "string"
+          },
+          "markdownDescription": "List of additional `ja-JP` (Japanese) rules that should be disabled (if enabled by default by LanguageTool).",
+          "type": "array"
+        },
+        "km-KH": {
+          "items": {
+            "type": "string"
+          },
+          "markdownDescription": "List of additional `km-KH` (Khmer) rules that should be disabled (if enabled by default by LanguageTool).",
+          "type": "array"
+        },
+        "nl": {
+          "items": {
+            "type": "string"
+          },
+          "markdownDescription": "List of additional `nl` (Dutch) rules that should be disabled (if enabled by default by LanguageTool).",
+          "type": "array"
+        },
+        "nl-BE": {
+          "items": {
+            "type": "string"
+          },
+          "markdownDescription": "List of additional `nl-BE` (Dutch (Belgium)) rules that should be disabled (if enabled by default by LanguageTool).",
+          "type": "array"
+        },
+        "pl-PL": {
+          "items": {
+            "type": "string"
+          },
+          "markdownDescription": "List of additional `pl-PL` (Polish) rules that should be disabled (if enabled by default by LanguageTool).",
+          "type": "array"
+        },
+        "pt": {
+          "items": {
+            "type": "string"
+          },
+          "markdownDescription": "List of additional `pt` (Portuguese) rules that should be disabled (if enabled by default by LanguageTool).",
+          "type": "array"
+        },
+        "pt-AO": {
+          "items": {
+            "type": "string"
+          },
+          "markdownDescription": "List of additional `pt-AO` (Portuguese (Angola preAO)) rules that should be disabled (if enabled by default by LanguageTool).",
+          "type": "array"
+        },
+        "pt-BR": {
+          "items": {
+            "type": "string"
+          },
+          "markdownDescription": "List of additional `pt-BR` (Portuguese (Brazil)) rules that should be disabled (if enabled by default by LanguageTool).",
+          "type": "array"
+        },
+        "pt-MZ": {
+          "items": {
+            "type": "string"
+          },
+          "markdownDescription": "List of additional `pt-MZ` (Portuguese (Moçambique preAO)) rules that should be disabled (if enabled by default by LanguageTool).",
+          "type": "array"
+        },
+        "pt-PT": {
+          "items": {
+            "type": "string"
+          },
+          "markdownDescription": "List of additional `pt-PT` (Portuguese (Portugal)) rules that should be disabled (if enabled by default by LanguageTool).",
+          "type": "array"
+        },
+        "ro-RO": {
+          "items": {
+            "type": "string"
+          },
+          "markdownDescription": "List of additional `ro-RO` (Romanian) rules that should be disabled (if enabled by default by LanguageTool).",
+          "type": "array"
+        },
+        "ru-RU": {
+          "items": {
+            "type": "string"
+          },
+          "markdownDescription": "List of additional `ru-RU` (Russian) rules that should be disabled (if enabled by default by LanguageTool).",
+          "type": "array"
+        },
+        "sk-SK": {
+          "items": {
+            "type": "string"
+          },
+          "markdownDescription": "List of additional `sk-SK` (Slovak) rules that should be disabled (if enabled by default by LanguageTool).",
+          "type": "array"
+        },
+        "sl-SI": {
+          "items": {
+            "type": "string"
+          },
+          "markdownDescription": "List of additional `sl-SI` (Slovenian) rules that should be disabled (if enabled by default by LanguageTool).",
+          "type": "array"
+        },
+        "sv": {
+          "items": {
+            "type": "string"
+          },
+          "markdownDescription": "List of additional `sv` (Swedish) rules that should be disabled (if enabled by default by LanguageTool).",
+          "type": "array"
+        },
+        "ta-IN": {
+          "items": {
+            "type": "string"
+          },
+          "markdownDescription": "List of additional `ta-IN` (Tamil) rules that should be disabled (if enabled by default by LanguageTool).",
+          "type": "array"
+        },
+        "tl-PH": {
+          "items": {
+            "type": "string"
+          },
+          "markdownDescription": "List of additional `tl-PH` (Tagalog) rules that should be disabled (if enabled by default by LanguageTool).",
+          "type": "array"
+        },
+        "uk-UA": {
+          "items": {
+            "type": "string"
+          },
+          "markdownDescription": "List of additional `uk-UA` (Ukrainian) rules that should be disabled (if enabled by default by LanguageTool).",
+          "type": "array"
+        },
+        "zh-CN": {
+          "items": {
+            "type": "string"
+          },
+          "markdownDescription": "List of additional `zh-CN` (Chinese) rules that should be disabled (if enabled by default by LanguageTool).",
+          "type": "array"
+        }
+      },
+      "propertyNames": {
+        "enum": [
+          "ar",
+          "ast-ES",
+          "be-BY",
+          "br-FR",
+          "ca-ES",
+          "ca-ES-valencia",
+          "da-DK",
+          "de",
+          "de-AT",
+          "de-CH",
+          "de-DE",
+          "de-DE-x-simple-language",
+          "el-GR",
+          "en",
+          "en-AU",
+          "en-CA",
+          "en-GB",
+          "en-NZ",
+          "en-US",
+          "en-ZA",
+          "eo",
+          "es",
+          "es-AR",
+          "fa",
+          "fr",
+          "ga-IE",
+          "gl-ES",
+          "it",
+          "ja-JP",
+          "km-KH",
+          "nl",
+          "nl-BE",
+          "pl-PL",
+          "pt",
+          "pt-AO",
+          "pt-BR",
+          "pt-MZ",
+          "pt-PT",
+          "ro-RO",
+          "ru-RU",
+          "sk-SK",
+          "sl-SI",
+          "sv",
+          "ta-IN",
+          "tl-PH",
+          "uk-UA",
+          "zh-CN"
+        ],
+        "type": "string"
+      },
+      "scope": "resource",
+      "type": "object"
+    },
+    "ltex.enabled": {
+      "default": [
+        "bibtex",
+        "context",
+        "context.tex",
+        "html",
+        "latex",
+        "markdown",
+        "org",
+        "restructuredtext",
+        "rsweave"
+      ],
+      "examples": [
+        true,
+        false,
+        [
+          "latex",
+          "markdown"
+        ]
+      ],
+      "markdownDescription": "Controls whether the extension is enabled. Allows disabling LanguageTool on specific workspaces or for specific code language modes (i.e., file types). [More info...](https://valentjn.github.io/ltex/settings.html#ltexenabled)",
+      "oneOf": [
+        {
+          "type": "boolean"
+        },
+        {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        }
+      ],
+      "scope": "window"
+    },
+    "ltex.enabledRules": {
+      "additionalProperties": false,
+      "default": {},
+      "examples": [
+        {
+          "en-GB": [
+            "PASSIVE_VOICE",
+            "OXFORD_SPELLING_NOUNS",
+            ":/path/to/externalFile.txt"
+          ]
+        }
+      ],
+      "markdownDescription": "Lists of rules that should be enabled (if disabled by default by LanguageTool). [More info...](https://valentjn.github.io/ltex/settings.html#ltexenabledrules)",
+      "properties": {
+        "ar": {
+          "items": {
+            "type": "string"
+          },
+          "markdownDescription": "List of additional `ar` (Arabic) rules that should be enabled (if disabled by default by LanguageTool).",
+          "type": "array"
+        },
+        "ast-ES": {
+          "items": {
+            "type": "string"
+          },
+          "markdownDescription": "List of additional `ast-ES` (Asturian) rules that should be enabled (if disabled by default by LanguageTool).",
+          "type": "array"
+        },
+        "be-BY": {
+          "items": {
+            "type": "string"
+          },
+          "markdownDescription": "List of additional `be-BY` (Belarusian) rules that should be enabled (if disabled by default by LanguageTool).",
+          "type": "array"
+        },
+        "br-FR": {
+          "items": {
+            "type": "string"
+          },
+          "markdownDescription": "List of additional `br-FR` (Breton) rules that should be enabled (if disabled by default by LanguageTool).",
+          "type": "array"
+        },
+        "ca-ES": {
+          "items": {
+            "type": "string"
+          },
+          "markdownDescription": "List of additional `ca-ES` (Catalan) rules that should be enabled (if disabled by default by LanguageTool).",
+          "type": "array"
+        },
+        "ca-ES-valencia": {
+          "items": {
+            "type": "string"
+          },
+          "markdownDescription": "List of additional `ca-ES-valencia` (Catalan (Valencian)) rules that should be enabled (if disabled by default by LanguageTool).",
+          "type": "array"
+        },
+        "da-DK": {
+          "items": {
+            "type": "string"
+          },
+          "markdownDescription": "List of additional `da-DK` (Danish) rules that should be enabled (if disabled by default by LanguageTool).",
+          "type": "array"
+        },
+        "de": {
+          "items": {
+            "type": "string"
+          },
+          "markdownDescription": "List of additional `de` (German) rules that should be enabled (if disabled by default by LanguageTool).",
+          "type": "array"
+        },
+        "de-AT": {
+          "items": {
+            "type": "string"
+          },
+          "markdownDescription": "List of additional `de-AT` (German (Austria)) rules that should be enabled (if disabled by default by LanguageTool).",
+          "type": "array"
+        },
+        "de-CH": {
+          "items": {
+            "type": "string"
+          },
+          "markdownDescription": "List of additional `de-CH` (German (Swiss)) rules that should be enabled (if disabled by default by LanguageTool).",
+          "type": "array"
+        },
+        "de-DE": {
+          "items": {
+            "type": "string"
+          },
+          "markdownDescription": "List of additional `de-DE` (German (Germany)) rules that should be enabled (if disabled by default by LanguageTool).",
+          "type": "array"
+        },
+        "de-DE-x-simple-language": {
+          "items": {
+            "type": "string"
+          },
+          "markdownDescription": "List of additional `de-DE-x-simple-language` (Simple German) rules that should be enabled (if disabled by default by LanguageTool).",
+          "type": "array"
+        },
+        "el-GR": {
+          "items": {
+            "type": "string"
+          },
+          "markdownDescription": "List of additional `el-GR` (Greek) rules that should be enabled (if disabled by default by LanguageTool).",
+          "type": "array"
+        },
+        "en": {
+          "items": {
+            "type": "string"
+          },
+          "markdownDescription": "List of additional `en` (English) rules that should be enabled (if disabled by default by LanguageTool).",
+          "type": "array"
+        },
+        "en-AU": {
+          "items": {
+            "type": "string"
+          },
+          "markdownDescription": "List of additional `en-AU` (English (Australian)) rules that should be enabled (if disabled by default by LanguageTool).",
+          "type": "array"
+        },
+        "en-CA": {
+          "items": {
+            "type": "string"
+          },
+          "markdownDescription": "List of additional `en-CA` (English (Canadian)) rules that should be enabled (if disabled by default by LanguageTool).",
+          "type": "array"
+        },
+        "en-GB": {
+          "items": {
+            "type": "string"
+          },
+          "markdownDescription": "List of additional `en-GB` (English (GB)) rules that should be enabled (if disabled by default by LanguageTool).",
+          "type": "array"
+        },
+        "en-NZ": {
+          "items": {
+            "type": "string"
+          },
+          "markdownDescription": "List of additional `en-NZ` (English (New Zealand)) rules that should be enabled (if disabled by default by LanguageTool).",
+          "type": "array"
+        },
+        "en-US": {
+          "items": {
+            "type": "string"
+          },
+          "markdownDescription": "List of additional `en-US` (English (US)) rules that should be enabled (if disabled by default by LanguageTool).",
+          "type": "array"
+        },
+        "en-ZA": {
+          "items": {
+            "type": "string"
+          },
+          "markdownDescription": "List of additional `en-ZA` (English (South African)) rules that should be enabled (if disabled by default by LanguageTool).",
+          "type": "array"
+        },
+        "eo": {
+          "items": {
+            "type": "string"
+          },
+          "markdownDescription": "List of additional `eo` (Esperanto) rules that should be enabled (if disabled by default by LanguageTool).",
+          "type": "array"
+        },
+        "es": {
+          "items": {
+            "type": "string"
+          },
+          "markdownDescription": "List of additional `es` (Spanish) rules that should be enabled (if disabled by default by LanguageTool).",
+          "type": "array"
+        },
+        "es-AR": {
+          "items": {
+            "type": "string"
+          },
+          "markdownDescription": "List of additional `es-AR` (Spanish (voseo)) rules that should be enabled (if disabled by default by LanguageTool).",
+          "type": "array"
+        },
+        "fa": {
+          "items": {
+            "type": "string"
+          },
+          "markdownDescription": "List of additional `fa` (Persian) rules that should be enabled (if disabled by default by LanguageTool).",
+          "type": "array"
+        },
+        "fr": {
+          "items": {
+            "type": "string"
+          },
+          "markdownDescription": "List of additional `fr` (French) rules that should be enabled (if disabled by default by LanguageTool).",
+          "type": "array"
+        },
+        "ga-IE": {
+          "items": {
+            "type": "string"
+          },
+          "markdownDescription": "List of additional `ga-IE` (Irish) rules that should be enabled (if disabled by default by LanguageTool).",
+          "type": "array"
+        },
+        "gl-ES": {
+          "items": {
+            "type": "string"
+          },
+          "markdownDescription": "List of additional `gl-ES` (Galician) rules that should be enabled (if disabled by default by LanguageTool).",
+          "type": "array"
+        },
+        "it": {
+          "items": {
+            "type": "string"
+          },
+          "markdownDescription": "List of additional `it` (Italian) rules that should be enabled (if disabled by default by LanguageTool).",
+          "type": "array"
+        },
+        "ja-JP": {
+          "items": {
+            "type": "string"
+          },
+          "markdownDescription": "List of additional `ja-JP` (Japanese) rules that should be enabled (if disabled by default by LanguageTool).",
+          "type": "array"
+        },
+        "km-KH": {
+          "items": {
+            "type": "string"
+          },
+          "markdownDescription": "List of additional `km-KH` (Khmer) rules that should be enabled (if disabled by default by LanguageTool).",
+          "type": "array"
+        },
+        "nl": {
+          "items": {
+            "type": "string"
+          },
+          "markdownDescription": "List of additional `nl` (Dutch) rules that should be enabled (if disabled by default by LanguageTool).",
+          "type": "array"
+        },
+        "nl-BE": {
+          "items": {
+            "type": "string"
+          },
+          "markdownDescription": "List of additional `nl-BE` (Dutch (Belgium)) rules that should be enabled (if disabled by default by LanguageTool).",
+          "type": "array"
+        },
+        "pl-PL": {
+          "items": {
+            "type": "string"
+          },
+          "markdownDescription": "List of additional `pl-PL` (Polish) rules that should be enabled (if disabled by default by LanguageTool).",
+          "type": "array"
+        },
+        "pt": {
+          "items": {
+            "type": "string"
+          },
+          "markdownDescription": "List of additional `pt` (Portuguese) rules that should be enabled (if disabled by default by LanguageTool).",
+          "type": "array"
+        },
+        "pt-AO": {
+          "items": {
+            "type": "string"
+          },
+          "markdownDescription": "List of additional `pt-AO` (Portuguese (Angola preAO)) rules that should be enabled (if disabled by default by LanguageTool).",
+          "type": "array"
+        },
+        "pt-BR": {
+          "items": {
+            "type": "string"
+          },
+          "markdownDescription": "List of additional `pt-BR` (Portuguese (Brazil)) rules that should be enabled (if disabled by default by LanguageTool).",
+          "type": "array"
+        },
+        "pt-MZ": {
+          "items": {
+            "type": "string"
+          },
+          "markdownDescription": "List of additional `pt-MZ` (Portuguese (Moçambique preAO)) rules that should be enabled (if disabled by default by LanguageTool).",
+          "type": "array"
+        },
+        "pt-PT": {
+          "items": {
+            "type": "string"
+          },
+          "markdownDescription": "List of additional `pt-PT` (Portuguese (Portugal)) rules that should be enabled (if disabled by default by LanguageTool).",
+          "type": "array"
+        },
+        "ro-RO": {
+          "items": {
+            "type": "string"
+          },
+          "markdownDescription": "List of additional `ro-RO` (Romanian) rules that should be enabled (if disabled by default by LanguageTool).",
+          "type": "array"
+        },
+        "ru-RU": {
+          "items": {
+            "type": "string"
+          },
+          "markdownDescription": "List of additional `ru-RU` (Russian) rules that should be enabled (if disabled by default by LanguageTool).",
+          "type": "array"
+        },
+        "sk-SK": {
+          "items": {
+            "type": "string"
+          },
+          "markdownDescription": "List of additional `sk-SK` (Slovak) rules that should be enabled (if disabled by default by LanguageTool).",
+          "type": "array"
+        },
+        "sl-SI": {
+          "items": {
+            "type": "string"
+          },
+          "markdownDescription": "List of additional `sl-SI` (Slovenian) rules that should be enabled (if disabled by default by LanguageTool).",
+          "type": "array"
+        },
+        "sv": {
+          "items": {
+            "type": "string"
+          },
+          "markdownDescription": "List of additional `sv` (Swedish) rules that should be enabled (if disabled by default by LanguageTool).",
+          "type": "array"
+        },
+        "ta-IN": {
+          "items": {
+            "type": "string"
+          },
+          "markdownDescription": "List of additional `ta-IN` (Tamil) rules that should be enabled (if disabled by default by LanguageTool).",
+          "type": "array"
+        },
+        "tl-PH": {
+          "items": {
+            "type": "string"
+          },
+          "markdownDescription": "List of additional `tl-PH` (Tagalog) rules that should be enabled (if disabled by default by LanguageTool).",
+          "type": "array"
+        },
+        "uk-UA": {
+          "items": {
+            "type": "string"
+          },
+          "markdownDescription": "List of additional `uk-UA` (Ukrainian) rules that should be enabled (if disabled by default by LanguageTool).",
+          "type": "array"
+        },
+        "zh-CN": {
+          "items": {
+            "type": "string"
+          },
+          "markdownDescription": "List of additional `zh-CN` (Chinese) rules that should be enabled (if disabled by default by LanguageTool).",
+          "type": "array"
+        }
+      },
+      "propertyNames": {
+        "enum": [
+          "ar",
+          "ast-ES",
+          "be-BY",
+          "br-FR",
+          "ca-ES",
+          "ca-ES-valencia",
+          "da-DK",
+          "de",
+          "de-AT",
+          "de-CH",
+          "de-DE",
+          "de-DE-x-simple-language",
+          "el-GR",
+          "en",
+          "en-AU",
+          "en-CA",
+          "en-GB",
+          "en-NZ",
+          "en-US",
+          "en-ZA",
+          "eo",
+          "es",
+          "es-AR",
+          "fa",
+          "fr",
+          "ga-IE",
+          "gl-ES",
+          "it",
+          "ja-JP",
+          "km-KH",
+          "nl",
+          "nl-BE",
+          "pl-PL",
+          "pt",
+          "pt-AO",
+          "pt-BR",
+          "pt-MZ",
+          "pt-PT",
+          "ro-RO",
+          "ru-RU",
+          "sk-SK",
+          "sl-SI",
+          "sv",
+          "ta-IN",
+          "tl-PH",
+          "uk-UA",
+          "zh-CN"
+        ],
+        "type": "string"
+      },
+      "scope": "application",
+      "type": "object"
+    },
+    "ltex.hiddenFalsePositives": {
+      "additionalProperties": false,
+      "default": {},
+      "examples": [
+        {
+          "en-US": [
+            ":/path/to/externalFile.txt"
+          ]
+        }
+      ],
+      "markdownDescription": "Lists of false-positive diagnostics to hide (by hiding all diagnostics of a specific rule within a specific sentence). [More info...](https://valentjn.github.io/ltex/settings.html#ltexhiddenfalsepositives)",
+      "properties": {
+        "ar": {
+          "items": {
+            "type": "string"
+          },
+          "markdownDescription": "List of `ar` (Arabic) false-positive diagnostics to hide.",
+          "type": "array"
+        },
+        "ast-ES": {
+          "items": {
+            "type": "string"
+          },
+          "markdownDescription": "List of `ast-ES` (Asturian) false-positive diagnostics to hide.",
+          "type": "array"
+        },
+        "be-BY": {
+          "items": {
+            "type": "string"
+          },
+          "markdownDescription": "List of `be-BY` (Belarusian) false-positive diagnostics to hide.",
+          "type": "array"
+        },
+        "br-FR": {
+          "items": {
+            "type": "string"
+          },
+          "markdownDescription": "List of `br-FR` (Breton) false-positive diagnostics to hide.",
+          "type": "array"
+        },
+        "ca-ES": {
+          "items": {
+            "type": "string"
+          },
+          "markdownDescription": "List of `ca-ES` (Catalan) false-positive diagnostics to hide.",
+          "type": "array"
+        },
+        "ca-ES-valencia": {
+          "items": {
+            "type": "string"
+          },
+          "markdownDescription": "List of `ca-ES-valencia` (Catalan (Valencian)) false-positive diagnostics to hide.",
+          "type": "array"
+        },
+        "da-DK": {
+          "items": {
+            "type": "string"
+          },
+          "markdownDescription": "List of `da-DK` (Danish) false-positive diagnostics to hide.",
+          "type": "array"
+        },
+        "de": {
+          "items": {
+            "type": "string"
+          },
+          "markdownDescription": "List of `de` (German) false-positive diagnostics to hide.",
+          "type": "array"
+        },
+        "de-AT": {
+          "items": {
+            "type": "string"
+          },
+          "markdownDescription": "List of `de-AT` (German (Austria)) false-positive diagnostics to hide.",
+          "type": "array"
+        },
+        "de-CH": {
+          "items": {
+            "type": "string"
+          },
+          "markdownDescription": "List of `de-CH` (German (Swiss)) false-positive diagnostics to hide.",
+          "type": "array"
+        },
+        "de-DE": {
+          "items": {
+            "type": "string"
+          },
+          "markdownDescription": "List of `de-DE` (German (Germany)) false-positive diagnostics to hide.",
+          "type": "array"
+        },
+        "de-DE-x-simple-language": {
+          "items": {
+            "type": "string"
+          },
+          "markdownDescription": "List of `de-DE-x-simple-language` (Simple German) false-positive diagnostics to hide.",
+          "type": "array"
+        },
+        "el-GR": {
+          "items": {
+            "type": "string"
+          },
+          "markdownDescription": "List of `el-GR` (Greek) false-positive diagnostics to hide.",
+          "type": "array"
+        },
+        "en": {
+          "items": {
+            "type": "string"
+          },
+          "markdownDescription": "List of `en` (English) false-positive diagnostics to hide.",
+          "type": "array"
+        },
+        "en-AU": {
+          "items": {
+            "type": "string"
+          },
+          "markdownDescription": "List of `en-AU` (English (Australian)) false-positive diagnostics to hide.",
+          "type": "array"
+        },
+        "en-CA": {
+          "items": {
+            "type": "string"
+          },
+          "markdownDescription": "List of `en-CA` (English (Canadian)) false-positive diagnostics to hide.",
+          "type": "array"
+        },
+        "en-GB": {
+          "items": {
+            "type": "string"
+          },
+          "markdownDescription": "List of `en-GB` (English (GB)) false-positive diagnostics to hide.",
+          "type": "array"
+        },
+        "en-NZ": {
+          "items": {
+            "type": "string"
+          },
+          "markdownDescription": "List of `en-NZ` (English (New Zealand)) false-positive diagnostics to hide.",
+          "type": "array"
+        },
+        "en-US": {
+          "items": {
+            "type": "string"
+          },
+          "markdownDescription": "List of `en-US` (English (US)) false-positive diagnostics to hide.",
+          "type": "array"
+        },
+        "en-ZA": {
+          "items": {
+            "type": "string"
+          },
+          "markdownDescription": "List of `en-ZA` (English (South African)) false-positive diagnostics to hide.",
+          "type": "array"
+        },
+        "eo": {
+          "items": {
+            "type": "string"
+          },
+          "markdownDescription": "List of `eo` (Esperanto) false-positive diagnostics to hide.",
+          "type": "array"
+        },
+        "es": {
+          "items": {
+            "type": "string"
+          },
+          "markdownDescription": "List of `es` (Spanish) false-positive diagnostics to hide.",
+          "type": "array"
+        },
+        "es-AR": {
+          "items": {
+            "type": "string"
+          },
+          "markdownDescription": "List of `es-AR` (Spanish (voseo)) false-positive diagnostics to hide.",
+          "type": "array"
+        },
+        "fa": {
+          "items": {
+            "type": "string"
+          },
+          "markdownDescription": "List of `fa` (Persian) false-positive diagnostics to hide.",
+          "type": "array"
+        },
+        "fr": {
+          "items": {
+            "type": "string"
+          },
+          "markdownDescription": "List of `fr` (French) false-positive diagnostics to hide.",
+          "type": "array"
+        },
+        "ga-IE": {
+          "items": {
+            "type": "string"
+          },
+          "markdownDescription": "List of `ga-IE` (Irish) false-positive diagnostics to hide.",
+          "type": "array"
+        },
+        "gl-ES": {
+          "items": {
+            "type": "string"
+          },
+          "markdownDescription": "List of `gl-ES` (Galician) false-positive diagnostics to hide.",
+          "type": "array"
+        },
+        "it": {
+          "items": {
+            "type": "string"
+          },
+          "markdownDescription": "List of `it` (Italian) false-positive diagnostics to hide.",
+          "type": "array"
+        },
+        "ja-JP": {
+          "items": {
+            "type": "string"
+          },
+          "markdownDescription": "List of `ja-JP` (Japanese) false-positive diagnostics to hide.",
+          "type": "array"
+        },
+        "km-KH": {
+          "items": {
+            "type": "string"
+          },
+          "markdownDescription": "List of `km-KH` (Khmer) false-positive diagnostics to hide.",
+          "type": "array"
+        },
+        "nl": {
+          "items": {
+            "type": "string"
+          },
+          "markdownDescription": "List of `nl` (Dutch) false-positive diagnostics to hide.",
+          "type": "array"
+        },
+        "nl-BE": {
+          "items": {
+            "type": "string"
+          },
+          "markdownDescription": "List of `nl-BE` (Dutch (Belgium)) false-positive diagnostics to hide.",
+          "type": "array"
+        },
+        "pl-PL": {
+          "items": {
+            "type": "string"
+          },
+          "markdownDescription": "List of `pl-PL` (Polish) false-positive diagnostics to hide.",
+          "type": "array"
+        },
+        "pt": {
+          "items": {
+            "type": "string"
+          },
+          "markdownDescription": "List of `pt` (Portuguese) false-positive diagnostics to hide.",
+          "type": "array"
+        },
+        "pt-AO": {
+          "items": {
+            "type": "string"
+          },
+          "markdownDescription": "List of `pt-AO` (Portuguese (Angola preAO)) false-positive diagnostics to hide.",
+          "type": "array"
+        },
+        "pt-BR": {
+          "items": {
+            "type": "string"
+          },
+          "markdownDescription": "List of `pt-BR` (Portuguese (Brazil)) false-positive diagnostics to hide.",
+          "type": "array"
+        },
+        "pt-MZ": {
+          "items": {
+            "type": "string"
+          },
+          "markdownDescription": "List of `pt-MZ` (Portuguese (Moçambique preAO)) false-positive diagnostics to hide.",
+          "type": "array"
+        },
+        "pt-PT": {
+          "items": {
+            "type": "string"
+          },
+          "markdownDescription": "List of `pt-PT` (Portuguese (Portugal)) false-positive diagnostics to hide.",
+          "type": "array"
+        },
+        "ro-RO": {
+          "items": {
+            "type": "string"
+          },
+          "markdownDescription": "List of `ro-RO` (Romanian) false-positive diagnostics to hide.",
+          "type": "array"
+        },
+        "ru-RU": {
+          "items": {
+            "type": "string"
+          },
+          "markdownDescription": "List of `ru-RU` (Russian) false-positive diagnostics to hide.",
+          "type": "array"
+        },
+        "sk-SK": {
+          "items": {
+            "type": "string"
+          },
+          "markdownDescription": "List of `sk-SK` (Slovak) false-positive diagnostics to hide.",
+          "type": "array"
+        },
+        "sl-SI": {
+          "items": {
+            "type": "string"
+          },
+          "markdownDescription": "List of `sl-SI` (Slovenian) false-positive diagnostics to hide.",
+          "type": "array"
+        },
+        "sv": {
+          "items": {
+            "type": "string"
+          },
+          "markdownDescription": "List of `sv` (Swedish) false-positive diagnostics to hide.",
+          "type": "array"
+        },
+        "ta-IN": {
+          "items": {
+            "type": "string"
+          },
+          "markdownDescription": "List of `ta-IN` (Tamil) false-positive diagnostics to hide.",
+          "type": "array"
+        },
+        "tl-PH": {
+          "items": {
+            "type": "string"
+          },
+          "markdownDescription": "List of `tl-PH` (Tagalog) false-positive diagnostics to hide.",
+          "type": "array"
+        },
+        "uk-UA": {
+          "items": {
+            "type": "string"
+          },
+          "markdownDescription": "List of `uk-UA` (Ukrainian) false-positive diagnostics to hide.",
+          "type": "array"
+        },
+        "zh-CN": {
+          "items": {
+            "type": "string"
+          },
+          "markdownDescription": "List of `zh-CN` (Chinese) false-positive diagnostics to hide.",
+          "type": "array"
+        }
+      },
+      "propertyNames": {
+        "enum": [
+          "ar",
+          "ast-ES",
+          "be-BY",
+          "br-FR",
+          "ca-ES",
+          "ca-ES-valencia",
+          "da-DK",
+          "de",
+          "de-AT",
+          "de-CH",
+          "de-DE",
+          "de-DE-x-simple-language",
+          "el-GR",
+          "en",
+          "en-AU",
+          "en-CA",
+          "en-GB",
+          "en-NZ",
+          "en-US",
+          "en-ZA",
+          "eo",
+          "es",
+          "es-AR",
+          "fa",
+          "fr",
+          "ga-IE",
+          "gl-ES",
+          "it",
+          "ja-JP",
+          "km-KH",
+          "nl",
+          "nl-BE",
+          "pl-PL",
+          "pt",
+          "pt-AO",
+          "pt-BR",
+          "pt-MZ",
+          "pt-PT",
+          "ro-RO",
+          "ru-RU",
+          "sk-SK",
+          "sl-SI",
+          "sv",
+          "ta-IN",
+          "tl-PH",
+          "uk-UA",
+          "zh-CN"
+        ],
+        "type": "string"
+      },
+      "scope": "resource",
+      "type": "object"
+    },
+    "ltex.java.initialHeapSize": {
+      "default": 64,
+      "markdownDescription": "Initial size of the Java heap memory in megabytes (corresponds to Java's `-Xms` option, must be a positive integer). [More info...](https://valentjn.github.io/ltex/settings.html#ltexjavainitialheapsize)",
+      "scope": "window",
+      "type": "integer"
+    },
+    "ltex.java.maximumHeapSize": {
+      "default": 512,
+      "markdownDescription": "Maximum size of the Java heap memory in megabytes (corresponds to Java's `-Xmx` option, must be a positive integer). [More info...](https://valentjn.github.io/ltex/settings.html#ltexjavamaximumheapsize)",
+      "scope": "window",
+      "type": "integer"
+    },
+    "ltex.java.path": {
+      "default": "",
+      "markdownDescription": "If set to an empty string, LTeX uses a Java distribution that is bundled with ltex-ls. You can point this setting to an existing Java installation on your computer to use that installation instead. [More info...](https://valentjn.github.io/ltex/settings.html#ltexjavapath)",
+      "scope": "window",
+      "type": "string"
+    },
+    "ltex.language": {
+      "default": "en-US",
+      "enum": [
+        "auto",
+        "ar",
+        "ast-ES",
+        "be-BY",
+        "br-FR",
+        "ca-ES",
+        "ca-ES-valencia",
+        "da-DK",
+        "de",
+        "de-AT",
+        "de-CH",
+        "de-DE",
+        "de-DE-x-simple-language",
+        "el-GR",
+        "en",
+        "en-AU",
+        "en-CA",
+        "en-GB",
+        "en-NZ",
+        "en-US",
+        "en-ZA",
+        "eo",
+        "es",
+        "es-AR",
+        "fa",
+        "fr",
+        "ga-IE",
+        "gl-ES",
+        "it",
+        "ja-JP",
+        "km-KH",
+        "nl",
+        "nl-BE",
+        "pl-PL",
+        "pt",
+        "pt-AO",
+        "pt-BR",
+        "pt-MZ",
+        "pt-PT",
+        "ro-RO",
+        "ru-RU",
+        "sk-SK",
+        "sl-SI",
+        "sv",
+        "ta-IN",
+        "tl-PH",
+        "uk-UA",
+        "zh-CN"
+      ],
+      "enumDescriptions": [
+        "Automatic language detection (not recommended)",
+        "Arabic",
+        "Asturian",
+        "Belarusian",
+        "Breton",
+        "Catalan",
+        "Catalan (Valencian)",
+        "Danish",
+        "German",
+        "German (Austria)",
+        "German (Swiss)",
+        "German (Germany)",
+        "Simple German",
+        "Greek",
+        "English",
+        "English (Australian)",
+        "English (Canadian)",
+        "English (GB)",
+        "English (New Zealand)",
+        "English (US)",
+        "English (South African)",
+        "Esperanto",
+        "Spanish",
+        "Spanish (voseo)",
+        "Persian",
+        "French",
+        "Irish",
+        "Galician",
+        "Italian",
+        "Japanese",
+        "Khmer",
+        "Dutch",
+        "Dutch (Belgium)",
+        "Polish",
+        "Portuguese",
+        "Portuguese (Angola preAO)",
+        "Portuguese (Brazil)",
+        "Portuguese (Moçambique preAO)",
+        "Portuguese (Portugal)",
+        "Romanian",
+        "Russian",
+        "Slovak",
+        "Slovenian",
+        "Swedish",
+        "Tamil",
+        "Tagalog",
+        "Ukrainian",
+        "Chinese"
+      ],
+      "markdownDescription": "The language (e.g., `\"en-US\"`) LanguageTool should check against. If possible, use a specific variant like `\"en-US\"` or `\"de-DE\"` instead of the generic language code like `\"en\"` or `\"de\"` to obtain spelling corrections (in addition to grammar corrections). [More info...](https://valentjn.github.io/ltex/settings.html#ltexlanguage)",
+      "markdownEnumDescriptions": [
+        "Automatic language detection (not recommended)",
+        "Arabic",
+        "Asturian",
+        "Belarusian",
+        "Breton",
+        "Catalan",
+        "Catalan (Valencian)",
+        "Danish",
+        "German",
+        "German (Austria)",
+        "German (Swiss)",
+        "German (Germany)",
+        "Simple German",
+        "Greek",
+        "English",
+        "English (Australian)",
+        "English (Canadian)",
+        "English (GB)",
+        "English (New Zealand)",
+        "English (US)",
+        "English (South African)",
+        "Esperanto",
+        "Spanish",
+        "Spanish (voseo)",
+        "Persian",
+        "French",
+        "Irish",
+        "Galician",
+        "Italian",
+        "Japanese",
+        "Khmer",
+        "Dutch",
+        "Dutch (Belgium)",
+        "Polish",
+        "Portuguese",
+        "Portuguese (Angola preAO)",
+        "Portuguese (Brazil)",
+        "Portuguese (Moçambique preAO)",
+        "Portuguese (Portugal)",
+        "Romanian",
+        "Russian",
+        "Slovak",
+        "Slovenian",
+        "Swedish",
+        "Tamil",
+        "Tagalog",
+        "Ukrainian",
+        "Chinese"
+      ],
+      "scope": "resource",
+      "type": "string"
+    },
+    "ltex.languageToolHttpServerUri": {
+      "default": "",
+      "examples": [
+        "http://localhost:8081/"
+      ],
+      "markdownDescription": "If set to a non-empty string, LTeX will not use the bundled, built-in version of LanguageTool. Instead, LTeX will connect to an external [LanguageTool HTTP server](http://wiki.languagetool.org/http-server). Set this setting to the root URI of the server, and do not append `v2/check` or similar. [More info...](https://valentjn.github.io/ltex/settings.html#ltexlanguagetoolhttpserveruri)",
+      "scope": "window",
+      "type": "string"
+    },
+    "ltex.languageToolOrg.apiKey": {
+      "default": "",
+      "markdownDescription": "API key for Premium API access. Only relevant if `ltex.languageToolHttpServerUri` is set.",
+      "scope": "window",
+      "type": "string"
+    },
+    "ltex.languageToolOrg.username": {
+      "default": "",
+      "markdownDescription": "Username/email as used to log in at languagetool.org for Premium API access. Only relevant if `ltex.languageToolHttpServerUri` is set.",
+      "scope": "window",
+      "type": "string"
+    },
+    "ltex.latex.commands": {
+      "additionalProperties": false,
+      "default": {},
+      "examples": [
+        {
+          "\\cite[]{}": "dummy",
+          "\\cite{}": "dummy",
+          "\\documentclass[]{}": "ignore",
+          "\\label{}": "ignore"
+        }
+      ],
+      "markdownDescription": "List of LaTeX commands to be handled by the LaTeX parser, listed together with empty arguments (e.g., `\"\\ref{}\"`, `\"\\documentclass[]{}\"`). [More info...](https://valentjn.github.io/ltex/settings.html#ltexlatexcommands)",
+      "patternProperties": {
+        "^.*$": {
+          "enum": [
+            "default",
+            "ignore",
+            "dummy",
+            "pluralDummy",
+            "vowelDummy"
+          ],
+          "enumDescriptions": [
+            "The command is treated like unknown commands are treated by default: The command name itself is ignored, but the arguments are not ignored.",
+            "The whole command together with its arguments is ignored.",
+            "The whole command together with its arguments is replaced with a dummy word (i.e., 'Dummy0', 'Dummy1', etc.). LTeX internally uses this mechanism for equations, citations, references, and similar constructs that are part of the sentence structure and for which LanguageTool would throw an error if simply omitted from the checked text.",
+            "The whole command together with its arguments is replaced with a plural dummy word (i.e., 'Dummies'). See description for \"dummy\".",
+            "The whole command together with its arguments is replaced with a vowel dummy word (i.e., 'Ina'). See description for \"dummy\"."
+          ],
+          "markdownEnumDescriptions": [
+            "The command is treated like unknown commands are treated by default: The command name itself is ignored, but the arguments are not ignored.",
+            "The whole command together with its arguments is ignored.",
+            "The whole command together with its arguments is replaced with a dummy word (i.e., `Dummy0`, `Dummy1`, etc.). LTeX internally uses this mechanism for equations, citations, references, and similar constructs that are part of the sentence structure and for which LanguageTool would throw an error if simply omitted from the checked text.",
+            "The whole command together with its arguments is replaced with a plural dummy word (i.e., `Dummies`). See description for `\"dummy\"`.",
+            "The whole command together with its arguments is replaced with a vowel dummy word (i.e., `Ina`). See description for `\"dummy\"`."
+          ],
+          "type": "string"
+        }
+      },
+      "scope": "resource",
+      "type": "object"
+    },
+    "ltex.latex.environments": {
+      "additionalProperties": false,
+      "default": {},
+      "examples": [
+        {
+          "lstlisting": "ignore",
+          "verbatim": "ignore"
+        }
+      ],
+      "markdownDescription": "List of names of LaTeX environments to be handled by the LaTeX parser. [More info...](https://valentjn.github.io/ltex/settings.html#ltexlatexenvironments)",
+      "patternProperties": {
+        "^.*$": {
+          "enum": [
+            "default",
+            "ignore"
+          ],
+          "enumDescriptions": [
+            "The environment is treated like unknown environments are treated by default: The arguments of the environment are ignored, but the contents of the environment are not ignored.",
+            "The whole environment together with its arguments and contents is ignored."
+          ],
+          "markdownEnumDescriptions": [
+            "The environment is treated like unknown environments are treated by default: The arguments of the environment are ignored, but the contents of the environment are not ignored.",
+            "The whole environment together with its arguments and contents is ignored."
+          ],
+          "type": "string"
+        }
+      },
+      "scope": "resource",
+      "type": "object"
+    },
+    "ltex.ltex-ls.languageToolHttpServerUri": {
+      "default": "",
+      "deprecationMessage": "Deprecated: This setting has been renamed to 'ltex.languageToolHttpServerUri', see https://valentjn.github.io/vscode-ltex/docs/settings.html#ltexlanguagetoolhttpserveruri.",
+      "markdownDeprecationMessage": "**Deprecated:** This setting has been renamed to [`ltex.languageToolHttpServerUri`](https://valentjn.github.io/vscode-ltex/docs/settings.html#ltexlanguagetoolhttpserveruri).",
+      "scope": "window",
+      "type": "string"
+    },
+    "ltex.ltex-ls.languageToolOrgApiKey": {
+      "default": "",
+      "deprecationMessage": "Deprecated: This setting has been renamed to 'ltex.languageToolOrg.apiKey', see https://valentjn.github.io/vscode-ltex/docs/settings.html#ltexlanguagetoolorgapikey.",
+      "markdownDeprecationMessage": "**Deprecated:** This setting has been renamed to [`ltex.languageToolOrg.apiKey`](https://valentjn.github.io/vscode-ltex/docs/settings.html#ltexlanguagetoolorgapikey).",
+      "scope": "window",
+      "type": "string"
+    },
+    "ltex.ltex-ls.languageToolOrgUsername": {
+      "default": "",
+      "deprecationMessage": "Deprecated: This setting has been renamed to 'ltex.languageToolOrg.username', see https://valentjn.github.io/vscode-ltex/docs/settings.html#ltexlanguagetoolorgusername.",
+      "markdownDeprecationMessage": "**Deprecated:** This setting has been renamed to [`ltex.languageToolOrg.username`](https://valentjn.github.io/vscode-ltex/docs/settings.html#ltexlanguagetoolorgusername).",
+      "scope": "window",
+      "type": "string"
+    },
+    "ltex.ltex-ls.logLevel": {
+      "default": "fine",
+      "enum": [
+        "severe",
+        "warning",
+        "info",
+        "config",
+        "fine",
+        "finer",
+        "finest"
+      ],
+      "enumDescriptions": [
+        "Minimum verbosity. Only log severe errors.",
+        "Very low verbosity. Only log severe errors and warnings.",
+        "Low verbosity. Additionally, log startup and shutdown messages.",
+        "Medium verbosity. Additionally, log configuration messages.",
+        "Medium to high verbosity (default). Additionally, log when LanguageTool is called or LanguageTool has to be reinitialized due to changed settings.",
+        "High verbosity. Log additional debugging information such as full texts to be checked.",
+        "Maximum verbosity. Log all available debugging information."
+      ],
+      "markdownDescription": "Logging level (verbosity) of the ltex-ls server log, which is accessible via `View` › `Output` › `LTeX Language Server`. [More info...](https://valentjn.github.io/ltex/settings.html#ltexltex-lsloglevel)",
+      "markdownEnumDescriptions": [
+        "Minimum verbosity. Only log severe errors.",
+        "Very low verbosity. Only log severe errors and warnings.",
+        "Low verbosity. Additionally, log startup and shutdown messages.",
+        "Medium verbosity. Additionally, log configuration messages.",
+        "Medium to high verbosity (default). Additionally, log when LanguageTool is called or LanguageTool has to be reinitialized due to changed settings.",
+        "High verbosity. Log additional debugging information such as full texts to be checked.",
+        "Maximum verbosity. Log all available debugging information."
+      ],
+      "scope": "window",
+      "type": "string"
+    },
+    "ltex.ltex-ls.path": {
+      "default": "",
+      "markdownDescription": "If set to an empty string, LTeX automatically downloads [ltex-ls from GitHub](https://github.com/valentjn/ltex-ls/releases), stores it in the folder of the extension, and uses it for the checking process. You can point this setting to an ltex-ls release you downloaded by yourself. [More info...](https://valentjn.github.io/ltex/settings.html#ltexltex-lspath)",
+      "scope": "window",
+      "type": "string"
+    },
+    "ltex.markdown.nodes": {
+      "additionalProperties": false,
+      "default": {},
+      "examples": [
+        {
+          "AutoLink": "dummy",
+          "Code": "dummy",
+          "CodeBlock": "ignore",
+          "FencedCodeBlock": "ignore"
+        }
+      ],
+      "markdownDescription": "List of Markdown node types to be handled by the Markdown parser. [More info...](https://valentjn.github.io/ltex/settings.html#ltexmarkdownnodes)",
+      "patternProperties": {
+        "^.*$": {
+          "enum": [
+            "default",
+            "ignore",
+            "dummy",
+            "pluralDummy",
+            "vowelDummy"
+          ],
+          "enumDescriptions": [
+            "The node is not treated specially.",
+            "The whole node together with its 'Text' leaves is ignored.",
+            "The whole node together with its 'Text' leaves is replaced with a dummy word (i.e., 'Dummy0', 'Dummy1', etc.). LTeX internally uses this mechanism for example for inline code (inside backticks) that is part of the sentence structure and for which LanguageTool would throw an error if simply omitted from the checked text.",
+            "The whole node together with its 'Text' leaves is replaced with a plural dummy word (i.e., 'Dummies'). See description for \"dummy\".",
+            "The whole node together with its 'Text' leaves is replaced with a vowel dummy word (i.e., 'Ina'). See description for \"dummy\"."
+          ],
+          "markdownEnumDescriptions": [
+            "The node is not treated specially.",
+            "The whole node together with its `Text` leaves is ignored.",
+            "The whole node together with its `Text` leaves is replaced with a dummy word (i.e., `Dummy0`, `Dummy1`, etc.). LTeX internally uses this mechanism for example for inline code (inside backticks) that is part of the sentence structure and for which LanguageTool would throw an error if simply omitted from the checked text.",
+            "The whole node together with its `Text` leaves is replaced with a plural dummy word (i.e., `Dummies`). See description for `\"dummy\"`.",
+            "The whole node together with its `Text` leaves is replaced with a vowel dummy word (i.e., `Ina`). See description for `\"dummy\"`."
+          ],
+          "type": "string"
+        }
+      },
+      "scope": "resource",
+      "type": "object"
+    },
+    "ltex.sentenceCacheSize": {
+      "default": 2000,
+      "markdownDescription": "Size of the LanguageTool `ResultCache` in sentences (must be a positive integer). [More info...](https://valentjn.github.io/ltex/settings.html#ltexsentencecachesize)",
+      "scope": "resource",
+      "type": "integer"
+    },
+    "ltex.statusBarItem": {
+      "default": false,
+      "markdownDescription": "If set to `true`, an item about the status of LTeX is shown permanently in the status bar.",
+      "scope": "window",
+      "type": "boolean"
+    },
+    "ltex.trace.server": {
+      "default": "off",
+      "enum": [
+        "off",
+        "messages",
+        "verbose"
+      ],
+      "enumDescriptions": [
+        "Don't log any of the communication between language client and server.",
+        "Log the type of requests and responses between language client and server.",
+        "Log the type and contents of requests and responses between language client and server."
+      ],
+      "markdownDescription": "Debug setting to log the communication between language client and server. [More info...](https://valentjn.github.io/ltex/settings.html#ltextraceserver)",
+      "markdownEnumDescriptions": [
+        "Don't log any of the communication between language client and server.",
+        "Log the type of requests and responses between language client and server.",
+        "Log the type and contents of requests and responses between language client and server."
+      ],
+      "scope": "window",
+      "type": "string"
+    }
+  }
+}

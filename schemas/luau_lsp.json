@@ -387,6 +387,14 @@
       "markdownDescription": "Type of communication channel to use for communicating with the server. Only useful for debug purposes",
       "type": "string"
     },
+    "luau-lsp.server.crashReporting.enabled": {
+      "default": false,
+      "markdownDescription": "Upload crash reports to Sentry",
+      "tags": [
+        "usesOnlineServices"
+      ],
+      "type": "boolean"
+    },
     "luau-lsp.server.delayStartup": {
       "default": false,
       "markdownDescription": "Make the server spin indefinitely when starting up to allow time to attach a debugger. Only useful for debug purposes",
