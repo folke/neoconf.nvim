@@ -1709,21 +1709,22 @@
 -- ```
 ---@field path string
 
--- Which editor/column to open [Dart DevTools](https://dart.dev/tools/dart-devtools) pages in.
+-- Where to open [Dart DevTools](https://dart.dev/tools/dart-devtools) pages.
 -- 
 -- ```lua
 -- default = {
---   default = "beside"
+--   default = "beside",
+--   inspector = "sidebar"
 -- }
 -- ```
 ---@class _.lspconfig.settings.dartls.DevToolsLocation
----@field cpu-profiler "beside" | "active" | "external"
----@field default "beside" | "active" | "external"
----@field inspector "beside" | "active" | "external"
----@field logging "beside" | "active" | "external"
----@field memory "beside" | "active" | "external"
----@field network "beside" | "active" | "external"
----@field performance "beside" | "active" | "external"
+---@field cpu-profiler "beside" | "active" | "external" | "sidebar"
+---@field default "beside" | "active" | "external" | "sidebar"
+---@field inspector "beside" | "active" | "external" | "sidebar"
+---@field logging "beside" | "active" | "external" | "sidebar"
+---@field memory "beside" | "active" | "external" | "sidebar"
+---@field network "beside" | "active" | "external" | "sidebar"
+---@field performance "beside" | "active" | "external" | "sidebar"
 
 ---@class _.lspconfig.settings.dartls.Dart
 -- Whether to add your selected Dart/Flutter SDK path to the `PATH` environment variable for the embedded terminal. This is useful when switching SDKs via `#dart.sdkPaths#` / `#dart.flutterSdkPaths#` to ensure commands run from the terminal are the same version as being used by the editor/debugger (requires restart).
@@ -1887,11 +1888,12 @@
 -- default = "chrome"
 -- ```
 ---@field devToolsBrowser "chrome" | "default"
--- Which editor/column to open [Dart DevTools](https://dart.dev/tools/dart-devtools) pages in.
+-- Where to open [Dart DevTools](https://dart.dev/tools/dart-devtools) pages.
 -- 
 -- ```lua
 -- default = {
---   default = "beside"
+--   default = "beside",
+--   inspector = "sidebar"
 -- }
 -- ```
 ---@field devToolsLocation _.lspconfig.settings.dartls.DevToolsLocation

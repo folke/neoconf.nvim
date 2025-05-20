@@ -339,101 +339,118 @@
         "enum": [
           "beside",
           "active",
-          "external"
+          "external",
+          "sidebar"
         ],
         "enumDescriptions": [
           "Open DevTools in beside the active editor",
           "Open DevTools over the top of the active editor",
-          "Open DevTools externally in its own browser window"
+          "Open DevTools externally in its own browser window",
+          "Open DevTools in the sidebar (applies only to supported pages)"
         ]
       },
       "default": {
-        "default": "beside"
+        "default": "beside",
+        "inspector": "sidebar"
       },
-      "markdownDescription": "Which editor/column to open [Dart DevTools](https://dart.dev/tools/dart-devtools) pages in.",
+      "markdownDescription": "Where to open [Dart DevTools](https://dart.dev/tools/dart-devtools) pages.",
       "properties": {
         "cpu-profiler": {
           "enum": [
             "beside",
             "active",
-            "external"
+            "external",
+            "sidebar"
           ],
           "enumDescriptions": [
             "Open DevTools in beside the active editor",
             "Open DevTools over the top of the active editor",
-            "Open DevTools externally in its own browser window"
+            "Open DevTools externally in its own browser window",
+            "Open DevTools in the sidebar (applies only to supported pages)"
           ]
         },
         "default": {
           "enum": [
             "beside",
             "active",
-            "external"
+            "external",
+            "sidebar"
           ],
           "enumDescriptions": [
             "Open DevTools in beside the active editor",
             "Open DevTools over the top of the active editor",
-            "Open DevTools externally in its own browser window"
+            "Open DevTools externally in its own browser window",
+            "Open DevTools in the sidebar (applies only to supported pages)"
           ]
         },
         "inspector": {
           "enum": [
             "beside",
             "active",
-            "external"
+            "external",
+            "sidebar"
           ],
           "enumDescriptions": [
             "Open DevTools in beside the active editor",
             "Open DevTools over the top of the active editor",
-            "Open DevTools externally in its own browser window"
+            "Open DevTools externally in its own browser window",
+            "Open DevTools in the sidebar (applies only to supported pages)"
           ]
         },
         "logging": {
           "enum": [
             "beside",
             "active",
-            "external"
+            "external",
+            "sidebar"
           ],
           "enumDescriptions": [
             "Open DevTools in beside the active editor",
             "Open DevTools over the top of the active editor",
-            "Open DevTools externally in its own browser window"
+            "Open DevTools externally in its own browser window",
+            "Open DevTools in the sidebar (applies only to supported pages)"
           ]
         },
         "memory": {
           "enum": [
             "beside",
             "active",
-            "external"
+            "external",
+            "sidebar"
           ],
           "enumDescriptions": [
             "Open DevTools in beside the active editor",
             "Open DevTools over the top of the active editor",
-            "Open DevTools externally in its own browser window"
+            "Open DevTools externally in its own browser window",
+            "Open DevTools in the sidebar (applies only to supported pages)"
           ]
         },
         "network": {
           "enum": [
             "beside",
             "active",
-            "external"
+            "external",
+            "sidebar"
           ],
           "enumDescriptions": [
             "Open DevTools in beside the active editor",
             "Open DevTools over the top of the active editor",
-            "Open DevTools externally in its own browser window"
+            "Open DevTools externally in its own browser window",
+            "Open DevTools in the sidebar (applies only to supported pages)"
           ]
         },
         "performance": {
           "enum": [
             "beside",
             "active",
-            "external"
+            "external",
+            "sidebar"
           ],
           "enumDescriptions": [
             "Open DevTools in beside the active editor",
             "Open DevTools over the top of the active editor",
-            "Open DevTools externally in its own browser window"
+            "Open DevTools externally in its own browser window",
+            "Open DevTools in the sidebar (applies only to supported pages)"
           ]
         }
       },
