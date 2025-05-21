@@ -17771,6 +17771,12 @@
 -- default = true
 -- ```
 ---@field enable boolean
+-- Indent case clauses in switch statements. Requires using TypeScript 5.1+ in the workspace.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field indentSwitchCase boolean
 -- Defines space handling after a comma delimiter.
 -- 
 -- ```lua
@@ -17835,12 +17841,6 @@
 -- default = "ignore"
 -- ```
 ---@field semicolons "ignore" | "insert" | "remove"
-
----@class _.lspconfig.settings.vtsls.ImplicitProjectConfig
--- Enable/disable semantic checking of JavaScript files. Existing `jsconfig.json` or `tsconfig.json` files override this setting.
----@field checkJs boolean
--- Enable/disable `experimentalDecorators` in JavaScript files that are not part of a project. Existing `jsconfig.json` or `tsconfig.json` files override this setting.
----@field experimentalDecorators boolean
 
 ---@class _.lspconfig.settings.vtsls.FunctionLikeReturnTypes
 -- Enable/disable inlay hints for implicit return types on function signatures:
@@ -17994,12 +17994,6 @@
 -- ```lua
 -- default = true
 -- ```
----@field renameShorthandProperties boolean
--- Enable/disable introducing aliases for object shorthand properties during renames.
--- 
--- ```lua
--- default = true
--- ```
 ---@field useAliasesForRenames boolean
 
 ---@class _.lspconfig.settings.vtsls.ReferencesCodeLens
@@ -18040,7 +18034,7 @@
 -- default = true
 -- ```
 ---@field completeJSDocs boolean
--- Enabled/disable autocomplete suggestions.
+-- Enable/disable autocomplete suggestions.
 -- 
 -- ```lua
 -- default = true
@@ -18098,7 +18092,6 @@
 
 ---@class _.lspconfig.settings.vtsls.Javascript
 ---@field format _.lspconfig.settings.vtsls.Format
----@field implicitProjectConfig _.lspconfig.settings.vtsls.ImplicitProjectConfig
 ---@field inlayHints _.lspconfig.settings.vtsls.InlayHints
 -- Makes `Go to Definition` avoid type declaration files when possible by triggering `Go to Source Definition` instead. This allows `Go to Source Definition` to be triggered with the mouse gesture.
 ---@field preferGoToSourceDefinition boolean
@@ -18108,6 +18101,14 @@
 ---@field suggestionActions _.lspconfig.settings.vtsls.SuggestionActions
 ---@field updateImportsOnFileMove _.lspconfig.settings.vtsls.UpdateImportsOnFileMove
 ---@field validate _.lspconfig.settings.vtsls.Validate
+
+---@class _.lspconfig.settings.vtsls.Hover
+-- The maximum number of characters in a hover. If the hover is longer than this, it will be truncated. Requires TypeScript 5.9+.
+-- 
+-- ```lua
+-- default = 500
+-- ```
+---@field maximumLength number
 
 ---@class _.lspconfig.settings.vtsls.ImplicitProjectConfig
 -- Enable/disable semantic checking of JavaScript files. Existing `jsconfig.json` or `tsconfig.json` files override this setting.
@@ -18140,6 +18141,7 @@
 ---@field target "ES3" | "ES5" | "ES6" | "ES2015" | "ES2016" | "ES2017" | "ES2018" | "ES2019" | "ES2020" | "ES2021" | "ES2022" | "ES2023" | "ES2024" | "ESNext"
 
 ---@class _.lspconfig.settings.vtsls.Js/ts
+---@field hover _.lspconfig.settings.vtsls.Hover
 ---@field implicitProjectConfig _.lspconfig.settings.vtsls.ImplicitProjectConfig
 
 ---@class _.lspconfig.settings.vtsls.Check
@@ -18409,12 +18411,6 @@
 -- ```lua
 -- default = true
 -- ```
----@field renameShorthandProperties boolean
--- Enable/disable introducing aliases for object shorthand properties during renames.
--- 
--- ```lua
--- default = true
--- ```
 ---@field useAliasesForRenames boolean
 
 ---@class _.lspconfig.settings.vtsls.ReferencesCodeLens
@@ -18463,7 +18459,7 @@
 -- default = true
 -- ```
 ---@field completeJSDocs boolean
--- Enabled/disable autocomplete suggestions.
+-- Enable/disable autocomplete suggestions.
 -- 
 -- ```lua
 -- default = true
@@ -18548,12 +18544,6 @@
 -- default = {}
 -- ```
 ---@field pluginPaths string[]
--- Enable/disable spawning a separate TypeScript server that can more quickly respond to syntax related operations, such as calculating folding or computing document symbols.
--- 
--- ```lua
--- default = true
--- ```
----@field useSeparateSyntaxServer boolean
 -- Controls if TypeScript launches a dedicated server to more quickly handle syntax related operations, such as computing code folding.
 -- 
 -- ```lua
