@@ -1,6 +1,6 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "description": "Linter to detect & fix coding issues locally in JS/TS, Python, PHP, Java, C, C++, C#, Go, IaC. Use with SonarQube (Server, Cloud) for optimal team performance.",
+  "description": "Advanced linter to detect & fix coding issues locally in JS/TS, Python, Java, C#, C/C++, Go, PHP.  Use with SonarQube (Server, Cloud) for optimal team performance.",
   "properties": {
     "sonarlint.analysisExcludesStandalone": {
       "default": "",
