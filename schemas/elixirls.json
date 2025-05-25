@@ -74,7 +74,9 @@
           "missing_return",
           "no_missing_return",
           "unknown",
-          "overlapping_contract"
+          "overlapping_contract",
+          "opaque_union",
+          "no_opaque_union"
         ],
         "type": "string"
       },
