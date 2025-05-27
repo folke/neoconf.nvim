@@ -863,7 +863,7 @@
       "type": "boolean"
     },
     "rust-analyzer.imports.prefix": {
-      "default": "plain",
+      "default": "crate",
       "enum": [
         "plain",
         "self",

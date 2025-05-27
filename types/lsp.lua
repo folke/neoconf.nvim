@@ -14036,7 +14036,7 @@
 -- The path structure for newly inserted paths to use.
 -- 
 -- ```lua
--- default = "plain"
+-- default = "crate"
 -- ```
 ---@field prefix "plain" | "self" | "crate"
 -- Whether to prefix external (including std, core) crate imports with `::`. e.g. "use ::std::io::Read;".
