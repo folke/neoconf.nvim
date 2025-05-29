@@ -167,6 +167,12 @@
       "title": "%extension.tinymist.config.tinymist.formatterPrintWidth.title%",
       "type": "number"
     },
+    "tinymist.formatterProseWrap": {
+      "default": false,
+      "markdownDescription": "%extension.tinymist.config.tinymist.formatterProseWrap.desc%",
+      "title": "%extension.tinymist.config.tinymist.formatterProseWrap.title%",
+      "type": "boolean"
+    },
     "tinymist.lint.enabled": {
       "default": false,
       "markdownDescription": "%extension.tinymist.config.tinymist.lint.enabled.desc%",

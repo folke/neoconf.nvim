@@ -769,6 +769,28 @@
       "default": "hexadecimal",
       "markdownDescription": "How to render the offset information in a memory layout hover."
     },
+    "rust-analyzer.hover.memoryLayout.padding": {
+      "anyOf": [
+        {
+          "type": "null"
+        },
+        {
+          "enum": [
+            "both",
+            "decimal",
+            "hexadecimal"
+          ],
+          "enumDescriptions": [
+            "Render as 12 (0xC)",
+            "Render as 12",
+            "Render as 0xC"
+          ],
+          "type": "string"
+        }
+      ],
+      "default": null,
+      "markdownDescription": "How to render the padding information in a memory layout hover."
+    },
     "rust-analyzer.hover.memoryLayout.size": {
       "anyOf": [
         {

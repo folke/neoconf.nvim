@@ -13958,6 +13958,8 @@
 -- default = "hexadecimal"
 -- ```
 ---@field offset any|"both" | "decimal" | "hexadecimal"
+-- How to render the padding information in a memory layout hover.
+---@field padding any|"both" | "decimal" | "hexadecimal"
 -- How to render the size information in a memory layout hover.
 -- 
 -- ```lua
@@ -16564,6 +16566,8 @@
 -- default = 120
 -- ```
 ---@field formatterPrintWidth number
+-- %extension.tinymist.config.tinymist.formatterProseWrap.desc%
+---@field formatterProseWrap boolean
 ---@field lint _.lspconfig.settings.tinymist.Lint
 -- %extension.tinymist.config.tinymist.onEnterEvent.desc%
 -- 
