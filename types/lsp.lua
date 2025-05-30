@@ -12120,6 +12120,20 @@
 -- The name of the folder in which rope stores project configurations and data.  Pass `null` for not using such a folder at all.
 ---@field ropeFolder string[]
 
+---@class _.lspconfig.settings.pylsp.Signature
+-- Formatter to use for reformatting signatures in docstrings.
+-- 
+-- ```lua
+-- default = "black"
+-- ```
+---@field formatter "black" | "ruff"
+-- Maximum line length in signatures.
+-- 
+-- ```lua
+-- default = 88
+-- ```
+---@field line_length number
+
 ---@class _.lspconfig.settings.pylsp.Pylsp
 -- List of configuration sources to use.
 -- 
@@ -12129,6 +12143,7 @@
 ---@field configurationSources string[]
 ---@field plugins _.lspconfig.settings.pylsp.Plugins
 ---@field rope _.lspconfig.settings.pylsp.Rope
+---@field signature _.lspconfig.settings.pylsp.Signature
 
 ---@class lspconfig.settings.pylsp
 ---@field pylsp _.lspconfig.settings.pylsp.Pylsp

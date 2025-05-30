@@ -509,6 +509,24 @@
         "null"
       ],
       "uniqueItems": true
+    },
+    "pylsp.signature.formatter": {
+      "default": "black",
+      "description": "Formatter to use for reformatting signatures in docstrings.",
+      "enum": [
+        "black",
+        "ruff",
+        null
+      ],
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "pylsp.signature.line_length": {
+      "default": 88,
+      "description": "Maximum line length in signatures.",
+      "type": "number"
     }
   }
 }
