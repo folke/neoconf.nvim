@@ -9668,6 +9668,8 @@
 -- default = {}
 -- ```
 ---@field fileAliases table
+-- Use the old require-by-string semantics for init.luau resolution
+---@field useOriginalRequireByStringSemantics boolean
 
 ---@class _.lspconfig.settings.luau_lsp.CrashReporting
 -- Upload crash reports to Sentry

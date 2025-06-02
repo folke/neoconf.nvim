@@ -374,6 +374,14 @@
       "scope": "resource",
       "type": "object"
     },
+    "luau-lsp.require.useOriginalRequireByStringSemantics": {
+      "default": false,
+      "deprecationMessage": "Deprecated: Use the new require-by-string semantics instead. This option may be removed at any time in the future",
+      "markdownDeprecationMessage": "**Deprecated**: Use the new require-by-string semantics instead. This option may be removed at any time in the future",
+      "markdownDescription": "Use the old require-by-string semantics for init.luau resolution",
+      "scope": "resource",
+      "type": "boolean"
+    },
     "luau-lsp.server.communicationChannel": {
       "default": "stdio",
       "enum": [
