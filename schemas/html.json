@@ -10,7 +10,7 @@
     },
     "html.autoCreateQuotes": {
       "default": true,
-      "description": "Enable/disable auto creation of quotes for HTML attribute assignment. The type of quotes can be configured by `#html.completion.attributeDefaultValue#`.",
+      "markdownDescription": "Enable/disable auto creation of quotes for HTML attribute assignment. The type of quotes can be configured by `#html.completion.attributeDefaultValue#`.",
       "scope": "resource",
       "type": "boolean"
     },
