@@ -15350,7 +15350,7 @@
 ---@field trace _.lspconfig.settings.sourcekit.Trace
 
 ---@class _.lspconfig.settings.sourcekit.Debugger
--- Select which debug adapter to use to debus Swift executables.
+-- Select which debug adapter to use to debug Swift executables.
 -- 
 -- ```lua
 -- default = "auto"
