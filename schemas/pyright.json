@@ -1126,6 +1126,22 @@
             "boolean"
           ]
         },
+        "reportUnreachable": {
+          "default": "none",
+          "description": "Diagnostics for code that is determined by type analysis to be unreachable.",
+          "enum": [
+            "none",
+            "information",
+            "warning",
+            "error",
+            true,
+            false
+          ],
+          "type": [
+            "string",
+            "boolean"
+          ]
+        },
         "reportUnsupportedDunderAll": {
           "default": "warning",
           "description": "Diagnostics for unsupported operations performed on __all__.",

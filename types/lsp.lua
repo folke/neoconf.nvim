@@ -12564,6 +12564,12 @@
 -- default = "none"
 -- ```
 ---@field reportUnnecessaryTypeIgnoreComment "none" | "information" | "warning" | "error" | true | false
+-- Diagnostics for code that is determined by type analysis to be unreachable.
+-- 
+-- ```lua
+-- default = "none"
+-- ```
+---@field reportUnreachable "none" | "information" | "warning" | "error" | true | false
 -- Diagnostics for unsupported operations performed on __all__.
 -- 
 -- ```lua
