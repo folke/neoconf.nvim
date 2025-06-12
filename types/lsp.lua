@@ -656,7 +656,7 @@
 -- default = "none"
 -- ```
 ---@field reportUnnecessaryTypeIgnoreComment "none" | "hint" | "information" | "warning" | "error" | true | false
--- Diagnostics for unreachable code.
+-- Diagnostics for code that is determined by type analysis to be unreachable.
 -- 
 -- ```lua
 -- default = "none"

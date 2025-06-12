@@ -1347,7 +1347,7 @@
         },
         "reportUnreachable": {
           "default": "none",
-          "description": "Diagnostics for unreachable code.",
+          "description": "Diagnostics for code that is determined by type analysis to be unreachable.",
           "enum": [
             "none",
             "hint",
