@@ -17665,20 +17665,6 @@
 -- default = true
 -- ```
 ---@field askNewComponentName boolean
--- %configuration.codeActions.enabled%
--- 
--- ```lua
--- default = true
--- ```
----@field enabled boolean
-
----@class _.lspconfig.settings.volar.CodeLens
--- %configuration.codeLens.enabled%
--- 
--- ```lua
--- default = true
--- ```
----@field enabled boolean
 
 ---@class _.lspconfig.settings.volar.Casing
 -- %configuration.complete.casing.props%
@@ -17780,7 +17766,6 @@
 ---@class _.lspconfig.settings.volar.Vue
 ---@field autoInsert _.lspconfig.settings.volar.AutoInsert
 ---@field codeActions _.lspconfig.settings.volar.CodeActions
----@field codeLens _.lspconfig.settings.volar.CodeLens
 ---@field complete _.lspconfig.settings.volar.Complete
 ---@field format _.lspconfig.settings.volar.Format
 ---@field inlayHints _.lspconfig.settings.volar.InlayHints

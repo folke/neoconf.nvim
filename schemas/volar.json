@@ -17,16 +17,6 @@
       "markdownDescription": "%configuration.codeActions.askNewComponentName%",
       "type": "boolean"
     },
-    "vue.codeActions.enabled": {
-      "default": true,
-      "markdownDescription": "%configuration.codeActions.enabled%",
-      "type": "boolean"
-    },
-    "vue.codeLens.enabled": {
-      "default": true,
-      "markdownDescription": "%configuration.codeLens.enabled%",
-      "type": "boolean"
-    },
     "vue.complete.casing.props": {
       "default": "autoKebab",
       "enum": [
