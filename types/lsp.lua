@@ -14658,6 +14658,8 @@
 ---@field extraIncludes string[]
 
 ---@class _.lspconfig.settings.rust_analyzer.Search
+-- Exclude imports from symbol search.
+---@field excludeImports boolean
 -- Workspace symbol search kind.
 -- 
 -- ```lua
