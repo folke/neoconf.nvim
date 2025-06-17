@@ -6568,13 +6568,13 @@
 ---@field static _.lspconfig.settings.julials.Static
 
 ---@class _.lspconfig.settings.julials.Lint
--- This compares  call signatures against all known methods for the called function. Calls with too many or too few arguments, or unknown keyword parameters are highlighted.
+-- This compares call signatures against all known methods for the called function. Calls with too many or too few arguments, or unknown keyword parameters are highlighted.
 -- 
 -- ```lua
 -- default = true
 -- ```
 ---@field call boolean
--- Check for constant conditionals in if statements that result in branches never being reached..
+-- Check for constant conditionals in if statements that result in branches never being reached.
 -- 
 -- ```lua
 -- default = true
@@ -6616,7 +6616,7 @@
 -- default = true
 -- ```
 ---@field modname boolean
--- Check for use of `==` rather than `===` when comparing against `nothing`. 
+-- Check for use of `==` rather than `===` when comparing against `nothing`.
 -- 
 -- ```lua
 -- default = true
@@ -14643,7 +14643,7 @@
 -- - typing `<` in a path or type position inserts a closing `>` after the path or type.
 -- 
 -- ```lua
--- default = "=."
+-- default = "=.+"
 -- ```
 ---@field triggerChars string
 

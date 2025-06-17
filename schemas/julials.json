@@ -224,12 +224,12 @@
     },
     "julia.lint.call": {
       "default": true,
-      "description": "This compares  call signatures against all known methods for the called function. Calls with too many or too few arguments, or unknown keyword parameters are highlighted.",
+      "description": "This compares call signatures against all known methods for the called function. Calls with too many or too few arguments, or unknown keyword parameters are highlighted.",
       "type": "boolean"
     },
     "julia.lint.constif": {
       "default": true,
-      "description": "Check for constant conditionals in if statements that result in branches never being reached..",
+      "description": "Check for constant conditionals in if statements that result in branches never being reached.",
       "type": "boolean"
     },
     "julia.lint.datadecl": {
@@ -272,7 +272,7 @@
     },
     "julia.lint.nothingcomp": {
       "default": true,
-      "description": "Check for use of `==` rather than `===` when comparing against `nothing`. ",
+      "description": "Check for use of `==` rather than `===` when comparing against `nothing`.",
       "type": "boolean"
     },
     "julia.lint.pirates": {
