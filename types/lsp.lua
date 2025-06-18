@@ -13304,6 +13304,8 @@
 -- default = "todo"
 -- ```
 ---@field expressionFillDefault "todo" | "default"
+-- When inserting a type (e.g. in "fill match arms" assist), prefer to use `Self` over the type name where possible.
+---@field preferSelf boolean
 ---@field termSearch _.lspconfig.settings.rust_analyzer.TermSearch
 
 ---@class _.lspconfig.settings.rust_analyzer.CachePriming

@@ -20,6 +20,11 @@
       "markdownDescription": "Placeholder expression to use for missing expressions in assists.",
       "type": "string"
     },
+    "rust-analyzer.assist.preferSelf": {
+      "default": false,
+      "markdownDescription": "When inserting a type (e.g. in \"fill match arms\" assist), prefer to use `Self` over the type name where possible.",
+      "type": "boolean"
+    },
     "rust-analyzer.assist.termSearch.borrowcheck": {
       "default": true,
       "markdownDescription": "Enable borrow checking for term search code assists. If set to false, also there will be more suggestions, but some of them may not borrow-check.",
