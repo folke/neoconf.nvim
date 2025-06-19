@@ -1686,6 +1686,12 @@
       "scope": "resource",
       "type": "boolean"
     },
+    "basedpyright.analysis.inlayHints.callArgumentNamesMatching": {
+      "default": false,
+      "description": "Whether to show inlay hints on function arguments when the input expression is a variable with the same name as the parameter.",
+      "scope": "resource",
+      "type": "boolean"
+    },
     "basedpyright.analysis.inlayHints.functionReturnTypes": {
       "default": true,
       "description": "Whether to show inlay hints on function return types.",

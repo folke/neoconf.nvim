@@ -766,6 +766,8 @@
 -- default = true
 -- ```
 ---@field callArgumentNames boolean
+-- Whether to show inlay hints on function arguments when the input expression is a variable with the same name as the parameter.
+---@field callArgumentNamesMatching boolean
 -- Whether to show inlay hints on function return types.
 -- 
 -- ```lua
