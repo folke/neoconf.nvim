@@ -321,6 +321,12 @@
       "title": "TypeScript: Signature Help",
       "type": "boolean"
     },
+    "svelte.plugin.typescript.workspaceSymbols.enable": {
+      "default": true,
+      "description": "Enable workspace symbols for TypeScript.",
+      "title": "TypeScript: Workspace Symbols",
+      "type": "boolean"
+    },
     "svelte.trace.server": {
       "default": "off",
       "description": "Traces the communication between VS Code and the Svelte Language Server.",

@@ -14647,7 +14647,7 @@
 -- - typing `<` in a path or type position inserts a closing `>` after the path or type.
 -- 
 -- ```lua
--- default = "=.+"
+-- default = "=."
 -- ```
 ---@field triggerChars string
 
@@ -16046,6 +16046,14 @@
 -- ```
 ---@field enable boolean
 
+---@class _.lspconfig.settings.svelte.WorkspaceSymbols
+-- Enable workspace symbols for TypeScript.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enable boolean
+
 ---@class _.lspconfig.settings.svelte.Typescript
 ---@field codeActions _.lspconfig.settings.svelte.CodeActions
 ---@field completions _.lspconfig.settings.svelte.Completions
@@ -16061,6 +16069,7 @@
 ---@field selectionRange _.lspconfig.settings.svelte.SelectionRange
 ---@field semanticTokens _.lspconfig.settings.svelte.SemanticTokens
 ---@field signatureHelp _.lspconfig.settings.svelte.SignatureHelp
+---@field workspaceSymbols _.lspconfig.settings.svelte.WorkspaceSymbols
 
 ---@class _.lspconfig.settings.svelte.Plugin
 ---@field css _.lspconfig.settings.svelte.Css
