@@ -1031,12 +1031,14 @@
 -- ```
 ---@field fallbackFlags string[]
 ---@field inactiveRegions _.lspconfig.settings.clangd.InactiveRegions
--- What to do when clangd configuration files are changed. Ignored for clangd 12+, which can reload such files itself; however, this can be overridden with clangd.onConfigChanged.forceEnable.
+-- What to do when clangd configuration files are changed. Ignored for clangd 12+, which can reload such files itself; however, this can be overridden with clangd.onConfigChangedForceEnable.
 -- 
 -- ```lua
 -- default = "prompt"
 -- ```
 ---@field onConfigChanged "prompt" | "restart" | "ignore"
+-- Force enable of "On Config Changed" option regardless of clangd version.
+---@field onConfigChangedForceEnable boolean
 -- The path to clangd executable, e.g.: /usr/bin/clangd.
 -- 
 -- ```lua
