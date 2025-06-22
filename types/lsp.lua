@@ -14664,7 +14664,11 @@
 ---@field extraIncludes string[]
 
 ---@class _.lspconfig.settings.rust_analyzer.Search
--- Exclude imports from symbol search.
+-- Exclude all imports from workspace symbol search.
+-- 
+-- In addition to regular imports (which are always excluded),
+-- this option removes public imports (better known as re-exports)
+-- and removes imports that rename the imported symbol.
 ---@field excludeImports boolean
 -- Workspace symbol search kind.
 -- 
