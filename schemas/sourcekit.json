@@ -233,13 +233,14 @@
     },
     "swift.excludePathsFromPackageDependencies": {
       "default": [
-        ".git",
-        ".github"
+        "**/.git",
+        "**/.github"
       ],
       "items": {
         "type": "string"
       },
-      "markdownDescription": "A list of paths to exclude from the Package Dependencies view.",
+      "markdownDescription": "A list of glob patterns to exclude from the Package Dependencies view. Always use forward-slashes in glob expressions regardless of platform. This is combined with VS Code's default `files.exclude` setting.",
+      "scope": "machine-overridable",
       "type": "array"
     },
     "swift.openAfterCreateNewProject": {

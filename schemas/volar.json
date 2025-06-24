@@ -120,34 +120,6 @@
       "markdownDescription": "%configuration.server.includeLanguages%",
       "type": "array"
     },
-    "vue.splitEditors.icon": {
-      "default": false,
-      "markdownDescription": "%configuration.splitEditors.icon%",
-      "type": "boolean"
-    },
-    "vue.splitEditors.layout.left": {
-      "default": [
-        "script",
-        "scriptSetup",
-        "styles"
-      ],
-      "items": {
-        "type": "string"
-      },
-      "markdownDescription": "%configuration.splitEditors.layout.left%",
-      "type": "array"
-    },
-    "vue.splitEditors.layout.right": {
-      "default": [
-        "template",
-        "customBlocks"
-      ],
-      "items": {
-        "type": "string"
-      },
-      "markdownDescription": "%configuration.splitEditors.layout.right%",
-      "type": "array"
-    },
     "vue.trace.server": {
       "default": "off",
       "enum": [

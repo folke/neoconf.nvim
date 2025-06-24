@@ -15506,10 +15506,10 @@
 -- default = {}
 -- ```
 ---@field excludeFromCodeCoverage string[]
--- A list of paths to exclude from the Package Dependencies view.
+-- A list of glob patterns to exclude from the Package Dependencies view. Always use forward-slashes in glob expressions regardless of platform. This is combined with VS Code's default `files.exclude` setting.
 -- 
 -- ```lua
--- default = { ".git", ".github" }
+-- default = { "**/.git", "**/.github" }
 -- ```
 ---@field excludePathsFromPackageDependencies string[]
 -- Controls whether to open a swift project automatically after creating it.
@@ -17757,25 +17757,6 @@
 -- ```
 ---@field includeLanguages string[]
 
----@class _.lspconfig.settings.volar.Layout
--- %configuration.splitEditors.layout.left%
--- 
--- ```lua
--- default = { "script", "scriptSetup", "styles" }
--- ```
----@field left string[]
--- %configuration.splitEditors.layout.right%
--- 
--- ```lua
--- default = { "template", "customBlocks" }
--- ```
----@field right string[]
-
----@class _.lspconfig.settings.volar.SplitEditors
--- %configuration.splitEditors.icon%
----@field icon boolean
----@field layout _.lspconfig.settings.volar.Layout
-
 ---@class _.lspconfig.settings.volar.Trace
 -- %configuration.trace.server%
 -- 
@@ -17791,7 +17772,6 @@
 ---@field format _.lspconfig.settings.volar.Format
 ---@field inlayHints _.lspconfig.settings.volar.InlayHints
 ---@field server _.lspconfig.settings.volar.Server
----@field splitEditors _.lspconfig.settings.volar.SplitEditors
 ---@field trace _.lspconfig.settings.volar.Trace
 
 ---@class lspconfig.settings.volar
