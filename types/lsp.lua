@@ -8225,7 +8225,7 @@
 -- default = "Any"
 -- ```
 ---@field newfield-call "Any" | "Opened" | "None" | "Any!" | "Opened!" | "None!"
--- Enable newline call diagnostics. Is's raised when a line starting with `(` is encountered, which is syntactically parsed as a function call on the previous line.
+-- Enable newline call diagnostics. It's raised when a line starting with `(` is encountered, which is syntactically parsed as a function call on the previous line.
 -- 
 -- ```lua
 -- default = "Any"
@@ -8603,7 +8603,7 @@
 -- default = "Warning"
 -- ```
 ---@field newfield-call "Error" | "Warning" | "Information" | "Hint" | "Error!" | "Warning!" | "Information!" | "Hint!"
--- Enable newline call diagnostics. Is's raised when a line starting with `(` is encountered, which is syntactically parsed as a function call on the previous line.
+-- Enable newline call diagnostics. It's raised when a line starting with `(` is encountered, which is syntactically parsed as a function call on the previous line.
 -- 
 -- ```lua
 -- default = "Warning"
@@ -8880,7 +8880,7 @@
 -- default = {}
 -- ```
 ---@field protectedName string[]
--- TODO: Needs documentation
+-- The regular expression engine used for matching documentation scope names.
 -- 
 -- ```lua
 -- default = "glob"
@@ -8993,7 +8993,7 @@
 -- default = true
 -- ```
 ---@field completeAnnotation boolean
--- (VSCode only) Fix incorrect auto-indentation, such as incorrect indentation when line breaks occur within a string containing the word "function."
+-- (VSCode only) Fix incorrect auto-indentation, such as incorrect indentation when line breaks occur within a string containing the word "function".
 -- 
 -- ```lua
 -- default = true
@@ -9015,7 +9015,9 @@
 ---@field parameters string[]
 
 ---@class _.lspconfig.settings.lua_ls.NameStyle
--- Set name style config
+-- Set name style config.
+-- Read [formatter docs](https://github.com/CppCXY/EmmyLuaCodeStyle/tree/master/docs) to learn usage.
+-- 
 -- 
 -- ```lua
 -- default = {}
@@ -9267,12 +9269,18 @@
 -- When this setting is `false`, the type of the parameter is `any` when it is not annotated.
 -- 
 ---@field inferParamType boolean
--- TODO: Needs documentation
+-- Maximum number of table fields analyzed during type inference.
 -- 
 -- ```lua
 -- default = 10
 -- ```
 ---@field inferTableSize integer
+-- TODO: Needs documentation
+-- 
+-- ```lua
+-- default = 0
+-- ```
+---@field maxUnionVariants integer
 -- When checking the type of union type, ignore the `nil` in it.
 -- 
 -- When this setting is `false`, the `number|nil` type cannot be assigned to the `number` type. It can be with `true`.
@@ -9379,11 +9387,17 @@
 
 ---@class _.lspconfig.settings.lua_ls.Lua
 ---@field addonManager _.lspconfig.settings.lua_ls.AddonManager
+-- Specifies the addon repository path (not related to the addon manager).
+-- 
+-- ```lua
+-- default = ""
+-- ```
+---@field addonRepositoryPath string
 ---@field codeLens _.lspconfig.settings.lua_ls.CodeLens
 ---@field completion _.lspconfig.settings.lua_ls.Completion
 ---@field diagnostics _.lspconfig.settings.lua_ls.Diagnostics
 ---@field doc _.lspconfig.settings.lua_ls.Doc
--- TODO: Needs documentation
+-- The regular expression engine used for matching documentation scope names.
 -- 
 -- ```lua
 -- default = ""
@@ -15485,7 +15499,7 @@
 -- The formatting style used when printing diagnostics in the Problems panel. Corresponds to the `-diagnostic-style` option to pass to `swiftc` when running `swift` tasks.
 -- 
 -- ```lua
--- default = "llvm"
+-- default = "default"
 -- ```
 ---@field diagnosticsStyle "default" | "llvm" | "swift"
 -- Disable automatic running of `swift package resolve` whenever the `Package.swift` or `Package.resolve` files are updated. This will also disable searching for command plugins and the initial test discovery process.
@@ -17687,29 +17701,6 @@
 -- ```
 ---@field askNewComponentName boolean
 
----@class _.lspconfig.settings.volar.Casing
--- %configuration.complete.casing.props%
--- 
--- ```lua
--- default = "autoKebab"
--- ```
----@field props "autoKebab" | "autoCamel" | "kebab" | "camel"
--- %configuration.complete.casing.tags%
--- 
--- ```lua
--- default = "autoPascal"
--- ```
----@field tags "autoKebab" | "autoPascal" | "kebab" | "pascal"
-
----@class _.lspconfig.settings.volar.Complete
----@field casing _.lspconfig.settings.volar.Casing
--- %configuration.complete.defineAssignment%
--- 
--- ```lua
--- default = true
--- ```
----@field defineAssignment boolean
-
 ---@class _.lspconfig.settings.volar.Script
 -- %configuration.format.script.initialIndent%
 ---@field initialIndent boolean
@@ -17757,6 +17748,26 @@
 -- ```
 ---@field includeLanguages string[]
 
+---@class _.lspconfig.settings.volar.Suggest
+-- %configuration.suggest.componentNameCasing%
+-- 
+-- ```lua
+-- default = "preferPascalCase"
+-- ```
+---@field componentNameCasing "preferKebabCase" | "preferPascalCase" | "alwaysKebabCase" | "alwaysPascalCase"
+-- %configuration.suggest.defineAssignment%
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field defineAssignment boolean
+-- %configuration.suggest.propNameCasing%
+-- 
+-- ```lua
+-- default = "preferKebabCase"
+-- ```
+---@field propNameCasing "preferKebabCase" | "preferCamelCase" | "alwaysKebabCase" | "alwaysCamelCase"
+
 ---@class _.lspconfig.settings.volar.Trace
 -- %configuration.trace.server%
 -- 
@@ -17768,10 +17779,10 @@
 ---@class _.lspconfig.settings.volar.Vue
 ---@field autoInsert _.lspconfig.settings.volar.AutoInsert
 ---@field codeActions _.lspconfig.settings.volar.CodeActions
----@field complete _.lspconfig.settings.volar.Complete
 ---@field format _.lspconfig.settings.volar.Format
 ---@field inlayHints _.lspconfig.settings.volar.InlayHints
 ---@field server _.lspconfig.settings.volar.Server
+---@field suggest _.lspconfig.settings.volar.Suggest
 ---@field trace _.lspconfig.settings.volar.Trace
 
 ---@class lspconfig.settings.volar

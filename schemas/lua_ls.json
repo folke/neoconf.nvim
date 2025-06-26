@@ -20,6 +20,12 @@
       "scope": "resource",
       "type": "string"
     },
+    "Lua.addonRepositoryPath": {
+      "default": "",
+      "markdownDescription": "Specifies the addon repository path (not related to the addon manager).",
+      "scope": "resource",
+      "type": "string"
+    },
     "Lua.codeLens.enable": {
       "default": false,
       "markdownDescription": "Enable code lens.",
@@ -1103,7 +1109,7 @@
         },
         "newline-call": {
           "default": "Any",
-          "description": "Enable newline call diagnostics. Is's raised when a line starting with `(` is encountered, which is syntactically parsed as a function call on the previous line.",
+          "description": "Enable newline call diagnostics. It's raised when a line starting with `(` is encountered, which is syntactically parsed as a function call on the previous line.",
           "enum": [
             "Any",
             "Opened",
@@ -1988,7 +1994,7 @@
         },
         "newline-call": {
           "default": "Warning",
-          "description": "Enable newline call diagnostics. Is's raised when a line starting with `(` is encountered, which is syntactically parsed as a function call on the previous line.",
+          "description": "Enable newline call diagnostics. It's raised when a line starting with `(` is encountered, which is syntactically parsed as a function call on the previous line.",
           "enum": [
             "Error",
             "Warning",
@@ -2466,17 +2472,17 @@
         "glob",
         "lua"
       ],
-      "markdownDescription": "TODO: Needs documentation",
+      "markdownDescription": "The regular expression engine used for matching documentation scope names.",
       "markdownEnumDescriptions": [
-        "TODO: Needs documentation",
-        "TODO: Needs documentation"
+        "The default lightweight pattern syntax.",
+        "Full Lua-style regular expressions."
       ],
       "scope": "resource",
       "type": "string"
     },
     "Lua.docScriptPath": {
       "default": "",
-      "markdownDescription": "TODO: Needs documentation",
+      "markdownDescription": "The regular expression engine used for matching documentation scope names.",
       "scope": "resource",
       "type": "string"
     },
@@ -2628,7 +2634,7 @@
     },
     "Lua.language.fixIndent": {
       "default": true,
-      "markdownDescription": "(VSCode only) Fix incorrect auto-indentation, such as incorrect indentation when line breaks occur within a string containing the word \"function.\"",
+      "markdownDescription": "(VSCode only) Fix incorrect auto-indentation, such as incorrect indentation when line breaks occur within a string containing the word \"function\".",
       "scope": "resource",
       "type": "boolean"
     },
@@ -2650,7 +2656,7 @@
     "Lua.nameStyle.config": {
       "additionalProperties": false,
       "default": {},
-      "markdownDescription": "Set name style config",
+      "markdownDescription": "Set name style config.\nRead [formatter docs](https://github.com/CppCXY/EmmyLuaCodeStyle/tree/master/docs) to learn usage.\n",
       "patternProperties": {
         ".*": {
           "type": [
@@ -3074,6 +3080,12 @@
     },
     "Lua.type.inferTableSize": {
       "default": 10,
+      "markdownDescription": "Maximum number of table fields analyzed during type inference.",
+      "scope": "resource",
+      "type": "integer"
+    },
+    "Lua.type.maxUnionVariants": {
+      "default": 0,
       "markdownDescription": "TODO: Needs documentation",
       "scope": "resource",
       "type": "integer"

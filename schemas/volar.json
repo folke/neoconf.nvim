@@ -17,45 +17,6 @@
       "markdownDescription": "%configuration.codeActions.askNewComponentName%",
       "type": "boolean"
     },
-    "vue.complete.casing.props": {
-      "default": "autoKebab",
-      "enum": [
-        "autoKebab",
-        "autoCamel",
-        "kebab",
-        "camel"
-      ],
-      "enumDescriptions": [
-        "Auto Detect from Content (Fallback to :kebab-case=\"...\" if detect failed)",
-        "Auto Detect from Content (Fallback to :camelCase=\"...\" if detect failed)",
-        ":kebab-case=\"...\"",
-        ":camelCase=\"...\""
-      ],
-      "markdownDescription": "%configuration.complete.casing.props%",
-      "type": "string"
-    },
-    "vue.complete.casing.tags": {
-      "default": "autoPascal",
-      "enum": [
-        "autoKebab",
-        "autoPascal",
-        "kebab",
-        "pascal"
-      ],
-      "enumDescriptions": [
-        "Auto Detect from Content (Fallback to <kebab-case> if detect failed)",
-        "Auto Detect from Content  (Fallback to <PascalCase> if detect failed)",
-        "<kebab-case>",
-        "<PascalCase>"
-      ],
-      "markdownDescription": "%configuration.complete.casing.tags%",
-      "type": "string"
-    },
-    "vue.complete.defineAssignment": {
-      "default": true,
-      "markdownDescription": "%configuration.complete.defineAssignment%",
-      "type": "boolean"
-    },
     "vue.format.script.initialIndent": {
       "default": false,
       "markdownDescription": "%configuration.format.script.initialIndent%",
@@ -119,6 +80,45 @@
       },
       "markdownDescription": "%configuration.server.includeLanguages%",
       "type": "array"
+    },
+    "vue.suggest.componentNameCasing": {
+      "default": "preferPascalCase",
+      "enum": [
+        "preferKebabCase",
+        "preferPascalCase",
+        "alwaysKebabCase",
+        "alwaysPascalCase"
+      ],
+      "enumDescriptions": [
+        "Prefer kebab-case (lowercase with hyphens, e.g. my-component)",
+        "Prefer PascalCase (UpperCamelCase, e.g. MyComponent)",
+        "Always kebab-case (enforce kebab-case, e.g. my-component)",
+        "Always PascalCase (enforce PascalCase, e.g. MyComponent)"
+      ],
+      "markdownDescription": "%configuration.suggest.componentNameCasing%",
+      "type": "string"
+    },
+    "vue.suggest.defineAssignment": {
+      "default": true,
+      "markdownDescription": "%configuration.suggest.defineAssignment%",
+      "type": "boolean"
+    },
+    "vue.suggest.propNameCasing": {
+      "default": "preferKebabCase",
+      "enum": [
+        "preferKebabCase",
+        "preferCamelCase",
+        "alwaysKebabCase",
+        "alwaysCamelCase"
+      ],
+      "enumDescriptions": [
+        "Prefer kebab-case (lowercase with hyphens, e.g. my-prop)",
+        "Prefer camelCase (lowerCamelCase, e.g. myProp)",
+        "Always kebab-case (enforce kebab-case, e.g. my-prop)",
+        "Always camelCase (enforce camelCase, e.g. myProp)"
+      ],
+      "markdownDescription": "%configuration.suggest.propNameCasing%",
+      "type": "string"
     },
     "vue.trace.server": {
       "default": "off",
