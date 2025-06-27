@@ -619,6 +619,11 @@
       "markdownDescription": "Controls file watching implementation.",
       "type": "string"
     },
+    "rust-analyzer.highlightRelated.branchExitPoints.enable": {
+      "default": true,
+      "markdownDescription": "Enables highlighting of related return values while the cursor is on any `match`, `if`, or match arm arrow (`=>`).",
+      "type": "boolean"
+    },
     "rust-analyzer.highlightRelated.breakPoints.enable": {
       "default": true,
       "markdownDescription": "Enables highlighting of related references while the cursor is on `break`, `loop`, `while`, or `for` keywords.",

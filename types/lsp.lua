@@ -13835,6 +13835,14 @@
 -- ```
 ---@field watcher "client" | "server"
 
+---@class _.lspconfig.settings.rust_analyzer.BranchExitPoints
+-- Enables highlighting of related return values while the cursor is on any `match`, `if`, or match arm arrow (`=>`).
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enable boolean
+
 ---@class _.lspconfig.settings.rust_analyzer.BreakPoints
 -- Enables highlighting of related references while the cursor is on `break`, `loop`, `while`, or `for` keywords.
 -- 
@@ -13876,6 +13884,7 @@
 ---@field enable boolean
 
 ---@class _.lspconfig.settings.rust_analyzer.HighlightRelated
+---@field branchExitPoints _.lspconfig.settings.rust_analyzer.BranchExitPoints
 ---@field breakPoints _.lspconfig.settings.rust_analyzer.BreakPoints
 ---@field closureCaptures _.lspconfig.settings.rust_analyzer.ClosureCaptures
 ---@field exitPoints _.lspconfig.settings.rust_analyzer.ExitPoints
