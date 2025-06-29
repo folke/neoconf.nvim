@@ -19300,7 +19300,7 @@
 ---@field enable boolean
 
 ---@class _.lspconfig.settings.wgls_analyzer.Actions
--- Whether to show HoverActions in WGSL files.
+-- Whether to show hover actions.
 -- 
 -- ```lua
 -- default = true
@@ -19633,7 +19633,7 @@
 ---@field enable boolean
 
 ---@class _.lspconfig.settings.wgls_analyzer.Lens
--- Whether to show CodeLens in WGSL files.
+-- Whether to show CodeLens.
 -- 
 -- ```lua
 -- default = true
@@ -19677,7 +19677,7 @@
 ---@class _.lspconfig.settings.wgls_analyzer.Inject
 -- Inject additional highlighting into doc comments.
 -- 
--- When enabled, wgsl-analyzer will highlight WGSL source in doc comments as well as intra doc links.
+-- When enabled, wgsl-analyzer will highlight WGSL/WESL source in doc comments as well as intra-doc links.
 -- 
 -- ```lua
 -- default = true
@@ -19788,7 +19788,9 @@
 --   documentSelector = { {
 --       language = "wgsl"
 --     }, {
---       pattern = "**/*.wgsl"
+--       language = "wesl"
+--     }, {
+--       pattern = "**/wesl.toml"
 --     }, {
 --       pattern = "extension-output-wgsl-analyzer.wgsl-analyzer*",
 --       scheme = "output"
@@ -19901,7 +19903,7 @@
 ---@field lens _.lspconfig.settings.wgls_analyzer.Lens
 -- Disable project auto-discovery in favor of explicitly specified set of projects.
 -- 
--- Elements must be paths pointing to `Cargo.toml`, `wgsl-project.json`, `.rs` files (which will be treated as standalone files) or JSON objects in `wgsl-project.json` format.
+-- Elements must be paths pointing to `wesl.toml`, `.wgsl` files, or `.wesl` files (which will be treated as standalone files).
 -- 
 -- ```lua
 -- default = {}

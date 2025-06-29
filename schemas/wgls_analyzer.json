@@ -1,6 +1,6 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "description": "WGSL support for Visual Studio Code",
+  "description": "WGSL/WESL support for Visual Studio Code",
   "properties": {
     "wgsl-analyzer.assist.expressionFillDefault": {
       "default": "todo",
@@ -225,7 +225,7 @@
     },
     "wgsl-analyzer.hover.actions.enable": {
       "default": true,
-      "markdownDescription": "Whether to show HoverActions in WGSL files.",
+      "markdownDescription": "Whether to show hover actions.",
       "type": "boolean"
     },
     "wgsl-analyzer.hover.actions.gotoTypeDef.enable": {
@@ -632,7 +632,7 @@
     },
     "wgsl-analyzer.lens.enable": {
       "default": true,
-      "markdownDescription": "Whether to show CodeLens in WGSL files.",
+      "markdownDescription": "Whether to show CodeLens.",
       "type": "boolean"
     },
     "wgsl-analyzer.lens.implementations.enable": {
@@ -686,7 +686,7 @@
           "object"
         ]
       },
-      "markdownDescription": "Disable project auto-discovery in favor of explicitly specified set of projects.\n\nElements must be paths pointing to `Cargo.toml`, `wgsl-project.json`, `.rs` files (which will be treated as standalone files) or JSON objects in `wgsl-project.json` format.",
+      "markdownDescription": "Disable project auto-discovery in favor of explicitly specified set of projects.\n\nElements must be paths pointing to `wesl.toml`, `.wgsl` files, or `.wesl` files (which will be treated as standalone files).",
       "type": "array"
     },
     "wgsl-analyzer.lru.capacity": {
@@ -749,7 +749,7 @@
     },
     "wgsl-analyzer.semanticHighlighting.doc.comment.inject.enable": {
       "default": true,
-      "markdownDescription": "Inject additional highlighting into doc comments.\n\nWhen enabled, wgsl-analyzer will highlight WGSL source in doc comments as well as intra doc links.",
+      "markdownDescription": "Inject additional highlighting into doc comments.\n\nWhen enabled, wgsl-analyzer will highlight WGSL/WESL source in doc comments as well as intra-doc links.",
       "type": "boolean"
     },
     "wgsl-analyzer.semanticHighlighting.nonStandardTokens": {
@@ -897,7 +897,10 @@
             "language": "wgsl"
           },
           {
-            "pattern": "**/*.wgsl"
+            "language": "wesl"
+          },
+          {
+            "pattern": "**/wesl.toml"
           },
           {
             "pattern": "extension-output-wgsl-analyzer.wgsl-analyzer*",
@@ -910,7 +913,7 @@
     "wgsl-analyzer.trace.extension": {
       "default": false,
       "description": "Enable logging of VS Code extensions itself.",
-      "markdownDeprecationMessage": "Log level is now controlled by the [Developer: Set Log Level...](command:workbench.action.setLogLevel) command. You can set the log level for the current session and also the default log level from there. This is also available by clicking the gear icon on the OUTPUT tab when WGSL Analyzer Client is visible or by passing the --log wgsl-analyzer.wgsl-analyzer:debug parameter to VS Code.",
+      "markdownDeprecationMessage": "Log level is now controlled by the [Developer: Set Log Level...](command:workbench.action.setLogLevel) command. You can set the log level for the current session and also the default log level from there. This is also available by clicking the gear icon on the OUTPUT tab when wgsl-analyzer Client is visible or by passing the --log wgsl-analyzer.wgsl-analyzer:debug parameter to VS Code.",
       "type": "boolean"
     },
     "wgsl-analyzer.trace.server": {
