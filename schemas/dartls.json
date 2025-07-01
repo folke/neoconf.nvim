@@ -1031,6 +1031,12 @@
       "scope": "window",
       "type": "number"
     },
+    "dart.mcpServer": {
+      "default": false,
+      "description": "Whether to register the Dart SDK's MCP server with VS Code. This only applies to Dart SDKs >= v3.9.0 which added the server.",
+      "scope": "window",
+      "type": "boolean"
+    },
     "dart.normalizeFileCasing": {
       "default": false,
       "description": "Whether to normalize file casings before sending them to the LSP server. This may fix issues with file_names lints not disappearing after renaming a file if the VS Code API continues to use the original casing.",
