@@ -1003,16 +1003,6 @@
       "scope": "machine-overridable",
       "type": "string"
     },
-    "razor.languageServer.forceRuntimeCodeGeneration": {
-      "default": true,
-      "description": "%configuration.razor.languageServer.forceRuntimeCodeGeneration%",
-      "order": 90,
-      "scope": "machine-overridable",
-      "tags": [
-        "experimental"
-      ],
-      "type": "boolean"
-    },
     "razor.languageServer.suppressLspErrorToasts": {
       "default": true,
       "description": "%configuration.razor.languageServer.suppressLspErrorToasts%",
