@@ -11952,6 +11952,14 @@
 -- ```
 ---@field include_import_symbols boolean
 
+---@class _.lspconfig.settings.pylsp.Jedi.Type.Definition
+-- Enable or disable the plugin.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enabled boolean
+
 ---@class _.lspconfig.settings.pylsp.Mccabe
 -- Enable or disable the plugin.
 -- 
@@ -12120,6 +12128,7 @@
 ---@field jedi_references _.lspconfig.settings.pylsp.Jedi.References
 ---@field jedi_signature_help _.lspconfig.settings.pylsp.Jedi.Signature.Help
 ---@field jedi_symbols _.lspconfig.settings.pylsp.Jedi.Symbols
+---@field jedi_type_definition _.lspconfig.settings.pylsp.Jedi.Type.Definition
 ---@field mccabe _.lspconfig.settings.pylsp.Mccabe
 ---@field preload _.lspconfig.settings.pylsp.Preload
 ---@field pycodestyle _.lspconfig.settings.pylsp.Pycodestyle
