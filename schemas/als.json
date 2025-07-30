@@ -94,6 +94,12 @@
       ],
       "scope": "window"
     },
+    "ada.enableExperimentalFeatures": {
+      "default": false,
+      "description": "Enable experimental features still in development.",
+      "scope": "window",
+      "type": "boolean"
+    },
     "ada.enableIndexing": {
       "default": null,
       "enum": [

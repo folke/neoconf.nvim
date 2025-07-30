@@ -569,15 +569,6 @@
       "scope": "window",
       "type": "boolean"
     },
-    "typescript.experimental.expandableHover": {
-      "default": true,
-      "description": "Enable expanding/contracting the hover to reveal more/less information from the TS server. Requires TypeScript 5.9+.",
-      "scope": "window",
-      "tags": [
-        "experimental"
-      ],
-      "type": "boolean"
-    },
     "typescript.experimental.useTsgo": {
       "default": false,
       "markdownDescription": "Disables TypeScript and JavaScript language features to allow usage of the TypeScript Go experimental extension. Requires TypeScript Go to be installed and configured. Requires reloading extensions after changing this setting.",
@@ -1161,7 +1152,8 @@
         "off",
         "terse",
         "normal",
-        "verbose"
+        "verbose",
+        "requestTime"
       ],
       "scope": "window",
       "type": "string"

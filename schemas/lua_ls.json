@@ -2924,7 +2924,8 @@
           "&&",
           "!",
           "!=",
-          "continue"
+          "continue",
+          "|lambda|"
         ],
         "type": "string"
       },
@@ -3008,10 +3009,12 @@
         "Lua 5.2",
         "Lua 5.3",
         "Lua 5.4",
+        "Lua 5.5",
         "LuaJIT"
       ],
       "markdownDescription": "Lua runtime version.",
       "markdownEnumDescriptions": [
+        "TODO: Needs documentation",
         "TODO: Needs documentation",
         "TODO: Needs documentation",
         "TODO: Needs documentation",

@@ -2,6 +2,12 @@
   "$schema": "http://json-schema.org/draft-07/schema#",
   "description": "VS Code static type checking for Python (but based)",
   "properties": {
+    "basedpyright.analysis.autoFormatStrings": {
+      "default": true,
+      "markdownDescription": "Whether to automatically insert an `f` in front of a string when typing a `{` inside it.",
+      "scope": "resource",
+      "type": "boolean"
+    },
     "basedpyright.analysis.autoImportCompletions": {
       "default": true,
       "description": "Offer auto-import completions.",

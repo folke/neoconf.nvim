@@ -38,6 +38,8 @@
 -- 
 -- If not set in VS Code, this setting takes its value from the [`.als.json`](https://github.com/AdaCore/ada_language_server/blob/master/doc/settings.md) file at the root of the workspace, if that file exists. Otherwise it defaults to `"gnat"`.
 ---@field documentationStyle "gnat" | "leading"
+-- Enable experimental features still in development.
+---@field enableExperimentalFeatures boolean
 -- Controls whether the Ada Language Server should index the source files immediately after loading a project.
 -- 
 -- If set to false, indexing will be deferred to the time when an action requiring the index is first performed, e.g. hovering over a referenced entity to get its documentation.
@@ -784,6 +786,12 @@
 ---@field variableTypes boolean
 
 ---@class _.lspconfig.settings.basedpyright.Analysis
+-- Whether to automatically insert an `f` in front of a string when typing a `{` inside it.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field autoFormatStrings boolean
 -- Offer auto-import completions.
 -- 
 -- ```lua
@@ -2168,7 +2176,13 @@
 -- ```
 ---@field maxLogLineLength number
 -- Whether to register the Dart SDK's MCP server with VS Code. This only applies to Dart SDKs >= v3.9.0 which added the server.
+-- 
+-- ```lua
+-- default = true
+-- ```
 ---@field mcpServer boolean
+-- The path to a log file for the Dart SDK's MCP server. Use `${workspaceName}` to insert the name of the current workspace in the file path. Use `~` to insert the user's home directory (the path should then use `/` separators even on Windows). Only the noted substitutions are supported, others will stay as-is.
+---@field mcpServerLogFile string
 -- Whether to normalize file casings before sending them to the LSP server. This may fix issues with file_names lints not disappearing after renaming a file if the VS Code API continues to use the original casing.
 ---@field normalizeFileCasing boolean
 -- Whether to show a notification the first few times an Analysis Server exception occurs.
@@ -6118,6 +6132,14 @@
 -- ```
 ---@field enabled "auto" | "on" | "off"
 
+---@class _.lspconfig.settings.jdtls.Appcds
+-- [Experimental] Enable Java AppCDS (Application Class Data Sharing) for improvements to extension activation. When set to `auto`, AppCDS will be enabled in Visual Studio Code - Insiders, and for pre-release versions.
+-- 
+-- ```lua
+-- default = "auto"
+-- ```
+---@field enabled "auto" | "on" | "off"
+
 ---@class _.lspconfig.settings.jdtls.Java
 -- Specifies the folder path to the JDK (21 or more recent) used to launch the Java Language Server. This setting will replace the Java extension's embedded JRE to start the Java Language Server. 
 -- 
@@ -6153,6 +6175,7 @@
 
 ---@class _.lspconfig.settings.jdtls.Ls
 ---@field androidSupport _.lspconfig.settings.jdtls.AndroidSupport
+---@field appcds _.lspconfig.settings.jdtls.Appcds
 ---@field java _.lspconfig.settings.jdtls.Java
 ---@field javac _.lspconfig.settings.jdtls.Javac
 ---@field lombokSupport _.lspconfig.settings.jdtls.LombokSupport
@@ -9216,7 +9239,7 @@
 -- ```lua
 -- default = "Lua 5.4"
 -- ```
----@field version "Lua 5.1" | "Lua 5.2" | "Lua 5.3" | "Lua 5.4" | "LuaJIT"
+---@field version "Lua 5.1" | "Lua 5.2" | "Lua 5.3" | "Lua 5.4" | "Lua 5.5" | "LuaJIT"
 
 ---@class _.lspconfig.settings.lua_ls.Semantic
 -- Semantic coloring of type annotations.
@@ -10214,6 +10237,8 @@
 -- default = {}
 -- ```
 ---@class _.lspconfig.settings.omnisharp.ComponentPaths
+-- %configuration.dotnet.server.componentPaths.roslynCopilot%
+---@field roslynCopilot string
 -- %configuration.dotnet.server.componentPaths.roslynDevKit%
 ---@field roslynDevKit string
 -- %configuration.dotnet.server.componentPaths.xamlTools%
@@ -13304,7 +13329,8 @@
 ---@field ruff _.lspconfig.settings.ruff_lsp.Ruff
 
 ---@class _.lspconfig.settings.rust_analyzer.TermSearch
--- Enable borrow checking for term search code assists. If set to false, also there will be more suggestions, but some of them may not borrow-check.
+-- Enable borrow checking for term search code assists. If set to false, also there will be
+-- more suggestions, but some of them may not borrow-check.
 -- 
 -- ```lua
 -- default = true
@@ -13318,8 +13344,7 @@
 ---@field fuel integer
 
 ---@class _.lspconfig.settings.rust_analyzer.Assist
--- Whether to insert #[must_use] when generating `as_` methods
--- for enum variants.
+-- Insert #[must_use] when generating `as_` methods for enum variants.
 ---@field emitMustUse boolean
 -- Placeholder expression to use for missing expressions in assists.
 -- 
@@ -13327,7 +13352,7 @@
 -- default = "todo"
 -- ```
 ---@field expressionFillDefault "todo" | "default"
--- When inserting a type (e.g. in "fill match arms" assist), prefer to use `Self` over the type name where possible.
+-- Prefer to use `Self` over the type name when inserting a type (e.g. in "fill match arms" assist).
 ---@field preferSelf boolean
 ---@field termSearch _.lspconfig.settings.rust_analyzer.TermSearch
 
@@ -13338,7 +13363,8 @@
 -- default = true
 -- ```
 ---@field enable boolean
--- How many worker threads to handle priming caches. The default `0` means to pick automatically.
+-- How many worker threads to handle priming caches. The default `0` means to pick
+-- automatically.
 -- 
 -- ```lua
 -- default = "physical"
@@ -13575,7 +13601,8 @@
 ---@field workspace boolean
 
 ---@class _.lspconfig.settings.rust_analyzer.AutoAwait
--- Toggles the additional completions that automatically show method calls and field accesses with `await` prefixed to them when completing on a future.
+-- Show method calls and field accesses completions with `await` prefixed to them when
+-- completing on a future.
 -- 
 -- ```lua
 -- default = true
@@ -13583,7 +13610,8 @@
 ---@field enable boolean
 
 ---@class _.lspconfig.settings.rust_analyzer.AutoIter
--- Toggles the additional completions that automatically show method calls with `iter()` or `into_iter()` prefixed to them when completing on a type that has them.
+-- Show method call completions with `iter()` or `into_iter()` prefixed to them when
+-- completing on a type that has them.
 -- 
 -- ```lua
 -- default = true
@@ -13591,8 +13619,10 @@
 ---@field enable boolean
 
 ---@class _.lspconfig.settings.rust_analyzer.Autoimport
--- Toggles the additional completions that automatically add imports when completed.
--- Note that your client must specify the `additionalTextEdits` LSP client capability to truly have this feature enabled.
+-- Show completions that automatically add imports when completed.
+-- 
+-- Note that your client must specify the `additionalTextEdits` LSP client capability to
+-- truly have this feature enabled.
 -- 
 -- ```lua
 -- default = true
@@ -13603,10 +13633,11 @@
 -- Traits in this list won't have their methods suggested in completions unless the trait
 -- is in scope.
 -- 
--- You can either specify a string path which defaults to type "always" or use the more verbose
--- form `{ "path": "path::to::item", type: "always" }`.
+-- You can either specify a string path which defaults to type "always" or use the more
+-- verbose form `{ "path": "path::to::item", type: "always" }`.
 -- 
--- For traits the type "methods" can be used to only exclude the methods but not the trait itself.
+-- For traits the type "methods" can be used to only exclude the methods but not the trait
+-- itself.
 -- 
 -- This setting also inherits `#rust-analyzer.completion.excludeTraits#`.
 -- 
@@ -13622,8 +13653,8 @@
 ---@field exclude any[]
 
 ---@class _.lspconfig.settings.rust_analyzer.Autoself
--- Toggles the additional completions that automatically show method calls and field accesses
--- with `self` prefixed to them when inside a method.
+-- Show method calls and field access completions with `self` prefixed to them when
+-- inside a method.
 -- 
 -- ```lua
 -- default = true
@@ -13631,7 +13662,7 @@
 ---@field enable boolean
 
 ---@class _.lspconfig.settings.rust_analyzer.Callable
--- Whether to add parenthesis and argument snippets when completing function.
+-- Add parenthesis and argument snippets when completing function.
 -- 
 -- ```lua
 -- default = "fill_arguments"
@@ -13639,11 +13670,11 @@
 ---@field snippets "fill_arguments" | "add_parentheses" | "none"
 
 ---@class _.lspconfig.settings.rust_analyzer.FullFunctionSignatures
--- Whether to show full function/method signatures in completion docs.
+-- Show full function / method signatures in completion docs.
 ---@field enable boolean
 
 ---@class _.lspconfig.settings.rust_analyzer.Postfix
--- Whether to show postfix snippets like `dbg`, `if`, `not`, etc.
+-- Show postfix snippets like `dbg`, `if`, `not`, etc.
 -- 
 -- ```lua
 -- default = true
@@ -13651,7 +13682,8 @@
 ---@field enable boolean
 
 ---@class _.lspconfig.settings.rust_analyzer.PrivateEditable
--- Enables completions of private items and fields that are defined in the current workspace even if they are not visible at the current position.
+-- Show completions of private items and fields that are defined in the current workspace
+-- even if they are not visible at the current position.
 ---@field enable boolean
 
 ---@class _.lspconfig.settings.rust_analyzer.Snippets
@@ -13703,7 +13735,7 @@
 ---@field custom table
 
 ---@class _.lspconfig.settings.rust_analyzer.TermSearch
--- Whether to enable term search based snippets like `Some(foo.bar().baz())`.
+-- Enable term search based snippets like `Some(foo.bar().baz())`.
 ---@field enable boolean
 -- Term search fuel in "units of work" for autocompletion (Defaults to 1000).
 -- 
@@ -13713,7 +13745,7 @@
 ---@field fuel integer
 
 ---@class _.lspconfig.settings.rust_analyzer.Completion
--- Whether to automatically add a semicolon when completing unit-returning functions.
+-- Automatically add a semicolon when completing unit-returning functions.
 -- 
 -- In `match` arms it completes a comma instead.
 -- 
@@ -13728,7 +13760,9 @@
 ---@field callable _.lspconfig.settings.rust_analyzer.Callable
 -- A list of full paths to traits whose methods to exclude from completion.
 -- 
--- Methods from these traits won't be completed, even if the trait is in scope. However, they will still be suggested on expressions whose type is `dyn Trait`, `impl Trait` or `T where T: Trait`.
+-- Methods from these traits won't be completed, even if the trait is in scope. However,
+-- they will still be suggested on expressions whose type is `dyn Trait`, `impl Trait` or
+-- `T where T: Trait`.
 -- 
 -- Note that the trait themselves can still be completed.
 -- 
@@ -13737,7 +13771,8 @@
 -- ```
 ---@field excludeTraits string[]
 ---@field fullFunctionSignatures _.lspconfig.settings.rust_analyzer.FullFunctionSignatures
--- Whether to omit deprecated items from autocompletion. By default they are marked as deprecated but not hidden.
+-- Omit deprecated items from completions. By default they are marked as deprecated but not
+-- hidden.
 ---@field hideDeprecated boolean
 -- Maximum number of completions to return. If `None`, the limit is infinite.
 ---@field limit integer
@@ -13771,12 +13806,12 @@
 ---@field sourceFileMap table|string
 
 ---@class _.lspconfig.settings.rust_analyzer.Experimental
--- Whether to show experimental rust-analyzer diagnostics that might
--- have more false positives than usual.
+-- Show experimental rust-analyzer diagnostics that might have more false positives than
+-- usual.
 ---@field enable boolean
 
 ---@class _.lspconfig.settings.rust_analyzer.StyleLints
--- Whether to run additional style lints.
+-- Run additional style lints.
 ---@field enable boolean
 
 ---@class _.lspconfig.settings.rust_analyzer.Diagnostics
@@ -13786,7 +13821,7 @@
 -- default = {}
 -- ```
 ---@field disabled string[]
--- Whether to show native rust-analyzer diagnostics.
+-- Show native rust-analyzer diagnostics.
 -- 
 -- ```lua
 -- default = true
@@ -13795,8 +13830,8 @@
 ---@field experimental _.lspconfig.settings.rust_analyzer.Experimental
 -- Whether to show the main part of the rendered rustc output of a diagnostic message.
 ---@field previewRustcOutput boolean
--- Map of prefixes to be substituted when parsing diagnostic file paths.
--- This should be the reverse mapping of what is passed to `rustc` as `--remap-path-prefix`.
+-- Map of prefixes to be substituted when parsing diagnostic file paths. This should be the
+-- reverse mapping of what is passed to `rustc` as `--remap-path-prefix`.
 -- 
 -- ```lua
 -- default = {}
@@ -13807,8 +13842,8 @@
 ---@field useRustcErrorCode boolean
 -- List of warnings that should be displayed with hint severity.
 -- 
--- The warnings will be indicated by faded text or three dots in code
--- and will not show up in the `Problems Panel`.
+-- The warnings will be indicated by faded text or three dots in code and will not show up
+-- in the `Problems Panel`.
 -- 
 -- ```lua
 -- default = {}
@@ -13816,8 +13851,8 @@
 ---@field warningsAsHint string[]
 -- List of warnings that should be displayed with info severity.
 -- 
--- The warnings will be indicated by a blue squiggly underline in code
--- and a blue icon in the `Problems Panel`.
+-- The warnings will be indicated by a blue squiggly underline in code and a blue icon in
+-- the `Problems Panel`.
 -- 
 -- ```lua
 -- default = {}
@@ -13825,9 +13860,11 @@
 ---@field warningsAsInfo string[]
 
 ---@class _.lspconfig.settings.rust_analyzer.Files
--- These paths (file/directories) will be ignored by rust-analyzer. They are
--- relative to the workspace root, and globs are not supported. You may
--- also need to add the folders to Code's `files.watcherExclude`.
+-- List of files to ignore
+-- 
+-- These paths (file/directories) will be ignored by rust-analyzer. They are relative to
+-- the workspace root, and globs are not supported. You may also need to add the folders to
+-- Code's `files.watcherExclude`.
 -- 
 -- ```lua
 -- default = {}
@@ -13841,7 +13878,8 @@
 ---@field watcher "client" | "server"
 
 ---@class _.lspconfig.settings.rust_analyzer.BranchExitPoints
--- Enables highlighting of related return values while the cursor is on any `match`, `if`, or match arm arrow (`=>`).
+-- Highlight related return values while the cursor is on any `match`, `if`, or match arm
+-- arrow (`=>`).
 -- 
 -- ```lua
 -- default = true
@@ -13849,7 +13887,8 @@
 ---@field enable boolean
 
 ---@class _.lspconfig.settings.rust_analyzer.BreakPoints
--- Enables highlighting of related references while the cursor is on `break`, `loop`, `while`, or `for` keywords.
+-- Highlight related references while the cursor is on `break`, `loop`, `while`, or `for`
+-- keywords.
 -- 
 -- ```lua
 -- default = true
@@ -13857,7 +13896,7 @@
 ---@field enable boolean
 
 ---@class _.lspconfig.settings.rust_analyzer.ClosureCaptures
--- Enables highlighting of all captures of a closure while the cursor is on the `|` or move keyword of a closure.
+-- Highlight all captures of a closure while the cursor is on the `|` or move keyword of a closure.
 -- 
 -- ```lua
 -- default = true
@@ -13865,7 +13904,8 @@
 ---@field enable boolean
 
 ---@class _.lspconfig.settings.rust_analyzer.ExitPoints
--- Enables highlighting of all exit points while the cursor is on any `return`, `?`, `fn`, or return type arrow (`->`).
+-- Highlight all exit points while the cursor is on any `return`, `?`, `fn`, or return type
+-- arrow (`->`).
 -- 
 -- ```lua
 -- default = true
@@ -13873,7 +13913,7 @@
 ---@field enable boolean
 
 ---@class _.lspconfig.settings.rust_analyzer.References
--- Enables highlighting of related references while the cursor is on any identifier.
+-- Highlight related references while the cursor is on any identifier.
 -- 
 -- ```lua
 -- default = true
@@ -13881,7 +13921,8 @@
 ---@field enable boolean
 
 ---@class _.lspconfig.settings.rust_analyzer.YieldPoints
--- Enables highlighting of all break points for a loop or block context while the cursor is on any `async` or `await` keywords.
+-- Highlight all break points for a loop or block context while the cursor is on any
+-- `async` or `await` keywords.
 -- 
 -- ```lua
 -- default = true
@@ -13897,8 +13938,7 @@
 ---@field yieldPoints _.lspconfig.settings.rust_analyzer.YieldPoints
 
 ---@class _.lspconfig.settings.rust_analyzer.Debug
--- Whether to show `Debug` action. Only applies when
--- `#rust-analyzer.hover.actions.enable#` is set.
+-- Show `Debug` action. Only applies when `#rust-analyzer.hover.actions.enable#` is set.
 -- 
 -- ```lua
 -- default = true
@@ -13906,7 +13946,7 @@
 ---@field enable boolean
 
 ---@class _.lspconfig.settings.rust_analyzer.GotoTypeDef
--- Whether to show `Go to Type Definition` action. Only applies when
+-- Show `Go to Type Definition` action. Only applies when
 -- `#rust-analyzer.hover.actions.enable#` is set.
 -- 
 -- ```lua
@@ -13915,8 +13955,8 @@
 ---@field enable boolean
 
 ---@class _.lspconfig.settings.rust_analyzer.Implementations
--- Whether to show `Implementations` action. Only applies when
--- `#rust-analyzer.hover.actions.enable#` is set.
+-- Show `Implementations` action. Only applies when `#rust-analyzer.hover.actions.enable#`
+-- is set.
 -- 
 -- ```lua
 -- default = true
@@ -13924,13 +13964,12 @@
 ---@field enable boolean
 
 ---@class _.lspconfig.settings.rust_analyzer.References
--- Whether to show `References` action. Only applies when
--- `#rust-analyzer.hover.actions.enable#` is set.
+-- Show `References` action. Only applies when `#rust-analyzer.hover.actions.enable#` is
+-- set.
 ---@field enable boolean
 
 ---@class _.lspconfig.settings.rust_analyzer.Run
--- Whether to show `Run` action. Only applies when
--- `#rust-analyzer.hover.actions.enable#` is set.
+-- Show `Run` action. Only applies when `#rust-analyzer.hover.actions.enable#` is set.
 -- 
 -- ```lua
 -- default = true
@@ -13938,8 +13977,8 @@
 ---@field enable boolean
 
 ---@class _.lspconfig.settings.rust_analyzer.UpdateTest
--- Whether to show `Update Test` action. Only applies when
--- `#rust-analyzer.hover.actions.enable#` and `#rust-analyzer.hover.actions.run.enable#` are set.
+-- Show `Update Test` action. Only applies when `#rust-analyzer.hover.actions.enable#` and
+-- `#rust-analyzer.hover.actions.run.enable#` are set.
 -- 
 -- ```lua
 -- default = true
@@ -13948,7 +13987,7 @@
 
 ---@class _.lspconfig.settings.rust_analyzer.Actions
 ---@field debug _.lspconfig.settings.rust_analyzer.Debug
--- Whether to show HoverActions in Rust files.
+-- Show HoverActions in Rust files.
 -- 
 -- ```lua
 -- default = true
@@ -13961,7 +14000,7 @@
 ---@field updateTest _.lspconfig.settings.rust_analyzer.UpdateTest
 
 ---@class _.lspconfig.settings.rust_analyzer.Keywords
--- Whether to show keyword hover popups. Only applies when
+-- Show keyword hover popups. Only applies when
 -- `#rust-analyzer.hover.documentation.enable#` is set.
 -- 
 -- ```lua
@@ -13970,7 +14009,7 @@
 ---@field enable boolean
 
 ---@class _.lspconfig.settings.rust_analyzer.Documentation
--- Whether to show documentation on hover.
+-- Show documentation on hover.
 -- 
 -- ```lua
 -- default = true
@@ -13979,7 +14018,7 @@
 ---@field keywords _.lspconfig.settings.rust_analyzer.Keywords
 
 ---@class _.lspconfig.settings.rust_analyzer.DropGlue
--- Whether to show drop glue information on hover.
+-- Show drop glue information on hover.
 -- 
 -- ```lua
 -- default = true
@@ -14001,7 +14040,7 @@
 -- default = "hexadecimal"
 -- ```
 ---@field alignment any|"both" | "decimal" | "hexadecimal"
--- Whether to show memory layout data on hover.
+-- Show memory layout data on hover.
 -- 
 -- ```lua
 -- default = true
@@ -14031,7 +14070,8 @@
 -- default = 5
 -- ```
 ---@field enumVariants integer
--- How many fields of a struct, variant or union to display when hovering on. Show none if empty.
+-- How many fields of a struct, variant or union to display when hovering on. Show none if
+-- empty.
 -- 
 -- ```lua
 -- default = 5
@@ -14045,9 +14085,11 @@
 ---@field documentation _.lspconfig.settings.rust_analyzer.Documentation
 ---@field dropGlue _.lspconfig.settings.rust_analyzer.DropGlue
 ---@field links _.lspconfig.settings.rust_analyzer.Links
--- Whether to show what types are used as generic arguments in calls etc. on hover, and what is their max length to show such types, beyond it they will be shown with ellipsis.
+-- Show what types are used as generic arguments in calls etc. on hover, and limit the max
+-- length to show such types, beyond which they will be shown with ellipsis.
 -- 
--- This can take three values: `null` means "unlimited", the string `"hide"` means to not show generic substitutions at all, and a number means to limit them to X characters.
+-- This can take three values: `null` means "unlimited", the string `"hide"` means to not
+-- show generic substitutions at all, and a number means to limit them to X characters.
 -- 
 -- The default is 20 characters.
 -- 
@@ -14059,7 +14101,8 @@
 ---@field show _.lspconfig.settings.rust_analyzer.Show
 
 ---@class _.lspconfig.settings.rust_analyzer.Granularity
--- Whether to enforce the import granularity setting for all files. If set to false rust-analyzer will try to keep import styles consistent per file.
+-- Enforce the import granularity setting for all files. If set to false rust-analyzer will
+-- try to keep import styles consistent per file.
 ---@field enforce boolean
 -- How imports should be grouped into use statements.
 -- 
@@ -14069,7 +14112,9 @@
 ---@field group "preserve" | "crate" | "module" | "item" | "one"
 
 ---@class _.lspconfig.settings.rust_analyzer.Group
--- Group inserted imports by the [following order](https://rust-analyzer.github.io/book/features.html#auto-import). Groups are separated by newlines.
+-- Group inserted imports by the [following
+-- order](https://rust-analyzer.github.io/book/features.html#auto-import). Groups are
+-- separated by newlines.
 -- 
 -- ```lua
 -- default = true
@@ -14077,7 +14122,8 @@
 ---@field enable boolean
 
 ---@class _.lspconfig.settings.rust_analyzer.Merge
--- Whether to allow import insertion to merge new imports into single path glob imports like `use std::fmt::*;`.
+-- Allow import insertion to merge new imports into single path glob imports like `use
+-- std::fmt::*;`.
 -- 
 -- ```lua
 -- default = true
@@ -14090,7 +14136,7 @@
 ---@field merge _.lspconfig.settings.rust_analyzer.Merge
 -- Prefer to unconditionally use imports of the core and alloc crate, over the std crate.
 ---@field preferNoStd boolean
--- Whether to prefer import paths containing a `prelude` module.
+-- Prefer import paths containing a `prelude` module.
 ---@field preferPrelude boolean
 -- The path structure for newly inserted paths to use.
 -- 
@@ -14098,15 +14144,17 @@
 -- default = "crate"
 -- ```
 ---@field prefix "plain" | "self" | "crate"
--- Whether to prefix external (including std, core) crate imports with `::`. e.g. "use ::std::io::Read;".
+-- Prefix external (including std, core) crate imports with `::`.
+-- 
+-- E.g. `use ::std::io::Read;`.
 ---@field prefixExternPrelude boolean
 
 ---@class _.lspconfig.settings.rust_analyzer.BindingModeHints
--- Whether to show inlay type hints for binding modes.
+-- Show inlay type hints for binding modes.
 ---@field enable boolean
 
 ---@class _.lspconfig.settings.rust_analyzer.ChainingHints
--- Whether to show inlay type hints for method chains.
+-- Show inlay type hints for method chains.
 -- 
 -- ```lua
 -- default = true
@@ -14114,7 +14162,7 @@
 ---@field enable boolean
 
 ---@class _.lspconfig.settings.rust_analyzer.ClosingBraceHints
--- Whether to show inlay hints after a closing `}` to indicate what item it belongs to.
+-- Show inlay hints after a closing `}` to indicate what item it belongs to.
 -- 
 -- ```lua
 -- default = true
@@ -14129,11 +14177,11 @@
 ---@field minLines integer
 
 ---@class _.lspconfig.settings.rust_analyzer.ClosureCaptureHints
--- Whether to show inlay hints for closure captures.
+-- Show inlay hints for closure captures.
 ---@field enable boolean
 
 ---@class _.lspconfig.settings.rust_analyzer.ClosureReturnTypeHints
--- Whether to show inlay type hints for return types of closures.
+-- Show inlay type hints for return types of closures.
 -- 
 -- ```lua
 -- default = "never"
@@ -14141,7 +14189,7 @@
 ---@field enable "always" | "never" | "with_block"
 
 ---@class _.lspconfig.settings.rust_analyzer.DiscriminantHints
--- Whether to show enum variant discriminant hints.
+-- Show enum variant discriminant hints.
 -- 
 -- ```lua
 -- default = "never"
@@ -14149,15 +14197,15 @@
 ---@field enable "always" | "never" | "fieldless"
 
 ---@class _.lspconfig.settings.rust_analyzer.ExpressionAdjustmentHints
--- Whether to show inlay hints for type adjustments.
+-- Show inlay hints for type adjustments.
 -- 
 -- ```lua
 -- default = "never"
 -- ```
 ---@field enable "always" | "never" | "reborrow"
--- Whether to hide inlay hints for type adjustments outside of `unsafe` blocks.
+-- Hide inlay hints for type adjustments outside of `unsafe` blocks.
 ---@field hideOutsideUnsafe boolean
--- Whether to show inlay hints as postfix ops (`.*` instead of `*`, etc).
+-- Show inlay hints as postfix ops (`.*` instead of `*`, etc).
 -- 
 -- ```lua
 -- default = "prefix"
@@ -14165,7 +14213,7 @@
 ---@field mode "prefix" | "postfix" | "prefer_prefix" | "prefer_postfix"
 
 ---@class _.lspconfig.settings.rust_analyzer.Const
--- Whether to show const generic parameter name inlay hints.
+-- Show const generic parameter name inlay hints.
 -- 
 -- ```lua
 -- default = true
@@ -14173,11 +14221,11 @@
 ---@field enable boolean
 
 ---@class _.lspconfig.settings.rust_analyzer.Lifetime
--- Whether to show generic lifetime parameter name inlay hints.
+-- Show generic lifetime parameter name inlay hints.
 ---@field enable boolean
 
 ---@class _.lspconfig.settings.rust_analyzer.Type
--- Whether to show generic type parameter name inlay hints.
+-- Show generic type parameter name inlay hints.
 ---@field enable boolean
 
 ---@class _.lspconfig.settings.rust_analyzer.GenericParameterHints
@@ -14186,26 +14234,25 @@
 ---@field type _.lspconfig.settings.rust_analyzer.Type
 
 ---@class _.lspconfig.settings.rust_analyzer.ImplicitDrops
--- Whether to show implicit drop hints.
+-- Show implicit drop hints.
 ---@field enable boolean
 
 ---@class _.lspconfig.settings.rust_analyzer.ImplicitSizedBoundHints
--- Whether to show inlay hints for the implied type parameter `Sized` bound.
+-- Show inlay hints for the implied type parameter `Sized` bound.
 ---@field enable boolean
 
 ---@class _.lspconfig.settings.rust_analyzer.LifetimeElisionHints
--- Whether to show inlay type hints for elided lifetimes in function signatures.
+-- Show inlay type hints for elided lifetimes in function signatures.
 -- 
 -- ```lua
 -- default = "never"
 -- ```
 ---@field enable "always" | "never" | "skip_trivial"
--- Whether to prefer using parameter names as the name for elided lifetime hints if possible.
+-- Prefer using parameter names as the name for elided lifetime hints if possible.
 ---@field useParameterNames boolean
 
 ---@class _.lspconfig.settings.rust_analyzer.ParameterHints
--- Whether to show function parameter name inlay hints at the call
--- site.
+-- Show function parameter name inlay hints at the call site.
 -- 
 -- ```lua
 -- default = true
@@ -14213,12 +14260,14 @@
 ---@field enable boolean
 
 ---@class _.lspconfig.settings.rust_analyzer.RangeExclusiveHints
--- Whether to show exclusive range inlay hints.
+-- Show exclusive range inlay hints.
 ---@field enable boolean
 
 ---@class _.lspconfig.settings.rust_analyzer.ReborrowHints
--- Whether to show inlay hints for compiler inserted reborrows.
--- This setting is deprecated in favor of #rust-analyzer.inlayHints.expressionAdjustmentHints.enable#.
+-- Show inlay hints for compiler inserted reborrows.
+-- 
+-- This setting is deprecated in favor of
+-- #rust-analyzer.inlayHints.expressionAdjustmentHints.enable#.
 -- 
 -- ```lua
 -- default = "never"
@@ -14226,18 +14275,20 @@
 ---@field enable "always" | "never" | "mutable"
 
 ---@class _.lspconfig.settings.rust_analyzer.TypeHints
--- Whether to show inlay type hints for variables.
+-- Show inlay type hints for variables.
 -- 
 -- ```lua
 -- default = true
 -- ```
 ---@field enable boolean
--- Whether to hide inlay type hints for `let` statements that initialize to a closure.
--- Only applies to closures with blocks, same as `#rust-analyzer.inlayHints.closureReturnTypeHints.enable#`.
+-- Hide inlay type hints for `let` statements that initialize to a closure.
+-- 
+-- Only applies to closures with blocks, same as
+-- `#rust-analyzer.inlayHints.closureReturnTypeHints.enable#`.
 ---@field hideClosureInitialization boolean
--- Whether to hide inlay parameter type hints for closures.
+-- Hide inlay parameter type hints for closures.
 ---@field hideClosureParameter boolean
--- Whether to hide inlay type hints for constructors.
+-- Hide inlay type hints for constructors.
 ---@field hideNamedConstructor boolean
 
 ---@class _.lspconfig.settings.rust_analyzer.InlayHints
@@ -14276,7 +14327,7 @@
 ---@field typeHints _.lspconfig.settings.rust_analyzer.TypeHints
 
 ---@class _.lspconfig.settings.rust_analyzer.Interpret
--- Enables the experimental support for interpreting tests.
+-- Enable the experimental support for interpreting tests.
 ---@field tests boolean
 
 ---@class _.lspconfig.settings.rust_analyzer.JoinLines
@@ -14306,8 +14357,7 @@
 ---@field unwrapTrivialBlock boolean
 
 ---@class _.lspconfig.settings.rust_analyzer.Debug
--- Whether to show `Debug` lens. Only applies when
--- `#rust-analyzer.lens.enable#` is set.
+-- Show `Debug` lens. Only applies when `#rust-analyzer.lens.enable#` is set.
 -- 
 -- ```lua
 -- default = true
@@ -14315,8 +14365,7 @@
 ---@field enable boolean
 
 ---@class _.lspconfig.settings.rust_analyzer.Implementations
--- Whether to show `Implementations` lens. Only applies when
--- `#rust-analyzer.lens.enable#` is set.
+-- Show `Implementations` lens. Only applies when `#rust-analyzer.lens.enable#` is set.
 -- 
 -- ```lua
 -- default = true
@@ -14324,23 +14373,22 @@
 ---@field enable boolean
 
 ---@class _.lspconfig.settings.rust_analyzer.Adt
--- Whether to show `References` lens for Struct, Enum, and Union.
--- Only applies when `#rust-analyzer.lens.enable#` is set.
----@field enable boolean
-
----@class _.lspconfig.settings.rust_analyzer.EnumVariant
--- Whether to show `References` lens for Enum Variants.
--- Only applies when `#rust-analyzer.lens.enable#` is set.
----@field enable boolean
-
----@class _.lspconfig.settings.rust_analyzer.Method
--- Whether to show `Method References` lens. Only applies when
+-- Show `References` lens for Struct, Enum, and Union. Only applies when
 -- `#rust-analyzer.lens.enable#` is set.
 ---@field enable boolean
 
+---@class _.lspconfig.settings.rust_analyzer.EnumVariant
+-- Show `References` lens for Enum Variants. Only applies when
+-- `#rust-analyzer.lens.enable#` is set.
+---@field enable boolean
+
+---@class _.lspconfig.settings.rust_analyzer.Method
+-- Show `Method References` lens. Only applies when `#rust-analyzer.lens.enable#` is set.
+---@field enable boolean
+
 ---@class _.lspconfig.settings.rust_analyzer.Trait
--- Whether to show `References` lens for Trait.
--- Only applies when `#rust-analyzer.lens.enable#` is set.
+-- Show `References` lens for Trait. Only applies when `#rust-analyzer.lens.enable#` is
+-- set.
 ---@field enable boolean
 
 ---@class _.lspconfig.settings.rust_analyzer.References
@@ -14350,8 +14398,7 @@
 ---@field trait _.lspconfig.settings.rust_analyzer.Trait
 
 ---@class _.lspconfig.settings.rust_analyzer.Run
--- Whether to show `Run` lens. Only applies when
--- `#rust-analyzer.lens.enable#` is set.
+-- Show `Run` lens. Only applies when `#rust-analyzer.lens.enable#` is set.
 -- 
 -- ```lua
 -- default = true
@@ -14359,8 +14406,8 @@
 ---@field enable boolean
 
 ---@class _.lspconfig.settings.rust_analyzer.UpdateTest
--- Whether to show `Update Test` lens. Only applies when
--- `#rust-analyzer.lens.enable#` and `#rust-analyzer.lens.run.enable#` are set.
+-- Show `Update Test` lens. Only applies when `#rust-analyzer.lens.enable#` and
+-- `#rust-analyzer.lens.run.enable#` are set.
 -- 
 -- ```lua
 -- default = true
@@ -14369,7 +14416,7 @@
 
 ---@class _.lspconfig.settings.rust_analyzer.Lens
 ---@field debug _.lspconfig.settings.rust_analyzer.Debug
--- Whether to show CodeLens in Rust files.
+-- Show CodeLens in Rust files.
 -- 
 -- ```lua
 -- default = true
@@ -14387,7 +14434,7 @@
 ---@field updateTest _.lspconfig.settings.rust_analyzer.UpdateTest
 
 ---@class _.lspconfig.settings.rust_analyzer.Query
--- Sets the LRU capacity of the specified queries.
+-- The LRU capacity of the specified queries.
 -- 
 -- ```lua
 -- default = {}
@@ -14400,7 +14447,7 @@
 ---@field query _.lspconfig.settings.rust_analyzer.Query
 
 ---@class _.lspconfig.settings.rust_analyzer.Notifications
--- Whether to show `can't find Cargo.toml` error message.
+-- Show `can't find Cargo.toml` error message.
 -- 
 -- ```lua
 -- default = true
@@ -14583,7 +14630,10 @@
 
 ---@class _.lspconfig.settings.rust_analyzer.SemanticHighlighting
 ---@field doc _.lspconfig.settings.rust_analyzer.Doc
--- Whether the server is allowed to emit non-standard tokens and modifiers.
+-- Emit non-standard tokens and modifiers
+-- 
+-- When enabled, rust-analyzer will emit tokens and modifiers that are not part of the
+-- standard set of semantic tokens.
 -- 
 -- ```lua
 -- default = true
@@ -14667,11 +14717,15 @@
 -- ```
 ---@field continueCommentsOnNewline boolean
 -- Specify the characters allowed to invoke special on typing triggers.
--- - typing `=` after `let` tries to smartly add `;` if `=` is followed by an existing expression
+-- 
+-- - typing `=` after `let` tries to smartly add `;` if `=` is followed by an existing
+--     expression
 -- - typing `=` between two expressions adds `;` when in statement position
--- - typing `=` to turn an assignment into an equality comparison removes `;` when in expression position
+-- - typing `=` to turn an assignment into an equality comparison removes `;` when in
+--     expression position
 -- - typing `.` in a chain method call auto-indents
--- - typing `{` or `(` in front of an expression inserts a closing `}` or `)` after the expression
+-- - typing `{` or `(` in front of an expression inserts a closing `}` or `)` after the
+--     expression
 -- - typing `{` in a use item adds a closing `}` in the right place
 -- - typing `>` to complete a return type `->` will insert a whitespace after it
 -- - typing `<` in a path or type position inserts a closing `>` after the path or type.
@@ -14748,8 +14802,8 @@
 -- 
 -- **Warning**: This format is provisional and subject to change.
 -- 
--- [`DiscoverWorkspaceConfig::command`] *must* return a JSON object
--- corresponding to `DiscoverProjectData::Finished`:
+-- [`DiscoverWorkspaceConfig::command`] *must* return a JSON object corresponding to
+-- `DiscoverProjectData::Finished`:
 -- 
 -- ```norun
 -- #[derive(Debug, Clone, Deserialize, Serialize)]
@@ -14779,12 +14833,11 @@
 -- }
 -- ```
 -- 
--- It is encouraged, but not required, to use the other variants on
--- `DiscoverProjectData` to provide a more polished end-user experience.
+-- It is encouraged, but not required, to use the other variants on `DiscoverProjectData`
+-- to provide a more polished end-user experience.
 -- 
--- `DiscoverWorkspaceConfig::command` may *optionally* include an `{arg}`,
--- which will be substituted with the JSON-serialized form of the following
--- enum:
+-- `DiscoverWorkspaceConfig::command` may *optionally* include an `{arg}`, which will be
+-- substituted with the JSON-serialized form of the following enum:
 -- 
 -- ```norun
 -- #[derive(PartialEq, Clone, Debug, Serialize)]
@@ -14811,11 +14864,10 @@
 -- }
 -- ```
 -- 
--- `DiscoverArgument::Path` is used to find and generate a `rust-project.json`,
--- and therefore, a workspace, whereas `DiscoverArgument::buildfile` is used to
--- to update an existing workspace. As a reference for implementors,
--- buck2's `rust-project` will likely be useful:
--- https://github.com/facebook/buck2/tree/main/integrations/rust-project.
+-- `DiscoverArgument::Path` is used to find and generate a `rust-project.json`, and
+-- therefore, a workspace, whereas `DiscoverArgument::buildfile` is used to to update an
+-- existing workspace. As a reference for implementors, buck2's `rust-project` will likely
+-- be useful: https://github.com/facebook/buck2/tree/main/integrations/rust-project.
 ---@field discoverConfig any|table
 ---@field symbol _.lspconfig.settings.rust_analyzer.Symbol
 
@@ -14844,12 +14896,10 @@
 ---@field interpret _.lspconfig.settings.rust_analyzer.Interpret
 ---@field joinLines _.lspconfig.settings.rust_analyzer.JoinLines
 ---@field lens _.lspconfig.settings.rust_analyzer.Lens
--- Disable project auto-discovery in favor of explicitly specified set
--- of projects.
+-- Disable project auto-discovery in favor of explicitly specified set of projects.
 -- 
--- Elements must be paths pointing to `Cargo.toml`,
--- `rust-project.json`, `.rs` files (which will be treated as standalone files) or JSON
--- objects in `rust-project.json` format.
+-- Elements must be paths pointing to `Cargo.toml`, `rust-project.json`, `.rs` files (which
+-- will be treated as standalone files) or JSON objects in `rust-project.json` format.
 -- 
 -- ```lua
 -- default = {}
@@ -14857,32 +14907,33 @@
 ---@field linkedProjects any[]
 ---@field lru _.lspconfig.settings.rust_analyzer.Lru
 ---@field notifications _.lspconfig.settings.rust_analyzer.Notifications
--- How many worker threads in the main loop. The default `null` means to pick automatically.
+-- The number of worker threads in the main loop. The default `null` means to pick
+-- automatically.
 ---@field numThreads any|number|"physical" | "logical"
 ---@field procMacro _.lspconfig.settings.rust_analyzer.ProcMacro
 ---@field references _.lspconfig.settings.rust_analyzer.References
--- Whether to restart the server automatically when certain settings that require a restart are changed.
+-- Restart the server automatically when settings that require a restart are changed.
 ---@field restartServerOnConfigChange boolean
 ---@field runnables _.lspconfig.settings.rust_analyzer.Runnables
 ---@field rustc _.lspconfig.settings.rust_analyzer.Rustc
 ---@field rustfmt _.lspconfig.settings.rust_analyzer.Rustfmt
 ---@field semanticHighlighting _.lspconfig.settings.rust_analyzer.SemanticHighlighting
 ---@field server _.lspconfig.settings.rust_analyzer.Server
--- Whether to show the dependencies view.
+-- Show Rust Dependencies in the Explorer view.
 -- 
 -- ```lua
 -- default = true
 -- ```
 ---@field showDependenciesExplorer boolean
--- Whether to show error notifications for failing requests.
+-- Show error notifications when requests fail.
 -- 
 -- ```lua
 -- default = true
 -- ```
 ---@field showRequestFailedErrorNotification boolean
--- Whether to show the syntax tree view.
+-- Show Syntax Tree in the Explorer view.
 ---@field showSyntaxTree boolean
--- Whether to show a notification for unlinked files asking the user to add the corresponding Cargo.toml to the linked projects setting.
+-- Show a notification for unlinked files, prompting the user to add the corresponding Cargo.toml to the linked projects setting.
 -- 
 -- ```lua
 -- default = true
@@ -14890,7 +14941,7 @@
 ---@field showUnlinkedFileNotification boolean
 ---@field signatureInfo _.lspconfig.settings.rust_analyzer.SignatureInfo
 ---@field statusBar _.lspconfig.settings.rust_analyzer.StatusBar
--- Whether to show the test explorer.
+-- Show the Test Explorer view.
 ---@field testExplorer boolean
 ---@field trace _.lspconfig.settings.rust_analyzer.Trace
 ---@field typing _.lspconfig.settings.rust_analyzer.Typing
@@ -15153,13 +15204,13 @@
 ---@field solidity _.lspconfig.settings.solidity_ls.Solidity
 
 ---@class _.lspconfig.settings.sonarlint.Connections
--- Connect SonarQube for VS Code to SonarQube Cloud to apply the same Clean Code standards as your team. Analyze more languages, detect more issues **on the whole project**, receive notifications about the quality gate status, and more. Quality Profiles and file exclusion settings defined on the server are shared between all connected users. Please find the documentation [here](https://docs.sonarsource.com/sonarqube-for-ide/vs-code/team-features/connected-mode/)
+-- Connect SonarQube for IDE to SonarQube Cloud to apply the same code quality and security standards as your team. Analyze more languages, detect more issues **on the whole project**, receive notifications about the quality gate status, and more. Quality Profiles and file exclusion settings defined on the server are shared between all connected users. Please find the documentation [here](https://docs.sonarsource.com/sonarqube-for-ide/vs-code/team-features/connected-mode/)
 -- 
 -- ```lua
 -- default = {}
 -- ```
 ---@field sonarcloud object[]
--- Connect SonarQube for VS Code to SonarQube Server to apply the same Clean Code standards as your team. Analyze more languages, detect more issues **on the whole project**, receive notifications about the quality gate status, and more. Quality Profiles and file exclusion settings defined on the server are shared between all connected users. Please find the documentation [here](https://docs.sonarsource.com/sonarqube-for-ide/vs-code/team-features/connected-mode/)
+-- Connect SonarQube for IDE to SonarQube Server to apply the same code quality and security standards as your team. Analyze more languages, detect more issues **on the whole project**, receive notifications about the quality gate status, and more. Quality Profiles and file exclusion settings defined on the server are shared between all connected users. Please find the documentation [here](https://docs.sonarsource.com/sonarqube-for-ide/vs-code/team-features/connected-mode/)
 -- 
 -- ```lua
 -- default = {}
@@ -15252,19 +15303,15 @@
 -- Disable sending anonymous usage statistics to SonarSource. Click [here](https://github.com/SonarSource/sonarlint-vscode/blob/master/telemetry-sample.md) to see a sample of the data that are collected.
 ---@field disableTelemetry boolean
 ---@field earlyAccess _.lspconfig.settings.sonarlint.EarlyAccess
--- Highlight issues in new code.
+-- If enabled, by default, [focusing on new code](https://docs.sonarsource.com/sonarqube-for-ide/vs-code/using/investigating-issues/#focusing-on-new-code) shows issues introduced in the last 30 days.
 -- 
--- Focusing on new code helps you practice [Clean as You Code](https://docs.sonarsource.com/sonarqube-for-ide/vs-code/clean-as-you-code-in-the-ide/).
--- 
--- In [Connected Mode](https://docs.sonarsource.com/sonarqube-for-ide/vs-code/team-features/connected-mode/) you benefit from a more accurate new code definition based on your SonarQube (Server, Cloud) settings.
--- 
--- Without Connected Mode (in standalone mode), any code added or changed in the **last 30 days** is considered new code.
+-- For the most accurate and customizable new code definition, use [Connected Mode](https://docs.sonarsource.com/sonarqube-for-ide/vs-code/team-features/connected-mode/) with SonarQube (Server, Cloud).
 ---@field focusOnNewCode boolean
 ---@field ls _.lspconfig.settings.sonarlint.Ls
 ---@field output _.lspconfig.settings.sonarlint.Output
 -- Path to the active compilation database, e.g. `C:\\Repos\\MyProject\\compile_commands.json`
 ---@field pathToCompileCommands string
--- Path to a Node.js executable (18.18 or more recent) used to analyze JavaScript and TypeScript code. 
+-- Path to a Node.js executable (versions above 18.20.0, 20.12.0, or 22.11.0) used to analyze JavaScript and TypeScript code. 
 -- On Windows, backslashes must be escaped, e.g. `C:\\Program Files\\NodeJS\\20-lts\\bin\\node.exe`
 ---@field pathToNodeExecutable string
 -- Customize applied rule set. This property contains a list of rules whose activation level or parameter values differ from the one provided by default. In [Connected Mode](command:SonarLint.HelpAndFeedbackLinkClicked?%22connectedModeDocs%22), this configuration is overridden by the projects's Quality Profile, as configured on server side and can be **shared among contributors**. See [SonarLint Rules](command:SonarLint.AllRules.focus) view for the list of **locally** available rules.
@@ -15318,6 +15365,12 @@
 -- default = "nowhere"
 -- ```
 ---@field highlightUntyped "nowhere" | "everywhere-but-tests" | "everywhere"
+-- Which severity to use to highlight untyped usages with (controls the squiggle colors)
+-- 
+-- ```lua
+-- default = 3
+-- ```
+---@field highlightUntypedDiagnosticSeverity 1 | 2 | 3 | 4
 -- Standard Ruby LSP configurations.  If you commit your VSCode settings to source control, you probably want to commit *this* setting, not `sorbet.userLspConfigs`.
 -- 
 -- ```lua
@@ -15501,6 +15554,14 @@
 -- default = ""
 -- ```
 ---@field buildPath string
+-- When opening a .sourckit-lsp/config.json configuration file, whether or not to check if the $schema matches the version of Swift you are using.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field checkLspConfigurationSchema boolean
+-- When enabled, the extension will create "swift" build tasks for library products in the package manifest. Note that automatic library products will not be included.
+---@field createTasksForLibraryProducts boolean
 ---@field debugger _.lspconfig.settings.sourcekit.Debugger
 -- Output additional diagnostics to the Swift Output View.
 ---@field diagnostics boolean
@@ -15534,12 +15595,16 @@
 -- default = {}
 -- ```
 ---@field excludeFromCodeCoverage string[]
+-- Configure glob patterns for excluding Swift package folders from getting activated. This will take precedence over the glob patterns provided to `files.exclude`.
+---@field excludePathsFromActivation table
 -- A list of glob patterns to exclude from the Package Dependencies view. Always use forward-slashes in glob expressions regardless of platform. This is combined with VS Code's default `files.exclude` setting.
 -- 
 -- ```lua
 -- default = { "**/.git", "**/.github" }
 -- ```
 ---@field excludePathsFromPackageDependencies string[]
+-- Set the branch to use when setting the `$schema` property of the SourceKit-LSP configuration. For example: "release/6.1" or "main". When this setting is unset, the extension will determine the branch based on the version of the toolchain that is in use.
+---@field lspConfigurationBranch string
 -- Controls whether to open a swift project automatically after creating it.
 -- 
 -- ```lua
@@ -15576,6 +15641,12 @@
 -- default = {}
 -- ```
 ---@field pluginPermissions table
+-- Controls whether or not to record the duration of tests in the Test Explorer. This is used to show the duration of tests in the Test Explorer view. If you're experiencing performance issues when running a large number of tests that complete quickly, disabling this setting can make the UI more responsive.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field recordTestDuration boolean
 -- The path of the folder containing the Swift runtime libraries. This is of use when supporting non-standard SDK layouts on Windows. On Windows the runtime path is added to the `Path` environment variable. This is of less use on macOS and Linux but will be added to `DYLD_LIBRARY_PATH` and `LD_LIBRARY_PATH` environment variables respectively on each platform. 
 -- 
 -- ```lua
@@ -15608,6 +15679,12 @@
 -- default = true
 -- ```
 ---@field showCreateSwiftProjectInWelcomePage boolean
+-- Controls whether or not to show inline code lenses for running and debugging tests inline, above test and suite declarations. If set to an array, specify one or more of the following: 'run', 'debug', 'coverage'.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field showTestCodeLenses boolean|string[]
 ---@field sourcekit-lsp _.lspconfig.settings.sourcekit.Sourcekit-lsp
 -- Additional environment variables to pass to swift operations (`swift build`, `swift resolve`, etc...).
 -- 
@@ -17127,12 +17204,6 @@
 ---@field npmIsInstalled boolean
 
 ---@class _.lspconfig.settings.ts_ls.Experimental
--- Enable expanding/contracting the hover to reveal more/less information from the TS server. Requires TypeScript 5.9+.
--- 
--- ```lua
--- default = true
--- ```
----@field expandableHover boolean
 -- Disables TypeScript and JavaScript language features to allow usage of the TypeScript Go experimental extension. Requires TypeScript Go to be installed and configured. Requires reloading extensions after changing this setting.
 ---@field useTsgo boolean
 
@@ -17539,7 +17610,7 @@
 -- ```lua
 -- default = "off"
 -- ```
----@field log "off" | "terse" | "normal" | "verbose"
+---@field log "off" | "terse" | "normal" | "verbose" | "requestTime"
 -- The maximum amount of memory (in MB) to allocate to the TypeScript server process. To use a memory limit greater than 4 GB, use `#typescript.tsserver.nodePath#` to run TS Server with a custom Node installation.
 -- 
 -- ```lua
@@ -17715,6 +17786,26 @@
 -- ```
 ---@field askNewComponentName boolean
 
+---@class _.lspconfig.settings.volar.Editor
+-- Sponsor this extension to unlock premium features. [Learn more](https://youtu.be/RcPcO4_Ct_U)
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field focusMode boolean
+-- Sponsor this extension to unlock premium features. [Learn more](https://youtu.be/RcPcO4_Ct_U)
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field reactivityVisualization boolean
+-- Sponsor this extension to unlock premium features. [Learn more](https://youtu.be/RcPcO4_Ct_U)
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field templateInterpolationDecorators boolean
+
 ---@class _.lspconfig.settings.volar.Script
 -- %configuration.format.script.initialIndent%
 ---@field initialIndent boolean
@@ -17793,6 +17884,7 @@
 ---@class _.lspconfig.settings.volar.Vue
 ---@field autoInsert _.lspconfig.settings.volar.AutoInsert
 ---@field codeActions _.lspconfig.settings.volar.CodeActions
+---@field editor _.lspconfig.settings.volar.Editor
 ---@field format _.lspconfig.settings.volar.Format
 ---@field inlayHints _.lspconfig.settings.volar.InlayHints
 ---@field server _.lspconfig.settings.volar.Server

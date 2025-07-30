@@ -26,6 +26,28 @@
         "everywhere"
       ]
     },
+    "sorbet.highlightUntypedDiagnosticSeverity": {
+      "default": 3,
+      "description": "Which severity to use to highlight untyped usages with (controls the squiggle colors)",
+      "enum": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "enumItemLabels": [
+        "Error",
+        "Warning",
+        "Information",
+        "Hint"
+      ],
+      "markdownEnumDescriptions": [
+        "Error",
+        "Warning",
+        "Information",
+        "Hint"
+      ]
+    },
     "sorbet.lspConfigs": {
       "default": [
         {
