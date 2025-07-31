@@ -10652,6 +10652,10 @@
 
 ---@class _.lspconfig.settings.omnisharp.LanguageServer
 -- %configuration.razor.languageServer.cohostingEnabled%
+-- 
+-- ```lua
+-- default = true
+-- ```
 ---@field cohostingEnabled boolean
 -- %configuration.razor.languageServer.debug%
 ---@field debug boolean
