@@ -15567,7 +15567,7 @@
 -- When enabled, the extension will create "swift" build tasks for library products in the package manifest. Note that automatic library products will not be included.
 ---@field createTasksForLibraryProducts boolean
 ---@field debugger _.lspconfig.settings.sourcekit.Debugger
--- Output additional diagnostics to the Swift Output View.
+-- Output additional diagnostics to the Swift output channel.
 ---@field diagnostics boolean
 -- Controls how diagnostics from the various providers are merged into the collection of `swift` errors and warnings shown in the Problems pane.
 -- 
@@ -15615,6 +15615,12 @@
 -- default = "prompt"
 -- ```
 ---@field openAfterCreateNewProject "always" | "alwaysNewWindow" | "whenNoFolderOpen" | "prompt"
+-- The log level of the Swift output channel. This has no effect on the verbosity of messages written to the extension's log file.
+-- 
+-- ```lua
+-- default = "info"
+-- ```
+---@field outputChannelLogLevel "debug" | "info" | "warn" | "error"
 -- Additional arguments to pass to swift commands that do package resolution, such as `swift package resolve`, `swift package update`, `swift build` and `swift test`. Keys and values should be provided as individual entries in the list.
 -- 
 -- ```lua

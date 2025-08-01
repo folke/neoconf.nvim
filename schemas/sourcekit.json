@@ -183,7 +183,8 @@
     },
     "swift.diagnostics": {
       "default": false,
-      "markdownDescription": "Output additional diagnostics to the Swift Output View.",
+      "deprecationMessage": "**Deprecated**: Please use `#swift.outputChannelLogLevel#` instead.",
+      "markdownDescription": "Output additional diagnostics to the Swift output channel.",
       "order": 100,
       "scope": "machine-overridable",
       "type": "boolean"
@@ -297,6 +298,18 @@
       ],
       "markdownDescription": "Controls whether to open a swift project automatically after creating it.",
       "scope": "application",
+      "type": "string"
+    },
+    "swift.outputChannelLogLevel": {
+      "default": "info",
+      "enum": [
+        "debug",
+        "info",
+        "warn",
+        "error"
+      ],
+      "markdownDescription": "The log level of the Swift output channel. This has no effect on the verbosity of messages written to the extension's log file.",
+      "scope": "machine-overridable",
       "type": "string"
     },
     "swift.packageArguments": {
