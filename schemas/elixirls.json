@@ -84,6 +84,12 @@
       "type": "array",
       "uniqueItems": true
     },
+    "elixirLS.dotFormatter": {
+      "description": "Path to a custom .formatter.exs file used when formatting documents",
+      "minLength": 0,
+      "scope": "resource",
+      "type": "string"
+    },
     "elixirLS.enableTestLenses": {
       "default": false,
       "description": "Show code lenses to run tests in terminal.",

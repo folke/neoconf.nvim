@@ -2686,6 +2686,8 @@
 -- default = {}
 -- ```
 ---@field dialyzerWarnOpts string[]
+-- Path to a custom .formatter.exs file used when formatting documents
+---@field dotFormatter string
 -- Show code lenses to run tests in terminal.
 ---@field enableTestLenses boolean
 -- Environment variables to use for compilation
