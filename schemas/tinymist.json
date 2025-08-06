@@ -226,7 +226,6 @@
     "tinymist.preview.invertColors": {
       "anyOf": [
         {
-          "default": "never",
           "enum": [
             "never",
             "auto",
@@ -242,7 +241,6 @@
           "type": "string"
         },
         {
-          "default": {},
           "markdownDescription": "%extension.tinymist.config.tinymist.preview.invertColors.anyOf.object.desc%",
           "properties": {
             "image": {
@@ -282,6 +280,7 @@
           "type": "object"
         }
       ],
+      "default": "never",
       "markdownDescription": "%extension.tinymist.config.tinymist.preview.invertColors.desc%",
       "title": "%extension.tinymist.config.tinymist.preview.invertColors.title%"
     },

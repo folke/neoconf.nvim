@@ -120,6 +120,18 @@
       "scope": "resource",
       "type": "string"
     },
+    "elixirLS.mcpEnabled": {
+      "default": true,
+      "description": "Enable or disable the MCP server",
+      "scope": "resource",
+      "type": "boolean"
+    },
+    "elixirLS.mcpPort": {
+      "default": 0,
+      "description": "Set a specific port for the MCP server. If not set, uses `3789 + hash(workspace_path)` for predictable port assignment per workspace",
+      "scope": "resource",
+      "type": "integer"
+    },
     "elixirLS.mixEnv": {
       "default": "test",
       "description": "Mix environment to use for compilation",

@@ -521,7 +521,7 @@
       "type": "boolean"
     },
     "js/ts.implicitProjectConfig.target": {
-      "default": "ES2022",
+      "default": "ES2024",
       "enum": [
         "ES3",
         "ES5",

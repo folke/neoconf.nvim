@@ -2702,6 +2702,18 @@
 ---@field incrementalDialyzer boolean
 -- Absolute path to alternative ElixirLS release that will override the packaged release
 ---@field languageServerOverridePath string
+-- Enable or disable the MCP server
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field mcpEnabled boolean
+-- Set a specific port for the MCP server. If not set, uses `3789 + hash(workspace_path)` for predictable port assignment per workspace
+-- 
+-- ```lua
+-- default = 0
+-- ```
+---@field mcpPort integer
 -- Mix environment to use for compilation
 -- 
 -- ```lua
@@ -16640,6 +16652,10 @@
 -- ```
 ---@field fontPaths string[]
 -- %extension.tinymist.config.tinymist.preview.invertColors.desc%
+-- 
+-- ```lua
+-- default = "never"
+-- ```
 ---@field invertColors "never" | "auto" | "always"|table
 -- %extension.tinymist.config.tinymist.preview.partialRendering.desc%
 -- 
@@ -17212,7 +17228,7 @@
 -- Set target JavaScript language version for emitted JavaScript and include library declarations. See more: https://www.typescriptlang.org/tsconfig#target.
 -- 
 -- ```lua
--- default = "ES2022"
+-- default = "ES2024"
 -- ```
 ---@field target "ES3" | "ES5" | "ES6" | "ES2015" | "ES2016" | "ES2017" | "ES2018" | "ES2019" | "ES2020" | "ES2021" | "ES2022" | "ES2023" | "ES2024" | "ESNext"
 
