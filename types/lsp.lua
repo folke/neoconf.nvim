@@ -10862,6 +10862,12 @@
 ---@field perlcriticExclude string
 -- Regex pattern with policies to include for perl critic (normally in profile)
 ---@field perlcriticInclude string
+-- Format for Perl::Critic messages. Use %e to include policy explanations
+-- 
+-- ```lua
+-- default = "%m"
+-- ```
+---@field perlcriticMessageFormat string
 -- Path to perl critic profile. Otherwise perlcritic itself will default to ~/.perlcriticrc. (no aliases, .bat files or ~/)
 -- 
 -- ```lua

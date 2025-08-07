@@ -72,6 +72,12 @@
       "scope": "resource",
       "type": "string"
     },
+    "perlnavigator.perlcriticMessageFormat": {
+      "default": "%m",
+      "description": "Format for Perl::Critic messages. Use %e to include policy explanations",
+      "scope": "resource",
+      "type": "string"
+    },
     "perlnavigator.perlcriticProfile": {
       "default": "",
       "description": "Path to perl critic profile. Otherwise perlcritic itself will default to ~/.perlcriticrc. (no aliases, .bat files or ~/)",
