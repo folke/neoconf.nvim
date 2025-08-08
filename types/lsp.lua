@@ -2703,10 +2703,6 @@
 -- Absolute path to alternative ElixirLS release that will override the packaged release
 ---@field languageServerOverridePath string
 -- Enable or disable the MCP server
--- 
--- ```lua
--- default = true
--- ```
 ---@field mcpEnabled boolean
 -- Set a specific port for the MCP server. If not set, uses `3789 + hash(workspace_path)` for predictable port assignment per workspace
 -- 
@@ -19508,14 +19504,12 @@
 ---@field size any|"both" | "decimal" | "hexadecimal"
 
 ---@class _.lspconfig.settings.wgls_analyzer.Show
--- How many fields of a struct, variant or union to display when hovering on. Show none if empty.
+-- How many fields of a struct to display when hovering thereover. Show none if empty.
 -- 
 -- ```lua
 -- default = 5
 -- ```
 ---@field fields integer
--- How many associated items of a trait to display when hovering a trait.
----@field traitAssocItems integer
 
 ---@class _.lspconfig.settings.wgls_analyzer.Hover
 ---@field actions _.lspconfig.settings.wgls_analyzer.Actions
@@ -19527,12 +19521,12 @@
 ---@class _.lspconfig.settings.wgls_analyzer.Granularity
 -- Whether to enforce the import granularity setting for all files. If set to false wgsl-analyzer will try to keep import styles consistent per file.
 ---@field enforce boolean
--- How imports should be grouped into use statements.
+-- How imports should be grouped into import statements.
 -- 
 -- ```lua
--- default = "crate"
+-- default = "package"
 -- ```
----@field group "preserve" | "crate" | "module" | "item" | "one"
+---@field group "preserve" | "package" | "module" | "item" | "one"
 
 ---@class _.lspconfig.settings.wgls_analyzer.Group
 -- Group inserted imports by the [following order](https://wgsl-analyzer.github.io/manual.html#auto-import). Groups are separated by newlines.
@@ -19543,7 +19537,7 @@
 ---@field enable boolean
 
 ---@class _.lspconfig.settings.wgls_analyzer.Merge
--- Whether to allow import insertion to merge new imports into single path glob imports like `use std::fmt::*;`.
+-- Whether to allow import insertion to merge new imports into single path glob imports like `import x::y::*;`.
 -- 
 -- ```lua
 -- default = true
@@ -19554,29 +19548,9 @@
 ---@field granularity _.lspconfig.settings.wgls_analyzer.Granularity
 ---@field group _.lspconfig.settings.wgls_analyzer.Group
 ---@field merge _.lspconfig.settings.wgls_analyzer.Merge
--- Prefer to unconditionally use imports of the core and alloc crate, over the std crate.
----@field preferNoStd boolean
--- Whether to prefer import paths containing a `prelude` module.
----@field preferPrelude boolean
--- The path structure for newly inserted paths to use.
--- 
--- ```lua
--- default = "plain"
--- ```
----@field prefix "plain" | "self" | "crate"
--- Whether to prefix external (including std, core) crate imports with `::`. e.g. "use ::std::io::Read;".
----@field prefixExternPrelude boolean
 
 ---@class _.lspconfig.settings.wgls_analyzer.BindingModeHints
 -- Whether to show inlay type hints for binding modes.
----@field enable boolean
-
----@class _.lspconfig.settings.wgls_analyzer.ChainingHints
--- Whether to show inlay type hints for method chains.
--- 
--- ```lua
--- default = true
--- ```
 ---@field enable boolean
 
 ---@class _.lspconfig.settings.wgls_analyzer.ClosingBraceHints
@@ -19594,14 +19568,6 @@
 ---@field minLines integer
 
 ---@class _.lspconfig.settings.wgls_analyzer.ExpressionAdjustmentHints
--- Whether to show inlay hints for type adjustments.
--- 
--- ```lua
--- default = "never"
--- ```
----@field enable "always" | "never" | "reborrow"
--- Whether to hide inlay hints for type adjustments outside of `unsafe` blocks.
----@field hideOutsideUnsafe boolean
 -- Whether to show inlay hints as postfix ops (`.*` instead of `*`, etc).
 -- 
 -- ```lua
@@ -19652,18 +19618,8 @@
 -- Whether to show exclusive range inlay hints.
 ---@field enable boolean
 
----@class _.lspconfig.settings.wgls_analyzer.ReborrowHints
--- Whether to show inlay hints for compiler inserted reborrows.
--- This setting is deprecated in favor of #wgsl-analyzer.inlayHints.expressionAdjustmentHints.enable#.
--- 
--- ```lua
--- default = "never"
--- ```
----@field enable "always" | "never" | "mutable"
-
 ---@class _.lspconfig.settings.wgls_analyzer.InlayHints
 ---@field bindingModeHints _.lspconfig.settings.wgls_analyzer.BindingModeHints
----@field chainingHints _.lspconfig.settings.wgls_analyzer.ChainingHints
 ---@field closingBraceHints _.lspconfig.settings.wgls_analyzer.ClosingBraceHints
 -- Whether to show inlay hints
 -- 
@@ -19689,7 +19645,6 @@
 -- ```
 ---@field parameterHints boolean
 ---@field rangeExclusiveHints _.lspconfig.settings.wgls_analyzer.RangeExclusiveHints
----@field reborrowHints _.lspconfig.settings.wgls_analyzer.ReborrowHints
 -- Whether to render leading colons for type hints, and trailing colons for parameter hints.
 -- 
 -- ```lua
@@ -19744,12 +19699,7 @@
 ---@field enable boolean
 
 ---@class _.lspconfig.settings.wgls_analyzer.Adt
--- Whether to show `References` lens for Struct, Enum, and Union.
--- Only applies when `#wgsl-analyzer.lens.enable#` is set.
----@field enable boolean
-
----@class _.lspconfig.settings.wgls_analyzer.EnumVariant
--- Whether to show `References` lens for Enum Variants.
+-- Whether to show `References` lens for Struct declarations.
 -- Only applies when `#wgsl-analyzer.lens.enable#` is set.
 ---@field enable boolean
 
@@ -19757,16 +19707,9 @@
 -- Whether to show `Method References` lens. Only applies when `#wgsl-analyzer.lens.enable#` is set.
 ---@field enable boolean
 
----@class _.lspconfig.settings.wgls_analyzer.Trait
--- Whether to show `References` lens for Trait.
--- Only applies when `#wgsl-analyzer.lens.enable#` is set.
----@field enable boolean
-
 ---@class _.lspconfig.settings.wgls_analyzer.References
 ---@field adt _.lspconfig.settings.wgls_analyzer.Adt
----@field enumVariant _.lspconfig.settings.wgls_analyzer.EnumVariant
 ---@field method _.lspconfig.settings.wgls_analyzer.Method
----@field trait _.lspconfig.settings.wgls_analyzer.Trait
 
 ---@class _.lspconfig.settings.wgls_analyzer.Run
 -- Whether to show `Run` lens. Only applies when `#wgsl-analyzer.lens.enable#` is set.
@@ -19964,7 +19907,6 @@
 -- - typing `=` after `let` tries to smartly add `;` if `=` is followed by an existing expression
 -- - typing `=` between two expressions adds `;` when in statement position
 -- - typing `=` to turn an assignment into an equality comparison removes `;` when in expression position
--- - typing `.` in a chain method call auto-indents
 -- - typing `{` or `(` in front of an expression inserts a closing `}` or `)` after the expression
 -- - typing `{` in a use item adds a closing `}` in the right place
 -- - typing `>` to complete a return type `->` will insert a whitespace after it.
@@ -19975,7 +19917,7 @@
 ---@field triggerChars string
 
 ---@class _.lspconfig.settings.wgls_analyzer.Vfs
--- Additional paths to include in the VFS.
+-- Additional paths to include in the virtual file system.
 -- 
 -- ```lua
 -- default = {}
@@ -19993,7 +19935,7 @@
 -- default = {}
 -- ```
 ---@field extraArgs string[]
--- Advanced option, fully override the command wgsl-analyzer uses for formatting. This should be the equivalent of `wgslfmt` here, and not that of `cargo wgslfmt`. The file contents will be passed on the standard input and the formatted result will be read from the standard output.
+-- Advanced option, fully override the command wgsl-analyzer uses for formatting. This should be the equivalent of `wgslfmt` here, and not that of `wesl fmt`. The file contents will be passed on the standard input and the formatted result will be read from the standard output.
 ---@field overrideCommand string[]
 ---@field rangeFormatting _.lspconfig.settings.wgls_analyzer.RangeFormatting
 
@@ -20076,7 +20018,7 @@
 ---@field showRequestFailedErrorNotification boolean
 -- Whether to show the syntax tree view.
 ---@field showSyntaxTree boolean
--- Whether to show a notification for unlinked files asking the user to add the corresponding Cargo.toml to the linked projects setting.
+-- Whether to show a notification for unlinked files asking the user to add the corresponding `wesl.toml` to the linked projects setting.
 -- 
 -- ```lua
 -- default = true

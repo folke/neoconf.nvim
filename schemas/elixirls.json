@@ -121,7 +121,7 @@
       "type": "string"
     },
     "elixirLS.mcpEnabled": {
-      "default": true,
+      "default": false,
       "description": "Enable or disable the MCP server",
       "scope": "resource",
       "type": "boolean"

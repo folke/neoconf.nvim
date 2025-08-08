@@ -339,16 +339,7 @@
     },
     "wgsl-analyzer.hover.show.fields": {
       "default": 5,
-      "markdownDescription": "How many fields of a struct, variant or union to display when hovering on. Show none if empty.",
-      "minimum": 0,
-      "type": [
-        "null",
-        "integer"
-      ]
-    },
-    "wgsl-analyzer.hover.show.traitAssocItems": {
-      "default": null,
-      "markdownDescription": "How many associated items of a trait to display when hovering a trait.",
+      "markdownDescription": "How many fields of a struct to display when hovering thereover. Show none if empty.",
       "minimum": 0,
       "type": [
         "null",
@@ -361,22 +352,22 @@
       "type": "boolean"
     },
     "wgsl-analyzer.imports.granularity.group": {
-      "default": "crate",
+      "default": "package",
       "enum": [
         "preserve",
-        "crate",
+        "package",
         "module",
         "item",
         "one"
       ],
       "enumDescriptions": [
         "Do not change the granularity of any imports and preserve the original structure written by the developer.",
-        "Merge imports from the same crate into a single use statement. Conversely, imports from different crates are split into separate statements.",
-        "Merge imports from the same module into a single use statement. Conversely, imports from different modules are split into separate statements.",
-        "Flatten imports so that each has its own use statement.",
-        "Merge all imports into a single use statement as long as they have the same visibility and attributes."
+        "Merge imports from the same package into a single import statement. Conversely, imports from different packages are split into separate statements.",
+        "Merge imports from the same module into a single import statement. Conversely, imports from different modules are split into separate statements.",
+        "Flatten imports so that each has its own import statement.",
+        "Merge all imports into a single import statement as long as they have the same visibility and attributes."
       ],
-      "markdownDescription": "How imports should be grouped into use statements.",
+      "markdownDescription": "How imports should be grouped into import statements.",
       "type": "string"
     },
     "wgsl-analyzer.imports.group.enable": {
@@ -386,37 +377,7 @@
     },
     "wgsl-analyzer.imports.merge.glob": {
       "default": true,
-      "markdownDescription": "Whether to allow import insertion to merge new imports into single path glob imports like `use std::fmt::*;`.",
-      "type": "boolean"
-    },
-    "wgsl-analyzer.imports.preferNoStd": {
-      "default": false,
-      "markdownDescription": "Prefer to unconditionally use imports of the core and alloc crate, over the std crate.",
-      "type": "boolean"
-    },
-    "wgsl-analyzer.imports.preferPrelude": {
-      "default": false,
-      "markdownDescription": "Whether to prefer import paths containing a `prelude` module.",
-      "type": "boolean"
-    },
-    "wgsl-analyzer.imports.prefix": {
-      "default": "plain",
-      "enum": [
-        "plain",
-        "self",
-        "crate"
-      ],
-      "enumDescriptions": [
-        "Insert import paths relative to the current module, using up to one `super` prefix if the parent module contains the requested item.",
-        "Insert import paths relative to the current module, using up to one `super` prefix if the parent module contains the requested item. Prefixes `self` in front of the path if it starts with a module.",
-        "Force import paths to be absolute by always starting them with `crate` or the extern crate name they come from."
-      ],
-      "markdownDescription": "The path structure for newly inserted paths to use.",
-      "type": "string"
-    },
-    "wgsl-analyzer.imports.prefixExternPrelude": {
-      "default": false,
-      "markdownDescription": "Whether to prefix external (including std, core) crate imports with `::`. e.g. \"use ::std::io::Read;\".",
+      "markdownDescription": "Whether to allow import insertion to merge new imports into single path glob imports like `import x::y::*;`.",
       "type": "boolean"
     },
     "wgsl-analyzer.initializeStopped": {
@@ -427,11 +388,6 @@
     "wgsl-analyzer.inlayHints.bindingModeHints.enable": {
       "default": false,
       "markdownDescription": "Whether to show inlay type hints for binding modes.",
-      "type": "boolean"
-    },
-    "wgsl-analyzer.inlayHints.chainingHints.enable": {
-      "default": true,
-      "markdownDescription": "Whether to show inlay type hints for method chains.",
       "type": "boolean"
     },
     "wgsl-analyzer.inlayHints.closingBraceHints.enable": {
@@ -448,26 +404,6 @@
     "wgsl-analyzer.inlayHints.enabled": {
       "default": true,
       "description": "Whether to show inlay hints",
-      "type": "boolean"
-    },
-    "wgsl-analyzer.inlayHints.expressionAdjustmentHints.enable": {
-      "default": "never",
-      "enum": [
-        "always",
-        "never",
-        "reborrow"
-      ],
-      "enumDescriptions": [
-        "Always show all adjustment hints.",
-        "Never show adjustment hints.",
-        "Only show auto borrow and dereference adjustment hints."
-      ],
-      "markdownDescription": "Whether to show inlay hints for type adjustments.",
-      "type": "string"
-    },
-    "wgsl-analyzer.inlayHints.expressionAdjustmentHints.hideOutsideUnsafe": {
-      "default": false,
-      "markdownDescription": "Whether to hide inlay hints for type adjustments outside of `unsafe` blocks.",
       "type": "boolean"
     },
     "wgsl-analyzer.inlayHints.expressionAdjustmentHints.mode": {
@@ -556,21 +492,6 @@
       "markdownDescription": "Whether to show exclusive range inlay hints.",
       "type": "boolean"
     },
-    "wgsl-analyzer.inlayHints.reborrowHints.enable": {
-      "default": "never",
-      "enum": [
-        "always",
-        "never",
-        "mutable"
-      ],
-      "enumDescriptions": [
-        "Always show reborrow hints.",
-        "Never show reborrow hints.",
-        "Only show mutable reborrow hints."
-      ],
-      "markdownDescription": "Whether to show inlay hints for compiler inserted reborrows.\nThis setting is deprecated in favor of #wgsl-analyzer.inlayHints.expressionAdjustmentHints.enable#.",
-      "type": "string"
-    },
     "wgsl-analyzer.inlayHints.renderColons": {
       "default": true,
       "markdownDescription": "Whether to render leading colons for type hints, and trailing colons for parameter hints.",
@@ -655,22 +576,12 @@
     },
     "wgsl-analyzer.lens.references.adt.enable": {
       "default": false,
-      "markdownDescription": "Whether to show `References` lens for Struct, Enum, and Union.\nOnly applies when `#wgsl-analyzer.lens.enable#` is set.",
-      "type": "boolean"
-    },
-    "wgsl-analyzer.lens.references.enumVariant.enable": {
-      "default": false,
-      "markdownDescription": "Whether to show `References` lens for Enum Variants.\nOnly applies when `#wgsl-analyzer.lens.enable#` is set.",
+      "markdownDescription": "Whether to show `References` lens for Struct declarations.\nOnly applies when `#wgsl-analyzer.lens.enable#` is set.",
       "type": "boolean"
     },
     "wgsl-analyzer.lens.references.method.enable": {
       "default": false,
       "markdownDescription": "Whether to show `Method References` lens. Only applies when `#wgsl-analyzer.lens.enable#` is set.",
-      "type": "boolean"
-    },
-    "wgsl-analyzer.lens.references.trait.enable": {
-      "default": false,
-      "markdownDescription": "Whether to show `References` lens for Trait.\nOnly applies when `#wgsl-analyzer.lens.enable#` is set.",
       "type": "boolean"
     },
     "wgsl-analyzer.lens.run.enable": {
@@ -822,7 +733,7 @@
     },
     "wgsl-analyzer.showUnlinkedFileNotification": {
       "default": true,
-      "markdownDescription": "Whether to show a notification for unlinked files asking the user to add the corresponding Cargo.toml to the linked projects setting.",
+      "markdownDescription": "Whether to show a notification for unlinked files asking the user to add the corresponding `wesl.toml` to the linked projects setting.",
       "type": "boolean"
     },
     "wgsl-analyzer.signatureInfo.detail": {
@@ -939,7 +850,7 @@
     },
     "wgsl-analyzer.typing.triggerChars": {
       "default": "=.",
-      "markdownDescription": "Specify the characters allowed to invoke special on typing triggers.\n- typing `=` after `let` tries to smartly add `;` if `=` is followed by an existing expression\n- typing `=` between two expressions adds `;` when in statement position\n- typing `=` to turn an assignment into an equality comparison removes `;` when in expression position\n- typing `.` in a chain method call auto-indents\n- typing `{` or `(` in front of an expression inserts a closing `}` or `)` after the expression\n- typing `{` in a use item adds a closing `}` in the right place\n- typing `>` to complete a return type `->` will insert a whitespace after it.",
+      "markdownDescription": "Specify the characters allowed to invoke special on typing triggers.\n- typing `=` after `let` tries to smartly add `;` if `=` is followed by an existing expression\n- typing `=` between two expressions adds `;` when in statement position\n- typing `=` to turn an assignment into an equality comparison removes `;` when in expression position\n- typing `{` or `(` in front of an expression inserts a closing `}` or `)` after the expression\n- typing `{` in a use item adds a closing `}` in the right place\n- typing `>` to complete a return type `->` will insert a whitespace after it.",
       "type": [
         "null",
         "string"
@@ -950,7 +861,7 @@
       "items": {
         "type": "string"
       },
-      "markdownDescription": "Additional paths to include in the VFS.",
+      "markdownDescription": "Additional paths to include in the virtual file system.",
       "type": "array"
     },
     "wgsl-analyzer.wgslfmt.extraArgs": {
@@ -966,7 +877,7 @@
       "items": {
         "type": "string"
       },
-      "markdownDescription": "Advanced option, fully override the command wgsl-analyzer uses for formatting. This should be the equivalent of `wgslfmt` here, and not that of `cargo wgslfmt`. The file contents will be passed on the standard input and the formatted result will be read from the standard output.",
+      "markdownDescription": "Advanced option, fully override the command wgsl-analyzer uses for formatting. This should be the equivalent of `wgslfmt` here, and not that of `wesl fmt`. The file contents will be passed on the standard input and the formatted result will be read from the standard output.",
       "type": [
         "null",
         "array"
