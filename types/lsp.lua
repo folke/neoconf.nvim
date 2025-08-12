@@ -13889,6 +13889,20 @@
 -- ```
 ---@field warningsAsInfo string[]
 
+---@class _.lspconfig.settings.rust_analyzer.Search
+-- Exclude all locals from document symbol search.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field excludeLocals boolean
+
+---@class _.lspconfig.settings.rust_analyzer.Symbol
+---@field search _.lspconfig.settings.rust_analyzer.Search
+
+---@class _.lspconfig.settings.rust_analyzer.Document
+---@field symbol _.lspconfig.settings.rust_analyzer.Symbol
+
 ---@class _.lspconfig.settings.rust_analyzer.Files
 -- List of files to ignore
 -- 
@@ -14919,6 +14933,7 @@
 ---@field completion _.lspconfig.settings.rust_analyzer.Completion
 ---@field debug _.lspconfig.settings.rust_analyzer.Debug
 ---@field diagnostics _.lspconfig.settings.rust_analyzer.Diagnostics
+---@field document _.lspconfig.settings.rust_analyzer.Document
 ---@field files _.lspconfig.settings.rust_analyzer.Files
 ---@field highlightRelated _.lspconfig.settings.rust_analyzer.HighlightRelated
 ---@field hover _.lspconfig.settings.rust_analyzer.Hover
