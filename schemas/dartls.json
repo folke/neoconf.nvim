@@ -577,6 +577,26 @@
       "scope": "window",
       "type": "boolean"
     },
+    "dart.experimentalFlutterWidgetPreview": {
+      "default": false,
+      "markdownDescription": "EXPERIMENTAL: Whether to enable the Flutter Widget Preview experimental feature. This feature requires an unreleased version of Flutter from the `master` branch.",
+      "scope": "window",
+      "type": "boolean"
+    },
+    "dart.experimentalFlutterWidgetPreviewLocation": {
+      "default": "sidebar",
+      "enum": [
+        "beside",
+        "sidebar"
+      ],
+      "enumDescriptions": [
+        "Open the Flutter Widget Preview beside the active editor",
+        "Open the Flutter Widget Preview in the sidebar"
+      ],
+      "markdownDescription": "Where to display the Flutter Widget Preview.",
+      "scope": "window",
+      "type": "string"
+    },
     "dart.experimentalRefactors": {
       "default": false,
       "markdownDescription": "Whether to enable experimental (possibly unfinished or unstable) refactors on the lightbulb menu. This setting is intended for use by Dart Analysis Server developers or users that want to try out and provide feedback on in-progress refactors.",
@@ -863,6 +883,15 @@
       ],
       "markdownDescription": "Sets the [Web renderer](https://flutter.dev/to/web-renderers) used for Flutter web apps.",
       "scope": "window"
+    },
+    "dart.flutterWidgetPreviewLogFile": {
+      "default": null,
+      "markdownDescription": "The path to a log file for the `flutter widget-preview` service. Use `${workspaceName}` to insert the name of the current workspace in the file path. Use `~` to insert the user's home directory (the path should then use `/` separators even on Windows). Only the noted substitutions are supported, others will stay as-is.",
+      "scope": "machine-overridable",
+      "type": [
+        "null",
+        "string"
+      ]
     },
     "dart.getDartSdkCommand": {
       "additionalProperties": false,
@@ -1372,6 +1401,12 @@
     "dart.updateImportsOnRename": {
       "default": true,
       "description": "Whether to automatically update imports when moving or renaming files. Currently only supports single file moves / renames.",
+      "scope": "window",
+      "type": "boolean"
+    },
+    "dart.useFlutterDev": {
+      "default": false,
+      "description": "Whether to use `flutter-dev` instead of `flutter`. This is a script for developers of the `flutter` tool to run from source and will run more slowly than the compiled tool.",
       "scope": "window",
       "type": "boolean"
     },
