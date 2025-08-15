@@ -227,13 +227,6 @@
       "scope": "machine",
       "type": "string"
     },
-    "sonarlint.output.showAnalyzerLogs": {
-      "default": false,
-      "description": "Show analyzer's logs in the SonarQube for IDE output.",
-      "order": 91,
-      "scope": "window",
-      "type": "boolean"
-    },
     "sonarlint.output.showVerboseLogs": {
       "default": false,
       "description": "Enable verbose log level in the SonarQube for IDE output.",

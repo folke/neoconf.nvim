@@ -250,7 +250,8 @@
         "vue",
         "markdown",
         "json",
-        "jsonc"
+        "jsonc",
+        "css"
       ],
       "description": "An array of language ids for which the extension should probe if support is installed.",
       "items": {

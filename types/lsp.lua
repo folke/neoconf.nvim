@@ -3062,7 +3062,7 @@
 -- An array of language ids for which the extension should probe if support is installed.
 -- 
 -- ```lua
--- default = { "astro", "civet", "javascript", "javascriptreact", "typescript", "typescriptreact", "html", "mdx", "vue", "markdown", "json", "jsonc" }
+-- default = { "astro", "civet", "javascript", "javascriptreact", "typescript", "typescriptreact", "html", "mdx", "vue", "markdown", "json", "jsonc", "css" }
 -- ```
 ---@field probe string[]
 ---@field problems _.lspconfig.settings.eslint.Problems
@@ -15345,8 +15345,6 @@
 ---@field vmargs string
 
 ---@class _.lspconfig.settings.sonarlint.Output
--- Show analyzer's logs in the SonarQube for IDE output.
----@field showAnalyzerLogs boolean
 -- Enable verbose log level in the SonarQube for IDE output.
 ---@field showVerboseLogs boolean
 
@@ -17250,6 +17248,12 @@
 -- default = "ESNext"
 -- ```
 ---@field module "CommonJS" | "AMD" | "System" | "UMD" | "ES6" | "ES2015" | "ES2020" | "ESNext" | "None" | "ES2022" | "Node12" | "NodeNext"
+-- Enable/disable [strict mode](https://www.typescriptlang.org/tsconfig#strict) in JavaScript and TypeScript files that are not part of a project. Existing `jsconfig.json` or `tsconfig.json` files override this setting.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field strict boolean
 -- Enable/disable [strict function types](https://www.typescriptlang.org/tsconfig#strictFunctionTypes) in JavaScript and TypeScript files that are not part of a project. Existing `jsconfig.json` or `tsconfig.json` files override this setting.
 -- 
 -- ```lua

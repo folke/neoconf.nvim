@@ -508,6 +508,12 @@
       "scope": "window",
       "type": "string"
     },
+    "js/ts.implicitProjectConfig.strict": {
+      "default": true,
+      "markdownDescription": "Enable/disable [strict mode](https://www.typescriptlang.org/tsconfig#strict) in JavaScript and TypeScript files that are not part of a project. Existing `jsconfig.json` or `tsconfig.json` files override this setting.",
+      "scope": "window",
+      "type": "boolean"
+    },
     "js/ts.implicitProjectConfig.strictFunctionTypes": {
       "default": true,
       "markdownDescription": "Enable/disable [strict function types](https://www.typescriptlang.org/tsconfig#strictFunctionTypes) in JavaScript and TypeScript files that are not part of a project. Existing `jsconfig.json` or `tsconfig.json` files override this setting.",
