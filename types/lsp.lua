@@ -194,7 +194,7 @@
 ---@class lspconfig.settings.awkls
 ---@field awk-ide-vscode _.lspconfig.settings.awkls.Awk-ide-vscode
 
--- Allows a user to override the severity levels for individual diagnostics. Use the rule name as a key and one of "error", "warning", "information", "none", `true` (alias for "error") or `false` (alias for "none") as value. The default value shown for each diagnostic is the default when "basedpyright.analysis.typeCheckingMode" is set to "standard". See [here](https://github.com/detachhead/basedpyright/blob/main/docs/configuration.md#diagnostic-rule-defaults) for defaults for each type checking mode ("off", "basic", "standard", "strict", and "all").
+-- Allows a user to override the severity levels for individual diagnostics. Use the rule name as a key and one of "error", "warning", "information", "none", `true` (alias for "error") or `false` (alias for "none") as value. The default value shown for each diagnostic is the default when "basedpyright.analysis.typeCheckingMode" is set to "standard". See [here](https://docs.basedpyright.com/latest/configuration/config-files/#diagnostic-settings-defaults) for defaults for each type checking mode ("off", "basic", "standard", "strict", and "all").
 ---@class _.lspconfig.settings.basedpyright.DiagnosticSeverityOverrides
 -- Diagnostics for an attempt to instantiate an abstract or protocol class or use an abstract method.
 -- 
@@ -814,7 +814,7 @@
 -- default = "openFilesOnly"
 -- ```
 ---@field diagnosticMode "openFilesOnly" | "workspace"
--- Allows a user to override the severity levels for individual diagnostics. Use the rule name as a key and one of "error", "warning", "information", "none", `true` (alias for "error") or `false` (alias for "none") as value. The default value shown for each diagnostic is the default when "basedpyright.analysis.typeCheckingMode" is set to "standard". See [here](https://github.com/detachhead/basedpyright/blob/main/docs/configuration.md#diagnostic-rule-defaults) for defaults for each type checking mode ("off", "basic", "standard", "strict", and "all").
+-- Allows a user to override the severity levels for individual diagnostics. Use the rule name as a key and one of "error", "warning", "information", "none", `true` (alias for "error") or `false` (alias for "none") as value. The default value shown for each diagnostic is the default when "basedpyright.analysis.typeCheckingMode" is set to "standard". See [here](https://docs.basedpyright.com/latest/configuration/config-files/#diagnostic-settings-defaults) for defaults for each type checking mode ("off", "basic", "standard", "strict", and "all").
 ---@field diagnosticSeverityOverrides _.lspconfig.settings.basedpyright.DiagnosticSeverityOverrides
 -- Paths of directories or files that should not be included. These override the include directories, allowing specific subdirectories to be excluded. Note that files in the exclude paths may still be included in the analysis if they are referenced (imported) by source files that are not excluded. Paths may contain wildcard characters ** (a directory or multiple levels of directories), * (a sequence of zero or more characters), or ? (a single character). If no exclude paths are specified, pyright automatically excludes the following: `**/node_modules`, `**/__pycache__`, `.git` and any virtual environment directories.
 -- 
