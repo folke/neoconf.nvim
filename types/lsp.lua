@@ -15498,7 +15498,7 @@
 -- Disable the running of SourceKit-LSP.
 ---@field disable boolean
 ---@field inlayHints _.lspconfig.settings.sourcekit.InlayHints
--- Arguments to pass to SourceKit-LSP. Keys and values should be provided as individual entries in the list. e.g. `["--experimental-feature", "show-macro-expansions"]`
+-- Arguments to pass to SourceKit-LSP. Keys and values should be provided as individual entries in the list. e.g. `--experimental-feature=show-macro-expansions`
 -- 
 -- ```lua
 -- default = {}
@@ -15553,7 +15553,7 @@
 ---@field backgroundIndexing "on" | "off" | "auto"
 -- Disable SourceKit-LSP. This will turn off features like code completion, error diagnostics and jump-to-definition. Features like swift-testing test discovery will not work correctly.
 ---@field disable boolean
--- Arguments to pass to SourceKit-LSP. Keys and values should be provided as individual entries in the list. e.g. `["--experimental-feature", "show-macro-expansions"]`
+-- Arguments to pass to SourceKit-LSP. Keys and values should be provided as individual entries in the list. e.g. `--experimental-feature=show-macro-expansions`
 -- 
 -- ```lua
 -- default = {}
