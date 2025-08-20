@@ -6823,6 +6823,12 @@
 -- default = ""
 -- ```
 ---@field languageServerExecutablePath string
+-- Juliaup channel to use for the language server (e.g., 'release', 'lts', 'beta'). Can be overridden by JULIA_VSCODE_LANGUAGESERVER_CHANNEL environment variable.
+-- 
+-- ```lua
+-- default = "release"
+-- ```
+---@field languageServerJuliaupChannel string
 ---@field lint _.lspconfig.settings.julials.Lint
 -- Number of processes to use for testing.
 -- 

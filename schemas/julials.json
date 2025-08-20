@@ -222,6 +222,12 @@
       "scope": "machine-overridable",
       "type": "string"
     },
+    "julia.languageServerJuliaupChannel": {
+      "default": "release",
+      "description": "Juliaup channel to use for the language server (e.g., 'release', 'lts', 'beta'). Can be overridden by JULIA_VSCODE_LANGUAGESERVER_CHANNEL environment variable.",
+      "scope": "machine-overridable",
+      "type": "string"
+    },
     "julia.lint.call": {
       "default": true,
       "description": "This compares call signatures against all known methods for the called function. Calls with too many or too few arguments, or unknown keyword parameters are highlighted.",
