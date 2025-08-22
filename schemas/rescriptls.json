@@ -26,6 +26,11 @@
       "description": "Enable (experimental) code lens for function definitions.",
       "type": "boolean"
     },
+    "rescript.settings.compileStatus.enable": {
+      "default": true,
+      "description": "Show compile status in the status bar (compiling/errors/warnings/success).",
+      "type": "boolean"
+    },
     "rescript.settings.incrementalTypechecking.acrossFiles": {
       "default": false,
       "description": "(beta/experimental) Enable incremental type checking across files, so that unsaved file A gets access to unsaved file B.",

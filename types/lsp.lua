@@ -12916,6 +12916,14 @@
 ---@class _.lspconfig.settings.rescriptls.Cache
 ---@field projectConfig _.lspconfig.settings.rescriptls.ProjectConfig
 
+---@class _.lspconfig.settings.rescriptls.CompileStatus
+-- Show compile status in the status bar (compiling/errors/warnings/success).
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enable boolean
+
 ---@class _.lspconfig.settings.rescriptls.IncrementalTypechecking
 -- (beta/experimental) Enable incremental type checking across files, so that unsaved file A gets access to unsaved file B.
 ---@field acrossFiles boolean
@@ -12964,6 +12972,7 @@
 ---@field cache _.lspconfig.settings.rescriptls.Cache
 -- Enable (experimental) code lens for function definitions.
 ---@field codeLens boolean
+---@field compileStatus _.lspconfig.settings.rescriptls.CompileStatus
 ---@field incrementalTypechecking _.lspconfig.settings.rescriptls.IncrementalTypechecking
 ---@field inlayHints _.lspconfig.settings.rescriptls.InlayHints
 -- Path to the directory where platform-specific ReScript binaries are. You can use it if you haven't or don't want to use the installed ReScript from node_modules in your project.
