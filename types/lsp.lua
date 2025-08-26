@@ -17884,19 +17884,19 @@
 ---@field askNewComponentName boolean
 
 ---@class _.lspconfig.settings.volar.Editor
--- Sponsor this extension to unlock premium features. [Learn more](https://youtu.be/RcPcO4_Ct_U)
+-- %configuration.editor.focusMode%
 -- 
 -- ```lua
 -- default = true
 -- ```
 ---@field focusMode boolean
--- Sponsor this extension to unlock premium features. [Learn more](https://youtu.be/RcPcO4_Ct_U)
+-- %configuration.editor.reactivityVisualization%
 -- 
 -- ```lua
 -- default = true
 -- ```
 ---@field reactivityVisualization boolean
--- Sponsor this extension to unlock premium features. [Learn more](https://youtu.be/RcPcO4_Ct_U)
+-- %configuration.editor.templateInterpolationDecorators%
 -- 
 -- ```lua
 -- default = true
