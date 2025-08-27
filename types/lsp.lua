@@ -2211,7 +2211,7 @@
 ---@field notifyAnalyzerErrors boolean
 -- Whether to use the --offline switch for commands like 'pub get' and 'Flutter: New Project'.
 ---@field offline boolean
--- Whether to ignore workspace folders and perform analysis based on the open files, as if no workspace was open at all. This allows opening large folders without causing them to be completely analyzed.
+-- Whether to ignore workspace folders and perform analysis based on the open files, as if no workspace was open at all. This allows opening very large folders without causing them to be fully analyzed but will result a lot of re-analysis as files are opened/closed. This is **not** recommended for small or medium sized workspaces, only very large workspaces where you are working in only a small part.
 ---@field onlyAnalyzeProjectsWithOpenFiles boolean
 -- Whether to automatically open DevTools at the start of a debug session. If embedded DevTools is enabled, this will launch the Widget Inspector embedded for Flutter projects, or launch DevTools externally in a browser for Dart projects.
 -- 
@@ -14276,6 +14276,16 @@
 ---@field enable "always" | "never" | "fieldless"
 
 ---@class _.lspconfig.settings.rust_analyzer.ExpressionAdjustmentHints
+-- Disable reborrows in expression adjustments inlay hints.
+-- 
+-- Reborrows are a pair of a builtin deref then borrow, i.e. `&*`. They are inserted by the compiler but are mostly useless to the programmer.
+-- 
+-- Note: if the deref is not builtin (an overloaded deref), or the borrow is `&raw const`/`&raw mut`, they are not removed.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field disableReborrows boolean
 -- Show inlay hints for type adjustments.
 -- 
 -- ```lua
