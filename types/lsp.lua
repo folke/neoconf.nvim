@@ -1870,6 +1870,12 @@
 -- default = true
 -- ```
 ---@field completeFunctionCalls boolean
+-- An array of glob patterns to exclude from code coverage results. Paths matching any of these patterns will still be collected by the Dart VM but not be included in coverage reported to VS Code.
+-- 
+-- ```lua
+-- default = {}
+-- ```
+---@field coverageExcludePatterns string[]
 -- The path to a custom Dart Debug Adapter. This setting is intended for use by Dart Debug Adapter developers. Use `~` to insert the user's home directory (the path should then use `/` separators even on Windows).
 ---@field customDartDapPath string
 -- Custom settings for launching DevTools. This setting is intended for use by Dart DevTools developers.

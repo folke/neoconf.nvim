@@ -223,6 +223,15 @@
       "scope": "resource",
       "type": "boolean"
     },
+    "dart.coverageExcludePatterns": {
+      "default": [],
+      "items": {
+        "type": "string"
+      },
+      "markdownDescription": "An array of glob patterns to exclude from code coverage results. Paths matching any of these patterns will still be collected by the Dart VM but not be included in coverage reported to VS Code.",
+      "scope": "window",
+      "type": "array"
+    },
     "dart.customDartDapPath": {
       "default": null,
       "description": "The path to a custom Dart Debug Adapter. This setting is intended for use by Dart Debug Adapter developers. Use `~` to insert the user's home directory (the path should then use `/` separators even on Windows).",
