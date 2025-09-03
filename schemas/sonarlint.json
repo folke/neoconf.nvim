@@ -22,6 +22,13 @@
       "scope": "resource",
       "type": "object"
     },
+    "sonarlint.automaticAnalysis": {
+      "default": true,
+      "markdownDescription": "Enable or disable on-the-fly analysis of files you work on. When enabled, SonarQube for IDE will automatically analyze open files and show findings in real-time.",
+      "order": 5,
+      "scope": "application",
+      "type": "boolean"
+    },
     "sonarlint.connectedMode.connections.sonarcloud": {
       "default": [],
       "items": {

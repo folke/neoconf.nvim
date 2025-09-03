@@ -2165,6 +2165,12 @@
 -- default = true
 -- ```
 ---@field includeDependenciesInWorkspaceSymbols boolean
+-- Whether to show Inlay Hints. When set to `true`, enables all inlay hints with default settings. When set to `false`, disables all inlay hints. Can also be an object to configure individual hint types. Requires Dart 3.10.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field inlayHints boolean|table
 -- Whether to insert argument placeholders during code completions. This feature is automatically disabled when `enableCompletionCommitCharacters` is enabled.
 -- 
 -- ```lua
@@ -15392,6 +15398,12 @@
 ---@field analysisExcludesStandalone string
 -- Extra properties that could be passed to the code analyzers. Only for advanced use cases.
 ---@field analyzerProperties table
+-- Enable or disable on-the-fly analysis of files you work on. When enabled, SonarQube for IDE will automatically analyze open files and show findings in real-time.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field automaticAnalysis boolean
 ---@field connectedMode _.lspconfig.settings.sonarlint.ConnectedMode
 -- Disable sending anonymous usage statistics to SonarSource. Click [here](https://github.com/SonarSource/sonarlint-vscode/blob/master/telemetry-sample.md) to see a sample of the data that are collected.
 ---@field disableTelemetry boolean

@@ -1037,6 +1037,114 @@
       "scope": "window",
       "type": "boolean"
     },
+    "dart.inlayHints": {
+      "default": true,
+      "markdownDescription": "Whether to show Inlay Hints. When set to `true`, enables all inlay hints with default settings. When set to `false`, disables all inlay hints. Can also be an object to configure individual hint types. Requires Dart 3.10.",
+      "properties": {
+        "parameterNames": {
+          "default": {
+            "enabled": true
+          },
+          "properties": {
+            "enabled": {
+              "default": true,
+              "description": "Controls parameter name hints.",
+              "enum": [
+                true,
+                false,
+                "all",
+                "literal",
+                "none"
+              ],
+              "enumDescriptions": [
+                "Show hints for all parameters.",
+                "Show no parameter name hints.",
+                "Show hints for all parameters.",
+                "Show hints only for arguments with literal values.",
+                "Show no parameter name hints."
+              ],
+              "type": [
+                "boolean",
+                "string"
+              ]
+            }
+          },
+          "type": [
+            "boolean",
+            "object"
+          ]
+        },
+        "parameterTypes": {
+          "default": {
+            "enabled": true
+          },
+          "properties": {
+            "enabled": {
+              "default": true,
+              "description": "Whether to show Inlay Hints for inferred parameter types.",
+              "type": "boolean"
+            }
+          },
+          "type": [
+            "boolean",
+            "object"
+          ]
+        },
+        "returnTypes": {
+          "default": {
+            "enabled": true
+          },
+          "properties": {
+            "enabled": {
+              "default": true,
+              "description": "Whether to show Inlay Hints for inferred return types.",
+              "type": "boolean"
+            }
+          },
+          "type": [
+            "boolean",
+            "object"
+          ]
+        },
+        "typeArguments": {
+          "default": {
+            "enabled": true
+          },
+          "properties": {
+            "enabled": {
+              "default": true,
+              "description": "Whether to show Inlay Hints for inferred type arguments.",
+              "type": "boolean"
+            }
+          },
+          "type": [
+            "boolean",
+            "object"
+          ]
+        },
+        "variableTypes": {
+          "default": {
+            "enabled": true
+          },
+          "properties": {
+            "enabled": {
+              "default": true,
+              "description": "Whether to show Inlay Hints for inferred variable declarations.",
+              "type": "boolean"
+            }
+          },
+          "type": [
+            "boolean",
+            "object"
+          ]
+        }
+      },
+      "scope": "window",
+      "type": [
+        "boolean",
+        "object"
+      ]
+    },
     "dart.insertArgumentPlaceholders": {
       "default": true,
       "markdownDescription": "Whether to insert argument placeholders during code completions. This feature is automatically disabled when `enableCompletionCommitCharacters` is enabled.",
