@@ -1012,11 +1012,6 @@
       "description": "%configuration.razor.languageServer.suppressLspErrorToasts%",
       "type": "boolean"
     },
-    "razor.languageServer.useNewFormattingEngine": {
-      "default": true,
-      "description": "%configuration.razor.languageServer.useNewFormattingEngine%",
-      "type": "boolean"
-    },
     "razor.plugin.path": {
       "description": "%configuration.omnisharp.razor.plugin.path%",
       "scope": "machine",

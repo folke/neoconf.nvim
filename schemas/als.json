@@ -391,6 +391,21 @@
       ],
       "scope": "window"
     },
+    "e3-testsuite.args": {
+      "default": [],
+      "description": "Command line arguments to pass to testsuite.py when running tests",
+      "type": "array"
+    },
+    "e3-testsuite.python": {
+      "default": "python",
+      "description": "Path to python interpreter, useful when you want to use a specific venv",
+      "type": "string"
+    },
+    "e3-testsuite.testsuitePath": {
+      "default": "testsuite.py",
+      "description": "Path to testsuite.py",
+      "type": "string"
+    },
     "gpr.trace.server": {
       "default": "off",
       "enum": [

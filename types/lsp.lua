@@ -131,6 +131,26 @@
 -- If not set in VS Code, this setting takes its value from the [`.als.json`](https://github.com/AdaCore/ada_language_server/blob/master/doc/settings.md) file at the root of the workspace, if that file exists. Otherwise it defaults to `true`.
 ---@field useGnatformat true | false
 
+---@class _.lspconfig.settings.als.E3-testsuite
+-- Command line arguments to pass to testsuite.py when running tests
+-- 
+-- ```lua
+-- default = {}
+-- ```
+---@field args any[]
+-- Path to python interpreter, useful when you want to use a specific venv
+-- 
+-- ```lua
+-- default = "python"
+-- ```
+---@field python string
+-- Path to testsuite.py
+-- 
+-- ```lua
+-- default = "testsuite.py"
+-- ```
+---@field testsuitePath string
+
 ---@class _.lspconfig.settings.als.Trace
 -- Traces the communication between VS Code and the GPR language server in the 'GPR Language Server' Output view.
 -- 
@@ -144,6 +164,7 @@
 
 ---@class lspconfig.settings.als
 ---@field ada _.lspconfig.settings.als.Ada
+---@field e3-testsuite _.lspconfig.settings.als.E3-testsuite
 ---@field gpr _.lspconfig.settings.als.Gpr
 
 ---@class _.lspconfig.settings.astro.Language-server
@@ -10717,12 +10738,6 @@
 -- default = true
 -- ```
 ---@field suppressLspErrorToasts boolean
--- %configuration.razor.languageServer.useNewFormattingEngine%
--- 
--- ```lua
--- default = true
--- ```
----@field useNewFormattingEngine boolean
 
 ---@class _.lspconfig.settings.omnisharp.Plugin
 -- %configuration.omnisharp.razor.plugin.path%
