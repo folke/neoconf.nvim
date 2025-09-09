@@ -402,7 +402,6 @@
       "type": "string"
     },
     "e3-testsuite.testsuitePath": {
-      "default": "testsuite.py",
       "description": "Path to testsuite.py",
       "type": "string"
     },

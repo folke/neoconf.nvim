@@ -145,10 +145,6 @@
 -- ```
 ---@field python string
 -- Path to testsuite.py
--- 
--- ```lua
--- default = "testsuite.py"
--- ```
 ---@field testsuitePath string
 
 ---@class _.lspconfig.settings.als.Trace
@@ -12585,12 +12581,6 @@
 -- default = "warning"
 -- ```
 ---@field reportSelfClsParameterName "none" | "information" | "warning" | "error" | true | false
--- Diagnostics for files that are overriding a module in the stdlib.
--- 
--- ```lua
--- default = "none"
--- ```
----@field reportShadowedImports "none" | "information" | "warning" | "error" | true | false
 -- Diagnostics for usage of deprecated type comments.
 -- 
 -- ```lua
