@@ -13234,6 +13234,12 @@
 -- default = {}
 -- ```
 ---@field args string[]
+-- The backend to use for formatting.
+-- 
+-- ```lua
+-- default = "internal"
+-- ```
+---@field backend "internal" | "uv"
 -- Enable [preview mode](https://docs.astral.sh/ruff/settings/#format_preview) for the formatter; enables unstable formatting.
 -- 
 -- **This setting is used only by the native server.**
