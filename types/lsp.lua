@@ -2262,7 +2262,7 @@
 ---@field previewFlutterUiGuidesCustomTracking boolean
 -- Whether to perform hot reload on save based on a filesystem watcher for Dart files rather than using VS Code's `onDidSave` event. This allows reloads to trigger when external tools modify Dart source files.
 ---@field previewHotReloadOnSaveWatcher boolean
--- How many levels (including the workspace roots) down the workspace to search for Dart/Flutter projects. Increasing this number may help detect Flutter projects that are deeply nested in your workspace but slow down all operations that search for projects, including extension activation.
+-- How many levels (including the workspace roots) down the workspace to search for Dart/Flutter projects. Increasing this number may help detect Flutter projects that are deeply nested in your workspace but slow down all operations that search for projects, including extension activation (requires restart).
 -- 
 -- ```lua
 -- default = 5
@@ -3114,6 +3114,8 @@
 -- - *9.0.0 <= ESLint version < 10.x*: settings is honored and defaults to true
 -- - *10.0.0 <= ESLint version*: setting is ignored. Flat configs are the default and can't be turned off.
 ---@field useFlatConfig boolean
+-- Whether ESLint should use real paths when resolving files. This is useful when working with symlinks or when the casing of file paths is inconsistent.
+---@field useRealpaths boolean
 -- An array of language ids which should be validated by ESLint. If not installed ESLint will show an error.
 ---@field validate any[]
 -- Specifies how the working directories ESLint is using are computed. ESLint resolves configuration files (e.g. `eslintrc`, `.eslintignore`) relative to a working directory so it is important to configure this correctly.
@@ -16666,6 +16668,17 @@
 ---@field tcp _.lspconfig.settings.terraformls.Tcp
 ---@field terraform _.lspconfig.settings.terraformls.Terraform
 
+---@class _.lspconfig.settings.terraformls.Server
+-- Enable HashiCorp Terraform MCP Server integration
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enable boolean
+
+---@class _.lspconfig.settings.terraformls.Mcp
+---@field server _.lspconfig.settings.terraformls.Server
+
 ---@class _.lspconfig.settings.terraformls.Validation
 -- Enable enhanced validation of Terraform files and modules
 -- 
@@ -16678,6 +16691,7 @@
 ---@field codelens _.lspconfig.settings.terraformls.Codelens
 ---@field experimentalFeatures _.lspconfig.settings.terraformls.ExperimentalFeatures
 ---@field languageServer _.lspconfig.settings.terraformls.LanguageServer
+---@field mcp _.lspconfig.settings.terraformls.Mcp
 ---@field validation _.lspconfig.settings.terraformls.Validation
 
 ---@class lspconfig.settings.terraformls
@@ -17920,22 +17934,10 @@
 
 ---@class _.lspconfig.settings.volar.Editor
 -- %configuration.editor.focusMode%
--- 
--- ```lua
--- default = true
--- ```
 ---@field focusMode boolean
 -- %configuration.editor.reactivityVisualization%
--- 
--- ```lua
--- default = true
--- ```
 ---@field reactivityVisualization boolean
 -- %configuration.editor.templateInterpolationDecorators%
--- 
--- ```lua
--- default = true
--- ```
 ---@field templateInterpolationDecorators boolean
 
 ---@class _.lspconfig.settings.volar.Script

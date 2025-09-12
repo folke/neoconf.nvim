@@ -99,6 +99,13 @@
       "scope": "machine",
       "type": "string"
     },
+    "terraform.mcp.server.enable": {
+      "default": true,
+      "description": "Enable HashiCorp Terraform MCP Server integration",
+      "order": 3,
+      "scope": "window",
+      "type": "boolean"
+    },
     "terraform.validation.enableEnhancedValidation": {
       "default": true,
       "description": "Enable enhanced validation of Terraform files and modules",

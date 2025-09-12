@@ -424,6 +424,12 @@
         "null"
       ]
     },
+    "eslint.useRealpaths": {
+      "default": false,
+      "description": "Whether ESLint should use real paths when resolving files. This is useful when working with symlinks or when the casing of file paths is inconsistent.",
+      "scope": "resource",
+      "type": "boolean"
+    },
     "eslint.validate": {
       "default": null,
       "description": "An array of language ids which should be validated by ESLint. If not installed ESLint will show an error.",

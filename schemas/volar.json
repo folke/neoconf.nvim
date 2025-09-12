@@ -18,17 +18,17 @@
       "type": "boolean"
     },
     "vue.editor.focusMode": {
-      "default": true,
+      "default": false,
       "markdownDescription": "%configuration.editor.focusMode%",
       "type": "boolean"
     },
     "vue.editor.reactivityVisualization": {
-      "default": true,
+      "default": false,
       "markdownDescription": "%configuration.editor.reactivityVisualization%",
       "type": "boolean"
     },
     "vue.editor.templateInterpolationDecorators": {
-      "default": true,
+      "default": false,
       "markdownDescription": "%configuration.editor.templateInterpolationDecorators%",
       "type": "boolean"
     },
