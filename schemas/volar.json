@@ -23,12 +23,12 @@
       "type": "boolean"
     },
     "vue.editor.reactivityVisualization": {
-      "default": false,
+      "default": true,
       "markdownDescription": "%configuration.editor.reactivityVisualization%",
       "type": "boolean"
     },
     "vue.editor.templateInterpolationDecorators": {
-      "default": false,
+      "default": true,
       "markdownDescription": "%configuration.editor.templateInterpolationDecorators%",
       "type": "boolean"
     },

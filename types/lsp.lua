@@ -12992,6 +12992,8 @@
 ---@field inlayHints _.lspconfig.settings.rescriptls.InlayHints
 -- Path to the directory where platform-specific ReScript binaries are. You can use it if you haven't or don't want to use the installed ReScript from node_modules in your project.
 ---@field platformPath string
+-- Optional path to the directory containing the @rescript/runtime package. Set this if your tooling is unable to automatically locate the package in your project.
+---@field runtimePath string
 ---@field signatureHelp _.lspconfig.settings.rescriptls.SignatureHelp
 
 ---@class _.lspconfig.settings.rescriptls.Rescript
@@ -15453,6 +15455,10 @@
 -- default = {}
 -- ```
 ---@field rules table
+-- Start the language server's flight recorder mode.
+-- 
+-- ⚠ **This feature shares detailed information with SonarSource (logs, telemetry events) that may include _confidential_ data, only enable if requested to help investigate an issue.**
+---@field startFlightRecorder boolean
 -- Files whose name match this [glob pattern](https://docs.oracle.com/javase/tutorial/essential/io/fileOps.html#glob) are considered as test files by analyzers. Most rules are *not* evaluated on test files.
 -- 
 -- In [Connected Mode](command:SonarLint.HelpAndFeedbackLinkClicked?%22connectedModeDocs%22), this setting is configured **on the server-side** and shared among all contributors.
@@ -17936,8 +17942,16 @@
 -- %configuration.editor.focusMode%
 ---@field focusMode boolean
 -- %configuration.editor.reactivityVisualization%
+-- 
+-- ```lua
+-- default = true
+-- ```
 ---@field reactivityVisualization boolean
 -- %configuration.editor.templateInterpolationDecorators%
+-- 
+-- ```lua
+-- default = true
+-- ```
 ---@field templateInterpolationDecorators boolean
 
 ---@class _.lspconfig.settings.volar.Script

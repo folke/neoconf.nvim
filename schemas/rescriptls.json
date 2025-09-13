@@ -68,6 +68,14 @@
         "null"
       ]
     },
+    "rescript.settings.runtimePath": {
+      "default": null,
+      "description": "Optional path to the directory containing the @rescript/runtime package. Set this if your tooling is unable to automatically locate the package in your project.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
     "rescript.settings.signatureHelp.enabled": {
       "default": true,
       "description": "Enable signature help for function calls.",
