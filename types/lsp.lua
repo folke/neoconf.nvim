@@ -15381,7 +15381,7 @@
 ---@field servers any[]
 
 ---@class _.lspconfig.settings.sonarlint.EarlyAccess
--- Show region selection while creating SonarQube Cloud Connection _(Early Access)_
+-- Show region selection while creating SonarQube Cloud Connection
 ---@field showRegionSelection boolean
 
 ---@class _.lspconfig.settings.sonarlint.Ls
