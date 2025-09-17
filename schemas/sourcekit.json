@@ -416,7 +416,6 @@
       "type": "string"
     },
     "swift.scriptSwiftLanguageVersion": {
-      "default": "6",
       "enum": [
         "6",
         "5",
