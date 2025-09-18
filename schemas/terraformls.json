@@ -100,7 +100,7 @@
       "type": "string"
     },
     "terraform.mcp.server.enable": {
-      "default": true,
+      "default": false,
       "description": "Enable HashiCorp Terraform MCP Server integration",
       "order": 3,
       "scope": "window",

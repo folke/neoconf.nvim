@@ -14671,6 +14671,18 @@
 ---@field overrideCommand string[]
 ---@field rangeFormatting _.lspconfig.settings.rust_analyzer.RangeFormatting
 
+---@class _.lspconfig.settings.rust_analyzer.Comments
+-- Use semantic tokens for comments.
+-- 
+-- In some editors (e.g. vscode) semantic tokens override other highlighting grammars.
+-- By disabling semantic tokens for comments, other grammars can be used to highlight
+-- their contents.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enable boolean
+
 ---@class _.lspconfig.settings.rust_analyzer.Inject
 -- Inject additional highlighting into doc comments.
 -- 
@@ -14744,6 +14756,7 @@
 ---@field enable boolean
 
 ---@class _.lspconfig.settings.rust_analyzer.SemanticHighlighting
+---@field comments _.lspconfig.settings.rust_analyzer.Comments
 ---@field doc _.lspconfig.settings.rust_analyzer.Doc
 -- Emit non-standard tokens and modifiers
 -- 
@@ -16672,10 +16685,6 @@
 
 ---@class _.lspconfig.settings.terraformls.Server
 -- Enable HashiCorp Terraform MCP Server integration
--- 
--- ```lua
--- default = true
--- ```
 ---@field enable boolean
 
 ---@class _.lspconfig.settings.terraformls.Mcp

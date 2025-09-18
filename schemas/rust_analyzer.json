@@ -1431,6 +1431,11 @@
       "markdownDescription": "Enables the use of rustfmt's unstable range formatting command for the\n`textDocument/rangeFormatting` request. The rustfmt option is unstable and only\navailable on a nightly build.",
       "type": "boolean"
     },
+    "rust-analyzer.semanticHighlighting.comments.enable": {
+      "default": true,
+      "markdownDescription": "Use semantic tokens for comments.\n\nIn some editors (e.g. vscode) semantic tokens override other highlighting grammars.\nBy disabling semantic tokens for comments, other grammars can be used to highlight\ntheir contents.",
+      "type": "boolean"
+    },
     "rust-analyzer.semanticHighlighting.doc.comment.inject.enable": {
       "default": true,
       "markdownDescription": "Inject additional highlighting into doc comments.\n\nWhen enabled, rust-analyzer will highlight rust source in doc comments as well as intra\ndoc links.",
