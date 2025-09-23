@@ -14423,6 +14423,8 @@
 ---@field lifetimeElisionHints _.lspconfig.settings.rust_analyzer.LifetimeElisionHints
 -- Maximum length for inlay hints. Set to null to have an unlimited length.
 -- 
+-- **Note:** This is mostly a hint, and we don't guarantee to strictly follow the limit.
+-- 
 -- ```lua
 -- default = 25
 -- ```
@@ -18005,6 +18007,8 @@
 -- default = { "vue" }
 -- ```
 ---@field includeLanguages string[]
+-- %configuration.server.path%
+---@field path string
 
 ---@class _.lspconfig.settings.volar.Suggest
 -- %configuration.suggest.componentNameCasing%

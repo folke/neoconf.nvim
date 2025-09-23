@@ -96,6 +96,10 @@
       "markdownDescription": "%configuration.server.includeLanguages%",
       "type": "array"
     },
+    "vue.server.path": {
+      "markdownDescription": "%configuration.server.path%",
+      "type": "string"
+    },
     "vue.suggest.componentNameCasing": {
       "default": "preferPascalCase",
       "enum": [

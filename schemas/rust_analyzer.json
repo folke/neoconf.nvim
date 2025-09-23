@@ -1086,7 +1086,7 @@
     },
     "rust-analyzer.inlayHints.maxLength": {
       "default": 25,
-      "markdownDescription": "Maximum length for inlay hints. Set to null to have an unlimited length.",
+      "markdownDescription": "Maximum length for inlay hints. Set to null to have an unlimited length.\n\n**Note:** This is mostly a hint, and we don't guarantee to strictly follow the limit.",
       "minimum": 0,
       "type": [
         "null",
