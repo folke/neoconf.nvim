@@ -3201,6 +3201,8 @@
 -- default = true
 -- ```
 ---@field AutoDiscoverTestsOnLoad boolean
+-- Use the dotnet cli to discover and run tests instead of the language server. Will lose features like streamed test results and Microsoft Testing Platform support.
+---@field UseLegacyDotnetCliIntegration boolean
 
 ---@class _.lspconfig.settings.fsautocomplete.References
 -- If enabled, code lenses for reference counts for methods and functions will be shown.

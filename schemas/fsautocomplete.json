@@ -15,6 +15,11 @@
       "description": "Decides if the test explorer will automatically try discover tests when the workspace loads. You can still manually refresh the explorer to discover tests at any time",
       "type": "boolean"
     },
+    "FSharp.TestExplorer.UseLegacyDotnetCliIntegration": {
+      "default": false,
+      "description": "Use the dotnet cli to discover and run tests instead of the language server. Will lose features like streamed test results and Microsoft Testing Platform support.",
+      "type": "boolean"
+    },
     "FSharp.abstractClassStubGeneration": {
       "default": true,
       "description": "Enables a codefix that generates missing members for an abstract class when in an type inheriting from that abstract class.",
