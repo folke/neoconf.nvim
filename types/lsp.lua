@@ -2014,16 +2014,10 @@
 ---@field evaluateToStringInDebugViews boolean
 -- Whether to enable experimental (possibly unfinished or unstable) LSP handlers through DTD. This setting is passed to the analysis server in the connectToDtd request and therefore relies on DTD being supported and enabled for the analysis server (requires restart).
 ---@field experimentalDtdHandlers boolean
--- EXPERIMENTAL: Whether to enable the Flutter Widget Preview experimental feature. This feature requires an unreleased version of Flutter from the `master` branch.
----@field experimentalFlutterWidgetPreview boolean
--- Where to display the Flutter Widget Preview.
--- 
--- ```lua
--- default = "sidebar"
--- ```
----@field experimentalFlutterWidgetPreviewLocation "beside" | "sidebar"
 -- Whether to enable experimental (possibly unfinished or unstable) refactors on the lightbulb menu. This setting is intended for use by Dart Analysis Server developers or users that want to try out and provide feedback on in-progress refactors.
 ---@field experimentalRefactors boolean
+-- Whether to enable experimental tracking of test locations. This may improve the experience when using packages like `pkg:test_reflective_loader` where tests are only discovered during test runs and not during coding.
+---@field experimentalTestTracking boolean
 -- The path to a low-traffic log file for basic extension and editor issues. Use `${workspaceName}` to insert the name of the current workspace in the file path. Use `~` to insert the user's home directory (the path should then use `/` separators even on Windows). Only the noted substitutions are supported, others will stay as-is.
 ---@field extensionLogFile string
 -- Whether to automatically run `adb connect 100.115.92.2:5555` when spawning the Flutter daemon when running on Chrome OS.
@@ -2156,6 +2150,12 @@
 -- default = "flutter-default"
 -- ```
 ---@field flutterWebRenderer "flutter-default" | "canvaskit" | "html" | "auto"
+-- Where to display the Flutter Widget Preview.
+-- 
+-- ```lua
+-- default = "sidebar"
+-- ```
+---@field flutterWidgetPreviewLocation "beside" | "sidebar"
 -- The path to a log file for the `flutter widget-preview` service. Use `${workspaceName}` to insert the name of the current workspace in the file path. Use `~` to insert the user's home directory (the path should then use `/` separators even on Windows). Only the noted substitutions are supported, others will stay as-is.
 ---@field flutterWidgetPreviewLogFile string
 -- Get the Dart SDK path from a command. Useful when using tools such as direnv, asdf, mise... The command should exit with a 0 status code and it should print to the standard output just the path to the SDK. If the command fails (non zero exit or bad path), the extension will keep looking for other SDK paths. Some configuration examples can be found in: https://github.com/Dart-Code/Dart-Code/pull/5377
@@ -6217,7 +6217,7 @@
 ---@field home string
 
 ---@class _.lspconfig.settings.jdtls.Javac
--- [Experimental] Specify whether to enable Javac-based compilation in the language server. Requires running this extension with Java 24
+-- [Experimental] Specify whether to enable Javac-based compilation in the language server. Requires running this extension with Java 25
 -- 
 -- ```lua
 -- default = "off"

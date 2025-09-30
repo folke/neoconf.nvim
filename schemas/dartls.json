@@ -586,29 +586,15 @@
       "scope": "window",
       "type": "boolean"
     },
-    "dart.experimentalFlutterWidgetPreview": {
-      "default": false,
-      "markdownDescription": "EXPERIMENTAL: Whether to enable the Flutter Widget Preview experimental feature. This feature requires an unreleased version of Flutter from the `master` branch.",
-      "scope": "window",
-      "type": "boolean"
-    },
-    "dart.experimentalFlutterWidgetPreviewLocation": {
-      "default": "sidebar",
-      "enum": [
-        "beside",
-        "sidebar"
-      ],
-      "enumDescriptions": [
-        "Open the Flutter Widget Preview beside the active editor",
-        "Open the Flutter Widget Preview in the sidebar"
-      ],
-      "markdownDescription": "Where to display the Flutter Widget Preview.",
-      "scope": "window",
-      "type": "string"
-    },
     "dart.experimentalRefactors": {
       "default": false,
       "markdownDescription": "Whether to enable experimental (possibly unfinished or unstable) refactors on the lightbulb menu. This setting is intended for use by Dart Analysis Server developers or users that want to try out and provide feedback on in-progress refactors.",
+      "scope": "window",
+      "type": "boolean"
+    },
+    "dart.experimentalTestTracking": {
+      "default": false,
+      "markdownDescription": "Whether to enable experimental tracking of test locations. This may improve the experience when using packages like `pkg:test_reflective_loader` where tests are only discovered during test runs and not during coding.",
       "scope": "window",
       "type": "boolean"
     },
@@ -892,6 +878,20 @@
       ],
       "markdownDescription": "Sets the [Web renderer](https://flutter.dev/to/web-renderers) used for Flutter web apps.",
       "scope": "window"
+    },
+    "dart.flutterWidgetPreviewLocation": {
+      "default": "sidebar",
+      "enum": [
+        "beside",
+        "sidebar"
+      ],
+      "enumDescriptions": [
+        "Open the Flutter Widget Preview beside the active editor",
+        "Open the Flutter Widget Preview in the sidebar"
+      ],
+      "markdownDescription": "Where to display the Flutter Widget Preview.",
+      "scope": "window",
+      "type": "string"
     },
     "dart.flutterWidgetPreviewLogFile": {
       "default": null,

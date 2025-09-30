@@ -841,7 +841,7 @@
         "on",
         "off"
       ],
-      "markdownDescription": "[Experimental] Specify whether to enable Javac-based compilation in the language server. Requires running this extension with Java 24",
+      "markdownDescription": "[Experimental] Specify whether to enable Javac-based compilation in the language server. Requires running this extension with Java 25",
       "order": 95,
       "scope": "window",
       "type": "string"
