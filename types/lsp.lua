@@ -15341,13 +15341,13 @@
 ---@field solidity _.lspconfig.settings.solidity_ls.Solidity
 
 ---@class _.lspconfig.settings.sonarlint.Connections
--- Connect SonarQube for IDE to SonarQube Cloud to apply the same code quality and security standards as your team. Analyze more languages, detect more issues **on the whole project**, receive notifications about the quality gate status, and more. Quality Profiles and file exclusion settings defined on the server are shared between all connected users. Please find the documentation [here](https://docs.sonarsource.com/sonarqube-for-ide/vs-code/team-features/connected-mode/)
+-- Connect SonarQube for IDE to SonarQube Cloud to apply the same code quality and security standards as your team. Analyze more languages, detect more issues **on the whole project**, receive notifications about the quality gate status, and more. Quality Profiles and file exclusion settings defined on the server are shared between all connected users. Please find the documentation [here](https://docs.sonarsource.com/sonarqube-for-vs-code/team-features/connected-mode/)
 -- 
 -- ```lua
 -- default = {}
 -- ```
 ---@field sonarcloud object[]
--- Connect SonarQube for IDE to SonarQube Server to apply the same code quality and security standards as your team. Analyze more languages, detect more issues **on the whole project**, receive notifications about the quality gate status, and more. Quality Profiles and file exclusion settings defined on the server are shared between all connected users. Please find the documentation [here](https://docs.sonarsource.com/sonarqube-for-ide/vs-code/team-features/connected-mode/)
+-- Connect SonarQube for IDE to SonarQube Server to apply the same code quality and security standards as your team. Analyze more languages, detect more issues **on the whole project**, receive notifications about the quality gate status, and more. Quality Profiles and file exclusion settings defined on the server are shared between all connected users. Please find the documentation [here](https://docs.sonarsource.com/sonarqube-for-vs-code/team-features/connected-mode/)
 -- 
 -- ```lua
 -- default = {}
@@ -15444,15 +15444,15 @@
 -- Disable sending anonymous usage statistics to SonarSource. Click [here](https://github.com/SonarSource/sonarlint-vscode/blob/master/telemetry-sample.md) to see a sample of the data that are collected.
 ---@field disableTelemetry boolean
 ---@field earlyAccess _.lspconfig.settings.sonarlint.EarlyAccess
--- If enabled, by default, [focusing on new code](https://docs.sonarsource.com/sonarqube-for-ide/vs-code/using/investigating-issues/#focusing-on-new-code) shows issues introduced in the last 30 days.
+-- If enabled, by default, [focusing on new code](https://docs.sonarsource.com/sonarqube-for-vs-code/using/investigating-issues/#focusing-on-new-code) shows issues introduced in the last 30 days.
 -- 
--- For the most accurate and customizable new code definition, use [Connected Mode](https://docs.sonarsource.com/sonarqube-for-ide/vs-code/team-features/connected-mode/) with SonarQube (Server, Cloud).
+-- For the most accurate and customizable new code definition, use [Connected Mode](https://docs.sonarsource.com/sonarqube-for-vs-code/team-features/connected-mode) with SonarQube (Server, Cloud).
 ---@field focusOnNewCode boolean
 ---@field ls _.lspconfig.settings.sonarlint.Ls
 ---@field output _.lspconfig.settings.sonarlint.Output
 -- Path to the active compilation database, e.g. `C:\\Repos\\MyProject\\compile_commands.json`
 ---@field pathToCompileCommands string
--- Path to a Node.js executable (versions above 18.20.0, 20.12.0, or 22.11.0) used to analyze JavaScript and TypeScript code. 
+-- Path to a Node.js executable (versions above 20.12.0, or 22.11.0) used to analyze JavaScript and TypeScript code. 
 -- On Windows, backslashes must be escaped, e.g. `C:\\Program Files\\NodeJS\\20-lts\\bin\\node.exe`
 ---@field pathToNodeExecutable string
 -- Customize applied rule set. This property contains a list of rules whose activation level or parameter values differ from the one provided by default. In [Connected Mode](command:SonarLint.HelpAndFeedbackLinkClicked?%22connectedModeDocs%22), this configuration is overridden by the projects's Quality Profile, as configured on server side and can be **shared among contributors**. See [SonarLint Rules](command:SonarLint.AllRules.focus) view for the list of **locally** available rules.
