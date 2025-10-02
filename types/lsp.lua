@@ -567,12 +567,6 @@
 -- default = "warning"
 -- ```
 ---@field reportSelfClsParameterName "none" | "hint" | "information" | "warning" | "error" | true | false
--- Diagnostics for files that are overriding a module in the stdlib.
--- 
--- ```lua
--- default = "none"
--- ```
----@field reportShadowedImports "none" | "hint" | "information" | "warning" | "error" | true | false
 -- Diagnostics for usage of deprecated type comments.
 -- 
 -- ```lua
@@ -2940,6 +2934,12 @@
 ---@field enable boolean
 
 ---@class _.lspconfig.settings.eslint.LintTask
+-- The command to run the task for linting the whole workspace. Defaults to the found eslint binary for the workspace, or 'eslint' if no binary could be found.
+-- 
+-- ```lua
+-- default = "eslint"
+-- ```
+---@field command string
 -- Controls whether a task for linting the whole workspace will be available.
 ---@field enable boolean
 -- Command line options applied when running the task for linting the whole workspace (see https://eslint.org/docs/user-guide/command-line-interface).

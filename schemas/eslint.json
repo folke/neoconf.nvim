@@ -144,6 +144,12 @@
       "scope": "resource",
       "type": "boolean"
     },
+    "eslint.lintTask.command": {
+      "default": "eslint",
+      "markdownDescription": "The command to run the task for linting the whole workspace. Defaults to the found eslint binary for the workspace, or 'eslint' if no binary could be found.",
+      "scope": "resource",
+      "type": "string"
+    },
     "eslint.lintTask.enable": {
       "default": false,
       "description": "Controls whether a task for linting the whole workspace will be available.",

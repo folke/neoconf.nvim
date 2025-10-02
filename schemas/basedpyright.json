@@ -1045,23 +1045,6 @@
             "boolean"
           ]
         },
-        "reportShadowedImports": {
-          "default": "none",
-          "description": "Diagnostics for files that are overriding a module in the stdlib.",
-          "enum": [
-            "none",
-            "hint",
-            "information",
-            "warning",
-            "error",
-            true,
-            false
-          ],
-          "type": [
-            "string",
-            "boolean"
-          ]
-        },
         "reportTypeCommentUsage": {
           "default": "none",
           "description": "Diagnostics for usage of deprecated type comments.",
