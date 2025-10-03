@@ -6188,8 +6188,18 @@
 -- ```
 ---@field exclusions string[]
 
+---@class _.lspconfig.settings.jdtls.VariableTypes
+-- Enable/disable inlay hints for implicit variable types:
+-- ```java
+-- 
+-- var foo /* :Path */ = Path.of("foo");
+--  
+-- ```
+---@field enabled boolean
+
 ---@class _.lspconfig.settings.jdtls.InlayHints
 ---@field parameterNames _.lspconfig.settings.jdtls.ParameterNames
+---@field variableTypes _.lspconfig.settings.jdtls.VariableTypes
 
 ---@class _.lspconfig.settings.jdtls.AndroidSupport
 -- [Experimental] Specify whether to enable Android project importing. When set to `auto`, the Android support will be enabled in Visual Studio Code - Insiders.
@@ -15683,8 +15693,8 @@
 -- default = true
 -- ```
 ---@field autoGenerateLaunchConfigurations boolean
--- **Experimental**: Run `swift build` in the background whenever a file is saved. It is possible the background compilation will already be running when you attempt a compile yourself, so this is disabled by default.
----@field backgroundCompilation boolean
+-- Run `swift build` in the background whenever a file is saved. Setting to `true` enables, or you can use `object` notation for more fine grained control. It is possible the background compilation will already be running when you attempt a compile yourself, so this is disabled by default.
+---@field backgroundCompilation boolean|table
 -- Additional arguments to pass to `swift build` and `swift test`. Keys and values should be provided as individual entries in the list. If you have created a copy of the build task in `tasks.json` then these build arguments will not be propagated to that task.
 -- 
 -- ```lua

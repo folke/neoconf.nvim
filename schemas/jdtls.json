@@ -801,6 +801,12 @@
       "scope": "window",
       "type": "array"
     },
+    "java.inlayHints.variableTypes.enabled": {
+      "default": false,
+      "markdownDescription": "Enable/disable inlay hints for implicit variable types:\n```java\n\nvar foo /* :Path */ = Path.of(\"foo\");\n \n```",
+      "scope": "window",
+      "type": "boolean"
+    },
     "java.jdt.ls.androidSupport.enabled": {
       "default": "auto",
       "enum": [
