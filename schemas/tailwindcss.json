@@ -171,6 +171,17 @@
       "scope": "language-overridable",
       "type": "string"
     },
+    "tailwindCSS.lint.suggestCanonicalClasses": {
+      "default": "warning",
+      "enum": [
+        "ignore",
+        "warning",
+        "error"
+      ],
+      "markdownDescription": "Indicate when utilities may be written in a more optimal form",
+      "scope": "language-overridable",
+      "type": "string"
+    },
     "tailwindCSS.lint.usedBlocklistedClass": {
       "default": "warning",
       "enum": [

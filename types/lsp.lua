@@ -14648,7 +14648,7 @@
 -- [`rustc`’s built-in test harness (“libtest”)](https://doc.rust-lang.org/rustc/tests/index.html#cli-arguments).
 -- 
 -- ```lua
--- default = { "--show-output" }
+-- default = { "--nocapture" }
 -- ```
 ---@field extraTestBinaryArgs string[]
 -- Problem matchers to use for `rust-analyzer.run` command, eg `["$rustc", "$rust-panic"]`.
@@ -16546,6 +16546,12 @@
 -- default = "warning"
 -- ```
 ---@field recommendedVariantOrder "ignore" | "warning" | "error"
+-- Indicate when utilities may be written in a more optimal form
+-- 
+-- ```lua
+-- default = "warning"
+-- ```
+---@field suggestCanonicalClasses "ignore" | "warning" | "error"
 -- Usage of class names that have been blocklisted via `@source not inline(…)`
 -- 
 -- ```lua

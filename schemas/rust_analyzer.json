@@ -1381,7 +1381,7 @@
     },
     "rust-analyzer.runnables.extraTestBinaryArgs": {
       "default": [
-        "--show-output"
+        "--nocapture"
       ],
       "items": {
         "type": "string"
