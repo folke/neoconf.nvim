@@ -95,6 +95,10 @@
 -- 
 -- If not set in VS Code, this setting takes its value from the [`.als.json`](https://github.com/AdaCore/ada_language_server/blob/master/doc/settings.md) file at the root of the workspace, if that file exists.
 ---@field projectFile string
+-- Enable fallback indenter in case the file is not syntactically correct.
+-- 
+-- If not set in VS Code, this setting takes its value from the [`.als.json`](https://github.com/AdaCore/ada_language_server/blob/master/doc/settings.md) file at the root of the workspace, if that file exists. Otherwise it defaults to `true`.
+---@field rangeFormattingFallback true | false
 -- The path to a directory used for out-of-tree builds. This feature is related to the [--relocate-build-tree GPRbuild command line switch](https://docs.adacore.com/gprbuild-docs/html/gprbuild_ug/building_with_gprbuild.html#switches).
 -- 
 -- If not set in VS Code, this setting takes its value from the [`.als.json`](https://github.com/AdaCore/ada_language_server/blob/master/doc/settings.md) file at the root of the workspace, if that file exists.
@@ -6188,6 +6192,15 @@
 -- ```
 ---@field exclusions string[]
 
+---@class _.lspconfig.settings.jdtls.ParameterTypes
+-- Enable/disable inlay hints for (lambda) parameter types:
+-- ```java
+-- 
+-- List.of(1, 2, 3, 4).filter(/*Integer */ n -> n % 2 == 0).toList();
+--  
+-- ```
+---@field enabled boolean
+
 ---@class _.lspconfig.settings.jdtls.VariableTypes
 -- Enable/disable inlay hints for implicit variable types:
 -- ```java
@@ -6199,6 +6212,7 @@
 
 ---@class _.lspconfig.settings.jdtls.InlayHints
 ---@field parameterNames _.lspconfig.settings.jdtls.ParameterNames
+---@field parameterTypes _.lspconfig.settings.jdtls.ParameterTypes
 ---@field variableTypes _.lspconfig.settings.jdtls.VariableTypes
 
 ---@class _.lspconfig.settings.jdtls.AndroidSupport

@@ -266,6 +266,26 @@
       "scope": "window",
       "type": "string"
     },
+    "ada.rangeFormattingFallback": {
+      "default": null,
+      "enum": [
+        true,
+        false,
+        null
+      ],
+      "enumItemLabels": [
+        null,
+        null,
+        "Provided by .als.json (default: true)"
+      ],
+      "markdownDescription": "Enable fallback indenter in case the file is not syntactically correct.\n\nIf not set in VS Code, this setting takes its value from the [`.als.json`](https://github.com/AdaCore/ada_language_server/blob/master/doc/settings.md) file at the root of the workspace, if that file exists. Otherwise it defaults to `true`.",
+      "markdownEnumDescriptions": [
+        "true",
+        "false",
+        "Provided by [`.als.json`](https://github.com/AdaCore/ada_language_server/blob/master/doc/settings.md) if it exists at the workspace root, otherwise defaults to `true`."
+      ],
+      "scope": "window"
+    },
     "ada.relocateBuildTree": {
       "default": null,
       "markdownDescription": "The path to a directory used for out-of-tree builds. This feature is related to the [--relocate-build-tree GPRbuild command line switch](https://docs.adacore.com/gprbuild-docs/html/gprbuild_ug/building_with_gprbuild.html#switches).\n\nIf not set in VS Code, this setting takes its value from the [`.als.json`](https://github.com/AdaCore/ada_language_server/blob/master/doc/settings.md) file at the root of the workspace, if that file exists.",
