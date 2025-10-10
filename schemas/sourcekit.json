@@ -246,7 +246,7 @@
     },
     "swift.disableAutoResolve": {
       "default": false,
-      "markdownDescription": "Disable automatic running of `swift package resolve` whenever the `Package.swift` or `Package.resolve` files are updated. This will also disable searching for command plugins and the initial test discovery process.",
+      "markdownDescription": "Disable automatic running of `swift package resolve` whenever the `Package.swift` or `Package.resolved` files are updated. This will also disable searching for command plugins and the initial test discovery process.",
       "scope": "machine-overridable",
       "type": "boolean"
     },

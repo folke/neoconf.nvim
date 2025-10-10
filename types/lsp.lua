@@ -15750,7 +15750,7 @@
 -- default = "default"
 -- ```
 ---@field diagnosticsStyle "default" | "llvm" | "swift"
--- Disable automatic running of `swift package resolve` whenever the `Package.swift` or `Package.resolve` files are updated. This will also disable searching for command plugins and the initial test discovery process.
+-- Disable automatic running of `swift package resolve` whenever the `Package.swift` or `Package.resolved` files are updated. This will also disable searching for command plugins and the initial test discovery process.
 ---@field disableAutoResolve boolean
 -- Disable sandboxing when running SwiftPM commands. In most cases you should keep the sandbox enabled and leave this setting set to `false`
 ---@field disableSandox boolean
