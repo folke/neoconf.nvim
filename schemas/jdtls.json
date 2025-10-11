@@ -801,6 +801,13 @@
       "scope": "window",
       "type": "array"
     },
+    "java.inlayHints.parameterNames.suppressWhenSameNameNumbered": {
+      "default": true,
+      "markdownDescription": "Suppress parameter name hints on arguments following the same-name numbered pattern.",
+      "order": 81,
+      "scope": "window",
+      "type": "boolean"
+    },
     "java.inlayHints.parameterTypes.enabled": {
       "default": false,
       "markdownDescription": "Enable/disable inlay hints for (lambda) parameter types:\n```java\n\nList.of(1, 2, 3, 4).filter(/*Integer */ n -> n % 2 == 0).toList();\n \n```",

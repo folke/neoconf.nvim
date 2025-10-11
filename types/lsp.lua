@@ -6191,6 +6191,12 @@
 -- default = {}
 -- ```
 ---@field exclusions string[]
+-- Suppress parameter name hints on arguments following the same-name numbered pattern.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field suppressWhenSameNameNumbered boolean
 
 ---@class _.lspconfig.settings.jdtls.ParameterTypes
 -- Enable/disable inlay hints for (lambda) parameter types:
@@ -14245,7 +14251,7 @@
 -- ```lua
 -- default = "crate"
 -- ```
----@field group "preserve" | "crate" | "module" | "item" | "one"
+---@field group string
 
 ---@class _.lspconfig.settings.rust_analyzer.Group
 -- Group inserted imports by the [following
