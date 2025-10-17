@@ -565,6 +565,12 @@
 -- default = "error"
 -- ```
 ---@field reportReturnType "none" | "hint" | "information" | "warning" | "error" | true | false
+-- Diagnostics for providing a default value for a `self` or `cls` parameter
+-- 
+-- ```lua
+-- default = "none"
+-- ```
+---@field reportSelfClsDefault "none" | "hint" | "information" | "warning" | "error" | true | false
 -- Diagnostics for a missing or misnamed “self” parameter in instance methods and “cls” parameter in class methods. Instance methods in metaclasses (classes that derive from “type”) are allowed to use “cls” for instance methods.
 -- 
 -- ```lua
