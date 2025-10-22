@@ -169,6 +169,12 @@
       "scope": "resource",
       "type": "boolean"
     },
+    "html.suggest.hideEndTagSuggestions": {
+      "default": false,
+      "description": "Controls whether the built-in HTML language support suggests closing tags. When disabled, end tag completions like `</div>` will not be shown.",
+      "scope": "resource",
+      "type": "boolean"
+    },
     "html.suggest.html5": {
       "default": true,
       "description": "Controls whether the built-in HTML language support suggests HTML5 tags, properties and values.",
