@@ -2406,7 +2406,7 @@
 -- Whether to suppress test timeouts when running/debugging tests. To work properly this requires package:test version 1.20.1 or newer. For older versions, the default timeout will be increased to 1d but this will not affect tests that have explicit (non-factor) timeouts set with @timeout.
 -- 
 -- ```lua
--- default = "never"
+-- default = "debug"
 -- ```
 ---@field suppressTestTimeouts "never" | "debug" | "always"
 -- Additional args to pass to the `dart test` command. Using the `args`/`toolArgs` fields in `launch.json` is usually better than this setting as this setting will apply to _all_ projects.

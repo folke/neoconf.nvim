@@ -1459,7 +1459,7 @@
       ]
     },
     "dart.suppressTestTimeouts": {
-      "default": "never",
+      "default": "debug",
       "enum": [
         "never",
         "debug",
