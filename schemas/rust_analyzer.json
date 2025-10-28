@@ -624,6 +624,11 @@
       "markdownDescription": "Controls file watching implementation.",
       "type": "string"
     },
+    "rust-analyzer.gotoImplementations.filterAdjacentDerives": {
+      "default": false,
+      "markdownDescription": "If this is `true`, when \"Goto Implementations\" and in \"Implementations\" lens, are triggered on a `struct` or `enum` or `union`, we filter out trait implementations that originate from `derive`s above the type.",
+      "type": "boolean"
+    },
     "rust-analyzer.highlightRelated.branchExitPoints.enable": {
       "default": true,
       "markdownDescription": "Highlight related return values while the cursor is on any `match`, `if`, or match arm\narrow (`=>`).",
