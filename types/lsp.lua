@@ -1981,6 +1981,12 @@
 -- default = 200
 -- ```
 ---@field dtdEditorActiveLocationDelay integer
+-- Whether to use the new dynamic test tracking. This is a temporary setting that will be removed in an upcoming release.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field dynamicTestTracking boolean
 -- Whether to automatically commit the selected completion item when pressing certain keys such as . , ( and \[. This setting does not currently apply to LSP, see `#dart.previewCommitCharacters#`.
 ---@field enableCompletionCommitCharacters boolean
 -- Whether to enable functionality for using Pub. Turning this setting off will prevent the extension from ever running pub and hide all commands relating to this. Use this if you are using an alternative package manager.
@@ -2029,8 +2035,6 @@
 ---@field experimentalDtdHandlers boolean
 -- Whether to enable experimental (possibly unfinished or unstable) refactors on the lightbulb menu. This setting is intended for use by Dart Analysis Server developers or users that want to try out and provide feedback on in-progress refactors.
 ---@field experimentalRefactors boolean
--- Whether to enable experimental tracking of test locations. This may improve the experience when using packages like `pkg:test_reflective_loader` where tests are only discovered during test runs and not during coding.
----@field experimentalTestTracking boolean
 -- The path to a low-traffic log file for basic extension and editor issues. Use `${workspaceName}` to insert the name of the current workspace in the file path. Use `~` to insert the user's home directory (the path should then use `/` separators even on Windows). Only the noted substitutions are supported, others will stay as-is.
 ---@field extensionLogFile string
 -- Whether to automatically run `adb connect 100.115.92.2:5555` when spawning the Flutter daemon when running on Chrome OS.
