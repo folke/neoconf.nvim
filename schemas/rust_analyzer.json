@@ -1321,6 +1321,14 @@
         "string"
       ]
     },
+    "rust-analyzer.profiling.memoryProfile": {
+      "default": null,
+      "markdownDescription": "The path where to save memory profiling output.\n\n**Note:** Memory profiling is not enabled by default in rust-analyzer builds, you need to build\nfrom source for it.",
+      "type": [
+        "null",
+        "string"
+      ]
+    },
     "rust-analyzer.references.excludeImports": {
       "default": false,
       "markdownDescription": "Exclude imports from find-all-references.",
