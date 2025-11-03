@@ -5386,6 +5386,18 @@
 -- default = 100
 -- ```
 ---@field maxItems number
+-- The preferred font case to use when suggesting parameter names. Defaults to camel case.
+-- 
+-- ```lua
+-- default = "camel"
+-- ```
+---@field parameterCase "camel" | "snake"
+-- The preferred font case to use when suggesting property names. Defaults to snake case.
+-- 
+-- ```lua
+-- default = "snake"
+-- ```
+---@field propertyCase "camel" | "snake"
 -- PHP permits the calling of static methods using the object operator eg `$obj->myStaticMethod();`. If you would prefer not to have static methods suggested in this context then set this value to `false`. Defaults to `true`.
 -- 
 -- ```lua
@@ -9621,13 +9633,29 @@
 
 ---@class _.lspconfig.settings.luau_lsp.Imports
 -- Suggest automatic imports in completion items
+-- 
+-- ```lua
+-- default = true
+-- ```
 ---@field enabled boolean
+-- Do not show any of the listed services when auto-importing
+-- 
+-- ```lua
+-- default = {}
+-- ```
+---@field excludedServices string[]
 -- Files that match these globs will not be shown during auto-import
 -- 
 -- ```lua
 -- default = { "**/_Index/**" }
 -- ```
 ---@field ignoreGlobs string[]
+-- When non-empty, only show the services listed when auto-importing
+-- 
+-- ```lua
+-- default = {}
+-- ```
+---@field includedServices string[]
 -- The style of requires when autocompleted
 -- 
 -- ```lua
@@ -9909,12 +9937,12 @@
 ---@field useVSCodeWatcher boolean
 
 ---@class _.lspconfig.settings.luau_lsp.Types
--- A list of paths to definition files to load in to the type checker. Note that definition file syntax is currently unstable and may change at any time
+-- A mapping of package names to paths of definition files to load in to the type checker. Note that definition file syntax is currently unstable and may change at any time
 -- 
 -- ```lua
 -- default = {}
 -- ```
----@field definitionFiles string[]
+---@field definitionFiles table
 -- A list of globals to remove from the global scope. Accepts full libraries or particular functions (e.g., `table` or `table.clone`)
 -- 
 -- ```lua

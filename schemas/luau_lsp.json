@@ -84,10 +84,19 @@
       "type": "boolean"
     },
     "luau-lsp.completion.imports.enabled": {
-      "default": false,
+      "default": true,
       "markdownDescription": "Suggest automatic imports in completion items",
       "scope": "resource",
       "type": "boolean"
+    },
+    "luau-lsp.completion.imports.excludedServices": {
+      "default": [],
+      "items": {
+        "type": "string"
+      },
+      "markdownDescription": "Do not show any of the listed services when auto-importing",
+      "scope": "resource",
+      "type": "array"
     },
     "luau-lsp.completion.imports.ignoreGlobs": {
       "default": [
@@ -97,6 +106,15 @@
         "type": "string"
       },
       "markdownDescription": "Files that match these globs will not be shown during auto-import",
+      "scope": "resource",
+      "type": "array"
+    },
+    "luau-lsp.completion.imports.includedServices": {
+      "default": [],
+      "items": {
+        "type": "string"
+      },
+      "markdownDescription": "When non-empty, only show the services listed when auto-importing",
       "scope": "resource",
       "type": "array"
     },
@@ -467,13 +485,13 @@
       "type": "boolean"
     },
     "luau-lsp.types.definitionFiles": {
-      "default": [],
-      "items": {
+      "additionalProperties": {
         "type": "string"
       },
-      "markdownDescription": "A list of paths to definition files to load in to the type checker. Note that definition file syntax is currently unstable and may change at any time",
+      "default": [],
+      "markdownDescription": "A mapping of package names to paths of definition files to load in to the type checker. Note that definition file syntax is currently unstable and may change at any time",
       "scope": "window",
-      "type": "array"
+      "type": "object"
     },
     "luau-lsp.types.disabledGlobals": {
       "default": [],
