@@ -714,6 +714,12 @@
       "scope": "window",
       "type": "boolean"
     },
+    "typescript.implementationsCodeLens.showOnAllClassMethods": {
+      "default": false,
+      "description": "Enable/disable showing implementations CodeLens above all class methods instead of only on abstract methods.",
+      "scope": "window",
+      "type": "boolean"
+    },
     "typescript.implementationsCodeLens.showOnInterfaceMethods": {
       "default": false,
       "description": "Enable/disable implementations CodeLens on interface methods.",

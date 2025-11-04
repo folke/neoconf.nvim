@@ -844,6 +844,12 @@
 -- default = ""
 -- ```
 ---@field baselineFile string
+-- Path to the directory or file containing the Pyright configuration (`pyrightconfig.json` or `pyproject.toml`). If a directory is specified, basedpyright will search for the config file in that directory. This is useful for monorepo structures where the config file is in a subdirectory. Example: `${workspaceFolder}/backend`
+-- 
+-- ```lua
+-- default = ""
+-- ```
+---@field configFilePath string
 -- ```lua
 -- default = "openFilesOnly"
 -- ```
@@ -15333,30 +15339,12 @@
 -- default = ""
 -- ```
 ---@field evmVersion string
--- Api key for downloading Binance smart chain smart contracts from api.bscscan.com
--- 
--- ```lua
--- default = "YourApiKey"
--- ```
----@field explorer_bscscan_apikey string
 -- Api key for downloading ethereum smart contracts from etherscan.io
 -- 
 -- ```lua
 -- default = "YourApiKey"
 -- ```
 ---@field explorer_etherscan_apikey string
--- Api key for downloading optimism smart contracts from api-optimistic.etherscan.io
--- 
--- ```lua
--- default = "YourApiKey"
--- ```
----@field explorer_etherscan_optimism_apikey string
--- Api key for downloading polygon smart contracts from api.polygonscan.com
--- 
--- ```lua
--- default = "YourApiKey"
--- ```
----@field explorer_polygonscan_apikey string
 -- Enables / disables the solidity formatter prettier (default) or forge (note it needs to be installed)
 -- 
 -- ```lua
@@ -15411,6 +15399,12 @@
 -- default = {}
 -- ```
 ---@field remappingsWindows any[]
+-- The package directory to find the solhint linter
+-- 
+-- ```lua
+-- default = ""
+-- ```
+---@field solhintPackageDirectory string
 -- Solhint linting validation rules
 ---@field solhintRules table
 -- Solium linting validation rules
@@ -15844,6 +15838,12 @@
 -- default = { "**/.git", "**/.github" }
 -- ```
 ---@field excludePathsFromPackageDependencies string[]
+-- A list of folders to ignore when searching sub-folders for Swift Packages. The `swift.searchSubfoldersForPackages` must be `true` for this setting to have an effect. Always use forward-slashes in glob expressions regardless of platform. This is combined with VS Code's `files.exclude` setting.
+-- 
+-- ```lua
+-- default = { ".", ".build", "Packages", "out", "bazel-out", "bazel-bin" }
+-- ```
+---@field ignoreSearchingForPackagesInSubfolders string[]
 -- Set the branch to use when setting the `$schema` property of the SourceKit-LSP configuration. For example: "release/6.1" or "main". When this setting is unset, the extension will determine the branch based on the version of the toolchain that is in use.
 ---@field lspConfigurationBranch string
 -- Controls whether to open a swift project automatically after creating it.
@@ -17557,6 +17557,8 @@
 ---@class _.lspconfig.settings.ts_ls.ImplementationsCodeLens
 -- Enable/disable implementations CodeLens. This CodeLens shows the implementers of an interface.
 ---@field enabled boolean
+-- Enable/disable showing implementations CodeLens above all class methods instead of only on abstract methods.
+---@field showOnAllClassMethods boolean
 -- Enable/disable implementations CodeLens on interface methods.
 ---@field showOnInterfaceMethods boolean
 

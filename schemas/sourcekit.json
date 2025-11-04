@@ -297,6 +297,22 @@
       "scope": "machine-overridable",
       "type": "array"
     },
+    "swift.ignoreSearchingForPackagesInSubfolders": {
+      "default": [
+        ".",
+        ".build",
+        "Packages",
+        "out",
+        "bazel-out",
+        "bazel-bin"
+      ],
+      "items": {
+        "type": "string"
+      },
+      "markdownDescription": "A list of folders to ignore when searching sub-folders for Swift Packages. The `swift.searchSubfoldersForPackages` must be `true` for this setting to have an effect. Always use forward-slashes in glob expressions regardless of platform. This is combined with VS Code's `files.exclude` setting.",
+      "scope": "machine-overridable",
+      "type": "array"
+    },
     "swift.lspConfigurationBranch": {
       "markdownDescription": "Set the branch to use when setting the `$schema` property of the SourceKit-LSP configuration. For example: \"release/6.1\" or \"main\". When this setting is unset, the extension will determine the branch based on the version of the toolchain that is in use.",
       "type": "string"

@@ -38,24 +38,9 @@
       "description": "Evm version, ie london, istanbul, petersburg, constantinople, byzantium, tangerineWhistle, spuriousDragon, homestead, frontier, or leave it blank for the default evm version",
       "type": "string"
     },
-    "solidity.explorer_bscscan_apikey": {
-      "default": "YourApiKey",
-      "description": "Api key for downloading Binance smart chain smart contracts from api.bscscan.com",
-      "type": "string"
-    },
     "solidity.explorer_etherscan_apikey": {
       "default": "YourApiKey",
       "description": "Api key for downloading ethereum smart contracts from etherscan.io",
-      "type": "string"
-    },
-    "solidity.explorer_etherscan_optimism_apikey": {
-      "default": "YourApiKey",
-      "description": "Api key for downloading optimism smart contracts from api-optimistic.etherscan.io",
-      "type": "string"
-    },
-    "solidity.explorer_polygonscan_apikey": {
-      "default": "YourApiKey",
-      "description": "Api key for downloading polygon smart contracts from api.polygonscan.com",
       "type": "string"
     },
     "solidity.formatter": {
@@ -125,6 +110,11 @@
       "default": [],
       "description": "Windows Remappings to resolve contracts to local Windows files / directories (Note this overrides the generic remapping settings if the OS is Windows) , i.e: [\"@openzeppelin/=C:/lib/openzeppelin-contracts\",\"ds-test/=C:/lib/ds-test/src/\"]",
       "type": "array"
+    },
+    "solidity.solhintPackageDirectory": {
+      "default": "",
+      "description": "The package directory to find the solhint linter",
+      "type": "string"
     },
     "solidity.solhintRules": {
       "default": null,
