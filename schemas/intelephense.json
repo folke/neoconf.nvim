@@ -492,6 +492,12 @@
       "scope": "machine",
       "type": "string"
     },
+    "intelephense.shortOpenEchoAutoClose": {
+      "default": true,
+      "description": "Will auto-close short open echo tags (`<?=`).",
+      "scope": "window",
+      "type": "boolean"
+    },
     "intelephense.stubs": {
       "default": [
         "apache",

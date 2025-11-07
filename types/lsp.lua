@@ -5743,6 +5743,12 @@
 ---@field rename _.lspconfig.settings.intelephense.Rename
 -- Path to a Node.js executable. Use this if you wish to use a different version of Node.js. Defaults to Node.js shipped with VSCode.
 ---@field runtime string
+-- Will auto-close short open echo tags (`<?=`).
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field shortOpenEchoAutoClose boolean
 -- Configure stub files for built in symbols and common extensions. The default setting includes PHP core and all bundled extensions.
 -- 
 -- ```lua
