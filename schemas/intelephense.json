@@ -102,6 +102,12 @@
       "scope": "window",
       "type": "boolean"
     },
+    "intelephense.completion.suggestRelativeToPartialUseDeclaration": {
+      "default": 0,
+      "description": "Inserted text will be relative to any existing partial use declarations that may match the symbol. The value is the maximum number of namespace segments that may appear in the inserted text. Defaults to 0 (disabled).",
+      "scope": "window",
+      "type": "number"
+    },
     "intelephense.completion.triggerParameterHints": {
       "default": true,
       "description": "Method and function completions will include parentheses and trigger parameter hints.",
@@ -494,7 +500,7 @@
     },
     "intelephense.shortOpenEchoAutoClose": {
       "default": true,
-      "description": "Will auto-close short open echo tags (`<?=`).",
+      "description": "Will auto-close short open echo tags (`<?=`). VSCode only.",
       "scope": "window",
       "type": "boolean"
     },

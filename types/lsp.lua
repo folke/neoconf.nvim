@@ -5410,6 +5410,12 @@
 -- default = true
 -- ```
 ---@field suggestObjectOperatorStaticMethods boolean
+-- Inserted text will be relative to any existing partial use declarations that may match the symbol. The value is the maximum number of namespace segments that may appear in the inserted text. Defaults to 0 (disabled).
+-- 
+-- ```lua
+-- default = 0
+-- ```
+---@field suggestRelativeToPartialUseDeclaration number
 -- Method and function completions will include parentheses and trigger parameter hints.
 -- 
 -- ```lua
@@ -5743,7 +5749,7 @@
 ---@field rename _.lspconfig.settings.intelephense.Rename
 -- Path to a Node.js executable. Use this if you wish to use a different version of Node.js. Defaults to Node.js shipped with VSCode.
 ---@field runtime string
--- Will auto-close short open echo tags (`<?=`).
+-- Will auto-close short open echo tags (`<?=`). VSCode only.
 -- 
 -- ```lua
 -- default = true
