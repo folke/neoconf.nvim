@@ -96,6 +96,20 @@
       "scope": "window",
       "type": "string"
     },
+    "intelephense.completion.sortText": {
+      "default": "multi-factor",
+      "description": "Controls whether suggestions will include a `sortText` property that may influence sort order.",
+      "enum": [
+        "none",
+        "multi-factor"
+      ],
+      "enumDescriptions": [
+        "No `sortText` property will be provided. The client is solely responsible for sorting based on the `label` property.",
+        "A `sortText` property will be included based on factors like query match, kind of suggestion, location of symbol, name of symbol."
+      ],
+      "scope": "window",
+      "type": "string"
+    },
     "intelephense.completion.suggestObjectOperatorStaticMethods": {
       "default": true,
       "description": "PHP permits the calling of static methods using the object operator eg `$obj->myStaticMethod();`. If you would prefer not to have static methods suggested in this context then set this value to `false`. Defaults to `true`.",
@@ -566,6 +580,7 @@
         "sysvshm",
         "tidy",
         "tokenizer",
+        "uri",
         "xml",
         "xmlreader",
         "xmlrpc",
@@ -646,11 +661,13 @@
           "libsodium",
           "libvirt-php",
           "libxml",
+          "litespeed",
           "lua",
           "LuaSandbox",
           "lzf",
           "mailparse",
           "mapscript",
+          "maxminddb",
           "mbstring",
           "mcrypt",
           "memcache",
@@ -736,6 +753,7 @@
           "tokenizer",
           "uopz",
           "uploadprogress",
+          "uri",
           "uuid",
           "uv",
           "v8js",
