@@ -425,9 +425,6 @@
           "name": {
             "description": "Java Execution Environment name. Must be unique.",
             "enum": [
-              "J2SE-1.5",
-              "JavaSE-1.6",
-              "JavaSE-1.7",
               "JavaSE-1.8",
               "JavaSE-9",
               "JavaSE-10",

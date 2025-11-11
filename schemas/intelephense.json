@@ -350,6 +350,24 @@
       "scope": "window",
       "type": "boolean"
     },
+    "intelephense.inlayHint.parameterNames": {
+      "default": true,
+      "description": "Will show inlay hints for call argument parameter names if named arguments are not already in use.",
+      "scope": "window",
+      "type": "boolean"
+    },
+    "intelephense.inlayHint.parameterTypes": {
+      "default": true,
+      "description": "Will show inlay hints for anonymous function declaration parameter types if not already declared.",
+      "scope": "window",
+      "type": "boolean"
+    },
+    "intelephense.inlayHint.returnTypes": {
+      "default": true,
+      "description": "Will show an inlay hint for call declaration return type if not already declared.",
+      "scope": "window",
+      "type": "boolean"
+    },
     "intelephense.licenceKey": {
       "description": "DEPRECATED. Don't use this. Go to command palette and search for enter licence key.",
       "scope": "application",
