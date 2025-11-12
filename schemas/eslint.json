@@ -284,7 +284,7 @@
     },
     "eslint.quiet": {
       "default": false,
-      "description": "Turns on quiet mode, which ignores warnings.",
+      "description": "Turns on quiet mode, which ignores warnings and info diagnostics.",
       "scope": "resource",
       "type": "boolean"
     },

@@ -199,6 +199,12 @@
       "title": "%extension.tinymist.config.tinymist.onEnterEvent.title%",
       "type": "boolean"
     },
+    "tinymist.onPaste": {
+      "default": "$root/assets",
+      "markdownDescription": "%extension.tinymist.config.tinymist.onPaste.desc%",
+      "title": "%extension.tinymist.config.tinymist.onPaste.title%",
+      "type": "string"
+    },
     "tinymist.outputPath": {
       "default": "",
       "markdownDescription": "%extension.tinymist.config.tinymist.outputPath.desc%",

@@ -3127,7 +3127,7 @@
 ---@field problems _.lspconfig.settings.eslint.Problems
 -- Controls whether a task for linting the whole workspace will be available.
 ---@field provideLintTask boolean
--- Turns on quiet mode, which ignores warnings.
+-- Turns on quiet mode, which ignores warnings and info diagnostics.
 ---@field quiet boolean
 ---@field rules _.lspconfig.settings.eslint.Rules
 -- Run the linter on save (onSave) or on type (onType)
@@ -17025,6 +17025,12 @@
 -- default = true
 -- ```
 ---@field onEnterEvent boolean
+-- %extension.tinymist.config.tinymist.onPaste.desc%
+-- 
+-- ```lua
+-- default = "$root/assets"
+-- ```
+---@field onPaste string
 -- %extension.tinymist.config.tinymist.outputPath.desc%
 -- 
 -- ```lua
