@@ -2254,6 +2254,8 @@
 -- ```lua
 -- default = {
 --   analyze_files = false,
+--   dart_fix = false,
+--   dart_format = false,
 --   run_tests = false
 -- }
 -- ```
@@ -2268,7 +2270,7 @@
 ---@field notifyAnalyzerErrors boolean
 -- Whether to use the --offline switch for commands like 'pub get' and 'Flutter: New Project'.
 ---@field offline boolean
--- Whether to ignore workspace folders and perform analysis based on the open files, as if no workspace was open at all. This allows opening very large folders without causing them to be fully analyzed but will result a lot of re-analysis as files are opened/closed. This is **not** recommended for small or medium sized workspaces, only very large workspaces where you are working in only a small part.
+-- **Deprecated**: Whether to ignore workspace folders and perform analysis based on the open files. This setting can make performance significantly worse when moving around a project and is not recommended.
 ---@field onlyAnalyzeProjectsWithOpenFiles boolean
 -- Whether to automatically open DevTools at the start of a debug session. If embedded DevTools is enabled, this will launch the Widget Inspector embedded for Flutter projects, or launch DevTools externally in a browser for Dart projects.
 -- 
@@ -5920,19 +5922,19 @@
 -- Specify the Nonnull annotation types to be used for null analysis. If more than one annotation is specified, then the topmost annotation will be used first if it exists in project dependencies. This setting will be ignored if `java.compile.nullAnalysis.mode` is set to `disabled`
 -- 
 -- ```lua
--- default = { "javax.annotation.Nonnull", "org.eclipse.jdt.annotation.NonNull", "org.springframework.lang.NonNull" }
+-- default = { "javax.annotation.Nonnull", "org.eclipse.jdt.annotation.NonNull", "org.springframework.lang.NonNull", "org.jspecify.annotations.NonNull" }
 -- ```
 ---@field nonnull any[]
 -- Specify the NonNullByDefault annotation types to be used for null analysis. If more than one annotation is specified, then the topmost annotation will be used first if it exists in project dependencies. This setting will be ignored if `java.compile.nullAnalysis.mode` is set to `disabled`
 -- 
 -- ```lua
--- default = { "javax.annotation.ParametersAreNonnullByDefault", "org.eclipse.jdt.annotation.NonNullByDefault", "org.springframework.lang.NonNullApi" }
+-- default = { "javax.annotation.ParametersAreNonnullByDefault", "org.eclipse.jdt.annotation.NonNullByDefault", "org.springframework.lang.NonNullApi", "org.jspecify.annotations.NullMarked" }
 -- ```
 ---@field nonnullbydefault any[]
 -- Specify the Nullable annotation types to be used for null analysis. If more than one annotation is specified, then the topmost annotation will be used first if it exists in project dependencies. This setting will be ignored if `java.compile.nullAnalysis.mode` is set to `disabled`
 -- 
 -- ```lua
--- default = { "javax.annotation.Nullable", "org.eclipse.jdt.annotation.Nullable", "org.springframework.lang.Nullable" }
+-- default = { "javax.annotation.Nullable", "org.eclipse.jdt.annotation.Nullable", "org.springframework.lang.Nullable", "org.jspecify.annotations.Nullable" }
 -- ```
 ---@field nullable any[]
 
