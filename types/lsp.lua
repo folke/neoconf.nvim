@@ -17076,6 +17076,12 @@
 -- default = "{compileStatusIcon} {wordCount} [{fileName}]"
 -- ```
 ---@field statusBarFormat string
+-- %extension.tinymist.config.tinymist.syntaxOnly.desc%
+-- 
+-- ```lua
+-- default = "auto"
+-- ```
+---@field syntaxOnly "auto" | "onPowerSaving" | "enable" | "disable"
 -- %extension.tinymist.config.tinymist.systemFonts.desc%
 -- 
 -- ```lua

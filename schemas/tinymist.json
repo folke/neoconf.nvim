@@ -450,6 +450,24 @@
       "title": "%extension.tinymist.config.tinymist.statusBarFormat.title%",
       "type": "string"
     },
+    "tinymist.syntaxOnly": {
+      "default": "auto",
+      "enum": [
+        "auto",
+        "onPowerSaving",
+        "enable",
+        "disable"
+      ],
+      "enumDescriptions": [
+        "%extension.tinymist.config.tinymist.syntaxOnly.string.enum.auto%",
+        "%extension.tinymist.config.tinymist.syntaxOnly.string.enum.onPowerSaving%",
+        "%extension.tinymist.config.tinymist.syntaxOnly.string.enum.enable%",
+        "%extension.tinymist.config.tinymist.syntaxOnly.string.enum.disable%"
+      ],
+      "markdownDescription": "%extension.tinymist.config.tinymist.syntaxOnly.desc%",
+      "title": "%extension.tinymist.config.tinymist.syntaxOnly.title%",
+      "type": "string"
+    },
     "tinymist.systemFonts": {
       "default": true,
       "markdownDescription": "%extension.tinymist.config.tinymist.systemFonts.desc%",
