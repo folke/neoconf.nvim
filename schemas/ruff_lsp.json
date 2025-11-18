@@ -58,7 +58,7 @@
           "type": "object"
         }
       ],
-      "scope": "window",
+      "scope": "resource",
       "type": [
         "string",
         "object"
