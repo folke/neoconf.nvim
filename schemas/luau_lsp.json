@@ -488,7 +488,7 @@
       "additionalProperties": {
         "type": "string"
       },
-      "default": [],
+      "default": {},
       "markdownDescription": "A mapping of package names to paths of definition files to load in to the type checker. Note that definition file syntax is currently unstable and may change at any time",
       "scope": "window",
       "type": "object"

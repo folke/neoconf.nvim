@@ -256,6 +256,9 @@
             "changedDirectories": {
               "type": "boolean"
             },
+            "compilerStage": {
+              "type": "boolean"
+            },
             "completion": {
               "type": "boolean"
             },
@@ -266,6 +269,9 @@
               "type": "boolean"
             },
             "foundDirectories": {
+              "type": "boolean"
+            },
+            "gcStats": {
               "type": "boolean"
             },
             "message": {
@@ -284,6 +290,9 @@
               "type": "boolean"
             },
             "removedDirectory": {
+              "type": "boolean"
+            },
+            "retyping": {
               "type": "boolean"
             },
             "reusing": {
