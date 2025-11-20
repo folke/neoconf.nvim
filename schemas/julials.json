@@ -216,6 +216,12 @@
       "markdownDescription": "Enable type hints for variable definitions:\n```julia\nfoo #=::Int64=# = 42\n```",
       "type": "boolean"
     },
+    "julia.juliaup.install.hint": {
+      "default": true,
+      "description": "Show Juliaup install recommendation.",
+      "scope": "machine-overridable",
+      "type": "boolean"
+    },
     "julia.languageServerExecutablePath": {
       "default": "",
       "description": "Points to the julia executable used to launch the language server process. This overwrites julia.executablePath for the language server launch if present.",

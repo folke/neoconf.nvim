@@ -6779,6 +6779,17 @@
 ---@field runtime _.lspconfig.settings.julials.Runtime
 ---@field static _.lspconfig.settings.julials.Static
 
+---@class _.lspconfig.settings.julials.Install
+-- Show Juliaup install recommendation.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field hint boolean
+
+---@class _.lspconfig.settings.julials.Juliaup
+---@field install _.lspconfig.settings.julials.Install
+
 ---@class _.lspconfig.settings.julials.Lint
 -- This compares call signatures against all known methods for the called function. Calls with too many or too few arguments, or unknown keyword parameters are highlighted.
 -- 
@@ -6964,6 +6975,7 @@
 -- Whether to automatically show the plot navigator when plotting.
 ---@field focusPlotNavigator boolean
 ---@field inlayHints _.lspconfig.settings.julials.InlayHints
+---@field juliaup _.lspconfig.settings.julials.Juliaup
 -- Points to the julia executable used to launch the language server process. This overwrites julia.executablePath for the language server launch if present.
 -- 
 -- ```lua
