@@ -1080,6 +1080,11 @@
       "markdownDescription": "Show inlay hints for the implied type parameter `Sized` bound.",
       "type": "boolean"
     },
+    "rust-analyzer.inlayHints.impliedDynTraitHints.enable": {
+      "default": true,
+      "markdownDescription": "Show inlay hints for the implied `dyn` keyword in trait object types.",
+      "type": "boolean"
+    },
     "rust-analyzer.inlayHints.lifetimeElisionHints.enable": {
       "default": "never",
       "enum": [

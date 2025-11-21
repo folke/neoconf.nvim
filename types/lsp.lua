@@ -5368,18 +5368,14 @@
 ---@field usages _.lspconfig.settings.intelephense.Usages
 
 ---@class _.lspconfig.settings.intelephense.Compatibility
--- Resolves `ArrayAccess` and `Traversable` implementations that are unioned with a typed array to generic syntax. eg `ArrayAccessOrTraversable|ElementType[]` => `ArrayAccessOrTraversable<mixed, ElementType>`.
+-- Resolves `ArrayAccess` and `Traversable` implementations that are unioned with a typed array to generic syntax.
+-- 
+-- For example: `ArrayAccessAndTraversable|Element[]` => `ArrayAccessAndTraversable&ArrayAccess<int, Element>&Traversable<int, Element>`.
 -- 
 -- ```lua
 -- default = true
 -- ```
 ---@field correctForArrayAccessArrayAndTraversableArrayUnionTypes boolean
--- Resolves `BaseClass|static` union types to `static` instead of `BaseClass`.
--- 
--- ```lua
--- default = true
--- ```
----@field correctForBaseClassStaticUnionTypes boolean
 -- Prefer `@psalm-` and `@phpstan-` prefixed `@return`, `@var`, `@param` tags when determining symbol types.
 ---@field preferPsalmPhpstanPrefixedAnnotations boolean
 
@@ -5577,7 +5573,7 @@
 -- A semver compatible string that represents the target PHP version. Used for providing version appropriate suggestions and diagnostics. PHP 5.3.0 and greater supported.
 -- 
 -- ```lua
--- default = "8.4.0"
+-- default = "8.5.0"
 -- ```
 ---@field phpVersion string
 -- When enabled '<?' will be parsed as a PHP open tag. Defaults to true.
@@ -10454,8 +10450,6 @@
 -- default = {}
 -- ```
 ---@class _.lspconfig.settings.omnisharp.ComponentPaths
--- %configuration.dotnet.server.componentPaths.razorDevKit%
----@field razorDevKit string
 -- %configuration.dotnet.server.componentPaths.razorExtension%
 ---@field razorExtension string
 -- %configuration.dotnet.server.componentPaths.roslynCopilot%
@@ -10872,12 +10866,6 @@
 ---@field enable boolean
 
 ---@class _.lspconfig.settings.omnisharp.LanguageServer
--- %configuration.razor.languageServer.cohostingEnabled%
--- 
--- ```lua
--- default = true
--- ```
----@field cohostingEnabled boolean
 -- %configuration.razor.languageServer.debug%
 ---@field debug boolean
 -- %configuration.razor.languageServer.directory%
@@ -14509,6 +14497,14 @@
 -- Show inlay hints for the implied type parameter `Sized` bound.
 ---@field enable boolean
 
+---@class _.lspconfig.settings.rust_analyzer.ImpliedDynTraitHints
+-- Show inlay hints for the implied `dyn` keyword in trait object types.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enable boolean
+
 ---@class _.lspconfig.settings.rust_analyzer.LifetimeElisionHints
 -- Show inlay type hints for elided lifetimes in function signatures.
 -- 
@@ -14576,6 +14572,7 @@
 ---@field genericParameterHints _.lspconfig.settings.rust_analyzer.GenericParameterHints
 ---@field implicitDrops _.lspconfig.settings.rust_analyzer.ImplicitDrops
 ---@field implicitSizedBoundHints _.lspconfig.settings.rust_analyzer.ImplicitSizedBoundHints
+---@field impliedDynTraitHints _.lspconfig.settings.rust_analyzer.ImpliedDynTraitHints
 ---@field lifetimeElisionHints _.lspconfig.settings.rust_analyzer.LifetimeElisionHints
 -- Maximum length for inlay hints. Set to null to have an unlimited length.
 -- 
