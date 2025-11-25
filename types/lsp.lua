@@ -6150,6 +6150,17 @@
 ---@field onType _.lspconfig.settings.jdtls.OnType
 ---@field settings _.lspconfig.settings.jdtls.Settings
 
+---@class _.lspconfig.settings.jdtls.Javadoc
+-- Enable/disable displaying Javadoc on hover.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enabled boolean
+
+---@class _.lspconfig.settings.jdtls.Hover
+---@field javadoc _.lspconfig.settings.jdtls.Javadoc
+
 ---@class _.lspconfig.settings.jdtls.AnnotationProcessing
 -- Enable/disable the annotation processing on Gradle projects and delegate Annotation Processing to JDT APT. Only works for Gradle 5.2 or higher.
 -- 
@@ -6614,6 +6625,7 @@
 -- On Windows, backslashes must be escaped, i.e.
 -- "java.home":"C:\\Program Files\\Java\\jdk-21.0_5"
 ---@field home string
+---@field hover _.lspconfig.settings.jdtls.Hover
 -- Enable/disable the implementations code lens for the provided categories.
 -- 
 -- ```lua

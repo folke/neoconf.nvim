@@ -606,6 +606,13 @@
         "null"
       ]
     },
+    "java.hover.javadoc.enabled": {
+      "default": true,
+      "description": "Enable/disable displaying Javadoc on hover.",
+      "order": 5,
+      "scope": "window",
+      "type": "boolean"
+    },
     "java.implementationCodeLens": {
       "default": "none",
       "description": "Enable/disable the implementations code lens for the provided categories.",
