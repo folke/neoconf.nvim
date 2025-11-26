@@ -6912,6 +6912,10 @@
 -- Default directory for saving plots. Can either be relative to the current workspace or absolute.
 ---@field path string
 
+---@class _.lspconfig.settings.julials.Repl
+-- Experimental: Keeps the terminal window around even if the underlying Julia process is terminated to help debugging of fatal errors.
+---@field keepAlive boolean
+
 ---@class _.lspconfig.settings.julials.Trace
 -- Traces the communication between VS Code and the language server.
 -- 
@@ -7011,6 +7015,7 @@
 ---@field packageServer string
 ---@field persistentSession _.lspconfig.settings.julials.PersistentSession
 ---@field plots _.lspconfig.settings.julials.Plots
+---@field repl _.lspconfig.settings.julials.Repl
 -- Request runtime completions from the integrated REPL.
 ---@field runtimeCompletions boolean
 -- Enable display of runtime diagnostics. These diagnostics are provided by packages that overload a `show` method for the `application/vnd.julia-vscode.diagnostics` MIME type.
@@ -11240,14 +11245,6 @@
 ---@field perl _.lspconfig.settings.perlpls.Perl
 ---@field pls _.lspconfig.settings.perlpls.Pls
 
----@class _.lspconfig.settings.powershell_es.BugReporting
--- **Deprecated:** Specifies the URL of the GitHub project in which to generate bug reports.
--- 
--- ```lua
--- default = "https://github.com/PowerShell/vscode-powershell"
--- ```
----@field project string
-
 ---@class _.lspconfig.settings.powershell_es.Buttons
 -- Show buttons in the editor's title bar for moving the terminals pane (with the PowerShell Extension Terminal) around.
 ---@field showPanelMovementButtons boolean
@@ -11523,7 +11520,6 @@
 ---@class _.lspconfig.settings.powershell_es.Powershell
 -- Specifies to search for references only within open documents instead of all workspace files. An alternative to `#powershell.enableReferencesCodeLens#` that allows large workspaces to support some references without the performance impact.
 ---@field analyzeOpenDocumentsOnly boolean
----@field bugReporting _.lspconfig.settings.powershell_es.BugReporting
 ---@field buttons _.lspconfig.settings.powershell_es.Buttons
 ---@field codeFolding _.lspconfig.settings.powershell_es.CodeFolding
 ---@field codeFormatting _.lspconfig.settings.powershell_es.CodeFormatting

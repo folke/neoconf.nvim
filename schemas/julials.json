@@ -370,6 +370,12 @@
       "scope": "window",
       "type": "string"
     },
+    "julia.repl.keepAlive": {
+      "default": false,
+      "markdownDescription": "Experimental: Keeps the terminal window around even if the underlying Julia process is terminated to help debugging of fatal errors.",
+      "scope": "machine-overridable",
+      "type": "boolean"
+    },
     "julia.runtimeCompletions": {
       "default": false,
       "description": "Request runtime completions from the integrated REPL.",

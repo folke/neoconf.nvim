@@ -7,12 +7,6 @@
       "markdownDescription": "Specifies to search for references only within open documents instead of all workspace files. An alternative to `#powershell.enableReferencesCodeLens#` that allows large workspaces to support some references without the performance impact.",
       "type": "boolean"
     },
-    "powershell.bugReporting.project": {
-      "default": "https://github.com/PowerShell/vscode-powershell",
-      "markdownDeprecationMessage": "**Deprecated:** This setting was never meant to be changed!",
-      "markdownDescription": "**Deprecated:** Specifies the URL of the GitHub project in which to generate bug reports.",
-      "type": "string"
-    },
     "powershell.buttons.showPanelMovementButtons": {
       "default": false,
       "markdownDescription": "Show buttons in the editor's title bar for moving the terminals pane (with the PowerShell Extension Terminal) around.",
