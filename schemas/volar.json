@@ -32,14 +32,29 @@
       "markdownDescription": "%configuration.editor.templateInterpolationDecorators%",
       "type": "boolean"
     },
+    "vue.format.script.enabled": {
+      "default": true,
+      "markdownDescription": "%configuration.format.script.enabled%",
+      "type": "boolean"
+    },
     "vue.format.script.initialIndent": {
       "default": false,
       "markdownDescription": "%configuration.format.script.initialIndent%",
       "type": "boolean"
     },
+    "vue.format.style.enabled": {
+      "default": true,
+      "markdownDescription": "%configuration.format.style.enabled%",
+      "type": "boolean"
+    },
     "vue.format.style.initialIndent": {
       "default": false,
       "markdownDescription": "%configuration.format.style.initialIndent%",
+      "type": "boolean"
+    },
+    "vue.format.template.enabled": {
+      "default": true,
+      "markdownDescription": "%configuration.format.template.enabled%",
       "type": "boolean"
     },
     "vue.format.template.initialIndent": {
