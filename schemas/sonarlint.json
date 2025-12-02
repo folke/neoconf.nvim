@@ -5,7 +5,7 @@
     "sonarlint.analysisExcludesStandalone": {
       "default": "",
       "markdownDescription": "Files whose name match this [glob pattern](https://docs.oracle.com/javase/tutorial/essential/io/fileOps.html#glob) will not be processed by analyzers. In [Connected Mode](command:SonarLint.HelpAndFeedbackLinkClicked?%22connectedModeDocs%22) with SonarQube Server or SonarQube Cloud, this property will be ignored and the server's exclusion settings will be applied. No rules are evaluated on excluded files. Example: `**/lib/**,**/*generated*`",
-      "order": 13,
+      "order": 9,
       "scope": "resource",
       "type": "string"
     },
@@ -25,7 +25,7 @@
     "sonarlint.automaticAnalysis": {
       "default": true,
       "markdownDescription": "Enable or disable on-the-fly analysis of files you work on. When enabled, SonarQube for IDE will automatically analyze open files and show findings in real-time.",
-      "order": 5,
+      "order": 4,
       "scope": "application",
       "type": "boolean"
     },
@@ -75,7 +75,7 @@
         "type": "object"
       },
       "markdownDescription": "Connect SonarQube for IDE to SonarQube Cloud to apply the same code quality and security standards as your team. Analyze more languages, detect more issues **on the whole project**, receive notifications about the quality gate status, and more. Quality Profiles and file exclusion settings defined on the server are shared between all connected users. Please find the documentation [here](https://docs.sonarsource.com/sonarqube-for-vs-code/connect-your-ide/connected-mode/)",
-      "order": 3,
+      "order": 2,
       "scope": "application",
       "type": "array"
     },
@@ -117,7 +117,7 @@
         "type": "object"
       },
       "markdownDescription": "Connect SonarQube for IDE to SonarQube Server to apply the same code quality and security standards as your team. Analyze more languages, detect more issues **on the whole project**, receive notifications about the quality gate status, and more. Quality Profiles and file exclusion settings defined on the server are shared between all connected users. Please find the documentation [here](https://docs.sonarsource.com/sonarqube-for-vs-code/connect-your-ide/connected-mode/)",
-      "order": 2,
+      "order": 1,
       "scope": "application",
       "type": "array"
     },
@@ -171,7 +171,7 @@
         }
       ],
       "markdownDescription": "Bind the current workspace folder to a [SonarQube Server](command:SonarLint.HelpAndFeedbackLinkClicked?%22sonarQubeProductPage%22) or [SonarQube Cloud](command:SonarLint.HelpAndFeedbackLinkClicked?%5B%7B%22id%22%3A%22sonarCloudProductPage%22%2C%22utm%22%3A%7B%22content%22%3A%22settings-connected-mode%22%2C%22term%22%3A%22bind-current-workspace%22%7D%7D%5D) project. Requires connection details to be defined in the setting `#sonarlint.connectedMode.connections.sonarqube#` or `#sonarlint.connectedMode.connections.sonarcloud#`.\n\nBinding a workspace folder to a server project allows SonarQube for VS Code to match, as much as possible, the same rules and settings as found on the server, and hence share the analysis configuration with other contributors.\n\nExample:\n\n    \"sonarlint.connectedMode.project\": {\n      \"projectKey\": \"my_project\",\n      \"connectionId\":\"my_connection_id\"\n    }\n\n",
-      "order": 4,
+      "order": 3,
       "scope": "resource"
     },
     "sonarlint.connectedMode.servers": {
@@ -205,32 +205,41 @@
     "sonarlint.disableTelemetry": {
       "default": false,
       "markdownDescription": "Disable sending anonymous usage statistics to SonarSource. Click [here](https://github.com/SonarSource/sonarlint-vscode/blob/master/telemetry-sample.md) to see a sample of the data that are collected.",
-      "order": 99,
+      "order": 100,
       "scope": "window",
       "type": "boolean"
     },
     "sonarlint.earlyAccess.showRegionSelection": {
       "default": false,
       "markdownDescription": "Show region selection while creating SonarQube Cloud Connection",
+      "order": 14,
       "scope": "machine",
       "type": "boolean"
     },
     "sonarlint.focusOnNewCode": {
       "default": false,
       "markdownDescription": "If enabled, by default, [focusing on new code](https://docs.sonarsource.com/sonarqube-for-vs-code/using/investigating-issues/#focusing-on-new-code) shows issues introduced in the last 30 days.\n\nFor the most accurate and customizable new code definition, use [Connected Mode](https://docs.sonarsource.com/sonarqube-for-vs-code/connect-your-ide/connected-mode) with SonarQube (Server, Cloud).",
-      "order": 100,
+      "order": 13,
       "scope": "machine",
       "type": "boolean"
     },
+    "sonarlint.ideLabsEnabled": {
+      "default": false,
+      "markdownDescription": "Enable or disable [**SonarQube for IDE Labs**](command:SonarQube.Labs.focus) experimental features. Only takes effect after joining SonarQube for IDE Labs.",
+      "order": 5,
+      "scope": "application",
+      "type": "boolean",
+      "when": "sonarqube.ideLabsJoined"
+    },
     "sonarlint.ls.javaHome": {
       "markdownDescription": "Path to a Java Runtime Environment (17 or more recent) used to launch the SonarQube for VS Code Language Server.\n* On Windows, backslashes must be escaped, e.g. `C:\\\\Program Files\\\\Java\\\\jdk-17` \n* On macOS, this path should include the `/Contents/Home` directory, e.g `/Library/Java/JavaVirtualMachines/corretto-17.0.5/Contents/Home`",
-      "order": 20,
+      "order": 11,
       "scope": "machine",
       "type": "string"
     },
     "sonarlint.ls.vmargs": {
       "markdownDescription": "Extra JVM arguments used to launch the SonarLint Language Server. e.g. `-Xmx1024m`",
-      "order": 21,
+      "order": 12,
       "scope": "machine",
       "type": "string"
     },
@@ -243,7 +252,7 @@
     },
     "sonarlint.pathToCompileCommands": {
       "markdownDescription": "Path to the active compilation database, e.g. `C:\\\\Repos\\\\MyProject\\\\compile_commands.json`",
-      "order": 11,
+      "order": 7,
       "scope": "resource",
       "type": "string"
     },
@@ -257,7 +266,7 @@
       "additionalProperties": false,
       "default": {},
       "markdownDescription": "Customize applied rule set. This property contains a list of rules whose activation level or parameter values differ from the one provided by default. In [Connected Mode](command:SonarLint.HelpAndFeedbackLinkClicked?%22connectedModeDocs%22), this configuration is overridden by the projects's Quality Profile, as configured on server side and can be **shared among contributors**. See [SonarLint Rules](command:SonarLint.AllRules.focus) view for the list of **locally** available rules.\n\nExample:\n\n    \"sonarlint.rules\": {\n        \"javascript:S1481\": {\n            \"level\": \"off\",\n         },\n        \"javascript:S103\": {\n            \"level\": \"on\",\n            \"parameters\": {\n                \"maximumLineLength\": \"120\"\n            }\n        }\n    }\n",
-      "order": 1,
+      "order": 6,
       "patternProperties": {
         "^[^:]+:[^:]+$": {
           "markdownDescription": "Property names are rule keys in the form: `repo:key`",
@@ -285,13 +294,14 @@
     "sonarlint.startFlightRecorder": {
       "default": false,
       "markdownDescription": "Start the language server's flight recorder mode.\n\n⚠ **This feature shares detailed information with SonarSource (logs, telemetry events) that may include _confidential_ data, only enable if requested to help investigate an issue.**",
+      "order": 99,
       "scope": "machine",
       "type": "boolean"
     },
     "sonarlint.testFilePattern": {
       "default": "",
       "markdownDescription": "Files whose name match this [glob pattern](https://docs.oracle.com/javase/tutorial/essential/io/fileOps.html#glob) are considered as test files by analyzers. Most rules are *not* evaluated on test files.\n\nIn [Connected Mode](command:SonarLint.HelpAndFeedbackLinkClicked?%22connectedModeDocs%22), this setting is configured **on the server-side** and shared among all contributors.\n\nExample: `**/test/**,**/*test*,**/*Test*`",
-      "order": 12,
+      "order": 8,
       "scope": "resource",
       "type": "string"
     },
