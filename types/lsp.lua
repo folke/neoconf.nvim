@@ -9012,18 +9012,18 @@
 -- default = {}
 -- ```
 ---@field disable string[]
--- Do not diagnose Lua files that use the following scheme.
--- 
--- ```lua
--- default = { "git" }
--- ```
----@field disableScheme string[]
 -- Enable diagnostics.
 -- 
 -- ```lua
 -- default = true
 -- ```
 ---@field enable boolean
+-- TODO: Needs documentation
+-- 
+-- ```lua
+-- default = { "file" }
+-- ```
+---@field enableScheme string[]
 -- Defined global variables.
 -- 
 -- ```lua
