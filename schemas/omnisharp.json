@@ -497,6 +497,14 @@
       ],
       "type": "boolean"
     },
+    "dotnet.projects.enableFileBasedProgramsWhenAmbiguous": {
+      "default": true,
+      "description": "%configuration.dotnet.projects.enableFileBasedProgramsWhenAmbiguous%",
+      "tags": [
+        "preview"
+      ],
+      "type": "boolean"
+    },
     "dotnet.quickInfo.showRemarksInQuickInfo": {
       "default": "true",
       "description": "%configuration.dotnet.quickInfo.showRemarksInQuickInfo%",
