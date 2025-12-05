@@ -164,6 +164,12 @@
       "scope": "window",
       "type": "boolean"
     },
+    "julia.execution.module": {
+      "default": "",
+      "markdownDescription": "Global override for the code execution module. Leave empty to automatically choose a context module.",
+      "scope": "global",
+      "type": "string"
+    },
     "julia.execution.resultType": {
       "default": "both",
       "description": "Specifies how to show inline execution results",

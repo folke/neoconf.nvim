@@ -1148,6 +1148,11 @@
       "markdownDescription": "Hide inlay parameter type hints for closures.",
       "type": "boolean"
     },
+    "rust-analyzer.inlayHints.typeHints.hideInferredTypes": {
+      "default": false,
+      "markdownDescription": "Hide inlay type hints for inferred types.",
+      "type": "boolean"
+    },
     "rust-analyzer.inlayHints.typeHints.hideNamedConstructor": {
       "default": false,
       "markdownDescription": "Hide inlay type hints for constructors.",
