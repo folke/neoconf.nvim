@@ -528,6 +528,11 @@
         "null"
       ]
     },
+    "pylsp.signature.include_docstring": {
+      "default": true,
+      "description": "Include signature docstring.",
+      "type": "boolean"
+    },
     "pylsp.signature.line_length": {
       "default": 88,
       "description": "Maximum line length in signatures.",
