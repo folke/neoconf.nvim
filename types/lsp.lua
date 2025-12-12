@@ -2173,7 +2173,13 @@
 -- default = "flutter-default"
 -- ```
 ---@field flutterWebRenderer "flutter-default" | "canvaskit" | "html" | "auto"
--- Where to display the Flutter Widget Preview.
+-- Controls whether the Widget Preview is enabled, and if so whether it is started eagerly or lazily. Starting lazily will avoid consuming any resources until you first use the Widget Preview, but will cause the first load to be slower. Requires restart.
+-- 
+-- ```lua
+-- default = "startLazily"
+-- ```
+---@field flutterWidgetPreview "startEagerly" | "startLazily" | "disabled"
+-- Where to display the Flutter Widget Preview. Requires restart.
 -- 
 -- ```lua
 -- default = "sidebar"

@@ -879,6 +879,22 @@
       "markdownDescription": "Sets the [Web renderer](https://flutter.dev/to/web-renderers) used for Flutter web apps.",
       "scope": "window"
     },
+    "dart.flutterWidgetPreview": {
+      "default": "startLazily",
+      "enum": [
+        "startEagerly",
+        "startLazily",
+        "disabled"
+      ],
+      "enumDescriptions": [
+        "Start the Widget Preview server immediately when a Flutter project is opened",
+        "Start the Widget Preview server only the first time the preview is shown",
+        "Do not enable the Widget Preview"
+      ],
+      "markdownDescription": "Controls whether the Widget Preview is enabled, and if so whether it is started eagerly or lazily. Starting lazily will avoid consuming any resources until you first use the Widget Preview, but will cause the first load to be slower. Requires restart.",
+      "scope": "window",
+      "type": "string"
+    },
     "dart.flutterWidgetPreviewLocation": {
       "default": "sidebar",
       "enum": [
@@ -889,7 +905,7 @@
         "Open the Flutter Widget Preview beside the active editor",
         "Open the Flutter Widget Preview in the sidebar"
       ],
-      "markdownDescription": "Where to display the Flutter Widget Preview.",
+      "markdownDescription": "Where to display the Flutter Widget Preview. Requires restart.",
       "scope": "window",
       "type": "string"
     },
