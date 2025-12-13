@@ -228,6 +228,11 @@
       "scope": "machine-overridable",
       "type": "boolean"
     },
+    "julia.juliaup.server": {
+      "description": "Juliaup mirror. Defaults to the official sources.",
+      "scope": "resource",
+      "type": "string"
+    },
     "julia.languageServerExecutablePath": {
       "default": "",
       "description": "Points to the julia executable used to launch the language server process. This overwrites julia.executablePath for the language server launch if present.",
