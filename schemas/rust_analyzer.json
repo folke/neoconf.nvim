@@ -1108,6 +1108,11 @@
       "markdownDescription": "Show function parameter name inlay hints at the call site.",
       "type": "boolean"
     },
+    "rust-analyzer.inlayHints.parameterHints.missingArguments.enable": {
+      "default": false,
+      "markdownDescription": "Show parameter name inlay hints for missing arguments at the call site.",
+      "type": "boolean"
+    },
     "rust-analyzer.inlayHints.rangeExclusiveHints.enable": {
       "default": false,
       "markdownDescription": "Show exclusive range inlay hints.",

@@ -22,7 +22,8 @@
         "^\\s?#\\s#+",
         "^##(?!#)",
         "^#(\\s?)%%",
-        "^#-"
+        "^#-",
+        "^#+"
       ],
       "description": "Cell delimiter regular expressions for Julia files.",
       "type": "array"
@@ -148,7 +149,7 @@
     },
     "julia.executablePath": {
       "default": "",
-      "description": "Points to the julia executable.",
+      "markdownDescription": "Points to the Julia executable. This can either be an absolute path, an executable on your PATH, or a juliaup channel (valid formats `julia +$channel`, `+$channel`).",
       "scope": "machine-overridable",
       "type": "string"
     },
