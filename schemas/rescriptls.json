@@ -36,11 +36,6 @@
       "description": "(beta/experimental) Enable incremental type checking across files, so that unsaved file A gets access to unsaved file B.",
       "type": "boolean"
     },
-    "rescript.settings.incrementalTypechecking.debugLogging": {
-      "default": false,
-      "description": "(debug) Enable debug logging (ends up in the extension output).",
-      "type": "boolean"
-    },
     "rescript.settings.incrementalTypechecking.enable": {
       "default": true,
       "description": "Enable incremental type checking.",
@@ -59,6 +54,17 @@
         "null",
         "integer"
       ]
+    },
+    "rescript.settings.logLevel": {
+      "default": "info",
+      "description": "Verbosity of ReScript language server logs sent to the Output channel.",
+      "enum": [
+        "error",
+        "warn",
+        "info",
+        "log"
+      ],
+      "type": "string"
     },
     "rescript.settings.platformPath": {
       "default": null,
