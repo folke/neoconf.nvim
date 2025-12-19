@@ -7959,6 +7959,12 @@
 -- default = "Replace"
 -- ```
 ---@field keywordSnippet "Disable" | "Both" | "Replace"
+-- Maximum number of fields to analyze for completions. When an object has more fields than this limit, completions will require more specific input to appear.
+-- 
+-- ```lua
+-- default = 100
+-- ```
+---@field maxSuggestCount integer
 -- The symbol used to trigger the postfix suggestion.
 -- 
 -- ```lua

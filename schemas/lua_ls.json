@@ -82,6 +82,12 @@
       "scope": "resource",
       "type": "string"
     },
+    "Lua.completion.maxSuggestCount": {
+      "default": 100,
+      "markdownDescription": "Maximum number of fields to analyze for completions. When an object has more fields than this limit, completions will require more specific input to appear.",
+      "scope": "resource",
+      "type": "integer"
+    },
     "Lua.completion.postfix": {
       "default": "@",
       "markdownDescription": "The symbol used to trigger the postfix suggestion.",
