@@ -76,6 +76,11 @@
       "markdownDescription": "%configuration.format.wrapAttributes%",
       "type": "string"
     },
+    "vue.hover.rich": {
+      "default": false,
+      "markdownDescription": "%configuration.hover.rich%",
+      "type": "boolean"
+    },
     "vue.inlayHints.destructuredProps": {
       "default": false,
       "markdownDescription": "%configuration.inlayHints.destructuredProps%",
