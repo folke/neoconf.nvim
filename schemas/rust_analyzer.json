@@ -624,6 +624,12 @@
       "markdownDescription": "Controls file watching implementation.",
       "type": "string"
     },
+    "rust-analyzer.gc.frequency": {
+      "default": 1000,
+      "markdownDescription": "This config controls the frequency in which rust-analyzer will perform its internal Garbage\nCollection. It is specified in revisions, roughly equivalent to number of changes. The default\nis 1000.\n\nSetting a smaller value may help limit peak memory usage at the expense of speed.",
+      "minimum": 0,
+      "type": "integer"
+    },
     "rust-analyzer.gotoImplementations.filterAdjacentDerives": {
       "default": false,
       "markdownDescription": "If this is `true`, when \"Goto Implementations\" and in \"Implementations\" lens, are triggered on a `struct` or `enum` or `union`, we filter out trait implementations that originate from `derive`s above the type.",
