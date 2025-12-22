@@ -18685,6 +18685,12 @@
 -- default = "ESNext"
 -- ```
 ---@field module "CommonJS" | "AMD" | "System" | "UMD" | "ES6" | "ES2015" | "ES2020" | "ESNext" | "None" | "ES2022" | "Node12" | "NodeNext"
+-- Enable/disable [strict mode](https://www.typescriptlang.org/tsconfig#strict) in JavaScript and TypeScript files that are not part of a project. Existing `jsconfig.json` or `tsconfig.json` files override this setting.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field strict boolean
 -- Enable/disable [strict function types](https://www.typescriptlang.org/tsconfig#strictFunctionTypes) in JavaScript and TypeScript files that are not part of a project. Existing `jsconfig.json` or `tsconfig.json` files override this setting.
 -- 
 -- ```lua
@@ -18700,7 +18706,7 @@
 -- Set target JavaScript language version for emitted JavaScript and include library declarations. See more: https://www.typescriptlang.org/tsconfig#target.
 -- 
 -- ```lua
--- default = "ES2022"
+-- default = "ES2024"
 -- ```
 ---@field target "ES3" | "ES5" | "ES6" | "ES2015" | "ES2016" | "ES2017" | "ES2018" | "ES2019" | "ES2020" | "ES2021" | "ES2022" | "ES2023" | "ES2024" | "ESNext"
 
@@ -18799,6 +18805,8 @@
 ---@class _.lspconfig.settings.vtsls.ImplementationsCodeLens
 -- Enable/disable implementations CodeLens. This CodeLens shows the implementers of an interface.
 ---@field enabled boolean
+-- Enable/disable showing implementations CodeLens above all class methods instead of only on abstract methods.
+---@field showOnAllClassMethods boolean
 -- Enable/disable implementations CodeLens on interface methods.
 ---@field showOnInterfaceMethods boolean
 
@@ -19093,7 +19101,7 @@
 -- ```lua
 -- default = "off"
 -- ```
----@field log "off" | "terse" | "normal" | "verbose"
+---@field log "off" | "terse" | "normal" | "verbose" | "requestTime"
 -- The maximum amount of memory (in MB) to allocate to the TypeScript server process. To use a memory limit greater than 4 GB, use `#typescript.tsserver.nodePath#` to run TS Server with a custom Node installation.
 -- 
 -- ```lua

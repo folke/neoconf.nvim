@@ -468,6 +468,11 @@
       "markdownDescription": "Sets the module system for the program. See more: https://www.typescriptlang.org/tsconfig#module.",
       "type": "string"
     },
+    "js/ts.implicitProjectConfig.strict": {
+      "default": true,
+      "markdownDescription": "Enable/disable [strict mode](https://www.typescriptlang.org/tsconfig#strict) in JavaScript and TypeScript files that are not part of a project. Existing `jsconfig.json` or `tsconfig.json` files override this setting.",
+      "type": "boolean"
+    },
     "js/ts.implicitProjectConfig.strictFunctionTypes": {
       "default": true,
       "markdownDescription": "Enable/disable [strict function types](https://www.typescriptlang.org/tsconfig#strictFunctionTypes) in JavaScript and TypeScript files that are not part of a project. Existing `jsconfig.json` or `tsconfig.json` files override this setting.",
@@ -479,7 +484,7 @@
       "type": "boolean"
     },
     "js/ts.implicitProjectConfig.target": {
-      "default": "ES2022",
+      "default": "ES2024",
       "enum": [
         "ES3",
         "ES5",
@@ -617,6 +622,11 @@
     "typescript.implementationsCodeLens.enabled": {
       "default": false,
       "description": "Enable/disable implementations CodeLens. This CodeLens shows the implementers of an interface.",
+      "type": "boolean"
+    },
+    "typescript.implementationsCodeLens.showOnAllClassMethods": {
+      "default": false,
+      "description": "Enable/disable showing implementations CodeLens above all class methods instead of only on abstract methods.",
       "type": "boolean"
     },
     "typescript.implementationsCodeLens.showOnInterfaceMethods": {
@@ -1027,7 +1037,8 @@
         "off",
         "terse",
         "normal",
-        "verbose"
+        "verbose",
+        "requestTime"
       ],
       "type": "string"
     },
