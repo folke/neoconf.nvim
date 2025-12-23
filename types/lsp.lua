@@ -6962,7 +6962,7 @@
 -- Cell delimiter regular expressions for Julia files.
 -- 
 -- ```lua
--- default = { "^\\s?#\\s#+", "^##(?!#)", "^#(\\s?)%%", "^#-", "^#+" }
+-- default = { "^\\s?#\\s#+", "^##(?!#)", "^#(\\s?)%%", "^##(\\s?)-", "^##(\\s?)\\+" }
 -- ```
 ---@field cellDelimiters any[]
 -- Sets the mode for completions.
