@@ -241,6 +241,12 @@
       ],
       "type": "boolean"
     },
+    "luau-lsp.format.convertQuotes": {
+      "default": false,
+      "markdownDescription": "Whether to automatically convert single/double quotes to backticks when typing `{` inside strings",
+      "scope": "resource",
+      "type": "boolean"
+    },
     "luau-lsp.hover.enabled": {
       "default": true,
       "markdownDescription": "Enable hover",

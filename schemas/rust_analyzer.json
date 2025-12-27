@@ -1349,6 +1349,11 @@
       "markdownDescription": "Exclude tests from find-all-references and call-hierarchy.",
       "type": "boolean"
     },
+    "rust-analyzer.rename.showConflicts": {
+      "default": true,
+      "markdownDescription": "Whether to warn when a rename will cause conflicts (change the meaning of the code).",
+      "type": "boolean"
+    },
     "rust-analyzer.restartServerOnConfigChange": {
       "default": false,
       "description": "Restart the server automatically when settings that require a restart are changed.",

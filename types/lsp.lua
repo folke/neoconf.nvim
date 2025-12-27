@@ -9858,6 +9858,10 @@
 -- ```
 ---@field sync boolean
 
+---@class _.lspconfig.settings.luau_lsp.Format
+-- Whether to automatically convert single/double quotes to backticks when typing `{` inside strings
+---@field convertQuotes boolean
+
 ---@class _.lspconfig.settings.luau_lsp.Hover
 -- Enable hover
 -- 
@@ -10079,6 +10083,7 @@
 ---@field completion _.lspconfig.settings.luau_lsp.Completion
 ---@field diagnostics _.lspconfig.settings.luau_lsp.Diagnostics
 ---@field fflags _.lspconfig.settings.luau_lsp.Fflags
+---@field format _.lspconfig.settings.luau_lsp.Format
 ---@field hover _.lspconfig.settings.luau_lsp.Hover
 -- Diagnostics will not be reported for any file matching these globs unless the file is currently open
 -- 
@@ -14832,6 +14837,14 @@
 -- Exclude tests from find-all-references and call-hierarchy.
 ---@field excludeTests boolean
 
+---@class _.lspconfig.settings.rust_analyzer.Rename
+-- Whether to warn when a rename will cause conflicts (change the meaning of the code).
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field showConflicts boolean
+
 ---@class _.lspconfig.settings.rust_analyzer.Runnables
 -- Ask before updating the test when running it.
 -- 
@@ -15277,6 +15290,7 @@
 ---@field procMacro _.lspconfig.settings.rust_analyzer.ProcMacro
 ---@field profiling _.lspconfig.settings.rust_analyzer.Profiling
 ---@field references _.lspconfig.settings.rust_analyzer.References
+---@field rename _.lspconfig.settings.rust_analyzer.Rename
 -- Restart the server automatically when settings that require a restart are changed.
 ---@field restartServerOnConfigChange boolean
 ---@field runnables _.lspconfig.settings.rust_analyzer.Runnables
