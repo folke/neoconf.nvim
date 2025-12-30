@@ -1358,12 +1358,39 @@
       "markdownDescription": "Ask before updating the test when running it.",
       "type": "boolean"
     },
+    "rust-analyzer.runnables.bench.command": {
+      "default": "bench",
+      "markdownDescription": "Subcommand used for bench runnables instead of `bench`.",
+      "type": "string"
+    },
+    "rust-analyzer.runnables.bench.overrideCommand": {
+      "default": null,
+      "items": {
+        "type": "string"
+      },
+      "markdownDescription": "Override the command used for bench runnables.\nThe first element of the array should be the program to execute (for example, `cargo`).\n\nUse the placeholders `${package}`, `${target_arg}`, `${target}`, `${test_name}` to dynamically\nreplace the package name, target option (such as `--bin` or `--example`), the target name and\nthe test name (name of test function or test mod path).",
+      "type": [
+        "null",
+        "array"
+      ]
+    },
     "rust-analyzer.runnables.command": {
       "default": null,
       "markdownDescription": "Command to be executed instead of 'cargo' for runnables.",
       "type": [
         "null",
         "string"
+      ]
+    },
+    "rust-analyzer.runnables.doctest.overrideCommand": {
+      "default": null,
+      "items": {
+        "type": "string"
+      },
+      "markdownDescription": "Override the command used for bench runnables.\nThe first element of the array should be the program to execute (for example, `cargo`).\n\nUse the placeholders `${package}`, `${target_arg}`, `${target}`, `${test_name}` to dynamically\nreplace the package name, target option (such as `--bin` or `--example`), the target name and\nthe test name (name of test function or test mod path).",
+      "type": [
+        "null",
+        "array"
       ]
     },
     "rust-analyzer.runnables.extraArgs": {
@@ -1431,6 +1458,22 @@
       },
       "markdownDescription": "Problem matchers to use for `rust-analyzer.run` command, eg `[\"$rustc\", \"$rust-panic\"]`.",
       "type": "array"
+    },
+    "rust-analyzer.runnables.test.command": {
+      "default": "test",
+      "markdownDescription": "Subcommand used for test runnables instead of `test`.",
+      "type": "string"
+    },
+    "rust-analyzer.runnables.test.overrideCommand": {
+      "default": null,
+      "items": {
+        "type": "string"
+      },
+      "markdownDescription": "Override the command used for test runnables.\nThe first element of the array should be the program to execute (for example, `cargo`).\n\nUse the placeholders `${package}`, `${target_arg}`, `${target}`, `${test_name}` to dynamically\nreplace the package name, target option (such as `--bin` or `--example`), the target name and\nthe test name (name of test function or test mod path).",
+      "type": [
+        "null",
+        "array"
+      ]
     },
     "rust-analyzer.rustc.source": {
       "default": null,
