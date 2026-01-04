@@ -844,6 +844,12 @@
 -- default = ""
 -- ```
 ---@field baselineFile string
+-- Controls how the baseline file is updated when files are saved.
+-- 
+-- ```lua
+-- default = "auto"
+-- ```
+---@field baselineMode "auto" | "discard"
 -- Path to the directory or file containing the Pyright configuration (`pyrightconfig.json` or `pyproject.toml`). If a directory is specified, basedpyright will search for the config file in that directory. This is useful for monorepo structures where the config file is in a subdirectory. Example: `${workspaceFolder}/backend`
 -- 
 -- ```lua
@@ -9804,6 +9810,18 @@
 -- ```
 ---@field fillCallArguments boolean
 ---@field imports _.lspconfig.settings.luau_lsp.Imports
+-- Whether to show the auto-generated anonymous function completion item when autocompleting callback arguments
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field showAnonymousAutofilledFunction boolean
+-- Whether to show deprecated items in autocomplete suggestions
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field showDeprecatedItems boolean
 -- Whether to show keywords (`if` / `then` / `and` / etc.) during autocomplete
 -- 
 -- ```lua

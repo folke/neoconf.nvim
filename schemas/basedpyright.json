@@ -26,6 +26,20 @@
       "scope": "resource",
       "type": "string"
     },
+    "basedpyright.analysis.baselineMode": {
+      "default": "auto",
+      "enum": [
+        "auto",
+        "discard"
+      ],
+      "enumDescriptions": [
+        "Automatically update the baseline file when baselined errors are fixed.",
+        "Never update the baseline file automatically."
+      ],
+      "markdownDescription": "Controls how the baseline file is updated when files are saved.",
+      "scope": "resource",
+      "type": "string"
+    },
     "basedpyright.analysis.configFilePath": {
       "default": "",
       "markdownDescription": "Path to the directory or file containing the Pyright configuration (`pyrightconfig.json` or `pyproject.toml`). If a directory is specified, basedpyright will search for the config file in that directory. This is useful for monorepo structures where the config file is in a subdirectory. Example: `${workspaceFolder}/backend`",

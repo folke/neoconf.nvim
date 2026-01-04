@@ -158,6 +158,18 @@
       "scope": "resource",
       "type": "boolean"
     },
+    "luau-lsp.completion.showAnonymousAutofilledFunction": {
+      "default": true,
+      "markdownDescription": "Whether to show the auto-generated anonymous function completion item when autocompleting callback arguments",
+      "scope": "resource",
+      "type": "boolean"
+    },
+    "luau-lsp.completion.showDeprecatedItems": {
+      "default": true,
+      "markdownDescription": "Whether to show deprecated items in autocomplete suggestions",
+      "scope": "resource",
+      "type": "boolean"
+    },
     "luau-lsp.completion.showKeywords": {
       "default": true,
       "markdownDescription": "Whether to show keywords (`if` / `then` / `and` / etc.) during autocomplete",
