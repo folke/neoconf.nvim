@@ -70,6 +70,64 @@
       "title": "%extension.tinymist.config.tinymist.configureDefaultWordSeparator.title%",
       "type": "string"
     },
+    "tinymist.convertExtension": {
+      "anyOf": [
+        {
+          "items": {
+            "anyOf": [
+              {
+                "enum": [
+                  "markdown"
+                ],
+                "enumDescriptions": [
+                  "%extension.tinymist.config.tinymist.convertExtension.items.string.enum.markdown%"
+                ],
+                "markdownDescription": "%extension.tinymist.config.tinymist.convertExtension.items.string.desc%",
+                "title": "%extension.tinymist.config.tinymist.convertExtension.items.string.title%",
+                "type": "string"
+              },
+              {
+                "markdownDescription": "%extension.tinymist.config.tinymist.convertExtension.items.object.desc%",
+                "properties": {
+                  "language": {
+                    "enum": [
+                      "markdown"
+                    ],
+                    "enumDescriptions": [
+                      "%extension.tinymist.config.tinymist.convertExtension.items.string.enum.markdown%"
+                    ],
+                    "markdownDescription": "%extension.tinymist.config.tinymist.convertExtension.items.object.language.desc%",
+                    "title": "%extension.tinymist.config.tinymist.convertExtension.items.object.language.title%",
+                    "type": "string"
+                  },
+                  "processor": {
+                    "default": null,
+                    "markdownDescription": "%extension.tinymist.config.tinymist.convertExtension.items.object.processor.desc%",
+                    "title": "%extension.tinymist.config.tinymist.convertExtension.items.object.processor.title%",
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "showNavigationIcon": {
+                    "default": true,
+                    "markdownDescription": "%extension.tinymist.config.tinymist.convertExtension.items.object.showNavigationIcon.desc%",
+                    "title": "%extension.tinymist.config.tinymist.convertExtension.items.object.showNavigationIcon.title%",
+                    "type": "boolean"
+                  }
+                },
+                "title": "%extension.tinymist.config.tinymist.convertExtension.items.object.title%",
+                "type": "object"
+              }
+            ]
+          },
+          "type": "array"
+        }
+      ],
+      "default": [],
+      "markdownDescription": "%extension.tinymist.config.tinymist.convertExtension.desc%",
+      "title": "%extension.tinymist.config.tinymist.convertExtension.title%"
+    },
     "tinymist.copyAndPaste": {
       "default": "enable",
       "enum": [

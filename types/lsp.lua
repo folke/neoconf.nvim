@@ -13873,10 +13873,18 @@
 -- (i.e., the folder containing the `Cargo.toml`). This can be overwritten
 -- by changing `#rust-analyzer.check.invocationStrategy#`.
 -- 
--- If `$saved_file` is part of the command, rust-analyzer will pass
--- the absolute path of the saved file to the provided command. This is
--- intended to be used with non-Cargo build systems.
--- Note that `$saved_file` is experimental and may be removed in the future.
+-- It supports two interpolation syntaxes, both mainly intended to be used with
+-- [non-Cargo build systems](./non_cargo_based_projects.md):
+-- 
+-- - If `{saved_file}` is part of the command, rust-analyzer will pass
+--     the absolute path of the saved file to the provided command.
+--     (A previous version, `$saved_file`, also works.)
+-- - If `{label}` is part of the command, rust-analyzer will pass the
+--     Cargo package ID, which can be used with `cargo check -p`, or a build label from
+--     `rust-project.json`. If `{label}` is included, rust-analyzer behaves much like
+--     [`"rust-analyzer.check.workspace": false`](#check.workspace).
+-- 
+-- 
 -- 
 -- An example command would be:
 -- 
@@ -15201,8 +15209,8 @@
 ---@class _.lspconfig.settings.rust_analyzer.Workspace
 -- Enables automatic discovery of projects using [`DiscoverWorkspaceConfig::command`].
 -- 
--- [`DiscoverWorkspaceConfig`] also requires setting `progress_label` and `files_to_watch`.
--- `progress_label` is used for the title in progress indicators, whereas `files_to_watch`
+-- [`DiscoverWorkspaceConfig`] also requires setting `progressLabel` and `filesToWatch`.
+-- `progressLabel` is used for the title in progress indicators, whereas `filesToWatch`
 -- is used to determine which build system-specific files should be watched in order to
 -- reload rust-analyzer.
 -- 
@@ -15211,16 +15219,17 @@
 -- "rust-analyzer.workspace.discoverConfig": {
 --         "command": [
 --                 "rust-project",
---                 "develop-json"
+--                 "develop-json",
+--                 "{arg}"
 --         ],
---         "progressLabel": "rust-analyzer",
+--         "progressLabel": "buck2/rust-project",
 --         "filesToWatch": [
 --                 "BUCK"
 --         ]
 -- }
 -- ```
 -- 
--- ## On `DiscoverWorkspaceConfig::command`
+-- ## Workspace Discovery Protocol
 -- 
 -- **Warning**: This format is provisional and subject to change.
 -- 
@@ -17121,6 +17130,12 @@
 -- default = "disable"
 -- ```
 ---@field configureDefaultWordSeparator "enable" | "disable"
+-- %extension.tinymist.config.tinymist.convertExtension.desc%
+-- 
+-- ```lua
+-- default = {}
+-- ```
+---@field convertExtension any[]
 -- %extension.tinymist.config.tinymist.copyAndPaste.desc%
 -- 
 -- ```lua
