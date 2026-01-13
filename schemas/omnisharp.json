@@ -986,6 +986,15 @@
       "description": "%configuration.omnisharp.razor.devmode%",
       "type": "boolean"
     },
+    "razor.format.attributeIndentStyle": {
+      "default": "alignWithFirst",
+      "description": "%configuration.omnisharp.razor.format.attributeIndentStyle%",
+      "enum": [
+        "alignWithFirst",
+        "indentByOne"
+      ],
+      "type": "string"
+    },
     "razor.format.codeBlockBraceOnNextLine": {
       "default": false,
       "description": "%configuration.omnisharp.razor.format.codeBlockBraceOnNextLine%",
