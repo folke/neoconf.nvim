@@ -34,6 +34,22 @@
       ],
       "type": "boolean"
     },
+    "json.schemaDownload.trustedDomains": {
+      "additionalProperties": {
+        "type": "boolean"
+      },
+      "default": {
+        "https://json-schema.org/": true,
+        "https://raw.githubusercontent.com/": true,
+        "https://schemastore.azurewebsites.net/": true,
+        "https://www.schemastore.org/": true
+      },
+      "description": "List of trusted domains for downloading JSON schemas over http(s). Use '*' to trust all domains. '*' can also be used as a wildcard in domain names.",
+      "tags": [
+        "usesOnlineServices"
+      ],
+      "type": "object"
+    },
     "json.schemas": {
       "description": "Associate schemas to JSON files in the current project.",
       "items": {
