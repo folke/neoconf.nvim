@@ -35,7 +35,7 @@
       "type": "boolean"
     },
     "wgsl-analyzer.diagnostics.nagaVersion": {
-      "default": "0.27",
+      "default": "0.28",
       "enum": [
         "0.22",
         "0.27",

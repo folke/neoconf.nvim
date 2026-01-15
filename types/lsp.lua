@@ -2678,6 +2678,8 @@
 ---@field env table
 -- Env file containing additional environment variables to pass to Deno processes. Overrides the user's env. These will be overridden by `deno.env`, more specific settings such as `deno.future` for `DENO_FUTURE`, and invariables like `NO_COLOR=1`.
 ---@field envFile string
+-- Disables the server-capability for pull diagnostics to force push-based diagnostics.
+---@field forcePushBasedDiagnostics boolean
 -- Enable breaking features likely to be shipped in Deno 2.0.
 ---@field future boolean
 -- The file path to an import map. This is the equivalent to using `--import-map` on the command line.
@@ -6342,6 +6344,10 @@
 -- ```
 ---@field enabled "auto" | "on" | "off"
 
+---@class _.lspconfig.settings.jdtls.AspectjSupport
+-- Specify whether to enable `io.freefair.aspectj` plugin in Gradle projects. Defaults to `false`.
+---@field enabled boolean
+
 ---@class _.lspconfig.settings.jdtls.Java
 -- Specifies the folder path to the JDK (21 or more recent) used to launch the Java Language Server. This setting will replace the Java extension's embedded JRE to start the Java Language Server. 
 -- 
@@ -6378,6 +6384,7 @@
 ---@class _.lspconfig.settings.jdtls.Ls
 ---@field androidSupport _.lspconfig.settings.jdtls.AndroidSupport
 ---@field appcds _.lspconfig.settings.jdtls.Appcds
+---@field aspectjSupport _.lspconfig.settings.jdtls.AspectjSupport
 ---@field java _.lspconfig.settings.jdtls.Java
 ---@field javac _.lspconfig.settings.jdtls.Javac
 ---@field lombokSupport _.lspconfig.settings.jdtls.LombokSupport
@@ -19741,7 +19748,7 @@
 -- Naga version used for validation.
 -- 
 -- ```lua
--- default = "0.27"
+-- default = "0.28"
 -- ```
 ---@field nagaVersion "0.22" | "0.27" | "main"
 -- Controls whether to show type errors.

@@ -851,6 +851,13 @@
       "scope": "machine-overridable",
       "type": "string"
     },
+    "java.jdt.ls.aspectjSupport.enabled": {
+      "default": false,
+      "markdownDescription": "Specify whether to enable `io.freefair.aspectj` plugin in Gradle projects. Defaults to `false`.",
+      "order": 80,
+      "scope": "window",
+      "type": "boolean"
+    },
     "java.jdt.ls.java.home": {
       "default": null,
       "description": "Specifies the folder path to the JDK (21 or more recent) used to launch the Java Language Server. This setting will replace the Java extension's embedded JRE to start the Java Language Server. \n\nOn Windows, backslashes must be escaped, i.e.\n\"java.jdt.ls.java.home\":\"C:\\\\Program Files\\\\Java\\\\jdk-21.0_5\"",

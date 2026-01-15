@@ -173,6 +173,16 @@
       "scope": "window",
       "type": "string"
     },
+    "deno.forcePushBasedDiagnostics": {
+      "default": false,
+      "examples": [
+        true,
+        false
+      ],
+      "markdownDescription": "Disables the server-capability for pull diagnostics to force push-based diagnostics.",
+      "scope": "window",
+      "type": "boolean"
+    },
     "deno.future": {
       "default": false,
       "deprecationMessage": "Deno 2.0 has been released. This setting still affects 1.x.x installations, however.",
