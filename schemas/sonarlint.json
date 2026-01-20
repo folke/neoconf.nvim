@@ -291,13 +291,6 @@
       "scope": "application",
       "type": "object"
     },
-    "sonarlint.startFlightRecorder": {
-      "default": false,
-      "markdownDescription": "Start the language server's flight recorder mode.\n\n⚠ **This feature shares detailed information with SonarSource (logs, telemetry events) that may include _confidential_ data, only enable if requested to help investigate an issue.**",
-      "order": 99,
-      "scope": "machine",
-      "type": "boolean"
-    },
     "sonarlint.testFilePattern": {
       "default": "",
       "markdownDescription": "Files whose name match this [glob pattern](https://docs.oracle.com/javase/tutorial/essential/io/fileOps.html#glob) are considered as test files by analyzers. Most rules are *not* evaluated on test files.\n\nIn [Connected Mode](command:SonarLint.HelpAndFeedbackLinkClicked?%22connectedModeDocs%22), this setting is configured **on the server-side** and shared among all contributors.\n\nExample: `**/test/**,**/*test*,**/*Test*`",

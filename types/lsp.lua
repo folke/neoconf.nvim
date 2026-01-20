@@ -6722,6 +6722,7 @@
 -- ```lua
 -- default = {
 --   ["https://json-schema.org/"] = true,
+--   ["https://json.schemastore.org/"] = true,
 --   ["https://raw.githubusercontent.com/"] = true,
 --   ["https://schemastore.azurewebsites.net/"] = true,
 --   ["https://www.schemastore.org/"] = true
@@ -14859,6 +14860,15 @@
 -- default = {}
 -- ```
 ---@field ignored table
+-- Number of proc-macro server processes to spawn.
+-- 
+-- Controls how many independent `proc-macro-srv` processes rust-analyzer
+-- runs in parallel to handle macro expansion.
+-- 
+-- ```lua
+-- default = 1
+-- ```
+---@field processes number|"physical"
 -- Internal config, path to proc-macro server executable.
 ---@field server string
 
@@ -15812,10 +15822,6 @@
 -- default = {}
 -- ```
 ---@field rules table
--- Start the language server's flight recorder mode.
--- 
--- ⚠ **This feature shares detailed information with SonarSource (logs, telemetry events) that may include _confidential_ data, only enable if requested to help investigate an issue.**
----@field startFlightRecorder boolean
 -- Files whose name match this [glob pattern](https://docs.oracle.com/javase/tutorial/essential/io/fileOps.html#glob) are considered as test files by analyzers. Most rules are *not* evaluated on test files.
 -- 
 -- In [Connected Mode](command:SonarLint.HelpAndFeedbackLinkClicked?%22connectedModeDocs%22), this setting is configured **on the server-side** and shared among all contributors.
