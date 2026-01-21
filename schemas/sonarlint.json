@@ -204,7 +204,7 @@
     },
     "sonarlint.disableTelemetry": {
       "default": false,
-      "markdownDescription": "Disable sending anonymous usage statistics to SonarSource. Click [here](https://github.com/SonarSource/sonarlint-vscode/blob/master/telemetry-sample.md) to see a sample of the data that are collected.",
+      "markdownDescription": "By sharing anonymous SonarQube for IDE usage statistics and error data, you help us understand how SonarQube for IDE is used so we can improve the plugin to work even better for you. This data is aggregated and does not contain source code, IP addresses, or any personally identifying information. We utilize Sentry for crash tracking. Check this box to opt-out of this collection. See a [sample of the data](https://github.com/SonarSource/sonarlint-vscode/blob/master/telemetry-sample.md).",
       "order": 100,
       "scope": "window",
       "type": "boolean"

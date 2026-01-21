@@ -15785,7 +15785,7 @@
 -- ```
 ---@field automaticAnalysis boolean
 ---@field connectedMode _.lspconfig.settings.sonarlint.ConnectedMode
--- Disable sending anonymous usage statistics to SonarSource. Click [here](https://github.com/SonarSource/sonarlint-vscode/blob/master/telemetry-sample.md) to see a sample of the data that are collected.
+-- By sharing anonymous SonarQube for IDE usage statistics and error data, you help us understand how SonarQube for IDE is used so we can improve the plugin to work even better for you. This data is aggregated and does not contain source code, IP addresses, or any personally identifying information. We utilize Sentry for crash tracking. Check this box to opt-out of this collection. See a [sample of the data](https://github.com/SonarSource/sonarlint-vscode/blob/master/telemetry-sample.md).
 ---@field disableTelemetry boolean
 ---@field earlyAccess _.lspconfig.settings.sonarlint.EarlyAccess
 -- If enabled, by default, [focusing on new code](https://docs.sonarsource.com/sonarqube-for-vs-code/using/investigating-issues/#focusing-on-new-code) shows issues introduced in the last 30 days.
