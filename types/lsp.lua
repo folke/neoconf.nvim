@@ -16070,6 +16070,8 @@
 ---@field disableSandox boolean
 -- Disables automated Build Tasks, Package Dependency view, Launch configuration generation and TestExplorer.
 ---@field disableSwiftPackageManagerIntegration boolean
+-- Disable the automatic Swiftly installation prompt when no Swift toolchain is found.
+---@field disableSwiftlyInstallPrompt boolean
 -- Controls whether or not the extension will contribute environment variables defined in `Swift: Environment Variables` to the integrated terminal. If this is set to `true` and a custom `Swift: Path` is also set then the swift path is appended to the terminal's `PATH`.
 -- 
 -- ```lua

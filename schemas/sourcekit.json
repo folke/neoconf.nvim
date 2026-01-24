@@ -263,6 +263,13 @@
       "scope": "machine-overridable",
       "type": "boolean"
     },
+    "swift.disableSwiftlyInstallPrompt": {
+      "default": false,
+      "markdownDescription": "Disable the automatic Swiftly installation prompt when no Swift toolchain is found.",
+      "order": 98,
+      "scope": "application",
+      "type": "boolean"
+    },
     "swift.enableTerminalEnvironment": {
       "default": true,
       "markdownDescription": "Controls whether or not the extension will contribute environment variables defined in `Swift: Environment Variables` to the integrated terminal. If this is set to `true` and a custom `Swift: Path` is also set then the swift path is appended to the terminal's `PATH`.",
