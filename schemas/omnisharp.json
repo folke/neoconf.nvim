@@ -977,7 +977,7 @@
     },
     "razor.completion.commitElementsWithSpace": {
       "default": false,
-      "description": "%configuration.omnisharp.razor.completion.commitElementsWithSpace%",
+      "description": "%configuration.razor.razor.completion.commitElementsWithSpace%",
       "scope": "window",
       "type": "boolean"
     },
@@ -988,16 +988,17 @@
     },
     "razor.format.attributeIndentStyle": {
       "default": "alignWithFirst",
-      "description": "%configuration.omnisharp.razor.format.attributeIndentStyle%",
+      "description": "%configuration.razor.razor.format.attributeIndentStyle%",
       "enum": [
         "alignWithFirst",
-        "indentByOne"
+        "indentByOne",
+        "indentByTwo"
       ],
       "type": "string"
     },
     "razor.format.codeBlockBraceOnNextLine": {
       "default": false,
-      "description": "%configuration.omnisharp.razor.format.codeBlockBraceOnNextLine%",
+      "description": "%configuration.razor.razor.format.codeBlockBraceOnNextLine%",
       "scope": "window",
       "type": "boolean"
     },
@@ -1005,24 +1006,6 @@
       "default": true,
       "description": "%configuration.omnisharp.razor.format.enable%",
       "scope": "window",
-      "type": "boolean"
-    },
-    "razor.languageServer.debug": {
-      "default": false,
-      "description": "%configuration.razor.languageServer.debug%",
-      "order": 90,
-      "scope": "machine-overridable",
-      "type": "boolean"
-    },
-    "razor.languageServer.directory": {
-      "description": "%configuration.razor.languageServer.directory%",
-      "order": 90,
-      "scope": "machine-overridable",
-      "type": "string"
-    },
-    "razor.languageServer.suppressLspErrorToasts": {
-      "default": true,
-      "description": "%configuration.razor.languageServer.suppressLspErrorToasts%",
       "type": "boolean"
     },
     "razor.plugin.path": {

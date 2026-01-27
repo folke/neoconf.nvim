@@ -10945,17 +10945,17 @@
 ---@field useModernNet boolean
 
 ---@class _.lspconfig.settings.omnisharp.Completion
--- %configuration.omnisharp.razor.completion.commitElementsWithSpace%
+-- %configuration.razor.razor.completion.commitElementsWithSpace%
 ---@field commitElementsWithSpace boolean
 
 ---@class _.lspconfig.settings.omnisharp.Format
--- %configuration.omnisharp.razor.format.attributeIndentStyle%
+-- %configuration.razor.razor.format.attributeIndentStyle%
 -- 
 -- ```lua
 -- default = "alignWithFirst"
 -- ```
----@field attributeIndentStyle "alignWithFirst" | "indentByOne"
--- %configuration.omnisharp.razor.format.codeBlockBraceOnNextLine%
+---@field attributeIndentStyle "alignWithFirst" | "indentByOne" | "indentByTwo"
+-- %configuration.razor.razor.format.codeBlockBraceOnNextLine%
 ---@field codeBlockBraceOnNextLine boolean
 -- %configuration.omnisharp.razor.format.enable%
 -- 
@@ -10963,18 +10963,6 @@
 -- default = true
 -- ```
 ---@field enable boolean
-
----@class _.lspconfig.settings.omnisharp.LanguageServer
--- %configuration.razor.languageServer.debug%
----@field debug boolean
--- %configuration.razor.languageServer.directory%
----@field directory string
--- %configuration.razor.languageServer.suppressLspErrorToasts%
--- 
--- ```lua
--- default = true
--- ```
----@field suppressLspErrorToasts boolean
 
 ---@class _.lspconfig.settings.omnisharp.Plugin
 -- %configuration.omnisharp.razor.plugin.path%
@@ -10985,7 +10973,6 @@
 -- %configuration.omnisharp.razor.devmode%
 ---@field devmode boolean
 ---@field format _.lspconfig.settings.omnisharp.Format
----@field languageServer _.lspconfig.settings.omnisharp.LanguageServer
 ---@field plugin _.lspconfig.settings.omnisharp.Plugin
 
 ---@class lspconfig.settings.omnisharp
