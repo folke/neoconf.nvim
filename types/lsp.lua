@@ -7014,7 +7014,7 @@
 ---@field enableCrashReporter boolean
 -- Enable usage data and errors to be sent to the julia VS Code extension developers.
 ---@field enableTelemetry boolean
--- Path to a julia environment. VS Code needs to be reloaded for changes to take effect. Explicitly supports substitution for the `${userHome}`, `${workspaceFolder}`, `${workspaceFolderBasename}`, `${workspaceFolder:<FOLDER_NAME>}`, `${pathSeparator}`, `${env:<ENVIRONMENT_VARIABLE>}`, `${config:<CONFIG_VARIABLE>} tokens.
+-- Path to a julia environment. VS Code needs to be reloaded for changes to take effect. Explicitly supports substitution for the `${userHome}`, `${workspaceFolder}`, `${workspaceFolderBasename}`, `${workspaceFolder:<FOLDER_NAME>}`, `${pathSeparator}`, `${env:<ENVIRONMENT_VARIABLE>}`, `${config:<CONFIG_VARIABLE>}` tokens.
 ---@field environmentPath string
 -- Points to the Julia executable. This can either be an absolute path, an executable on your PATH, or a juliaup channel (valid formats `julia +$channel`, `+$channel`).
 -- 
