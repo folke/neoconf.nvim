@@ -1223,6 +1223,13 @@
       "scope": "window",
       "type": "boolean"
     },
+    "java.updateImportsOnPaste.enabled": {
+      "default": true,
+      "description": "Enable/disable auto organize imports when pasting code",
+      "order": 25,
+      "scope": "window",
+      "type": "boolean"
+    },
     "redhat.telemetry.enabled": {
       "default": null,
       "markdownDescription": "Enable usage data and errors to be sent to Red Hat servers. Read our [privacy statement](https://developers.redhat.com/article/tool-data-collection).",

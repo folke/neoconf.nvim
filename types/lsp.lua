@@ -6624,6 +6624,14 @@
 -- Enable/disable lazy loading the content in type hierarchy. Lazy loading could save a lot of loading time but every type should be expanded manually to load its content.
 ---@field lazyLoad boolean
 
+---@class _.lspconfig.settings.jdtls.UpdateImportsOnPaste
+-- Enable/disable auto organize imports when pasting code
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enabled boolean
+
 ---@class _.lspconfig.settings.jdtls.Java
 ---@field autobuild _.lspconfig.settings.jdtls.Autobuild
 ---@field cleanup _.lspconfig.settings.jdtls.Cleanup
@@ -6680,6 +6688,7 @@
 ---@field templates _.lspconfig.settings.jdtls.Templates
 ---@field trace _.lspconfig.settings.jdtls.Trace
 ---@field typeHierarchy _.lspconfig.settings.jdtls.TypeHierarchy
+---@field updateImportsOnPaste _.lspconfig.settings.jdtls.UpdateImportsOnPaste
 
 ---@class _.lspconfig.settings.jdtls.Telemetry
 -- Enable usage data and errors to be sent to Red Hat servers. Read our [privacy statement](https://developers.redhat.com/article/tool-data-collection).
@@ -7072,6 +7081,18 @@
 -- ```
 ---@field symbolserverUpstream string
 ---@field trace _.lspconfig.settings.julials.Trace
+-- Enable highlighting of the current cell delimited by `#julia.cellDelimiters#`.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field useCellHighlighting boolean
+-- Enable CodeLens for showing run actions above cells delimited by `#julia.cellDelimiters#`.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field useCodeLens boolean
 -- Display plots within VS Code. Might require a restart of the Julia process.
 -- 
 -- ```lua

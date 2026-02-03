@@ -425,6 +425,16 @@
       "scope": "window",
       "type": "string"
     },
+    "julia.useCellHighlighting": {
+      "default": true,
+      "markdownDescription": "Enable highlighting of the current cell delimited by `#julia.cellDelimiters#`.",
+      "type": "boolean"
+    },
+    "julia.useCodeLens": {
+      "default": true,
+      "markdownDescription": "Enable CodeLens for showing run actions above cells delimited by `#julia.cellDelimiters#`.",
+      "type": "boolean"
+    },
     "julia.usePlotPane": {
       "default": true,
       "description": "Display plots within VS Code. Might require a restart of the Julia process.",
