@@ -2568,6 +2568,14 @@
 ---@field propertyDeclarationTypes _.lspconfig.settings.denols.PropertyDeclarationTypes
 ---@field variableTypes _.lspconfig.settings.denols.VariableTypes
 
+---@class _.lspconfig.settings.denols.OrganizeImports
+-- Controls if the Deno language server contributes organize imports code actions. Disable to rely on VS Code's built-in TypeScript/JavaScript organize imports instead.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enabled boolean
+
 ---@class _.lspconfig.settings.denols.Imports
 -- If enabled, when new hosts/origins are encountered that support import suggestions, you will be prompted to enable or disable it.  Defaults to `true`.
 -- 
@@ -2599,6 +2607,26 @@
 -- default = true
 -- ```
 ---@field paths boolean
+
+---@class _.lspconfig.settings.denols.Document
+-- Controls if the Deno language server provides document symbols. Disable to rely on VS Code's built-in providers instead.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enabled boolean
+
+---@class _.lspconfig.settings.denols.Workspace
+-- Controls if the Deno language server provides workspace symbols. Disable to rely on VS Code's built-in providers instead.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enabled boolean
+
+---@class _.lspconfig.settings.denols.Symbols
+---@field document _.lspconfig.settings.denols.Document
+---@field workspace _.lspconfig.settings.denols.Workspace
 
 ---@class _.lspconfig.settings.denols.Testing
 -- Arguments to use when running tests via the Test Explorer.  Defaults to `[ "--allow-all" ]`.
@@ -2709,9 +2737,11 @@
 -- default = 3072
 -- ```
 ---@field maxTsServerMemory number
+---@field organizeImports _.lspconfig.settings.denols.OrganizeImports
 -- A path to the `deno` CLI executable. By default, the extension looks for `deno` in the `PATH`, but if set, will use the path specified instead.
 ---@field path string
 ---@field suggest _.lspconfig.settings.denols.Suggest
+---@field symbols _.lspconfig.settings.denols.Symbols
 ---@field testing _.lspconfig.settings.denols.Testing
 -- A path to a PEM certificate to use as the certificate authority when validating TLS certificates when fetching and caching remote resources. This is like using `--cert` on the Deno CLI and overrides the `DENO_CERT` environment variable if set.
 ---@field tlsCertificate string

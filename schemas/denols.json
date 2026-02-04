@@ -321,6 +321,16 @@
       "scope": "resource",
       "type": "number"
     },
+    "deno.organizeImports.enabled": {
+      "default": true,
+      "examples": [
+        true,
+        false
+      ],
+      "markdownDescription": "Controls if the Deno language server contributes organize imports code actions. Disable to rely on VS Code's built-in TypeScript/JavaScript organize imports instead.",
+      "scope": "resource",
+      "type": "boolean"
+    },
     "deno.path": {
       "default": null,
       "examples": [
@@ -369,6 +379,26 @@
     "deno.suggest.paths": {
       "default": true,
       "deprecationMessage": "Use `typescript.suggest.paths` and `javascript.suggest.paths`.",
+      "scope": "resource",
+      "type": "boolean"
+    },
+    "deno.symbols.document.enabled": {
+      "default": true,
+      "examples": [
+        true,
+        false
+      ],
+      "markdownDescription": "Controls if the Deno language server provides document symbols. Disable to rely on VS Code's built-in providers instead.",
+      "scope": "resource",
+      "type": "boolean"
+    },
+    "deno.symbols.workspace.enabled": {
+      "default": true,
+      "examples": [
+        true,
+        false
+      ],
+      "markdownDescription": "Controls if the Deno language server provides workspace symbols. Disable to rely on VS Code's built-in providers instead.",
       "scope": "resource",
       "type": "boolean"
     },
