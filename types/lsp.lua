@@ -18175,12 +18175,6 @@
 ---@field typeAcquisition _.lspconfig.settings.ts_ls.TypeAcquisition
 
 ---@class _.lspconfig.settings.ts_ls.Tsserver
--- Enables region-based diagnostics in TypeScript. Requires using TypeScript 5.6+ in the workspace.
--- 
--- ```lua
--- default = true
--- ```
----@field enableRegionDiagnostics boolean
 -- Enables tracing TS server performance to a directory. These trace files can be used to diagnose TS Server performance issues. The log may contain file paths, source code, and other potentially sensitive information from your project.
 ---@field enableTracing boolean
 ---@field experimental _.lspconfig.settings.ts_ls.Experimental

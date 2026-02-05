@@ -1136,12 +1136,6 @@
       "scope": "window",
       "type": "string"
     },
-    "typescript.tsserver.enableRegionDiagnostics": {
-      "default": true,
-      "description": "Enables region-based diagnostics in TypeScript. Requires using TypeScript 5.6+ in the workspace.",
-      "scope": "window",
-      "type": "boolean"
-    },
     "typescript.tsserver.enableTracing": {
       "default": false,
       "description": "Enables tracing TS server performance to a directory. These trace files can be used to diagnose TS Server performance issues. The log may contain file paths, source code, and other potentially sensitive information from your project.",
