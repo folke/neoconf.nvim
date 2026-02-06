@@ -37,13 +37,13 @@
     "wgsl-analyzer.diagnostics.nagaVersion": {
       "default": "0.28",
       "enum": [
-        "0.22",
         "0.27",
+        "0.28",
         "main"
       ],
       "enumDescriptions": [
-        "Naga version 22",
         "Naga version 27",
+        "Naga version 28",
         "Version of Naga on main (most recent stable version)"
       ],
       "markdownDescription": "Naga version used for validation.",
@@ -132,7 +132,7 @@
         ]
       },
       "default": null,
-      "markdownDescription": "Extra environment variables that will be passed to the wgsl-analyzer executable. Useful for passing e.g. `WA_LOG` for debugging.",
+      "markdownDescription": "Extra environment variables that will be passed to the wgsl-analyzer executable. Useful for passing variables (for example, `WA_LOG`) for debugging.",
       "type": [
         "null",
         "object"

@@ -6872,6 +6872,12 @@
 ---@field hint boolean
 
 ---@class _.lspconfig.settings.julials.Juliaup
+-- If enabled and a custom Juliaup server is set via `julia.juliaup.server`, Juliaup related configuration will be stored in a server-scoped directory. If the `JULIAUP_DEPOT_PATH` environment variable is set, this setting has no effect.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field customDepot boolean
 ---@field install _.lspconfig.settings.julials.Install
 -- Juliaup mirror. Defaults to the official sources.
 ---@field server string
@@ -19814,7 +19820,7 @@
 -- ```lua
 -- default = "0.28"
 -- ```
----@field nagaVersion "0.22" | "0.27" | "main"
+---@field nagaVersion "0.27" | "0.28" | "main"
 -- Controls whether to show type errors.
 -- 
 -- ```lua
@@ -19857,7 +19863,7 @@
 ---@field typeVerbosity "full" | "compact" | "inner"
 
 ---@class _.lspconfig.settings.wgls_analyzer.Server
--- Extra environment variables that will be passed to the wgsl-analyzer executable. Useful for passing e.g. `WA_LOG` for debugging.
+-- Extra environment variables that will be passed to the wgsl-analyzer executable. Useful for passing variables (for example, `WA_LOG`) for debugging.
 ---@field extraEnv table
 -- Path to wgsl-analyzer executable (points to bundled binary by default).
 ---@field path string

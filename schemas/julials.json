@@ -223,6 +223,12 @@
       "markdownDescription": "Enable type hints for variable definitions:\n```julia\nfoo #=::Int64=# = 42\n```",
       "type": "boolean"
     },
+    "julia.juliaup.customDepot": {
+      "default": true,
+      "markdownDescription": "If enabled and a custom Juliaup server is set via `julia.juliaup.server`, Juliaup related configuration will be stored in a server-scoped directory. If the `JULIAUP_DEPOT_PATH` environment variable is set, this setting has no effect.",
+      "scope": "language-overridable",
+      "type": "boolean"
+    },
     "julia.juliaup.install.hint": {
       "default": true,
       "description": "Show Juliaup install recommendation.",
