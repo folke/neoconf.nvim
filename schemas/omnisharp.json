@@ -540,6 +540,14 @@
       "scope": "machine-overridable",
       "type": "string"
     },
+    "dotnet.server.environmentVariables": {
+      "additionalProperties": {
+        "type": "string"
+      },
+      "default": {},
+      "description": "%configuration.dotnet.server.environmentVariables%",
+      "type": "object"
+    },
     "dotnet.server.extensionPaths": {
       "default": null,
       "description": "%configuration.dotnet.server.extensionPaths%",

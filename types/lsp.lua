@@ -10618,6 +10618,12 @@
 ---@field componentPaths _.lspconfig.settings.omnisharp.ComponentPaths
 -- %configuration.dotnet.server.crashDumpPath%
 ---@field crashDumpPath string
+-- %configuration.dotnet.server.environmentVariables%
+-- 
+-- ```lua
+-- default = {}
+-- ```
+---@field environmentVariables table
 -- %configuration.dotnet.server.extensionPaths%
 ---@field extensionPaths string[]
 -- %configuration.dotnet.server.path%
