@@ -16148,6 +16148,8 @@
 -- default = { ".", ".build", "Packages", "out", "bazel-out", "bazel-bin" }
 -- ```
 ---@field ignoreSearchingForPackagesInSubfolders string[]
+-- Ignore `.swift-version` files and disable automatic toolchain switching based on them. When enabled, the extension will always use the global default toolchain instead of switching based on per-project `.swift-version` files.
+---@field ignoreSwiftVersionFile boolean
 -- Set the branch to use when setting the `$schema` property of the SourceKit-LSP configuration. For example: "release/6.1" or "main". When this setting is unset, the extension will determine the branch based on the version of the toolchain that is in use.
 ---@field lspConfigurationBranch string
 -- Controls whether to open a swift project automatically after creating it.
