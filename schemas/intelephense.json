@@ -256,6 +256,12 @@
       "scope": "window",
       "type": "boolean"
     },
+    "intelephense.diagnostics.unreachableCode": {
+      "default": true,
+      "markdownDescription": "Enables reporting of unreachable code.",
+      "scope": "window",
+      "type": "boolean"
+    },
     "intelephense.diagnostics.unusedSymbols": {
       "default": true,
       "markdownDescription": "Enables unused variable, private member, and import diagnostics.",

@@ -565,6 +565,19 @@
       "scope": "machine-overridable",
       "type": "string"
     },
+    "dotnet.server.sourceGeneratorExecution": {
+      "default": "Balanced",
+      "enum": [
+        "Balanced",
+        "Automatic"
+      ],
+      "markdownDescription": "%configuration.dotnet.server.sourceGeneratorExecution%",
+      "markdownEnumDescriptions": [
+        "%configuration.dotnet.server.sourceGeneratorExecution.balanced%",
+        "%configuration.dotnet.server.sourceGeneratorExecution.automatic%"
+      ],
+      "type": "string"
+    },
     "dotnet.server.startTimeout": {
       "default": 120000,
       "description": "%configuration.dotnet.server.startTimeout%",

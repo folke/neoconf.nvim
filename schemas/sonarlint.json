@@ -234,7 +234,7 @@
     "sonarlint.ls.javaHome": {
       "markdownDescription": "Path to a Java Runtime Environment (17 or more recent) used to launch the SonarQube for VS Code Language Server.\n* On Windows, backslashes must be escaped, e.g. `C:\\\\Program Files\\\\Java\\\\jdk-17` \n* On macOS, this path should include the `/Contents/Home` directory, e.g `/Library/Java/JavaVirtualMachines/corretto-17.0.5/Contents/Home`",
       "order": 11,
-      "scope": "machine",
+      "scope": "resource",
       "type": "string"
     },
     "sonarlint.ls.vmargs": {
@@ -259,7 +259,7 @@
     "sonarlint.pathToNodeExecutable": {
       "markdownDescription": "Path to a Node.js executable (versions above 20.12.0, or 22.11.0) used to analyze JavaScript and TypeScript code. \nOn Windows, backslashes must be escaped, e.g. `C:\\\\Program Files\\\\NodeJS\\\\20-lts\\\\bin\\\\node.exe`",
       "order": 10,
-      "scope": "machine",
+      "scope": "resource",
       "type": "string"
     },
     "sonarlint.rules": {
