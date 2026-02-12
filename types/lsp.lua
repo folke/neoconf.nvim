@@ -17632,7 +17632,7 @@
 ---@class _.lspconfig.settings.ts_ls.ReferencesCodeLens
 -- Enable/disable references CodeLens in JavaScript and TypeScript files. This CodeLens shows the number of references for classes and exported functions and allows you to peek or navigate to them.
 ---@field enabled boolean
--- Enable/disable the references CodeLens on all functions in JavaScript and TypeScript files.
+-- Enable/disable the [references CodeLens](#js/ts.referencesCodeLens.enabled) on all functions in JavaScript and TypeScript files.
 ---@field showOnAllFunctions boolean
 
 ---@class _.lspconfig.settings.ts_ls.ClassMemberSnippets
@@ -17759,11 +17759,11 @@
 ---@field maximumLength number
 
 ---@class _.lspconfig.settings.ts_ls.ImplementationsCodeLens
--- Enable/disable implementations CodeLens in TypeScript files. This CodeLens shows the implementers of a TypeScript interface.
+-- Enable/disable implementations CodeLens in TypeScript files. This CodeLens shows the implementers of TypeScript interfaces.
 ---@field enabled boolean
--- Enable/disable showing implementations CodeLens above all TypeScript class methods instead of only on abstract methods.
+-- Enable/disable showing [implementations CodeLens](#js/ts.implementationsCodeLens.enabled) above all TypeScript class methods instead of only on abstract methods.
 ---@field showOnAllClassMethods boolean
--- Enable/disable implementations CodeLens on TypeScript interface methods.
+-- Enable/disable [implementations CodeLens](#js/ts.implementationsCodeLens.enabled) on TypeScript interface methods.
 ---@field showOnInterfaceMethods boolean
 
 ---@class _.lspconfig.settings.ts_ls.ImplicitProjectConfig
@@ -17805,7 +17805,7 @@
 ---@class _.lspconfig.settings.ts_ls.ReferencesCodeLens
 -- Enable/disable references CodeLens in JavaScript and TypeScript files. This CodeLens shows the number of references for classes and exported functions and allows you to peek or navigate to them.
 ---@field enabled boolean
--- Enable/disable the references CodeLens on all functions in JavaScript and TypeScript files.
+-- Enable/disable the [references CodeLens](#js/ts.referencesCodeLens.enabled) on all functions in JavaScript and TypeScript files.
 ---@field showOnAllFunctions boolean
 
 ---@class _.lspconfig.settings.ts_ls.Js/ts
@@ -17907,11 +17907,11 @@
 ---@field semicolons "ignore" | "insert" | "remove"
 
 ---@class _.lspconfig.settings.ts_ls.ImplementationsCodeLens
--- Enable/disable implementations CodeLens in TypeScript files. This CodeLens shows the implementers of a TypeScript interface.
+-- Enable/disable implementations CodeLens in TypeScript files. This CodeLens shows the implementers of TypeScript interfaces.
 ---@field enabled boolean
--- Enable/disable showing implementations CodeLens above all TypeScript class methods instead of only on abstract methods.
+-- Enable/disable showing [implementations CodeLens](#js/ts.implementationsCodeLens.enabled) above all TypeScript class methods instead of only on abstract methods.
 ---@field showOnAllClassMethods boolean
--- Enable/disable implementations CodeLens on TypeScript interface methods.
+-- Enable/disable [implementations CodeLens](#js/ts.implementationsCodeLens.enabled) on TypeScript interface methods.
 ---@field showOnInterfaceMethods boolean
 
 ---@class _.lspconfig.settings.ts_ls.EnumMemberValues
@@ -18104,7 +18104,7 @@
 ---@class _.lspconfig.settings.ts_ls.ReferencesCodeLens
 -- Enable/disable references CodeLens in JavaScript and TypeScript files. This CodeLens shows the number of references for classes and exported functions and allows you to peek or navigate to them.
 ---@field enabled boolean
--- Enable/disable the references CodeLens on all functions in JavaScript and TypeScript files.
+-- Enable/disable the [references CodeLens](#js/ts.referencesCodeLens.enabled) on all functions in JavaScript and TypeScript files.
 ---@field showOnAllFunctions boolean
 
 ---@class _.lspconfig.settings.ts_ls.ClassMemberSnippets

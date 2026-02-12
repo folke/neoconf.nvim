@@ -373,8 +373,8 @@
     },
     "javascript.referencesCodeLens.showOnAllFunctions": {
       "default": false,
-      "description": "Enable/disable the references CodeLens on all functions in JavaScript and TypeScript files.",
       "markdownDeprecationMessage": "This setting is deprecated. Use `#js/ts.referencesCodeLens.showOnAllFunctions#` instead.",
+      "markdownDescription": "Enable/disable the [references CodeLens](#js/ts.referencesCodeLens.enabled) on all functions in JavaScript and TypeScript files.",
       "scope": "window",
       "type": "boolean"
     },
@@ -480,30 +480,27 @@
     },
     "js/ts.implementationsCodeLens.enabled": {
       "default": false,
-      "description": "Enable/disable implementations CodeLens in TypeScript files. This CodeLens shows the implementers of a TypeScript interface.",
+      "description": "Enable/disable implementations CodeLens in TypeScript files. This CodeLens shows the implementers of TypeScript interfaces.",
       "scope": "language-overridable",
       "tags": [
-        "JavaScript",
         "TypeScript"
       ],
       "type": "boolean"
     },
     "js/ts.implementationsCodeLens.showOnAllClassMethods": {
       "default": false,
-      "description": "Enable/disable showing implementations CodeLens above all TypeScript class methods instead of only on abstract methods.",
+      "markdownDescription": "Enable/disable showing [implementations CodeLens](#js/ts.implementationsCodeLens.enabled) above all TypeScript class methods instead of only on abstract methods.",
       "scope": "language-overridable",
       "tags": [
-        "JavaScript",
         "TypeScript"
       ],
       "type": "boolean"
     },
     "js/ts.implementationsCodeLens.showOnInterfaceMethods": {
       "default": false,
-      "description": "Enable/disable implementations CodeLens on TypeScript interface methods.",
+      "markdownDescription": "Enable/disable [implementations CodeLens](#js/ts.implementationsCodeLens.enabled) on TypeScript interface methods.",
       "scope": "language-overridable",
       "tags": [
-        "JavaScript",
         "TypeScript"
       ],
       "type": "boolean"
@@ -592,7 +589,7 @@
     },
     "js/ts.referencesCodeLens.showOnAllFunctions": {
       "default": false,
-      "description": "Enable/disable the references CodeLens on all functions in JavaScript and TypeScript files.",
+      "markdownDescription": "Enable/disable the [references CodeLens](#js/ts.referencesCodeLens.enabled) on all functions in JavaScript and TypeScript files.",
       "scope": "language-overridable",
       "tags": [
         "JavaScript",
@@ -762,22 +759,22 @@
     },
     "typescript.implementationsCodeLens.enabled": {
       "default": false,
-      "description": "Enable/disable implementations CodeLens in TypeScript files. This CodeLens shows the implementers of a TypeScript interface.",
+      "description": "Enable/disable implementations CodeLens in TypeScript files. This CodeLens shows the implementers of TypeScript interfaces.",
       "markdownDeprecationMessage": "This setting is deprecated. Use `#js/ts.implementationsCodeLens.enabled#` instead.",
       "scope": "window",
       "type": "boolean"
     },
     "typescript.implementationsCodeLens.showOnAllClassMethods": {
       "default": false,
-      "description": "Enable/disable showing implementations CodeLens above all TypeScript class methods instead of only on abstract methods.",
       "markdownDeprecationMessage": "This setting is deprecated. Use `#js/ts.implementationsCodeLens.showOnAllClassMethods#` instead.",
+      "markdownDescription": "Enable/disable showing [implementations CodeLens](#js/ts.implementationsCodeLens.enabled) above all TypeScript class methods instead of only on abstract methods.",
       "scope": "window",
       "type": "boolean"
     },
     "typescript.implementationsCodeLens.showOnInterfaceMethods": {
       "default": false,
-      "description": "Enable/disable implementations CodeLens on TypeScript interface methods.",
       "markdownDeprecationMessage": "This setting is deprecated. Use `#js/ts.implementationsCodeLens.showOnInterfaceMethods#` instead.",
+      "markdownDescription": "Enable/disable [implementations CodeLens](#js/ts.implementationsCodeLens.enabled) on TypeScript interface methods.",
       "scope": "window",
       "type": "boolean"
     },
@@ -1093,8 +1090,8 @@
     },
     "typescript.referencesCodeLens.showOnAllFunctions": {
       "default": false,
-      "description": "Enable/disable the references CodeLens on all functions in JavaScript and TypeScript files.",
       "markdownDeprecationMessage": "This setting is deprecated. Use `#js/ts.referencesCodeLens.showOnAllFunctions#` instead.",
+      "markdownDescription": "Enable/disable the [references CodeLens](#js/ts.referencesCodeLens.enabled) on all functions in JavaScript and TypeScript files.",
       "scope": "window",
       "type": "boolean"
     },
