@@ -128,6 +128,7 @@
     },
     "javascript.inlayHints.functionLikeReturnTypes.enabled": {
       "default": false,
+      "markdownDeprecationMessage": "This setting is deprecated. Use `#js/ts.inlayHints.functionLikeReturnTypes.enabled#` instead.",
       "markdownDescription": "Enable/disable inlay hints for implicit return types on function signatures:\n```typescript\n\nfunction foo() /* :number */ {\n\treturn Date.now();\n} \n \n```\n\nThe text inside the ``` block is code and should not be localized.",
       "scope": "resource",
       "type": "boolean"
@@ -144,36 +145,42 @@
         "Enable parameter name hints only for literal arguments.",
         "Enable parameter name hints for literal and non-literal arguments."
       ],
+      "markdownDeprecationMessage": "This setting is deprecated. Use `#js/ts.inlayHints.parameterNames.enabled#` instead.",
       "markdownDescription": "Enable/disable inlay hints for parameter names:\n```typescript\n\nparseInt(/* str: */ '123', /* radix: */ 8)\n \n```\n\nThe text inside the ``` block is code and should not be localized.",
       "scope": "resource",
       "type": "string"
     },
     "javascript.inlayHints.parameterNames.suppressWhenArgumentMatchesName": {
       "default": true,
+      "markdownDeprecationMessage": "This setting is deprecated. Use `#js/ts.inlayHints.parameterNames.suppressWhenArgumentMatchesName#` instead.",
       "markdownDescription": "Suppress parameter name hints on arguments whose text is identical to the parameter name.",
       "scope": "resource",
       "type": "boolean"
     },
     "javascript.inlayHints.parameterTypes.enabled": {
       "default": false,
+      "markdownDeprecationMessage": "This setting is deprecated. Use `#js/ts.inlayHints.parameterTypes.enabled#` instead.",
       "markdownDescription": "Enable/disable inlay hints for implicit parameter types:\n```typescript\n\nel.addEventListener('click', e /* :MouseEvent */ => ...)\n \n```\n\nThe text inside the ``` block is code and should not be localized.",
       "scope": "resource",
       "type": "boolean"
     },
     "javascript.inlayHints.propertyDeclarationTypes.enabled": {
       "default": false,
+      "markdownDeprecationMessage": "This setting is deprecated. Use `#js/ts.inlayHints.propertyDeclarationTypes.enabled#` instead.",
       "markdownDescription": "Enable/disable inlay hints for implicit types on property declarations:\n```typescript\n\nclass Foo {\n\tprop /* :number */ = Date.now();\n}\n \n```\n\nThe text inside the ``` block is code and should not be localized.",
       "scope": "resource",
       "type": "boolean"
     },
     "javascript.inlayHints.variableTypes.enabled": {
       "default": false,
+      "markdownDeprecationMessage": "This setting is deprecated. Use `#js/ts.inlayHints.variableTypes.enabled#` instead.",
       "markdownDescription": "Enable/disable inlay hints for implicit variable types:\n```typescript\n\nconst foo /* :number */ = Date.now();\n \n```\n\nThe text inside the ``` block is code and should not be localized.",
       "scope": "resource",
       "type": "boolean"
     },
     "javascript.inlayHints.variableTypes.suppressWhenTypeMatchesName": {
       "default": true,
+      "markdownDeprecationMessage": "This setting is deprecated. Use `#js/ts.inlayHints.variableTypes.suppressWhenTypeMatchesName#` instead.",
       "markdownDescription": "Suppress type hints on variables whose name is identical to the type name.",
       "scope": "resource",
       "type": "boolean"
@@ -381,53 +388,62 @@
     "javascript.suggest.autoImports": {
       "default": true,
       "description": "Enable/disable auto import suggestions.",
+      "markdownDeprecationMessage": "This setting is deprecated. Use `#js/ts.suggest.autoImports#` instead.",
       "scope": "resource",
       "type": "boolean"
     },
     "javascript.suggest.classMemberSnippets.enabled": {
       "default": true,
       "description": "Enable/disable snippet completions for class members.",
+      "markdownDeprecationMessage": "This setting is deprecated. Use `#js/ts.suggest.classMemberSnippets.enabled#` instead.",
       "scope": "resource",
       "type": "boolean"
     },
     "javascript.suggest.completeFunctionCalls": {
       "default": false,
       "description": "Complete functions with their parameter signature.",
+      "markdownDeprecationMessage": "This setting is deprecated. Use `#js/ts.suggest.completeFunctionCalls#` instead.",
       "scope": "resource",
       "type": "boolean"
     },
     "javascript.suggest.completeJSDocs": {
       "default": true,
       "description": "Enable/disable suggestion to complete JSDoc comments.",
+      "markdownDeprecationMessage": "This setting is deprecated. Use `#js/ts.suggest.completeJSDocs#` instead.",
       "scope": "language-overridable",
       "type": "boolean"
     },
     "javascript.suggest.enabled": {
       "default": true,
       "description": "Enable/disable autocomplete suggestions.",
+      "markdownDeprecationMessage": "This setting is deprecated. Use `#js/ts.suggest.enabled#` instead.",
       "scope": "language-overridable",
       "type": "boolean"
     },
     "javascript.suggest.includeAutomaticOptionalChainCompletions": {
       "default": true,
       "description": "Enable/disable showing completions on potentially undefined values that insert an optional chain call. Requires strict null checks to be enabled.",
+      "markdownDeprecationMessage": "This setting is deprecated. Use `#js/ts.suggest.includeAutomaticOptionalChainCompletions#` instead.",
       "scope": "resource",
       "type": "boolean"
     },
     "javascript.suggest.includeCompletionsForImportStatements": {
       "default": true,
       "description": "Enable/disable auto-import-style completions on partially-typed import statements.",
+      "markdownDeprecationMessage": "This setting is deprecated. Use `#js/ts.suggest.includeCompletionsForImportStatements#` instead.",
       "scope": "resource",
       "type": "boolean"
     },
     "javascript.suggest.jsdoc.generateReturns": {
       "default": true,
+      "markdownDeprecationMessage": "This setting is deprecated. Use `#js/ts.suggest.jsdoc.generateReturns#` instead.",
       "markdownDescription": "Enable/disable generating `@returns` annotations for JSDoc templates.",
       "scope": "language-overridable",
       "type": "boolean"
     },
     "javascript.suggest.names": {
       "default": true,
+      "markdownDeprecationMessage": "This setting is deprecated. Use `#js/ts.suggest.names#` instead.",
       "markdownDescription": "Enable/disable including unique names from the file in JavaScript suggestions. Note that name suggestions are always disabled in JavaScript code that is semantically checked using `@ts-check` or `checkJs`.",
       "scope": "resource",
       "type": "boolean"
@@ -435,12 +451,14 @@
     "javascript.suggest.paths": {
       "default": true,
       "description": "Enable/disable suggestions for paths in import statements and require calls.",
+      "markdownDeprecationMessage": "This setting is deprecated. Use `#js/ts.suggest.paths#` instead.",
       "scope": "resource",
       "type": "boolean"
     },
     "javascript.suggestionActions.enabled": {
       "default": true,
       "description": "Enable/disable suggestion diagnostics for JavaScript files in the editor.",
+      "markdownDeprecationMessage": "This setting is deprecated. Use `#js/ts.suggestionActions.enabled#` instead.",
       "scope": "resource",
       "type": "boolean"
     },
@@ -577,6 +595,95 @@
       "scope": "window",
       "type": "string"
     },
+    "js/ts.inlayHints.enumMemberValues.enabled": {
+      "default": false,
+      "markdownDescription": "Enable/disable inlay hints for member values in enum declarations:\n```typescript\n\nenum MyValue {\n\tA /* = 0 */;\n\tB /* = 1 */;\n}\n \n```\n\nThe text inside the ``` block is code and should not be localized.",
+      "scope": "language-overridable",
+      "tags": [
+        "TypeScript"
+      ],
+      "type": "boolean"
+    },
+    "js/ts.inlayHints.functionLikeReturnTypes.enabled": {
+      "default": false,
+      "markdownDescription": "Enable/disable inlay hints for implicit return types on function signatures:\n```typescript\n\nfunction foo() /* :number */ {\n\treturn Date.now();\n} \n \n```\n\nThe text inside the ``` block is code and should not be localized.",
+      "scope": "language-overridable",
+      "tags": [
+        "JavaScript",
+        "TypeScript"
+      ],
+      "type": "boolean"
+    },
+    "js/ts.inlayHints.parameterNames.enabled": {
+      "default": "none",
+      "enum": [
+        "none",
+        "literals",
+        "all"
+      ],
+      "enumDescriptions": [
+        "Disable parameter name hints.",
+        "Enable parameter name hints only for literal arguments.",
+        "Enable parameter name hints for literal and non-literal arguments."
+      ],
+      "markdownDescription": "Enable/disable inlay hints for parameter names:\n```typescript\n\nparseInt(/* str: */ '123', /* radix: */ 8)\n \n```\n\nThe text inside the ``` block is code and should not be localized.",
+      "scope": "language-overridable",
+      "tags": [
+        "JavaScript",
+        "TypeScript"
+      ],
+      "type": "string"
+    },
+    "js/ts.inlayHints.parameterNames.suppressWhenArgumentMatchesName": {
+      "default": true,
+      "markdownDescription": "Suppress parameter name hints on arguments whose text is identical to the parameter name.",
+      "scope": "language-overridable",
+      "tags": [
+        "JavaScript",
+        "TypeScript"
+      ],
+      "type": "boolean"
+    },
+    "js/ts.inlayHints.parameterTypes.enabled": {
+      "default": false,
+      "markdownDescription": "Enable/disable inlay hints for implicit parameter types:\n```typescript\n\nel.addEventListener('click', e /* :MouseEvent */ => ...)\n \n```\n\nThe text inside the ``` block is code and should not be localized.",
+      "scope": "language-overridable",
+      "tags": [
+        "JavaScript",
+        "TypeScript"
+      ],
+      "type": "boolean"
+    },
+    "js/ts.inlayHints.propertyDeclarationTypes.enabled": {
+      "default": false,
+      "markdownDescription": "Enable/disable inlay hints for implicit types on property declarations:\n```typescript\n\nclass Foo {\n\tprop /* :number */ = Date.now();\n}\n \n```\n\nThe text inside the ``` block is code and should not be localized.",
+      "scope": "language-overridable",
+      "tags": [
+        "JavaScript",
+        "TypeScript"
+      ],
+      "type": "boolean"
+    },
+    "js/ts.inlayHints.variableTypes.enabled": {
+      "default": false,
+      "markdownDescription": "Enable/disable inlay hints for implicit variable types:\n```typescript\n\nconst foo /* :number */ = Date.now();\n \n```\n\nThe text inside the ``` block is code and should not be localized.",
+      "scope": "language-overridable",
+      "tags": [
+        "JavaScript",
+        "TypeScript"
+      ],
+      "type": "boolean"
+    },
+    "js/ts.inlayHints.variableTypes.suppressWhenTypeMatchesName": {
+      "default": true,
+      "markdownDescription": "Suppress type hints on variables whose name is identical to the type name.",
+      "scope": "language-overridable",
+      "tags": [
+        "JavaScript",
+        "TypeScript"
+      ],
+      "type": "boolean"
+    },
     "js/ts.referencesCodeLens.enabled": {
       "default": false,
       "description": "Enable/disable references CodeLens in JavaScript and TypeScript files. This CodeLens shows the number of references for classes and exported functions and allows you to peek or navigate to them.",
@@ -590,6 +697,124 @@
     "js/ts.referencesCodeLens.showOnAllFunctions": {
       "default": false,
       "markdownDescription": "Enable/disable the [references CodeLens](#js/ts.referencesCodeLens.enabled) on all functions in JavaScript and TypeScript files.",
+      "scope": "language-overridable",
+      "tags": [
+        "JavaScript",
+        "TypeScript"
+      ],
+      "type": "boolean"
+    },
+    "js/ts.suggest.autoImports": {
+      "default": true,
+      "description": "Enable/disable auto import suggestions.",
+      "scope": "language-overridable",
+      "tags": [
+        "JavaScript",
+        "TypeScript"
+      ],
+      "type": "boolean"
+    },
+    "js/ts.suggest.classMemberSnippets.enabled": {
+      "default": true,
+      "description": "Enable/disable snippet completions for class members.",
+      "scope": "language-overridable",
+      "tags": [
+        "JavaScript",
+        "TypeScript"
+      ],
+      "type": "boolean"
+    },
+    "js/ts.suggest.completeFunctionCalls": {
+      "default": false,
+      "description": "Complete functions with their parameter signature.",
+      "scope": "language-overridable",
+      "tags": [
+        "JavaScript",
+        "TypeScript"
+      ],
+      "type": "boolean"
+    },
+    "js/ts.suggest.completeJSDocs": {
+      "default": true,
+      "description": "Enable/disable suggestion to complete JSDoc comments.",
+      "scope": "language-overridable",
+      "tags": [
+        "JavaScript",
+        "TypeScript"
+      ],
+      "type": "boolean"
+    },
+    "js/ts.suggest.enabled": {
+      "default": true,
+      "description": "Enable/disable autocomplete suggestions.",
+      "scope": "language-overridable",
+      "tags": [
+        "JavaScript",
+        "TypeScript"
+      ],
+      "type": "boolean"
+    },
+    "js/ts.suggest.includeAutomaticOptionalChainCompletions": {
+      "default": true,
+      "description": "Enable/disable showing completions on potentially undefined values that insert an optional chain call. Requires strict null checks to be enabled.",
+      "scope": "language-overridable",
+      "tags": [
+        "JavaScript",
+        "TypeScript"
+      ],
+      "type": "boolean"
+    },
+    "js/ts.suggest.includeCompletionsForImportStatements": {
+      "default": true,
+      "description": "Enable/disable auto-import-style completions on partially-typed import statements.",
+      "scope": "language-overridable",
+      "tags": [
+        "JavaScript",
+        "TypeScript"
+      ],
+      "type": "boolean"
+    },
+    "js/ts.suggest.jsdoc.generateReturns": {
+      "default": true,
+      "markdownDescription": "Enable/disable generating `@returns` annotations for JSDoc templates.",
+      "scope": "language-overridable",
+      "tags": [
+        "JavaScript",
+        "TypeScript"
+      ],
+      "type": "boolean"
+    },
+    "js/ts.suggest.names": {
+      "default": true,
+      "markdownDescription": "Enable/disable including unique names from the file in JavaScript suggestions. Note that name suggestions are always disabled in JavaScript code that is semantically checked using `@ts-check` or `checkJs`.",
+      "scope": "language-overridable",
+      "tags": [
+        "JavaScript"
+      ],
+      "type": "boolean"
+    },
+    "js/ts.suggest.objectLiteralMethodSnippets.enabled": {
+      "default": true,
+      "description": "Enable/disable snippet completions for methods in object literals.",
+      "scope": "language-overridable",
+      "tags": [
+        "TypeScript"
+      ],
+      "type": "boolean"
+    },
+    "js/ts.suggest.paths": {
+      "default": true,
+      "description": "Enable/disable suggestions for paths in import statements and require calls.",
+      "scope": "language-overridable",
+      "tags": [
+        "JavaScript",
+        "TypeScript"
+      ],
+      "type": "boolean"
+    },
+    "js/ts.suggestionActions.enabled": {
+      "default": true,
+      "description": "Enable/disable suggestion diagnostics for JavaScript and TypeScript files in the editor.",
       "scope": "language-overridable",
       "tags": [
         "JavaScript",
@@ -780,12 +1005,14 @@
     },
     "typescript.inlayHints.enumMemberValues.enabled": {
       "default": false,
+      "markdownDeprecationMessage": "This setting is deprecated. Use `#js/ts.inlayHints.enumMemberValues.enabled#` instead.",
       "markdownDescription": "Enable/disable inlay hints for member values in enum declarations:\n```typescript\n\nenum MyValue {\n\tA /* = 0 */;\n\tB /* = 1 */;\n}\n \n```\n\nThe text inside the ``` block is code and should not be localized.",
       "scope": "resource",
       "type": "boolean"
     },
     "typescript.inlayHints.functionLikeReturnTypes.enabled": {
       "default": false,
+      "markdownDeprecationMessage": "This setting is deprecated. Use `#js/ts.inlayHints.functionLikeReturnTypes.enabled#` instead.",
       "markdownDescription": "Enable/disable inlay hints for implicit return types on function signatures:\n```typescript\n\nfunction foo() /* :number */ {\n\treturn Date.now();\n} \n \n```\n\nThe text inside the ``` block is code and should not be localized.",
       "scope": "resource",
       "type": "boolean"
@@ -802,36 +1029,42 @@
         "Enable parameter name hints only for literal arguments.",
         "Enable parameter name hints for literal and non-literal arguments."
       ],
+      "markdownDeprecationMessage": "This setting is deprecated. Use `#js/ts.inlayHints.parameterNames.enabled#` instead.",
       "markdownDescription": "Enable/disable inlay hints for parameter names:\n```typescript\n\nparseInt(/* str: */ '123', /* radix: */ 8)\n \n```\n\nThe text inside the ``` block is code and should not be localized.",
       "scope": "resource",
       "type": "string"
     },
     "typescript.inlayHints.parameterNames.suppressWhenArgumentMatchesName": {
       "default": true,
+      "markdownDeprecationMessage": "This setting is deprecated. Use `#js/ts.inlayHints.parameterNames.suppressWhenArgumentMatchesName#` instead.",
       "markdownDescription": "Suppress parameter name hints on arguments whose text is identical to the parameter name.",
       "scope": "resource",
       "type": "boolean"
     },
     "typescript.inlayHints.parameterTypes.enabled": {
       "default": false,
+      "markdownDeprecationMessage": "This setting is deprecated. Use `#js/ts.inlayHints.parameterTypes.enabled#` instead.",
       "markdownDescription": "Enable/disable inlay hints for implicit parameter types:\n```typescript\n\nel.addEventListener('click', e /* :MouseEvent */ => ...)\n \n```\n\nThe text inside the ``` block is code and should not be localized.",
       "scope": "resource",
       "type": "boolean"
     },
     "typescript.inlayHints.propertyDeclarationTypes.enabled": {
       "default": false,
+      "markdownDeprecationMessage": "This setting is deprecated. Use `#js/ts.inlayHints.propertyDeclarationTypes.enabled#` instead.",
       "markdownDescription": "Enable/disable inlay hints for implicit types on property declarations:\n```typescript\n\nclass Foo {\n\tprop /* :number */ = Date.now();\n}\n \n```\n\nThe text inside the ``` block is code and should not be localized.",
       "scope": "resource",
       "type": "boolean"
     },
     "typescript.inlayHints.variableTypes.enabled": {
       "default": false,
+      "markdownDeprecationMessage": "This setting is deprecated. Use `#js/ts.inlayHints.variableTypes.enabled#` instead.",
       "markdownDescription": "Enable/disable inlay hints for implicit variable types:\n```typescript\n\nconst foo /* :number */ = Date.now();\n \n```\n\nThe text inside the ``` block is code and should not be localized.",
       "scope": "resource",
       "type": "boolean"
     },
     "typescript.inlayHints.variableTypes.suppressWhenTypeMatchesName": {
       "default": true,
+      "markdownDeprecationMessage": "This setting is deprecated. Use `#js/ts.inlayHints.variableTypes.suppressWhenTypeMatchesName#` instead.",
       "markdownDescription": "Suppress type hints on variables whose name is identical to the type name.",
       "scope": "resource",
       "type": "boolean"
@@ -1104,47 +1337,55 @@
     "typescript.suggest.autoImports": {
       "default": true,
       "description": "Enable/disable auto import suggestions.",
+      "markdownDeprecationMessage": "This setting is deprecated. Use `#js/ts.suggest.autoImports#` instead.",
       "scope": "resource",
       "type": "boolean"
     },
     "typescript.suggest.classMemberSnippets.enabled": {
       "default": true,
       "description": "Enable/disable snippet completions for class members.",
+      "markdownDeprecationMessage": "This setting is deprecated. Use `#js/ts.suggest.classMemberSnippets.enabled#` instead.",
       "scope": "resource",
       "type": "boolean"
     },
     "typescript.suggest.completeFunctionCalls": {
       "default": false,
       "description": "Complete functions with their parameter signature.",
+      "markdownDeprecationMessage": "This setting is deprecated. Use `#js/ts.suggest.completeFunctionCalls#` instead.",
       "scope": "resource",
       "type": "boolean"
     },
     "typescript.suggest.completeJSDocs": {
       "default": true,
       "description": "Enable/disable suggestion to complete JSDoc comments.",
+      "markdownDeprecationMessage": "This setting is deprecated. Use `#js/ts.suggest.completeJSDocs#` instead.",
       "scope": "language-overridable",
       "type": "boolean"
     },
     "typescript.suggest.enabled": {
       "default": true,
       "description": "Enable/disable autocomplete suggestions.",
+      "markdownDeprecationMessage": "This setting is deprecated. Use `#js/ts.suggest.enabled#` instead.",
       "scope": "language-overridable",
       "type": "boolean"
     },
     "typescript.suggest.includeAutomaticOptionalChainCompletions": {
       "default": true,
       "description": "Enable/disable showing completions on potentially undefined values that insert an optional chain call. Requires strict null checks to be enabled.",
+      "markdownDeprecationMessage": "This setting is deprecated. Use `#js/ts.suggest.includeAutomaticOptionalChainCompletions#` instead.",
       "scope": "resource",
       "type": "boolean"
     },
     "typescript.suggest.includeCompletionsForImportStatements": {
       "default": true,
       "description": "Enable/disable auto-import-style completions on partially-typed import statements.",
+      "markdownDeprecationMessage": "This setting is deprecated. Use `#js/ts.suggest.includeCompletionsForImportStatements#` instead.",
       "scope": "resource",
       "type": "boolean"
     },
     "typescript.suggest.jsdoc.generateReturns": {
       "default": true,
+      "markdownDeprecationMessage": "This setting is deprecated. Use `#js/ts.suggest.jsdoc.generateReturns#` instead.",
       "markdownDescription": "Enable/disable generating `@returns` annotations for JSDoc templates.",
       "scope": "language-overridable",
       "type": "boolean"
@@ -1152,18 +1393,21 @@
     "typescript.suggest.objectLiteralMethodSnippets.enabled": {
       "default": true,
       "description": "Enable/disable snippet completions for methods in object literals.",
+      "markdownDeprecationMessage": "This setting is deprecated. Use `#js/ts.suggest.objectLiteralMethodSnippets.enabled#` instead.",
       "scope": "resource",
       "type": "boolean"
     },
     "typescript.suggest.paths": {
       "default": true,
       "description": "Enable/disable suggestions for paths in import statements and require calls.",
+      "markdownDeprecationMessage": "This setting is deprecated. Use `#js/ts.suggest.paths#` instead.",
       "scope": "resource",
       "type": "boolean"
     },
     "typescript.suggestionActions.enabled": {
       "default": true,
       "description": "Enable/disable suggestion diagnostics for TypeScript files in the editor.",
+      "markdownDeprecationMessage": "This setting is deprecated. Use `#js/ts.suggestionActions.enabled#` instead.",
       "scope": "resource",
       "type": "boolean"
     },

@@ -17802,17 +17802,198 @@
 -- ```
 ---@field target "ES3" | "ES5" | "ES6" | "ES2015" | "ES2016" | "ES2017" | "ES2018" | "ES2019" | "ES2020" | "ES2021" | "ES2022" | "ES2023" | "ES2024" | "ESNext"
 
+---@class _.lspconfig.settings.ts_ls.EnumMemberValues
+-- Enable/disable inlay hints for member values in enum declarations:
+-- ```typescript
+-- 
+-- enum MyValue {
+-- 	A /* = 0 */;
+-- 	B /* = 1 */;
+-- }
+--  
+-- ```
+-- 
+-- The text inside the ``` block is code and should not be localized.
+---@field enabled boolean
+
+---@class _.lspconfig.settings.ts_ls.FunctionLikeReturnTypes
+-- Enable/disable inlay hints for implicit return types on function signatures:
+-- ```typescript
+-- 
+-- function foo() /* :number */ {
+-- 	return Date.now();
+-- } 
+--  
+-- ```
+-- 
+-- The text inside the ``` block is code and should not be localized.
+---@field enabled boolean
+
+---@class _.lspconfig.settings.ts_ls.ParameterNames
+-- Enable/disable inlay hints for parameter names:
+-- ```typescript
+-- 
+-- parseInt(/* str: */ '123', /* radix: */ 8)
+--  
+-- ```
+-- 
+-- The text inside the ``` block is code and should not be localized.
+-- 
+-- ```lua
+-- default = "none"
+-- ```
+---@field enabled "none" | "literals" | "all"
+-- Suppress parameter name hints on arguments whose text is identical to the parameter name.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field suppressWhenArgumentMatchesName boolean
+
+---@class _.lspconfig.settings.ts_ls.ParameterTypes
+-- Enable/disable inlay hints for implicit parameter types:
+-- ```typescript
+-- 
+-- el.addEventListener('click', e /* :MouseEvent */ => ...)
+--  
+-- ```
+-- 
+-- The text inside the ``` block is code and should not be localized.
+---@field enabled boolean
+
+---@class _.lspconfig.settings.ts_ls.PropertyDeclarationTypes
+-- Enable/disable inlay hints for implicit types on property declarations:
+-- ```typescript
+-- 
+-- class Foo {
+-- 	prop /* :number */ = Date.now();
+-- }
+--  
+-- ```
+-- 
+-- The text inside the ``` block is code and should not be localized.
+---@field enabled boolean
+
+---@class _.lspconfig.settings.ts_ls.VariableTypes
+-- Enable/disable inlay hints for implicit variable types:
+-- ```typescript
+-- 
+-- const foo /* :number */ = Date.now();
+--  
+-- ```
+-- 
+-- The text inside the ``` block is code and should not be localized.
+---@field enabled boolean
+-- Suppress type hints on variables whose name is identical to the type name.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field suppressWhenTypeMatchesName boolean
+
+---@class _.lspconfig.settings.ts_ls.InlayHints
+---@field enumMemberValues _.lspconfig.settings.ts_ls.EnumMemberValues
+---@field functionLikeReturnTypes _.lspconfig.settings.ts_ls.FunctionLikeReturnTypes
+---@field parameterNames _.lspconfig.settings.ts_ls.ParameterNames
+---@field parameterTypes _.lspconfig.settings.ts_ls.ParameterTypes
+---@field propertyDeclarationTypes _.lspconfig.settings.ts_ls.PropertyDeclarationTypes
+---@field variableTypes _.lspconfig.settings.ts_ls.VariableTypes
+
 ---@class _.lspconfig.settings.ts_ls.ReferencesCodeLens
 -- Enable/disable references CodeLens in JavaScript and TypeScript files. This CodeLens shows the number of references for classes and exported functions and allows you to peek or navigate to them.
 ---@field enabled boolean
 -- Enable/disable the [references CodeLens](#js/ts.referencesCodeLens.enabled) on all functions in JavaScript and TypeScript files.
 ---@field showOnAllFunctions boolean
 
+---@class _.lspconfig.settings.ts_ls.ClassMemberSnippets
+-- Enable/disable snippet completions for class members.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enabled boolean
+
+---@class _.lspconfig.settings.ts_ls.Jsdoc
+-- Enable/disable generating `@returns` annotations for JSDoc templates.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field generateReturns boolean
+
+---@class _.lspconfig.settings.ts_ls.ObjectLiteralMethodSnippets
+-- Enable/disable snippet completions for methods in object literals.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enabled boolean
+
+---@class _.lspconfig.settings.ts_ls.Suggest
+-- Enable/disable auto import suggestions.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field autoImports boolean
+---@field classMemberSnippets _.lspconfig.settings.ts_ls.ClassMemberSnippets
+-- Complete functions with their parameter signature.
+---@field completeFunctionCalls boolean
+-- Enable/disable suggestion to complete JSDoc comments.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field completeJSDocs boolean
+-- Enable/disable autocomplete suggestions.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enabled boolean
+-- Enable/disable showing completions on potentially undefined values that insert an optional chain call. Requires strict null checks to be enabled.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field includeAutomaticOptionalChainCompletions boolean
+-- Enable/disable auto-import-style completions on partially-typed import statements.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field includeCompletionsForImportStatements boolean
+---@field jsdoc _.lspconfig.settings.ts_ls.Jsdoc
+-- Enable/disable including unique names from the file in JavaScript suggestions. Note that name suggestions are always disabled in JavaScript code that is semantically checked using `@ts-check` or `checkJs`.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field names boolean
+---@field objectLiteralMethodSnippets _.lspconfig.settings.ts_ls.ObjectLiteralMethodSnippets
+-- Enable/disable suggestions for paths in import statements and require calls.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field paths boolean
+
+---@class _.lspconfig.settings.ts_ls.SuggestionActions
+-- Enable/disable suggestion diagnostics for JavaScript and TypeScript files in the editor.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enabled boolean
+
 ---@class _.lspconfig.settings.ts_ls.Js/ts
 ---@field hover _.lspconfig.settings.ts_ls.Hover
 ---@field implementationsCodeLens _.lspconfig.settings.ts_ls.ImplementationsCodeLens
 ---@field implicitProjectConfig _.lspconfig.settings.ts_ls.ImplicitProjectConfig
+---@field inlayHints _.lspconfig.settings.ts_ls.InlayHints
 ---@field referencesCodeLens _.lspconfig.settings.ts_ls.ReferencesCodeLens
+---@field suggest _.lspconfig.settings.ts_ls.Suggest
+---@field suggestionActions _.lspconfig.settings.ts_ls.SuggestionActions
 
 ---@class _.lspconfig.settings.ts_ls.Check
 -- Check if npm is installed for [Automatic Type Acquisition](https://code.visualstudio.com/docs/nodejs/working-with-javascript#_typings-and-automatic-type-acquisition).
