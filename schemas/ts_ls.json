@@ -195,6 +195,7 @@
       "items": {
         "type": "string"
       },
+      "markdownDeprecationMessage": "This setting is deprecated. Use `#js/ts.preferences.autoImportFileExcludePatterns#` instead.",
       "markdownDescription": "Specify glob patterns of files to exclude from auto imports. Relative paths are resolved relative to the workspace root. Patterns are evaluated using tsconfig.json [`exclude`](https://www.typescriptlang.org/tsconfig#exclude) semantics.",
       "scope": "resource",
       "type": "array"
@@ -203,6 +204,7 @@
       "items": {
         "type": "string"
       },
+      "markdownDeprecationMessage": "This setting is deprecated. Use `#js/ts.preferences.autoImportSpecifierExcludeRegexes#` instead.",
       "markdownDescription": "Specify regular expressions to exclude auto imports with matching import specifiers. Examples:\n\n- `^node:`\n- `lib/internal` (slashes don't need to be escaped...)\n- `/lib\\/internal/i` (...unless including surrounding slashes for `i` or `u` flags)\n- `^lodash$` (only allow subpath imports from lodash)",
       "scope": "resource",
       "type": "array"
@@ -216,6 +218,7 @@
         "non-relative",
         "project-relative"
       ],
+      "markdownDeprecationMessage": "This setting is deprecated. Use `#js/ts.preferences.importModuleSpecifier#` instead.",
       "markdownEnumDescriptions": [
         "Prefers a non-relative import only if one is available that has fewer path segments than a relative import.",
         "Prefers a relative path to the imported file location.",
@@ -240,6 +243,7 @@
         null,
         "%typescript.preferences.importModuleSpecifierEnding.label.js%"
       ],
+      "markdownDeprecationMessage": "This setting is deprecated. Use `#js/ts.preferences.importModuleSpecifierEnding#` instead.",
       "markdownEnumDescriptions": [
         "Use project settings to select a default.",
         "Shorten `./component/index.js` to `./component`.",
@@ -257,6 +261,7 @@
         "braces",
         "none"
       ],
+      "markdownDeprecationMessage": "This setting is deprecated. Use `#js/ts.preferences.jsxAttributeCompletionStyle#` instead.",
       "markdownEnumDescriptions": [
         "Insert `={}` or `=\"\"` after attribute names based on the prop type. See `#javascript.preferences.quoteStyle#` to control the type of quotes used for string attributes.",
         "Insert `={}` after attribute names.",
@@ -266,6 +271,7 @@
       "type": "string"
     },
     "javascript.preferences.organizeImports": {
+      "markdownDeprecationMessage": "This setting is deprecated. Use `#js/ts.preferences.organizeImports#` instead.",
       "markdownDescription": "Advanced preferences that control how imports are ordered.",
       "properties": {
         "accentCollation": {
@@ -350,6 +356,7 @@
         "single",
         "double"
       ],
+      "markdownDeprecationMessage": "This setting is deprecated. Use `#js/ts.preferences.quoteStyle#` instead.",
       "markdownDescription": "Preferred quote style to use for Quick Fixes.",
       "markdownEnumDescriptions": [
         "Infer quote type from existing code",
@@ -362,12 +369,14 @@
     "javascript.preferences.renameMatchingJsxTags": {
       "default": true,
       "description": "When on a JSX tag, try to rename the matching tag instead of renaming the symbol. Requires using TypeScript 5.1+ in the workspace.",
+      "markdownDeprecationMessage": "This setting is deprecated. Use `#js/ts.preferences.renameMatchingJsxTags#` instead.",
       "scope": "language-overridable",
       "type": "boolean"
     },
     "javascript.preferences.useAliasesForRenames": {
       "default": true,
       "description": "Enable/disable introducing aliases for object shorthand properties during renames.",
+      "markdownDeprecationMessage": "This setting is deprecated. Use `#js/ts.preferences.useAliasesForRenames#` instead.",
       "scope": "language-overridable",
       "type": "boolean"
     },
@@ -677,6 +686,250 @@
     "js/ts.inlayHints.variableTypes.suppressWhenTypeMatchesName": {
       "default": true,
       "markdownDescription": "Suppress type hints on variables whose name is identical to the type name.",
+      "scope": "language-overridable",
+      "tags": [
+        "JavaScript",
+        "TypeScript"
+      ],
+      "type": "boolean"
+    },
+    "js/ts.preferences.autoImportFileExcludePatterns": {
+      "items": {
+        "type": "string"
+      },
+      "markdownDescription": "Specify glob patterns of files to exclude from auto imports. Relative paths are resolved relative to the workspace root. Patterns are evaluated using tsconfig.json [`exclude`](https://www.typescriptlang.org/tsconfig#exclude) semantics.",
+      "scope": "resource",
+      "tags": [
+        "JavaScript",
+        "TypeScript"
+      ],
+      "type": "array"
+    },
+    "js/ts.preferences.autoImportSpecifierExcludeRegexes": {
+      "items": {
+        "type": "string"
+      },
+      "markdownDescription": "Specify regular expressions to exclude auto imports with matching import specifiers. Examples:\n\n- `^node:`\n- `lib/internal` (slashes don't need to be escaped...)\n- `/lib\\/internal/i` (...unless including surrounding slashes for `i` or `u` flags)\n- `^lodash$` (only allow subpath imports from lodash)",
+      "scope": "resource",
+      "tags": [
+        "JavaScript",
+        "TypeScript"
+      ],
+      "type": "array"
+    },
+    "js/ts.preferences.importModuleSpecifier": {
+      "default": "shortest",
+      "description": "Preferred path style for auto imports.",
+      "enum": [
+        "shortest",
+        "relative",
+        "non-relative",
+        "project-relative"
+      ],
+      "markdownEnumDescriptions": [
+        "Prefers a non-relative import only if one is available that has fewer path segments than a relative import.",
+        "Prefers a relative path to the imported file location.",
+        "Prefers a non-relative import based on the `baseUrl` or `paths` configured in your `jsconfig.json` / `tsconfig.json`.",
+        "Prefers a non-relative import only if the relative import path would leave the package or project directory."
+      ],
+      "scope": "language-overridable",
+      "tags": [
+        "JavaScript",
+        "TypeScript"
+      ],
+      "type": "string"
+    },
+    "js/ts.preferences.importModuleSpecifierEnding": {
+      "default": "auto",
+      "description": "Preferred path ending for auto imports.",
+      "enum": [
+        "auto",
+        "minimal",
+        "index",
+        "js"
+      ],
+      "enumItemLabels": [
+        null,
+        null,
+        null,
+        "%typescript.preferences.importModuleSpecifierEnding.label.js%"
+      ],
+      "markdownEnumDescriptions": [
+        "Use project settings to select a default.",
+        "Shorten `./component/index.js` to `./component`.",
+        "Shorten `./component/index.js` to `./component/index`.",
+        "Do not shorten path endings; include the `.js` or `.ts` extension."
+      ],
+      "scope": "language-overridable",
+      "tags": [
+        "JavaScript",
+        "TypeScript"
+      ],
+      "type": "string"
+    },
+    "js/ts.preferences.includePackageJsonAutoImports": {
+      "default": "auto",
+      "enum": [
+        "auto",
+        "on",
+        "off"
+      ],
+      "enumDescriptions": [
+        "Search dependencies based on estimated performance impact.",
+        "Always search dependencies.",
+        "Never search dependencies."
+      ],
+      "markdownDescription": "Enable/disable searching `package.json` dependencies for available auto imports.",
+      "scope": "window",
+      "tags": [
+        "TypeScript"
+      ],
+      "type": "string"
+    },
+    "js/ts.preferences.jsxAttributeCompletionStyle": {
+      "default": "auto",
+      "description": "Preferred style for JSX attribute completions.",
+      "enum": [
+        "auto",
+        "braces",
+        "none"
+      ],
+      "markdownEnumDescriptions": [
+        "Insert `={}` or `=\"\"` after attribute names based on the prop type. See `#js/ts.preferences.quoteStyle#` to control the type of quotes used for string attributes.",
+        "Insert `={}` after attribute names.",
+        "Only insert attribute names."
+      ],
+      "scope": "language-overridable",
+      "tags": [
+        "JavaScript",
+        "TypeScript"
+      ],
+      "type": "string"
+    },
+    "js/ts.preferences.organizeImports": {
+      "markdownDescription": "Advanced preferences that control how imports are ordered.",
+      "properties": {
+        "accentCollation": {
+          "markdownDescription": "Requires `organizeImports.unicodeCollation: 'unicode'`. Compare characters with diacritical marks as unequal to base character.",
+          "type": "boolean"
+        },
+        "caseFirst": {
+          "default": "default",
+          "enum": [
+            "default",
+            "upper",
+            "lower"
+          ],
+          "markdownDescription": "Requires `organizeImports.unicodeCollation: 'unicode'`, and `organizeImports.caseSensitivity` is not `caseInsensitive`. Indicates whether upper-case will sort before lower-case.",
+          "markdownEnumDescriptions": [
+            "Default order given by `locale`.",
+            "Upper-case comes before lower-case. E.g. ` A, a, B, b`.",
+            "Lower-case comes before upper-case. E.g.` a, A, z, Z`."
+          ],
+          "type": "string"
+        },
+        "caseSensitivity": {
+          "default": "auto",
+          "enum": [
+            "auto",
+            "caseInsensitive",
+            "caseSensitive"
+          ],
+          "markdownDescription": "Specifies how imports should be sorted with regards to case-sensitivity. If `auto` or unspecified, we will detect the case-sensitivity per file",
+          "markdownEnumDescriptions": [
+            "Detect case-sensitivity for import sorting.",
+            "Sort imports case-insensitively.",
+            "Sort imports case-sensitively."
+          ],
+          "type": "string"
+        },
+        "locale": {
+          "markdownDescription": "Requires `organizeImports.unicodeCollation: 'unicode'`. Overrides the locale used for collation. Specify `auto` to use the UI locale.",
+          "type": "string"
+        },
+        "numericCollation": {
+          "markdownDescription": "Requires `organizeImports.unicodeCollation: 'unicode'`. Sort numeric strings by integer value.",
+          "type": "boolean"
+        },
+        "typeOrder": {
+          "default": "auto",
+          "enum": [
+            "auto",
+            "last",
+            "inline",
+            "first"
+          ],
+          "markdownDescription": "Specify how type-only named imports should be sorted.",
+          "markdownEnumDescriptions": [
+            "Detect where type-only named imports should be sorted.",
+            "Type only named imports are sorted to the end of the import list. E.g. `import { B, Z, type A, type Y } from 'module';`",
+            "Named imports are sorted by name only. E.g. `import { type A, B, type Y, Z } from 'module';`",
+            "Type only named imports are sorted to the beginning of the import list. E.g. `import { type A, type Y, B, Z } from 'module';`"
+          ],
+          "type": "string"
+        },
+        "unicodeCollation": {
+          "default": "ordinal",
+          "enum": [
+            "ordinal",
+            "unicode"
+          ],
+          "markdownDescription": "Specify whether to sort imports using Unicode or Ordinal collation.",
+          "markdownEnumDescriptions": [
+            "Sort imports using the numeric value of each code point.",
+            "Sort imports using the Unicode code collation."
+          ],
+          "type": "string"
+        }
+      },
+      "tags": [
+        "JavaScript",
+        "TypeScript"
+      ],
+      "type": "object"
+    },
+    "js/ts.preferences.preferTypeOnlyAutoImports": {
+      "default": false,
+      "markdownDescription": "Include the `type` keyword in auto-imports whenever possible. Requires using TypeScript 5.3+ in the workspace.",
+      "scope": "resource",
+      "tags": [
+        "TypeScript"
+      ],
+      "type": "boolean"
+    },
+    "js/ts.preferences.quoteStyle": {
+      "default": "auto",
+      "enum": [
+        "auto",
+        "single",
+        "double"
+      ],
+      "markdownDescription": "Preferred quote style to use for Quick Fixes.",
+      "markdownEnumDescriptions": [
+        "Infer quote type from existing code",
+        "Always use single quotes: `'`",
+        "Always use double quotes: `\"`"
+      ],
+      "scope": "language-overridable",
+      "tags": [
+        "JavaScript",
+        "TypeScript"
+      ],
+      "type": "string"
+    },
+    "js/ts.preferences.renameMatchingJsxTags": {
+      "default": true,
+      "description": "When on a JSX tag, try to rename the matching tag instead of renaming the symbol. Requires using TypeScript 5.1+ in the workspace.",
+      "scope": "language-overridable",
+      "tags": [
+        "JavaScript",
+        "TypeScript"
+      ],
+      "type": "boolean"
+    },
+    "js/ts.preferences.useAliasesForRenames": {
+      "default": true,
+      "description": "Enable/disable introducing aliases for object shorthand properties during renames.",
       "scope": "language-overridable",
       "tags": [
         "JavaScript",
@@ -1116,6 +1369,7 @@
       "items": {
         "type": "string"
       },
+      "markdownDeprecationMessage": "This setting is deprecated. Use `#js/ts.preferences.autoImportFileExcludePatterns#` instead.",
       "markdownDescription": "Specify glob patterns of files to exclude from auto imports. Relative paths are resolved relative to the workspace root. Patterns are evaluated using tsconfig.json [`exclude`](https://www.typescriptlang.org/tsconfig#exclude) semantics.",
       "scope": "resource",
       "type": "array"
@@ -1124,6 +1378,7 @@
       "items": {
         "type": "string"
       },
+      "markdownDeprecationMessage": "This setting is deprecated. Use `#js/ts.preferences.autoImportSpecifierExcludeRegexes#` instead.",
       "markdownDescription": "Specify regular expressions to exclude auto imports with matching import specifiers. Examples:\n\n- `^node:`\n- `lib/internal` (slashes don't need to be escaped...)\n- `/lib\\/internal/i` (...unless including surrounding slashes for `i` or `u` flags)\n- `^lodash$` (only allow subpath imports from lodash)",
       "scope": "resource",
       "type": "array"
@@ -1137,6 +1392,7 @@
         "non-relative",
         "project-relative"
       ],
+      "markdownDeprecationMessage": "This setting is deprecated. Use `#js/ts.preferences.importModuleSpecifier#` instead.",
       "markdownEnumDescriptions": [
         "Prefers a non-relative import only if one is available that has fewer path segments than a relative import.",
         "Prefers a relative path to the imported file location.",
@@ -1161,6 +1417,7 @@
         null,
         "%typescript.preferences.importModuleSpecifierEnding.label.js%"
       ],
+      "markdownDeprecationMessage": "This setting is deprecated. Use `#js/ts.preferences.importModuleSpecifierEnding#` instead.",
       "markdownEnumDescriptions": [
         "Use project settings to select a default.",
         "Shorten `./component/index.js` to `./component`.",
@@ -1182,6 +1439,7 @@
         "Always search dependencies.",
         "Never search dependencies."
       ],
+      "markdownDeprecationMessage": "This setting is deprecated. Use `#js/ts.preferences.includePackageJsonAutoImports#` instead.",
       "markdownDescription": "Enable/disable searching `package.json` dependencies for available auto imports.",
       "scope": "window",
       "type": "string"
@@ -1194,6 +1452,7 @@
         "braces",
         "none"
       ],
+      "markdownDeprecationMessage": "This setting is deprecated. Use `#js/ts.preferences.jsxAttributeCompletionStyle#` instead.",
       "markdownEnumDescriptions": [
         "Insert `={}` or `=\"\"` after attribute names based on the prop type. See `#typescript.preferences.quoteStyle#` to control the type of quotes used for string attributes.",
         "Insert `={}` after attribute names.",
@@ -1203,6 +1462,7 @@
       "type": "string"
     },
     "typescript.preferences.organizeImports": {
+      "markdownDeprecationMessage": "This setting is deprecated. Use `#js/ts.preferences.organizeImports#` instead.",
       "markdownDescription": "Advanced preferences that control how imports are ordered.",
       "properties": {
         "accentCollation": {
@@ -1282,6 +1542,7 @@
     },
     "typescript.preferences.preferTypeOnlyAutoImports": {
       "default": false,
+      "markdownDeprecationMessage": "This setting is deprecated. Use `#js/ts.preferences.preferTypeOnlyAutoImports#` instead.",
       "markdownDescription": "Include the `type` keyword in auto-imports whenever possible. Requires using TypeScript 5.3+ in the workspace.",
       "scope": "resource",
       "type": "boolean"
@@ -1293,6 +1554,7 @@
         "single",
         "double"
       ],
+      "markdownDeprecationMessage": "This setting is deprecated. Use `#js/ts.preferences.quoteStyle#` instead.",
       "markdownDescription": "Preferred quote style to use for Quick Fixes.",
       "markdownEnumDescriptions": [
         "Infer quote type from existing code",
@@ -1305,12 +1567,14 @@
     "typescript.preferences.renameMatchingJsxTags": {
       "default": true,
       "description": "When on a JSX tag, try to rename the matching tag instead of renaming the symbol. Requires using TypeScript 5.1+ in the workspace.",
+      "markdownDeprecationMessage": "This setting is deprecated. Use `#js/ts.preferences.renameMatchingJsxTags#` instead.",
       "scope": "language-overridable",
       "type": "boolean"
     },
     "typescript.preferences.useAliasesForRenames": {
       "default": true,
       "description": "Enable/disable introducing aliases for object shorthand properties during renames.",
+      "markdownDeprecationMessage": "This setting is deprecated. Use `#js/ts.preferences.useAliasesForRenames#` instead.",
       "scope": "language-overridable",
       "type": "boolean"
     },

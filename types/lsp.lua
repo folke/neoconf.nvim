@@ -17899,6 +17899,96 @@
 ---@field propertyDeclarationTypes _.lspconfig.settings.ts_ls.PropertyDeclarationTypes
 ---@field variableTypes _.lspconfig.settings.ts_ls.VariableTypes
 
+-- Advanced preferences that control how imports are ordered.
+---@class _.lspconfig.settings.ts_ls.OrganizeImports
+-- Requires `organizeImports.unicodeCollation: 'unicode'`. Compare characters with diacritical marks as unequal to base character.
+---@field accentCollation boolean
+-- Requires `organizeImports.unicodeCollation: 'unicode'`, and `organizeImports.caseSensitivity` is not `caseInsensitive`. Indicates whether upper-case will sort before lower-case.
+-- 
+-- ```lua
+-- default = "default"
+-- ```
+---@field caseFirst "default" | "upper" | "lower"
+-- Specifies how imports should be sorted with regards to case-sensitivity. If `auto` or unspecified, we will detect the case-sensitivity per file
+-- 
+-- ```lua
+-- default = "auto"
+-- ```
+---@field caseSensitivity "auto" | "caseInsensitive" | "caseSensitive"
+-- Requires `organizeImports.unicodeCollation: 'unicode'`. Overrides the locale used for collation. Specify `auto` to use the UI locale.
+---@field locale string
+-- Requires `organizeImports.unicodeCollation: 'unicode'`. Sort numeric strings by integer value.
+---@field numericCollation boolean
+-- Specify how type-only named imports should be sorted.
+-- 
+-- ```lua
+-- default = "auto"
+-- ```
+---@field typeOrder "auto" | "last" | "inline" | "first"
+-- Specify whether to sort imports using Unicode or Ordinal collation.
+-- 
+-- ```lua
+-- default = "ordinal"
+-- ```
+---@field unicodeCollation "ordinal" | "unicode"
+
+---@class _.lspconfig.settings.ts_ls.Preferences
+-- Specify glob patterns of files to exclude from auto imports. Relative paths are resolved relative to the workspace root. Patterns are evaluated using tsconfig.json [`exclude`](https://www.typescriptlang.org/tsconfig#exclude) semantics.
+---@field autoImportFileExcludePatterns string[]
+-- Specify regular expressions to exclude auto imports with matching import specifiers. Examples:
+-- 
+-- - `^node:`
+-- - `lib/internal` (slashes don't need to be escaped...)
+-- - `/lib\/internal/i` (...unless including surrounding slashes for `i` or `u` flags)
+-- - `^lodash$` (only allow subpath imports from lodash)
+---@field autoImportSpecifierExcludeRegexes string[]
+-- Preferred path style for auto imports.
+-- 
+-- ```lua
+-- default = "shortest"
+-- ```
+---@field importModuleSpecifier "shortest" | "relative" | "non-relative" | "project-relative"
+-- Preferred path ending for auto imports.
+-- 
+-- ```lua
+-- default = "auto"
+-- ```
+---@field importModuleSpecifierEnding "auto" | "minimal" | "index" | "js"
+-- Enable/disable searching `package.json` dependencies for available auto imports.
+-- 
+-- ```lua
+-- default = "auto"
+-- ```
+---@field includePackageJsonAutoImports "auto" | "on" | "off"
+-- Preferred style for JSX attribute completions.
+-- 
+-- ```lua
+-- default = "auto"
+-- ```
+---@field jsxAttributeCompletionStyle "auto" | "braces" | "none"
+-- Advanced preferences that control how imports are ordered.
+---@field organizeImports _.lspconfig.settings.ts_ls.OrganizeImports
+-- Include the `type` keyword in auto-imports whenever possible. Requires using TypeScript 5.3+ in the workspace.
+---@field preferTypeOnlyAutoImports boolean
+-- Preferred quote style to use for Quick Fixes.
+-- 
+-- ```lua
+-- default = "auto"
+-- ```
+---@field quoteStyle "auto" | "single" | "double"
+-- When on a JSX tag, try to rename the matching tag instead of renaming the symbol. Requires using TypeScript 5.1+ in the workspace.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field renameMatchingJsxTags boolean
+-- Enable/disable introducing aliases for object shorthand properties during renames.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field useAliasesForRenames boolean
+
 ---@class _.lspconfig.settings.ts_ls.ReferencesCodeLens
 -- Enable/disable references CodeLens in JavaScript and TypeScript files. This CodeLens shows the number of references for classes and exported functions and allows you to peek or navigate to them.
 ---@field enabled boolean
@@ -17991,6 +18081,7 @@
 ---@field implementationsCodeLens _.lspconfig.settings.ts_ls.ImplementationsCodeLens
 ---@field implicitProjectConfig _.lspconfig.settings.ts_ls.ImplicitProjectConfig
 ---@field inlayHints _.lspconfig.settings.ts_ls.InlayHints
+---@field preferences _.lspconfig.settings.ts_ls.Preferences
 ---@field referencesCodeLens _.lspconfig.settings.ts_ls.ReferencesCodeLens
 ---@field suggest _.lspconfig.settings.ts_ls.Suggest
 ---@field suggestionActions _.lspconfig.settings.ts_ls.SuggestionActions
