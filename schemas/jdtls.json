@@ -1067,6 +1067,7 @@
     },
     "java.saveActions.organizeImports": {
       "default": false,
+      "deprecationMessage": "This setting is deprecated, please configure 'editor.codeActionsOnSave' instead.",
       "description": "Enable/disable auto organize imports on save action",
       "order": 20,
       "scope": "window",
@@ -1197,6 +1198,13 @@
       "order": 10,
       "scope": "window",
       "type": "array"
+    },
+    "java.templates.newFile.enabled": {
+      "default": true,
+      "markdownDescription": "Enable/disable automatic generation of class body and package declaration when creating a new Java file. Set to `false` to create empty Java files. Defaults to `true`.",
+      "order": 5,
+      "scope": "window",
+      "type": "boolean"
     },
     "java.templates.typeComment": {
       "default": [],

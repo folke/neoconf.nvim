@@ -6634,6 +6634,14 @@
 -- Include method declarations from source files in symbol search.
 ---@field includeSourceMethodDeclarations boolean
 
+---@class _.lspconfig.settings.jdtls.NewFile
+-- Enable/disable automatic generation of class body and package declaration when creating a new Java file. Set to `false` to create empty Java files. Defaults to `true`.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enabled boolean
+
 ---@class _.lspconfig.settings.jdtls.Templates
 -- Specifies the file header comment for new Java file. Supports configuring multi-line comments with an array of strings, and using ${variable} to reference the [predefined variables](command:_java.templateVariables).
 -- 
@@ -6641,6 +6649,7 @@
 -- default = {}
 -- ```
 ---@field fileHeader any[]
+---@field newFile _.lspconfig.settings.jdtls.NewFile
 -- Specifies the type comment for new Java type. Supports configuring multi-line comments with an array of strings, and using ${variable} to reference the [predefined variables](command:_java.templateVariables).
 -- 
 -- ```lua
