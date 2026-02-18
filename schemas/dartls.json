@@ -1352,6 +1352,12 @@
       "markdownDescription": "Whether to rename files when renaming classes with matching names (for example renaming 'class Person' inside 'person.dart'). If set to 'prompt', will ask each time before renaming. If set to 'always', the file will automatically be renamed. This setting requires using LSP and a Dart SDK of at least v2.15.",
       "scope": "window"
     },
+    "dart.runPubConcurrently": {
+      "default": true,
+      "markdownDescription": "Whether to run Pub operations across multiple folders concurrently.",
+      "scope": "window",
+      "type": "boolean"
+    },
     "dart.runPubGetOnNestedProjects": {
       "default": "none",
       "enum": [

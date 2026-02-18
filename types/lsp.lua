@@ -2334,6 +2334,12 @@
 -- default = "never"
 -- ```
 ---@field renameFilesWithClasses "never" | "prompt" | "always"
+-- Whether to run Pub operations across multiple folders concurrently.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field runPubConcurrently boolean
 -- Whether to automatically run `pub get` on nested projects above or below the one where the pubspec was changed.
 -- 
 -- ```lua
@@ -7076,6 +7082,12 @@
 ---@field enableTelemetry boolean
 -- Path to a julia environment. VS Code needs to be reloaded for changes to take effect. Explicitly supports substitution for the `${userHome}`, `${workspaceFolder}`, `${workspaceFolderBasename}`, `${workspaceFolder:<FOLDER_NAME>}`, `${pathSeparator}`, `${env:<ENVIRONMENT_VARIABLE>}`, `${config:<CONFIG_VARIABLE>}` tokens.
 ---@field environmentPath string
+-- Environment variables that are added to the Julia executable's environment for every Julia process started by this extension. Variables defined here will be merged with (and usually override) the default process environment, but various environment variables will get overridden for some processes for stability reasons.
+-- 
+-- ```lua
+-- default = {}
+-- ```
+---@field environmentVariables table
 -- Points to the Julia executable. This can either be an absolute path, an executable on your PATH, or a juliaup channel (valid formats `julia +$channel`, `+$channel`).
 -- 
 -- ```lua
