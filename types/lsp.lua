@@ -17771,6 +17771,94 @@
 ---@field updateImportsOnPaste _.lspconfig.settings.ts_ls.UpdateImportsOnPaste
 ---@field validate _.lspconfig.settings.ts_ls.Validate
 
+---@class _.lspconfig.settings.ts_ls.AutoClosingTags
+-- Enable/disable automatic closing of JSX tags.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enabled boolean
+
+---@class _.lspconfig.settings.ts_ls.Format
+-- Enable/disable the default JavaScript and TypeScript formatter.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enabled boolean
+-- Indent case clauses in switch statements. Requires using TypeScript 5.1+ in the workspace.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field indentSwitchCase boolean
+-- Defines space handling after a comma delimiter.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field insertSpaceAfterCommaDelimiter boolean
+-- Defines space handling after the constructor keyword.
+---@field insertSpaceAfterConstructor boolean
+-- Defines space handling after function keyword for anonymous functions.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field insertSpaceAfterFunctionKeywordForAnonymousFunctions boolean
+-- Defines space handling after keywords in a control flow statement.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field insertSpaceAfterKeywordsInControlFlowStatements boolean
+-- Defines space handling after opening and before closing empty braces.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field insertSpaceAfterOpeningAndBeforeClosingEmptyBraces boolean
+-- Defines space handling after opening and before closing JSX expression braces.
+---@field insertSpaceAfterOpeningAndBeforeClosingJsxExpressionBraces boolean
+-- Defines space handling after opening and before closing non-empty braces.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field insertSpaceAfterOpeningAndBeforeClosingNonemptyBraces boolean
+-- Defines space handling after opening and before closing non-empty brackets.
+---@field insertSpaceAfterOpeningAndBeforeClosingNonemptyBrackets boolean
+-- Defines space handling after opening and before closing non-empty parenthesis.
+---@field insertSpaceAfterOpeningAndBeforeClosingNonemptyParenthesis boolean
+-- Defines space handling after opening and before closing template string braces.
+---@field insertSpaceAfterOpeningAndBeforeClosingTemplateStringBraces boolean
+-- Defines space handling after a semicolon in a for statement.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field insertSpaceAfterSemicolonInForStatements boolean
+-- Defines space handling after type assertions in TypeScript.
+---@field insertSpaceAfterTypeAssertion boolean
+-- Defines space handling after a binary operator.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field insertSpaceBeforeAndAfterBinaryOperators boolean
+-- Defines space handling before function argument parentheses.
+---@field insertSpaceBeforeFunctionParenthesis boolean
+-- Defines whether an open brace is put onto a new line for control blocks or not.
+---@field placeOpenBraceOnNewLineForControlBlocks boolean
+-- Defines whether an open brace is put onto a new line for functions or not.
+---@field placeOpenBraceOnNewLineForFunctions boolean
+-- Defines handling of optional semicolons.
+-- 
+-- ```lua
+-- default = "ignore"
+-- ```
+---@field semicolons "ignore" | "insert" | "remove"
+
 ---@class _.lspconfig.settings.ts_ls.Hover
 -- The maximum number of characters in a hover. If the hover is longer than this, it will be truncated. Requires TypeScript 5.9+.
 -- 
@@ -18097,15 +18185,52 @@
 -- ```
 ---@field enabled boolean
 
+---@class _.lspconfig.settings.ts_ls.UpdateImportsOnFileMove
+-- Enable/disable automatic updating of import paths when you rename or move a file in VS Code.
+-- 
+-- ```lua
+-- default = "prompt"
+-- ```
+---@field enabled "prompt" | "always" | "never"
+
+---@class _.lspconfig.settings.ts_ls.UpdateImportsOnPaste
+-- Automatically update imports when pasting code. Requires TypeScript 5.6+.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enabled boolean
+
+---@class _.lspconfig.settings.ts_ls.WorkspaceSymbols
+-- Exclude symbols that come from library files in `Go to Symbol in Workspace` results. Requires using TypeScript 5.3+ in the workspace.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field excludeLibrarySymbols boolean
+-- Controls which files are searched by [Go to Symbol in Workspace](https://code.visualstudio.com/docs/editor/editingevolved#_open-symbol-by-name).
+-- 
+-- ```lua
+-- default = "allOpenProjects"
+-- ```
+---@field scope "allOpenProjects" | "currentProject"
+
 ---@class _.lspconfig.settings.ts_ls.Js/ts
+---@field autoClosingTags _.lspconfig.settings.ts_ls.AutoClosingTags
+---@field format _.lspconfig.settings.ts_ls.Format
 ---@field hover _.lspconfig.settings.ts_ls.Hover
 ---@field implementationsCodeLens _.lspconfig.settings.ts_ls.ImplementationsCodeLens
 ---@field implicitProjectConfig _.lspconfig.settings.ts_ls.ImplicitProjectConfig
 ---@field inlayHints _.lspconfig.settings.ts_ls.InlayHints
+-- Makes `Go to Definition` avoid type declaration files when possible by triggering `Go to Source Definition` instead. This allows `Go to Source Definition` to be triggered with the mouse gesture.
+---@field preferGoToSourceDefinition boolean
 ---@field preferences _.lspconfig.settings.ts_ls.Preferences
 ---@field referencesCodeLens _.lspconfig.settings.ts_ls.ReferencesCodeLens
 ---@field suggest _.lspconfig.settings.ts_ls.Suggest
 ---@field suggestionActions _.lspconfig.settings.ts_ls.SuggestionActions
+---@field updateImportsOnFileMove _.lspconfig.settings.ts_ls.UpdateImportsOnFileMove
+---@field updateImportsOnPaste _.lspconfig.settings.ts_ls.UpdateImportsOnPaste
+---@field workspaceSymbols _.lspconfig.settings.ts_ls.WorkspaceSymbols
 
 ---@class _.lspconfig.settings.ts_ls.Check
 -- Check if npm is installed for [Automatic Type Acquisition](https://code.visualstudio.com/docs/nodejs/working-with-javascript#_typings-and-automatic-type-acquisition).
