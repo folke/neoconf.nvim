@@ -1403,6 +1403,7 @@
     "typescript.experimental.useTsgo": {
       "default": false,
       "markdownDescription": "Disables TypeScript and JavaScript language features to allow usage of the TypeScript Go experimental extension. Requires TypeScript Go to be installed and configured. Requires reloading extensions after changing this setting.",
+      "order": 2,
       "scope": "window",
       "tags": [
         "experimental"
@@ -1668,6 +1669,7 @@
         "中文(繁體)"
       ],
       "markdownDescription": "Sets the locale used to report JavaScript and TypeScript errors. Defaults to use VS Code's locale.",
+      "order": 3,
       "scope": "window",
       "type": "string"
     },
@@ -2008,11 +2010,13 @@
         "Only create single run compile tasks.",
         "Only create compile and watch tasks."
       ],
+      "order": 4,
       "scope": "window",
       "type": "string"
     },
     "typescript.tsdk": {
       "markdownDescription": "Specifies the folder path to the tsserver and `lib*.d.ts` files under a TypeScript install to use for IntelliSense, for example: `./node_modules/typescript/lib`.\n\n- When specified as a user setting, the TypeScript version from `typescript.tsdk` automatically replaces the built-in TypeScript version.\n- When specified as a workspace setting, `typescript.tsdk` allows you to switch to use that workspace version of TypeScript for IntelliSense with the `TypeScript: Select TypeScript version` command.\n\nSee the [TypeScript documentation](https://code.visualstudio.com/docs/typescript/typescript-compiling#_using-newer-typescript-versions) for more detail about managing TypeScript versions.",
+      "order": 1,
       "scope": "window",
       "type": "string"
     },
