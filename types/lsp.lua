@@ -18197,6 +18197,14 @@
 -- ```
 ---@field enabled boolean
 
+---@class _.lspconfig.settings.ts_ls.Validate
+-- Enable/disable JavaScript and TypeScript validation.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enabled boolean
+
 ---@class _.lspconfig.settings.ts_ls.WorkspaceSymbols
 -- Exclude symbols that come from library files in `Go to Symbol in Workspace` results. Requires using TypeScript 5.3+ in the workspace.
 -- 
@@ -18222,10 +18230,17 @@
 ---@field preferGoToSourceDefinition boolean
 ---@field preferences _.lspconfig.settings.ts_ls.Preferences
 ---@field referencesCodeLens _.lspconfig.settings.ts_ls.ReferencesCodeLens
+-- Report style checks as warnings.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field reportStyleChecksAsWarnings boolean
 ---@field suggest _.lspconfig.settings.ts_ls.Suggest
 ---@field suggestionActions _.lspconfig.settings.ts_ls.SuggestionActions
 ---@field updateImportsOnFileMove _.lspconfig.settings.ts_ls.UpdateImportsOnFileMove
 ---@field updateImportsOnPaste _.lspconfig.settings.ts_ls.UpdateImportsOnPaste
+---@field validate _.lspconfig.settings.ts_ls.Validate
 ---@field workspaceSymbols _.lspconfig.settings.ts_ls.WorkspaceSymbols
 
 ---@class _.lspconfig.settings.ts_ls.Check
