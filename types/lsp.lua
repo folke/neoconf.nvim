@@ -6777,9 +6777,11 @@
 -- 
 -- ```lua
 -- default = {
+--   ["https://developer.microsoft.com/json-schemas/"] = true,
 --   ["https://json-schema.org/"] = true,
 --   ["https://json.schemastore.org/"] = true,
---   ["https://raw.githubusercontent.com/"] = true,
+--   ["https://raw.githubusercontent.com/devcontainers/spec/"] = true,
+--   ["https://raw.githubusercontent.com/microsoft/vscode/"] = true,
 --   ["https://schemastore.azurewebsites.net/"] = true,
 --   ["https://www.schemastore.org/"] = true
 -- }
@@ -17775,6 +17777,10 @@
 -- ```
 ---@field enabled boolean
 
+---@class _.lspconfig.settings.ts_ls.Experimental
+-- Disables TypeScript and JavaScript language features to allow usage of the TypeScript Go experimental extension. Requires TypeScript Go to be installed and configured. Requires reloading extensions after changing this setting.
+---@field useTsgo boolean
+
 ---@class _.lspconfig.settings.ts_ls.Format
 -- Enable/disable the default JavaScript and TypeScript formatter.
 -- 
@@ -18181,6 +18187,115 @@
 -- ```
 ---@field enabled boolean
 
+---@class _.lspconfig.settings.ts_ls.Tsc
+-- Controls auto detection of tsc tasks.
+-- 
+-- ```lua
+-- default = "on"
+-- ```
+---@field autoDetect "on" | "off" | "build" | "watch"
+
+---@class _.lspconfig.settings.ts_ls.Tsdk
+-- Specifies the folder path to the tsserver and `lib*.d.ts` files under a TypeScript install to use for IntelliSense, for example: `./node_modules/typescript/lib`.
+-- 
+-- - When specified as a user setting, the TypeScript version from `typescript.tsdk` automatically replaces the built-in TypeScript version.
+-- - When specified as a workspace setting, `typescript.tsdk` allows you to switch to use that workspace version of TypeScript for IntelliSense with the `TypeScript: Select TypeScript version` command.
+-- 
+-- See the [TypeScript documentation](https://code.visualstudio.com/docs/typescript/typescript-compiling#_using-newer-typescript-versions) for more detail about managing TypeScript versions.
+---@field path string
+-- Enables prompting of users to use the TypeScript version configured in the workspace for Intellisense.
+---@field promptToUseWorkspaceVersion boolean
+
+---@class _.lspconfig.settings.ts_ls.AutomaticTypeAcquisition
+-- Enable [automatic type acquisition](https://code.visualstudio.com/docs/nodejs/working-with-javascript#_typings-and-automatic-type-acquisition). Automatic type acquisition fetches `@types` packages from npm to improve IntelliSense for external libraries.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enabled boolean
+
+---@class _.lspconfig.settings.ts_ls.Experimental
+-- Enables project wide error reporting.
+---@field enableProjectDiagnostics boolean
+
+---@class _.lspconfig.settings.ts_ls.Node
+-- Run TS Server on a custom Node installation. This can be a path to a Node executable, or 'node' if you want VS Code to detect a Node installation.
+---@field path string
+
+---@class _.lspconfig.settings.ts_ls.Npm
+-- Specifies the path to the npm executable used for [Automatic Type Acquisition](https://code.visualstudio.com/docs/nodejs/working-with-javascript#_typings-and-automatic-type-acquisition).
+---@field path string
+
+---@class _.lspconfig.settings.ts_ls.Tracing
+-- Enables tracing TS server performance to a directory. These trace files can be used to diagnose TS Server performance issues. The log may contain file paths, source code, and other potentially sensitive information from your project.
+---@field enabled boolean
+
+---@class _.lspconfig.settings.ts_ls.ProjectWideIntellisense
+-- Enable/disable project-wide IntelliSense on web. Requires that VS Code is running in a trusted context.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enabled boolean
+-- Suppresses semantic errors on web even when project wide IntelliSense is enabled. This is always on when project wide IntelliSense is not enabled or available. See `#js/ts.tsserver.web.projectWideIntellisense.enabled#`
+---@field suppressSemanticErrors boolean
+
+---@class _.lspconfig.settings.ts_ls.TypeAcquisition
+-- Enable/disable package acquisition on the web. This enables IntelliSense for imported packages. Requires `#js/ts.tsserver.web.projectWideIntellisense.enabled#`. Currently not supported for Safari.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enabled boolean
+
+---@class _.lspconfig.settings.ts_ls.Web
+---@field projectWideIntellisense _.lspconfig.settings.ts_ls.ProjectWideIntellisense
+---@field typeAcquisition _.lspconfig.settings.ts_ls.TypeAcquisition
+
+---@class _.lspconfig.settings.ts_ls.Tsserver
+---@field automaticTypeAcquisition _.lspconfig.settings.ts_ls.AutomaticTypeAcquisition
+-- Check if npm is installed for [Automatic Type Acquisition](https://code.visualstudio.com/docs/nodejs/working-with-javascript#_typings-and-automatic-type-acquisition).
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field checkNpmIsInstalled boolean
+---@field experimental _.lspconfig.settings.ts_ls.Experimental
+-- Enables logging of the TS server to a file. This log can be used to diagnose TS Server issues. The log may contain file paths, source code, and other potentially sensitive information from your project.
+-- 
+-- ```lua
+-- default = "off"
+-- ```
+---@field log "off" | "terse" | "normal" | "verbose" | "requestTime"
+-- The maximum amount of memory (in MB) to allocate to the TypeScript server process. To use a memory limit greater than 4 GB, use `#js/ts.tsserver.node.path#` to run TS Server with a custom Node installation.
+-- 
+-- ```lua
+-- default = 3072
+-- ```
+---@field maxMemory number
+---@field node _.lspconfig.settings.ts_ls.Node
+---@field npm _.lspconfig.settings.ts_ls.Npm
+-- Additional paths to discover TypeScript Language Service plugins.
+-- 
+-- ```lua
+-- default = {}
+-- ```
+---@field pluginPaths string[]
+---@field tracing _.lspconfig.settings.ts_ls.Tracing
+-- Controls if TypeScript launches a dedicated server to more quickly handle syntax related operations, such as computing code folding.
+-- 
+-- ```lua
+-- default = "auto"
+-- ```
+---@field useSyntaxServer "always" | "never" | "auto"
+-- Configure which watching strategies should be used to keep track of files and directories.
+-- 
+-- ```lua
+-- default = "vscode"
+-- ```
+---@field watchOptions any
+---@field web _.lspconfig.settings.ts_ls.Web
+
 ---@class _.lspconfig.settings.ts_ls.UpdateImportsOnFileMove
 -- Enable/disable automatic updating of import paths when you rename or move a file in VS Code.
 -- 
@@ -18221,11 +18336,18 @@
 
 ---@class _.lspconfig.settings.ts_ls.Js/ts
 ---@field autoClosingTags _.lspconfig.settings.ts_ls.AutoClosingTags
+---@field experimental _.lspconfig.settings.ts_ls.Experimental
 ---@field format _.lspconfig.settings.ts_ls.Format
 ---@field hover _.lspconfig.settings.ts_ls.Hover
 ---@field implementationsCodeLens _.lspconfig.settings.ts_ls.ImplementationsCodeLens
 ---@field implicitProjectConfig _.lspconfig.settings.ts_ls.ImplicitProjectConfig
 ---@field inlayHints _.lspconfig.settings.ts_ls.InlayHints
+-- Sets the locale used to report JavaScript and TypeScript errors. Defaults to use VS Code's locale.
+-- 
+-- ```lua
+-- default = "auto"
+-- ```
+---@field locale "auto" | "de" | "es" | "en" | "fr" | "it" | "ja" | "ko" | "ru" | "zh-CN" | "zh-TW"
 -- Makes `Go to Definition` avoid type declaration files when possible by triggering `Go to Source Definition` instead. This allows `Go to Source Definition` to be triggered with the mouse gesture.
 ---@field preferGoToSourceDefinition boolean
 ---@field preferences _.lspconfig.settings.ts_ls.Preferences
@@ -18238,6 +18360,9 @@
 ---@field reportStyleChecksAsWarnings boolean
 ---@field suggest _.lspconfig.settings.ts_ls.Suggest
 ---@field suggestionActions _.lspconfig.settings.ts_ls.SuggestionActions
+---@field tsc _.lspconfig.settings.ts_ls.Tsc
+---@field tsdk _.lspconfig.settings.ts_ls.Tsdk
+---@field tsserver _.lspconfig.settings.ts_ls.Tsserver
 ---@field updateImportsOnFileMove _.lspconfig.settings.ts_ls.UpdateImportsOnFileMove
 ---@field updateImportsOnPaste _.lspconfig.settings.ts_ls.UpdateImportsOnPaste
 ---@field validate _.lspconfig.settings.ts_ls.Validate
@@ -18630,11 +18755,11 @@
 -- default = true
 -- ```
 ---@field enabled boolean
--- Suppresses semantic errors on web even when project wide IntelliSense is enabled. This is always on when project wide IntelliSense is not enabled or available. See `#typescript.tsserver.web.projectWideIntellisense.enabled#`
+-- Suppresses semantic errors on web even when project wide IntelliSense is enabled. This is always on when project wide IntelliSense is not enabled or available. See `#js/ts.tsserver.web.projectWideIntellisense.enabled#`
 ---@field suppressSemanticErrors boolean
 
 ---@class _.lspconfig.settings.ts_ls.TypeAcquisition
--- Enable/disable package acquisition on the web. This enables IntelliSense for imported packages. Requires `#typescript.tsserver.web.projectWideIntellisense.enabled#`. Currently not supported for Safari.
+-- Enable/disable package acquisition on the web. This enables IntelliSense for imported packages. Requires `#js/ts.tsserver.web.projectWideIntellisense.enabled#`. Currently not supported for Safari.
 -- 
 -- ```lua
 -- default = true
@@ -18655,7 +18780,7 @@
 -- default = "off"
 -- ```
 ---@field log "off" | "terse" | "normal" | "verbose" | "requestTime"
--- The maximum amount of memory (in MB) to allocate to the TypeScript server process. To use a memory limit greater than 4 GB, use `#typescript.tsserver.nodePath#` to run TS Server with a custom Node installation.
+-- The maximum amount of memory (in MB) to allocate to the TypeScript server process. To use a memory limit greater than 4 GB, use `#js/ts.tsserver.node.path#` to run TS Server with a custom Node installation.
 -- 
 -- ```lua
 -- default = 3072
