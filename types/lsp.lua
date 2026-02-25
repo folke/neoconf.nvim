@@ -5048,6 +5048,14 @@
 -- Enables semanticTokens plugin
 ---@field globalOn boolean
 
+---@class _.lspconfig.settings.hie.SignatureHelp
+-- Enables signatureHelp plugin
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field globalOn boolean
+
 ---@class _.lspconfig.settings.hie.Splice
 -- Enables splice plugin
 -- 
@@ -5093,6 +5101,7 @@
 ---@field rename _.lspconfig.settings.hie.Rename
 ---@field retrie _.lspconfig.settings.hie.Retrie
 ---@field semanticTokens _.lspconfig.settings.hie.SemanticTokens
+---@field signatureHelp _.lspconfig.settings.hie.SignatureHelp
 ---@field splice _.lspconfig.settings.hie.Splice
 ---@field stan _.lspconfig.settings.hie.Stan
 
@@ -6386,6 +6395,14 @@
 -- Specify whether to enable `io.freefair.aspectj` plugin in Gradle projects. Defaults to `false`.
 ---@field enabled boolean
 
+---@class _.lspconfig.settings.jdtls.GroovySupport
+-- [Experimental] Specify whether to enable `groovy` plugin in Gradle projects. Defaults to `true`.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enabled boolean
+
 ---@class _.lspconfig.settings.jdtls.Java
 -- Specifies the folder path to the JDK (21 or more recent) used to launch the Java Language Server. This setting will replace the Java extension's embedded JRE to start the Java Language Server. 
 -- 
@@ -6400,6 +6417,14 @@
 -- default = "off"
 -- ```
 ---@field enabled "on" | "off"
+
+---@class _.lspconfig.settings.jdtls.KotlinSupport
+-- [Experimental] Specify whether to enable `org.jetbrains.kotlin.jvm` plugin in Gradle projects. Defaults to `true`.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enabled boolean
 
 ---@class _.lspconfig.settings.jdtls.LombokSupport
 -- Whether to load lombok processors from project classpath
@@ -6423,8 +6448,10 @@
 ---@field androidSupport _.lspconfig.settings.jdtls.AndroidSupport
 ---@field appcds _.lspconfig.settings.jdtls.Appcds
 ---@field aspectjSupport _.lspconfig.settings.jdtls.AspectjSupport
+---@field groovySupport _.lspconfig.settings.jdtls.GroovySupport
 ---@field java _.lspconfig.settings.jdtls.Java
 ---@field javac _.lspconfig.settings.jdtls.Javac
+---@field kotlinSupport _.lspconfig.settings.jdtls.KotlinSupport
 ---@field lombokSupport _.lspconfig.settings.jdtls.LombokSupport
 ---@field protobufSupport _.lspconfig.settings.jdtls.ProtobufSupport
 -- Specifies extra VM arguments used to launch the Java Language Server. Eg. use `-XX:+UseParallelGC -XX:GCTimeRatio=4 -XX:AdaptiveSizePolicyWeight=90 -Dsun.zip.disableMemoryMapping=true -Xmx2G -Xms100m -Xlog:disable` to optimize memory usage with the parallel garbage collector
@@ -6633,6 +6660,8 @@
 ---@field organizeImports _.lspconfig.settings.jdtls.OrganizeImports
 
 ---@class _.lspconfig.settings.jdtls.Symbols
+-- Include generated code (e.g. Lombok getters, setters, constructors) in document outline/symbols.
+---@field includeGeneratedCode boolean
 -- Include method declarations from source files in symbol search.
 ---@field includeSourceMethodDeclarations boolean
 

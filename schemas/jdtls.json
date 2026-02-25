@@ -858,6 +858,13 @@
       "scope": "window",
       "type": "boolean"
     },
+    "java.jdt.ls.groovySupport.enabled": {
+      "default": true,
+      "markdownDescription": "[Experimental] Specify whether to enable `groovy` plugin in Gradle projects. Defaults to `true`.",
+      "order": 80,
+      "scope": "window",
+      "type": "boolean"
+    },
     "java.jdt.ls.java.home": {
       "default": null,
       "description": "Specifies the folder path to the JDK (21 or more recent) used to launch the Java Language Server. This setting will replace the Java extension's embedded JRE to start the Java Language Server. \n\nOn Windows, backslashes must be escaped, i.e.\n\"java.jdt.ls.java.home\":\"C:\\\\Program Files\\\\Java\\\\jdk-21.0_5\"",
@@ -878,6 +885,13 @@
       "order": 95,
       "scope": "window",
       "type": "string"
+    },
+    "java.jdt.ls.kotlinSupport.enabled": {
+      "default": true,
+      "markdownDescription": "[Experimental] Specify whether to enable `org.jetbrains.kotlin.jvm` plugin in Gradle projects. Defaults to `true`.",
+      "order": 80,
+      "scope": "window",
+      "type": "boolean"
     },
     "java.jdt.ls.lombokSupport.enabled": {
       "default": true,
@@ -1184,6 +1198,13 @@
       "order": 40,
       "scope": "window",
       "type": "integer"
+    },
+    "java.symbols.includeGeneratedCode": {
+      "default": false,
+      "markdownDescription": "Include generated code (e.g. Lombok getters, setters, constructors) in document outline/symbols.",
+      "order": 65,
+      "scope": "window",
+      "type": "boolean"
     },
     "java.symbols.includeSourceMethodDeclarations": {
       "default": false,
