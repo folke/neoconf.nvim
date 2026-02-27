@@ -7088,7 +7088,7 @@
 -- Functions or modules that are set to compiled mode when setting the defaults.
 -- 
 -- ```lua
--- default = { "Base.", "-Base.!", "-Base.|>", "-Base.all", "-Base.all!", "-Base.any", "-Base.any!", "-Base.cd", "-Base.iterate", "-Base.collect", "-Base.collect_similar", "-Base._collect", "-Base.collect_to!", "-Base.collect_to_with_first!", "-Base.filter", "-Base.filter!", "-Base.foreach", "-Base.findall", "-Base.findfirst", "-Base.findlast", "-Base.findnext", "-Base.findprev", "-Base.Generator", "-Base.map", "-Base.map!", "-Base.maximum!", "-Base.minimum!", "-Base.mktemp", "-Base.mktempdir", "-Base.open", "-Base.prod!", "-Base.redirect_stderr", "-Base.redirect_stdin", "-Base.redirect_stdout", "-Base.reenable_sigint", "-Base.setindex!", "-Base.setprecision", "-Base.setrounding", "-Base.show", "-Base.sprint", "-Base.sum", "-Base.sum!", "-Base.task_local_storage", "-Base.timedwait", "-Base.withenv", "-Base.Broadcast", "Core", "Core.Compiler.", "Core.IR", "Core.Intrinsics", "DelimitedFiles", "Distributed", "LinearAlgebra.", "Serialization", "Statistics", "-Statistics.mean", "SparseArrays", "Mmap" }
+-- default = { "ALL_MODULES_EXCEPT_MAIN" }
 -- ```
 ---@field debuggerDefaultCompiled any[]
 -- Delete Julia .cov files when running tests with coverage, leaving only a .lcov file behind.
