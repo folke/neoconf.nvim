@@ -6319,6 +6319,10 @@
 ---@class _.lspconfig.settings.jdtls.Imports
 ---@field gradle _.lspconfig.settings.jdtls.Gradle
 
+---@class _.lspconfig.settings.jdtls.FormatParameters
+-- Enable/disable inlay hints for format specifiers in format strings (e.g. `String.format()`, `String.formatted()`, `PrintStream.printf()`). Shows which argument corresponds to each format specifier.
+---@field enabled boolean
+
 ---@class _.lspconfig.settings.jdtls.ParameterNames
 -- Enable/disable inlay hints for parameter names:
 -- ```java
@@ -6369,6 +6373,7 @@
 ---@field enabled boolean
 
 ---@class _.lspconfig.settings.jdtls.InlayHints
+---@field formatParameters _.lspconfig.settings.jdtls.FormatParameters
 ---@field parameterNames _.lspconfig.settings.jdtls.ParameterNames
 ---@field parameterTypes _.lspconfig.settings.jdtls.ParameterTypes
 ---@field variableTypes _.lspconfig.settings.jdtls.VariableTypes

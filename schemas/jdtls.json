@@ -781,6 +781,12 @@
       "scope": "application",
       "type": "array"
     },
+    "java.inlayHints.formatParameters.enabled": {
+      "default": false,
+      "markdownDescription": "Enable/disable inlay hints for format specifiers in format strings (e.g. `String.format()`, `String.formatted()`, `PrintStream.printf()`). Shows which argument corresponds to each format specifier.",
+      "scope": "window",
+      "type": "boolean"
+    },
     "java.inlayHints.parameterNames.enabled": {
       "default": "literals",
       "enum": [
