@@ -438,7 +438,7 @@
     "javascript.suggest.completeJSDocs": {
       "default": true,
       "description": "Enable/disable suggestion to complete JSDoc comments.",
-      "markdownDeprecationMessage": "This setting is deprecated. Use `#js/ts.suggest.completeJSDocs#` instead.",
+      "markdownDeprecationMessage": "This setting is deprecated. Use `#js/ts.suggest.jsdoc.enabled#` instead.",
       "scope": "language-overridable",
       "type": "boolean"
     },
@@ -1285,16 +1285,6 @@
       "scope": "language-overridable",
       "type": "boolean"
     },
-    "js/ts.suggest.completeJSDocs": {
-      "default": true,
-      "description": "Enable/disable suggestion to complete JSDoc comments.",
-      "keywords": [
-        "JavaScript",
-        "TypeScript"
-      ],
-      "scope": "language-overridable",
-      "type": "boolean"
-    },
     "js/ts.suggest.enabled": {
       "default": true,
       "description": "Enable/disable autocomplete suggestions.",
@@ -1318,6 +1308,16 @@
     "js/ts.suggest.includeCompletionsForImportStatements": {
       "default": true,
       "description": "Enable/disable auto-import-style completions on partially-typed import statements.",
+      "keywords": [
+        "JavaScript",
+        "TypeScript"
+      ],
+      "scope": "language-overridable",
+      "type": "boolean"
+    },
+    "js/ts.suggest.jsdoc.enabled": {
+      "default": true,
+      "description": "Enable/disable suggestion to complete JSDoc comments.",
       "keywords": [
         "JavaScript",
         "TypeScript"
@@ -2271,7 +2271,7 @@
     "typescript.suggest.completeJSDocs": {
       "default": true,
       "description": "Enable/disable suggestion to complete JSDoc comments.",
-      "markdownDeprecationMessage": "This setting is deprecated. Use `#js/ts.suggest.completeJSDocs#` instead.",
+      "markdownDeprecationMessage": "This setting is deprecated. Use `#js/ts.suggest.jsdoc.enabled#` instead.",
       "scope": "language-overridable",
       "type": "boolean"
     },

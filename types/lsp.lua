@@ -18149,6 +18149,12 @@
 ---@field enabled boolean
 
 ---@class _.lspconfig.settings.ts_ls.Jsdoc
+-- Enable/disable suggestion to complete JSDoc comments.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enabled boolean
 -- Enable/disable generating `@returns` annotations for JSDoc templates.
 -- 
 -- ```lua
@@ -18174,12 +18180,6 @@
 ---@field classMemberSnippets _.lspconfig.settings.ts_ls.ClassMemberSnippets
 -- Complete functions with their parameter signature.
 ---@field completeFunctionCalls boolean
--- Enable/disable suggestion to complete JSDoc comments.
--- 
--- ```lua
--- default = true
--- ```
----@field completeJSDocs boolean
 -- Enable/disable autocomplete suggestions.
 -- 
 -- ```lua
