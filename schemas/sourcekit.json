@@ -4,18 +4,21 @@
   "properties": {
     "sourcekit-lsp.disable": {
       "default": false,
+      "deprecationMessage": "Deprecated: Please use \"swift.sourcekit-lsp.disable\" instead.",
       "markdownDeprecationMessage": "**Deprecated**: Please use `#swift.sourcekit-lsp.disable#` instead.",
       "markdownDescription": "Disable the running of SourceKit-LSP.",
       "type": "boolean"
     },
     "sourcekit-lsp.inlayHints.enabled": {
       "default": true,
+      "deprecationMessage": "Deprecated: Please use \"editor.inlayHints.enabled\" instead.",
       "markdownDeprecationMessage": "**Deprecated**: Please use `#editor.inlayHints.enabled#` instead.",
       "markdownDescription": "Display Inlay Hints. Inlay Hints are variable annotations indicating their inferred type. They are only available if you are using Swift 5.6 or later.",
       "type": "boolean"
     },
     "sourcekit-lsp.serverArguments": {
       "default": [],
+      "deprecationMessage": "Deprecated: Please use \"swift.sourcekit-lsp.serverArguments\" instead.",
       "items": {
         "type": "string"
       },
@@ -24,12 +27,14 @@
       "type": "array"
     },
     "sourcekit-lsp.serverPath": {
+      "deprecationMessage": "Deprecated: Please use \"swift.sourcekit-lsp.serverPath\" instead.",
       "markdownDeprecationMessage": "**Deprecated**: Please use `#swift.sourcekit-lsp.serverPath#` instead.",
       "markdownDescription": "The path of the `sourcekit-lsp` executable. The default is to look in the path where `swift` is found.",
       "type": "string"
     },
     "sourcekit-lsp.support-c-cpp": {
       "default": "cpptools-inactive",
+      "deprecationMessage": "Deprecated: Please use \"swift.sourcekit-lsp.supported-languages\" instead.",
       "enum": [
         "enable",
         "disable",
@@ -46,6 +51,7 @@
     },
     "sourcekit-lsp.trace.server": {
       "default": "off",
+      "deprecationMessage": "Deprecated: Please use \"swift.sourcekit-lsp.trace.server\" instead.",
       "enum": [
         "off",
         "messages",
@@ -195,14 +201,16 @@
     },
     "swift.debugger.useDebugAdapterFromToolchain": {
       "default": false,
-      "markdownDeprecationMessage": "**Deprecated**: Use the `swift.debugger.debugAdapter` setting instead. This will be removed in future versions of the Swift extension.",
+      "deprecationMessage": "Deprecated: Please use \"swift.debugger.debugAdapter\" instead.",
+      "markdownDeprecationMessage": "**Deprecated**: Please use `#swift.debugger.debugAdapter#` instead.",
       "markdownDescription": "Use the LLDB debug adapter packaged with the Swift toolchain as your debug adapter. Note: this is only available starting with Swift 6. The CodeLLDB extension will be used if your Swift toolchain does not contain lldb-dap.",
       "order": 4,
       "type": "boolean"
     },
     "swift.diagnostics": {
       "default": false,
-      "deprecationMessage": "**Deprecated**: Please use `#swift.outputChannelLogLevel#` instead.",
+      "deprecationMessage": "Deprecated: Please use \"swift.outputChannelLogLevel\" instead.",
+      "markdownDeprecationMessage": "**Deprecated**: Please use `#swift.outputChannelLogLevel#` instead.",
       "markdownDescription": "Output additional diagnostics to the Swift output channel.",
       "order": 100,
       "scope": "machine-overridable",
@@ -250,8 +258,17 @@
       "scope": "machine-overridable",
       "type": "boolean"
     },
+    "swift.disableSandbox": {
+      "default": false,
+      "markdownDescription": "Disable sandboxing when running SwiftPM commands. In most cases you should keep the sandbox enabled and leave this setting set to `false`",
+      "order": 4,
+      "scope": "machine-overridable",
+      "type": "boolean"
+    },
     "swift.disableSandox": {
       "default": false,
+      "deprecationMessage": "Deprecated: Please use \"swift.disableSandbox\" instead.",
+      "markdownDeprecationMessage": "**Deprecated**: Please use `#swift.disableSandbox#` instead.",
       "markdownDescription": "Disable sandboxing when running SwiftPM commands. In most cases you should keep the sandbox enabled and leave this setting set to `false`",
       "order": 4,
       "scope": "machine-overridable",
@@ -557,6 +574,7 @@
       "type": "array"
     },
     "swift.sourcekit-lsp.serverPath": {
+      "deprecationMessage": "Deprecated: The sourcekit-lsp executable relies on outputs from tools in your current toolchain. If your sourcekit-lsp version does not match your toolchain you may experience unexpected behaviour. Only modify this setting when developing sourcekit-lsp.",
       "markdownDeprecationMessage": "**Deprecated**: The sourcekit-lsp executable relies on outputs from tools in your current toolchain. If your sourcekit-lsp version does not match your toolchain you may experience unexpected behaviour. Only modify this setting when developing sourcekit-lsp.",
       "markdownDescription": "The path of the `sourcekit-lsp` executable. The default is to look in the path where `swift` is found.",
       "order": 1,

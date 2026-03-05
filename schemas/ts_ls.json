@@ -1432,6 +1432,16 @@
       "scope": "window",
       "type": "boolean"
     },
+    "js/ts.tsserver.diagnosticDir": {
+      "keywords": [
+        "TypeScript",
+        "diagnostic",
+        "memory"
+      ],
+      "markdownDescription": "Directory where TypeScript server writes Node diagnostic output by passing `--diagnostic-dir`.",
+      "scope": "machine",
+      "type": "string"
+    },
     "js/ts.tsserver.experimental.enableProjectDiagnostics": {
       "default": false,
       "description": "Enables project wide error reporting.",
@@ -1442,6 +1452,48 @@
       ],
       "scope": "window",
       "type": "boolean"
+    },
+    "js/ts.tsserver.heapProfile": {
+      "default": {
+        "enabled": false
+      },
+      "keywords": [
+        "TypeScript",
+        "memory",
+        "heap",
+        "profile"
+      ],
+      "markdownDescription": "Configures heap profiling for TypeScript server.",
+      "properties": {
+        "dir": {
+          "description": "Directory where TypeScript server writes heap profiles by passing `--heap-prof-dir`.",
+          "type": "string"
+        },
+        "enabled": {
+          "default": false,
+          "description": "Enable heap profiling for TypeScript server by passing `--heap-prof`.",
+          "type": "boolean"
+        },
+        "interval": {
+          "description": "Sampling interval in bytes for TypeScript server heap profiling by passing `--heap-prof-interval`.",
+          "minimum": 1,
+          "type": "number"
+        }
+      },
+      "scope": "machine",
+      "type": "object"
+    },
+    "js/ts.tsserver.heapSnapshot": {
+      "default": 0,
+      "keywords": [
+        "TypeScript",
+        "memory",
+        "diagnostics"
+      ],
+      "markdownDescription": "Controls how many near-heap-limit snapshots TypeScript server writes by passing `--heapsnapshot-near-heap-limit`. Set to `0` to disable.",
+      "minimum": 0,
+      "scope": "window",
+      "type": "number"
     },
     "js/ts.tsserver.log": {
       "default": "off",

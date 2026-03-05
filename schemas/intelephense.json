@@ -152,6 +152,23 @@
       "scope": "window",
       "type": "boolean"
     },
+    "intelephense.diagnostics.exclude": {
+      "additionalProperties": {
+        "items": {
+          "pattern": "\\*|P\\d{4}",
+          "type": "string"
+        },
+        "type": "array"
+      },
+      "default": {
+        "**/vendor/**": [
+          "*"
+        ]
+      },
+      "markdownDescription": "A map of globs to diagnostic codes to be excluded for the matching files. Use `*` as a value in the array to exclude all diagnostics. By default the vendor directory is excluded. You can override this by setting `**/vendor/**` to an empty array.",
+      "scope": "resource",
+      "type": "object"
+    },
     "intelephense.diagnostics.implementationErrors": {
       "default": true,
       "markdownDescription": "Enables reporting of problems associated with method and class implementations. For example, unimplemented methods or method signature incompatibilities.",
@@ -195,6 +212,40 @@
       "markdownDescription": "Controls when diagnostics are run.",
       "scope": "window",
       "type": "string"
+    },
+    "intelephense.diagnostics.severity": {
+      "markdownDescription": "Sets the severity level for each diagnostic code.",
+      "patternProperties": {
+        "P\\d{4}": {
+          "enum": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "enumDescriptions": [
+            "Error.",
+            "Warning.",
+            "Information.",
+            "Hint."
+          ],
+          "type": "number"
+        }
+      },
+      "scope": "window",
+      "type": "object"
+    },
+    "intelephense.diagnostics.strictTypes": {
+      "default": false,
+      "markdownDescription": "When enabled, type checks will be performed as if a `declare(strict_types=1)` directive is present in all files.",
+      "scope": "window",
+      "type": "boolean"
+    },
+    "intelephense.diagnostics.suppressUndefinedMembersWhenMagicMethodDeclared": {
+      "default": true,
+      "markdownDescription": "Suppresses undefined property and method errors when `__get` or `__call` magic methods are declared.",
+      "scope": "window",
+      "type": "boolean"
     },
     "intelephense.diagnostics.typeErrors": {
       "default": true,
