@@ -41,8 +41,13 @@
     },
     "bashIde.shellcheckArguments": {
       "default": "",
-      "description": "Additional ShellCheck arguments. Note that we already add the following arguments: --shell, --format, --external-sources.",
+      "description": "Additional ShellCheck arguments. Note that we already add the following arguments: --shell, --format, and --external-sources (if shellcheckExternalSources is true).",
       "type": "string"
+    },
+    "bashIde.shellcheckExternalSources": {
+      "default": true,
+      "description": "Controls whether ShellCheck is invoked with --external-sources. When enabled (default), ShellCheck follows source directives to lint referenced files. On projects with many cross-sourcing scripts this can cause unbounded memory growth. Set to false to disable.",
+      "type": "boolean"
     },
     "bashIde.shellcheckPath": {
       "default": "shellcheck",

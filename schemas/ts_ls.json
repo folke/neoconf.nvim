@@ -12,7 +12,7 @@
     "javascript.format.enable": {
       "default": true,
       "description": "Enable/disable default JavaScript formatter.",
-      "markdownDeprecationMessage": "This setting is deprecated. Use `#js/ts.format.enable#` instead.",
+      "markdownDeprecationMessage": "This setting is deprecated. Use `#js/ts.format.enabled#` instead.",
       "scope": "window",
       "type": "boolean"
     },
@@ -1791,7 +1791,7 @@
     "typescript.format.enable": {
       "default": true,
       "description": "Enable/disable default TypeScript formatter.",
-      "markdownDeprecationMessage": "This setting is deprecated. Use `#js/ts.format.enable#` instead.",
+      "markdownDeprecationMessage": "This setting is deprecated. Use `#js/ts.format.enabled#` instead.",
       "scope": "window",
       "type": "boolean"
     },

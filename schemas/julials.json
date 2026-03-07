@@ -335,6 +335,15 @@
       "scope": "machine-overridable",
       "type": "string"
     },
+    "julia.plots.defaultMimeType": {
+      "default": "image/png",
+      "description": "Default MIME type for plots. Determines whether plots are rendered as PNG or SVG by default.",
+      "enum": [
+        "image/png",
+        "image/svg+xml"
+      ],
+      "type": "string"
+    },
     "julia.plots.path": {
       "description": "Default directory for saving plots. Can either be relative to the current workspace or absolute.",
       "scope": "window",

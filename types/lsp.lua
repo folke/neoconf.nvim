@@ -1014,12 +1014,18 @@
 -- default = "info"
 -- ```
 ---@field logLevel "debug" | "info" | "warning" | "error"
--- Additional ShellCheck arguments. Note that we already add the following arguments: --shell, --format, --external-sources.
+-- Additional ShellCheck arguments. Note that we already add the following arguments: --shell, --format, and --external-sources (if shellcheckExternalSources is true).
 -- 
 -- ```lua
 -- default = ""
 -- ```
 ---@field shellcheckArguments string
+-- Controls whether ShellCheck is invoked with --external-sources. When enabled (default), ShellCheck follows source directives to lint referenced files. On projects with many cross-sourcing scripts this can cause unbounded memory growth. Set to false to disable.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field shellcheckExternalSources boolean
 -- Controls the executable used for ShellCheck linting information. An empty string will disable linting.
 -- 
 -- ```lua
@@ -7064,6 +7070,12 @@
 ---@field tmuxSessionName string
 
 ---@class _.lspconfig.settings.julials.Plots
+-- Default MIME type for plots. Determines whether plots are rendered as PNG or SVG by default.
+-- 
+-- ```lua
+-- default = "image/png"
+-- ```
+---@field defaultMimeType "image/png" | "image/svg+xml"
 -- Default directory for saving plots. Can either be relative to the current workspace or absolute.
 ---@field path string
 
