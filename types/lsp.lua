@@ -4221,7 +4221,7 @@
 -- }
 -- ```
 ---@field print _.lspconfig.settings.haxe_language_server.Print
--- If possible, use a socket for communication with Haxe rather than stdio.
+-- If possible, use a socket for communication with Haxe rather than stdio. Always true for Haxe 5.
 -- 
 -- ```lua
 -- default = true
