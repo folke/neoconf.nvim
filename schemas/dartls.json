@@ -8,15 +8,6 @@
       "scope": "window",
       "type": "boolean"
     },
-    "dart.additionalAnalyzerFileExtensions": {
-      "default": [],
-      "items": {
-        "type": "string"
-      },
-      "markdownDescription": "**LEGACY SETTING: Only applies to legacy analysis server protocol.**\n\nAdditional file extensions that should be analyzed (usually used in combination with analyzer plugins).",
-      "scope": "window",
-      "type": "array"
-    },
     "dart.allowTestsOutsideTestFolder": {
       "default": false,
       "markdownDescription": "Whether to consider files ending `_test.dart` that are outside of the test directory as tests. This should be enabled if you put tests inside the `lib` directory of your Flutter app so they will be run with `flutter test` and not `flutter run`.",
@@ -31,18 +22,6 @@
       },
       "scope": "resource",
       "type": "array"
-    },
-    "dart.analysisServerFolding": {
-      "default": true,
-      "markdownDescription": "**LEGACY SETTING: Only applies to legacy analysis server protocol.**\n\nWhether to use folding data from the Dart Analysis Server instead of the built-in VS Code indent-based folding.",
-      "scope": "window",
-      "type": "boolean"
-    },
-    "dart.analyzeAngularTemplates": {
-      "default": true,
-      "markdownDescription": "**LEGACY SETTING: The angular plugin is no longer supported.**\n\nWhether to enable analysis for AngularDart templates (requires the Angular analyzer plugin to be enabled in `analysis_options.yaml`).",
-      "scope": "window",
-      "type": "boolean"
     },
     "dart.analyzerAdditionalArgs": {
       "default": [],
@@ -296,15 +275,6 @@
         "string"
       ]
     },
-    "dart.dartTestLogFile": {
-      "default": null,
-      "markdownDescription": "**LEGACY SETTING: Only applies when using the legacy debug adapters.**\n\nThe path to a log file for Dart test runs. This is useful when trying to diagnose issues with unit test executions. Use `${name}` in the log file name to insert the Debug Session name to prevent concurrent debug sessions overwriting each others logs. Use `${workspaceName}` to insert the name of the current workspace in the file path. Use `~` to insert the user's home directory (the path should then use `/` separators even on Windows). Only the noted substitutions are supported, others will stay as-is.",
-      "scope": "machine-overridable",
-      "type": [
-        "null",
-        "string"
-      ]
-    },
     "dart.debugExtensionBackendProtocol": {
       "default": "ws",
       "description": "The protocol to use for the Dart Debug Extension backend service and injected client. Using WebSockets can improve performance but may fail when connecting through some proxy servers.",
@@ -498,15 +468,6 @@
         "light"
       ],
       "scope": "window"
-    },
-    "dart.doNotFormat": {
-      "default": [],
-      "items": {
-        "type": "string"
-      },
-      "markdownDescription": "**LEGACY SETTING: Only applies to legacy analysis server protocol.**\n\nAn array of glob patterns that should be excluded for formatting. The pattern is matched against the absolute path of the file. Use `**/test/**` to skip formatting for all test directories. Must always use forward slashes (even on Windows) as backslashes are used for escaping.",
-      "scope": "resource",
-      "type": "array"
     },
     "dart.documentation": {
       "enum": [
@@ -768,15 +729,6 @@
       "scope": "resource",
       "type": "array"
     },
-    "dart.flutterRunLogFile": {
-      "default": null,
-      "markdownDescription": "**LEGACY SETTING: Only applies when using the legacy debug adapters.**\n\nThe path to a log file for `flutter run`, which is used to launch Flutter apps from VS Code. This is useful when trying to diagnose issues with apps launching (or failing to) on simulators and devices. Use `${name}` in the log file name to insert the Debug Session name to prevent concurrent debug sessions overwriting each others logs. Use `${workspaceName}` to insert the name of the current workspace in the file path. Use `~` to insert the user's home directory (the path should then use `/` separators even on Windows). Only the noted substitutions are supported, others will stay as-is.",
-      "scope": "machine-overridable",
-      "type": [
-        "null",
-        "string"
-      ]
-    },
     "dart.flutterScreenshotPath": {
       "default": null,
       "description": "The path to a directory to save Flutter screenshots. Use `~` to insert the user's home directory (the path should then use `/` separators even on Windows).",
@@ -846,21 +798,6 @@
       "markdownDescription": "Additional args to pass to the `flutter test` command. Using the `args`/`toolArgs` fields in `launch.json` is usually better than this setting as this setting will apply to _all_ projects.",
       "scope": "resource",
       "type": "array"
-    },
-    "dart.flutterTestLogFile": {
-      "default": null,
-      "markdownDescription": "**LEGACY SETTING: Only applies when using the legacy debug adapters.**\n\nThe path to a log file for `flutter test`, which is used to run unit tests from VS Code. This is useful when trying to diagnose issues with unit test executions. Use `${name}` in the log file name to insert the Debug Session name to prevent concurrent debug sessions overwriting each others logs. Use `${workspaceName}` to insert the name of the current workspace in the file path. Use `~` to insert the user's home directory (the path should then use `/` separators even on Windows). Only the noted substitutions are supported, others will stay as-is.",
-      "scope": "machine-overridable",
-      "type": [
-        "null",
-        "string"
-      ]
-    },
-    "dart.flutterTrackWidgetCreation": {
-      "default": true,
-      "markdownDescription": "**LEGACY SETTING: Disabling this may break functionality on modern SDKs.**\n\nWhether to pass `--track-widget-creation` to Flutter apps (required to support 'Inspect Widget'). This setting is always ignored when running in Profile or Release mode.",
-      "scope": "resource",
-      "type": "boolean"
     },
     "dart.flutterWebRenderer": {
       "default": "flutter-default",
@@ -1550,12 +1487,6 @@
         "string"
       ]
     },
-    "dart.updateDevTools": {
-      "default": true,
-      "markdownDescription": "**LEGACY SETTING: Only applies to Dart SDKs before v2.15 since DevTools now ships in the SDK.**\n\nWhether to update DevTools if you are not using the latest version.",
-      "scope": "window",
-      "type": "boolean"
-    },
     "dart.updateImportsOnRename": {
       "default": true,
       "description": "Whether to automatically update imports when moving or renaming files. Currently only supports single file moves / renames.",
@@ -1576,15 +1507,6 @@
       "markdownDescription": "Arguments to be passed to the Dart VM when running Dart CLI scripts/tests.\n\nThese arguments appear after \"dart\" but before subcommands like \"test\":\n\n`dart (vmAdditionalArgs) test (toolArgs) test/my_test.dart (args)`",
       "scope": "resource",
       "type": "array"
-    },
-    "dart.vmServiceLogFile": {
-      "default": null,
-      "markdownDescription": "**LEGACY SETTING: Only applies when using the legacy debug adapters.**\n\nThe path to a log file for communication between Dart Code and the VM service. This is useful when trying to diagnose issues with debugging such as missed breakpoints. Use `${name}` in the log file name to insert the Debug Session name to prevent concurrent debug sessions overwriting each others logs. Use `${workspaceName}` to insert the name of the current workspace in the file path. Use `~` to insert the user's home directory (the path should then use `/` separators even on Windows). Only the noted substitutions are supported, others will stay as-is.",
-      "scope": "machine-overridable",
-      "type": [
-        "null",
-        "string"
-      ]
     },
     "dart.warnWhenEditingFilesInPubCache": {
       "default": true,
