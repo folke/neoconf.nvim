@@ -1174,7 +1174,7 @@
 -- default = true
 -- ```
 ---@field preserveNewLines boolean
--- Ensure a space character around selector separators '>', '+', '~' (e.g. `a > b`).
+-- Ensure a space character around selector separators `>`, `+`, `~` (e.g. `a > b`).
 ---@field spaceAroundSelectorSeparator boolean
 
 ---@class _.lspconfig.settings.cssls.Hover
@@ -1391,7 +1391,7 @@
 -- default = true
 -- ```
 ---@field preserveNewLines boolean
--- Ensure a space character around selector separators '>', '+', '~' (e.g. `a > b`).
+-- Ensure a space character around selector separators `>`, `+`, `~` (e.g. `a > b`).
 ---@field spaceAroundSelectorSeparator boolean
 
 ---@class _.lspconfig.settings.cssls.Hover
@@ -1589,7 +1589,7 @@
 -- default = true
 -- ```
 ---@field preserveNewLines boolean
--- Ensure a space character around selector separators '>', '+', '~' (e.g. `a > b`).
+-- Ensure a space character around selector separators `>`, `+`, `~` (e.g. `a > b`).
 ---@field spaceAroundSelectorSeparator boolean
 
 ---@class _.lspconfig.settings.cssls.Hover
@@ -6767,7 +6767,7 @@
 -- default = true
 -- ```
 ---@field enable boolean
--- List of trusted domains for downloading JSON schemas over http(s). Use '*' to trust all domains. '*' can also be used as a wildcard in domain names.
+-- List of trusted domains for downloading JSON schemas over http(s). Use `*` to trust all domains. `*` can also be used as a wildcard in domain names.
 -- 
 -- ```lua
 -- default = {
@@ -18236,7 +18236,7 @@
 ---@field interval number
 
 ---@class _.lspconfig.settings.ts_ls.Node
--- Run TS Server on a custom Node installation. This can be a path to a Node executable, or 'node' if you want VS Code to detect a Node installation.
+-- Run TS Server on a custom Node installation. This can be a path to a Node executable, or `node` if you want VS Code to detect a Node installation.
 ---@field path string
 
 ---@class _.lspconfig.settings.ts_ls.Npm
@@ -18819,7 +18819,7 @@
 -- default = 3072
 -- ```
 ---@field maxTsServerMemory number
--- Run TS Server on a custom Node installation. This can be a path to a Node executable, or 'node' if you want VS Code to detect a Node installation.
+-- Run TS Server on a custom Node installation. This can be a path to a Node executable, or `node` if you want VS Code to detect a Node installation.
 ---@field nodePath string
 -- Additional paths to discover TypeScript Language Service plugins.
 -- 

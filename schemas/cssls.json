@@ -68,7 +68,7 @@
     },
     "css.format.spaceAroundSelectorSeparator": {
       "default": false,
-      "markdownDescription": "Ensure a space character around selector separators '>', '+', '~' (e.g. `a > b`).",
+      "markdownDescription": "Ensure a space character around selector separators `>`, `+`, `~` (e.g. `a > b`).",
       "scope": "resource",
       "type": "boolean"
     },
@@ -273,10 +273,10 @@
     },
     "css.lint.validProperties": {
       "default": [],
-      "description": "A list of properties that are not validated against the `unknownProperties` rule.",
       "items": {
         "type": "string"
       },
+      "markdownDescription": "A list of properties that are not validated against the `unknownProperties` rule.",
       "scope": "resource",
       "type": "array",
       "uniqueItems": true
@@ -377,7 +377,7 @@
     },
     "less.format.spaceAroundSelectorSeparator": {
       "default": false,
-      "markdownDescription": "Ensure a space character around selector separators '>', '+', '~' (e.g. `a > b`).",
+      "markdownDescription": "Ensure a space character around selector separators `>`, `+`, `~` (e.g. `a > b`).",
       "scope": "resource",
       "type": "boolean"
     },
@@ -582,10 +582,10 @@
     },
     "less.lint.validProperties": {
       "default": [],
-      "description": "A list of properties that are not validated against the `unknownProperties` rule.",
       "items": {
         "type": "string"
       },
+      "markdownDescription": "A list of properties that are not validated against the `unknownProperties` rule.",
       "scope": "resource",
       "type": "array",
       "uniqueItems": true
@@ -675,7 +675,7 @@
     },
     "scss.format.spaceAroundSelectorSeparator": {
       "default": false,
-      "markdownDescription": "Ensure a space character around selector separators '>', '+', '~' (e.g. `a > b`).",
+      "markdownDescription": "Ensure a space character around selector separators `>`, `+`, `~` (e.g. `a > b`).",
       "scope": "resource",
       "type": "boolean"
     },
@@ -880,10 +880,10 @@
     },
     "scss.lint.validProperties": {
       "default": [],
-      "description": "A list of properties that are not validated against the `unknownProperties` rule.",
       "items": {
         "type": "string"
       },
+      "markdownDescription": "A list of properties that are not validated against the `unknownProperties` rule.",
       "scope": "resource",
       "type": "array",
       "uniqueItems": true

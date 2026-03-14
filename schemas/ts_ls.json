@@ -1521,10 +1521,10 @@
       "type": "number"
     },
     "js/ts.tsserver.node.path": {
-      "description": "Run TS Server on a custom Node installation. This can be a path to a Node executable, or 'node' if you want VS Code to detect a Node installation.",
       "keywords": [
         "TypeScript"
       ],
+      "markdownDescription": "Run TS Server on a custom Node installation. This can be a path to a Node executable, or `node` if you want VS Code to detect a Node installation.",
       "scope": "window",
       "type": "string"
     },
@@ -2442,8 +2442,8 @@
       "type": "number"
     },
     "typescript.tsserver.nodePath": {
-      "description": "Run TS Server on a custom Node installation. This can be a path to a Node executable, or 'node' if you want VS Code to detect a Node installation.",
       "markdownDeprecationMessage": "This setting is deprecated. Use `#js/ts.tsserver.node.path#` instead.",
+      "markdownDescription": "Run TS Server on a custom Node installation. This can be a path to a Node executable, or `node` if you want VS Code to detect a Node installation.",
       "scope": "window",
       "type": "string"
     },
