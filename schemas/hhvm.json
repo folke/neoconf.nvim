@@ -89,11 +89,6 @@
       "markdownDescription": "Enable linting (needs [HHAST](https://github.com/hhvm/hhast) library set up and configured in project)",
       "type": "boolean"
     },
-    "hack.useLanguageServer": {
-      "default": true,
-      "description": "Start hh_client in Language Server mode. Only works for HHVM version 3.23 and above.",
-      "type": "boolean"
-    },
     "hack.workspaceRootPath": {
       "default": null,
       "deprecationMessage": "Use hack.remote.workspacePath instead",
