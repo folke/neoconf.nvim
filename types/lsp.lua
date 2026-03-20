@@ -20449,6 +20449,14 @@
 -- ```
 ---@field typeErrors boolean
 
+---@class _.lspconfig.settings.wgls_analyzer.Extensions
+-- Whether to enable u64 and i64 scalar types.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field shaderInt64 boolean
+
 ---@class _.lspconfig.settings.wgls_analyzer.InlayHints
 -- Whether to show inlay hints.
 -- 
@@ -20546,6 +20554,7 @@
 ---@class _.lspconfig.settings.wgls_analyzer.Wgsl-analyzer
 ---@field cachePriming _.lspconfig.settings.wgls_analyzer.CachePriming
 ---@field diagnostics _.lspconfig.settings.wgls_analyzer.Diagnostics
+---@field extensions _.lspconfig.settings.wgls_analyzer.Extensions
 -- Do not start wgsl-analyzer server when the extension is activated.
 ---@field initializeStopped boolean
 ---@field inlayHints _.lspconfig.settings.wgls_analyzer.InlayHints

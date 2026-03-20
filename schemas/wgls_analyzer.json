@@ -54,6 +54,11 @@
       "markdownDescription": "Controls whether to show type errors.",
       "type": "boolean"
     },
+    "wgsl-analyzer.extensions.shaderInt64": {
+      "default": true,
+      "markdownDescription": "Whether to enable u64 and i64 scalar types.",
+      "type": "boolean"
+    },
     "wgsl-analyzer.initializeStopped": {
       "default": false,
       "markdownDescription": "Do not start wgsl-analyzer server when the extension is activated.",
