@@ -5421,6 +5421,18 @@
 -- default = true
 -- ```
 ---@field triggerParameterHints boolean
+-- Method completions will include either a `parent` call or a `throw new Exception('Not implemented')` in the method body.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field withMethodBody boolean
+-- Method completions will include an `#[Override]` attribute where appropriate if targeting PHP 8.3+.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field withOverrideAttribute boolean
 
 ---@class _.lspconfig.settings.intelephense.Diagnostics
 -- Enables argument count diagnostics.
@@ -5507,6 +5519,12 @@
 -- default = true
 -- ```
 ---@field suppressUndefinedMembersWhenMagicMethodDeclared boolean
+-- Enables reporting of irregularities in code that may be indicative of a bug. For example, assignments in a conditional expression or duplicate array keys.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field suspectCode boolean
 -- Enables diagnostics on type compatibility of arguments, property assignments, and return statements where types have been declared.
 -- 
 -- ```lua
@@ -5830,6 +5848,8 @@
 ---@field docPath string[]
 -- External dependencies of the form groupId:artifactId:version or groupId:artifactId:packaging:version:scope
 ---@field externalDependencies string[]
+-- Extra compiler args, for example ["--enable-preview","-source 21"].
+---@field extraCompilerArgs string[]
 -- Absolute path to your Java home directory
 ---@field home string
 -- Command to run all tests in a class, for example ["mvn", "test", "-Dtest=${class}"

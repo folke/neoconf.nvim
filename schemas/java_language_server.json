@@ -38,6 +38,13 @@
       },
       "type": "array"
     },
+    "java.extraCompilerArgs": {
+      "description": "Extra compiler args, for example [\"--enable-preview\",\"-source 21\"].",
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    },
     "java.home": {
       "description": "Absolute path to your Java home directory",
       "type": "string"
