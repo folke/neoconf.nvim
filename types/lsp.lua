@@ -2183,6 +2183,8 @@
 -- default = true
 -- ```
 ---@field insertArgumentPlaceholders boolean
+-- **LEGACY SETTING: Use `formatter.page_width` in `analysis_options.yaml` instead.**
+-- 
 -- The maximum length of a line of code. This is used by the document formatter. If you change this value, you may wish to update `editor.rulers` (which draws vertical lines in the editor) in the `["dart"]` section of your settings to match.
 -- 
 -- ```lua
@@ -5782,7 +5784,7 @@
 ---@field namespaceMode "single" | "all"
 
 ---@class _.lspconfig.settings.intelephense.Telemetry
--- Anonymous usage and crash data will be sent to Azure Application Insights. Inherits from telemetry.enableTelemetry.
+-- When set to `true`, anonymous usage and crash data will be sent to Azure Application Insights. Defaults to `false`.
 ---@field enabled boolean
 
 ---@class _.lspconfig.settings.intelephense.Trace

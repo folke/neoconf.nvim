@@ -880,13 +880,10 @@
       "type": "array"
     },
     "intelephense.telemetry.enabled": {
-      "default": null,
-      "markdownDescription": "Anonymous usage and crash data will be sent to Azure Application Insights. Inherits from telemetry.enableTelemetry.",
+      "default": false,
+      "markdownDescription": "When set to `true`, anonymous usage and crash data will be sent to Azure Application Insights. Defaults to `false`.",
       "scope": "window",
-      "type": [
-        "boolean",
-        "null"
-      ]
+      "type": "boolean"
     },
     "intelephense.trace.server": {
       "default": "off",
