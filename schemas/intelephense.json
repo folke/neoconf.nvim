@@ -885,6 +885,14 @@
       "scope": "window",
       "type": "boolean"
     },
+    "intelephense.throwDepth": {
+      "default": 0,
+      "markdownDescription": "The maximum call depth to follow when analyzing throw expressions. Defaults to `0`, which limits analysis to the current function. Higher values can have a negative impact on performance.",
+      "maximum": 10,
+      "minimum": 0,
+      "scope": "window",
+      "type": "number"
+    },
     "intelephense.trace.server": {
       "default": "off",
       "enum": [

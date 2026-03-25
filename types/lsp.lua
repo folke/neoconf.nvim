@@ -2466,54 +2466,6 @@
 -- ```
 ---@field testArgs string[]
 
----@class _.lspconfig.settings.denols.EnumMemberValues
--- Enable/disable inlay hints for enum values.
----@field enabled boolean
-
----@class _.lspconfig.settings.denols.FunctionLikeReturnTypes
--- Enable/disable inlay hints for implicit function return types.
----@field enabled boolean
-
----@class _.lspconfig.settings.denols.ParameterNames
--- Enable/disable inlay hints for parameter names.
--- 
--- ```lua
--- default = "none"
--- ```
----@field enabled "none" | "literals" | "all"
--- Do not display an inlay hint when the argument name matches the parameter.
--- 
--- ```lua
--- default = true
--- ```
----@field suppressWhenArgumentMatchesName boolean
-
----@class _.lspconfig.settings.denols.ParameterTypes
--- Enable/disable inlay hints for implicit parameter types.
----@field enabled boolean
-
----@class _.lspconfig.settings.denols.PropertyDeclarationTypes
--- Enable/disable inlay hints for implicit property declarations.
----@field enabled boolean
-
----@class _.lspconfig.settings.denols.VariableTypes
--- Enable/disable inlay hints for implicit variable types.
----@field enabled boolean
--- Suppress type hints where the variable name matches the implicit type.
--- 
--- ```lua
--- default = true
--- ```
----@field suppressWhenTypeMatchesName boolean
-
----@class _.lspconfig.settings.denols.InlayHints
----@field enumMemberValues _.lspconfig.settings.denols.EnumMemberValues
----@field functionLikeReturnTypes _.lspconfig.settings.denols.FunctionLikeReturnTypes
----@field parameterNames _.lspconfig.settings.denols.ParameterNames
----@field parameterTypes _.lspconfig.settings.denols.ParameterTypes
----@field propertyDeclarationTypes _.lspconfig.settings.denols.PropertyDeclarationTypes
----@field variableTypes _.lspconfig.settings.denols.VariableTypes
-
 ---@class _.lspconfig.settings.denols.OrganizeImports
 -- Controls if the Deno language server contributes organize imports code actions. Disable to rely on VS Code's built-in TypeScript/JavaScript organize imports instead.
 -- 
@@ -2539,20 +2491,7 @@
 ---@field hosts table
 
 ---@class _.lspconfig.settings.denols.Suggest
--- ```lua
--- default = true
--- ```
----@field autoImports boolean
----@field completeFunctionCalls boolean
 ---@field imports _.lspconfig.settings.denols.Imports
--- ```lua
--- default = true
--- ```
----@field names boolean
--- ```lua
--- default = true
--- ```
----@field paths boolean
 
 ---@class _.lspconfig.settings.denols.Document
 -- Controls if the Deno language server provides document symbols. Disable to rely on VS Code's built-in providers instead.
@@ -2662,7 +2601,6 @@
 -- 
 -- **Not recommended to be set globally.**
 ---@field importMap string
----@field inlayHints _.lspconfig.settings.denols.InlayHints
 -- Determines if the internal debugging information for the Deno language server will be logged to the _Deno Language Server_ console.
 ---@field internalDebug boolean
 -- Enables the inspector server for the JS runtime used by the Deno Language Server to host its TS server. Optionally provide an address for the inspector listener e.g. "127.0.0.1:9222" (default).
@@ -5826,6 +5764,12 @@
 -- ```
 ---@field stubs string[]
 ---@field telemetry _.lspconfig.settings.intelephense.Telemetry
+-- The maximum call depth to follow when analyzing throw expressions. Defaults to `0`, which limits analysis to the current function. Higher values can have a negative impact on performance.
+-- 
+-- ```lua
+-- default = 0
+-- ```
+---@field throwDepth number
 ---@field trace _.lspconfig.settings.intelephense.Trace
 
 ---@class lspconfig.settings.intelephense
