@@ -15795,9 +15795,9 @@
 ---@field showRegionSelection boolean
 
 ---@class _.lspconfig.settings.sonarlint.Ls
--- Path to a Java Runtime Environment (17 or more recent) used to launch the SonarQube for VS Code Language Server.
--- * On Windows, backslashes must be escaped, e.g. `C:\\Program Files\\Java\\jdk-17` 
--- * On macOS, this path should include the `/Contents/Home` directory, e.g `/Library/Java/JavaVirtualMachines/corretto-17.0.5/Contents/Home`
+-- Path to a Java Runtime Environment (21 or more recent) used to launch the SonarQube for VS Code Language Server.
+-- * On Windows, backslashes must be escaped, e.g. `C:\\Program Files\\Java\\jdk-21` 
+-- * On macOS, this path should include the `/Contents/Home` directory, e.g `/Library/Java/JavaVirtualMachines/corretto-21/Contents/Home`
 ---@field javaHome string
 -- Extra JVM arguments used to launch the SonarLint Language Server. e.g. `-Xmx1024m`
 ---@field vmargs string
