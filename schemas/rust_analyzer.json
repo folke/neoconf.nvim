@@ -598,6 +598,11 @@
       "markdownDescription": "List of warnings that should be displayed with info severity.\n\nThe warnings will be indicated by a blue squiggly underline in code and a blue icon in\nthe `Problems Panel`.",
       "type": "array"
     },
+    "rust-analyzer.disableFixtureSupport": {
+      "default": false,
+      "markdownDescription": "Disable support for `#[rust_analyzer::rust_fixture]` snippets.\n\nIf you are not working on rust-analyzer itself, you should ignore this config.",
+      "type": "boolean"
+    },
     "rust-analyzer.document.symbol.search.excludeLocals": {
       "default": true,
       "markdownDescription": "Exclude all locals from document symbol search.",
@@ -1162,6 +1167,19 @@
       "default": false,
       "markdownDescription": "Hide inlay type hints for constructors.",
       "type": "boolean"
+    },
+    "rust-analyzer.inlayHints.typeHints.location": {
+      "default": "inline",
+      "enum": [
+        "inline",
+        "end_of_line"
+      ],
+      "enumDescriptions": [
+        "Render type hints directly after the binding identifier.",
+        "Render type hints after the end of the containing `let` statement when possible."
+      ],
+      "markdownDescription": "Where to render type hints relative to their binding pattern.",
+      "type": "string"
     },
     "rust-analyzer.interpret.tests": {
       "default": false,
