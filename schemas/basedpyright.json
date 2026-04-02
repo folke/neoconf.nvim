@@ -266,6 +266,23 @@
             "boolean"
           ]
         },
+        "reportEmptyAbstractUsage": {
+          "default": "none",
+          "description": "Diagnostics for an attempt to instantiate an abstract class that has no abstract members.",
+          "enum": [
+            "none",
+            "hint",
+            "information",
+            "warning",
+            "error",
+            true,
+            false
+          ],
+          "type": [
+            "string",
+            "boolean"
+          ]
+        },
         "reportExplicitAny": {
           "default": "none",
           "description": "Diagnostics for type annotations that use the `Any` type",
