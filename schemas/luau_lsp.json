@@ -391,6 +391,34 @@
       "scope": "window",
       "type": "number"
     },
+    "luau-lsp.plugins.enabled": {
+      "default": false,
+      "markdownDescription": "Enable source code transformation plugins. Plugins are Luau scripts that can transform source code before type checking.",
+      "scope": "resource",
+      "type": "boolean"
+    },
+    "luau-lsp.plugins.fileSystem.enabled": {
+      "default": false,
+      "markdownDescription": "Allow plugins to read files within the workspace. Only files within the workspace can be accessed for security.",
+      "scope": "resource",
+      "type": "boolean"
+    },
+    "luau-lsp.plugins.paths": {
+      "default": [],
+      "items": {
+        "type": "string"
+      },
+      "markdownDescription": "Paths to Luau plugin scripts. Plugins are executed in order and can transform source code before type checking.",
+      "scope": "resource",
+      "type": "array"
+    },
+    "luau-lsp.plugins.timeoutMs": {
+      "default": 5000,
+      "markdownDescription": "Timeout in milliseconds for plugin execution. If a plugin takes longer than this, it will be terminated.",
+      "minimum": 100,
+      "scope": "resource",
+      "type": "number"
+    },
     "luau-lsp.require.directoryAliases": {
       "additionalProperties": {
         "type": "string"

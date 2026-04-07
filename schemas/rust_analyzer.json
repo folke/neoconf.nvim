@@ -157,6 +157,14 @@
       "default": [],
       "markdownDescription": "List of features to activate.\n\nSet this to `\"all\"` to pass `--all-features` to cargo."
     },
+    "rust-analyzer.cargo.metadataExtraArgs": {
+      "default": [],
+      "items": {
+        "type": "string"
+      },
+      "markdownDescription": "Extra arguments passed only to `cargo metadata`, not to other cargo invocations.\nUseful for flags like `--config` that `cargo metadata` supports.",
+      "type": "array"
+    },
     "rust-analyzer.cargo.noDefaultFeatures": {
       "default": false,
       "markdownDescription": "Whether to pass `--no-default-features` to cargo.",

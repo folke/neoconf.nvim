@@ -10047,6 +10047,27 @@
 -- ```
 ---@field port number
 
+---@class _.lspconfig.settings.luau_lsp.FileSystem
+-- Allow plugins to read files within the workspace. Only files within the workspace can be accessed for security.
+---@field enabled boolean
+
+---@class _.lspconfig.settings.luau_lsp.Plugins
+-- Enable source code transformation plugins. Plugins are Luau scripts that can transform source code before type checking.
+---@field enabled boolean
+---@field fileSystem _.lspconfig.settings.luau_lsp.FileSystem
+-- Paths to Luau plugin scripts. Plugins are executed in order and can transform source code before type checking.
+-- 
+-- ```lua
+-- default = {}
+-- ```
+---@field paths string[]
+-- Timeout in milliseconds for plugin execution. If a plugin takes longer than this, it will be terminated.
+-- 
+-- ```lua
+-- default = 5000
+-- ```
+---@field timeoutMs number
+
 ---@class _.lspconfig.settings.luau_lsp.Require
 -- A mapping of custom require string prefixes to directory paths. The aliases should include trailing slashes
 -- 
@@ -10184,6 +10205,7 @@
 ---@field inlayHints _.lspconfig.settings.luau_lsp.InlayHints
 ---@field platform _.lspconfig.settings.luau_lsp.Platform
 ---@field plugin _.lspconfig.settings.luau_lsp.Plugin
+---@field plugins _.lspconfig.settings.luau_lsp.Plugins
 ---@field require _.lspconfig.settings.luau_lsp.Require
 ---@field server _.lspconfig.settings.luau_lsp.Server
 ---@field signatureHelp _.lspconfig.settings.luau_lsp.SignatureHelp
@@ -13852,6 +13874,13 @@
 -- default = {}
 -- ```
 ---@field features "all"|string[]
+-- Extra arguments passed only to `cargo metadata`, not to other cargo invocations.
+-- Useful for flags like `--config` that `cargo metadata` supports.
+-- 
+-- ```lua
+-- default = {}
+-- ```
+---@field metadataExtraArgs string[]
 -- Whether to pass `--no-default-features` to cargo.
 ---@field noDefaultFeatures boolean
 -- Whether to skip fetching dependencies. If set to "true", the analysis is performed
