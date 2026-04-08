@@ -395,6 +395,14 @@
       "scope": "machine-overridable",
       "type": "boolean"
     },
+    "dotnet.fileBasedApps.enableAutomaticDiscovery": {
+      "default": true,
+      "description": "%configuration.dotnet.fileBasedApps.enableAutomaticDiscovery%",
+      "tags": [
+        "preview"
+      ],
+      "type": "boolean"
+    },
     "dotnet.formatting.organizeImportsOnFormat": {
       "default": false,
       "description": "%configuration.dotnet.formatting.organizeImportsOnFormat%",

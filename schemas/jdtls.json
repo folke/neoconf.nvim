@@ -914,6 +914,13 @@
       "scope": "window",
       "type": "boolean"
     },
+    "java.jdt.ls.scalaSupport.enabled": {
+      "default": true,
+      "markdownDescription": "[Experimental] Specify whether to enable `scala` plugin in Gradle projects. Defaults to `true`.",
+      "order": 80,
+      "scope": "window",
+      "type": "boolean"
+    },
     "java.jdt.ls.vmargs": {
       "default": "-XX:+UseParallelGC -XX:GCTimeRatio=4 -XX:AdaptiveSizePolicyWeight=90 -Dsun.zip.disableMemoryMapping=true -Xmx2G -Xms100m -Xlog:disable",
       "description": "Specifies extra VM arguments used to launch the Java Language Server. Eg. use `-XX:+UseParallelGC -XX:GCTimeRatio=4 -XX:AdaptiveSizePolicyWeight=90 -Dsun.zip.disableMemoryMapping=true -Xmx2G -Xms100m -Xlog:disable` to optimize memory usage with the parallel garbage collector",
