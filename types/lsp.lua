@@ -10442,6 +10442,17 @@
 -- ```
 ---@field enabled boolean
 
+---@class _.lspconfig.settings.omnisharp.Debug
+-- %generateOptionsSchema.useVSDbg.description%
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field useVSDbg boolean
+
+---@class _.lspconfig.settings.omnisharp.Wasm
+---@field debug _.lspconfig.settings.omnisharp.Debug
+
 ---@class _.lspconfig.settings.omnisharp.Csharp
 ---@field debug _.lspconfig.settings.omnisharp.Debug
 ---@field format _.lspconfig.settings.omnisharp.Format
@@ -10474,6 +10485,7 @@
 ---@field suppressHiddenDiagnostics boolean
 -- %configuration.omnisharp.csharp.suppressProjectJsonWarning%
 ---@field suppressProjectJsonWarning boolean
+---@field wasm _.lspconfig.settings.omnisharp.Wasm
 
 ---@class _.lspconfig.settings.omnisharp.AutoInsert
 -- %configuration.dotnet.autoInsert.enableAutoInsert%
@@ -11630,6 +11642,8 @@
 ---@field startLocation "Editor" | "Panel"
 -- Do not show the startup banner in the PowerShell Extension Terminal.
 ---@field suppressStartupBanner boolean
+-- Do not show a notification when the PowerShell Extension Terminal has stopped.
+---@field suppressTerminalStoppedNotification boolean
 -- This will disable the use of PSReadLine in the PowerShell Extension Terminal and use a legacy implementation. **This setting is not recommended and likely to be deprecated!**
 ---@field useLegacyReadLine boolean
 
@@ -11772,8 +11786,6 @@
 ---@field startAutomatically boolean
 -- Suppresses the warning message when any of `#powershell.powerShellAdditionalExePaths#` is not found.
 ---@field suppressAdditionalExeNotFoundWarning boolean
--- Do not show a notification when the PowerShell Extension Terminal has stopped.
----@field suppressTerminalStoppedNotification boolean
 ---@field trace _.lspconfig.settings.powershell_es.Trace
 -- **Deprecated:** Uses the 32-bit language service on 64-bit Windows. This setting has no effect on 32-bit Windows or on the PowerShell extension debugger, which has its own architecture configuration.
 ---@field useX86Host boolean
@@ -15020,18 +15032,30 @@
 -- Override the command used for bench runnables.
 -- The first element of the array should be the program to execute (for example, `cargo`).
 -- 
--- Use the placeholders `${package}`, `${target_arg}`, `${target}`, `${executable_args}` to dynamically
--- replace the package name, target option (such as `--bin` or `--example`), the target name and
--- the arguments passed to test binary args (includes `rust-analyzer.runnables.extraTestBinaryArgs`).
+-- Use the placeholders:
+-- - `${package}`: package name.
+-- - `${target_arg}`: target option such as `--bin`, `--test`, `--lib`, etc.
+-- - `${target}`: target name (empty for `--lib`).
+-- - `${test_name}`: the test path filter, e.g. `module::bench_func`.
+-- - `${exact}`: `--exact` for single benchmarks, empty for modules.
+-- - `${include_ignored}`: always empty for benchmarks.
+-- - `${executable_args}`: all of the above binary args bundled together
+--     (includes `rust-analyzer.runnables.extraTestBinaryArgs`).
 ---@field overrideCommand string[]
 
 ---@class _.lspconfig.settings.rust_analyzer.Doctest
--- Override the command used for bench runnables.
+-- Override the command used for doc-test runnables.
 -- The first element of the array should be the program to execute (for example, `cargo`).
 -- 
--- Use the placeholders `${package}`, `${target_arg}`, `${target}`, `${executable_args}` to dynamically
--- replace the package name, target option (such as `--bin` or `--example`), the target name and
--- the arguments passed to test binary args (includes `rust-analyzer.runnables.extraTestBinaryArgs`).
+-- Use the placeholders:
+-- - `${package}`: package name.
+-- - `${target_arg}`: target option such as `--bin`, `--test`, `--lib`, etc.
+-- - `${target}`: target name (empty for `--lib`).
+-- - `${test_name}`: the test path filter, e.g. `module::func`.
+-- - `${exact}`: always empty for doc-tests.
+-- - `${include_ignored}`: always empty for doc-tests.
+-- - `${executable_args}`: all of the above binary args bundled together
+--     (includes `rust-analyzer.runnables.extraTestBinaryArgs`).
 ---@field overrideCommand string[]
 
 ---@class _.lspconfig.settings.rust_analyzer.Test
@@ -15044,9 +15068,15 @@
 -- Override the command used for test runnables.
 -- The first element of the array should be the program to execute (for example, `cargo`).
 -- 
--- Use the placeholders `${package}`, `${target_arg}`, `${target}`, `${executable_args}` to dynamically
--- replace the package name, target option (such as `--bin` or `--example`), the target name and
--- the arguments passed to test binary args (includes `rust-analyzer.runnables.extraTestBinaryArgs`).
+-- Available placeholders:
+-- - `${package}`: package name.
+-- - `${target_arg}`: target option such as `--bin`, `--test`, `--lib`, etc.
+-- - `${target}`: target name (empty for `--lib`).
+-- - `${test_name}`: the test path filter, e.g. `module::test_func`.
+-- - `${exact}`: `--exact` for single tests, empty for modules.
+-- - `${include_ignored}`: `--include-ignored` for single tests, empty otherwise.
+-- - `${executable_args}`: all of the above binary args bundled together
+--     (includes `rust-analyzer.runnables.extraTestBinaryArgs`).
 ---@field overrideCommand string[]
 
 ---@class _.lspconfig.settings.rust_analyzer.Runnables

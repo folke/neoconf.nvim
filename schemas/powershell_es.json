@@ -297,6 +297,11 @@
       "markdownDescription": "Do not show the startup banner in the PowerShell Extension Terminal.",
       "type": "boolean"
     },
+    "powershell.integratedConsole.suppressTerminalStoppedNotification": {
+      "default": false,
+      "markdownDescription": "Do not show a notification when the PowerShell Extension Terminal has stopped.",
+      "type": "boolean"
+    },
     "powershell.integratedConsole.useLegacyReadLine": {
       "default": false,
       "markdownDescription": "This will disable the use of PSReadLine in the PowerShell Extension Terminal and use a legacy implementation. **This setting is not recommended and likely to be deprecated!**",
@@ -409,11 +414,6 @@
     "powershell.suppressAdditionalExeNotFoundWarning": {
       "default": false,
       "markdownDescription": "Suppresses the warning message when any of `#powershell.powerShellAdditionalExePaths#` is not found.",
-      "type": "boolean"
-    },
-    "powershell.suppressTerminalStoppedNotification": {
-      "default": false,
-      "markdownDescription": "Do not show a notification when the PowerShell Extension Terminal has stopped.",
       "type": "boolean"
     },
     "powershell.trace.server": {

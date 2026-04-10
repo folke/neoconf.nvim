@@ -307,6 +307,11 @@
       "description": "%configuration.omnisharp.csharp.suppressProjectJsonWarning%",
       "type": "boolean"
     },
+    "csharp.wasm.debug.useVSDbg": {
+      "default": true,
+      "description": "%generateOptionsSchema.useVSDbg.description%",
+      "type": "boolean"
+    },
     "dotnet.autoInsert.enableAutoInsert": {
       "default": true,
       "description": "%configuration.dotnet.autoInsert.enableAutoInsert%",
