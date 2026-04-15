@@ -397,6 +397,19 @@
       ],
       "scope": "window"
     },
+    "ada.workspaceSearch": {
+      "default": "fuzzy",
+      "enum": [
+        "fuzzy",
+        "startWord"
+      ],
+      "markdownDescription": "Workspace symbol search method.",
+      "markdownEnumDescriptions": [
+        "Fuzzy search",
+        "Start word search"
+      ],
+      "scope": "window"
+    },
     "e3-testsuite.args": {
       "default": [],
       "description": "Command line arguments to pass to testsuite.py when running tests",
