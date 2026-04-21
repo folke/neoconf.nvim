@@ -35,15 +35,17 @@
       "type": "boolean"
     },
     "wgsl-analyzer.diagnostics.nagaVersion": {
-      "default": "0.28",
+      "default": "0.29",
       "enum": [
         "0.27",
         "0.28",
+        "0.29",
         "main"
       ],
       "enumDescriptions": [
         "Naga version 27",
         "Naga version 28",
+        "Naga version 29",
         "Version of Naga on main (most recent stable version)"
       ],
       "markdownDescription": "Naga version used for validation.",
