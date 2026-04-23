@@ -229,6 +229,11 @@
       },
       "type": "array"
     },
+    "csharp.debug.terminateChildProcesses": {
+      "default": false,
+      "description": "%generateOptionsSchema.terminateChildProcesses.description%",
+      "type": "boolean"
+    },
     "csharp.format.enable": {
       "default": true,
       "description": "%configuration.omnisharp.csharp.format.enable%",

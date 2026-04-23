@@ -10434,6 +10434,8 @@
 -- %generateOptionsSchema.suppressJITOptimizations.markdownDescription%
 ---@field suppressJITOptimizations boolean
 ---@field symbolOptions _.lspconfig.settings.omnisharp.SymbolOptions
+-- %generateOptionsSchema.terminateChildProcesses.description%
+---@field terminateChildProcesses boolean
 
 ---@class _.lspconfig.settings.omnisharp.Format
 -- %configuration.omnisharp.csharp.format.enable%
