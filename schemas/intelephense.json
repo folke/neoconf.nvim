@@ -135,10 +135,20 @@
       "type": "boolean"
     },
     "intelephense.diagnostics.argumentCount": {
-      "default": true,
+      "default": "on",
+      "enum": [
+        "on",
+        "declared",
+        "off"
+      ],
       "markdownDescription": "Enables argument count diagnostics.",
+      "markdownEnumDescriptions": [
+        "Argument count diagnostics will be emitted for declared functions and methods and annotated `@method` methods.",
+        "Argument count diagnostics will be emitted for declared functions and methods only. Annotated `@method` methods will be ignored.",
+        "Argument count diagnostics will be disabled."
+      ],
       "scope": "window",
-      "type": "boolean"
+      "type": "string"
     },
     "intelephense.diagnostics.deprecated": {
       "default": true,
@@ -314,10 +324,20 @@
       "type": "boolean"
     },
     "intelephense.diagnostics.undefinedVariables": {
-      "default": true,
+      "default": "on",
+      "enum": [
+        "on",
+        "local",
+        "off"
+      ],
+      "enumDescriptions": [
+        "Undefined variable diagnostics will be emitted for global and local scope variables.",
+        "Undefined variable diagnostics will be emitted for local scope variables only.",
+        "Undefined variable diagnostics will be disabled."
+      ],
       "markdownDescription": "Enables undefined variable diagnostics.",
       "scope": "window",
-      "type": "boolean"
+      "type": "string"
     },
     "intelephense.diagnostics.unexpectedTokens": {
       "default": true,

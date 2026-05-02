@@ -5399,9 +5399,9 @@
 -- Enables argument count diagnostics.
 -- 
 -- ```lua
--- default = true
+-- default = "on"
 -- ```
----@field argumentCount boolean
+---@field argumentCount "on" | "declared" | "off"
 -- Enables deprecated diagnostics.
 -- 
 -- ```lua
@@ -5537,9 +5537,9 @@
 -- Enables undefined variable diagnostics.
 -- 
 -- ```lua
--- default = true
+-- default = "on"
 -- ```
----@field undefinedVariables boolean
+---@field undefinedVariables "on" | "local" | "off"
 -- Enables unexpected token diagnostics.
 -- 
 -- ```lua
