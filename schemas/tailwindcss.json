@@ -105,6 +105,17 @@
       "scope": "language-overridable",
       "type": "string"
     },
+    "tailwindCSS.lint.deprecatedAtRule": {
+      "default": "warning",
+      "enum": [
+        "ignore",
+        "warning",
+        "error"
+      ],
+      "markdownDescription": "Deprecated Tailwind CSS at-rules",
+      "scope": "language-overridable",
+      "type": "string"
+    },
     "tailwindCSS.lint.invalidApply": {
       "default": "error",
       "enum": [
