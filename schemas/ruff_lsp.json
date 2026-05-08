@@ -266,7 +266,7 @@
       "default": null,
       "enum": [
         "error",
-        "warning",
+        "warn",
         "info",
         "debug",
         "trace"
