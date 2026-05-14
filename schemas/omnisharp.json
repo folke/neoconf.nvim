@@ -533,10 +533,6 @@
       "default": {},
       "description": "%configuration.dotnet.server.componentPaths%",
       "properties": {
-        "razorExtension": {
-          "description": "%configuration.dotnet.server.componentPaths.razorExtension%",
-          "type": "string"
-        },
         "roslynCopilot": {
           "description": "%configuration.dotnet.server.componentPaths.roslynCopilot%",
           "type": "string"
