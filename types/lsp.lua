@@ -9820,6 +9820,26 @@
 -- ```
 ---@field vectorType string
 
+---@class _.lspconfig.settings.luau_lsp.AnonymousAutofilledFunction
+-- Whether to add snippet tabstops on each parameter name in the generated anonymous function snippet, allowing quick navigation and editing
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field addTabstopForParameters boolean
+-- Whether to include type annotations in the generated anonymous function snippet
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field addTypeAnnotations boolean
+-- Whether to show the auto-generated anonymous function completion item when autocompleting callback arguments
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enabled boolean
+
 ---@class _.lspconfig.settings.luau_lsp.StringRequires
 -- Whether to use string requires when auto-importing requires. Only checked if `#luau-lsp.platform.type#` is `roblox`
 ---@field enabled boolean
@@ -9870,6 +9890,8 @@
 -- default = true
 -- ```
 ---@field suggestServices boolean
+-- Whether to use `const` instead of `local` for auto-imported requires and services
+---@field useConst boolean
 
 ---@class _.lspconfig.settings.luau_lsp.Completion
 -- Add parentheses after completing a function call
@@ -9884,6 +9906,7 @@
 -- default = true
 -- ```
 ---@field addTabstopAfterParentheses boolean
+---@field anonymousAutofilledFunction _.lspconfig.settings.luau_lsp.AnonymousAutofilledFunction
 -- Automatically insert an `end` when opening a block
 ---@field autocompleteEnd boolean
 -- Enables the fragment autocomplete system for performance improvements
