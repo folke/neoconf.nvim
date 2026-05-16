@@ -11717,6 +11717,16 @@
 -- ```
 ---@field useLegacyCodeLens boolean
 
+---@class _.lspconfig.settings.powershell_es.Rename
+-- Auto-accepts the [disclaimer for the PowerShell Rename Symbol feature](https://aka.ms/powershell-rename-disclaimer) which has support limitations and risks.
+---@field acceptDisclaimer boolean
+-- Creates an alias attribute for a parameter when renaming a parameter definition.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field createParameterAlias boolean
+
 ---@class _.lspconfig.settings.powershell_es.ScriptAnalysis
 -- Enables real-time script analysis using [PSScriptAnalyzer](https://github.com/PowerShell/PSScriptAnalyzer) that populates the [Problems view](command:workbench.panel.markers.view.focus).
 -- 
@@ -11819,6 +11829,7 @@
 -- default = true
 -- ```
 ---@field promptToUpdatePowerShell boolean
+---@field rename _.lspconfig.settings.powershell_es.Rename
 ---@field scriptAnalysis _.lspconfig.settings.powershell_es.ScriptAnalysis
 ---@field sideBar _.lspconfig.settings.powershell_es.SideBar
 ---@field startAsLoginShell _.lspconfig.settings.powershell_es.StartAsLoginShell
