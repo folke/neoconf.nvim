@@ -272,6 +272,24 @@
       "scope": "window",
       "type": "string"
     },
+    "ada.projectView.flatMode": {
+      "default": false,
+      "description": "Show all projects as a flat list instead of a hierarchy in the Project View.",
+      "scope": "window",
+      "type": "boolean"
+    },
+    "ada.projectView.showObjectDirectories": {
+      "default": false,
+      "description": "Show the object directory as a child of each project in the Project View.",
+      "scope": "window",
+      "type": "boolean"
+    },
+    "ada.projectView.showRuntimeFiles": {
+      "default": false,
+      "description": "Show the Ada runtime project and its source files in the Project View.",
+      "scope": "window",
+      "type": "boolean"
+    },
     "ada.rangeFormattingFallback": {
       "default": null,
       "enum": [

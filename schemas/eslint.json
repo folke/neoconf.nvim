@@ -9,6 +9,29 @@
       "scope": "resource",
       "type": "boolean"
     },
+    "eslint.bulkSuppression.enable": {
+      "default": false,
+      "description": "Show bulk-suppressed violations (from eslint-suppressions.json) as diagnostics. Requires ESLint >= 10.1.",
+      "scope": "resource",
+      "type": "boolean"
+    },
+    "eslint.bulkSuppression.location": {
+      "description": "Path to the suppressions file relative to the workspace. Defaults to eslint-suppressions.json.",
+      "scope": "resource",
+      "type": "string"
+    },
+    "eslint.bulkSuppression.severity": {
+      "default": "info",
+      "description": "Diagnostic severity for bulk-suppressed violations.",
+      "enum": [
+        "error",
+        "warn",
+        "info",
+        "hint"
+      ],
+      "scope": "resource",
+      "type": "string"
+    },
     "eslint.codeAction.disableRuleComment": {
       "additionalProperties": false,
       "default": {
