@@ -37,6 +37,11 @@
       "description": "Enable to disable autocomplete on methods and properties (Modifying requires VSCode reload)",
       "type": "boolean"
     },
+    "psalm.disableProvideHover": {
+      "default": false,
+      "description": "Enable to disable the providing hover definition on methods and properties (Modifying requires VSCode reload)",
+      "type": "boolean"
+    },
     "psalm.enableDebugLog": {
       "default": false,
       "deprecationMessage": "Deprecated: Please use psalm.enableVerbose, psalm.logLevel or psalm.trace.server instead.",
