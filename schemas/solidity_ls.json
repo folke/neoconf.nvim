@@ -116,13 +116,6 @@
       "description": "The package directory to find the solhint linter",
       "type": "string"
     },
-    "solidity.solhintRules": {
-      "default": null,
-      "description": "Solhint linting validation rules",
-      "type": [
-        "object"
-      ]
-    },
     "solidity.soliumRules": {
       "default": {
         "imports-on-top": 0,

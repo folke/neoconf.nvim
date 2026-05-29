@@ -628,6 +628,12 @@
       "scope": "window",
       "type": "array"
     },
+    "dart.flutterCreatePromptForPlatforms": {
+      "default": true,
+      "description": "Whether to prompt for platforms when running 'Flutter: New Project'.",
+      "scope": "window",
+      "type": "boolean"
+    },
     "dart.flutterCustomEmulators": {
       "default": [],
       "description": "Custom emulators to show in the emulator list for easier launching. If IDs match existing emulators returned by Flutter, the custom emulators will override them.",

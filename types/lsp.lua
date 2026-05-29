@@ -2075,6 +2075,12 @@
 ---@field flutterCreateOrganization string
 -- The platforms to enable for new projects created using the 'Flutter: New Project' command. If unset, all platforms will be enabled.
 ---@field flutterCreatePlatforms string[]
+-- Whether to prompt for platforms when running 'Flutter: New Project'.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field flutterCreatePromptForPlatforms boolean
 -- Custom emulators to show in the emulator list for easier launching. If IDs match existing emulators returned by Flutter, the custom emulators will override them.
 -- 
 -- ```lua
@@ -15900,8 +15906,6 @@
 -- default = ""
 -- ```
 ---@field solhintPackageDirectory string
--- Solhint linting validation rules
----@field solhintRules table
 -- Solium linting validation rules
 -- 
 -- ```lua
