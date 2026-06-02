@@ -95,11 +95,6 @@
       "description": "When indexing a file, if the line count is larger than this number, fast indexing will be used to improve symbol lookup performance.",
       "type": "integer"
     },
-    "systemverilog.parallelProcessing": {
-      "default": 10,
-      "description": "The number of files the extension should attempt to process in parallel. Processing consist of opening found files and perform matching to find symbols.",
-      "type": "integer"
-    },
     "systemverilog.trace.server": {
       "default": "off",
       "description": "Traces the communication between VS Code and the SystemVerilog language server.",
