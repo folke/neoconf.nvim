@@ -422,6 +422,12 @@
       "title": "%extension.tinymist.config.tinymist.previewFeature.title%",
       "type": "string"
     },
+    "tinymist.previewer": {
+      "default": "myriad-dreamin.tinymist",
+      "markdownDescription": "%extension.tinymist.config.tinymist.previewer.desc%",
+      "title": "%extension.tinymist.config.tinymist.previewer.title%",
+      "type": "string"
+    },
     "tinymist.projectResolution": {
       "default": "singleFile",
       "enum": [
