@@ -5142,10 +5142,10 @@
 -- default = ""
 -- ```
 ---@field serverExtraArgs string
--- Preferred approach for loading package components. Setting this to 'multiple components' (EXPERIMENTAL) allows the build tool (such as `cabal` or `stack`) to [load multiple components at once](https://github.com/haskell/cabal/pull/8726), which is a significant improvement.
+-- Preferred approach for loading package components. Setting this to 'multiple components' allows the build tool (such as `cabal` or `stack`) to [load multiple components at once](https://github.com/haskell/cabal/pull/8726), which is a significant improvement.
 -- 
 -- ```lua
--- default = "singleComponent"
+-- default = "multipleComponents"
 -- ```
 ---@field sessionLoading "singleComponent" | "multipleComponents"
 -- Enable Language Server support for `.cabal` files. Requires Haskell Language Server version >= 1.9.0.0.
@@ -14183,7 +14183,7 @@
 -- For traits the type "methods" can be used to only exclude the methods but not the trait
 -- itself.
 -- 
--- For modules the type "subItems" can be used to only exclude the all items in it but not the module
+-- For modules the type "sub_items" can be used to only exclude the all items in it but not the module
 -- itself. This does not include items defined in nested modules.
 -- 
 -- This setting also inherits `#rust-analyzer.completion.excludeTraits#`.
