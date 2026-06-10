@@ -231,6 +231,12 @@
       "title": "%extension.tinymist.config.tinymist.formatterProseWrap.title%",
       "type": "boolean"
     },
+    "tinymist.inlayHints.packageVersionStatus": {
+      "default": true,
+      "markdownDescription": "%extension.tinymist.config.tinymist.inlayHints.packageVersionStatus.desc%",
+      "title": "%extension.tinymist.config.tinymist.inlayHints.packageVersionStatus.title%",
+      "type": "boolean"
+    },
     "tinymist.lint.enabled": {
       "default": false,
       "markdownDescription": "%extension.tinymist.config.tinymist.lint.enabled.desc%",

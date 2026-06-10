@@ -48,7 +48,7 @@
     },
     "elixirLS.dialyzerWarnOpts": {
       "default": [],
-      "description": "Dialyzer options to enable or disable warnings - See Dialyzer's documentation for options. Note that the \"race_conditions\" option is unsupported",
+      "description": "Dialyzer options to enable or disable warnings - See Dialyzer's documentation for options",
       "items": {
         "enum": [
           "no_return",
@@ -105,12 +105,6 @@
     "elixirLS.fetchDeps": {
       "default": false,
       "description": "Automatically fetch project dependencies when compiling.",
-      "scope": "resource",
-      "type": "boolean"
-    },
-    "elixirLS.incrementalDialyzer": {
-      "default": true,
-      "description": "Use OTP incremental dialyzer (available on OTP 26+)",
       "scope": "resource",
       "type": "boolean"
     },

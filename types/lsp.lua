@@ -2719,7 +2719,7 @@
 -- default = "dialyxir_long"
 -- ```
 ---@field dialyzerFormat "dialyzer" | "dialyxir_short" | "dialyxir_long"
--- Dialyzer options to enable or disable warnings - See Dialyzer's documentation for options. Note that the "race_conditions" option is unsupported
+-- Dialyzer options to enable or disable warnings - See Dialyzer's documentation for options
 -- 
 -- ```lua
 -- default = {}
@@ -2733,12 +2733,6 @@
 ---@field envVariables table
 -- Automatically fetch project dependencies when compiling.
 ---@field fetchDeps boolean
--- Use OTP incremental dialyzer (available on OTP 26+)
--- 
--- ```lua
--- default = true
--- ```
----@field incrementalDialyzer boolean
 -- Absolute path to alternative ElixirLS release that will override the packaged release
 ---@field languageServerOverridePath string
 -- Enable or disable the MCP server
@@ -14186,6 +14180,9 @@
 -- For modules the type "sub_items" can be used to only exclude the all items in it but not the module
 -- itself. This does not include items defined in nested modules.
 -- 
+-- For enums the type "variants" can be used to only exclude the all variants in it but not the enum
+-- itself.
+-- 
 -- This setting also inherits `#rust-analyzer.completion.excludeTraits#`.
 -- 
 -- ```lua
@@ -17367,6 +17364,14 @@
 -- %extension.tinymist.config.tinymist.completion.triggerOnSnippetPlaceholders.desc%
 ---@field triggerOnSnippetPlaceholders boolean
 
+---@class _.lspconfig.settings.tinymist.InlayHints
+-- %extension.tinymist.config.tinymist.inlayHints.packageVersionStatus.desc%
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field packageVersionStatus boolean
+
 ---@class _.lspconfig.settings.tinymist.Lint
 -- %extension.tinymist.config.tinymist.lint.enabled.desc%
 ---@field enabled boolean
@@ -17499,6 +17504,7 @@
 ---@field formatterPrintWidth number
 -- %extension.tinymist.config.tinymist.formatterProseWrap.desc%
 ---@field formatterProseWrap boolean
+---@field inlayHints _.lspconfig.settings.tinymist.InlayHints
 ---@field lint _.lspconfig.settings.tinymist.Lint
 -- %extension.tinymist.config.tinymist.onEnterEvent.desc%
 -- 
