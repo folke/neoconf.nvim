@@ -163,4 +163,27 @@ function M.get_global()
   return settings
 end
 
+function M.refresh()
+  local Workspace = require("neoconf.workspace")
+  -- Clear the internal state
+  M.options = {}
+
+  -- Clear the Settings cache
+  M._cache = {}
+
+  -- Re-read the global config file
+  local global_settings = M.get_global()
+  M.options = vim.tbl_deep_extend("force", M.options, global_settings:get())
+
+  -- Re-read the local config file
+  local workspace = Workspace.get()
+  if workspace.root_dir then
+    local local_settings = M.get_local(workspace.root_dir)
+    M.options = vim.tbl_deep_extend("force", M.options, local_settings:get())
+  end
+
+  -- Fire the on_update event for plugins
+  require("neoconf.plugins").fire("on_update")
+end
+
 return M
