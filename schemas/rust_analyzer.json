@@ -1387,6 +1387,23 @@
         "string"
       ]
     },
+    "rust-analyzer.projectCreation.openAfterCreate": {
+      "default": "ask",
+      "enum": [
+        "ask",
+        "open",
+        "openNewWindow",
+        "addToWorkspace"
+      ],
+      "enumDescriptions": [
+        "Prompt for how to open the new project.",
+        "Open the new project in the current window.",
+        "Open the new project in a new window.",
+        "Add the new project to the current workspace, or open it if no workspace is open."
+      ],
+      "markdownDescription": "Control what happens after `rust-analyzer: Create New Project...` finishes creating a Cargo project.",
+      "type": "string"
+    },
     "rust-analyzer.references.excludeImports": {
       "default": false,
       "markdownDescription": "Exclude imports from find-all-references.",

@@ -178,11 +178,13 @@
       "default": "paged",
       "enum": [
         "paged",
-        "html"
+        "html",
+        "bundle"
       ],
       "enumDescriptions": [
         "%extension.tinymist.config.tinymist.exportTarget.string.enum.paged%",
-        "%extension.tinymist.config.tinymist.exportTarget.string.enum.html%"
+        "%extension.tinymist.config.tinymist.exportTarget.string.enum.html%",
+        "%extension.tinymist.config.tinymist.exportTarget.string.enum.bundle%"
       ],
       "markdownDescription": "%extension.tinymist.config.tinymist.exportTarget.desc%",
       "title": "%extension.tinymist.config.tinymist.exportTarget.title%",

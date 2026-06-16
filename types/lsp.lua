@@ -15097,6 +15097,14 @@
 -- from source for it.
 ---@field memoryProfile string
 
+---@class _.lspconfig.settings.rust_analyzer.ProjectCreation
+-- Control what happens after `rust-analyzer: Create New Project...` finishes creating a Cargo project.
+-- 
+-- ```lua
+-- default = "ask"
+-- ```
+---@field openAfterCreate "ask" | "open" | "openNewWindow" | "addToWorkspace"
+
 ---@class _.lspconfig.settings.rust_analyzer.References
 -- Exclude imports from find-all-references.
 ---@field excludeImports boolean
@@ -15643,6 +15651,7 @@
 ---@field numThreads any|number|"physical" | "logical"
 ---@field procMacro _.lspconfig.settings.rust_analyzer.ProcMacro
 ---@field profiling _.lspconfig.settings.rust_analyzer.Profiling
+---@field projectCreation _.lspconfig.settings.rust_analyzer.ProjectCreation
 ---@field references _.lspconfig.settings.rust_analyzer.References
 ---@field rename _.lspconfig.settings.rust_analyzer.Rename
 -- Restart the server automatically when settings that require a restart are changed.
@@ -17477,7 +17486,7 @@
 -- ```lua
 -- default = "paged"
 -- ```
----@field exportTarget "paged" | "html"
+---@field exportTarget "paged" | "html" | "bundle"
 -- %extension.tinymist.config.tinymist.fontPaths.desc%
 ---@field fontPaths any[]
 -- %extension.tinymist.config.tinymist.formatterIndentSize.desc%
