@@ -396,7 +396,7 @@
       "type": "array"
     },
     "powershell.sideBar.CommandExplorerVisibility": {
-      "default": false,
+      "default": true,
       "markdownDescription": "Specifies the visibility of the Command Explorer in the side bar.",
       "type": "boolean"
     },
