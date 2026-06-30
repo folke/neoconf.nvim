@@ -714,12 +714,6 @@
       "markdownDescription": "Whether to automatically send a Hot Reload request to Flutter apps during a debug session when saving files. Dart apps are controlled by the hotReloadOnSave setting.",
       "scope": "window"
     },
-    "dart.flutterOutline": {
-      "default": true,
-      "description": "Whether to show the Flutter Outline tree in the sidebar.",
-      "scope": "window",
-      "type": "boolean"
-    },
     "dart.flutterRememberSelectedDevice": {
       "default": true,
       "description": "Whether to remember which device was last (explicitly) selected for each project. When the remembered device is selected, it will prevent newly-connected mobile devices from being automatically selected (regardless of the `#dart.flutterSelectDeviceWhenConnected#` setting).",
