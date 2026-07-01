@@ -2213,6 +2213,12 @@
 -- default = true
 -- ```
 ---@field insertArgumentPlaceholders boolean
+-- Whether to enable the Interactive Forms feature used for accepting user input during refactors.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field interactiveForms boolean
 -- **LEGACY SETTING: Use `formatter.page_width` in `analysis_options.yaml` instead.**
 -- 
 -- The maximum length of a line of code. This is used by the document formatter. If you change this value, you may wish to update `editor.rulers` (which draws vertical lines in the editor) in the `["dart"]` section of your settings to match.
