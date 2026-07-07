@@ -1088,6 +1088,13 @@
       "scope": "window",
       "type": "boolean"
     },
+    "java.referencesCodeLens.includeFields": {
+      "default": false,
+      "description": "Enable/disable the references code lens for fields.",
+      "order": 15,
+      "scope": "window",
+      "type": "boolean"
+    },
     "java.saveActions.cleanup": {
       "default": true,
       "description": "Enable/disable cleanup actions on save.",

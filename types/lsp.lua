@@ -6536,6 +6536,8 @@
 ---@class _.lspconfig.settings.jdtls.ReferencesCodeLens
 -- Enable/disable the references code lens.
 ---@field enabled boolean
+-- Enable/disable the references code lens for fields.
+---@field includeFields boolean
 
 ---@class _.lspconfig.settings.jdtls.SaveActions
 -- Enable/disable cleanup actions on save.
