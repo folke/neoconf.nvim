@@ -1,0 +1,571 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "description": "F# Language Support, powered by FsAutoComplete",
+  "properties": {
+    "FSharp.FSIExtraInteractiveParameters": {
+      "markdownDescription": "An array of additional command line parameters to pass to FSI when it is launched. See [the Microsoft documentation](https://docs.microsoft.com/en-us/dotnet/fsharp/language-reference/fsharp-interactive-options) for an exhaustive list.  If both this and `#FSharp.fsiExtraParameters#` are used, both sets of arguments will be passed to the launched FSI.",
+      "type": "array"
+    },
+    "FSharp.FSIExtraSharedParameters": {
+      "markdownDescription": "An array of additional command line parameters to pass to the compiler to use when checking FSI scripts. See [the Microsoft documentation](https://docs.microsoft.com/en-us/dotnet/fsharp/language-reference/fsharp-interactive-options) for an exhaustive list. If both this and `#FSharp.fsiExtraParameters#` are used, only `#FSharp.fsiExtraParameters#` will be used.",
+      "type": "array"
+    },
+    "FSharp.TestExplorer.AutoDiscoverTestsOnLoad": {
+      "default": true,
+      "description": "Decides if the test explorer will automatically try discover tests when the workspace loads. You can still manually refresh the explorer to discover tests at any time",
+      "type": "boolean"
+    },
+    "FSharp.TestExplorer.UseLegacyDotnetCliIntegration": {
+      "default": false,
+      "description": "Use the dotnet cli to discover and run tests instead of the language server. Will lose features like streamed test results and Microsoft Testing Platform support.",
+      "type": "boolean"
+    },
+    "FSharp.abstractClassStubGeneration": {
+      "default": true,
+      "description": "Enables a codefix that generates missing members for an abstract class when in an type inheriting from that abstract class.",
+      "type": "boolean"
+    },
+    "FSharp.abstractClassStubGenerationMethodBody": {
+      "default": "failwith \"Not Implemented\"",
+      "description": "The expression to fill in the right-hand side of inherited members when generating missing members for an abstract base class",
+      "type": "string"
+    },
+    "FSharp.abstractClassStubGenerationObjectIdentifier": {
+      "default": "this",
+      "description": "The name of the 'self' identifier in an inherited member. For example, `this` in the expression `this.Member(x: int) = ()`",
+      "type": "string"
+    },
+    "FSharp.addFsiWatcher": {
+      "default": false,
+      "description": "Enables a panel for FSI that shows the value of all existing bindings in the FSI session",
+      "type": "boolean"
+    },
+    "FSharp.addPrivateAccessModifier": {
+      "default": false,
+      "description": "Enables a codefix that adds a private access modifier",
+      "type": "boolean"
+    },
+    "FSharp.analyzersPath": {
+      "default": [
+        "packages/Analyzers",
+        "analyzers"
+      ],
+      "description": "Directories in the array are used as a source of custom analyzers. Requires restart.",
+      "scope": "machine-overridable",
+      "type": "array"
+    },
+    "FSharp.autoRevealInExplorer": {
+      "default": "sameAsFileExplorer",
+      "description": "Controls whether the solution explorer should automatically reveal and select files when opening them. If `sameAsFileExplorer` is set, then the value of the `explorer.autoReveal` setting will be used instead.",
+      "enum": [
+        "sameAsFileExplorer",
+        "enabled",
+        "disabled"
+      ],
+      "scope": "window",
+      "type": "string"
+    },
+    "FSharp.codeLenses.references.enabled": {
+      "default": true,
+      "description": "If enabled, code lenses for reference counts for methods and functions will be shown.",
+      "type": "boolean"
+    },
+    "FSharp.codeLenses.signature.enabled": {
+      "default": true,
+      "description": "If enabled, code lenses for type signatures on methods and functions will be shown.",
+      "type": "boolean"
+    },
+    "FSharp.disableFailedProjectNotifications": {
+      "default": false,
+      "description": "Disables popup notifications for failed project loading",
+      "type": "boolean"
+    },
+    "FSharp.dotnetRoot": {
+      "description": "Sets the root path for finding locating the dotnet CLI binary. Defaults to the `dotnet` binary found on your system PATH.",
+      "type": "string"
+    },
+    "FSharp.enableAdaptiveLspServer": {
+      "default": true,
+      "description": "Enables Enable LSP Server based on FSharp.Data.Adaptive. This can improve stability. Requires restart.",
+      "markdownDeprecationMessage": "This setting has been deprecated because it is now the only behavior of the LSP Server.",
+      "type": "boolean"
+    },
+    "FSharp.enableAnalyzers": {
+      "default": false,
+      "description": "EXPERIMENTAL. Enables F# analyzers for custom code diagnostics. Requires restart.",
+      "type": "boolean"
+    },
+    "FSharp.enableMSBuildProjectGraph": {
+      "default": false,
+      "description": "EXPERIMENTAL. Enables support for loading workspaces with MsBuild's ProjectGraph. This can improve load times. Requires restart.",
+      "type": "boolean"
+    },
+    "FSharp.enableReferenceCodeLens": {
+      "default": true,
+      "deprecationMessage": "This setting is deprecated. Use FSharp.codeLenses.references.enabled instead.",
+      "description": "Enables additional code lenses showing number of references of a function or value. Requires background services to be enabled.",
+      "markdownDeprecationMessage": "This setting is **deprecated**. Use `#FSharp.codeLenses.references.enabled#` instead.",
+      "type": "boolean"
+    },
+    "FSharp.enableTouchBar": {
+      "default": true,
+      "description": "Enables TouchBar integration of build/run/debug buttons",
+      "type": "boolean"
+    },
+    "FSharp.enableTreeView": {
+      "default": true,
+      "description": "Enables the solution explorer view of the current workspace, which shows the workspace as MSBuild sees it",
+      "type": "boolean"
+    },
+    "FSharp.excludeAnalyzers": {
+      "default": [],
+      "description": "The names of custom analyzers that should not be executed.",
+      "scope": "machine-overridable",
+      "type": "array"
+    },
+    "FSharp.excludeProjectDirectories": {
+      "default": [
+        ".git",
+        "paket-files",
+        ".fable",
+        "packages",
+        "node_modules"
+      ],
+      "description": "Directories in the array are excluded from project file search. Requires restart.",
+      "type": "array"
+    },
+    "FSharp.externalAutocomplete": {
+      "default": false,
+      "description": "Includes external (from unopened modules and namespaces) symbols in autocomplete",
+      "type": "boolean"
+    },
+    "FSharp.fcs.transparentCompiler.enabled": {
+      "default": false,
+      "markdownDescription": "EXPERIMENTAL: Enables the FSharp Compiler Service's [transparent compiler](https://github.com/dotnet/fsharp/pull/15179) feature. Requires restart.",
+      "type": "boolean"
+    },
+    "FSharp.fsac.attachDebugger": {
+      "default": false,
+      "markdownDescription": "Appends the `--attachdebugger` argument to fsac, this will allow you to attach a debugger.",
+      "type": "boolean"
+    },
+    "FSharp.fsac.cachedTypeCheckCount": {
+      "default": 200,
+      "description": "The MemoryCacheOptions.SizeLimit for caching typechecks.",
+      "type": "integer"
+    },
+    "FSharp.fsac.conserveMemory": {
+      "default": false,
+      "deprecationMessage": "This setting is deprecated. Use FSharp.fsac.gc.conserveMemory instead.",
+      "description": "Configures FsAutoComplete with settings intended to reduce memory consumption. Requires restart.",
+      "type": "boolean"
+    },
+    "FSharp.fsac.dotnetArgs": {
+      "default": [],
+      "description": "additional CLI arguments to be provided to the dotnet runner for FSAC",
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "FSharp.fsac.fsacArgs": {
+      "default": [],
+      "description": "additional CLI arguments to be provided to FSAC itself. Useful for flags that aren't exposed in the settings or CLI arguments that only exist in custom built versions of FSAC. Requires restart.",
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "FSharp.fsac.gc.conserveMemory": {
+      "markdownDescription": "Configures the garbage collector to [conserve memory](https://learn.microsoft.com/en-us/dotnet/core/runtime-config/garbage-collector#conserve-memory) at the expense of more frequent garbage collections and possibly longer pause times. Acceptable values are 0-9. Any non-zero value will allow the [Large Object Heap](https://learn.microsoft.com/en-us/dotnet/standard/garbage-collection/large-object-heap) to be compacted automatically if it has too much fragmentation. Requires restart.",
+      "maximum": 9,
+      "minimum": 0,
+      "type": "integer"
+    },
+    "FSharp.fsac.gc.heapCount": {
+      "markdownDescription": "Limits the number of [heaps](https://learn.microsoft.com/en-us/dotnet/standard/garbage-collection/fundamentals#the-managed-heap) created by the garbage collector. Applies to server garbage collection only. See [Middle Ground between Server and Workstation GC](https://devblogs.microsoft.com/dotnet/middle-ground-between-server-and-workstation-gc/) for more details. This can allow FSAC to still benefit from Server garbage collection while still limiting the number of heaps. [Only available on .NET 7 or higher](https://github.com/ionide/ionide-vscode-fsharp/issues/1899#issuecomment-1649009462). Requires restart. If FSAC is run on .NET 8 runtimes, this will be set to 2 by default to prevent inflated memory use. On .NET 9 with DATAS enabled, this will not be set. ",
+      "required": [
+        "FSharp.fsac.gc.server"
+      ],
+      "type": "integer"
+    },
+    "FSharp.fsac.gc.server": {
+      "default": true,
+      "markdownDescription": "Configures whether the application uses workstation garbage collection or server garbage collection. See [Workstation vs Server Garbage Collection](https://devblogs.microsoft.com/premier-developer/understanding-different-gc-modes-with-concurrency-visualizer/#workstation-gc-vs-server-gc) for more details. Workstation will use less memory but Server will have more throughput. Requires restart.",
+      "type": "boolean"
+    },
+    "FSharp.fsac.gc.useDatas": {
+      "markdownDescription": "Configures whether the application uses the DATAS(dynamic adaptation to application sizes) server garbage collection mode. See [DATAS](https://learn.microsoft.com/dotnet/core/runtime-config/garbage-collector#dynamic-adaptation-to-application-sizes-datas) for more details. Requires restart. When FSAC is run on .NET 8 runtimes, this will be set to false by default. On .NET 9 runtimes, this will be set to true by default.",
+      "required": [
+        "FSharp.fsac.gc.server"
+      ],
+      "type": "boolean"
+    },
+    "FSharp.fsac.netCoreDllPath": {
+      "default": "",
+      "description": "The path to the 'fsautocomplete.dll', a directory containing TFM-specific versions of fsautocomplete.dll, or a directory containing fsautocomplete.dll. Useful for debugging a self-built FSAC. If a DLL is specified, uses it directly. If a directory is specified and it contains TFM-specific folders (net6.0, net7.0, etc) then that directory will be probed for the best TFM to use for the current runtime. This is useful when working with a local copy of FSAC, you can point directly to the bin/Debug or bin/Release folder and it'll Just Work. Finally, if a directory is specified and there are no TFM paths, then fsautocomplete.dll from that directory is used. Requires restart.",
+      "scope": "machine-overridable",
+      "type": "string"
+    },
+    "FSharp.fsac.parallelReferenceResolution": {
+      "default": false,
+      "description": "EXPERIMENTAL: Speed up analyzing of projects in parallel. Requires restart.",
+      "type": "boolean"
+    },
+    "FSharp.fsac.silencedLogs": {
+      "default": [],
+      "description": "An array of log categories for FSAC to filter out. These can be found by viewing your log output and noting the text in between the brackets in the log line. For example, in the log line `[16:07:14.626 INF] [Compiler] done compiling foo.fsx`, the category is 'Compiler'. ",
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "FSharp.fsac.sourceTextImplementation": {
+      "default": "RoslynSourceText",
+      "description": "Enables the use of a new source text implementation. This may have better memory characteristics. Requires restart.",
+      "enum": [
+        "NamedText",
+        "RoslynSourceText"
+      ],
+      "markdownDeprecationMessage": "This setting is deprecated because the RoslynSourceText SourceText implementation has been adopted as the only implementation in the LSP Server."
+    },
+    "FSharp.fsiExtraParameters": {
+      "markdownDeprecationMessage": "This setting can lead to errors when providing both FSI-CLI-only and script-typechecking-related parameters. Please use `#FSharp.FSIExtraInteractiveParameters#` for FSI-CLI-specific parameters, and `#FSharp.FSIExtraSharedParameters#` for typechecking-related parameters.",
+      "markdownDescription": "An array of additional command line parameters to pass to FSI when it is started. See [the Microsoft documentation](https://docs.microsoft.com/en-us/dotnet/fsharp/language-reference/fsharp-interactive-options) for an exhaustive list.",
+      "type": "array"
+    },
+    "FSharp.fsiSdkFilePath": {
+      "default": "",
+      "description": "The path to the F# Interactive tool used by Ionide-FSharp (When using .NET SDK scripts)",
+      "scope": "machine-overridable",
+      "type": "string"
+    },
+    "FSharp.fullNameExternalAutocomplete": {
+      "default": false,
+      "description": "When selecting an external symbols in autocomplete, insert the full name to the editor rather than open its module/namespace. Also allow filtering suggestions by typing its full name. \n\n Requires `FSharp.externalAutocomplete` enabled.",
+      "type": "boolean"
+    },
+    "FSharp.generateBinlog": {
+      "default": false,
+      "markdownDescription": "Enables generation of `msbuild.binlog` files for project loading. It works only for fresh, non-cached project loading. Run `F#: Clear Project Cache` and `Developer: Reload Window` to force fresh loading of all projects. These files can be loaded and inspected using the [MSBuild Structured Logger](https://github.com/KirillOsenkov/MSBuildStructuredLog)",
+      "type": "boolean"
+    },
+    "FSharp.includeAnalyzers": {
+      "default": [],
+      "description": "The names of custom analyzers that should exclusively be executed, others should be ignored.",
+      "scope": "machine-overridable",
+      "type": "array"
+    },
+    "FSharp.indentationSize": {
+      "default": 4,
+      "description": "The number of spaces used for indentation when generating code, e.g. for interface stubs",
+      "minimum": 1,
+      "type": "number"
+    },
+    "FSharp.infoPanelReplaceHover": {
+      "default": false,
+      "description": "Controls whether the info panel replaces tooltips",
+      "type": "boolean"
+    },
+    "FSharp.infoPanelShowOnStartup": {
+      "default": false,
+      "description": "Controls whether the info panel should be displayed at startup",
+      "type": "boolean"
+    },
+    "FSharp.infoPanelStartLocked": {
+      "default": false,
+      "description": "Controls whether the info panel should be locked at startup",
+      "type": "boolean"
+    },
+    "FSharp.infoPanelUpdate": {
+      "default": "onCursorMove",
+      "description": "Controls when the info panel is updated",
+      "enum": [
+        "onCursorMove",
+        "onHover",
+        "both",
+        "none"
+      ],
+      "type": "string"
+    },
+    "FSharp.inlayHints.disableLongTooltip": {
+      "default": false,
+      "description": "Hides the explanatory tooltip that appears on InlayHints to describe the different configuration toggles.",
+      "type": "boolean"
+    },
+    "FSharp.inlayHints.enabled": {
+      "default": true,
+      "description": "Controls if the inlay hints feature is enabled",
+      "markdownDeprecationMessage": "This can be controlled by `editor.inlayHints.enabled` instead.",
+      "type": "boolean"
+    },
+    "FSharp.inlayHints.parameterNames": {
+      "default": true,
+      "description": "Controls if parameter-name inlay hints will be displayed for functions and methods",
+      "type": "boolean"
+    },
+    "FSharp.inlayHints.typeAnnotations": {
+      "default": true,
+      "description": "Controls if type-annotation inlay hints will be displayed for bindings.",
+      "type": "boolean"
+    },
+    "FSharp.inlineValues.enabled": {
+      "default": false,
+      "description": "Enables rendering all kinds of hints inline with your code. Currently supports pipelineHints, which are like LineLenses that appear along each step of a chain of piped expressions",
+      "type": "boolean"
+    },
+    "FSharp.inlineValues.prefix": {
+      "default": "  // ",
+      "description": "The prefix used when rendering inline values.",
+      "type": "string"
+    },
+    "FSharp.interfaceStubGeneration": {
+      "default": true,
+      "description": "Enables a codefix that generates missing interface members when inside of an interface implementation expression",
+      "type": "boolean"
+    },
+    "FSharp.interfaceStubGenerationMethodBody": {
+      "default": "failwith \"Not Implemented\"",
+      "description": "The expression to fill in the right-hand side of interface members when generating missing members for an interface implementation expression",
+      "type": "string"
+    },
+    "FSharp.interfaceStubGenerationObjectIdentifier": {
+      "default": "this",
+      "description": "The name of the 'self' identifier in an interface member. For example, `this` in the expression `this.Member(x: int) = ()`",
+      "type": "string"
+    },
+    "FSharp.keywordsAutocomplete": {
+      "default": true,
+      "description": "Includes keywords in autocomplete",
+      "type": "boolean"
+    },
+    "FSharp.lineLens.enabled": {
+      "default": "replaceCodeLens",
+      "description": "Usage mode for LineLens. If `never`, LineLens will never be shown.  If `replaceCodeLens`, LineLens will be placed in a decoration on top of the current line.",
+      "enum": [
+        "never",
+        "replaceCodeLens",
+        "always"
+      ],
+      "type": "string"
+    },
+    "FSharp.lineLens.prefix": {
+      "default": "  // ",
+      "description": "The prefix displayed before the signature in a LineLens",
+      "type": "string"
+    },
+    "FSharp.linter": {
+      "default": true,
+      "markdownDescription": "Enables integration with [FSharpLint](https://fsprojects.github.io/FSharpLint/) for additional (user-defined) warnings",
+      "type": "boolean"
+    },
+    "FSharp.msbuildAutoshow": {
+      "default": false,
+      "description": "Automatically shows the MSBuild output panel when MSBuild functionality is invoked",
+      "type": "boolean"
+    },
+    "FSharp.notifications.trace": {
+      "default": false,
+      "description": "Enables more verbose notifications using System.Diagnostics.Activity to view traces from FSharp.Compiler.Service.",
+      "type": "boolean"
+    },
+    "FSharp.notifications.traceNamespaces": {
+      "default": [
+        "BoundModel.TypeCheck",
+        "BackgroundCompiler."
+      ],
+      "description": "The set of System.Diagnostics.Activity names to watch.",
+      "items": {
+        "type": "string"
+      },
+      "required": [
+        "FSharp.notifications.trace"
+      ],
+      "type": "array"
+    },
+    "FSharp.openTelemetry.enabled": {
+      "default": false,
+      "markdownDescription": "Enables OpenTelemetry exporter. See [OpenTelemetry Protocol Exporter](https://opentelemetry.io/docs/reference/specification/protocol/exporter/) for environment variables to configure for the exporter. Requires Restart.",
+      "type": "boolean"
+    },
+    "FSharp.pipelineHints.enabled": {
+      "default": true,
+      "description": "Enables PipeLine hints, which are like LineLenses that appear along each step of a chain of piped expressions",
+      "type": "boolean"
+    },
+    "FSharp.pipelineHints.prefix": {
+      "default": "  // ",
+      "description": "The prefix displayed before the signature",
+      "type": "string"
+    },
+    "FSharp.recordStubGeneration": {
+      "default": true,
+      "description": "Enables a codefix that will generate missing record fields when inside a record construction expression",
+      "type": "boolean"
+    },
+    "FSharp.recordStubGenerationBody": {
+      "default": "failwith \"Not Implemented\"",
+      "description": "The expression to fill in the right-hand side of record fields when generating missing fields for a record construction expression",
+      "type": "string"
+    },
+    "FSharp.resolveNamespaces": {
+      "default": true,
+      "description": "Enables a codefix that will suggest namespaces or module to open when a name is not recognized",
+      "type": "boolean"
+    },
+    "FSharp.saveOnSendLastSelection": {
+      "default": false,
+      "description": "If enabled, the current file will be saved before sending the last selection to FSI for evaluation",
+      "type": "boolean"
+    },
+    "FSharp.showExplorerOnStartup": {
+      "default": false,
+      "description": "Automatically shows solution explorer on plugin startup",
+      "type": "boolean"
+    },
+    "FSharp.showProjectExplorerIn": {
+      "default": "fsharp",
+      "description": "Set the activity (left bar) where the project explorer view will be displayed. If `explorer`, then the project explorer will be a collapsible tab in the main explorer view, a sibling to the file system explorer. If `fsharp`, a new activity with the F# logo will be added and the project explorer will be rendered in this activity.Requires restart.",
+      "enum": [
+        "explorer",
+        "fsharp"
+      ],
+      "scope": "application",
+      "type": "string"
+    },
+    "FSharp.simplifyNameAnalyzer": {
+      "default": true,
+      "description": "Enables detection of cases when names of functions and values can be simplified",
+      "type": "boolean"
+    },
+    "FSharp.simplifyNameAnalyzerExclusions": {
+      "default": [
+        ".*\\.g\\.fs",
+        ".*\\.cg\\.fs"
+      ],
+      "description": "A set of regex patterns to exclude from the simplify name analyzer",
+      "items": {
+        "type": "string"
+      },
+      "required": [
+        "FSharp.simplifyNameAnalyzer"
+      ],
+      "type": "array"
+    },
+    "FSharp.smartIndent": {
+      "default": false,
+      "description": "Enables smart indent feature",
+      "type": "boolean"
+    },
+    "FSharp.suggestGitignore": {
+      "default": true,
+      "description": "Allow Ionide to prompt whenever internal data files aren't included in your project's .gitignore",
+      "type": "boolean"
+    },
+    "FSharp.suggestSdkScripts": {
+      "default": true,
+      "description": "Allow Ionide to prompt to use SdkScripts",
+      "type": "boolean"
+    },
+    "FSharp.trace.server": {
+      "default": "off",
+      "description": "Trace server messages at the LSP protocol level for diagnostics.",
+      "enum": [
+        "off",
+        "messages",
+        "verbose"
+      ],
+      "scope": "window",
+      "type": "string"
+    },
+    "FSharp.unionCaseStubGeneration": {
+      "default": true,
+      "description": "Enables a codefix that generates missing union cases when in a match expression",
+      "type": "boolean"
+    },
+    "FSharp.unionCaseStubGenerationBody": {
+      "default": "failwith \"Not Implemented\"",
+      "description": "The expression to fill in the right-hand side of match cases when generating missing cases for a match on a discriminated union",
+      "type": "string"
+    },
+    "FSharp.unnecessaryParenthesesAnalyzer": {
+      "default": true,
+      "description": "Enables detection of unnecessary parentheses",
+      "type": "boolean"
+    },
+    "FSharp.unnecessaryParenthesesAnalyzerExclusions": {
+      "default": [
+        ".*\\.g\\.fs",
+        ".*\\.cg\\.fs"
+      ],
+      "description": "A set of regex patterns to exclude from the unnecessary parentheses analyzer",
+      "items": {
+        "type": "string"
+      },
+      "required": [
+        "FSharp.unnecessaryParenthesesAnalyzer"
+      ],
+      "type": "array"
+    },
+    "FSharp.unusedDeclarationsAnalyzer": {
+      "default": true,
+      "description": "Enables detection of unused declarations",
+      "type": "boolean"
+    },
+    "FSharp.unusedDeclarationsAnalyzerExclusions": {
+      "default": [
+        ".*\\.g\\.fs",
+        ".*\\.cg\\.fs"
+      ],
+      "description": "A set of regex patterns to exclude from the unused declarations analyzer",
+      "items": {
+        "type": "string"
+      },
+      "required": [
+        "FSharp.unusedDeclarationsAnalyzer"
+      ],
+      "type": "array"
+    },
+    "FSharp.unusedOpensAnalyzer": {
+      "default": true,
+      "description": "Enables detection of unused opens",
+      "type": "boolean"
+    },
+    "FSharp.unusedOpensAnalyzerExclusions": {
+      "default": [
+        ".*\\.g\\.fs",
+        ".*\\.cg\\.fs"
+      ],
+      "description": "A set of regex patterns to exclude from the unused opens analyzer",
+      "items": {
+        "type": "string"
+      },
+      "required": [
+        "FSharp.unusedOpensAnalyzer"
+      ],
+      "type": "array"
+    },
+    "FSharp.verboseLogging": {
+      "default": false,
+      "description": "Logs additional information to F# output channel. This is equivalent to passing the `--verbose` flag to FSAC. Requires restart.",
+      "type": "boolean"
+    },
+    "FSharp.workspaceModePeekDeepLevel": {
+      "default": 4,
+      "description": "The deep level of directory hierarchy when searching for sln/projects",
+      "type": "integer"
+    },
+    "FSharp.workspacePath": {
+      "description": "Path to the directory or solution file that should be loaded as a workspace. If set, no workspace probing or discovery is done by Ionide at all.",
+      "scope": "window",
+      "type": "string"
+    },
+    "Fsharp.fsac.gc.noAffinitize": {
+      "markdownDescription": "Specifies whether to [affinitize](https://learn.microsoft.com/en-us/dotnet/core/runtime-config/garbage-collector#affinitize) garbage collection threads with processors. To affinitize a GC thread means that it can only run on its specific CPU.. Applies to server garbage collection only. See [GCNoAffinitize](https://learn.microsoft.com/en-us/dotnet/framework/configure-apps/file-schema/runtime/gcnoaffinitize-element#remarks) for more details. [Only available on .NET 7 or higher](https://github.com/ionide/ionide-vscode-fsharp/issues/1899#issuecomment-1649009462). Requires restart. If FSAC is run on .NET 8 runtimes, this will be set by default. On .NET 9 with DATAS enabled, this will not be set.",
+      "required": [
+        "FSharp.fsac.gc.server"
+      ],
+      "type": "boolean"
+    }
+  }
+}
