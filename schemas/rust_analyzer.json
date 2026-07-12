@@ -1377,7 +1377,7 @@
           "type": "string"
         }
       ],
-      "default": 1,
+      "default": 2,
       "markdownDescription": "Number of proc-macro server processes to spawn.\n\nControls how many independent `proc-macro-srv` processes rust-analyzer\nruns in parallel to handle macro expansion."
     },
     "rust-analyzer.procMacro.server": {
