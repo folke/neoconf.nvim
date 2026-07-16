@@ -7095,7 +7095,7 @@
 -- Symbol server cache download URL.
 -- 
 -- ```lua
--- default = "https://www.julia-vscode.org/symbolcache"
+-- default = "https://julia-symbolcache.org"
 -- ```
 ---@field symbolserverUpstream string
 ---@field trace _.lspconfig.settings.julials.Trace
@@ -14696,7 +14696,7 @@
 ---@field minLines integer
 
 ---@class _.lspconfig.settings.rust_analyzer.ClosureCaptureHints
--- Show inlay hints for closure captures.
+-- Show inlay hints for closure and coroutine captures.
 ---@field enable boolean
 
 ---@class _.lspconfig.settings.rust_analyzer.ClosureReturnTypeHints
