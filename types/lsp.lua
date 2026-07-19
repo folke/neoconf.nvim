@@ -12631,7 +12631,7 @@
 -- ```lua
 -- default = 88
 -- ```
----@field line_length number
+---@field line_length integer
 
 ---@class _.lspconfig.settings.pylsp.Pylsp
 -- List of configuration sources to use.

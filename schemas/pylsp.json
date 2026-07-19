@@ -99,7 +99,10 @@
     "pylsp.plugins.flake8.maxComplexity": {
       "default": null,
       "description": "Maximum allowed complexity threshold.",
-      "type": "integer"
+      "type": [
+        "integer",
+        "null"
+      ]
     },
     "pylsp.plugins.flake8.maxLineLength": {
       "default": null,
@@ -536,7 +539,7 @@
     "pylsp.signature.line_length": {
       "default": 88,
       "description": "Maximum line length in signatures.",
-      "type": "number"
+      "type": "integer"
     }
   }
 }
