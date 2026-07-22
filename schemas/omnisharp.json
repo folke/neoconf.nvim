@@ -541,6 +541,10 @@
           "description": "%configuration.dotnet.server.componentPaths.roslynDevKit%",
           "type": "string"
         },
+        "testDiscovery": {
+          "description": "%configuration.dotnet.server.componentPaths.testDiscovery%",
+          "type": "string"
+        },
         "xamlTools": {
           "description": "%configuration.dotnet.server.componentPaths.xamlTools%",
           "type": "string"

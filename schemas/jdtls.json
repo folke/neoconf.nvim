@@ -97,6 +97,11 @@
       "scope": "window",
       "type": "boolean"
     },
+    "java.codeGeneration.generateCommentsInMarkdown": {
+      "default": false,
+      "description": "Generate Javadoc comments in Markdown style (requires source compliance >= 23).",
+      "type": "boolean"
+    },
     "java.codeGeneration.hashCodeEquals.useInstanceof": {
       "default": false,
       "description": "Use 'instanceof' to compare types when generating the hashCode and equals methods.",

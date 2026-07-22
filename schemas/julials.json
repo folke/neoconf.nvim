@@ -74,7 +74,7 @@
     },
     "julia.enableDynamicIndexing": {
       "default": true,
-      "description": "Whether to use dynamic package indexing. Disable for reduced functionality with lower resource usage.",
+      "description": "Whether to use local package indexing. Disable for potentially reduced functionality with lower resource usage.",
       "scope": "window",
       "type": "boolean"
     },
@@ -86,6 +86,12 @@
         "boolean",
         "null"
       ]
+    },
+    "julia.enableWorkspaceEnvironmentResolution": {
+      "default": false,
+      "description": "Whether to auto-resolve environments in the workspace. If false, only environments with a Manifest.toml are considered.",
+      "scope": "window",
+      "type": "boolean"
     },
     "julia.environmentPath": {
       "default": null,
@@ -210,6 +216,13 @@
       "scope": "machine-overridable",
       "type": "string"
     },
+    "julia.maxConcurrentIndexingProcesses": {
+      "default": 4,
+      "description": "Maximum number of concurrently running environment-indexing child processes. Set to 0 for no limit.",
+      "minimum": 0,
+      "scope": "window",
+      "type": "integer"
+    },
     "julia.numTestProcesses": {
       "default": 1,
       "markdownDescription": "Number of processes to use for testing.",
@@ -301,7 +314,7 @@
     },
     "julia.symbolCacheDownload": {
       "default": null,
-      "description": "Download symbol server cache files from GitHub.",
+      "markdownDescription": "Download symbol server cache files from `julia.symbolserverUpstream`.",
       "scope": "application",
       "type": [
         "boolean",
