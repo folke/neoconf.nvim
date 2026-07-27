@@ -20574,31 +20574,44 @@
 -- ```
 ---@field numThreads number|"physical" | "logical"
 
----@class _.lspconfig.settings.wgls_analyzer.Diagnostics
--- Controls whether to show naga's parsing errors.
+---@class _.lspconfig.settings.wgls_analyzer.Validation
+-- Whether to show diagnostics from naga about validation.
 -- 
 -- ```lua
 -- default = true
 -- ```
----@field nagaParsingErrors boolean
--- Controls whether to show naga's validation errors.
+---@field errors boolean
+
+---@class _.lspconfig.settings.wgls_analyzer.Naga
+-- Whether to show diagnostics from naga about parsing.
 -- 
 -- ```lua
 -- default = true
 -- ```
----@field nagaValidationErrors boolean
+---@field parsing boolean
+---@field validation _.lspconfig.settings.wgls_analyzer.Validation
 -- Naga version used for validation.
 -- 
 -- ```lua
 -- default = "0.29"
 -- ```
----@field nagaVersion "0.27" | "0.28" | "0.29" | "main"
--- Controls whether to show type errors.
+---@field version "0.27" | "0.28" | "0.29" | "main"
+
+---@class _.lspconfig.settings.wgls_analyzer.External
+---@field naga _.lspconfig.settings.wgls_analyzer.Naga
+-- Whether to show Tint shader compiler's messages.
+---@field tintErrors boolean
+-- The path to the tint binary.
+---@field tintPath string
+
+---@class _.lspconfig.settings.wgls_analyzer.Diagnostics
+---@field external _.lspconfig.settings.wgls_analyzer.External
+-- Whether to show diagnostics about the code semantics.
 -- 
 -- ```lua
 -- default = true
 -- ```
----@field typeErrors boolean
+---@field semanticErrors boolean
 
 ---@class _.lspconfig.settings.wgls_analyzer.Extensions
 -- Whether to enable u64 and i64 scalar types.

@@ -24,17 +24,17 @@
       "default": "physical",
       "markdownDescription": "Number of worker threads used to warm caches when a project opens.\nUse `0` to let the server choose automatically based on the machine."
     },
-    "wgsl-analyzer.diagnostics.nagaParsingErrors": {
+    "wgsl-analyzer.diagnostics.external.naga.parsing": {
       "default": true,
-      "markdownDescription": "Controls whether to show naga's parsing errors.",
+      "markdownDescription": "Whether to show diagnostics from naga about parsing.",
       "type": "boolean"
     },
-    "wgsl-analyzer.diagnostics.nagaValidationErrors": {
+    "wgsl-analyzer.diagnostics.external.naga.validation.errors": {
       "default": true,
-      "markdownDescription": "Controls whether to show naga's validation errors.",
+      "markdownDescription": "Whether to show diagnostics from naga about validation.",
       "type": "boolean"
     },
-    "wgsl-analyzer.diagnostics.nagaVersion": {
+    "wgsl-analyzer.diagnostics.external.naga.version": {
       "default": "0.29",
       "enum": [
         "0.27",
@@ -51,9 +51,22 @@
       "markdownDescription": "Naga version used for validation.",
       "type": "string"
     },
-    "wgsl-analyzer.diagnostics.typeErrors": {
+    "wgsl-analyzer.diagnostics.external.tintErrors": {
+      "default": false,
+      "markdownDescription": "Whether to show Tint shader compiler's messages.",
+      "type": "boolean"
+    },
+    "wgsl-analyzer.diagnostics.external.tintPath": {
+      "default": null,
+      "markdownDescription": "The path to the tint binary.",
+      "type": [
+        "null",
+        "string"
+      ]
+    },
+    "wgsl-analyzer.diagnostics.semanticErrors": {
       "default": true,
-      "markdownDescription": "Controls whether to show type errors.",
+      "markdownDescription": "Whether to show diagnostics about the code semantics.",
       "type": "boolean"
     },
     "wgsl-analyzer.extensions.shaderInt64": {
