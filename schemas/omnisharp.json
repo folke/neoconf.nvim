@@ -1014,6 +1014,12 @@
       "title": "%configuration.omnisharp.useModernNet.title%",
       "type": "boolean"
     },
+    "razor.advanced.showAllCSharpCodeActions": {
+      "default": false,
+      "description": "%configuration.razor.razor.advanced.showAllCSharpCodeActions%",
+      "scope": "window",
+      "type": "boolean"
+    },
     "razor.completion.commitElementsWithSpace": {
       "default": false,
       "description": "%configuration.razor.razor.completion.commitElementsWithSpace%",

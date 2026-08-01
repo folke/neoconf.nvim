@@ -11094,6 +11094,10 @@
 -- ```
 ---@field useModernNet boolean
 
+---@class _.lspconfig.settings.omnisharp.Advanced
+-- %configuration.razor.razor.advanced.showAllCSharpCodeActions%
+---@field showAllCSharpCodeActions boolean
+
 ---@class _.lspconfig.settings.omnisharp.Completion
 -- %configuration.razor.razor.completion.commitElementsWithSpace%
 ---@field commitElementsWithSpace boolean
@@ -11119,6 +11123,7 @@
 ---@field path string
 
 ---@class _.lspconfig.settings.omnisharp.Razor
+---@field advanced _.lspconfig.settings.omnisharp.Advanced
 ---@field completion _.lspconfig.settings.omnisharp.Completion
 -- %configuration.omnisharp.razor.devmode%
 ---@field devmode boolean
@@ -13742,7 +13747,7 @@
 -- default = "fromEnvironment"
 -- ```
 ---@field importStrategy "fromEnvironment" | "useBundled"
--- Path to a Python interpreter to use to find the `ruff` executable.
+-- Path to a Python interpreter to use to find the `ruff` executable. Requires either the Python Environments or Python extension to be installed.
 -- 
 -- ```lua
 -- default = {}
