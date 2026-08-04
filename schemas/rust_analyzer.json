@@ -86,7 +86,7 @@
       ],
       "enumDescriptions": [
         "The command will be executed for each Rust workspace with the workspace as the working directory.",
-        "The command will be executed once with the opened project as the working directory."
+        "The command will be executed once with the opened project as the working directory.\n\n**Warning:** This can cause errors when the Cargo configuration of the opened workspaces is different or even only different than the default. Enabling this is not recommended."
       ],
       "markdownDescription": "Specifies the invocation strategy to use when running the build scripts command.\nIf `per_workspace` is set, the command will be executed for each Rust workspace with the\nworkspace as the working directory.\nIf `once` is set, the command will be executed once with the opened project as the\nworking directory.\nThis config only has an effect when `#rust-analyzer.cargo.buildScripts.overrideCommand#`\nis set.",
       "type": "string"
@@ -294,7 +294,7 @@
       ],
       "enumDescriptions": [
         "The command will be executed for each Rust workspace with the workspace as the working directory.",
-        "The command will be executed once with the opened project as the working directory."
+        "The command will be executed once with the opened project as the working directory.\n\n**Warning:** This can cause errors when the Cargo configuration of the opened workspaces is different or even only different than the default. Enabling this is not recommended."
       ],
       "markdownDescription": "Specifies the invocation strategy to use when running the check command.\nIf `per_workspace` is set, the command will be executed for each workspace.\nIf `once` is set, the command will be executed once.\nThis config only has an effect when `#rust-analyzer.check.overrideCommand#`\nis set.",
       "type": "string"
