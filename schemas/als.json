@@ -290,6 +290,29 @@
       "scope": "window",
       "type": "boolean"
     },
+    "ada.rangeFormatting.formatChoice": {
+      "default": null,
+      "enum": [
+        "indentOnly",
+        "narrow",
+        "full",
+        null
+      ],
+      "enumItemLabels": [
+        null,
+        null,
+        null,
+        "Provided by .als.json (default: `full`)"
+      ],
+      "markdownDescription": "This setting controls whether formatting should only indents the selected lines without any formatting (`indentOnly`), format only the selected lines (`narrow`) or format the selected lines as well as any surrounding code required to produce a correct result (`full`).",
+      "markdownEnumDescriptions": [
+        "Indent only the selected lines without any formatting",
+        "Format only the selected lines",
+        "Format the selected lines as well as any surrounding code required to produce a correct result (e.g, the whole list of parameters in when indenting only one particular parameter)",
+        "Provided by [`.als.json`](https://github.com/AdaCore/ada_language_server/blob/master/doc/settings.md) if it exists at the workspace root, otherwise defaults to `full`."
+      ],
+      "scope": "window"
+    },
     "ada.rangeFormattingFallback": {
       "default": null,
       "enum": [

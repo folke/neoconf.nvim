@@ -17,6 +17,26 @@
       "description": "Additional Julia arguments.",
       "type": "array"
     },
+    "julia.cellCodeLens.above": {
+      "default": true,
+      "markdownDescription": "Show the `Above` CodeLens action for cells delimited by `#julia.cellDelimiters#`.",
+      "type": "boolean"
+    },
+    "julia.cellCodeLens.below": {
+      "default": true,
+      "markdownDescription": "Show the `Below` CodeLens action for cells delimited by `#julia.cellDelimiters#`.",
+      "type": "boolean"
+    },
+    "julia.cellCodeLens.debug": {
+      "default": true,
+      "markdownDescription": "Show the `Debug` CodeLens action for cells delimited by `#julia.cellDelimiters#`.",
+      "type": "boolean"
+    },
+    "julia.cellCodeLens.run": {
+      "default": true,
+      "markdownDescription": "Show the `Run` CodeLens action for cells delimited by `#julia.cellDelimiters#`.",
+      "type": "boolean"
+    },
     "julia.cellDelimiters": {
       "default": [
         "^[ \\t]?#[ \\t]#+",

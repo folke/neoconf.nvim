@@ -209,13 +209,6 @@
       "scope": "window",
       "type": "boolean"
     },
-    "sonarlint.earlyAccess.showRegionSelection": {
-      "default": false,
-      "markdownDescription": "Show region selection while creating SonarQube Cloud Connection",
-      "order": 14,
-      "scope": "machine",
-      "type": "boolean"
-    },
     "sonarlint.focusOnNewCode": {
       "default": false,
       "markdownDescription": "If enabled, by default, [focusing on new code](https://docs.sonarsource.com/sonarqube-for-vs-code/using/investigating-issues/#focusing-on-new-code) shows issues introduced in the last 30 days.\n\nFor the most accurate and customizable new code definition, use [Connected Mode](https://docs.sonarsource.com/sonarqube-for-vs-code/connect-your-ide/connected-mode) with SonarQube (Server, Cloud).",
