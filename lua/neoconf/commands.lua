@@ -51,6 +51,7 @@ function M.setup()
       pattern = Util.file_patterns({ autocmd = true }),
       group = group,
       callback = function(event)
+        pcall(Config.options.on_write, event)
         local fname = Util.fqn(event.match)
         -- clear cached settings for this file
         Settings.clear(fname)
