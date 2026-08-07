@@ -23,6 +23,7 @@ M.index = {
   haxe_language_server = "https://raw.githubusercontent.com/vshaxe/vshaxe/master/package.json",
   hhvm = "https://raw.githubusercontent.com/slackhq/vscode-hack/master/package.json",
   hie = "https://raw.githubusercontent.com/alanz/vscode-hie-server/master/package.json",
+  hls = "https://raw.githubusercontent.com/haskell/vscode-haskell/refs/heads/master/package.json",
   html = "https://raw.githubusercontent.com/microsoft/vscode/main/extensions/html-language-features/package.json",
   intelephense = "https://raw.githubusercontent.com/bmewburn/vscode-intelephense/master/package.json",
   java_language_server = "https://raw.githubusercontent.com/georgewfraser/java-language-server/master/package.json",
