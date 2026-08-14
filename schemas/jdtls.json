@@ -1285,6 +1285,13 @@
       "scope": "window",
       "type": "boolean"
     },
+    "java.templates.preferPackagePrivateVisibility": {
+      "default": false,
+      "markdownDescription": "Specifies whether newly created top-level types (class/interface/record) should be package-private instead of public.",
+      "order": 40,
+      "scope": "window",
+      "type": "boolean"
+    },
     "java.templates.typeComment": {
       "default": [],
       "markdownDescription": "Specifies the type comment for new Java type. Supports configuring multi-line comments with an array of strings, and using ${variable} to reference the [predefined variables](command:_java.templateVariables).",
