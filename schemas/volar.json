@@ -169,6 +169,11 @@
       "markdownDescription": "%configuration.trace.server%",
       "scope": "window",
       "type": "string"
+    },
+    "vue.welcome.show": {
+      "default": true,
+      "markdownDescription": "%configuration.welcome.show%",
+      "type": "boolean"
     }
   }
 }

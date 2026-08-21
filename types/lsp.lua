@@ -19296,6 +19296,14 @@
 -- ```
 ---@field server "off" | "messages" | "verbose"
 
+---@class _.lspconfig.settings.volar.Welcome
+-- %configuration.welcome.show%
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field show boolean
+
 ---@class _.lspconfig.settings.volar.Vue
 ---@field autoInsert _.lspconfig.settings.volar.AutoInsert
 ---@field codeActions _.lspconfig.settings.volar.CodeActions
@@ -19306,6 +19314,7 @@
 ---@field server _.lspconfig.settings.volar.Server
 ---@field suggest _.lspconfig.settings.volar.Suggest
 ---@field trace _.lspconfig.settings.volar.Trace
+---@field welcome _.lspconfig.settings.volar.Welcome
 
 ---@class lspconfig.settings.volar
 ---@field vue _.lspconfig.settings.volar.Vue
