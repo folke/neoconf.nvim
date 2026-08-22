@@ -120,6 +120,12 @@
       ],
       "scope": "window"
     },
+    "ada.externalAnnotations.showInEditor": {
+      "default": true,
+      "description": "Highlight GNATcoverage external annotations in the editor.",
+      "scope": "window",
+      "type": "boolean"
+    },
     "ada.foldComments": {
       "default": null,
       "enum": [

@@ -1,6 +1,14 @@
 ---@meta
 
 
+---@class _.lspconfig.settings.als.ExternalAnnotations
+-- Highlight GNATcoverage external annotations in the editor.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field showInEditor boolean
+
 ---@class _.lspconfig.settings.als.OnTypeFormatting
 -- If the VS Code `editor.formatOnType` setting is enabled, the Ada Language Server will format Ada code while it is being typed in the editor, in particular when a new line is typed.
 -- 
@@ -58,6 +66,7 @@
 -- 
 -- If not set in VS Code, this setting takes its value from the [`.als.json`](https://github.com/AdaCore/ada_language_server/blob/master/doc/settings.md) file at the root of the workspace, if that file exists. Otherwise it defaults to `true`.
 ---@field enableIndexing true | false
+---@field externalAnnotations _.lspconfig.settings.als.ExternalAnnotations
 -- Controls whether comments should be folded like code blocks.
 -- 
 -- If not set in VS Code, this setting takes its value from the [`.als.json`](https://github.com/AdaCore/ada_language_server/blob/master/doc/settings.md) file at the root of the workspace, if that file exists. Otherwise it defaults to `true`.
@@ -16054,8 +16063,8 @@
 ---@field output _.lspconfig.settings.sonarlint.Output
 -- Path to the active compilation database, e.g. `C:\\Repos\\MyProject\\compile_commands.json`
 ---@field pathToCompileCommands string
--- Path to a Node.js executable (versions above 20.12.0, or 22.11.0) used to analyze JavaScript and TypeScript code. 
--- On Windows, backslashes must be escaped, e.g. `C:\\Program Files\\NodeJS\\20-lts\\bin\\node.exe`
+-- Path to a Node.js executable (versions above 22.12.0, or 24.0.0) used to analyze JavaScript and TypeScript code. 
+-- On Windows, backslashes must be escaped, e.g. `C:\\Program Files\\NodeJS\\22-lts\\bin\\node.exe`
 ---@field pathToNodeExecutable string
 -- Customize applied rule set. This property contains a list of rules whose activation level or parameter values differ from the one provided by default. In [Connected Mode](command:SonarLint.HelpAndFeedbackLinkClicked?%22connectedModeDocs%22), this configuration is overridden by the projects's Quality Profile, as configured on server side and can be **shared among contributors**. See [SonarLint Rules](command:SonarLint.AllRules.focus) view for the list of **locally** available rules.
 -- 
