@@ -162,13 +162,6 @@
       "scope": "resource",
       "type": "boolean"
     },
-    "html.mirrorCursorOnMatchingTag": {
-      "default": false,
-      "deprecationMessage": "Deprecated in favor of `editor.linkedEditing`",
-      "description": "Enable/disable mirroring cursor on matching HTML tag.",
-      "scope": "resource",
-      "type": "boolean"
-    },
     "html.suggest.hideEndTagSuggestions": {
       "default": false,
       "description": "Controls whether the built-in HTML language support suggests closing tags. When disabled, end tag completions like `</div>` will not be shown.",

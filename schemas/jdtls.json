@@ -9,6 +9,15 @@
       "scope": "window",
       "type": "boolean"
     },
+    "java.classpath.variables": {
+      "description": "Set of classpath variable strings of the form: \"name=path\" that are used to resolve classpath entries.",
+      "items": {
+        "pattern": "[a-zA-Z_$][a-zA-Z0-9_$]*=.*",
+        "type": "string"
+      },
+      "scope": "window",
+      "type": "array"
+    },
     "java.cleanup.actions": {
       "default": [
         "renameFileToType"
@@ -911,6 +920,16 @@
       "order": 70,
       "scope": "window",
       "type": "boolean"
+    },
+    "java.jdt.ls.mavenProjectCacheSize": {
+      "default": 50,
+      "description": "Specifies the size of the in-memory Maven project cache to use. Increasing the project cache size will help load multi-module projects and monorepos faster, but will result in a significant increase in memory usage.",
+      "minimum": 1,
+      "order": 20,
+      "scope": "machine-overridable",
+      "type": [
+        "integer"
+      ]
     },
     "java.jdt.ls.protobufSupport.enabled": {
       "default": true,
