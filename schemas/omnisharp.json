@@ -635,6 +635,11 @@
       "order": 80,
       "type": "boolean"
     },
+    "dotnet.testing.useSemanticTestDiscovery": {
+      "default": false,
+      "description": "%configuration.dotnet.testing.useSemanticTestDiscovery%",
+      "type": "boolean"
+    },
     "dotnet.typeMembers.memberInsertionLocation": {
       "default": "withOtherMembersOfTheSameKind",
       "description": "%configuration.dotnet.typeMembers.memberInsertionLocation%",

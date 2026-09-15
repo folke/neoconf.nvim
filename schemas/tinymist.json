@@ -228,10 +228,33 @@
       "type": "number"
     },
     "tinymist.formatterProseWrap": {
-      "default": false,
+      "anyOf": [
+        {
+          "default": "none",
+          "enum": [
+            "none",
+            "fill",
+            "sentence"
+          ],
+          "enumDescriptions": [
+            "%extension.tinymist.config.tinymist.formatterProseWrap.anyOf.string.enum.none%",
+            "%extension.tinymist.config.tinymist.formatterProseWrap.anyOf.string.enum.fill%",
+            "%extension.tinymist.config.tinymist.formatterProseWrap.anyOf.string.enum.sentence%"
+          ],
+          "markdownDescription": "%extension.tinymist.config.tinymist.formatterProseWrap.anyOf.string.desc%",
+          "title": "%extension.tinymist.config.tinymist.formatterProseWrap.anyOf.string.title%",
+          "type": "string"
+        },
+        {
+          "default": false,
+          "markdownDescription": "%extension.tinymist.config.tinymist.formatterProseWrap.anyOf.boolean.desc%",
+          "title": "%extension.tinymist.config.tinymist.formatterProseWrap.anyOf.boolean.title%",
+          "type": "boolean"
+        }
+      ],
+      "default": "none",
       "markdownDescription": "%extension.tinymist.config.tinymist.formatterProseWrap.desc%",
-      "title": "%extension.tinymist.config.tinymist.formatterProseWrap.title%",
-      "type": "boolean"
+      "title": "%extension.tinymist.config.tinymist.formatterProseWrap.title%"
     },
     "tinymist.inlayHints.packageVersionStatus": {
       "default": true,

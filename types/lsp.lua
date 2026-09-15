@@ -10809,6 +10809,10 @@
 -- ```
 ---@field searchReferenceAssemblies boolean
 
+---@class _.lspconfig.settings.omnisharp.Testing
+-- %configuration.dotnet.testing.useSemanticTestDiscovery%
+---@field useSemanticTestDiscovery boolean
+
 ---@class _.lspconfig.settings.omnisharp.TypeMembers
 -- %configuration.dotnet.typeMembers.memberInsertionLocation%
 -- 
@@ -11063,6 +11067,7 @@
 ---@field quickInfo _.lspconfig.settings.omnisharp.QuickInfo
 ---@field server _.lspconfig.settings.omnisharp.Server
 ---@field symbolSearch _.lspconfig.settings.omnisharp.SymbolSearch
+---@field testing _.lspconfig.settings.omnisharp.Testing
 ---@field typeMembers _.lspconfig.settings.omnisharp.TypeMembers
 -- %configuration.dotnet.unitTestDebuggingOptions%
 -- 
@@ -17534,7 +17539,11 @@
 -- ```
 ---@field formatterPrintWidth number
 -- %extension.tinymist.config.tinymist.formatterProseWrap.desc%
----@field formatterProseWrap boolean
+-- 
+-- ```lua
+-- default = "none"
+-- ```
+---@field formatterProseWrap "none" | "fill" | "sentence"|boolean
 ---@field inlayHints _.lspconfig.settings.tinymist.InlayHints
 ---@field lint _.lspconfig.settings.tinymist.Lint
 -- %extension.tinymist.config.tinymist.onEnterEvent.desc%
