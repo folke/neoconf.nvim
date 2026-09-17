@@ -1002,6 +1002,12 @@
 ---@field python _.lspconfig.settings.basedpyright.Python
 
 ---@class _.lspconfig.settings.bashls.Shfmt
+-- Additional Shfmt arguments. Note that common arguments can be configured via the other settings.
+-- 
+-- ```lua
+-- default = {}
+-- ```
+---@field additionalArguments string[]
 -- Allow boolean operators (like && and ||) to start a line.
 ---@field binaryNextLine boolean
 -- Indent patterns in case statements.
@@ -1030,6 +1036,12 @@
 ---@field spaceRedirects boolean
 
 ---@class _.lspconfig.settings.bashls.BashIde
+-- Glob patterns excluded from background file discovery. Open files and sourced files can still be analyzed on demand.
+-- 
+-- ```lua
+-- default = { "**/node_modules/**", "**/.git/**" }
+-- ```
+---@field backgroundAnalysisIgnore string[]
 -- Maximum number of files to analyze in the background. Set to 0 to disable background analysis.
 -- 
 -- ```lua
@@ -6836,6 +6848,7 @@
 --   ["https://raw.githubusercontent.com/devcontainers/spec/"] = true,
 --   ["https://raw.githubusercontent.com/microsoft/vscode/"] = true,
 --   ["https://schemastore.azurewebsites.net/"] = true,
+--   ["https://spec.openapis.org/"] = true,
 --   ["https://www.schemastore.org/"] = true
 -- }
 -- ```

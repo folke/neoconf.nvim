@@ -45,6 +45,7 @@
         "https://raw.githubusercontent.com/devcontainers/spec/": true,
         "https://raw.githubusercontent.com/microsoft/vscode/": true,
         "https://schemastore.azurewebsites.net/": true,
+        "https://spec.openapis.org/": true,
         "https://www.schemastore.org/": true
       },
       "markdownDescription": "List of trusted domains for downloading JSON schemas over http(s). Use `*` to trust all domains. `*` can also be used as a wildcard in domain names.",

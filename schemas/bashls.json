@@ -2,6 +2,17 @@
   "$schema": "http://json-schema.org/draft-07/schema#",
   "description": "A language server for Bash",
   "properties": {
+    "bashIde.backgroundAnalysisIgnore": {
+      "default": [
+        "**/node_modules/**",
+        "**/.git/**"
+      ],
+      "description": "Glob patterns excluded from background file discovery. Open files and sourced files can still be analyzed on demand.",
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    },
     "bashIde.backgroundAnalysisMaxFiles": {
       "default": 500,
       "description": "Maximum number of files to analyze in the background. Set to 0 to disable background analysis.",
@@ -53,6 +64,14 @@
       "default": "shellcheck",
       "description": "Controls the executable used for ShellCheck linting information. An empty string will disable linting.",
       "type": "string"
+    },
+    "bashIde.shfmt.additionalArguments": {
+      "default": [],
+      "description": "Additional Shfmt arguments. Note that common arguments can be configured via the other settings.",
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
     },
     "bashIde.shfmt.binaryNextLine": {
       "default": false,
