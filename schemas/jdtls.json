@@ -460,7 +460,8 @@
               "JavaSE-23",
               "JavaSE-24",
               "JavaSE-25",
-              "JavaSE-26"
+              "JavaSE-26",
+              "JavaSE-27"
             ],
             "type": "string"
           },
