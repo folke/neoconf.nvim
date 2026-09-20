@@ -2,6 +2,12 @@
   "$schema": "http://json-schema.org/draft-07/schema#",
   "description": "A Language Server Client for Luau",
   "properties": {
+    "luau-lsp.analyzeLuaFiles": {
+      "default": true,
+      "markdownDescription": "Whether to analyze standard `.lua` files. If disabled, only `.luau` files will be analyzed. Note: You may also need to configure `\"files.associations\": {\"*.lua\": \"lua\"}` in your settings to restore standard Lua syntax highlighting and behavior for `.lua` files.",
+      "scope": "window",
+      "type": "boolean"
+    },
     "luau-lsp.autocompleteEnd": {
       "default": false,
       "deprecationMessage": "Deprecated: Please use luau-lsp.completion.autocompleteEnd instead.",
@@ -138,12 +144,14 @@
       "enum": [
         "auto",
         "alwaysRelative",
-        "alwaysAbsolute"
+        "alwaysAbsolute",
+        "nearestAbsolute"
       ],
       "enumDescriptions": [
         "Automatically compute the style of require to use based on heuristics",
         "Always require the module relative to the current file",
-        "Always require the module absolute based on root"
+        "Always require the module absolute based on root",
+        "Require the module relative to the nearest fixed variable that resolves to a known ancestor instance. Only applicable in Roblox projects"
       ],
       "markdownDescription": "The style of requires when autocompleted",
       "scope": "resource",

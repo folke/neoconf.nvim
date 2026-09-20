@@ -9930,7 +9930,7 @@
 -- ```lua
 -- default = "auto"
 -- ```
----@field requireStyle "auto" | "alwaysRelative" | "alwaysAbsolute"
+---@field requireStyle "auto" | "alwaysRelative" | "alwaysAbsolute" | "nearestAbsolute"
 -- Whether services and requires should be separated by an empty line
 ---@field separateGroupsWithLine boolean
 ---@field stringRequires _.lspconfig.settings.luau_lsp.StringRequires
@@ -10306,6 +10306,12 @@
 ---@field robloxSecurityLevel "None" | "LocalUserSecurity" | "PluginSecurity" | "RobloxScriptSecurity"
 
 ---@class _.lspconfig.settings.luau_lsp.Luau-lsp
+-- Whether to analyze standard `.lua` files. If disabled, only `.luau` files will be analyzed. Note: You may also need to configure `"files.associations": {"*.lua": "lua"}` in your settings to restore standard Lua syntax highlighting and behavior for `.lua` files.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field analyzeLuaFiles boolean
 -- Automatically insert an `end` when opening a block
 ---@field autocompleteEnd boolean
 ---@field bytecode _.lspconfig.settings.luau_lsp.Bytecode
