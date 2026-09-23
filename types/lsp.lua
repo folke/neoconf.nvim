@@ -2460,12 +2460,12 @@
 -- default = {}
 -- ```
 ---@field testAdditionalArgs string[]
--- How to identify tests when running/debugging. `name` is compatible with older versions of `package:test` but cannot handle some complex/dynamic test names. `line` will prefer to run tests by their line numbers (when available) and fall back to `name` only if the line number is unavailable.
+-- How to identify tests when running/debugging. `name` is compatible with older versions of `package:test` but cannot handle some complex/dynamic test names. `line` will prefer to run tests by their line numbers (when available) and fall back to `name` only if the line number is unavailable. `auto` will attempt to select the best mode automatically.
 -- 
 -- ```lua
 -- default = "name"
 -- ```
----@field testInvocationMode "name" | "line"
+---@field testInvocationMode "name" | "line" | "auto"
 -- Additional args to pass to the `dart tooling-daemon` command that runs as a background service (requires restart).
 -- 
 -- ```lua

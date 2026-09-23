@@ -1468,10 +1468,11 @@
     },
     "dart.testInvocationMode": {
       "default": "name",
-      "description": "How to identify tests when running/debugging. `name` is compatible with older versions of `package:test` but cannot handle some complex/dynamic test names. `line` will prefer to run tests by their line numbers (when available) and fall back to `name` only if the line number is unavailable.",
+      "description": "How to identify tests when running/debugging. `name` is compatible with older versions of `package:test` but cannot handle some complex/dynamic test names. `line` will prefer to run tests by their line numbers (when available) and fall back to `name` only if the line number is unavailable. `auto` will attempt to select the best mode automatically.",
       "enum": [
         "name",
-        "line"
+        "line",
+        "auto"
       ],
       "scope": "window"
     },
