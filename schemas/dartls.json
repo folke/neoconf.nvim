@@ -300,6 +300,21 @@
       "scope": "window",
       "type": "boolean"
     },
+    "dart.defaultExceptionPauseMode": {
+      "default": "unhandled",
+      "enum": [
+        "none",
+        "unhandled",
+        "all"
+      ],
+      "enumDescriptions": [
+        "Do not break on any exceptions",
+        "Break only on uncaught exceptions",
+        "Break on all exceptions"
+      ],
+      "markdownDescription": "The default exception pause mode. VS Code may persist settings in existing workspaces, so this only controls the default setting advertised by the debug adapter.",
+      "scope": "window"
+    },
     "dart.devToolsBrowser": {
       "default": "chrome",
       "description": "Whether to launch external DevTools windows using Chrome or the system default browser. This setting is ignored for remote workspaces (including Docker, SSH, WSL).",

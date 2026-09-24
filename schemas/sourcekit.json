@@ -345,6 +345,14 @@
       "markdownDescription": "Set the branch to use when setting the `$schema` property of the SourceKit-LSP configuration. For example: \"release/6.1\" or \"main\". When this setting is unset, the extension will determine the branch based on the version of the toolchain that is in use.",
       "type": "string"
     },
+    "swift.maxSwiftVersionFileWatchDepth": {
+      "default": 64,
+      "markdownDescription": "The maximum number of directories to watch for changes to a `.swift-version` file, starting at a `Package.swift` and walking upwards towards the root of the file system. A value of `1` watches the directory containing the `Package.swift` only.",
+      "minimum": 1,
+      "order": 101,
+      "scope": "machine-overridable",
+      "type": "integer"
+    },
     "swift.openAfterCreateNewProject": {
       "default": "prompt",
       "enum": [
