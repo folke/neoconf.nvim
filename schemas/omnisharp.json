@@ -388,6 +388,12 @@
       "order": 20,
       "type": "boolean"
     },
+    "dotnet.copilotDotnetPlugin.enableAutoInstall": {
+      "default": true,
+      "description": "%configuration.dotnet.copilotDotnetPlugin.enableAutoInstall%",
+      "scope": "machine",
+      "type": "boolean"
+    },
     "dotnet.defaultSolution": {
       "description": "%configuration.dotnet.defaultSolution.description%",
       "order": 0,

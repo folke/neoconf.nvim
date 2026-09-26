@@ -6408,10 +6408,10 @@
 ---@field enabled boolean
 
 ---@class _.lspconfig.settings.jdtls.Java
--- Specifies the folder path to the JDK (21 or more recent) used to launch the Java Language Server. This setting will replace the Java extension's embedded JRE to start the Java Language Server. 
+-- Specifies the folder path to the JDK (25 or more recent) used to launch the Java Language Server. This setting will replace the Java extension's embedded JRE to start the Java Language Server. 
 -- 
 -- On Windows, backslashes must be escaped, i.e.
--- "java.jdt.ls.java.home":"C:\\Program Files\\Java\\jdk-21.0_5"
+-- "java.jdt.ls.java.home":"C:\\Program Files\\Java\\jdk-25.0.2"
 ---@field home string
 
 ---@class _.lspconfig.settings.jdtls.Javac
@@ -6766,9 +6766,9 @@
 ---@field errors _.lspconfig.settings.jdtls.Errors
 ---@field foldingRange _.lspconfig.settings.jdtls.FoldingRange
 ---@field format _.lspconfig.settings.jdtls.Format
--- Specifies the folder path to the JDK (21 or more recent) used to launch the Java Language Server.
+-- Specifies the folder path to the JDK (25 or more recent) used to launch the Java Language Server.
 -- On Windows, backslashes must be escaped, i.e.
--- "java.home":"C:\\Program Files\\Java\\jdk-21.0_5"
+-- "java.home":"C:\\Program Files\\Java\\jdk-25.0.2"
 ---@field home string
 ---@field hover _.lspconfig.settings.jdtls.Hover
 -- Enable/disable the implementations code lens for the provided categories.
@@ -10669,6 +10669,14 @@
 -- ```
 ---@field triggerCompletionInArgumentLists boolean
 
+---@class _.lspconfig.settings.omnisharp.CopilotDotnetPlugin
+-- %configuration.dotnet.copilotDotnetPlugin.enableAutoInstall%
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enableAutoInstall boolean
+
 ---@class _.lspconfig.settings.omnisharp.Diagnostics
 -- %configuration.dotnet.diagnostics.reportInformationAsHint%
 -- 
@@ -11072,6 +11080,7 @@
 ---@field backgroundAnalysis _.lspconfig.settings.omnisharp.BackgroundAnalysis
 ---@field codeLens _.lspconfig.settings.omnisharp.CodeLens
 ---@field completion _.lspconfig.settings.omnisharp.Completion
+---@field copilotDotnetPlugin _.lspconfig.settings.omnisharp.CopilotDotnetPlugin
 -- %configuration.dotnet.defaultSolution.description%
 ---@field defaultSolution string
 ---@field diagnostics _.lspconfig.settings.omnisharp.Diagnostics
