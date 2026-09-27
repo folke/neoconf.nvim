@@ -300,8 +300,8 @@ function M.notify(msg, level)
         scope = "local",
       })
       local buf = vim.api.nvim_win_get_buf(win)
-      vim.api.nvim_set_option_value("filetype", "markdown", { buf = buf, scope = "local" })
-      vim.api.nvim_set_option_value("spell", false, { buf = buf, scope = "local" })
+      vim.api.nvim_set_option_value("filetype", "markdown", { buf = buf })
+      vim.api.nvim_set_option_value("spell", false, { win = win, scope = "local" })
     end,
   })
 end
