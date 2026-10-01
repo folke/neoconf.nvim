@@ -67,10 +67,10 @@
           "fileMatch": {
             "items": {
               "default": "MyFile.json",
-              "markdownDescription": "A file pattern that can contain `*` and `**` to match against when resolving JSON files to schemas. When beginning with `!`, it defines an exclusion pattern.",
+              "markdownDescription": "A file pattern that can contain `*` and `**` to match against when resolving JSON files to schemas. When beginning with `!`, it defines an exclusion pattern. In workspace folder settings and single folder workspace settings, a leading `${workspaceFolder}` expands to the workspace folder.",
               "type": "string"
             },
-            "markdownDescription": "An array of file patterns to match against when resolving JSON files to schemas. `*` and `**` can be used as a wildcard. Exclusion patterns can also be defined and start with `!`. A file matches when there is at least one matching pattern and the last matching pattern is not an exclusion pattern.",
+            "markdownDescription": "An array of file patterns to match against when resolving JSON files to schemas. `*` and `**` can be used as a wildcard. Exclusion patterns can also be defined and start with `!`. A file matches when there is at least one matching pattern and the last matching pattern is not an exclusion pattern. In workspace folder settings and single folder workspace settings, `${workspaceFolder}` at the beginning of a pattern expands to the workspace folder, allowing patterns anchored to the workspace folder root (for example `${workspaceFolder}/*.json`).",
             "minItems": 1,
             "type": "array"
           },
