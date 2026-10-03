@@ -202,15 +202,6 @@
       "order": 4,
       "type": "boolean"
     },
-    "swift.diagnostics": {
-      "default": false,
-      "deprecationMessage": "Deprecated: Please use \"swift.outputChannelLogLevel\" instead.",
-      "markdownDeprecationMessage": "**Deprecated**: Please use `#swift.outputChannelLogLevel#` instead.",
-      "markdownDescription": "Output additional diagnostics to the Swift output channel.",
-      "order": 100,
-      "scope": "machine-overridable",
-      "type": "boolean"
-    },
     "swift.diagnosticsCollection": {
       "default": "keepSourceKit",
       "enum": [
@@ -339,6 +330,19 @@
       "scope": "machine-overridable",
       "type": "boolean"
     },
+    "swift.logFileLogLevel": {
+      "default": "debug",
+      "enum": [
+        "trace",
+        "debug",
+        "info",
+        "warn",
+        "error"
+      ],
+      "markdownDescription": "The log level of the extension's log file. This has no effect on the verbosity of messages written to the Swift output channel.",
+      "scope": "machine-overridable",
+      "type": "string"
+    },
     "swift.lspConfigurationBranch": {
       "deprecationMessage": "Deprecated: Please use \"swift.sourcekit-lsp.configurationBranch\" instead.",
       "markdownDeprecationMessage": "**Deprecated**: Please use `#swift.sourcekit-lsp.configurationBranch#` instead.",
@@ -374,6 +378,7 @@
     "swift.outputChannelLogLevel": {
       "default": "info",
       "enum": [
+        "trace",
         "debug",
         "info",
         "warn",
