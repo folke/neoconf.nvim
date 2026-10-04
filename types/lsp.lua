@@ -20653,7 +20653,7 @@
 -- ```lua
 -- default = "0.29"
 -- ```
----@field version "0.27" | "0.28" | "0.29" | "main"
+---@field version "0.28" | "0.29" | "0.30" | "main"
 
 ---@class _.lspconfig.settings.wgls_analyzer.External
 ---@field naga _.lspconfig.settings.wgls_analyzer.Naga

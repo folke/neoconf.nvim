@@ -37,9 +37,9 @@
     "wgsl-analyzer.diagnostics.external.naga.version": {
       "default": "0.29",
       "enum": [
-        "0.27",
         "0.28",
         "0.29",
+        "0.30",
         "main"
       ],
       "enumDescriptions": [
