@@ -14278,6 +14278,14 @@
 -- ```
 ---@field fuel integer
 
+---@class _.lspconfig.settings.rust_analyzer.Turbofish
+-- Complete turbofish (`::<>`) at the call site (if needed).
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enable boolean
+
 ---@class _.lspconfig.settings.rust_analyzer.Completion
 -- Automatically add `::` when completing the module.
 -- 
@@ -14322,6 +14330,7 @@
 ---@field privateEditable _.lspconfig.settings.rust_analyzer.PrivateEditable
 ---@field snippets _.lspconfig.settings.rust_analyzer.Snippets
 ---@field termSearch _.lspconfig.settings.rust_analyzer.TermSearch
+---@field turbofish _.lspconfig.settings.rust_analyzer.Turbofish
 
 ---@class _.lspconfig.settings.rust_analyzer.Debug
 -- Whether to rebuild the project modules before debugging the same test again

@@ -523,6 +523,11 @@
       "minimum": 0,
       "type": "integer"
     },
+    "rust-analyzer.completion.turbofish.enable": {
+      "default": true,
+      "markdownDescription": "Complete turbofish (`::<>`) at the call site (if needed).",
+      "type": "boolean"
+    },
     "rust-analyzer.debug.buildBeforeRestart": {
       "default": false,
       "markdownDescription": "Whether to rebuild the project modules before debugging the same test again",
