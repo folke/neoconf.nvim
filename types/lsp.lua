@@ -4621,6 +4621,14 @@
 -- ```
 ---@field globalOn boolean
 
+---@class _.lspconfig.settings.hie.CaseSplit
+-- Enables caseSplit plugin
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field globalOn boolean
+
 ---@class _.lspconfig.settings.hie.ChangeTypeSignature
 -- Enables changeTypeSignature plugin
 -- 
@@ -4684,6 +4692,14 @@
 
 ---@class _.lspconfig.settings.hie.Explicit-fixity
 -- Enables explicit-fixity plugin
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field globalOn boolean
+
+---@class _.lspconfig.settings.hie.Export
+-- Enables export plugin
 -- 
 -- ```lua
 -- default = true
@@ -4840,13 +4856,19 @@
 -- ```
 ---@field inlayHintsOn boolean
 
----@class _.lspconfig.settings.hie.ModuleName
--- Enables moduleName plugin
+---@class _.lspconfig.settings.hie.Notes
+-- Enables notes completions
 -- 
 -- ```lua
 -- default = true
 -- ```
----@field globalOn boolean
+---@field completionOn boolean
+-- Enables notes hover
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field hoverOn boolean
 
 ---@class _.lspconfig.settings.hie.Config
 -- Call out to an external "ormolu" executable, rather than using the bundled library
@@ -4897,24 +4919,26 @@
 
 ---@class _.lspconfig.settings.hie.Config
 -- Enable experimental cross-module renaming
+-- 
+-- ```lua
+-- default = true
+-- ```
 ---@field crossModule boolean
 
 ---@class _.lspconfig.settings.hie.Rename
+-- Enables rename code lenses
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field codeLensOn boolean
 ---@field config _.lspconfig.settings.hie.Config
--- Enables rename plugin
+-- Enables rename rename
 -- 
 -- ```lua
 -- default = true
 -- ```
----@field globalOn boolean
-
----@class _.lspconfig.settings.hie.Retrie
--- Enables retrie plugin
--- 
--- ```lua
--- default = true
--- ```
----@field globalOn boolean
+---@field renameOn boolean
 
 ---@class _.lspconfig.settings.hie.Config
 -- LSP semantic token type to use for typeclass methods
@@ -4999,6 +5023,10 @@
 ---@class _.lspconfig.settings.hie.SemanticTokens
 ---@field config _.lspconfig.settings.hie.Config
 -- Enables semanticTokens plugin
+-- 
+-- ```lua
+-- default = true
+-- ```
 ---@field globalOn boolean
 
 ---@class _.lspconfig.settings.hie.SignatureHelp
@@ -5028,11 +5056,13 @@
 ---@field cabal-gild _.lspconfig.settings.hie.Cabal-gild
 ---@field cabalHaskellIntegration _.lspconfig.settings.hie.CabalHaskellIntegration
 ---@field callHierarchy _.lspconfig.settings.hie.CallHierarchy
+---@field caseSplit _.lspconfig.settings.hie.CaseSplit
 ---@field changeTypeSignature _.lspconfig.settings.hie.ChangeTypeSignature
 ---@field class _.lspconfig.settings.hie.Class
 ---@field eval _.lspconfig.settings.hie.Eval
 ---@field explicit-fields _.lspconfig.settings.hie.Explicit-fields
 ---@field explicit-fixity _.lspconfig.settings.hie.Explicit-fixity
+---@field export _.lspconfig.settings.hie.Export
 ---@field fourmolu _.lspconfig.settings.hie.Fourmolu
 ---@field gadt _.lspconfig.settings.hie.Gadt
 ---@field ghcide-code-actions-bindings _.lspconfig.settings.hie.Ghcide-code-actions-bindings
@@ -5044,7 +5074,7 @@
 ---@field ghcide-type-lenses _.lspconfig.settings.hie.Ghcide-type-lenses
 ---@field hlint _.lspconfig.settings.hie.Hlint
 ---@field importLens _.lspconfig.settings.hie.ImportLens
----@field moduleName _.lspconfig.settings.hie.ModuleName
+---@field notes _.lspconfig.settings.hie.Notes
 ---@field ormolu _.lspconfig.settings.hie.Ormolu
 ---@field overloaded-record-dot _.lspconfig.settings.hie.Overloaded-record-dot
 ---@field pragmas-completion _.lspconfig.settings.hie.Pragmas-completion
@@ -5052,7 +5082,6 @@
 ---@field pragmas-suggest _.lspconfig.settings.hie.Pragmas-suggest
 ---@field qualifyImportedNames _.lspconfig.settings.hie.QualifyImportedNames
 ---@field rename _.lspconfig.settings.hie.Rename
----@field retrie _.lspconfig.settings.hie.Retrie
 ---@field semanticTokens _.lspconfig.settings.hie.SemanticTokens
 ---@field signatureHelp _.lspconfig.settings.hie.SignatureHelp
 ---@field splice _.lspconfig.settings.hie.Splice
@@ -5085,6 +5114,12 @@
 -- default = true
 -- ```
 ---@field checkProject boolean
+-- Preferred approach for loading package components. Setting this to 'multi: needed-only' allows the build tool (such as `cabal` or `stack`) to load multiple components at once, which is a significant improvement.
+-- 
+-- ```lua
+-- default = "multi: needed-only"
+-- ```
+---@field componentsLoading "single" | "multi: needed-only" | "multi: whole-project"
 -- The formatter to use when formatting a document or range. Ensure the plugin is enabled.
 -- 
 -- ```lua
@@ -5097,6 +5132,18 @@
 -- default = ""
 -- ```
 ---@field ghcupExecutablePath string
+-- Where should `Documentation` links in hover messages point to
+-- 
+-- ```lua
+-- default = "LinkToHackage"
+-- ```
+---@field linkDocTo "LinkToHackage" | "LinkToLocal"
+-- Where should `Source` links in hover messages point to
+-- 
+-- ```lua
+-- default = "LinkToHackage"
+-- ```
+---@field linkSourceTo "LinkToHackage" | "LinkToLocal"
 -- If set, redirects the logs to a file.
 -- 
 -- ```lua
@@ -5115,7 +5162,7 @@
 -- default = 40
 -- ```
 ---@field maxCompletions integer
--- An optional URL to override where ghcup checks for tool download info (usually at: https://raw.githubusercontent.com/haskell/ghcup-metadata/master/ghcup-0.0.7.yaml)
+-- An optional URL to override where ghcup checks for tool download info (usually at: https://raw.githubusercontent.com/haskell/ghcup-metadata/master/ghcup-0.1.0.yaml). Allows multiple channels passed as a JSON array, for example '[ "GHCupURL", "prereleases", "cross" ]'.
 -- 
 -- ```lua
 -- default = ""
@@ -5170,7 +5217,7 @@
 -- default = ""
 -- ```
 ---@field serverExtraArgs string
--- Preferred approach for loading package components. Setting this to 'multiple components' allows the build tool (such as `cabal` or `stack`) to [load multiple components at once](https://github.com/haskell/cabal/pull/8726), which is a significant improvement.
+-- Preferred approach for loading package components. Setting this to 'multipleComponents' allows the build tool (such as `cabal` or `stack`) to [load multiple components at once](https://github.com/haskell/cabal/pull/8726), which is a significant improvement.
 -- 
 -- ```lua
 -- default = "multipleComponents"
@@ -5198,153 +5245,6 @@
 
 ---@class lspconfig.settings.hie
 ---@field haskell _.lspconfig.settings.hie.Haskell
-
----@class _.lspconfig.settings.html.Completion
--- Controls the default value for attributes when completion is accepted.
--- 
--- ```lua
--- default = "doublequotes"
--- ```
----@field attributeDefaultValue "doublequotes" | "singlequotes" | "empty"
-
----@class _.lspconfig.settings.html.Format
--- List of tags, comma separated, where the content shouldn't be reformatted. `null` defaults to the `pre` tag.
--- 
--- ```lua
--- default = "pre,code,textarea"
--- ```
----@field contentUnformatted string
--- Enable/disable default HTML formatter.
--- 
--- ```lua
--- default = true
--- ```
----@field enable boolean
--- List of tags, comma separated, that should have an extra newline before them. `null` defaults to `"head, body, /html"`.
--- 
--- ```lua
--- default = "head, body, /html"
--- ```
----@field extraLiners string
--- Format and indent `{{#foo}}` and `{{/foo}}`.
----@field indentHandlebars boolean
--- Indent `<head>` and `<body>` sections.
----@field indentInnerHtml boolean
--- Maximum number of line breaks to be preserved in one chunk. Use `null` for unlimited.
----@field maxPreserveNewLines number
--- Controls whether existing line breaks before elements should be preserved. Only works before elements, not inside tags or for text.
--- 
--- ```lua
--- default = true
--- ```
----@field preserveNewLines boolean
--- Honor django, erb, handlebars and php templating language tags.
----@field templating boolean
--- List of tags, comma separated, that shouldn't be reformatted. `null` defaults to all tags listed at https://www.w3.org/TR/html5/dom.html#phrasing-content.
--- 
--- ```lua
--- default = "wbr"
--- ```
----@field unformatted string
--- Keep text content together between this string.
--- 
--- ```lua
--- default = ""
--- ```
----@field unformattedContentDelimiter string
--- Wrap attributes.
--- 
--- ```lua
--- default = "auto"
--- ```
----@field wrapAttributes "auto" | "force" | "force-aligned" | "force-expand-multiline" | "aligned-multiple" | "preserve" | "preserve-aligned"
--- Indent wrapped attributes to after N characters. Use `null` to use the default indent size. Ignored if `#html.format.wrapAttributes#` is set to `aligned`.
----@field wrapAttributesIndentSize number
--- Maximum amount of characters per line (0 = disable).
--- 
--- ```lua
--- default = 120
--- ```
----@field wrapLineLength integer
-
----@class _.lspconfig.settings.html.Hover
--- Show tag and attribute documentation in hover.
--- 
--- ```lua
--- default = true
--- ```
----@field documentation boolean
--- Show references to MDN in hover.
--- 
--- ```lua
--- default = true
--- ```
----@field references boolean
-
----@class _.lspconfig.settings.html.Suggest
--- Controls whether the built-in HTML language support suggests closing tags. When disabled, end tag completions like `</div>` will not be shown.
----@field hideEndTagSuggestions boolean
--- Controls whether the built-in HTML language support suggests HTML5 tags, properties and values.
--- 
--- ```lua
--- default = true
--- ```
----@field html5 boolean
-
----@class _.lspconfig.settings.html.Trace
--- Traces the communication between VS Code and the HTML language server.
--- 
--- ```lua
--- default = "off"
--- ```
----@field server "off" | "messages" | "verbose"
-
----@class _.lspconfig.settings.html.Validate
--- Controls whether the built-in HTML language support validates embedded scripts.
--- 
--- ```lua
--- default = true
--- ```
----@field scripts boolean
--- Controls whether the built-in HTML language support validates embedded styles.
--- 
--- ```lua
--- default = true
--- ```
----@field styles boolean
-
----@class _.lspconfig.settings.html.Html
--- Enable/disable autoclosing of HTML tags.
--- 
--- ```lua
--- default = true
--- ```
----@field autoClosingTags boolean
--- Enable/disable auto creation of quotes for HTML attribute assignment. The type of quotes can be configured by `#html.completion.attributeDefaultValue#`.
--- 
--- ```lua
--- default = true
--- ```
----@field autoCreateQuotes boolean
----@field completion _.lspconfig.settings.html.Completion
--- A list of relative file paths pointing to JSON files following the [custom data format](https://github.com/microsoft/vscode-html-languageservice/blob/master/docs/customData.md).
--- 
--- VS Code loads custom data on startup to enhance its HTML support for the custom HTML tags, attributes and attribute values you specify in the JSON files.
--- 
--- The file paths are relative to workspace and only workspace folder settings are considered.
--- 
--- ```lua
--- default = {}
--- ```
----@field customData string[]
----@field format _.lspconfig.settings.html.Format
----@field hover _.lspconfig.settings.html.Hover
----@field suggest _.lspconfig.settings.html.Suggest
----@field trace _.lspconfig.settings.html.Trace
----@field validate _.lspconfig.settings.html.Validate
-
----@class lspconfig.settings.html
----@field html _.lspconfig.settings.html.Html
 
 ---@class _.lspconfig.settings.intelephense.Implementations
 -- Enable a code lens that shows an abstract and interface implementations count and command to peek locations.

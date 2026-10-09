@@ -19,6 +19,22 @@
       "scope": "resource",
       "type": "boolean"
     },
+    "haskell.componentsLoading": {
+      "default": "multi: needed-only",
+      "description": "Preferred approach for loading package components. Setting this to 'multi: needed-only' allows the build tool (such as `cabal` or `stack`) to load multiple components at once, which is a significant improvement.",
+      "enum": [
+        "single",
+        "multi: needed-only",
+        "multi: whole-project"
+      ],
+      "enumDescriptions": [
+        "Load only the component required to load the file you open in the editor. Might fail if you open components that require a currently unloaded component.",
+        "Load components on demand that are required to load the files open in your editor.",
+        "Load the whole project at once. Experimental and might contain more bugs"
+      ],
+      "scope": "resource",
+      "type": "string"
+    },
     "haskell.formattingProvider": {
       "default": "ormolu",
       "description": "The formatter to use when formatting a document or range. Ensure the plugin is enabled.",
@@ -36,6 +52,34 @@
     "haskell.ghcupExecutablePath": {
       "default": "",
       "markdownDescription": "Manually set a ghcup executable path.",
+      "scope": "resource",
+      "type": "string"
+    },
+    "haskell.linkDocTo": {
+      "default": "LinkToHackage",
+      "description": "Where should `Documentation` links in hover messages point to",
+      "enum": [
+        "LinkToHackage",
+        "LinkToLocal"
+      ],
+      "enumDescriptions": [
+        "Link to Hackage",
+        "Link to local haddock"
+      ],
+      "scope": "resource",
+      "type": "string"
+    },
+    "haskell.linkSourceTo": {
+      "default": "LinkToHackage",
+      "description": "Where should `Source` links in hover messages point to",
+      "enum": [
+        "LinkToHackage",
+        "LinkToLocal"
+      ],
+      "enumDescriptions": [
+        "Link to Hackage",
+        "Link to local haddock"
+      ],
       "scope": "resource",
       "type": "string"
     },
@@ -67,7 +111,7 @@
     },
     "haskell.metadataURL": {
       "default": "",
-      "description": "An optional URL to override where ghcup checks for tool download info (usually at: https://raw.githubusercontent.com/haskell/ghcup-metadata/master/ghcup-0.0.7.yaml)",
+      "description": "An optional URL to override where ghcup checks for tool download info (usually at: https://raw.githubusercontent.com/haskell/ghcup-metadata/master/ghcup-0.1.0.yaml). Allows multiple channels passed as a JSON array, for example '[ \"GHCupURL\", \"prereleases\", \"cross\" ]'.",
       "scope": "resource",
       "type": "string"
     },
@@ -143,6 +187,12 @@
       "scope": "resource",
       "type": "boolean"
     },
+    "haskell.plugin.caseSplit.globalOn": {
+      "default": true,
+      "description": "Enables caseSplit plugin",
+      "scope": "resource",
+      "type": "boolean"
+    },
     "haskell.plugin.changeTypeSignature.globalOn": {
       "default": true,
       "description": "Enables changeTypeSignature plugin",
@@ -200,6 +250,12 @@
     "haskell.plugin.explicit-fixity.globalOn": {
       "default": true,
       "description": "Enables explicit-fixity plugin",
+      "scope": "resource",
+      "type": "boolean"
+    },
+    "haskell.plugin.export.globalOn": {
+      "default": true,
+      "description": "Enables export plugin",
       "scope": "resource",
       "type": "boolean"
     },
@@ -333,9 +389,15 @@
       "scope": "resource",
       "type": "boolean"
     },
-    "haskell.plugin.moduleName.globalOn": {
+    "haskell.plugin.notes.completionOn": {
       "default": true,
-      "description": "Enables moduleName plugin",
+      "description": "Enables notes completions",
+      "scope": "resource",
+      "type": "boolean"
+    },
+    "haskell.plugin.notes.hoverOn": {
+      "default": true,
+      "description": "Enables notes hover",
       "scope": "resource",
       "type": "boolean"
     },
@@ -375,21 +437,21 @@
       "scope": "resource",
       "type": "boolean"
     },
+    "haskell.plugin.rename.codeLensOn": {
+      "default": true,
+      "description": "Enables rename code lenses",
+      "scope": "resource",
+      "type": "boolean"
+    },
     "haskell.plugin.rename.config.crossModule": {
-      "default": false,
+      "default": true,
       "markdownDescription": "Enable experimental cross-module renaming",
       "scope": "resource",
       "type": "boolean"
     },
-    "haskell.plugin.rename.globalOn": {
+    "haskell.plugin.rename.renameOn": {
       "default": true,
-      "description": "Enables rename plugin",
-      "scope": "resource",
-      "type": "boolean"
-    },
-    "haskell.plugin.retrie.globalOn": {
-      "default": true,
-      "description": "Enables retrie plugin",
+      "description": "Enables rename rename",
       "scope": "resource",
       "type": "boolean"
     },
@@ -1122,7 +1184,7 @@
       "type": "string"
     },
     "haskell.plugin.semanticTokens.globalOn": {
-      "default": false,
+      "default": true,
       "description": "Enables semanticTokens plugin",
       "scope": "resource",
       "type": "boolean"
@@ -1183,7 +1245,8 @@
     },
     "haskell.sessionLoading": {
       "default": "multipleComponents",
-      "description": "Preferred approach for loading package components. Setting this to 'multiple components' allows the build tool (such as `cabal` or `stack`) to [load multiple components at once](https://github.com/haskell/cabal/pull/8726), which is a significant improvement.",
+      "deprecationMessage": "Prefer `haskell.componentsLoading` in HLS 2.15.0.0 or newer. This option will keep working with HLS 2.15.0.0.",
+      "description": "Preferred approach for loading package components. Setting this to 'multipleComponents' allows the build tool (such as `cabal` or `stack`) to [load multiple components at once](https://github.com/haskell/cabal/pull/8726), which is a significant improvement.",
       "enum": [
         "singleComponent",
         "multipleComponents"
