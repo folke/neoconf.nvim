@@ -94,6 +94,12 @@
       "scope": "resource",
       "type": "string"
     },
+    "Lua.completion.requireFunction": {
+      "default": "require",
+      "markdownDescription": "The function to insert when an auto-require is triggered.",
+      "scope": "resource",
+      "type": "string"
+    },
     "Lua.completion.requireSeparator": {
       "default": ".",
       "markdownDescription": "The separator used when `require`.",
