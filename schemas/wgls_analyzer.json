@@ -39,14 +39,12 @@
       "enum": [
         "0.28",
         "0.29",
-        "0.30",
-        "main"
+        "0.30"
       ],
       "enumDescriptions": [
-        "Naga version 27",
         "Naga version 28",
         "Naga version 29",
-        "Version of Naga on main (most recent stable version)"
+        "Naga version 30"
       ],
       "markdownDescription": "Naga version used for validation.",
       "type": "string"
