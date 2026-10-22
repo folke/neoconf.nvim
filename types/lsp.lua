@@ -6081,12 +6081,6 @@
 -- default = true
 -- ```
 ---@field enabled boolean
--- [Experimental] Select code completion engine
--- 
--- ```lua
--- default = "ecj"
--- ```
----@field engine "ecj" | "dom"
 -- Defines a list of static members or types with static members. Content assist will propose those static members even if the import is missing.
 -- 
 -- ```lua
@@ -6473,14 +6467,6 @@
 -- "java.jdt.ls.java.home":"C:\\Program Files\\Java\\jdk-25.0.2"
 ---@field home string
 
----@class _.lspconfig.settings.jdtls.Javac
--- [Experimental] Specify whether to enable Javac-based compilation in the language server. Requires running this extension with Java 25
--- 
--- ```lua
--- default = "off"
--- ```
----@field enabled "on" | "off"
-
 ---@class _.lspconfig.settings.jdtls.KotlinSupport
 -- [Experimental] Specify whether to enable `org.jetbrains.kotlin.jvm` plugin in Gradle projects. Defaults to `true`.
 -- 
@@ -6521,7 +6507,6 @@
 ---@field aspectjSupport _.lspconfig.settings.jdtls.AspectjSupport
 ---@field groovySupport _.lspconfig.settings.jdtls.GroovySupport
 ---@field java _.lspconfig.settings.jdtls.Java
----@field javac _.lspconfig.settings.jdtls.Javac
 ---@field kotlinSupport _.lspconfig.settings.jdtls.KotlinSupport
 ---@field lombokSupport _.lspconfig.settings.jdtls.LombokSupport
 -- Specifies the size of the in-memory Maven project cache to use. Increasing the project cache size will help load multi-module projects and monorepos faster, but will result in a significant increase in memory usage.
@@ -13867,7 +13852,7 @@
 -- default = "fromEnvironment"
 -- ```
 ---@field importStrategy "fromEnvironment" | "useBundled"
--- Path to a Python interpreter to use to find the `ruff` executable. Requires either the Python Environments or Python extension to be installed.
+-- Path to a Python executable or environment directory used to find the `ruff` executable. Python 3.8 or later is required. This setting works without the Python Environments or Python extension.
 -- 
 -- ```lua
 -- default = {}
