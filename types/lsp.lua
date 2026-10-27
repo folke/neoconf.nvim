@@ -10826,6 +10826,8 @@
 -- default = true
 -- ```
 ---@field enableFileBasedProgramsWhenAmbiguous boolean
+-- %configuration.dotnet.projects.loadOnDemand%
+---@field loadOnDemand boolean
 
 ---@class _.lspconfig.settings.omnisharp.QuickInfo
 -- %configuration.dotnet.quickInfo.showRemarksInQuickInfo%

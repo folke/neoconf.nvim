@@ -529,6 +529,11 @@
       ],
       "type": "boolean"
     },
+    "dotnet.projects.loadOnDemand": {
+      "default": false,
+      "description": "%configuration.dotnet.projects.loadOnDemand%",
+      "type": "boolean"
+    },
     "dotnet.quickInfo.showRemarksInQuickInfo": {
       "default": "true",
       "description": "%configuration.dotnet.quickInfo.showRemarksInQuickInfo%",
