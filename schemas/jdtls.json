@@ -1326,13 +1326,6 @@
       "scope": "window",
       "type": "string"
     },
-    "java.typeHierarchy.lazyLoad": {
-      "default": false,
-      "description": "Enable/disable lazy loading the content in type hierarchy. Lazy loading could save a lot of loading time but every type should be expanded manually to load its content.",
-      "order": 70,
-      "scope": "window",
-      "type": "boolean"
-    },
     "java.updateImportsOnPaste.enabled": {
       "default": true,
       "description": "Enable/disable auto organize imports when pasting code",
