@@ -22,6 +22,12 @@
       ],
       "scope": "window"
     },
+    "ada.alire.executablePath": {
+      "default": "",
+      "markdownDescription": "Path to `alr` (`alr.exe` on Windows). Use an absolute path; `~` expands to your home directory. Leave empty to search `PATH`. Reload VS Code after changing this setting manually.",
+      "scope": "machine",
+      "type": "string"
+    },
     "ada.alireDiagnostics": {
       "default": null,
       "enum": [
