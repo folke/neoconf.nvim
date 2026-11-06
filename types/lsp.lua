@@ -14886,7 +14886,11 @@
 
 ---@class _.lspconfig.settings.rust_analyzer.ImplicitDrops
 -- Show implicit drop hints.
----@field enable boolean
+-- 
+-- ```lua
+-- default = "never"
+-- ```
+---@field enable "always" | "never" | "with_drop_glue"
 
 ---@class _.lspconfig.settings.rust_analyzer.ImplicitSizedBoundHints
 -- Show inlay hints for the implied type parameter `Sized` bound.
