@@ -14209,6 +14209,14 @@
 -- ```
 ---@field enable boolean
 
+---@class _.lspconfig.settings.rust_analyzer.AutoDyn
+-- Complete traits with `dyn` prefixed to them when completing in a type position.
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enable boolean
+
 ---@class _.lspconfig.settings.rust_analyzer.AutoIter
 -- Show method call completions with `iter()` or `into_iter()` prefixed to them when
 -- completing on a type that has them.
@@ -14376,6 +14384,7 @@
 -- ```
 ---@field addSemicolonToUnit boolean
 ---@field autoAwait _.lspconfig.settings.rust_analyzer.AutoAwait
+---@field autoDyn _.lspconfig.settings.rust_analyzer.AutoDyn
 ---@field autoIter _.lspconfig.settings.rust_analyzer.AutoIter
 ---@field autoimport _.lspconfig.settings.rust_analyzer.Autoimport
 ---@field autoself _.lspconfig.settings.rust_analyzer.Autoself

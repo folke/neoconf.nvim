@@ -356,6 +356,11 @@
       "markdownDescription": "Show method calls and field accesses completions with `await` prefixed to them when\ncompleting on a future.",
       "type": "boolean"
     },
+    "rust-analyzer.completion.autoDyn.enable": {
+      "default": true,
+      "markdownDescription": "Complete traits with `dyn` prefixed to them when completing in a type position.",
+      "type": "boolean"
+    },
     "rust-analyzer.completion.autoIter.enable": {
       "default": true,
       "markdownDescription": "Show method call completions with `iter()` or `into_iter()` prefixed to them when\ncompleting on a type that has them.",
