@@ -10560,6 +10560,12 @@
 -- default = "internalConsole"
 -- ```
 ---@field console "internalConsole" | "integratedTerminal" | "externalTerminal"
+-- %generateOptionsSchema.enableAutomaticDeoptimization.markdownDescription%
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enableAutomaticDeoptimization boolean
 -- %generateOptionsSchema.enableStepFiltering.markdownDescription%
 -- 
 -- ```lua
@@ -10591,7 +10597,7 @@
 -- %generateOptionsSchema.suppressJITOptimizations.markdownDescription%
 ---@field suppressJITOptimizations boolean
 ---@field symbolOptions _.lspconfig.settings.omnisharp.SymbolOptions
--- %generateOptionsSchema.terminateChildProcesses.description%
+-- %generateOptionsSchema.terminateChildProcesses.markdownDescription%
 ---@field terminateChildProcesses boolean
 
 ---@class _.lspconfig.settings.omnisharp.Format
@@ -11076,6 +11082,12 @@
 -- default = 4711
 -- ```
 ---@field debugServer number
+-- %generateOptionsSchema.enableAutomaticDeoptimization.markdownDescription%
+-- 
+-- ```lua
+-- default = true
+-- ```
+---@field enableAutomaticDeoptimization boolean
 -- %generateOptionsSchema.enableStepFiltering.markdownDescription%
 -- 
 -- ```lua

@@ -17,6 +17,11 @@
       "markdownDescription": "%generateOptionsSchema.console.settingsDescription%",
       "type": "string"
     },
+    "csharp.debug.enableAutomaticDeoptimization": {
+      "default": true,
+      "markdownDescription": "%generateOptionsSchema.enableAutomaticDeoptimization.markdownDescription%",
+      "type": "boolean"
+    },
     "csharp.debug.enableStepFiltering": {
       "default": true,
       "markdownDescription": "%generateOptionsSchema.enableStepFiltering.markdownDescription%",
@@ -231,7 +236,7 @@
     },
     "csharp.debug.terminateChildProcesses": {
       "default": false,
-      "description": "%generateOptionsSchema.terminateChildProcesses.description%",
+      "markdownDescription": "%generateOptionsSchema.terminateChildProcesses.markdownDescription%",
       "type": "boolean"
     },
     "csharp.format.enable": {
@@ -687,6 +692,11 @@
           "default": 4711,
           "description": "%generateOptionsSchema.debugServer.description%",
           "type": "number"
+        },
+        "enableAutomaticDeoptimization": {
+          "default": true,
+          "markdownDescription": "%generateOptionsSchema.enableAutomaticDeoptimization.markdownDescription%",
+          "type": "boolean"
         },
         "enableStepFiltering": {
           "default": true,
