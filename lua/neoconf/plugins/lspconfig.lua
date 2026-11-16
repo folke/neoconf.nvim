@@ -91,10 +91,14 @@ function M.on_update(fname)
 
       -- only send update when confiuration actually changed
       if not vim.deep_equal(old_settings, client.config.settings) then
-        -- notify the lsp server of thr new config
-        local ok = pcall(client.notify, "workspace/didChangeConfiguration", {
-          settings = client.config.settings,
-        })
+        -- notify the lsp server of the new config
+        local params = { settings = client.config.settings }
+        local ok
+        if vim.fn.has("nvim-0.11") == 1 then
+          ok = pcall(client.notify, client, "workspace/didChangeConfiguration", params)
+        else
+          ok = pcall(client.notify, "workspace/didChangeConfiguration", params)
+        end
 
         if ok then
           Util.info("Reloaded settings for " .. client.name)
