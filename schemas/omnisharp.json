@@ -239,11 +239,6 @@
       "markdownDescription": "%generateOptionsSchema.terminateChildProcesses.markdownDescription%",
       "type": "boolean"
     },
-    "csharp.format.enable": {
-      "default": true,
-      "description": "%configuration.omnisharp.csharp.format.enable%",
-      "type": "boolean"
-    },
     "csharp.inlayHints.enableInlayHintsForImplicitObjectCreation": {
       "default": false,
       "description": "%configuration.csharp.inlayHints.enableInlayHintsForImplicitObjectCreation%",
@@ -266,55 +261,6 @@
       "default": false,
       "description": "%configuration.csharp.inlayHints.enableInlayHintsForTypes%",
       "order": 50,
-      "type": "boolean"
-    },
-    "csharp.maxProjectFileCountForDiagnosticAnalysis": {
-      "default": 1000,
-      "description": "%configuration.omnisharp.csharp.maxProjectFileCountForDiagnosticAnalysis%",
-      "type": "number"
-    },
-    "csharp.referencesCodeLens.filteredSymbols": {
-      "default": [],
-      "description": "%configuration.omnisharp.csharp.referencesCodeLens.filteredSymbols%",
-      "items": {
-        "type": "string"
-      },
-      "type": "array"
-    },
-    "csharp.semanticHighlighting.enabled": {
-      "default": true,
-      "description": "%configuration.omnisharp.csharp.semanticHighlighting.enabled%",
-      "scope": "window",
-      "type": "boolean"
-    },
-    "csharp.showOmnisharpLogOnError": {
-      "default": true,
-      "description": "%configuration.omnisharp.csharp.showOmnisharpLogOnError%",
-      "type": "boolean"
-    },
-    "csharp.suppressBuildAssetsNotification": {
-      "default": false,
-      "description": "%configuration.omnisharp.csharp.suppressBuildAssetsNotification%",
-      "type": "boolean"
-    },
-    "csharp.suppressDotnetInstallWarning": {
-      "default": false,
-      "description": "%configuration.omnisharp.csharp.suppressDotnetInstallWarning%",
-      "type": "boolean"
-    },
-    "csharp.suppressDotnetRestoreNotification": {
-      "default": false,
-      "description": "%configuration.omnisharp.csharp.suppressDotnetRestoreNotification%",
-      "type": "boolean"
-    },
-    "csharp.suppressHiddenDiagnostics": {
-      "default": true,
-      "description": "%configuration.omnisharp.csharp.suppressHiddenDiagnostics%",
-      "type": "boolean"
-    },
-    "csharp.suppressProjectJsonWarning": {
-      "default": false,
-      "description": "%configuration.omnisharp.csharp.suppressProjectJsonWarning%",
       "type": "boolean"
     },
     "csharp.wasm.debug.useVSDbg": {
@@ -628,12 +574,6 @@
       "description": "%configuration.dotnet.server.suppressMiscellaneousFilesToasts%",
       "type": "boolean"
     },
-    "dotnet.server.useOmnisharp": {
-      "default": false,
-      "description": "%configuration.omnisharp.dotnet.server.useOmnisharp%",
-      "order": 0,
-      "type": "boolean"
-    },
     "dotnet.server.useServerGC": {
       "default": true,
       "description": "%configuration.dotnet.server.useServerGC%",
@@ -914,132 +854,6 @@
       "markdownDescription": "%configuration.dotnet.unitTests.runSettingsPath%",
       "type": "string"
     },
-    "omnisharp.autoStart": {
-      "default": true,
-      "description": "%configuration.omnisharp.autoStart%",
-      "type": "boolean"
-    },
-    "omnisharp.disableMSBuildDiagnosticWarning": {
-      "default": false,
-      "description": "%configuration.omnisharp.disableMSBuildDiagnosticWarning%",
-      "type": "boolean"
-    },
-    "omnisharp.dotNetCliPaths": {
-      "description": "%configuration.omnisharp.dotNetCliPaths%",
-      "items": {
-        "type": "string"
-      },
-      "type": "array",
-      "uniqueItems": true
-    },
-    "omnisharp.dotnetPath": {
-      "description": "%configuration.omnisharp.dotnetPath%",
-      "scope": "machine-overridable",
-      "type": "string"
-    },
-    "omnisharp.enableAsyncCompletion": {
-      "default": false,
-      "description": "%configuration.omnisharp.enableAsyncCompletion%",
-      "tags": [
-        "experimental"
-      ],
-      "type": "boolean"
-    },
-    "omnisharp.enableDecompilationSupport": {
-      "default": false,
-      "description": "%configuration.omnisharp.enableDecompilationSupport%",
-      "scope": "machine",
-      "type": "boolean"
-    },
-    "omnisharp.enableEditorConfigSupport": {
-      "default": true,
-      "description": "%configuration.omnisharp.enableEditorConfigSupport%",
-      "type": "boolean"
-    },
-    "omnisharp.enableLspDriver": {
-      "default": false,
-      "description": "%configuration.omnisharp.enableLspDriver%",
-      "tags": [
-        "experimental"
-      ],
-      "type": "boolean"
-    },
-    "omnisharp.enableMsBuildLoadProjectsOnDemand": {
-      "default": false,
-      "description": "%configuration.omnisharp.enableMsBuildLoadProjectsOnDemand%",
-      "type": "boolean"
-    },
-    "omnisharp.loggingLevel": {
-      "default": "information",
-      "description": "%configuration.omnisharp.loggingLevel%",
-      "enum": [
-        "trace",
-        "debug",
-        "information",
-        "warning",
-        "error",
-        "critical"
-      ],
-      "type": "string"
-    },
-    "omnisharp.maxFindSymbolsItems": {
-      "default": 1000,
-      "description": "%configuration.omnisharp.maxFindSymbolsItems%",
-      "type": "number"
-    },
-    "omnisharp.maxProjectResults": {
-      "default": 250,
-      "description": "%configuration.omnisharp.maxProjectResults%",
-      "type": "number"
-    },
-    "omnisharp.minFindSymbolsFilterLength": {
-      "default": 0,
-      "description": "%configuration.omnisharp.minFindSymbolsFilterLength%",
-      "type": "number"
-    },
-    "omnisharp.monoPath": {
-      "description": "%configuration.omnisharp.monoPath%",
-      "scope": "machine",
-      "type": "string"
-    },
-    "omnisharp.projectFilesExcludePattern": {
-      "default": "**/node_modules/**,**/.git/**,**/bower_components/**",
-      "description": "%configuration.omnisharp.projectFilesExcludePattern%",
-      "type": "string"
-    },
-    "omnisharp.projectLoadTimeout": {
-      "default": 60,
-      "description": "%configuration.omnisharp.projectLoadTimeout%",
-      "type": "number"
-    },
-    "omnisharp.sdkIncludePrereleases": {
-      "default": true,
-      "description": "%configuration.omnisharp.sdkIncludePrereleases%",
-      "scope": "window",
-      "type": "boolean"
-    },
-    "omnisharp.sdkPath": {
-      "description": "%configuration.omnisharp.sdkPath%",
-      "scope": "window",
-      "type": "string"
-    },
-    "omnisharp.sdkVersion": {
-      "description": "%configuration.omnisharp.sdkVersion%",
-      "scope": "window",
-      "type": "string"
-    },
-    "omnisharp.useEditorFormattingSettings": {
-      "default": true,
-      "description": "%configuration.omnisharp.useEditorFormattingSettings%",
-      "type": "boolean"
-    },
-    "omnisharp.useModernNet": {
-      "default": true,
-      "description": "%configuration.omnisharp.useModernNet.description%",
-      "scope": "window",
-      "title": "%configuration.omnisharp.useModernNet.title%",
-      "type": "boolean"
-    },
     "razor.advanced.showAllCSharpCodeActions": {
       "default": false,
       "description": "%configuration.razor.razor.advanced.showAllCSharpCodeActions%",
@@ -1050,11 +864,6 @@
       "default": false,
       "description": "%configuration.razor.razor.completion.commitElementsWithSpace%",
       "scope": "window",
-      "type": "boolean"
-    },
-    "razor.devmode": {
-      "default": false,
-      "description": "%configuration.omnisharp.razor.devmode%",
       "type": "boolean"
     },
     "razor.format.attributeIndentStyle": {
@@ -1075,7 +884,7 @@
     },
     "razor.format.enable": {
       "default": true,
-      "description": "%configuration.omnisharp.razor.format.enable%",
+      "description": "%configuration.razor.razor.format.enable%",
       "scope": "window",
       "type": "boolean"
     },
@@ -1084,11 +893,6 @@
       "description": "%configuration.razor.razor.format.ignoreIndentationInScriptOrStyleBlocksWithComplexRazor%",
       "scope": "window",
       "type": "boolean"
-    },
-    "razor.plugin.path": {
-      "description": "%configuration.omnisharp.razor.plugin.path%",
-      "scope": "machine",
-      "type": "string"
     }
   }
 }
