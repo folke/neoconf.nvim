@@ -952,6 +952,12 @@
         "null"
       ]
     },
+    "java.jshell.enabled": {
+      "default": true,
+      "description": "Enable/disable classpath-aware content assist (completion, diagnostics, hover) for .jsh (JShell script) files. Disabling this does not affect syntax highlighting.",
+      "scope": "window",
+      "type": "boolean"
+    },
     "java.maven.downloadSources": {
       "default": false,
       "description": "Enable/disable download of Maven source artifacts as part of importing Maven projects.",
